@@ -1,0 +1,889 @@
+--- a/src/ADFS/s/ADFS
++++ b/src/ADFS/s/ADFS
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/ADFS/s/Adfs05
++++ b/src/ADFS/s/Adfs05
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/ADFS/s/Adfs10
++++ b/src/ADFS/s/Adfs10
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/ADFS/s/Adfs11
++++ b/src/ADFS/s/Adfs11
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/ADFS/s/Adfs13
++++ b/src/ADFS/s/Adfs13
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/ADFS/s/Adfs14
++++ b/src/ADFS/s/Adfs14
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/ADFS/s/Adfs15
++++ b/src/ADFS/s/Adfs15
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/ADFS/s/Adfs17
++++ b/src/ADFS/s/Adfs17
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/ADFS/s/Adfs18
++++ b/src/ADFS/s/Adfs18
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/ADFS/s/Adfs19
++++ b/src/ADFS/s/Adfs19
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/ADFS/s/Adfs20
++++ b/src/ADFS/s/Adfs20
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/ADFS/s/Adfs50
++++ b/src/ADFS/s/Adfs50
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/ADFS/s/AdfsMacros
++++ b/src/ADFS/s/AdfsMacros
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/ADFS/s/Consts
++++ b/src/ADFS/s/Consts
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/ADFS/s/MFormat
++++ b/src/ADFS/s/MFormat
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/ADFS/s/ModHeader
++++ b/src/ADFS/s/ModHeader
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/FileCore/s/Commands
++++ b/src/FileCore/s/Commands
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/FileCore/s/FileCore00
++++ b/src/FileCore/s/FileCore00
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/FileCore/s/FileCore15
++++ b/src/FileCore/s/FileCore15
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/FileCore/s/FileCore20
++++ b/src/FileCore/s/FileCore20
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/FileCore/s/FileCore25
++++ b/src/FileCore/s/FileCore25
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/FileCore/s/FileCore31
++++ b/src/FileCore/s/FileCore31
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/FileCore/s/FileCore33
++++ b/src/FileCore/s/FileCore33
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/FileCore/s/FileCore35
++++ b/src/FileCore/s/FileCore35
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/FileCore/s/FileCore40
++++ b/src/FileCore/s/FileCore40
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/FileCore/s/FileCore60
++++ b/src/FileCore/s/FileCore60
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/FileCore/s/FileCore80
++++ b/src/FileCore/s/FileCore80
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/FileCore/s/FormSWIs
++++ b/src/FileCore/s/FormSWIs
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/FileCore/s/FormSrvcs
++++ b/src/FileCore/s/FormSrvcs
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/FileCore/s/GenSWIs
++++ b/src/FileCore/s/GenSWIs
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/FileCore/s/InitDieSvc
++++ b/src/FileCore/s/InitDieSvc
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/FileCore/s/MyMacros
++++ b/src/FileCore/s/MyMacros
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/FileSwitch/hdr/LowFSI
++++ b/src/FileSwitch/hdr/LowFSI
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/FileSwitch/s/Canonical
++++ b/src/FileSwitch/s/Canonical
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/FileSwitch/s/CtrlUtils
++++ b/src/FileSwitch/s/CtrlUtils
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/FileSwitch/s/DirStore
++++ b/src/FileSwitch/s/DirStore
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/FileSwitch/s/Ensure
++++ b/src/FileSwitch/s/Ensure
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/FileSwitch/s/FSCommands
++++ b/src/FileSwitch/s/FSCommands
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/FileSwitch/s/FSCommon
++++ b/src/FileSwitch/s/FSCommon
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/FileSwitch/s/FSControl
++++ b/src/FileSwitch/s/FSControl
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/FileSwitch/s/FSCtrl2
++++ b/src/FileSwitch/s/FSCtrl2
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/FileSwitch/s/FSErrors
++++ b/src/FileSwitch/s/FSErrors
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/FileSwitch/s/FSPath
++++ b/src/FileSwitch/s/FSPath
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/FileSwitch/s/FSShared
++++ b/src/FileSwitch/s/FSShared
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/FileSwitch/s/FSUtils
++++ b/src/FileSwitch/s/FSUtils
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/FileSwitch/s/FSUtils2
++++ b/src/FileSwitch/s/FSUtils2
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/FileSwitch/s/FSUtils3
++++ b/src/FileSwitch/s/FSUtils3
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/FileSwitch/s/FileSwBody
++++ b/src/FileSwitch/s/FileSwBody
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/FileSwitch/s/FileSwHdr
++++ b/src/FileSwitch/s/FileSwHdr
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/FileSwitch/s/FileTypes
++++ b/src/FileSwitch/s/FileTypes
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/FileSwitch/s/KernelFSW
++++ b/src/FileSwitch/s/KernelFSW
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/FileSwitch/s/LowLevel
++++ b/src/FileSwitch/s/LowLevel
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/FileSwitch/s/MsgsStuff
++++ b/src/FileSwitch/s/MsgsStuff
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/FileSwitch/s/OSBGetBPut
++++ b/src/FileSwitch/s/OSBGetBPut
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/FileSwitch/s/OSFile
++++ b/src/FileSwitch/s/OSFile
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/FileSwitch/s/OSFind
++++ b/src/FileSwitch/s/OSFind
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/FileSwitch/s/OSGBPB
++++ b/src/FileSwitch/s/OSGBPB
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/FileSwitch/s/StreamBits
++++ b/src/FileSwitch/s/StreamBits
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/FileSwitch/s/SysVars
++++ b/src/FileSwitch/s/SysVars
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/FileSwitch/s/TopPath
++++ b/src/FileSwitch/s/TopPath
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/HdrSrc/hdr/CPU/Generic26
++++ b/src/HdrSrc/hdr/CPU/Generic26
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/HdrSrc/hdr/Machine/A440
++++ b/src/HdrSrc/hdr/Machine/A440
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/HdrSrc/hdr/Proc
++++ b/src/HdrSrc/hdr/Proc
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+--- a/src/IntKey/Source/IntKeyBody
++++ b/src/IntKey/Source/IntKeyBody
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; > adfs::TimsWini.arm.SourceDisc.!IKHG.Source.IntKeyBody
+ 
+ ; ************************************************************
+--- a/src/IntKey/UK/Source/IntKeyMod
++++ b/src/IntKey/UK/Source/IntKeyMod
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; > Source.IntKeyMod
+ 
+                 GBLL    Arthur120
+--- a/src/Inter/IntHelpSrc
++++ b/src/Inter/IntHelpSrc
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+         ORG 0 ; generated text output starts at zero
+ ; > adfs::TimSource.!Inter.IntHelpSrc
+ 
+--- a/src/Inter/s/InterBody
++++ b/src/Inter/s/InterBody
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/Kernel/TestSrc/MEMC1
++++ b/src/Kernel/TestSrc/MEMC1
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; > MEMC1
+ 
+--- a/src/Kernel/s/ARM600
++++ b/src/Kernel/s/ARM600
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+--- a/src/Kernel/s/Arthur2
++++ b/src/Kernel/s/Arthur2
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/Kernel/s/Arthur3
++++ b/src/Kernel/s/Arthur3
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+--- a/src/Kernel/s/ArthurSWIs
++++ b/src/Kernel/s/ArthurSWIs
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+--- a/src/Kernel/s/ChangeDyn
++++ b/src/Kernel/s/ChangeDyn
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+--- a/src/Kernel/s/ExtraSWIs
++++ b/src/Kernel/s/ExtraSWIs
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+--- a/src/Kernel/s/GetAll
++++ b/src/Kernel/s/GetAll
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/Kernel/s/HeapMan
++++ b/src/Kernel/s/HeapMan
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/Kernel/s/HeapSort
++++ b/src/Kernel/s/HeapSort
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+--- a/src/Kernel/s/KbdResA1
++++ b/src/Kernel/s/KbdResA1
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/Kernel/s/Kernel
++++ b/src/Kernel/s/Kernel
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/Kernel/s/MEMC1
++++ b/src/Kernel/s/MEMC1
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+--- a/src/Kernel/s/MEMC2
++++ b/src/Kernel/s/MEMC2
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+--- a/src/Kernel/s/MemInfo
++++ b/src/Kernel/s/MemInfo
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+--- a/src/Kernel/s/Middle
++++ b/src/Kernel/s/Middle
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/Kernel/s/ModHand
++++ b/src/Kernel/s/ModHand
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+--- a/src/Kernel/s/MoreComms
++++ b/src/Kernel/s/MoreComms
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+--- a/src/Kernel/s/MoreSWIs
++++ b/src/Kernel/s/MoreSWIs
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/Kernel/s/MsgCode
++++ b/src/Kernel/s/MsgCode
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/Kernel/s/NewIRQs
++++ b/src/Kernel/s/NewIRQs
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Modified 2026: IOC tables also use this counter.
+        GBLA DTabC
+ ; Copyright 1996 Acorn Computers Ltd
+--- a/src/Kernel/s/NewReset
++++ b/src/Kernel/s/NewReset
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+--- a/src/Kernel/s/Oscli
++++ b/src/Kernel/s/Oscli
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/Kernel/s/PMF/Buffer
++++ b/src/Kernel/s/PMF/Buffer
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/Kernel/s/PMF/i2cutils
++++ b/src/Kernel/s/PMF/i2cutils
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+--- a/src/Kernel/s/PMF/key
++++ b/src/Kernel/s/PMF/key
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+--- a/src/Kernel/s/PMF/key2
++++ b/src/Kernel/s/PMF/key2
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/Kernel/s/PMF/mouse
++++ b/src/Kernel/s/PMF/mouse
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/Kernel/s/PMF/osbyte
++++ b/src/Kernel/s/PMF/osbyte
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/Kernel/s/PMF/oseven
++++ b/src/Kernel/s/PMF/oseven
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/Kernel/s/PMF/osinit
++++ b/src/Kernel/s/PMF/osinit
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+--- a/src/Kernel/s/SWINaming
++++ b/src/Kernel/s/SWINaming
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+--- a/src/Kernel/s/Super1
++++ b/src/Kernel/s/Super1
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/Kernel/s/SysComms
++++ b/src/Kernel/s/SysComms
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+--- a/src/Kernel/s/TickEvents
++++ b/src/Kernel/s/TickEvents
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/Kernel/s/UnSqueeze
++++ b/src/Kernel/s/UnSqueeze
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+--- a/src/Kernel/s/Utility
++++ b/src/Kernel/s/Utility
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/Kernel/s/vdu/vducursoft
++++ b/src/Kernel/s/vdu/vducursoft
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/Kernel/s/vdu/vdudriver
++++ b/src/Kernel/s/vdu/vdudriver
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+--- a/src/Kernel/s/vdu/vdugrafg
++++ b/src/Kernel/s/vdu/vdugrafg
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/Kernel/s/vdu/vdugrafj
++++ b/src/Kernel/s/vdu/vdugrafj
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+--- a/src/Kernel/s/vdu/vdupal10
++++ b/src/Kernel/s/vdu/vdupal10
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+--- a/src/Kernel/s/vdu/vdupal20
++++ b/src/Kernel/s/vdu/vdupal20
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+--- a/src/Kernel/s/vdu/vdupalette
++++ b/src/Kernel/s/vdu/vdupalette
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+--- a/src/Kernel/s/vdu/vduplot
++++ b/src/Kernel/s/vdu/vduplot
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/Kernel/s/vdu/vdupointer
++++ b/src/Kernel/s/vdu/vdupointer
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/Kernel/s/vdu/vduswis
++++ b/src/Kernel/s/vdu/vduswis
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+--- a/src/Messages/s/Messages
++++ b/src/Messages/s/Messages
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/MsgTrans/s/MsgTrans
++++ b/src/MsgTrans/s/MsgTrans
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/PublicInterfaces/NewErrors
++++ b/src/PublicInterfaces/NewErrors
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Modified 2026: correct case of the existing BadFileName string alias.
+ ; Copyright 2008 Castle Technology Ltd
+ ;
+--- a/src/PublicInterfaces/SWIs
++++ b/src/PublicInterfaces/SWIs
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 2008 Castle Technology Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/ResourceFS/s/MsgCode
++++ b/src/ResourceFS/s/MsgCode
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/ResourceFS/s/ResourceFS
++++ b/src/ResourceFS/s/ResourceFS
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/SharedHeaders/CPU/Generic26
++++ b/src/SharedHeaders/CPU/Generic26
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/TerritoryManager/s/ModHead
++++ b/src/TerritoryManager/s/ModHead
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/TerritoryManager/s/SWIs
++++ b/src/TerritoryManager/s/SWIs
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/TerritoryManager/s/TerrMgr
++++ b/src/TerritoryManager/s/TerrMgr
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/UK/s/ModHead
++++ b/src/UK/s/ModHead
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/UK/s/Tables
++++ b/src/UK/s/Tables
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+--- a/src/UK/s/UK
++++ b/src/UK/s/UK
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");

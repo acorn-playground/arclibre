@@ -30,7 +30,10 @@ For each change to an upstream file:
    update the file's maintained `sha256` in its manifest in `manifests/`
    (the `upstream_sha256` stays). For a group with one patch,
    `tools/regen_patch.py` does both: run it with `capture` before editing
-   and `write` after. `tools/verify_candidate_patches.py`, run on every
+   and `write` after. The kernel and the first restored modules (the files
+   in `manifests/restoration-inputs.json`) keep a numbered series instead:
+   `python3 tools/regen_patch.py restoration NNNN-what-it-does.patch`
+   records your uncommitted changes to them as the next patch. `tools/verify_candidate_patches.py`, run on every
    build, checks that each patch takes the upstream file to the maintained
    one exactly.
 3. Where a change is for the delivered ROM only, put it under

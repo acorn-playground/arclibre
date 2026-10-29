@@ -1,0 +1,43 @@
+--- a/src/HdrSrc/hdr/Machine/A440
++++ b/src/HdrSrc/hdr/Machine/A440
+@@ -71,6 +71,13 @@
+         GBLL HasDallasID
+ HasDallasID SETL {FALSE}
+         GBLL HasIOEB
++ [ :DEF: ArcLibreDelivered
++; Modified 2026: the delivered ROM probes at reset for the IOEB and 82C710/711 of the
++; A5000, A3010, A3020 and A4000, as RISC OS 3.11's one ROM for every machine did.
++; An A440/1 or A3000 has neither and reads as before.
++HasIOEB SETL {TRUE}
++ |
+ HasIOEB SETL {FALSE}
++ ]
+         OPT     OldOpt
+         END
+--- a/src/Kernel/s/PMF/osinit
++++ b/src/Kernel/s/PMF/osinit
+@@ -559,7 +559,8 @@
+ ;
+ 
+ ReadMachineType KernelEntry "r0-r12"
+-; Modified 2026: fixed original board has no IOEB/LC/combo ASIC to probe.
++; Modified 2026: HasIOEB (Hdr:Machine.A440) is set for the delivered ROM, which probes as
++; 3.11 did; the frozen baseline keeps the fixed A440/1 board's 0.
+  [ HasIOEB
+  [ IO_Type = "IOMD"
+   [ MorrisSupport
+@@ -588,12 +589,13 @@
+   ]
+  |
+         TEQP    pc, #SVC_mode + I_bit + F_bit           ; disable IRQs and FIQs
+-        MOVNV   r0, r0
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling (was MOVNV); preserves registers/flags.
+         LDR     r1, =IOEB_ASICPresent
+         MOV     r0, #&FA
+         STRB    r0, [r1]
+         LDRB    r0, [r1]
+         TEQP    pc, #SVC_mode + I_bit
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         AND     r0, r0, #&0F
+         TEQ     r0, #5                                  ; must read 5 is ASIC present
+         MOVNE   r0, #0                                  ; no IOEB, LC or 82C710

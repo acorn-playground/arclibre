@@ -10,7 +10,8 @@
       "0026-adfs-expression-delimiters.patch",
       "0027-adfs-a1-byte-addressing.patch",
       "0028-adfs-a1-fiq-copy-mode.patch",
-      "0029-adfs-st506-opt-in.patch"
+      "0029-adfs-st506-opt-in.patch",
+      "0036-maintained-tree-notices.patch"
     ]
   },
   {
@@ -82,7 +83,8 @@
     "restoration_patches": [
       "0024-filecore-adfs-a1-assembly.patch",
       "0025-filecore-expression-delimiters.patch",
-      "0032-filecore-without-fslock.patch"
+      "0032-filecore-without-fslock.patch",
+      "0036-maintained-tree-notices.patch"
     ]
   },
   {
@@ -94,7 +96,8 @@
     "restoration_patches": [
       "0016-module-entry-dialect.patch",
       "0017-module-arm2-settling.patch",
-      "0021-position-independent-module-areas.patch"
+      "0021-position-independent-module-areas.patch",
+      "0036-maintained-tree-notices.patch"
     ]
   },
   {
@@ -118,7 +121,9 @@
     "restoration_patches": [
       "0001-a440-profile.patch",
       "0004-aasm-dialect-and-ioc-tables.patch",
-      "0009-arm2-bank-select-settling.patch"
+      "0009-arm2-bank-select-settling.patch",
+      "0036-maintained-tree-notices.patch",
+      "0037-a5000-family-io-probe.patch"
     ]
   },
   {
@@ -150,7 +155,8 @@
     "revision": "e2ab8c65d06e832e7444f73e1ff2bf3a40022583",
     "license": "Apache-2.0; retain per-file notices",
     "restoration_patches": [
-      "0022-international-a1-build.patch"
+      "0022-international-a1-build.patch",
+      "0036-maintained-tree-notices.patch"
     ]
   },
   {
@@ -161,7 +167,8 @@
     "license": "Apache-2.0; retain per-file notices",
     "restoration_patches": [
       "0022-international-a1-build.patch",
-      "0023-international-service-table-bound.patch"
+      "0023-international-service-table-bound.patch",
+      "0036-maintained-tree-notices.patch"
     ]
   },
   {
@@ -189,7 +196,9 @@
       "0031-archimedes-desktop-appearance.patch",
       "0033-arm2-branch-hardware-vectors.patch",
       "0034-arm2-osversion-and-keyboard-id-ack.patch",
-      "0035-arclibre-version-strings.patch"
+      "0035-arclibre-version-strings.patch",
+      "0036-maintained-tree-notices.patch",
+      "0037-a5000-family-io-probe.patch"
     ]
   },
   {
@@ -200,7 +209,8 @@
     "license": "Apache-2.0; retain per-file notices",
     "restoration_patches": [
       "0016-module-entry-dialect.patch",
-      "0021-position-independent-module-areas.patch"
+      "0021-position-independent-module-areas.patch",
+      "0036-maintained-tree-notices.patch"
     ]
   },
   {
@@ -212,7 +222,8 @@
     "restoration_patches": [
       "0016-module-entry-dialect.patch",
       "0017-module-arm2-settling.patch",
-      "0021-position-independent-module-areas.patch"
+      "0021-position-independent-module-areas.patch",
+      "0036-maintained-tree-notices.patch"
     ]
   },
   {
@@ -249,7 +260,8 @@
     "license": "Apache-2.0; retain per-file notices",
     "restoration_patches": [
       "0005-registration-header-contract.patch",
-      "0006-shared-interfaces-and-io-gates.patch"
+      "0006-shared-interfaces-and-io-gates.patch",
+      "0036-maintained-tree-notices.patch"
     ]
   },
   {
@@ -274,7 +286,8 @@
       "0016-module-entry-dialect.patch",
       "0017-module-arm2-settling.patch",
       "0018-resourcefs-swi-allocation.patch",
-      "0021-position-independent-module-areas.patch"
+      "0021-position-independent-module-areas.patch",
+      "0036-maintained-tree-notices.patch"
     ]
   },
   {
@@ -292,7 +305,8 @@
     "revision": "c9113ab79d9ca2ccc49a9b7518911132ca9ffa1b",
     "license": "Apache-2.0; retain per-file notices",
     "restoration_patches": [
-      "0017-module-arm2-settling.patch"
+      "0017-module-arm2-settling.patch",
+      "0036-maintained-tree-notices.patch"
     ]
   },
   {
@@ -347,7 +361,8 @@
     "license": "Apache-2.0; retain per-file notices",
     "restoration_patches": [
       "0019-territory-arm2-assembly.patch",
-      "0021-position-independent-module-areas.patch"
+      "0021-position-independent-module-areas.patch",
+      "0036-maintained-tree-notices.patch"
     ]
   },
   {
@@ -358,7 +373,8 @@
     "license": "Public source/resource notices; see licenses/UK-assessment.md and uk-resource-provenance",
     "restoration_patches": [
       "0019-territory-arm2-assembly.patch",
-      "0021-position-independent-module-areas.patch"
+      "0021-position-independent-module-areas.patch",
+      "0036-maintained-tree-notices.patch"
     ]
   },
   {

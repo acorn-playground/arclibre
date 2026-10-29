@@ -33,3 +33,5 @@
 0033-arm2-branch-hardware-vectors.patch
 0034-arm2-osversion-and-keyboard-id-ack.patch
 0035-arclibre-version-strings.patch
+0036-maintained-tree-notices.patch
+0037-a5000-family-io-probe.patch

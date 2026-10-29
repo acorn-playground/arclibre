@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: Apache-2.0
 """Prove candidate patches recover pinned bytes and reapply without fuzz."""
-import hashlib,json,pathlib,shutil,subprocess,tempfile
+import hashlib,json,pathlib,re,shutil,subprocess,tempfile
 from paths import REPO
 rows=json.loads((REPO/'manifests/desktop-inputs.json').read_text())
 for r in rows:r['original_sha256']=r['upstream_sha256']
@@ -76,4 +76,35 @@ for name,rows,patch in groups:
     p=subprocess.run(c,cwd=root,capture_output=True,text=True);assert p.returncode==0,p.stdout+p.stderr
    for row in rows:assert hashlib.sha256((root/'src'/row['component']/row['path']).read_bytes()).hexdigest()==row[field],row
  report.append(dict(series=name,status='PASS',files=len(rows),reverse_restores_original_hashes=True,forward_restores_maintained_hashes=True))
+# The restoration series (the kernel and the first restored modules), file by
+# file: its older patches name files without the src/ prefix, two Squash files
+# are maintained by the desktop-utilities group instead, and one header copy
+# starts from another file's state (manifests/restoration-inputs.json).
+restoration=json.loads((REPO/'manifests/restoration-inputs.json').read_text())
+names=(REPO/'patches/restoration/series').read_text().split()
+def sections(name):
+ out={}
+ for part in re.split(rb'(?m)^(?=--- )',(REPO/'patches/restoration'/name).read_bytes()):
+  if part.startswith(b'--- '):
+   f=re.search(rb'(?m)^\+\+\+ (\S+)',part).group(1).decode()[2:];f=f.removeprefix('src/')
+   out[f]=out.get(f,b'')+part
+ return out
+parts={n:sections(n) for n in names}
+touched={f for n in names for f in parts[n]}
+rows={r['component']+'/'+r['path']:r for r in restoration['files']}
+assert touched==set(rows)|set(restoration['maintained_elsewhere']),touched^(set(rows)|set(restoration['maintained_elsewhere']))
+def apply(f,data,hunks,reverse):
+ with tempfile.TemporaryDirectory(prefix='archimedes-restoration-') as tmp:
+  root=pathlib.Path(tmp);(root/'file').write_bytes(data)
+  for hunk in (reversed(hunks) if reverse else hunks):
+   (root/'p').write_bytes(re.sub(rb'(?m)^(---|\+\+\+) \S+',lambda m:m.group(1)+b' file',hunk))
+   p=subprocess.run(['patch','--batch','--fuzz=0','-p0']+(['-R'] if reverse else [])+['-i','p','file'],cwd=root,capture_output=True,text=True);assert p.returncode==0,(f,'restoration patch does not apply',p.stdout+p.stderr)
+  return (root/'file').read_bytes()
+def sha(b):return hashlib.sha256(b).hexdigest()
+for f,row in rows.items():
+ src=(REPO/'src'/f).read_bytes();assert sha(src)==row['sha256'],(f,'not the sha256 in manifests/restoration-inputs.json')
+ hunks=[parts[n][f] for n in names if f in parts[n]]
+ base=apply(f,src,hunks,True);assert sha(base)==row.get('series_base_sha256',row['upstream_sha256']),(f,'src/ differs from upstream plus patches/restoration')
+ assert apply(f,base,hunks,False)==src,f
+report.append(dict(series='restoration',status='PASS',files=len(rows),patches=len(names),reverse_restores_original_hashes=True,forward_restores_maintained_hashes=True))
 out=REPO/'build/candidate-patches.json';out.parent.mkdir(exist_ok=True);out.write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2))

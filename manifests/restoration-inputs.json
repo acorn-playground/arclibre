@@ -1,0 +1,1163 @@
+{
+  "note": "Files the restoration series (patches/restoration/series) changes: their upstream files, and the maintained files the series produces from them. Squash/c/zssr and c/cssr are maintained by patches/desktop-utilities, whose patches start from upstream and include patch 0020's change.",
+  "maintained_elsewhere": {
+    "Squash/c/zssr": "desktop-utilities",
+    "Squash/c/cssr": "desktop-utilities"
+  },
+  "files": [
+    {
+      "component": "ADFS",
+      "path": "s/ADFS",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ADFS/ADFS.git",
+      "revision": "b32ebc4dd79436ecb942c773759583cd7365b178",
+      "upstream_path": "s/ADFS",
+      "upstream_sha256": "1e96c9b27230fe112db02541aba7ba5c92423707ee94b40604687373094f0863",
+      "sha256": "f81a98271d4af34f6de0839825d2a98df9e51ddb992f683893b58b93129794c7"
+    },
+    {
+      "component": "ADFS",
+      "path": "s/Adfs05",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ADFS/ADFS.git",
+      "revision": "b32ebc4dd79436ecb942c773759583cd7365b178",
+      "upstream_path": "s/Adfs05",
+      "upstream_sha256": "7ed1e27c6b7ae63a2f052a7a67e2194d07c41ba254f7179afd351d2c5c7bde6c",
+      "sha256": "9dd17f95a9f7c34f6f7a53fe6a8886ddf12051ddd4bbfa966c9ad800e6a22ca4"
+    },
+    {
+      "component": "ADFS",
+      "path": "s/Adfs10",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ADFS/ADFS.git",
+      "revision": "b32ebc4dd79436ecb942c773759583cd7365b178",
+      "upstream_path": "s/Adfs10",
+      "upstream_sha256": "10716f18ca3a8003eba005522445d5c2d5c3fa4807debfbdaa8b5aaf46348acb",
+      "sha256": "d8621c25c352837caea7a35f7264bc3ceb030103e87e12d8c7b5d692dd26c798"
+    },
+    {
+      "component": "ADFS",
+      "path": "s/Adfs11",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ADFS/ADFS.git",
+      "revision": "b32ebc4dd79436ecb942c773759583cd7365b178",
+      "upstream_path": "s/Adfs11",
+      "upstream_sha256": "730852a0e92872b0757c413d5517b3e2dcc03d0edeb21c3bd65c580e2095c9fc",
+      "sha256": "d965e6ab350dc038551fffa63734c0571e32ffdcc8592e9a80e7244cb74f4ece"
+    },
+    {
+      "component": "ADFS",
+      "path": "s/Adfs13",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ADFS/ADFS.git",
+      "revision": "b32ebc4dd79436ecb942c773759583cd7365b178",
+      "upstream_path": "s/Adfs13",
+      "upstream_sha256": "b6eaa2775ae68c52b29e19910cbe39b009c418936f6dc5b005a45d1c93049b26",
+      "sha256": "0f336b3bfe6f35e435e524865c2ca21b1ab19f9b1c7238ec89867367dd4448f6"
+    },
+    {
+      "component": "ADFS",
+      "path": "s/Adfs14",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ADFS/ADFS.git",
+      "revision": "b32ebc4dd79436ecb942c773759583cd7365b178",
+      "upstream_path": "s/Adfs14",
+      "upstream_sha256": "c3ef074eef31fa111175a4857b4bd144053fdf7ff2f9bc26b922b6b7778ddadb",
+      "sha256": "8eb35b1df4dc5f80dc06977d0187497ab8314a411f0826241822f1e4828ea2d4"
+    },
+    {
+      "component": "ADFS",
+      "path": "s/Adfs15",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ADFS/ADFS.git",
+      "revision": "b32ebc4dd79436ecb942c773759583cd7365b178",
+      "upstream_path": "s/Adfs15",
+      "upstream_sha256": "5ba1d71ae3bb57049e95950db3775781d094981068a729deadf9c3bb67ad51b5",
+      "sha256": "e8043954e32f61a35908a240a055705dc99f90ecc094ab0bd69cbf19b421eba9"
+    },
+    {
+      "component": "ADFS",
+      "path": "s/Adfs17",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ADFS/ADFS.git",
+      "revision": "b32ebc4dd79436ecb942c773759583cd7365b178",
+      "upstream_path": "s/Adfs17",
+      "upstream_sha256": "ea3989dac8c1fc2c82ea5bda65d62b895a02dfe46df0fc90d5deb4c67127af2a",
+      "sha256": "95560182e0e97cf6cf1638af95c0a87c57b37fa660980a44b83442695b088848"
+    },
+    {
+      "component": "ADFS",
+      "path": "s/Adfs18",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ADFS/ADFS.git",
+      "revision": "b32ebc4dd79436ecb942c773759583cd7365b178",
+      "upstream_path": "s/Adfs18",
+      "upstream_sha256": "2e22dd7937dc5a471ba150fbe9b9117900ba68b72d4ef132c5807a7c9fa7f63a",
+      "sha256": "fa81e36893fef6a6f4e7f88bb6e60321cbd35cd96bd507afdd28b7a54483c318"
+    },
+    {
+      "component": "ADFS",
+      "path": "s/Adfs19",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ADFS/ADFS.git",
+      "revision": "b32ebc4dd79436ecb942c773759583cd7365b178",
+      "upstream_path": "s/Adfs19",
+      "upstream_sha256": "02dabb85440f0e5604a39885ba6524f4eda2509fc997132f5ada9b9ab965462c",
+      "sha256": "4d6e11f4c07ada807b195326567b395d8ceedad899edeeacb2a28b0f80882394"
+    },
+    {
+      "component": "ADFS",
+      "path": "s/Adfs20",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ADFS/ADFS.git",
+      "revision": "b32ebc4dd79436ecb942c773759583cd7365b178",
+      "upstream_path": "s/Adfs20",
+      "upstream_sha256": "630e5f3c229c081664078381f02f7a632fd3ecb6a938a89b54572190b8dd3c22",
+      "sha256": "7af67ccdaf340af6cba09a21445c46f9acb4bbf4757c6fd4bce9bcc32fd8f9c0"
+    },
+    {
+      "component": "ADFS",
+      "path": "s/Adfs50",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ADFS/ADFS.git",
+      "revision": "b32ebc4dd79436ecb942c773759583cd7365b178",
+      "upstream_path": "s/Adfs50",
+      "upstream_sha256": "aadf727048dfa5144a86e54e32da183a8bbe404921cb02ceb4f65edce0464d5f",
+      "sha256": "4bbb79f110538f3e22c0482de7cc8450b43246ae620848464f9e4d3e1d0817be"
+    },
+    {
+      "component": "ADFS",
+      "path": "s/AdfsMacros",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ADFS/ADFS.git",
+      "revision": "b32ebc4dd79436ecb942c773759583cd7365b178",
+      "upstream_path": "s/AdfsMacros",
+      "upstream_sha256": "688a43dae8af5e4f7534bc037cfa2943672856f9d37f71a30a0abc657a9a76c6",
+      "sha256": "e0d91730f225d60dc58d07509a4bbc41f69854f8e58d98f8e0020c8cff266fe3"
+    },
+    {
+      "component": "ADFS",
+      "path": "s/Consts",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ADFS/ADFS.git",
+      "revision": "b32ebc4dd79436ecb942c773759583cd7365b178",
+      "upstream_path": "s/Consts",
+      "upstream_sha256": "3a8ac342d2e6f175095cebd1738adcd2a33f97be1ae2aabb3ad85493af284bf1",
+      "sha256": "44f3589b72bc93fd9e411462456e1ad6339114bed55f033fb768ac5e8a6fff1d"
+    },
+    {
+      "component": "ADFS",
+      "path": "s/MFormat",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ADFS/ADFS.git",
+      "revision": "b32ebc4dd79436ecb942c773759583cd7365b178",
+      "upstream_path": "s/MFormat",
+      "upstream_sha256": "d9d290913f96d1c7c20a0e3da055588fcd6b5cd62b2453f6f963af3635a192ac",
+      "sha256": "e73ca66f8b594283522f48ddeedb5838ec3e197a0641f8b5d4dc1f13b8f0157f"
+    },
+    {
+      "component": "ADFS",
+      "path": "s/ModHeader",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ADFS/ADFS.git",
+      "revision": "b32ebc4dd79436ecb942c773759583cd7365b178",
+      "upstream_path": "s/ModHeader",
+      "upstream_sha256": "c086eabee089967f84c697e000aad418a8349b823662ac6600f4e3dcda21e3ab",
+      "sha256": "18b482a575cc61012dda6d748e36911d044c81d6ab79769ff9b188d87dfcc15b"
+    },
+    {
+      "component": "FileCore",
+      "path": "s/Commands",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/FileCore.git",
+      "revision": "708e0ddb5a077e68690a1719038368860081e785",
+      "upstream_path": "s/Commands",
+      "upstream_sha256": "caa2023ddb92ff536c15ba16731e0d57cf9d94bb30cf3df0bb87ffd8941b699a",
+      "sha256": "a8b1579a0b9c9ea5d71e2b7b2e845c27f6ead7d1d635d05947c0e7ef23c0c409"
+    },
+    {
+      "component": "FileCore",
+      "path": "s/FileCore00",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/FileCore.git",
+      "revision": "708e0ddb5a077e68690a1719038368860081e785",
+      "upstream_path": "s/FileCore00",
+      "upstream_sha256": "5feb77f4cf5cdbcac38b57c0743784f45a54592344ef3db22cb15543f5cdd48c",
+      "sha256": "348d00f18069d4ecdbcd18f6738e4908512ad65dbd4a43ce749b80720789b115"
+    },
+    {
+      "component": "FileCore",
+      "path": "s/FileCore15",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/FileCore.git",
+      "revision": "708e0ddb5a077e68690a1719038368860081e785",
+      "upstream_path": "s/FileCore15",
+      "upstream_sha256": "8410187dbccdeef41360b7ee884eceb5ae5071b86ee0f8e5e780128a413fe3ff",
+      "sha256": "c167833ef9d6e277fa7d7b9c97e9cd6631c13a5f2093e4ebcfa9aa3e7325a4ac"
+    },
+    {
+      "component": "FileCore",
+      "path": "s/FileCore20",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/FileCore.git",
+      "revision": "708e0ddb5a077e68690a1719038368860081e785",
+      "upstream_path": "s/FileCore20",
+      "upstream_sha256": "a828b26b41b25d9f0e969885acd50029b93b6d8dff9ac76a03ee5298bdb2bd41",
+      "sha256": "b7dafd6271d6b0596fa3980563ec19772d62d0aaed12997f69432f9ec1b654f3"
+    },
+    {
+      "component": "FileCore",
+      "path": "s/FileCore25",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/FileCore.git",
+      "revision": "708e0ddb5a077e68690a1719038368860081e785",
+      "upstream_path": "s/FileCore25",
+      "upstream_sha256": "d266f8a6278af759986a5a12ac0320882f3b5b95d8a63cb545ce3ddc63cff554",
+      "sha256": "d5e8e4fcfbcbeb84d64fc11bc12e8be649a4a5490357f56306e4e7e2619cd116"
+    },
+    {
+      "component": "FileCore",
+      "path": "s/FileCore31",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/FileCore.git",
+      "revision": "708e0ddb5a077e68690a1719038368860081e785",
+      "upstream_path": "s/FileCore31",
+      "upstream_sha256": "b13f32ae171b2d54a119a17463ed56bb804455d37e33ca5d88f944279da943ae",
+      "sha256": "98714be8c89581e19234d4593db7a5d443b44bed9e0183ebb276230a0723387f"
+    },
+    {
+      "component": "FileCore",
+      "path": "s/FileCore33",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/FileCore.git",
+      "revision": "708e0ddb5a077e68690a1719038368860081e785",
+      "upstream_path": "s/FileCore33",
+      "upstream_sha256": "55a8e74660f2d9ee3b5c9f919ad80446074a07f6ac2ff04de667ef32d6e6c95d",
+      "sha256": "21449e7dc0485192b6f07b6936b6f535e572ebc950ef21e1fbf22097419d5810"
+    },
+    {
+      "component": "FileCore",
+      "path": "s/FileCore35",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/FileCore.git",
+      "revision": "708e0ddb5a077e68690a1719038368860081e785",
+      "upstream_path": "s/FileCore35",
+      "upstream_sha256": "24247491d294c4bef3ecd824b834b78388a49bc9126f4d501c0454fccbc596fd",
+      "sha256": "cf41105a6671b612f31296cc0286d0f533de90b0273bb09492649feb77432f72"
+    },
+    {
+      "component": "FileCore",
+      "path": "s/FileCore40",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/FileCore.git",
+      "revision": "708e0ddb5a077e68690a1719038368860081e785",
+      "upstream_path": "s/FileCore40",
+      "upstream_sha256": "b8661406bd0ab5e230d3b66969123b96961def27f004e0413b738530e298a76b",
+      "sha256": "dc975d7e04064e5b8e1f472e8a99acae8b104ecca56f623aa309f2b4021c243a"
+    },
+    {
+      "component": "FileCore",
+      "path": "s/FileCore60",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/FileCore.git",
+      "revision": "708e0ddb5a077e68690a1719038368860081e785",
+      "upstream_path": "s/FileCore60",
+      "upstream_sha256": "c8af055edf5fbd8526f98553d2dd1e61fb70c758ee66a2b4cc3ade62cded7d11",
+      "sha256": "b37f12fcde9614afd50494822e7ee27fbbb82079da208c7d9c9664284e25b8f6"
+    },
+    {
+      "component": "FileCore",
+      "path": "s/FileCore80",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/FileCore.git",
+      "revision": "708e0ddb5a077e68690a1719038368860081e785",
+      "upstream_path": "s/FileCore80",
+      "upstream_sha256": "4fbf3ce7f7ca7fec5c995f8ddcc5e8e1960e95cb9f5a177a3b74f0563649c14d",
+      "sha256": "aafd853862e99b678138a19e57b4fdcd3489cba2615ec0855089e739b7c47c63"
+    },
+    {
+      "component": "FileCore",
+      "path": "s/FormSWIs",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/FileCore.git",
+      "revision": "708e0ddb5a077e68690a1719038368860081e785",
+      "upstream_path": "s/FormSWIs",
+      "upstream_sha256": "829e62d0c77b99bcb543a851a8c77e6f553bcc6e79af80d680741dcf6eeecc68",
+      "sha256": "e10f56844bc0411351605b2f983f5fc68f83f6b46f78dc51a60125b4784fd9c6"
+    },
+    {
+      "component": "FileCore",
+      "path": "s/FormSrvcs",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/FileCore.git",
+      "revision": "708e0ddb5a077e68690a1719038368860081e785",
+      "upstream_path": "s/FormSrvcs",
+      "upstream_sha256": "d9f0fce71507a250111fa967cf4f329b262f5535391a8174fe1b03105fda6b94",
+      "sha256": "0aacc5ec82371db5eb99d63322ee4db4f71cd3377fb343f9314900af4ce4c374"
+    },
+    {
+      "component": "FileCore",
+      "path": "s/GenSWIs",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/FileCore.git",
+      "revision": "708e0ddb5a077e68690a1719038368860081e785",
+      "upstream_path": "s/GenSWIs",
+      "upstream_sha256": "ff6b39bda989b13dea87720de5effc89ffb644052c85cef6715b661c7e05dd2b",
+      "sha256": "a0a9c8fc816e115431d523a0390c50f184e9937bb85370c997e7c714481861c5"
+    },
+    {
+      "component": "FileCore",
+      "path": "s/InitDieSvc",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/FileCore.git",
+      "revision": "708e0ddb5a077e68690a1719038368860081e785",
+      "upstream_path": "s/InitDieSvc",
+      "upstream_sha256": "250b7f14cc71d59a7ba1b08bfa7e95a33e7083483adfbbf4785ba2b277fcf697",
+      "sha256": "5a9de0335fde3a2a8bf7b5a025dee743d69de7f7065dc7c4960abfa578adb60c"
+    },
+    {
+      "component": "FileCore",
+      "path": "s/MyMacros",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/FileCore.git",
+      "revision": "708e0ddb5a077e68690a1719038368860081e785",
+      "upstream_path": "s/MyMacros",
+      "upstream_sha256": "adf879e13d74dfbafb542c9f52e118284c0c1575a2b17e385b13befdef61fd9e",
+      "sha256": "334909b0cc8a0c09938f22c33350be6fc3f95631b143e7309af92cfeef9b51ea"
+    },
+    {
+      "component": "FileSwitch",
+      "path": "hdr/LowFSI",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/FileSwitch.git",
+      "revision": "93c7e2e094c314940237f6256e77edae2486419b",
+      "upstream_path": "hdr/LowFSI",
+      "upstream_sha256": "130f62483073ff5f307dc29f357202eec7331c4a2c88fc9f1eea0edd7c757116",
+      "sha256": "0a080dc3411369c032bdeb8722b51bd6bda0cba5f88c5e9e16d2c22459f4d316"
+    },
+    {
+      "component": "FileSwitch",
+      "path": "s/Canonical",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/FileSwitch.git",
+      "revision": "93c7e2e094c314940237f6256e77edae2486419b",
+      "upstream_path": "s/Canonical",
+      "upstream_sha256": "d740c64f8cb44e711c46b61d333e261506e250835827c69255a66ab9837d2edb",
+      "sha256": "4a0b680707f8aebb8ff126267109ff334ac1e2d0e6ade5171b9af7e8cb09e63c"
+    },
+    {
+      "component": "FileSwitch",
+      "path": "s/CtrlUtils",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/FileSwitch.git",
+      "revision": "93c7e2e094c314940237f6256e77edae2486419b",
+      "upstream_path": "s/CtrlUtils",
+      "upstream_sha256": "859e447215dc501f73205e94d6df1d7cd71e499131dff5bd62b7780b38e11e7e",
+      "sha256": "16f9e6d11995181676934c8e3cc995edd852138f6cfd11b66cbbf87fa421ed83"
+    },
+    {
+      "component": "FileSwitch",
+      "path": "s/DirStore",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/FileSwitch.git",
+      "revision": "93c7e2e094c314940237f6256e77edae2486419b",
+      "upstream_path": "s/DirStore",
+      "upstream_sha256": "6eda9041072409204c931c60f6e7186fe191cf3dc4bffbcc3734526f4027926f",
+      "sha256": "9193e93ece6c4686506a0abaa7e40c28bea9f3e61b075cfef4eaa8dab3977849"
+    },
+    {
+      "component": "FileSwitch",
+      "path": "s/Ensure",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/FileSwitch.git",
+      "revision": "93c7e2e094c314940237f6256e77edae2486419b",
+      "upstream_path": "s/Ensure",
+      "upstream_sha256": "0f60108f9cc1d9502073587105d211337c4859be83a0e6567f1fa6903fdcaf1b",
+      "sha256": "7cfc923189e3e992b2b6f4158b2059451a5c5447361c521cf40698409df87414"
+    },
+    {
+      "component": "FileSwitch",
+      "path": "s/FSCommands",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/FileSwitch.git",
+      "revision": "93c7e2e094c314940237f6256e77edae2486419b",
+      "upstream_path": "s/FSCommands",
+      "upstream_sha256": "23c61b041727d4860d789d421d72994ca5fe2439f61082163fe00af9ae2e1afa",
+      "sha256": "3e310b00e668796577c31422fb465822777c870045248b799883fbd2c2783c12"
+    },
+    {
+      "component": "FileSwitch",
+      "path": "s/FSCommon",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/FileSwitch.git",
+      "revision": "93c7e2e094c314940237f6256e77edae2486419b",
+      "upstream_path": "s/FSCommon",
+      "upstream_sha256": "1f9bbc17998a585b8f8fd34088a818279039496c53e37c4c65bde210066ee70c",
+      "sha256": "e32b2e953e8f9ea46a74f4af9ed9cf1c1235bc89706e165b7d61cfa1254d2e91"
+    },
+    {
+      "component": "FileSwitch",
+      "path": "s/FSControl",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/FileSwitch.git",
+      "revision": "93c7e2e094c314940237f6256e77edae2486419b",
+      "upstream_path": "s/FSControl",
+      "upstream_sha256": "d69e8659ae753101df1439ee8e3241c8228829e6353d8236d0e6932fc0d875b7",
+      "sha256": "811fed4ad666daa68dbb0c67717685fae672ebc6cd3e0df93e64f4f409e35c7a"
+    },
+    {
+      "component": "FileSwitch",
+      "path": "s/FSCtrl2",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/FileSwitch.git",
+      "revision": "93c7e2e094c314940237f6256e77edae2486419b",
+      "upstream_path": "s/FSCtrl2",
+      "upstream_sha256": "eea57be4ad1bc7c592d705e0481663344391b01db17213ef74c04224164142ae",
+      "sha256": "7df47052a167b2864086850d14038713a9605e004b9e102e3ec04b38230c88e4"
+    },
+    {
+      "component": "FileSwitch",
+      "path": "s/FSErrors",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/FileSwitch.git",
+      "revision": "93c7e2e094c314940237f6256e77edae2486419b",
+      "upstream_path": "s/FSErrors",
+      "upstream_sha256": "6d42a4c49b4168eebffe2f09a2a3c46a7a99f94b982d051e7f9b09084728f08f",
+      "sha256": "5322a664324f401f00f03f1f517532739d248df016f60f9daacd8096aec4782e"
+    },
+    {
+      "component": "FileSwitch",
+      "path": "s/FSPath",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/FileSwitch.git",
+      "revision": "93c7e2e094c314940237f6256e77edae2486419b",
+      "upstream_path": "s/FSPath",
+      "upstream_sha256": "73a6e579dbbc71a53f76d1c65f3d457b55e7c9e6ffd9c6a9f453ad44f5ca0039",
+      "sha256": "b74250a7dd7b6800bf8e969a2dd7c37f13d5cb36d719ea18298c7603eecd9abc"
+    },
+    {
+      "component": "FileSwitch",
+      "path": "s/FSShared",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/FileSwitch.git",
+      "revision": "93c7e2e094c314940237f6256e77edae2486419b",
+      "upstream_path": "s/FSShared",
+      "upstream_sha256": "272ffa365bf4b2faa1607a24dc1ca6b8e7b6f9e94073499009161ad46be945be",
+      "sha256": "0d3ad35353fb79ccfcad82a94e1723c676db6dfd0dbcb7dda23738b3358e9e53"
+    },
+    {
+      "component": "FileSwitch",
+      "path": "s/FSUtils",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/FileSwitch.git",
+      "revision": "93c7e2e094c314940237f6256e77edae2486419b",
+      "upstream_path": "s/FSUtils",
+      "upstream_sha256": "47d5d588e38410c90536ff2ce7eef5a8785e690e629619439a28ae7d85f40435",
+      "sha256": "f6482bcf2cbf49fdddb142393ccf2bc9f28025abbc73139f3b023170c31fb853"
+    },
+    {
+      "component": "FileSwitch",
+      "path": "s/FSUtils2",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/FileSwitch.git",
+      "revision": "93c7e2e094c314940237f6256e77edae2486419b",
+      "upstream_path": "s/FSUtils2",
+      "upstream_sha256": "1e7c546c3e161152520f7e678f0462211abf9bec3f8e627b50da4d0b72bd7083",
+      "sha256": "f477b4493233bc5de41a60d6724f49a93ab16ed06e9675e363a5acdd16b04af6"
+    },
+    {
+      "component": "FileSwitch",
+      "path": "s/FSUtils3",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/FileSwitch.git",
+      "revision": "93c7e2e094c314940237f6256e77edae2486419b",
+      "upstream_path": "s/FSUtils3",
+      "upstream_sha256": "4727b62c0b66d3c8fc8e296a50401d8835904743c4db9455cac174e7a2158e2f",
+      "sha256": "518884679223b112d19d19e437221dd365f7c7e33f97896e0d32eab838a943e4"
+    },
+    {
+      "component": "FileSwitch",
+      "path": "s/FileSwBody",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/FileSwitch.git",
+      "revision": "93c7e2e094c314940237f6256e77edae2486419b",
+      "upstream_path": "s/FileSwBody",
+      "upstream_sha256": "52507de3a76e15d4d7ee97f7207a453ddaf64e78c02bae1067f5902c914a229c",
+      "sha256": "7d20b769103f5b4c6bd825b0e6b419805b4a9cbdfc94de4e408138706b3637bb"
+    },
+    {
+      "component": "FileSwitch",
+      "path": "s/FileSwHdr",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/FileSwitch.git",
+      "revision": "93c7e2e094c314940237f6256e77edae2486419b",
+      "upstream_path": "s/FileSwHdr",
+      "upstream_sha256": "5b13950d986d9c3d28983d8592e3e511ad53d8564cb5dec6d94af96ca1aa8346",
+      "sha256": "a25877e8fac379ad20b669691da9b17e8e878fa9261cb5f05cd945f205d9f2c0"
+    },
+    {
+      "component": "FileSwitch",
+      "path": "s/FileTypes",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/FileSwitch.git",
+      "revision": "93c7e2e094c314940237f6256e77edae2486419b",
+      "upstream_path": "s/FileTypes",
+      "upstream_sha256": "015f21ff4108b69141abd182bd25f4171cb7c7bb8834adfa1a5f43382fb53bc8",
+      "sha256": "33515f2158df0c8e3c60fd79e4f4bda69caf64e02adaea5ad9bb93b2a1536da9"
+    },
+    {
+      "component": "FileSwitch",
+      "path": "s/KernelFSW",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/FileSwitch.git",
+      "revision": "93c7e2e094c314940237f6256e77edae2486419b",
+      "upstream_path": "s/KernelFSW",
+      "upstream_sha256": "ed81b83bf101c8c657eaee24fbe139404c3105a11a523888223726e6a5dfbb8e",
+      "sha256": "2b7abbc72da4bef54ffa22dc7c00492531382485284a646f96a456a5c835112c"
+    },
+    {
+      "component": "FileSwitch",
+      "path": "s/LowLevel",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/FileSwitch.git",
+      "revision": "93c7e2e094c314940237f6256e77edae2486419b",
+      "upstream_path": "s/LowLevel",
+      "upstream_sha256": "f8fc71f73fa2acf469a72d9af2974fbb3c38be1edccc0b880e056595c5aed24f",
+      "sha256": "ea02245dc0375ec987de677a0fc0e4ebd713ef5cea97af687aef67a8e6c3f8a4"
+    },
+    {
+      "component": "FileSwitch",
+      "path": "s/MsgsStuff",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/FileSwitch.git",
+      "revision": "93c7e2e094c314940237f6256e77edae2486419b",
+      "upstream_path": "s/MsgsStuff",
+      "upstream_sha256": "dafee80383fa3bd31686ba5539e2cfa9f634019a28604640b7fa49a34d70061d",
+      "sha256": "99a2fb08bdd2ff94da1a3e8fd5f51f7f4dadf0fd42671e1611cdccdf92a3620d"
+    },
+    {
+      "component": "FileSwitch",
+      "path": "s/OSBGetBPut",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/FileSwitch.git",
+      "revision": "93c7e2e094c314940237f6256e77edae2486419b",
+      "upstream_path": "s/OSBGetBPut",
+      "upstream_sha256": "f5d360c1ece0b4d47ff712817d8d69a795ae12ae8b75f63ad1f3977f26670d31",
+      "sha256": "94e594a3a3b857255e3bcc214e1668f93fe12dea1ab12b68c623fb704dba1b88"
+    },
+    {
+      "component": "FileSwitch",
+      "path": "s/OSFile",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/FileSwitch.git",
+      "revision": "93c7e2e094c314940237f6256e77edae2486419b",
+      "upstream_path": "s/OSFile",
+      "upstream_sha256": "63548bd3e5fcd3a694b1cdab51a244ab9f7d4930561cf78058fe2ed249759a15",
+      "sha256": "4c2d05090a3e8e8a354174c106404656bd4f1945b476bfc80e5bfad1662813ec"
+    },
+    {
+      "component": "FileSwitch",
+      "path": "s/OSFind",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/FileSwitch.git",
+      "revision": "93c7e2e094c314940237f6256e77edae2486419b",
+      "upstream_path": "s/OSFind",
+      "upstream_sha256": "2c7ebbd2eb0aedefe25492e8d28b508d18a54f2c9c212a3c068c3dafc1b53d14",
+      "sha256": "fa8b26debf47db6130ba66126e636d4a44263a9804ca44b5514581650e5c9c0b"
+    },
+    {
+      "component": "FileSwitch",
+      "path": "s/OSGBPB",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/FileSwitch.git",
+      "revision": "93c7e2e094c314940237f6256e77edae2486419b",
+      "upstream_path": "s/OSGBPB",
+      "upstream_sha256": "3751da08b548c6d8369745b3391a9fb83adf3dab656f144c17e5e40b34e9fd82",
+      "sha256": "f7bcca9ee7e35a6fc4c26b293b97443ba8895e00115adbbb9e6dd305d5c2796c"
+    },
+    {
+      "component": "FileSwitch",
+      "path": "s/StreamBits",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/FileSwitch.git",
+      "revision": "93c7e2e094c314940237f6256e77edae2486419b",
+      "upstream_path": "s/StreamBits",
+      "upstream_sha256": "bb66d7b7e8d393e06dbfb616088f8ab709264d737dcdb34f1584723eb9ad7a34",
+      "sha256": "9ce2cc07624b1acc39d7dec784fed479978a25d677ae676eb69103e9eed1cb00"
+    },
+    {
+      "component": "FileSwitch",
+      "path": "s/SysVars",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/FileSwitch.git",
+      "revision": "93c7e2e094c314940237f6256e77edae2486419b",
+      "upstream_path": "s/SysVars",
+      "upstream_sha256": "421cad4564a3c4f1f6d63b8ad3088635937112d7b6bfdacfb20bc6949e9a20c5",
+      "sha256": "3b2cbac3a810eb40dd31c608757932896328c88b2fdc003ec7fdd4b3025e5fa8"
+    },
+    {
+      "component": "FileSwitch",
+      "path": "s/TopPath",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/FileSwitch.git",
+      "revision": "93c7e2e094c314940237f6256e77edae2486419b",
+      "upstream_path": "s/TopPath",
+      "upstream_sha256": "c6ee3f8feac4196e03bc09e7ee02641fae6989ae477dd0c5216a512f06503577",
+      "sha256": "bb46bfa3bf4353629dd818405c690fb0b7bf438658bb23371c50d0043117bdc5"
+    },
+    {
+      "component": "HdrSrc",
+      "path": "hdr/CPU/Generic26",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Programmer/HdrSrc.git",
+      "revision": "c9113ab79d9ca2ccc49a9b7518911132ca9ffa1b",
+      "upstream_path": "hdr/CPU/Generic26",
+      "upstream_sha256": "9567d90f75ad960a200a5a4351e8dbb60aa246fab5557d0e38b783edf2609b13",
+      "sha256": "0ae0cd2fd3a1d8b08805a13d846860ba958a19725e029faa0911fa44c2b26277"
+    },
+    {
+      "component": "HdrSrc",
+      "path": "hdr/Machine/A440",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Programmer/HdrSrc.git",
+      "revision": "c9113ab79d9ca2ccc49a9b7518911132ca9ffa1b",
+      "upstream_path": "hdr/Machine/A440",
+      "upstream_sha256": "26e3c70dde24a0ad5de009569d5efbddbf81b86a132a27ae40d2d61918077b83",
+      "sha256": "b0dfc85f7339e38325317b794f95f3183520063c82dc70ead9f17b023c1404dd"
+    },
+    {
+      "component": "HdrSrc",
+      "path": "hdr/Proc",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Programmer/HdrSrc.git",
+      "revision": "c9113ab79d9ca2ccc49a9b7518911132ca9ffa1b",
+      "upstream_path": "hdr/Proc",
+      "upstream_sha256": "ebd177dc682713b9ecac37130a70476ed31648d8d2ee92f7c529e8f5d936e9fd",
+      "sha256": "5868798ba88627a88eb1197dc6c7322e26e1886b8a936b2d4f096a40108115e9"
+    },
+    {
+      "component": "IntKey",
+      "path": "Source/IntKeyBody",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Internat/IntKey.git",
+      "revision": "e2ab8c65d06e832e7444f73e1ff2bf3a40022583",
+      "upstream_path": "Source/IntKeyBody",
+      "upstream_sha256": "13c33b6957dd7306c3f6db0faa8909e122c78fb1f4371a110c162db9256ef51d",
+      "sha256": "199e19e97092fcfd3d1b0386fa438e5575265d4dac9fb52b68336d56bf7de269"
+    },
+    {
+      "component": "IntKey",
+      "path": "UK/Source/IntKeyMod",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Internat/IntKey.git",
+      "revision": "e2ab8c65d06e832e7444f73e1ff2bf3a40022583",
+      "upstream_path": "UK/Source/IntKeyMod",
+      "upstream_sha256": "dde90aa42f388ccd728f04882ee696f058733e141cabe567a4e361fce9d45eec",
+      "sha256": "904361808f706eb12814765c2790a7374180986243348ff4ec3d8b16786e8fc8"
+    },
+    {
+      "component": "Inter",
+      "path": "IntHelpSrc",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Internat/Inter.git",
+      "revision": "e90aa354462e1d0f8826e3f19fc82b31f22c49d3",
+      "upstream_path": "IntHelpSrc",
+      "upstream_sha256": "451273cf2d55a2af39dd5a5cf92a54898997d349628265228e301a0f9d5b48aa",
+      "sha256": "4ea87dd0f3a7a1bb89275e4a855fb6f489761638a000acc14d6faa54d05ce9be"
+    },
+    {
+      "component": "Inter",
+      "path": "s/InterBody",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Internat/Inter.git",
+      "revision": "e90aa354462e1d0f8826e3f19fc82b31f22c49d3",
+      "upstream_path": "s/InterBody",
+      "upstream_sha256": "98d620b6dc7284f26ffa0fb1e7eedb89f5bdddf5553b088c0e2ae004cdeaa528",
+      "sha256": "d28a6a3bbb9b244ba162fb3fec5e579b71705d1e92f8cbb409d3b51f48473a08"
+    },
+    {
+      "component": "Kernel",
+      "path": "TestSrc/MEMC1",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Kernel.git",
+      "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
+      "upstream_path": "TestSrc/MEMC1",
+      "upstream_sha256": "24c8dc7b4450554f335634440b706d14f1ea38d25eeeef79735c4f3cf654ec1f",
+      "sha256": "8062399373afc37c546b0defc9f5931acd793c5cfc437db7c842773e3cd39296"
+    },
+    {
+      "component": "Kernel",
+      "path": "s/ARM600",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Kernel.git",
+      "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
+      "upstream_path": "s/ARM600",
+      "upstream_sha256": "593aea394e1d6189af9898bc18d0160bd738635da62d3f6da142950d6fc0da9f",
+      "sha256": "9e77f226b2df43cc49f95991f333258c60cea78d8fbfd1288cdf8d03e3b001c4"
+    },
+    {
+      "component": "Kernel",
+      "path": "s/Arthur2",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Kernel.git",
+      "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
+      "upstream_path": "s/Arthur2",
+      "upstream_sha256": "accddba99420347c9ce3025ee1646464301bf967f90f30c855a9229029e2a2c2",
+      "sha256": "3c2ee34ce07ad2c91a9b1d3a7d9f2e905a295bf4257dbb8053eb2cbeab560b21"
+    },
+    {
+      "component": "Kernel",
+      "path": "s/Arthur3",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Kernel.git",
+      "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
+      "upstream_path": "s/Arthur3",
+      "upstream_sha256": "80003b3300b0bdab71d2ecd44d12c5c25245d3980dac7f6360aa26bb0295605a",
+      "sha256": "ab64d3bf4fd9918dca2a1f0324e7804d451dbe340232ec5776adfb762b53da99"
+    },
+    {
+      "component": "Kernel",
+      "path": "s/ArthurSWIs",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Kernel.git",
+      "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
+      "upstream_path": "s/ArthurSWIs",
+      "upstream_sha256": "1e17f15075d856a8dd079bc60b17d854c5245c0254f36d7d005d84ad89751918",
+      "sha256": "8a719204f6674717590f0fe6362ca46b48c9b1fdbd2769bcbbb561af57e94341"
+    },
+    {
+      "component": "Kernel",
+      "path": "s/ChangeDyn",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Kernel.git",
+      "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
+      "upstream_path": "s/ChangeDyn",
+      "upstream_sha256": "5d49efb2f0b0f0f3fd54573257789d589c834bd25c28dcfb0ff78b82e2778f38",
+      "sha256": "dcf8967ee4b019927c661dc48b15bbc06edc48212720f1484f108eaa5c017c31"
+    },
+    {
+      "component": "Kernel",
+      "path": "s/ExtraSWIs",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Kernel.git",
+      "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
+      "upstream_path": "s/ExtraSWIs",
+      "upstream_sha256": "c1afc2e9ae2ce47c217a530a26cf62a312bc9ce36c676fc040f4ab6d953b5ad8",
+      "sha256": "2ed6c0e37a32c1a565a33a132a3a44d6c71aeb0e8741725a69ad423020ddd9de"
+    },
+    {
+      "component": "Kernel",
+      "path": "s/GetAll",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Kernel.git",
+      "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
+      "upstream_path": "s/GetAll",
+      "upstream_sha256": "9f6c991bb6476716c191f11fd49ac3b5c8e4b168f99d971132e535ba36c4b522",
+      "sha256": "82fd8aab461029e542798daf30a8db1c749f9cf3651f78820a32c87b060bb6d8"
+    },
+    {
+      "component": "Kernel",
+      "path": "s/HeapMan",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Kernel.git",
+      "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
+      "upstream_path": "s/HeapMan",
+      "upstream_sha256": "e7ca154a54f87b63862032fe26d6e97d283b993e4c07175440a650a1fc7c03bb",
+      "sha256": "78792e6caa378b95565776d636f017b1b1c1da9c0ca5a722b50a75e50f321731"
+    },
+    {
+      "component": "Kernel",
+      "path": "s/HeapSort",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Kernel.git",
+      "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
+      "upstream_path": "s/HeapSort",
+      "upstream_sha256": "4fc79e5127131a3efd3116c2a477e58c68547ce611c83e787b3cd94bf7b4939a",
+      "sha256": "e8ce8595aa8f649fa677a420e96f43e0e807ca29edf26e7d3e34ba2d8b54817f"
+    },
+    {
+      "component": "Kernel",
+      "path": "s/KbdResA1",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Kernel.git",
+      "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
+      "upstream_path": "s/KbdResA1",
+      "upstream_sha256": "b9435b4829db0fc3dcace90b02fbf3cbd887f51dfbd5bf6e77ac12df8e81837c",
+      "sha256": "50ba46f7a9b4e069f0f8852a786ce4f4dab547b9113775593c58c28de9bc2c4e"
+    },
+    {
+      "component": "Kernel",
+      "path": "s/Kernel",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Kernel.git",
+      "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
+      "upstream_path": "s/Kernel",
+      "upstream_sha256": "2f4f775f029fd3ced1b8b786f019de297770dbcc50050ed7cba6a4752cd8aa32",
+      "sha256": "4b1b2df549c2afe5140646757a1007a11bafa291fedee139e529721ebd9c7a6a"
+    },
+    {
+      "component": "Kernel",
+      "path": "s/MEMC1",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Kernel.git",
+      "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
+      "upstream_path": "s/MEMC1",
+      "upstream_sha256": "50095191c695c266503b2810bc984e7860fb33e4dfc21a679505a2cad484574f",
+      "sha256": "7ff03524268435dfb96825dfc50253d8ceb9646db587fdabf8feb3ff8a13ae47"
+    },
+    {
+      "component": "Kernel",
+      "path": "s/MEMC2",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Kernel.git",
+      "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
+      "upstream_path": "s/MEMC2",
+      "upstream_sha256": "4d19cb2e6791c1d7de2810b80d0527bf485647e7f8f39623f530bf58ba2bb427",
+      "sha256": "2270c2a349d10a0da4c06d23361562019250f385869f3eb9c73c8bd773f0f187"
+    },
+    {
+      "component": "Kernel",
+      "path": "s/MemInfo",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Kernel.git",
+      "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
+      "upstream_path": "s/MemInfo",
+      "upstream_sha256": "321317eaf765c8a2c66484c132621d7afb1a4027f04a9466d93f7445fc8aab1c",
+      "sha256": "858495fcc6f825baf1440981708b6cd2eb40e0984815e43d0901da154c931179"
+    },
+    {
+      "component": "Kernel",
+      "path": "s/Middle",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Kernel.git",
+      "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
+      "upstream_path": "s/Middle",
+      "upstream_sha256": "1f9b508c0622191582a12e23bea67722ab0f671471aae6b95ac894a562be1aea",
+      "sha256": "9f16f1b1a99d4889360b350997ce1df94bee4bc3c74fa60dd5dec53d4c36c266"
+    },
+    {
+      "component": "Kernel",
+      "path": "s/ModHand",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Kernel.git",
+      "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
+      "upstream_path": "s/ModHand",
+      "upstream_sha256": "16521bac6bd03038d3c22c6573dc364de51f3c3e09af54772b040324842390e1",
+      "sha256": "2950a93282187ef91aeb5e8376abe746332ae0607a83d4e3a2db2f87179f321d"
+    },
+    {
+      "component": "Kernel",
+      "path": "s/MoreComms",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Kernel.git",
+      "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
+      "upstream_path": "s/MoreComms",
+      "upstream_sha256": "a0127dca418edb20fedd483af116e9b4247b58ec0b6133a3a11cd6530b8ffd64",
+      "sha256": "14adf5150a37def5610d084fa18fa6d1d4d280db8ea22f137dce98873792ae1d"
+    },
+    {
+      "component": "Kernel",
+      "path": "s/MoreSWIs",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Kernel.git",
+      "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
+      "upstream_path": "s/MoreSWIs",
+      "upstream_sha256": "d4c9d44d2d4f266fc6b4bd87bb50e569fb0e1cb3d71a78a8034387db17058be0",
+      "sha256": "d1ebc09ffcef4e6b7c37cfd2b2dff5d25279eadd380bb83d41d72904f3f9d799"
+    },
+    {
+      "component": "Kernel",
+      "path": "s/MsgCode",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Kernel.git",
+      "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
+      "upstream_path": "s/MsgCode",
+      "upstream_sha256": "c5a33f80be88cf77921d5b9d481470d97d0796428edf72749cc297f0319367a8",
+      "sha256": "ad714a66503ea2f23a843e4655031ebbc324bf28c405ebc280d2f8b5c3e6b6dc"
+    },
+    {
+      "component": "Kernel",
+      "path": "s/NewIRQs",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Kernel.git",
+      "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
+      "upstream_path": "s/NewIRQs",
+      "upstream_sha256": "797567716b0a43bab1b255b3c432b7bd6694a2186a7293345db8457a6c469ad0",
+      "sha256": "4aca02ff7c6992b306a0546de0955bb438a2945a2c19d02a2a9474a12bd14635"
+    },
+    {
+      "component": "Kernel",
+      "path": "s/NewReset",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Kernel.git",
+      "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
+      "upstream_path": "s/NewReset",
+      "upstream_sha256": "7938662542c8ace007a02b981470a3399b06e7f49b55778b39e0c69aaab55c40",
+      "sha256": "0b9c352d9ca9e2d679bff165701b95cadaa9663a9c0852784fc0687352fdd7f5"
+    },
+    {
+      "component": "Kernel",
+      "path": "s/Oscli",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Kernel.git",
+      "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
+      "upstream_path": "s/Oscli",
+      "upstream_sha256": "33210c4e7a46832fa83d32cb4d690e661f1e95b0fa0ba6c27d17f64319ed3508",
+      "sha256": "87f9b095b2ba758b654c5fd20cfd463086ec051fb13b4d84b0aae401f7dc9ff5"
+    },
+    {
+      "component": "Kernel",
+      "path": "s/PMF/Buffer",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Kernel.git",
+      "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
+      "upstream_path": "s/PMF/Buffer",
+      "upstream_sha256": "78a80a9ec6bb749dde18325efdd99a779ba0adc4c5bc770c85bdca7a66e698e4",
+      "sha256": "d94477ac66c97b983ea512803776de85d928ce2835c72d730e0739e9ed0ead7e"
+    },
+    {
+      "component": "Kernel",
+      "path": "s/PMF/KbdDrA1",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Kernel.git",
+      "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
+      "upstream_path": "s/PMF/KbdDrA1",
+      "upstream_sha256": "55e1e6ef9c6e2aceca3fdfcb48c6e02942b18b74260fd6bdf95e31dbbc8272d9",
+      "sha256": "2ed11210937207f59db817ca3989776945a038af02d901d7981d6e314c41a4df"
+    },
+    {
+      "component": "Kernel",
+      "path": "s/PMF/i2cutils",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Kernel.git",
+      "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
+      "upstream_path": "s/PMF/i2cutils",
+      "upstream_sha256": "5047bb02f43a7d0300fe0d650a5327f34063195d03d62e7bc8cc1d8c45d8a4f6",
+      "sha256": "2b199731e5e12671f04672805fe717472cb8edb3ae617c89d2b4ddd17c03670a"
+    },
+    {
+      "component": "Kernel",
+      "path": "s/PMF/key",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Kernel.git",
+      "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
+      "upstream_path": "s/PMF/key",
+      "upstream_sha256": "550ff3f0a6432975dc860f53b1f5b6ce5baf704b39b80df9d29a02d60635facb",
+      "sha256": "2e49380f91a5b414fe6fadc5195c03d7a68a88b46a00773fb2f7648902091aa1"
+    },
+    {
+      "component": "Kernel",
+      "path": "s/PMF/key2",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Kernel.git",
+      "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
+      "upstream_path": "s/PMF/key2",
+      "upstream_sha256": "b60c39510b45600fdd633213ea798f8a3fdf9c7d43e5f5f6310ed1ef1fdeae40",
+      "sha256": "1e6788d75a071d42e7b48ee56a0f8232690cfc6f13a113c550975a8926602c49"
+    },
+    {
+      "component": "Kernel",
+      "path": "s/PMF/mouse",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Kernel.git",
+      "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
+      "upstream_path": "s/PMF/mouse",
+      "upstream_sha256": "207675807988cf720b22d02e2b7e2e0ad5b27d4d0a6483e6e0349b59d323f9cb",
+      "sha256": "e97e079546198ad450e7cf196fdb2c939a0d96a99de94feff8a5229199932d24"
+    },
+    {
+      "component": "Kernel",
+      "path": "s/PMF/osbyte",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Kernel.git",
+      "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
+      "upstream_path": "s/PMF/osbyte",
+      "upstream_sha256": "ecb8043d3ce749fc391de2696a442b2395d717e5d54ad606aa3a036e52459427",
+      "sha256": "e8de48dd8c74eaa95eaaccb8e1e1ac87fad9b835a5e067444465ef19e39df2f2"
+    },
+    {
+      "component": "Kernel",
+      "path": "s/PMF/oseven",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Kernel.git",
+      "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
+      "upstream_path": "s/PMF/oseven",
+      "upstream_sha256": "628333cd8a88861b2ef8cb84c2f64ab0ff5f85fda2c00535106ee2cb23296811",
+      "sha256": "d6bde109e6ae2866dff89dbd8342824dd3f9187594d6c239163d9ff6ea0d2ff9"
+    },
+    {
+      "component": "Kernel",
+      "path": "s/PMF/osinit",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Kernel.git",
+      "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
+      "upstream_path": "s/PMF/osinit",
+      "upstream_sha256": "0f7aeee5ef69da658fe059b205ccfdcde55e3016cabb69571ba3ad05a53a0b68",
+      "sha256": "80186bdd0b306822b099c6068e450370c4535451329889b9c2966ae4d7a6be87"
+    },
+    {
+      "component": "Kernel",
+      "path": "s/SWINaming",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Kernel.git",
+      "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
+      "upstream_path": "s/SWINaming",
+      "upstream_sha256": "e64ef23a9904e9cd237f8db45ac66d4f83ecf7a8519d38586fde297a614bd8e6",
+      "sha256": "b8ace46288f47157c54df71fe8ad37e385949f2cb3d0c23cc1ece8133e860885"
+    },
+    {
+      "component": "Kernel",
+      "path": "s/Super1",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Kernel.git",
+      "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
+      "upstream_path": "s/Super1",
+      "upstream_sha256": "0300ea2b71073297321349520bc6dff5a742f670b306aca4e940cd578b787be3",
+      "sha256": "345a32a789957796966462b5801aab1442a820add3f6b1831ce15bf1868f81bc"
+    },
+    {
+      "component": "Kernel",
+      "path": "s/SysComms",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Kernel.git",
+      "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
+      "upstream_path": "s/SysComms",
+      "upstream_sha256": "17c14b09f6c032d2f2afb4f4584a92de2913d8c87facae02dc3a78164a9fe7e8",
+      "sha256": "9b3c050a0d2fc873a3ad6f0790d2672407be459434219cdf9bfc46d52265c6ee"
+    },
+    {
+      "component": "Kernel",
+      "path": "s/TickEvents",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Kernel.git",
+      "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
+      "upstream_path": "s/TickEvents",
+      "upstream_sha256": "9e43694981aa0814fd6a381f5361433cdbc4f361f681e98d4471bb886a1deb47",
+      "sha256": "6c8466b60bda176a8f6a504db615ce33b2de5a5bae2f5a709e75977ca7035421"
+    },
+    {
+      "component": "Kernel",
+      "path": "s/UnSqueeze",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Kernel.git",
+      "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
+      "upstream_path": "s/UnSqueeze",
+      "upstream_sha256": "bf4134473966d975551f15c43904ee15fe1980894df75914170c27063e1cdd82",
+      "sha256": "86160d84b3c5711833758d34e4bcec7d6984895424b37f5e4dbbba575a500114"
+    },
+    {
+      "component": "Kernel",
+      "path": "s/Utility",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Kernel.git",
+      "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
+      "upstream_path": "s/Utility",
+      "upstream_sha256": "95386a55ccbe65417271abfc6725fbdf6020d82877c3ea345878e7f180d13953",
+      "sha256": "589f70927b40a57b40badb5d52c07a14bbc2ee2d0ee9f473d7c2bb6d03aab5bd"
+    },
+    {
+      "component": "Kernel",
+      "path": "s/vdu/vducursoft",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Kernel.git",
+      "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
+      "upstream_path": "s/vdu/vducursoft",
+      "upstream_sha256": "a886eb2985a4513afb10240bc37d9b4e9b2a028d54f6c48eb538edc784791d65",
+      "sha256": "cb1175e7d65711dbbe117ad91c5d512efc271f56af297e5eae41943baab7edaa"
+    },
+    {
+      "component": "Kernel",
+      "path": "s/vdu/vdudriver",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Kernel.git",
+      "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
+      "upstream_path": "s/vdu/vdudriver",
+      "upstream_sha256": "6f95806c8ca0153a6fa750e79f783f923c6d797f0459903c2363ecea24839919",
+      "sha256": "230b4c9705b41cbcb6182899d1eb96a9eb873fbe45d455e8d4360fb3d8435761"
+    },
+    {
+      "component": "Kernel",
+      "path": "s/vdu/vdugrafg",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Kernel.git",
+      "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
+      "upstream_path": "s/vdu/vdugrafg",
+      "upstream_sha256": "262e1d27801a4ba845177f4be12c07e2d1b15ecd7d7682a729ddd77d2dc413a3",
+      "sha256": "b42821a50f9e0ba45d136b5673e1e8a04b17dc282f079f11b97734a807a8b833"
+    },
+    {
+      "component": "Kernel",
+      "path": "s/vdu/vdugrafj",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Kernel.git",
+      "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
+      "upstream_path": "s/vdu/vdugrafj",
+      "upstream_sha256": "e970c8dd763b6613e35d0e3d5b7a8da1fd9a049b3bb75fad4b49d8d14581fba9",
+      "sha256": "93878075891c758957807824755b22fcbf0822bbc5fe68ca168332c8231bd863"
+    },
+    {
+      "component": "Kernel",
+      "path": "s/vdu/vdupal10",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Kernel.git",
+      "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
+      "upstream_path": "s/vdu/vdupal10",
+      "upstream_sha256": "d92c6f1d8177375078249cfdb085e8b9114fcd0abbf04239fb6e1558a912b150",
+      "sha256": "9c7c3560773fb1de726c4ed6394c7f355fac806af5d9fe2fb85b761fd916b0f1"
+    },
+    {
+      "component": "Kernel",
+      "path": "s/vdu/vdupal20",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Kernel.git",
+      "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
+      "upstream_path": "s/vdu/vdupal20",
+      "upstream_sha256": "ad4222dbaa2f6496e5dd709e4187474a5d03e466ae8c45c9785ec40380cb0184",
+      "sha256": "ca354ecdc403d9c1a5fd2042cbe2777e4749b2f74561e3d91ff0f6b5045f7547"
+    },
+    {
+      "component": "Kernel",
+      "path": "s/vdu/vdupalette",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Kernel.git",
+      "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
+      "upstream_path": "s/vdu/vdupalette",
+      "upstream_sha256": "ff6a6ed018858baba05f4e6784339e722e53d5065cea7c72c3a8b4d2c9f52643",
+      "sha256": "7341aa164305c0e10d24658437f0fc554365cdc0e85b51e46a6749005ca4a52a"
+    },
+    {
+      "component": "Kernel",
+      "path": "s/vdu/vduplot",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Kernel.git",
+      "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
+      "upstream_path": "s/vdu/vduplot",
+      "upstream_sha256": "464a45078d0ba478dd618e34ddc04a139e85ec6ab7f6ff767409ad71d44032d3",
+      "sha256": "1e17d5662ca023bce5a672b9b342f782cc3294c29ea7ec1c5b73a296e897dfa8"
+    },
+    {
+      "component": "Kernel",
+      "path": "s/vdu/vdupointer",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Kernel.git",
+      "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
+      "upstream_path": "s/vdu/vdupointer",
+      "upstream_sha256": "7bc87bf319967ee925e0635014e724b3bd43c118d0990fdefd660685fed1c177",
+      "sha256": "d2a7e3bdaba724b2226fc23886fa0f6ae396f8ec9d42904395d8ae1d9a5dff9d"
+    },
+    {
+      "component": "Kernel",
+      "path": "s/vdu/vduswis",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Kernel.git",
+      "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
+      "upstream_path": "s/vdu/vduswis",
+      "upstream_sha256": "5c6073d31d8d48b301b12e1e9514f79535fa7bf4f68afe8db02866b3ca9d42a1",
+      "sha256": "9a26ea318ece39ae4fb94ee2d4f76d3d6fbef5c1b49a5afe2ac8f13d0153721f"
+    },
+    {
+      "component": "Messages",
+      "path": "s/Messages",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Internat/Messages.git",
+      "revision": "210c2af5b84654d9fa7e7ab179ef18834852f3e4",
+      "upstream_path": "s/Messages",
+      "upstream_sha256": "c59075171c4124cd54d1d30b3be3cff2e444d8fcfcd5a77e92c365b5b7e9c771",
+      "sha256": "28a6c0001e3963e40be61c0d5225931891e37415c028bffba3b91e799bc95183"
+    },
+    {
+      "component": "MsgTrans",
+      "path": "s/MsgTrans",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Internat/MsgTrans.git",
+      "revision": "2a006cd1d002bda2d7454764fe4b93f734f17598",
+      "upstream_path": "s/MsgTrans",
+      "upstream_sha256": "3c0e9ee3df59966e8d3c9ba31f6d34efbb180bcfbb1fa73c6b99a7a29f620e91",
+      "sha256": "1ba8ae68e064c8554659cb545a0c44c5c4e60750d064af2c9e51cc9dd1a74f8b"
+    },
+    {
+      "component": "PublicInterfaces",
+      "path": "NewErrors",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Programmer/HdrSrc.git",
+      "revision": "403c6dd8bce92d0629634cbf57f68f43b2f30d38",
+      "upstream_path": "hdr/NewErrors",
+      "upstream_sha256": "b2bb808aed77f3ed7fa56fb06d6a3c7a5fe646f0d89997a1181950dcdbcbfb28",
+      "sha256": "468b4d7da14c8c8a120ee2c85a1414e12271cd5773e794dd78ea1039578355e8"
+    },
+    {
+      "component": "PublicInterfaces",
+      "path": "SWIs",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Programmer/HdrSrc.git",
+      "revision": "403c6dd8bce92d0629634cbf57f68f43b2f30d38",
+      "upstream_path": "hdr/SWIs",
+      "upstream_sha256": "991ab5a51bf52ec9f18ec2ff93b3f9938178db579764f1101fde235ad4d74392",
+      "sha256": "666228bf92450ab75673d9014ed3f9354c056b978429eac185ffb2d0ffb72d90"
+    },
+    {
+      "component": "ResourceFS",
+      "path": "s/MsgCode",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ResourceFS/ResourceFS.git",
+      "revision": "fce5556d0ea1b7456b9c534038a3e437293ef90c",
+      "upstream_path": "s/MsgCode",
+      "upstream_sha256": "a092ae2aa09add60f4063502cfd2a46b69cb92a193ae72e16623d114a06e840d",
+      "sha256": "6b37363a9aca81d57e174ad7d1a893585f5845f83f79c04c7a244234c23443c3"
+    },
+    {
+      "component": "ResourceFS",
+      "path": "s/ResourceFS",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ResourceFS/ResourceFS.git",
+      "revision": "fce5556d0ea1b7456b9c534038a3e437293ef90c",
+      "upstream_path": "s/ResourceFS",
+      "upstream_sha256": "9b95f189a9070b8140611e609cba10f1d6406e246e0e8bfdcd8c1e53cd68774f",
+      "sha256": "fb3eb67b08319807b2334826d0d09781218a2828d74cfdb738d13568fe44932a"
+    },
+    {
+      "component": "SharedHeaders",
+      "path": "CPU/Generic26",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Programmer/HdrSrc.git",
+      "revision": "c9113ab79d9ca2ccc49a9b7518911132ca9ffa1b",
+      "upstream_path": "hdr/CPU/Generic26",
+      "upstream_sha256": "9567d90f75ad960a200a5a4351e8dbb60aa246fab5557d0e38b783edf2609b13",
+      "series_base_sha256": "ee4158a16b46de21f21efa9a39999563ad1fb93a1c25a4b0c4552129ff62c32b",
+      "series_base": "Module-side copy of HdrSrc/hdr/CPU/Generic26; the series starts from that header after patch 0009.",
+      "sha256": "326f84d1e1478a1633e6ff391610b71d14f93ec5cbc3a17661d592e39964a0a2"
+    },
+    {
+      "component": "TerritoryManager",
+      "path": "s/ModHead",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Internat/Territory/TerritoryManager.git",
+      "revision": "e2654fe5c068ae403d13cb09f03e5162895a736f",
+      "upstream_path": "s/ModHead",
+      "upstream_sha256": "cc1776bd7013ffb66604e7e30b6507e2c4c7cd4225772df2499ec006d38da539",
+      "sha256": "7933b165b4a831e7bbc19ba27625dc21b9ffc64a3e34517ce563d8f818e8aa25"
+    },
+    {
+      "component": "TerritoryManager",
+      "path": "s/SWIs",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Internat/Territory/TerritoryManager.git",
+      "revision": "e2654fe5c068ae403d13cb09f03e5162895a736f",
+      "upstream_path": "s/SWIs",
+      "upstream_sha256": "1cdecb320d619d7d28b4b74a0cd047c676e8f51f678cf6c6ea4b291ccf7d573c",
+      "sha256": "760f6d36240432dfc43a100a802d615564fba268e6bcbaa85bc6edf5d45125aa"
+    },
+    {
+      "component": "TerritoryManager",
+      "path": "s/TerrMgr",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Internat/Territory/TerritoryManager.git",
+      "revision": "e2654fe5c068ae403d13cb09f03e5162895a736f",
+      "upstream_path": "s/TerrMgr",
+      "upstream_sha256": "e46320218025d506d6e89a2183a245be4a03fc4b435e6f90bd6088617293c86f",
+      "sha256": "85fdc75b7c0613b3aa44868861958e6bc6b5859950a10e3223e09122284848c8"
+    },
+    {
+      "component": "UK",
+      "path": "s/ModHead",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Internat/Territory/UK.git",
+      "revision": "55aa82c8862f02d9db5bb4b2a9350dc8baf97192",
+      "upstream_path": "s/ModHead",
+      "upstream_sha256": "79446b1befba08f747d2fa731c83985f35bf85ee97918df0d6d58c81e5ec89aa",
+      "sha256": "838d5a99323c086c6228b45898ff7d7453d4318f32976783c2fb431e2daf3393"
+    },
+    {
+      "component": "UK",
+      "path": "s/Tables",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Internat/Territory/UK.git",
+      "revision": "55aa82c8862f02d9db5bb4b2a9350dc8baf97192",
+      "upstream_path": "s/Tables",
+      "upstream_sha256": "635aa49a86716b215757d3b40cc13966cd5b1f1bbd3a507bc92623bcd135bcc5",
+      "sha256": "27a7c0de59439b840a746f87946e4d18cb58c7f7975e6facdcc9e5db18502183"
+    },
+    {
+      "component": "UK",
+      "path": "s/UK",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Internat/Territory/UK.git",
+      "revision": "55aa82c8862f02d9db5bb4b2a9350dc8baf97192",
+      "upstream_path": "s/UK",
+      "upstream_sha256": "a1b6d09a67b3f8bdce0771a4a4b8f39a9c3adf86968720583bbadc52c33820fb",
+      "sha256": "94d8c857bdc3ba4d2c885062a598d9743a9d31d02219d03b29fa1e1c1540a8e2"
+    }
+  ]
+}
