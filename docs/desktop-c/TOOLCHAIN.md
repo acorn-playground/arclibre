@@ -2,8 +2,11 @@
 
 The host compiler is GCCSDK's public `release_3_4_6` cohort, revision
 `f79cb59110e2d13566678d923dadba0f97a1321d` from
-https://github.com/riscos-dot-info/gccsdk . The exact source archive, hash and
-patch order are recorded in `manifests/c-toolchain.json`. No proprietary
+https://github.com/riscos-dot-info/gccsdk . It comes from the
+[gcc-apcs26](https://github.com/acorn-playground/gcc-apcs26) project, a git
+submodule at `third_party/gcc-apcs26`, which holds the selected source
+archive and the patches below (in `patches/series` order); its commit and the
+archive's hash are pinned in `manifests/c-toolchain.json`. No proprietary
 Norcroft executable or prebuilt target library is required.
 
 ```
@@ -13,13 +16,14 @@ python3 tools/bootstrap_c.py
 
 The second command produces `build/c-toolchain-release/install/bin/gcc` and
 `drlink`. Its log and binary hashes are retained beside the install directory.
-A changed source/patch manifest invalidates the preparation stamp. The tested
-host is Apple Silicon macOS with Apple Clang and the project's pinned GNU M4
-and Autoconf 2.72. Other hosts have not been validated.
+A changed manifest or submodule invalidates the preparation stamp. Tested
+hosts: Apple Silicon macOS (Apple Clang) and x86-64 Ubuntu 26.04 (Clang 21),
+with the project's pinned GNU M4 and Autoconf 2.72; both compile the ROM's C
+components to the same bytes.
 
 ## Host adaptations
 
-`third_party/patches/gccsdk-3.4.6-host.patch`:
+`third_party/gcc-apcs26/patches/gccsdk-3.4.6-host.patch`:
 
 - Recognises the ARM64 host and regenerates configuration with the pinned
   Autoconf and config.guess/config.sub.
@@ -38,7 +42,7 @@ and Drlink are used for the guest C build; the legacy GCCSDK assembler is not.
 Compiler `-S` output is assembled by the existing checked AsAsm toolchain.
 Unused SDK utilities are not claimed to work on a 64-bit host.
 
-`third_party/patches/gccsdk-3.4.6-case-insensitive.patch` lets the
+`third_party/gcc-apcs26/patches/gccsdk-3.4.6-case-insensitive.patch` lets the
 preprocessor open an `#include` on a case-sensitive host. The staged include
 directory holds lowercased RISC OS names (`h.editintern.txt1`), and sources
 spell them as RISC OS allows (`h.EditIntern.txt1`); the macOS volumes resolved
@@ -50,7 +54,7 @@ ROM bytes as the Apple Silicon one.
 
 ## Signed frame offsets on a 64-bit host
 
-`third_party/patches/gccsdk-3.4.6-signed-frame-offset.patch` preserves the signed
+`third_party/gcc-apcs26/patches/gccsdk-3.4.6-signed-frame-offset.patch` preserves the signed
 result of `arm_compute_initial_elimination_offset`. A frameless APCS leaf has
 an argument-pointer-to-stack offset of -4. The old unsigned 32-bit return value
 became +4,294,967,292 when widened to reload's 64-bit host integer; adding the
@@ -69,7 +73,7 @@ unchanged prior ROM; subsequent full filing gates repeat this public client.
 
 ## Signed prologue offsets on a 64-bit host
 
-`third_party/patches/gccsdk-3.4.6-signed-prologue-offset.patch` makes the
+`third_party/gcc-apcs26/patches/gccsdk-3.4.6-signed-prologue-offset.patch` makes the
 prologue's `args_to_push` a signed `HOST_WIDE_INT`. It was `unsigned int`, and
 `-(4 + args_to_push + fp_offset)` went into `GEN_INT` as +4294967292 rather
 than -4, so every function with an APCS frame was emitted as
@@ -84,7 +88,7 @@ published separately as
 
 ## Original ROM-library data contract
 
-`third_party/patches/gccsdk-3.4.6-rom-library.patch` is a separate target-code
+`third_party/gcc-apcs26/patches/gccsdk-3.4.6-rom-library.patch` is a separate target-code
 adaptation. With `-mlibrary-static-data-offset`, it keeps read-only constants in
 ROM and refrains from adding a RAM data relocation to their addresses. The old
 GCC module profile forced literals into writable data; that exceeded the real
@@ -115,9 +119,9 @@ it is not covered by the compiler's GPL notice. CMunge was built incidentally
 by the old SDK make target but its output is not used by any ArcLibre ROM
 component. Earlier descriptions of the entire archive as GPL were too broad.
 
-`gccsdk-3.4.6-arclibre.tar.gz` excludes that complete unused directory (57
+gcc-apcs26's `sources/gccsdk-3.4.6-apcs26.tar.gz` excludes that complete unused directory (57
 files). Every retained payload is unchanged from the pinned upstream archive.
-[Selection metadata](../../manifests/c-toolchain-selection.json) records the
+[Selection metadata](https://github.com/acorn-playground/gcc-apcs26/blob/main/sources/selection.json) (`third_party/gcc-apcs26/sources/selection.json`) records the
 upstream and selected hashes plus excluded paths/hashes. The former archive
 is no longer included in new source packages; its provenance remains recorded
 in the manifest and version history. This is source selection, not relicensing.

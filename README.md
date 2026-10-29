@@ -34,6 +34,8 @@ works, what has been tested and what hasn't.
 On macOS or Linux, with the prerequisites in [BUILD.md](BUILD.md):
 
 ```sh
+git clone --recursive https://github.com/acorn-playground/ArcLibre.git
+cd ArcLibre
 make arclibre-rom        # build/arclibre/arclibre.rom, the 2 MB ROM
 make release-test        # both ROMs and the disc, and every test gate on them
 make release             # dist/arclibre-VERSION/ (after recording the release)
@@ -41,7 +43,9 @@ make release             # dist/arclibre-VERSION/ (after recording the release)
 
 The build needs no network access: every host tool (AsAsm, GCC 3.4.6 for the
 C modules, Autoconf, M4, the MacArch emulator core the tests run on) is built
-from pinned source archives in `third_party/`. It reproduces each release
+from pinned source archives in `third_party/`. The C compiler is the
+[gcc-apcs26](https://github.com/acorn-playground/gcc-apcs26) project, a git
+submodule, hence `--recursive`. It reproduces each release
 byte for byte from a clean checkout on either host.
 
 ## How it is tested
@@ -64,7 +68,7 @@ fail. [BUILD.md](BUILD.md) lists the tiers and the gates;
 | `manifests/` | upstream repositories and revisions, file hashes, component roles, the release record |
 | `tools/` | the build: toolchain bootstrap, assembly, linking, ROM joining, disc building, packaging |
 | `tests/` | the gates and their emulator harness (`tests/harness`, Swift) |
-| `third_party/` | pinned source archives of the host tools, and their patches |
+| `third_party/` | pinned source archives of the host tools and their patches, and the C compiler (the gcc-apcs26 submodule) |
 | `licenses/` | licence texts and assessments |
 | `docs/` | component results, provenance, and the restoration history |
 

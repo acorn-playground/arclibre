@@ -8,7 +8,7 @@ The implementation baseline is the public **cleaned RISC OS 3.60 source import**
 
 > **A note on the 4corn mirror.** Every RISC OS source repository cited in this document and in `manifests/` is on the 4corn mirror of RISC OS Open's GitLab, because the canonical RISC OS Open GitLab is currently offline. When it is back online we will rebase the provenance on it: each pinned revision is a Git commit hash, which is the same in the mirror and the original, so the move changes the repository addresses and re-verifies every pinned file against them, not the sources.
 
-“Recovered” means recovered from those public version-control histories. It does **not** mean disassembled from a ROM or copied from a commercial ROM image. The maintained `src/` tree contains our patched copies. How they were restored is recorded in [docs/history](docs/history/README.md); the original snapshots and full restoration evidence are kept in the project's development archive, not in this repository.
+"Recovered" means recovered from those public version-control histories. It does **not** mean disassembled from a ROM or copied from a commercial ROM image. The maintained `src/` tree contains our patched copies. How they were restored is recorded in [docs/history](docs/history/README.md); the original snapshots and full restoration evidence are kept in the project's development archive, not in this repository.
 
 The core source references are:
 
@@ -241,9 +241,11 @@ Apache-2.0 release. No ROM extract, commercial application resource, substitute
 font or proprietary C-library binary is included. FilerSWIs has no separate
 resource payload.
 
-The additional host compiler is public GCCSDK 3.4.6, pinned in
-`manifests/c-toolchain.json`. Its selected host source archive, original per-component notices and
-local patches are retained; the unused restricted CMunge directory is excluded. The [toolchain report](docs/desktop-c/TOOLCHAIN.md)
+The additional host compiler is public GCCSDK 3.4.6, from the
+[gcc-apcs26](https://github.com/acorn-playground/gcc-apcs26) project (the git
+submodule `third_party/gcc-apcs26`, pinned in `manifests/c-toolchain.json`).
+Its selected host source archive, original per-component notices and
+patches are retained there; the unused restricted CMunge directory is excluded. The [toolchain report](docs/desktop-c/TOOLCHAIN.md)
 distinguishes host adaptations from the ROM-library data-placement fix.
 GCCSDK target libraries are not linked into the ROM: the guest uses the real
 original SharedCLibrary plus ArcLibre-authored division ABI adapters. These
@@ -426,7 +428,7 @@ the host from project-authored data.
 The historical GCCSDK archive contained CMunge 0.76 under its own restrictive
 `Docs/Copyright`, not the compiler's GPL. It was not used to generate this ROM.
 The replacement host source archive excludes all 57 files in that directory
-and the bootstrap omits the utility. The [selection manifest](manifests/c-toolchain-selection.json)
+and the bootstrap omits the utility. The [selection manifest](third_party/gcc-apcs26/sources/selection.json)
 records exact provenance; retained files keep their individual notices. Earlier
 source packages containing the whole archive must not be described as uniformly
 GPL or unrestricted. This change does not change or relicense the ROM.

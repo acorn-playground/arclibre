@@ -3,7 +3,7 @@
   "scope": "One cold disk-loaded public ABI client; leaf and 1200-byte frame with seven arguments at O2 and Os, alongside existing C ABI checks",
   "rom_sha256": "bb9d384592b076b630c95ac174ca1985a97fe18dc70025985bae80f34a3063cf",
   "rom_unchanged": true,
-  "compiler_patch": "third_party/patches/gccsdk-3.4.6-signed-frame-offset.patch",
+  "compiler_patch": "third_party/gcc-apcs26/patches/gccsdk-3.4.6-signed-frame-offset.patch",
   "patch_sha256": "5b251af6b60c591b46bb399ba3e97328208fea10955de3cace3ee702046ed03a",
   "compiler_build_sha256": "ade4757d50cf0b6414efa9b0a69f6ed41d284745e14d62c46bc077ca638d650d",
   "before_invalid_instruction": "sub a2, sp, #-4294967296",

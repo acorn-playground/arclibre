@@ -19,11 +19,19 @@ sudo apt install make patch libtool bison flex m4 pkgconf zlib1g-dev
 Tested on Ubuntu 26.04 (x86-64) with Swift 6.4.1, Clang 21, glibc 2.43, GNU
 Libtool 2.5.4, Bison 3.8.2 and flex 2.6.4. Windows has not been tried.
 
-Everything else is built from pinned source archives in
-`third_party/archives/`, whose SHA-256s are checked before extraction: GNU M4,
-Autoconf and Automake; GCCSDK's AsAsm, decaof and ELF tools; GCCSDK's GCC
-3.4.6 for the C modules; and the MacArch emulator core the tests run on. The
-build downloads nothing and installs nothing outside `build/`.
+Everything else is built from pinned source archives in `third_party/`,
+whose SHA-256s are checked before extraction: GNU M4, Autoconf and Automake;
+GCCSDK's AsAsm, decaof and ELF tools; and the MacArch emulator core the tests
+run on (`third_party/archives/`); and GCCSDK's GCC 3.4.6 for the C modules,
+from the [gcc-apcs26](https://github.com/acorn-playground/gcc-apcs26) project,
+a git submodule (`third_party/gcc-apcs26`). Clone with `--recursive`:
+
+```sh
+git clone --recursive https://github.com/acorn-playground/ArcLibre.git
+```
+
+(or run `git submodule update --init` in an existing clone). The build
+downloads nothing and installs nothing outside `build/`.
 
 ## Building the ROM
 
@@ -136,8 +144,8 @@ off macOS, a host portability patch that changes no emulation.
 
 1. **Host tools** (`make bootstrap`, `make c-bootstrap`): M4, Autoconf and
    Automake, then AsAsm (and an observation-only copy that records every
-   emitted word and symbol lookup), Tokenise, and GCCSDK 3.4.6 with its
-   recorded patches (`manifests/c-toolchain.json`).
+   emitted word and symbol lookup), Tokenise, and GCCSDK 3.4.6 from the
+   gcc-apcs26 submodule, at the commit `manifests/c-toolchain.json` pins.
 2. **The frozen baseline** (`make baseline`): the first restored ARM2 ROM,
    kernel and filing modules, rebuilt exactly. It must reproduce
 
@@ -169,7 +177,7 @@ The macOS hosts once supplied three things implicitly; they are now explicit:
 
 - **Case-insensitive names.** RISC OS names are case-insensitive and the
   sources rely on it (`GET s.vdu.VduGrafA` for `s/vdu/vdugrafa`).
-  `third_party/patches/asasm-portable-host.patch` and
+  `third_party/patches/asasm-portable-host.patch` and gcc-apcs26's
   `gccsdk-3.4.6-case-insensitive.patch` fall back to a unique
   case-insensitive match when an exact name is missing.
 - **No-break spaces.** macOS's UTF-8 locales count 0xA0 as blank and glibc's

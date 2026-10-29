@@ -5,7 +5,14 @@ import hashlib,io,json,pathlib,subprocess,tarfile
 R=pathlib.Path(__file__).resolve().parents[1];out=R/'dist'
 def sha(p):return hashlib.file_digest(p.open('rb'),'sha256').hexdigest()
 objects=subprocess.check_output(['git','ls-tree','-rz','--full-tree','HEAD'],cwd=R).decode().split('\0')
-tracked={row.split('\t',1)[1]:row.split('\t',1)[0].split()[2] for row in objects if row}
+tracked={row.split('\t',1)[1]:row.split('\t',1)[0].split()[2] for row in objects if row and row.split()[1]=='blob'}
+# A submodule's files are checked against the submodule commit HEAD records.
+for row in objects:
+ if row and row.split()[1]=='commit':
+  mode,kind,commit=row.split('\t',1)[0].split();path=row.split('\t',1)[1]
+  assert subprocess.check_output(['git','-C',path,'rev-parse','HEAD'],cwd=R,text=True).strip()==commit,(path,'is not at the commit HEAD records')
+  for sub in subprocess.check_output(['git','-C',path,'ls-tree','-rz','--full-tree',commit],cwd=R).decode().split('\0'):
+   if sub:tracked[path+'/'+sub.split('\t',1)[1]]=sub.split('\t',1)[0].split()[2]
 algorithm=subprocess.check_output(['git','rev-parse','--show-object-format'],cwd=R).decode().strip()
 source=out/'arclibre-source.tar.gz';source_count=0
 with tarfile.open(source) as tar:
@@ -14,7 +21,7 @@ with tarfile.open(source) as tar:
   name=m.name.removeprefix('arclibre/');assert name in tracked,name
   b=tar.extractfile(m).read();assert hashlib.new(algorithm,b'blob '+str(len(b)).encode()+b'\0'+b).hexdigest()==tracked[name],name
   assert not any(p in ['references','build','.git'] for p in pathlib.PurePosixPath(name).parts),name
-  if name=='third_party/archives/gccsdk-3.4.6-arclibre.tar.gz':
+  if name=='third_party/gcc-apcs26/sources/gccsdk-3.4.6-apcs26.tar.gz':
    with tarfile.open(fileobj=io.BytesIO(b)) as sdk:assert not any('cmunge' in x.name.lower() for x in sdk)
   source_count+=1
 required=['arclibre.rom','arclibre-source.tar.gz','arclibre-source-build.json','arclibre.machine.json','arclibre-hard-disc.machine.json']

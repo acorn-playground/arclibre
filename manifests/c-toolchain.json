@@ -1,17 +1,14 @@
 {
+  "submodule": "third_party/gcc-apcs26",
+  "submodule_repository": "https://github.com/acorn-playground/gcc-apcs26",
+  "submodule_commit": "4c3296586be429f3a3a71ca4bf1951b0b181bcb2",
   "repository": "https://github.com/riscos-dot-info/gccsdk",
   "revision": "f79cb59110e2d13566678d923dadba0f97a1321d",
-  "archive": "gccsdk-3.4.6-arclibre.tar.gz",
+  "archive": "sources/gccsdk-3.4.6-apcs26.tar.gz",
   "url": "https://codeload.github.com/riscos-dot-info/gccsdk/tar.gz/f79cb59110e2d13566678d923dadba0f97a1321d",
   "sha256": "760ee12234370669dd2001c4827112442c56321a7a0690fef489ccd0a774fb54",
-  "purpose": "ARM2 APCS-26 C compilation; host tools only, no prebuilt target libraries",
-  "patches": [
-    "third_party/patches/gccsdk-3.4.6-host.patch",
-    "third_party/patches/gccsdk-3.4.6-rom-library.patch",
-    "third_party/patches/gccsdk-3.4.6-signed-frame-offset.patch",
-    "third_party/patches/gccsdk-3.4.6-signed-prologue-offset.patch",
-    "third_party/patches/gccsdk-3.4.6-case-insensitive.patch"
-  ],
   "upstream_archive_sha256": "28efa3447f15b8b9513ef0619db76025a8af6615d9fae55b385e730cf39b4000",
-  "source_selection": "manifests/c-toolchain-selection.json"
+  "source_selection": "third_party/gcc-apcs26/sources/selection.json",
+  "purpose": "ARM2 APCS-26 C compilation; host tools only, no prebuilt target libraries",
+  "note": "The compiler source, its selection and its patches are the gcc-apcs26 project, a git submodule at submodule_commit; bootstrap checks its SHA256SUMS and applies patches/series."
 }

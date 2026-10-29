@@ -1,0 +1,3 @@
+[submodule "third_party/gcc-apcs26"]
+	path = third_party/gcc-apcs26
+	url = https://github.com/acorn-playground/gcc-apcs26.git
