@@ -34,7 +34,7 @@ rom_root=REPO/'build/arclibre-without-basic-utilities'
 run([sys.executable,REPO/'tools/build_arclibre_rom.py','--without-basic-utilities'],'rom')
 # A clean checkout has no extracted core yet; prepare the pinned one as the tests do.
 (OUT/'emulator/artifacts').mkdir(parents=True,exist_ok=True)
-with (OUT/'emulator.log').open('w') as f:subprocess.run([sys.executable,str(REPO/'tools/prepare_emulator.py')],cwd=REPO,env=dict(os.environ,OPEN_ARCHIMEDES_OUTPUT=str(OUT/'emulator')),stdout=f,stderr=subprocess.STDOUT,check=True)
+with (OUT/'emulator.log').open('w') as f:subprocess.run([sys.executable,str(REPO/'tools/prepare_emulator.py')],cwd=REPO,env=dict(os.environ,ARCLIBRE_OUTPUT=str(OUT/'emulator')),stdout=f,stderr=subprocess.STDOUT,check=True)
 run(['swift','build','--package-path',REPO/'tests/harness','--scratch-path',REPO/'build/harness-alarm-code','--cache-path',REPO/'build/swift-cache','--disable-sandbox','--build-system','native','-c','release','--product','BasicRunProbe'],'harness')
 codes=[]
 for n in [1,2]:

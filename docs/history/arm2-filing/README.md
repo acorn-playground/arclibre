@@ -1,4 +1,4 @@
-# Open Archimedes: read-only filing robustness
+# ArcLibre: read-only filing robustness
 
 **PASS:** 42 scenarios across three cold-derived ARM2 runs, all retained regressions passing. The restored ROM remains unchanged. A demonstrated MacArch disc-change defect was fixed in an isolated patch, verified, and subsequently applied to the MacArch checkout at the user's request. Running application/server binaries still require rebuilding.
 

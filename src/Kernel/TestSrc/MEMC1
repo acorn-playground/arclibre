@@ -1,4 +1,4 @@
-; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+; ArcLibre: modified for the ARM2 restoration; see patches/restoration.
 ; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
 ; > MEMC1
 

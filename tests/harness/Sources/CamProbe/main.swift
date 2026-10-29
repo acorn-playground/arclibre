@@ -23,7 +23,7 @@ func save(_ stage:String) throws {
     for (tag,b) in m.stateSections() { try Data(b).write(to:URL(fileURLWithPath:out+"/\(stage)-\(tag).bin")) }
     let j:[String:Any] = ["pc":m.cpu.pc,"psr":m.cpu.psr,"r":(0..<15).map { m.cpu.r[$0] },"ticks":m.ticks,"instructions":m.cpu.instructionCount,"cam_failures":d.breakpoints.first{$0.id==camFail.id}!.hitCount,"heap_base":word(sym("SysHeapStart")+8),"heap_end":word(sym("SysHeapStart")+12),"app_end":word(sym("AplWorkSize")),"exceptions":m.cpu.exceptionCounts]
     try JSONSerialization.data(withJSONObject:j,options:[.prettyPrinted,.sortedKeys]).write(to:URL(fileURLWithPath:out+"/\(stage).json"))
-    try Data(m.snapshot(createdBy:"Open Archimedes CAM transition" )).write(to:URL(fileURLWithPath:out+"/\(stage).macarch-state"))
+    try Data(m.snapshot(createdBy:"ArcLibre CAM transition" )).write(to:URL(fileURLWithPath:out+"/\(stage).macarch-state"))
     let trace=(d.trace?.last(10000) ?? []).map { "\($0.ticks) \(String(format:"%08X %08X",$0.pc,$0.instruction)) \($0.registerText)\n" }.joined()
     try trace.write(toFile:out+"/\(stage)-instructions.log",atomically:true,encoding:.utf8)
 }

@@ -57,7 +57,7 @@ for (component,title) in [("FPEmulator","FPEmulator"),("Colours","ColourTrans"),
 }
 
 
-string(0x13000,"Open Archimedes test");words(0x13100,[0x4f415243,0])
+string(0x13000,"ArcLibre Wimp client");words(0x13100,[0x4c435241,0])
 call("Set desktop mode",0x400e3,[12])
 let oldCAO=call("Set diagnostic application environment",0x40,[15,0x8000])
 // Enter USR26 with real guest instructions, retaining IRQ/FIQ state. The
@@ -117,7 +117,7 @@ func ws(_ n:String)->UInt32 {wsymbols[n]!["value"]!.uint32Value}
 let wwork=workspace["Wimp"]!,taskOffset=word(wwork+ws("taskhandle")),taskBlock=word(wwork+taskOffset),fpBlock=word(taskBlock+ws("task_fpblock"))
 let messageList=word(taskBlock+ws("task_messages")),messageBytes=word(taskBlock+ws("task_messagessize"))
 json(["task_block":taskBlock,"message_pointer":messageList,"message_bytes":messageBytes,"original_list":bytes(0x13100,8),"copied_list":messageList>0 && messageList<0x4000000 && messageBytes<1024 ? bytes(messageList,Int(messageBytes)):[]],"message-contract")
-check(messageBytes==4 && word(messageList)==0x4f415243,"caller message-interest list preserved")
+check(messageBytes==4 && word(messageList)==0x4c435241,"caller message-interest list preserved")
 check(fpBlock>0 && bytes(fpBlock,100)==fpBefore,"real Wimp FP save block matches all registers and status")
 check(bytes(wwork+ws("medusakernel"),1)==[0],"original MEMC kernel selected")
 
@@ -141,10 +141,10 @@ drain("mouse movement")
 m.keyDown(0x70);idle(2400000);drain("mouse button");m.keyUp(0x70);idle(2400000);drain("mouse release")
 check(events.contains{($0["reason"] as! UInt32)==6 && (($0["block"] as! [UInt32])[3])==window},"real work-area mouse click");trace("mouse")
 // Exercise actual asynchronous task messaging without a second synthetic SWI handler.
-words(0x15200,[24,0,0,0,0x4f415243,0x11223344])
+words(0x15200,[24,0,0,0,0x4c435241,0x11223344])
 call("Send diagnostic message",0x400e7,[17,0x15200,initial[1]])
 drain("message")
-check(events.contains{($0["reason"] as! UInt32)==17 && (($0["block"] as! [UInt32])[4])==0x4f415243 && (($0["block"] as! [UInt32])[5])==0x11223344},"real task message delivery")
+check(events.contains{($0["reason"] as! UInt32)==17 && (($0["block"] as! [UInt32])[4])==0x4c435241 && (($0["block"] as! [UInt32])[5])==0x11223344},"real task message delivery")
 // Exercise the public move/close APIs independently of pointer drag policy.
 words(0x14500,[window,300,300,900,900,0,0,0xffffffff]);call("Move window",0x400c5,[0,0x14500]);drain("moved")
 words(0x14600,[window]);call("Read moved state",0x400cb,[0,0x14600]);let moved=(0..<9).map{word(0x14600+UInt32($0*4))}

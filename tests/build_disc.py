@@ -10,7 +10,7 @@ def pack(*w):return struct.pack('<'+'I'*len(w),*w)
 program=pack(0xe28f0008,0xef000002,0xe3a00000,0xef000011)+b'ARM2 FLOPPY PROGRAM EXECUTED\r\n\0'
 files=[('Hello',program,0x10000,0x10000),
        ('Pattern',bytes((i*73+(i>>8)*19+0x35)&255 for i in range(40973)),0xfffffd00,0),
-       ('ReadMe',b'Open Archimedes read-only floppy experiment.\r\nOriginal generated test files; no ROM extracts.\r\n',0xffffff00,0)]
+       ('ReadMe',b'ArcLibre read-only floppy: public test data.\r\nOriginal generated test files; no ROM extracts.\r\n',0xffffff00,0)]
 disc=bytearray(819200);directory=bytearray(2048)
 def u24(b,p,v):b[p:p+3]=v.to_bytes(3,'little')
 directory[1:5]=directory[2043:2047]=b'Hugo'

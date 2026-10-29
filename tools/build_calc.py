@@ -69,7 +69,7 @@ if not (rom_root/'arclibre.rom').exists():run([sys.executable,REPO/'tools/build_
 # As generate_alarm_code.py: a clean checkout has no extracted core yet, so
 # prepare the pinned one into this build's own output directory.
 (OUT/'emulator/artifacts').mkdir(parents=True,exist_ok=True)
-run([sys.executable,REPO/'tools/prepare_emulator.py'],'emulator',OPEN_ARCHIMEDES_OUTPUT=str(OUT/'emulator'))
+run([sys.executable,REPO/'tools/prepare_emulator.py'],'emulator',ARCLIBRE_OUTPUT=str(OUT/'emulator'))
 run(['swift','build','--package-path',REPO/'tests/harness','--scratch-path',REPO/'build/harness-alarm-code','--cache-path',REPO/'build/swift-cache','--disable-sandbox','--build-system','native','-c','release','--product','BasicRunProbe'],'harness')
 programs=[]
 for n in [1,2]:

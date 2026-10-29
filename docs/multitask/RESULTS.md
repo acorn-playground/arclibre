@@ -4,7 +4,7 @@ The gate passes on three independently cold-booted A440/1 ARM2 machines. The
 baseline ROM and emulator are unchanged. Run:
 
 ```sh
-OPEN_ARCHIMEDES_OUTPUT="$PWD/build/desktop-baseline" make multitask-test
+ARCLIBRE_OUTPUT="$PWD/build/desktop-baseline" make multitask-test
 ```
 
 `tests/fixtures/multitask` contains new Apache-2.0 diagnostic programs, not guest

@@ -21,5 +21,5 @@ for attempt in ['normal-1','normal-2','observer']:
  hashes.append(hashlib.sha256((out/'module.aof').read_bytes()).hexdigest())
 assert len(set(hashes))==1
 b=load_aof(out/'module.aof')['data'];(out/'module.bin').write_bytes(b)
-subprocess.run([sys.executable,str(REPO/'tools/audit_modules.py')],env=dict(os.environ,OPEN_ARCHIMEDES_OUTPUT=str(root)),check=True)
+subprocess.run([sys.executable,str(REPO/'tools/audit_modules.py')],env=dict(os.environ,ARCLIBRE_OUTPUT=str(root)),check=True)
 (root/'result.json').write_text(json.dumps(dict(status='PASS',sha256=hashlib.sha256(b).hexdigest(),aof_hashes=hashes,bytes=len(b)),indent=2)+'\n')

@@ -1,7 +1,7 @@
 --- a/src/FPASC/riscos/hdr/FPEmulator
 +++ b/src/FPASC/riscos/hdr/FPEmulator
 @@ -1,3 +1,4 @@
-+; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
++; ArcLibre: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
  ; Copyright 1996 Acorn Computers Ltd
  ;
  ; Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 --- a/src/FontManager/s/Encoding
 +++ b/src/FontManager/s/Encoding
 @@ -1,3 +1,4 @@
-+; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
++; ArcLibre: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
  ; Copyright 1996 Acorn Computers Ltd
  ;
  ; Licensed under the Apache License, Version 2.0 (the "License");
@@ -204,7 +204,7 @@
 --- a/src/FontManager/s/Font_Arith
 +++ b/src/FontManager/s/Font_Arith
 @@ -1,3 +1,4 @@
-+; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
++; ArcLibre: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
  ; Copyright 1996 Acorn Computers Ltd
  ;
  ; Licensed under the Apache License, Version 2.0 (the "License");
@@ -445,7 +445,7 @@
 --- a/src/FontManager/s/Fonts
 +++ b/src/FontManager/s/Fonts
 @@ -1,3 +1,4 @@
-+; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
++; ArcLibre: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
  ; Copyright 1996 Acorn Computers Ltd
  ;
  ; Licensed under the Apache License, Version 2.0 (the "License");
@@ -460,7 +460,7 @@
 --- a/src/FontManager/s/Fonts01
 +++ b/src/FontManager/s/Fonts01
 @@ -1,3 +1,4 @@
-+; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
++; ArcLibre: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
  ; Copyright 1996 Acorn Computers Ltd
  ;
  ; Licensed under the Apache License, Version 2.0 (the "License");
@@ -1279,7 +1279,7 @@
 --- a/src/FontManager/s/Fonts02
 +++ b/src/FontManager/s/Fonts02
 @@ -1,3 +1,4 @@
-+; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
++; ArcLibre: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
  ; Copyright 1996 Acorn Computers Ltd
  ;
  ; Licensed under the Apache License, Version 2.0 (the "License");
@@ -1831,7 +1831,7 @@
 --- a/src/FontManager/s/Fonts03
 +++ b/src/FontManager/s/Fonts03
 @@ -1,3 +1,4 @@
-+; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
++; ArcLibre: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
  ; Copyright 1996 Acorn Computers Ltd
  ;
  ; Licensed under the Apache License, Version 2.0 (the "License");
@@ -2350,7 +2350,7 @@
 --- a/src/FontManager/s/Fonts04
 +++ b/src/FontManager/s/Fonts04
 @@ -1,3 +1,4 @@
-+; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
++; ArcLibre: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
  ; Copyright 1996 Acorn Computers Ltd
  ;
  ; Licensed under the Apache License, Version 2.0 (the "License");
@@ -2882,7 +2882,7 @@
 --- a/src/FontManager/s/FontsM
 +++ b/src/FontManager/s/FontsM
 @@ -1,3 +1,4 @@
-+; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
++; ArcLibre: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
  ; Copyright 1996 Acorn Computers Ltd
  ;
  ; Licensed under the Apache License, Version 2.0 (the "License");
@@ -2907,7 +2907,7 @@
 --- a/src/FontManager/s/Funcache
 +++ b/src/FontManager/s/Funcache
 @@ -1,3 +1,4 @@
-+; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
++; ArcLibre: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
  ; Copyright 1996 Acorn Computers Ltd
  ;
  ; Licensed under the Apache License, Version 2.0 (the "License");
@@ -3053,7 +3053,7 @@
 --- a/src/FontManager/s/ListFonts
 +++ b/src/FontManager/s/ListFonts
 @@ -1,3 +1,4 @@
-+; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
++; ArcLibre: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
  ; Copyright 1996 Acorn Computers Ltd
  ;
  ; Licensed under the Apache License, Version 2.0 (the "License");
@@ -3498,7 +3498,7 @@
 --- a/src/ROMFonts/s/ROMFonts
 +++ b/src/ROMFonts/s/ROMFonts
 @@ -1,3 +1,4 @@
-+; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
++; ArcLibre: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
  ; Copyright 1996 Acorn Computers Ltd
  ;
  ; Licensed under the Apache License, Version 2.0 (the "License");
@@ -3559,7 +3559,7 @@
 --- a/src/Wimp/s/Iconbar
 +++ b/src/Wimp/s/Iconbar
 @@ -1,3 +1,4 @@
-+; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
++; ArcLibre: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
  ; Copyright 1996 Acorn Computers Ltd
  ;
  ; Licensed under the Apache License, Version 2.0 (the "License");
@@ -3583,7 +3583,7 @@
 --- a/src/Wimp/s/Memory
 +++ b/src/Wimp/s/Memory
 @@ -1,3 +1,4 @@
-+; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
++; ArcLibre: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
  ; Copyright 1996 Acorn Computers Ltd
  ;
  ; Licensed under the Apache License, Version 2.0 (the "License");
@@ -3608,7 +3608,7 @@
 --- a/src/Wimp/s/Options
 +++ b/src/Wimp/s/Options
 @@ -1,3 +1,4 @@
-+; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
++; ArcLibre: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
  ; Copyright 1996 Acorn Computers Ltd
  ;
  ; Licensed under the Apache License, Version 2.0 (the "License");
@@ -3625,7 +3625,7 @@
 --- a/src/Wimp/s/RosMod
 +++ b/src/Wimp/s/RosMod
 @@ -1,3 +1,4 @@
-+; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
++; ArcLibre: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
  ; Copyright 1996 Acorn Computers Ltd
  ;
  ; Licensed under the Apache License, Version 2.0 (the "License");
@@ -3650,7 +3650,7 @@
 --- a/src/Wimp/s/Tiling
 +++ b/src/Wimp/s/Tiling
 @@ -1,3 +1,4 @@
-+; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
++; ArcLibre: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
  ; Copyright 1996 Acorn Computers Ltd
  ;
  ; Licensed under the Apache License, Version 2.0 (the "License");
@@ -3675,7 +3675,7 @@
 --- a/src/Wimp/s/Watchdog
 +++ b/src/Wimp/s/Watchdog
 @@ -1,3 +1,4 @@
-+; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
++; ArcLibre: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
  ; Copyright 1996 Acorn Computers Ltd
  ;
  ; Licensed under the Apache License, Version 2.0 (the "License");
@@ -3708,7 +3708,7 @@
 --- a/src/Wimp/s/Wimp
 +++ b/src/Wimp/s/Wimp
 @@ -1,3 +1,4 @@
-+; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
++; ArcLibre: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
  ; Copyright 1996 Acorn Computers Ltd
  ;
  ; Licensed under the Apache License, Version 2.0 (the "License");
@@ -3723,7 +3723,7 @@
 --- a/src/Wimp/s/Wimp01
 +++ b/src/Wimp/s/Wimp01
 @@ -1,3 +1,4 @@
-+; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
++; ArcLibre: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
  ; Copyright 1996 Acorn Computers Ltd
  ;
  ; Licensed under the Apache License, Version 2.0 (the "License");
@@ -3780,7 +3780,7 @@
 --- a/src/Wimp/s/Wimp02
 +++ b/src/Wimp/s/Wimp02
 @@ -1,3 +1,4 @@
-+; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
++; ArcLibre: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
  ; Copyright 1996 Acorn Computers Ltd
  ;
  ; Licensed under the Apache License, Version 2.0 (the "License");
@@ -3855,7 +3855,7 @@
 --- a/src/Wimp/s/Wimp03
 +++ b/src/Wimp/s/Wimp03
 @@ -1,3 +1,4 @@
-+; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
++; ArcLibre: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
  ; Copyright 1996 Acorn Computers Ltd
  ;
  ; Licensed under the Apache License, Version 2.0 (the "License");
@@ -3889,7 +3889,7 @@
 --- a/src/Wimp/s/Wimp04
 +++ b/src/Wimp/s/Wimp04
 @@ -1,3 +1,4 @@
-+; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
++; ArcLibre: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
  ; Copyright 1996 Acorn Computers Ltd
  ;
  ; Licensed under the Apache License, Version 2.0 (the "License");
@@ -3958,7 +3958,7 @@
 --- a/src/Wimp/s/Wimp05
 +++ b/src/Wimp/s/Wimp05
 @@ -1,3 +1,4 @@
-+; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
++; ArcLibre: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
  ; Copyright 1996 Acorn Computers Ltd
  ;
  ; Licensed under the Apache License, Version 2.0 (the "License");
@@ -4114,7 +4114,7 @@
 --- a/src/Wimp/s/Wimp06
 +++ b/src/Wimp/s/Wimp06
 @@ -1,3 +1,4 @@
-+; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
++; ArcLibre: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
  ; Copyright 1996 Acorn Computers Ltd
  ;
  ; Licensed under the Apache License, Version 2.0 (the "License");
@@ -4148,7 +4148,7 @@
 --- a/src/Wimp/s/Wimp07
 +++ b/src/Wimp/s/Wimp07
 @@ -1,3 +1,4 @@
-+; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
++; ArcLibre: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
  ; Copyright 1996 Acorn Computers Ltd
  ;
  ; Licensed under the Apache License, Version 2.0 (the "License");
@@ -4196,7 +4196,7 @@
 --- a/src/Wimp/s/Wimp08
 +++ b/src/Wimp/s/Wimp08
 @@ -1,3 +1,4 @@
-+; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
++; ArcLibre: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
  ; Copyright 1996 Acorn Computers Ltd
  ;
  ; Licensed under the Apache License, Version 2.0 (the "License");
@@ -4227,7 +4227,7 @@
 --- a/src/Wimp/s/Wimp09
 +++ b/src/Wimp/s/Wimp09
 @@ -1,3 +1,4 @@
-+; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
++; ArcLibre: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
  ; Copyright 1996 Acorn Computers Ltd
  ;
  ; Licensed under the Apache License, Version 2.0 (the "License");
@@ -4324,7 +4324,7 @@
 --- a/src/Wimp/s/Wimp10
 +++ b/src/Wimp/s/Wimp10
 @@ -1,3 +1,4 @@
-+; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
++; ArcLibre: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
  ; Copyright 1996 Acorn Computers Ltd
  ;
  ; Licensed under the Apache License, Version 2.0 (the "License");

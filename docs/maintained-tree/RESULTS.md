@@ -39,7 +39,7 @@ The normal AsAsm, observation-only AsAsm and tokeniser were rebuilt locally. Boo
 
 MacArch is still a separate host dependency. Its pinned core and the already-verified device patch are extracted into isolated test build directories; the installed application/server and external checkout were not changed by this migration.
 
-Original source notices and licences remain. 129 restored source inputs received prominent Open Archimedes modification notices; these are comment-only changes. Their imported and maintained hashes are separately recorded. Generated help/resource data is absent from the maintained source and rebuilt on demand. Upstream Git-control files were omitted from `src/` so their ignore rules cannot conceal maintained inputs; the original snapshots retain them.
+Original source notices and licences remain. 129 restored source inputs received prominent ArcLibre modification notices; these are comment-only changes. Their imported and maintained hashes are separately recorded. Generated help/resource data is absent from the maintained source and rebuilt on demand. Upstream Git-control files were omitted from `src/` so their ignore rules cannot conceal maintained inputs; the original snapshots retain them.
 
 The expanded root LICENSING.md identifies exact public repositories/revisions, explains what recovered sources and retained assessments mean, distinguishes project modifications, and describes the UK message-resource qualification and BSD/GPL host dependencies. It makes no blanket licence claim for future desktop assets or applications.
 
@@ -47,6 +47,6 @@ The expanded root LICENSING.md identifies exact public repositories/revisions, e
 
 Use `make rom`, `make baseline` or `make test` as described in BUILD.md. `make source-package` exports the maintained build inputs and licences without the experiments or compiled tools.
 
-The delivered source package is `dist/open-archimedes-source.tar.gz`; the clean-tested ROM is `dist/open-archimedes.rom`. SHA-256 sidecars accompany both. Full clean-run artifacts and logs are preserved in `dist/open-archimedes-migration-evidence.tar.gz`. The final source export adds these reports and documentation to the tested inputs; no build input changed after the clean run.
+The milestone delivered the source package and the clean-tested ROM, with SHA-256 sidecars, and an evidence archive of the full clean-run artifacts and logs. The final source export adds these reports and documentation to the tested inputs; no build input changed after the clean run.
 
 The next implementation milestone can now work directly in `src/`: controlled filing writes on disposable generated images, with the existing read-only and boot suite retained. No write functionality, desktop integration or general application compatibility work began during this migration.

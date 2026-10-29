@@ -47,7 +47,7 @@ for component,entry in [('ResFiler','s/ResFiler'),('BASIC','ModuleAB'),('BASICTr
   hashes.append(hashlib.sha256((out/'module.aof').read_bytes()).hexdigest())
  assert len(set(hashes))==1
  (out/'module.bin').write_bytes(load_aof(out/'module.aof')['data'])
-run(['python3',REPO/'tools/audit_modules.py'],REPO,'resfiler-audit.log',dict(os.environ,OPEN_ARCHIMEDES_OUTPUT=str(ROOT)))
+run(['python3',REPO/'tools/audit_modules.py'],REPO,'resfiler-audit.log',dict(os.environ,ARCLIBRE_OUTPUT=str(ROOT)))
 resources=bytearray();records=[]
 for name,path,ft in [('Resources.BASIC.Messages','BASIC/Resources/UK/Messages',0xfff),('Resources.ResFiler.Messages','ResFiler/Resources/UK/Messages',0xfff),('Apps.!Edit.!Boot','EditApp/Resources/!Boot,feb',0xfeb),('Apps.!Edit.!Run','EditApp/Resources/ROM/!Run,feb',0xfeb),('Apps.!Edit.!Help','EditApp/Resources/UK/!Help',0xfff),('Resources.Edit.Messages','EditApp/Resources/UK/Messages',0xfff),('Resources.Edit.Templates','EditApp/Resources/UK/Templates,fec',0xfec)]:
  b=(SRC/path).read_bytes();n=name.encode()+b'\0';n+=bytes(-len(n)%4);length=24+len(n)+((len(b)+3)&~3)

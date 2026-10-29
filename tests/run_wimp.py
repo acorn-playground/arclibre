@@ -30,7 +30,7 @@ for i in [1,2,3]:
  reasons=[e['reason'] for e in r['events']];assert set([0,1,2,3,4,5,6,8,12,17]).issubset(reasons)
  assert all(e['undefined_traps']>0 for e in r['events']),'real FPA traps during polling'
  click=next(e for e in r['events'] if e['reason']==6);assert click['block'][:5]==[400,412,4,r['window'],0xffffffff]
- msg=next(e for e in r['events'] if e['reason']==17);assert msg['block'][0]==24 and msg['block'][1]==r['task'][1] and msg['block'][4:6]==[0x4f415243,0x11223344]
+ msg=next(e for e in r['events'] if e['reason']==17);assert msg['block'][0]==24 and msg['block'][1]==r['task'][1] and msg['block'][4:6]==[0x4c435241,0x11223344]
  assert r['moved'][1:5]==[300,300,900,900] and not r['closed'][8]&0x10000
  images={name:(probe/(name+'.bin')).read_bytes() for name in ['window','moved','closed']}
  assert all(len(b)==81920 for b in images.values());px={n:pixels(b) for n,b in images.items()}

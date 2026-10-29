@@ -31,7 +31,7 @@ address exceptions. See [acceptance.json](reports/acceptance.json).
 
 ```
 python3 tools/build_hard_disc.py
-OPEN_ARCHIMEDES_OUTPUT="$PWD/build/desktop-defaults" python3 tools/build.py --desktop-defaults
+ARCLIBRE_OUTPUT="$PWD/build/desktop-defaults" python3 tools/build.py --desktop-defaults
 python3 tools/build_c_desktop.py
 python3 tools/build_desktop_apps.py
 python3 tools/build_arclibre_rom.py --with-apps

@@ -59,7 +59,7 @@ make fpe-test    # exact baseline build, desktop candidates, fresh cold boots an
 
 Full traces, module source emissions, resolved symbols, instruction classification, memory results and cold boot snapshots are under `build/fpemulator/`. `acceptance.json` is emitted only after all repetitions and independent comparisons pass. Compact reports are retained [here](reports/acceptance.json). The native harness uses the existing pinned MacArch core with the previously approved disc-change patch; no new emulator change was made.
 
-The component distribution is `dist/open-archimedes-fpemulator.tar.gz`, containing module, resource pack, licence, source manifest and build/result documentation. The complete maintained source export includes the matching source, source patch, build tools and test harness. Full generated evidence is archived separately.
+The component was first distributed on its own, with its module, resource pack, licence, source manifest and build and result documentation; it is now part of every ArcLibre ROM. The complete maintained source export includes the matching source, source patch, build tools and test harness. Full generated evidence is archived separately.
 
 ## Remaining scope
 

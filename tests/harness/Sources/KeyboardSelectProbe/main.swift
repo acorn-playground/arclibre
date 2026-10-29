@@ -76,7 +76,7 @@ check(protocolErrors.isEmpty,"keyboard protocol errors")
 check([1,3,4,5,7].allSatisfy { m.cpu.exceptionCounts[$0]==0 },"CPU fault")
 try json(inputs,"input-events");try json(stages,"stages");try json(protocolErrors,"protocol-errors")
 try events.joined(separator:"\n").write(toFile:out+"/events.log",atomically:true,encoding:.utf8)
-try Data(m.snapshot(createdBy:"Open Archimedes keyboard selection experiment")).write(to:URL(fileURLWithPath:out+"/final.macarch-state"))
+try Data(m.snapshot(createdBy:"ArcLibre keyboard selection experiment")).write(to:URL(fileURLWithPath:out+"/final.macarch-state"))
 for (tag,b) in m.stateSections() { try Data(b).write(to:URL(fileURLWithPath:out+"/final-\(tag).bin")) }
 let trace=(d.trace?.last(4096) ?? []).map { "\($0.ticks) \(String(format:"%08X %08X",$0.pc,$0.instruction)) \($0.registerText)\n" }.joined()
 try trace.write(toFile:out+"/final-instructions.log",atomically:true,encoding:.utf8)

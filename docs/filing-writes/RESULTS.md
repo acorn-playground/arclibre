@@ -48,12 +48,12 @@ New project-owned Apache-2.0 test code lives in [WriteProbe](../../tests/harness
 Run the entire gate using the prerequisites in [BUILD.md](../../BUILD.md):
 
 ```sh
-OPEN_ARCHIMEDES_OUTPUT="$PWD/build/filing-writes" make test
+ARCLIBRE_OUTPUT="$PWD/build/filing-writes" make test
 ```
 
 The ROM is `build/filing-writes/artifacts/floppy.rom`. Write traces, SWI results, physical image checkpoints and sampled FIQ instructions are under `build/filing-writes/artifacts/writes-{1,2,3}/`; the independent summary is `writes-verification.json`. `acceptance.json` is emitted only after every suite succeeds. Generated images contain original project data, not commercial applications or disc extracts.
 
-Deliverables are `dist/open-archimedes.rom` (unchanged ROM bytes), `dist/open-archimedes-source.tar.gz` (updated source/tests), `dist/open-archimedes-filing-writes-evidence.tar.gz` (complete run artifacts/logs), and `dist/filing-writes.patch` (reviewable repository changes). SHA-256 sidecars accompany the binary archives and ROM. Compact reports remain in this directory; full generated captures remain under ignored `build/` and `dist/`.
+The milestone was delivered as the unchanged ROM, the updated source and tests, an evidence archive of the complete runs, and a reviewable patch of the repository changes. Compact reports remain in this directory; full generated captures are written under the ignored `build/`.
 
 ## Limits and next milestone
 

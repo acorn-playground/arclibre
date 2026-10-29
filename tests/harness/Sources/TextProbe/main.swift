@@ -55,7 +55,7 @@ for p in f.pixels { rgba += [UInt8(truncatingIfNeeded:p>>16),UInt8(truncatingIfN
 try Data(rgba).write(to: URL(fileURLWithPath: out+"/frame.rgba"))
 check(writePNG(f,to:URL(fileURLWithPath:out+"/frame.png")),"PNG write")
 for (tag,bytes) in m.stateSections() { try Data(bytes).write(to: URL(fileURLWithPath: out+"/\(tag).bin")) }
-try Data(m.snapshot(createdBy:"Open Archimedes text rendering investigation")).write(to:URL(fileURLWithPath:out+"/state.macarch-state"))
+try Data(m.snapshot(createdBy:"ArcLibre text rendering investigation")).write(to:URL(fileURLWithPath:out+"/state.macarch-state"))
 let font = (0..<1792).map { m.memc.debugRead(0x3700+UInt32($0),space:.logical)! }
 try Data(font).write(to:URL(fileURLWithPath:out+"/soft-font.bin"))
 let trace = (d.trace?.last(4096) ?? []).map { "\($0.ticks) \(String(format:"%08X %08X",$0.pc,$0.instruction)) \($0.registerText)\n" }.joined()

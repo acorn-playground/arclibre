@@ -40,7 +40,7 @@ for i in [1,2,3]:
  assert all(r['exceptions'][n]==0 for n in [1,3,4,5,7]);assert r['line_length']==320
  framehash=[]
  for j,font in enumerate(r['fonts']):
-  metrics=metric_width(font['name'],'Open Archimedes 3.11');assert font['width']==metrics['width'] and font['characters']==20
+  metrics=metric_width(font['name'],'ArcLibre RISC OS 3.1');assert font['width']==metrics['width'] and font['characters']==20
   assert font['cache_base']==0x1e00000 and font['cache_bytes']==65536
   pages=font['cache_physical_pages'];assert len(pages)==len(set(pages))==2 and all(p%32768==0 and p<4*1024*1024 for p in pages)
   b=(probe/f'font-{j}.bin').read_bytes();assert len(b)==320*256

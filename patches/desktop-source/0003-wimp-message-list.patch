@@ -4,7 +4,7 @@
  ; See the License for the specific language governing permissions and
  ; limitations under the License.
  ;
-+; Open Archimedes: preserve the caller message list after task allocation.
++; ArcLibre: preserve the caller message list after task allocation.
 +; See patches/desktop-source/0003-wimp-message-list.patch.
  ; > Sources.Wimp02
  

@@ -125,7 +125,7 @@ The complete gate is `ARCLIBRE_INSTALL_ROM=0 make arclibre-test`; packaging is
 already built:
 
 ```sh
-OPEN_ARCHIMEDES_OUTPUT="$PWD/build/desktop-defaults" python3 tools/build.py --desktop-defaults
+ARCLIBRE_OUTPUT="$PWD/build/desktop-defaults" python3 tools/build.py --desktop-defaults
 python3 tools/build_palette.py
 ARCLIBRE_INSTALL_ROM=0 python3 tools/build_arclibre_rom.py
 python3 tests/run_palette.py

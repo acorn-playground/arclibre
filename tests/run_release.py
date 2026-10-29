@@ -11,7 +11,7 @@ and no step rebuilds the default build/arclibre ROM the gates read.
 import concurrent.futures,os,pathlib,subprocess,sys,time
 REPO=pathlib.Path(__file__).resolve().parents[1];OUT=REPO/'build/release-run';OUT.mkdir(parents=True,exist_ok=True)
 PY=sys.executable
-baseline=dict(os.environ,OPEN_ARCHIMEDES_OUTPUT=str(REPO/'build/desktop-baseline'))
+baseline=dict(os.environ,ARCLIBRE_OUTPUT=str(REPO/'build/desktop-baseline'))
 # desktop-test rebuilds the shared desktop component modules that every other
 # gate's trace check reads, so it runs alone before the lanes start.
 FIRST=('desktop-and-multitask',['make','desktop-test','multitask-test'],baseline)

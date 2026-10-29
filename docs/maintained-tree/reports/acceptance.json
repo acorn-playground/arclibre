@@ -18,5 +18,5 @@
     "pixels/font"
   ],
   "source_tree": "src",
-  "generated_root": "/private/tmp/open-archimedes-clean/open-archimedes/build/rom"
+  "generated_root": "build/rom"
 }

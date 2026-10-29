@@ -1,4 +1,4 @@
-# Open Archimedes ROM: Phase-0 verdict
+# ArcLibre: Phase-0 verdict
 
 25 October 2026. Target: **RISC OS 3.11 behaviour on A440/1 ARM2, then ARM3**. Research and documentation only; no ROM was built or run, and no implementation was changed.
 

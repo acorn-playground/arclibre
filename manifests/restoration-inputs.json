@@ -12,7 +12,7 @@
       "revision": "b32ebc4dd79436ecb942c773759583cd7365b178",
       "upstream_path": "s/ADFS",
       "upstream_sha256": "1e96c9b27230fe112db02541aba7ba5c92423707ee94b40604687373094f0863",
-      "sha256": "f81a98271d4af34f6de0839825d2a98df9e51ddb992f683893b58b93129794c7"
+      "sha256": "7c1a0e7f9fd13128cf4ec047101e6689068dc458a41126db169817880444ee1e"
     },
     {
       "component": "ADFS",
@@ -21,7 +21,7 @@
       "revision": "b32ebc4dd79436ecb942c773759583cd7365b178",
       "upstream_path": "s/Adfs05",
       "upstream_sha256": "7ed1e27c6b7ae63a2f052a7a67e2194d07c41ba254f7179afd351d2c5c7bde6c",
-      "sha256": "9dd17f95a9f7c34f6f7a53fe6a8886ddf12051ddd4bbfa966c9ad800e6a22ca4"
+      "sha256": "09d94f1f2e7bdf4e7d4ca770d87c598676cff81f426ae883ec052f2ac2c70b2e"
     },
     {
       "component": "ADFS",
@@ -30,7 +30,7 @@
       "revision": "b32ebc4dd79436ecb942c773759583cd7365b178",
       "upstream_path": "s/Adfs10",
       "upstream_sha256": "10716f18ca3a8003eba005522445d5c2d5c3fa4807debfbdaa8b5aaf46348acb",
-      "sha256": "d8621c25c352837caea7a35f7264bc3ceb030103e87e12d8c7b5d692dd26c798"
+      "sha256": "a3588dd0116fe1741bfe101eba129bf709a1dcf752682b037c3b8eb1c8c9fa6b"
     },
     {
       "component": "ADFS",
@@ -39,7 +39,7 @@
       "revision": "b32ebc4dd79436ecb942c773759583cd7365b178",
       "upstream_path": "s/Adfs11",
       "upstream_sha256": "730852a0e92872b0757c413d5517b3e2dcc03d0edeb21c3bd65c580e2095c9fc",
-      "sha256": "d965e6ab350dc038551fffa63734c0571e32ffdcc8592e9a80e7244cb74f4ece"
+      "sha256": "4df8cd58b823ac1e5931d73a72243380785aa33e3c28d45f1fda710f489e3acf"
     },
     {
       "component": "ADFS",
@@ -48,7 +48,7 @@
       "revision": "b32ebc4dd79436ecb942c773759583cd7365b178",
       "upstream_path": "s/Adfs13",
       "upstream_sha256": "b6eaa2775ae68c52b29e19910cbe39b009c418936f6dc5b005a45d1c93049b26",
-      "sha256": "0f336b3bfe6f35e435e524865c2ca21b1ab19f9b1c7238ec89867367dd4448f6"
+      "sha256": "af7cb1f9c46ab331fe49ba229b432be46ce9ba9996002130400884400459536e"
     },
     {
       "component": "ADFS",
@@ -57,7 +57,7 @@
       "revision": "b32ebc4dd79436ecb942c773759583cd7365b178",
       "upstream_path": "s/Adfs14",
       "upstream_sha256": "c3ef074eef31fa111175a4857b4bd144053fdf7ff2f9bc26b922b6b7778ddadb",
-      "sha256": "8eb35b1df4dc5f80dc06977d0187497ab8314a411f0826241822f1e4828ea2d4"
+      "sha256": "c0890e526b8543c8839bfb8c25000f9b89c43e58aef190cdb456b8f9b4760d5b"
     },
     {
       "component": "ADFS",
@@ -66,7 +66,7 @@
       "revision": "b32ebc4dd79436ecb942c773759583cd7365b178",
       "upstream_path": "s/Adfs15",
       "upstream_sha256": "5ba1d71ae3bb57049e95950db3775781d094981068a729deadf9c3bb67ad51b5",
-      "sha256": "e8043954e32f61a35908a240a055705dc99f90ecc094ab0bd69cbf19b421eba9"
+      "sha256": "4aa20d3e6959c93b59a98816ef01f3897454eef264d21dae39ccdea7a819fa9b"
     },
     {
       "component": "ADFS",
@@ -75,7 +75,7 @@
       "revision": "b32ebc4dd79436ecb942c773759583cd7365b178",
       "upstream_path": "s/Adfs17",
       "upstream_sha256": "ea3989dac8c1fc2c82ea5bda65d62b895a02dfe46df0fc90d5deb4c67127af2a",
-      "sha256": "95560182e0e97cf6cf1638af95c0a87c57b37fa660980a44b83442695b088848"
+      "sha256": "57f19ecf89db12794956817039d1d1d4af54757331a2ae97435788a5c414c48d"
     },
     {
       "component": "ADFS",
@@ -84,7 +84,7 @@
       "revision": "b32ebc4dd79436ecb942c773759583cd7365b178",
       "upstream_path": "s/Adfs18",
       "upstream_sha256": "2e22dd7937dc5a471ba150fbe9b9117900ba68b72d4ef132c5807a7c9fa7f63a",
-      "sha256": "fa81e36893fef6a6f4e7f88bb6e60321cbd35cd96bd507afdd28b7a54483c318"
+      "sha256": "c094a3d1cfd54124390943d9c8109991669cd9ac74e828726387576cfbd8bd2d"
     },
     {
       "component": "ADFS",
@@ -93,7 +93,7 @@
       "revision": "b32ebc4dd79436ecb942c773759583cd7365b178",
       "upstream_path": "s/Adfs19",
       "upstream_sha256": "02dabb85440f0e5604a39885ba6524f4eda2509fc997132f5ada9b9ab965462c",
-      "sha256": "4d6e11f4c07ada807b195326567b395d8ceedad899edeeacb2a28b0f80882394"
+      "sha256": "a24bf3394d8263b5d25448f72026f5b39910c5378e2811900aa0e2cf4fe6f042"
     },
     {
       "component": "ADFS",
@@ -102,7 +102,7 @@
       "revision": "b32ebc4dd79436ecb942c773759583cd7365b178",
       "upstream_path": "s/Adfs20",
       "upstream_sha256": "630e5f3c229c081664078381f02f7a632fd3ecb6a938a89b54572190b8dd3c22",
-      "sha256": "7af67ccdaf340af6cba09a21445c46f9acb4bbf4757c6fd4bce9bcc32fd8f9c0"
+      "sha256": "fa55fc8982c1bed0605af3e8f236e1fe0d8314883301c27be38682267a91d8bc"
     },
     {
       "component": "ADFS",
@@ -111,7 +111,7 @@
       "revision": "b32ebc4dd79436ecb942c773759583cd7365b178",
       "upstream_path": "s/Adfs50",
       "upstream_sha256": "aadf727048dfa5144a86e54e32da183a8bbe404921cb02ceb4f65edce0464d5f",
-      "sha256": "4bbb79f110538f3e22c0482de7cc8450b43246ae620848464f9e4d3e1d0817be"
+      "sha256": "56cb4867bb472b51ab4f6ad06422c25a0b0047ae552d132aef3aa02449a29e28"
     },
     {
       "component": "ADFS",
@@ -120,7 +120,7 @@
       "revision": "b32ebc4dd79436ecb942c773759583cd7365b178",
       "upstream_path": "s/AdfsMacros",
       "upstream_sha256": "688a43dae8af5e4f7534bc037cfa2943672856f9d37f71a30a0abc657a9a76c6",
-      "sha256": "e0d91730f225d60dc58d07509a4bbc41f69854f8e58d98f8e0020c8cff266fe3"
+      "sha256": "ad680315c5c4b8cc6d3eb06724d8779480c890b88c5726921f049c35c9554543"
     },
     {
       "component": "ADFS",
@@ -129,7 +129,7 @@
       "revision": "b32ebc4dd79436ecb942c773759583cd7365b178",
       "upstream_path": "s/Consts",
       "upstream_sha256": "3a8ac342d2e6f175095cebd1738adcd2a33f97be1ae2aabb3ad85493af284bf1",
-      "sha256": "44f3589b72bc93fd9e411462456e1ad6339114bed55f033fb768ac5e8a6fff1d"
+      "sha256": "b04fa0cf4d7edcb5572944d6221693cd95c68bb53c901e560e72a2d86b279fd1"
     },
     {
       "component": "ADFS",
@@ -138,7 +138,7 @@
       "revision": "b32ebc4dd79436ecb942c773759583cd7365b178",
       "upstream_path": "s/MFormat",
       "upstream_sha256": "d9d290913f96d1c7c20a0e3da055588fcd6b5cd62b2453f6f963af3635a192ac",
-      "sha256": "e73ca66f8b594283522f48ddeedb5838ec3e197a0641f8b5d4dc1f13b8f0157f"
+      "sha256": "93c5a2226adead7e6bec6cfd07d342d33dccc858f563a2efa646d899a9dc9858"
     },
     {
       "component": "ADFS",
@@ -147,7 +147,7 @@
       "revision": "b32ebc4dd79436ecb942c773759583cd7365b178",
       "upstream_path": "s/ModHeader",
       "upstream_sha256": "c086eabee089967f84c697e000aad418a8349b823662ac6600f4e3dcda21e3ab",
-      "sha256": "18b482a575cc61012dda6d748e36911d044c81d6ab79769ff9b188d87dfcc15b"
+      "sha256": "f0a17f24dc075b1d14b341eca57a799c688399b94739629cb17f75727d59490c"
     },
     {
       "component": "FileCore",
@@ -156,7 +156,7 @@
       "revision": "708e0ddb5a077e68690a1719038368860081e785",
       "upstream_path": "s/Commands",
       "upstream_sha256": "caa2023ddb92ff536c15ba16731e0d57cf9d94bb30cf3df0bb87ffd8941b699a",
-      "sha256": "a8b1579a0b9c9ea5d71e2b7b2e845c27f6ead7d1d635d05947c0e7ef23c0c409"
+      "sha256": "6128741d819b1cc4e3d91bcc466085b4b00242e1a7de0d3b8b4239942b14d391"
     },
     {
       "component": "FileCore",
@@ -165,7 +165,7 @@
       "revision": "708e0ddb5a077e68690a1719038368860081e785",
       "upstream_path": "s/FileCore00",
       "upstream_sha256": "5feb77f4cf5cdbcac38b57c0743784f45a54592344ef3db22cb15543f5cdd48c",
-      "sha256": "348d00f18069d4ecdbcd18f6738e4908512ad65dbd4a43ce749b80720789b115"
+      "sha256": "5118f8bb68fbb908d0e2f1814dd790eb82f00378f64068099fbe4458fa497906"
     },
     {
       "component": "FileCore",
@@ -174,7 +174,7 @@
       "revision": "708e0ddb5a077e68690a1719038368860081e785",
       "upstream_path": "s/FileCore15",
       "upstream_sha256": "8410187dbccdeef41360b7ee884eceb5ae5071b86ee0f8e5e780128a413fe3ff",
-      "sha256": "c167833ef9d6e277fa7d7b9c97e9cd6631c13a5f2093e4ebcfa9aa3e7325a4ac"
+      "sha256": "df3d5aca7bb4f89d18df2d7d8d9cdf0bd9585e9ca6275fd3fc02955477ddf47c"
     },
     {
       "component": "FileCore",
@@ -183,7 +183,7 @@
       "revision": "708e0ddb5a077e68690a1719038368860081e785",
       "upstream_path": "s/FileCore20",
       "upstream_sha256": "a828b26b41b25d9f0e969885acd50029b93b6d8dff9ac76a03ee5298bdb2bd41",
-      "sha256": "b7dafd6271d6b0596fa3980563ec19772d62d0aaed12997f69432f9ec1b654f3"
+      "sha256": "de139bd69f6cfbe1b2049d4cac5ccf9ad8bc9ff6acf81cb7a748c35493b77e58"
     },
     {
       "component": "FileCore",
@@ -192,7 +192,7 @@
       "revision": "708e0ddb5a077e68690a1719038368860081e785",
       "upstream_path": "s/FileCore25",
       "upstream_sha256": "d266f8a6278af759986a5a12ac0320882f3b5b95d8a63cb545ce3ddc63cff554",
-      "sha256": "d5e8e4fcfbcbeb84d64fc11bc12e8be649a4a5490357f56306e4e7e2619cd116"
+      "sha256": "a55b95be68c2e733dddb1951928cdc40576c1d514ce6c577c4f056960ada5972"
     },
     {
       "component": "FileCore",
@@ -201,7 +201,7 @@
       "revision": "708e0ddb5a077e68690a1719038368860081e785",
       "upstream_path": "s/FileCore31",
       "upstream_sha256": "b13f32ae171b2d54a119a17463ed56bb804455d37e33ca5d88f944279da943ae",
-      "sha256": "98714be8c89581e19234d4593db7a5d443b44bed9e0183ebb276230a0723387f"
+      "sha256": "68e4a6e92eebe0d9d50da2406478f2d275f1243fd304b1d7811ea69e942b5e60"
     },
     {
       "component": "FileCore",
@@ -210,7 +210,7 @@
       "revision": "708e0ddb5a077e68690a1719038368860081e785",
       "upstream_path": "s/FileCore33",
       "upstream_sha256": "55a8e74660f2d9ee3b5c9f919ad80446074a07f6ac2ff04de667ef32d6e6c95d",
-      "sha256": "21449e7dc0485192b6f07b6936b6f535e572ebc950ef21e1fbf22097419d5810"
+      "sha256": "920654acc98d374dc0ef2a3c5edd27f3e349ec45dea16ea553d4f93c655ba63c"
     },
     {
       "component": "FileCore",
@@ -219,7 +219,7 @@
       "revision": "708e0ddb5a077e68690a1719038368860081e785",
       "upstream_path": "s/FileCore35",
       "upstream_sha256": "24247491d294c4bef3ecd824b834b78388a49bc9126f4d501c0454fccbc596fd",
-      "sha256": "cf41105a6671b612f31296cc0286d0f533de90b0273bb09492649feb77432f72"
+      "sha256": "f555a005dedc6d87d8e6f5583ee7feea19c375474ce5c1131c2507e21e3f0e65"
     },
     {
       "component": "FileCore",
@@ -228,7 +228,7 @@
       "revision": "708e0ddb5a077e68690a1719038368860081e785",
       "upstream_path": "s/FileCore40",
       "upstream_sha256": "b8661406bd0ab5e230d3b66969123b96961def27f004e0413b738530e298a76b",
-      "sha256": "dc975d7e04064e5b8e1f472e8a99acae8b104ecca56f623aa309f2b4021c243a"
+      "sha256": "0c0a317a25d6447f0e311d657be360a74ff9eeca03c995def3a86c8b35b407af"
     },
     {
       "component": "FileCore",
@@ -237,7 +237,7 @@
       "revision": "708e0ddb5a077e68690a1719038368860081e785",
       "upstream_path": "s/FileCore60",
       "upstream_sha256": "c8af055edf5fbd8526f98553d2dd1e61fb70c758ee66a2b4cc3ade62cded7d11",
-      "sha256": "b37f12fcde9614afd50494822e7ee27fbbb82079da208c7d9c9664284e25b8f6"
+      "sha256": "d36981c1e709e007bdde89622170e9f1c3c768c9666b713c1155681fdf35be3c"
     },
     {
       "component": "FileCore",
@@ -246,7 +246,7 @@
       "revision": "708e0ddb5a077e68690a1719038368860081e785",
       "upstream_path": "s/FileCore80",
       "upstream_sha256": "4fbf3ce7f7ca7fec5c995f8ddcc5e8e1960e95cb9f5a177a3b74f0563649c14d",
-      "sha256": "aafd853862e99b678138a19e57b4fdcd3489cba2615ec0855089e739b7c47c63"
+      "sha256": "7de199df2dcd0415fe161872926f0373394c6118f2a07a9fc1d23bcc03a4822e"
     },
     {
       "component": "FileCore",
@@ -255,7 +255,7 @@
       "revision": "708e0ddb5a077e68690a1719038368860081e785",
       "upstream_path": "s/FormSWIs",
       "upstream_sha256": "829e62d0c77b99bcb543a851a8c77e6f553bcc6e79af80d680741dcf6eeecc68",
-      "sha256": "e10f56844bc0411351605b2f983f5fc68f83f6b46f78dc51a60125b4784fd9c6"
+      "sha256": "647ba83b882bbf3e526f91b3c8908ac150616f7b25b796b34bf5aba2666d7084"
     },
     {
       "component": "FileCore",
@@ -264,7 +264,7 @@
       "revision": "708e0ddb5a077e68690a1719038368860081e785",
       "upstream_path": "s/FormSrvcs",
       "upstream_sha256": "d9f0fce71507a250111fa967cf4f329b262f5535391a8174fe1b03105fda6b94",
-      "sha256": "0aacc5ec82371db5eb99d63322ee4db4f71cd3377fb343f9314900af4ce4c374"
+      "sha256": "32b80add503417b396d4a7c5f0f058267db7a20c2004abb9b4c2643258a146b0"
     },
     {
       "component": "FileCore",
@@ -273,7 +273,7 @@
       "revision": "708e0ddb5a077e68690a1719038368860081e785",
       "upstream_path": "s/GenSWIs",
       "upstream_sha256": "ff6b39bda989b13dea87720de5effc89ffb644052c85cef6715b661c7e05dd2b",
-      "sha256": "a0a9c8fc816e115431d523a0390c50f184e9937bb85370c997e7c714481861c5"
+      "sha256": "3685f816a05e6aa9759f6aceed9f6bbe13d02265e64fad00d5f4cd3b9476b410"
     },
     {
       "component": "FileCore",
@@ -282,7 +282,7 @@
       "revision": "708e0ddb5a077e68690a1719038368860081e785",
       "upstream_path": "s/InitDieSvc",
       "upstream_sha256": "250b7f14cc71d59a7ba1b08bfa7e95a33e7083483adfbbf4785ba2b277fcf697",
-      "sha256": "5a9de0335fde3a2a8bf7b5a025dee743d69de7f7065dc7c4960abfa578adb60c"
+      "sha256": "c7eee9cc2f7e5c3cd8f3dc8222eb7057661658411148915b20946a120ce16f03"
     },
     {
       "component": "FileCore",
@@ -291,7 +291,7 @@
       "revision": "708e0ddb5a077e68690a1719038368860081e785",
       "upstream_path": "s/MyMacros",
       "upstream_sha256": "adf879e13d74dfbafb542c9f52e118284c0c1575a2b17e385b13befdef61fd9e",
-      "sha256": "334909b0cc8a0c09938f22c33350be6fc3f95631b143e7309af92cfeef9b51ea"
+      "sha256": "c5465f1c3147c9809bb52707750f3e0427995e00d4a424cc76fbc64194b9c99a"
     },
     {
       "component": "FileSwitch",
@@ -300,7 +300,7 @@
       "revision": "93c7e2e094c314940237f6256e77edae2486419b",
       "upstream_path": "hdr/LowFSI",
       "upstream_sha256": "130f62483073ff5f307dc29f357202eec7331c4a2c88fc9f1eea0edd7c757116",
-      "sha256": "0a080dc3411369c032bdeb8722b51bd6bda0cba5f88c5e9e16d2c22459f4d316"
+      "sha256": "e91371652369cf4ee14b60d16aefff6702e1df247732a1750aaa205b564c5a6a"
     },
     {
       "component": "FileSwitch",
@@ -309,7 +309,7 @@
       "revision": "93c7e2e094c314940237f6256e77edae2486419b",
       "upstream_path": "s/Canonical",
       "upstream_sha256": "d740c64f8cb44e711c46b61d333e261506e250835827c69255a66ab9837d2edb",
-      "sha256": "4a0b680707f8aebb8ff126267109ff334ac1e2d0e6ade5171b9af7e8cb09e63c"
+      "sha256": "ff7c91d9eabefeedc8e06e5a63b00110c096d8fb4b353ae3b7c891ac3e59d8b5"
     },
     {
       "component": "FileSwitch",
@@ -318,7 +318,7 @@
       "revision": "93c7e2e094c314940237f6256e77edae2486419b",
       "upstream_path": "s/CtrlUtils",
       "upstream_sha256": "859e447215dc501f73205e94d6df1d7cd71e499131dff5bd62b7780b38e11e7e",
-      "sha256": "16f9e6d11995181676934c8e3cc995edd852138f6cfd11b66cbbf87fa421ed83"
+      "sha256": "85a543d12fe942f49f73bc179e9c5e44b6037e5b7f4303078c92639d98aa09c7"
     },
     {
       "component": "FileSwitch",
@@ -327,7 +327,7 @@
       "revision": "93c7e2e094c314940237f6256e77edae2486419b",
       "upstream_path": "s/DirStore",
       "upstream_sha256": "6eda9041072409204c931c60f6e7186fe191cf3dc4bffbcc3734526f4027926f",
-      "sha256": "9193e93ece6c4686506a0abaa7e40c28bea9f3e61b075cfef4eaa8dab3977849"
+      "sha256": "28e68608cc8a97f9af6208323fa91d3e9f82dffe15ed27dbc009603f441abcc4"
     },
     {
       "component": "FileSwitch",
@@ -336,7 +336,7 @@
       "revision": "93c7e2e094c314940237f6256e77edae2486419b",
       "upstream_path": "s/Ensure",
       "upstream_sha256": "0f60108f9cc1d9502073587105d211337c4859be83a0e6567f1fa6903fdcaf1b",
-      "sha256": "7cfc923189e3e992b2b6f4158b2059451a5c5447361c521cf40698409df87414"
+      "sha256": "534f1e9875ddf95db2e79d1cc61b41b9313457c10108a3cbca23ac8114bdcdd7"
     },
     {
       "component": "FileSwitch",
@@ -345,7 +345,7 @@
       "revision": "93c7e2e094c314940237f6256e77edae2486419b",
       "upstream_path": "s/FSCommands",
       "upstream_sha256": "23c61b041727d4860d789d421d72994ca5fe2439f61082163fe00af9ae2e1afa",
-      "sha256": "3e310b00e668796577c31422fb465822777c870045248b799883fbd2c2783c12"
+      "sha256": "cd0c50e10c264eabcb0c9de27e9b6dd0f6ee97430848b6a02cb7368fed55de7e"
     },
     {
       "component": "FileSwitch",
@@ -354,7 +354,7 @@
       "revision": "93c7e2e094c314940237f6256e77edae2486419b",
       "upstream_path": "s/FSCommon",
       "upstream_sha256": "1f9bbc17998a585b8f8fd34088a818279039496c53e37c4c65bde210066ee70c",
-      "sha256": "e32b2e953e8f9ea46a74f4af9ed9cf1c1235bc89706e165b7d61cfa1254d2e91"
+      "sha256": "9b819761f4288a56b148785658cbe4746b69c4fa7258a6665b3e89b89835f4b5"
     },
     {
       "component": "FileSwitch",
@@ -363,7 +363,7 @@
       "revision": "93c7e2e094c314940237f6256e77edae2486419b",
       "upstream_path": "s/FSControl",
       "upstream_sha256": "d69e8659ae753101df1439ee8e3241c8228829e6353d8236d0e6932fc0d875b7",
-      "sha256": "811fed4ad666daa68dbb0c67717685fae672ebc6cd3e0df93e64f4f409e35c7a"
+      "sha256": "ca7b75ffac80076add47f01858bb7708f01916811cbdeb583c3c4cd7e5ca984b"
     },
     {
       "component": "FileSwitch",
@@ -372,7 +372,7 @@
       "revision": "93c7e2e094c314940237f6256e77edae2486419b",
       "upstream_path": "s/FSCtrl2",
       "upstream_sha256": "eea57be4ad1bc7c592d705e0481663344391b01db17213ef74c04224164142ae",
-      "sha256": "7df47052a167b2864086850d14038713a9605e004b9e102e3ec04b38230c88e4"
+      "sha256": "4855b587c1c70a490a5a29b7fdf3b696c8838358f5b7759326baf347ce72700f"
     },
     {
       "component": "FileSwitch",
@@ -381,7 +381,7 @@
       "revision": "93c7e2e094c314940237f6256e77edae2486419b",
       "upstream_path": "s/FSErrors",
       "upstream_sha256": "6d42a4c49b4168eebffe2f09a2a3c46a7a99f94b982d051e7f9b09084728f08f",
-      "sha256": "5322a664324f401f00f03f1f517532739d248df016f60f9daacd8096aec4782e"
+      "sha256": "0f9dbabc85c9f9cff32b49b1b5cfd6dfb81fc79ac7144c8cfa449704e0cb2911"
     },
     {
       "component": "FileSwitch",
@@ -390,7 +390,7 @@
       "revision": "93c7e2e094c314940237f6256e77edae2486419b",
       "upstream_path": "s/FSPath",
       "upstream_sha256": "73a6e579dbbc71a53f76d1c65f3d457b55e7c9e6ffd9c6a9f453ad44f5ca0039",
-      "sha256": "b74250a7dd7b6800bf8e969a2dd7c37f13d5cb36d719ea18298c7603eecd9abc"
+      "sha256": "1e8431ac33356d63f61e74bfc6873bde7173c380b3f3c52eae088c3cb9404894"
     },
     {
       "component": "FileSwitch",
@@ -399,7 +399,7 @@
       "revision": "93c7e2e094c314940237f6256e77edae2486419b",
       "upstream_path": "s/FSShared",
       "upstream_sha256": "272ffa365bf4b2faa1607a24dc1ca6b8e7b6f9e94073499009161ad46be945be",
-      "sha256": "0d3ad35353fb79ccfcad82a94e1723c676db6dfd0dbcb7dda23738b3358e9e53"
+      "sha256": "008da0d913a56f6091018015b72635f039d8c0b9ac9b61ff9bc1ba40d86a7c38"
     },
     {
       "component": "FileSwitch",
@@ -408,7 +408,7 @@
       "revision": "93c7e2e094c314940237f6256e77edae2486419b",
       "upstream_path": "s/FSUtils",
       "upstream_sha256": "47d5d588e38410c90536ff2ce7eef5a8785e690e629619439a28ae7d85f40435",
-      "sha256": "f6482bcf2cbf49fdddb142393ccf2bc9f28025abbc73139f3b023170c31fb853"
+      "sha256": "becdf03fc0dd0d4ca73d85b3464a9765dd1faf690d6ea298e40afeaa4c4df200"
     },
     {
       "component": "FileSwitch",
@@ -417,7 +417,7 @@
       "revision": "93c7e2e094c314940237f6256e77edae2486419b",
       "upstream_path": "s/FSUtils2",
       "upstream_sha256": "1e7c546c3e161152520f7e678f0462211abf9bec3f8e627b50da4d0b72bd7083",
-      "sha256": "f477b4493233bc5de41a60d6724f49a93ab16ed06e9675e363a5acdd16b04af6"
+      "sha256": "4c6474080881c208c5a504e916121a225321b7371c7a2f74ab125ecd26f1b346"
     },
     {
       "component": "FileSwitch",
@@ -426,7 +426,7 @@
       "revision": "93c7e2e094c314940237f6256e77edae2486419b",
       "upstream_path": "s/FSUtils3",
       "upstream_sha256": "4727b62c0b66d3c8fc8e296a50401d8835904743c4db9455cac174e7a2158e2f",
-      "sha256": "518884679223b112d19d19e437221dd365f7c7e33f97896e0d32eab838a943e4"
+      "sha256": "37acd9a665f0662e398b55eb6393161bf4e0ab8669cca4455fcaa9fa54a3b819"
     },
     {
       "component": "FileSwitch",
@@ -435,7 +435,7 @@
       "revision": "93c7e2e094c314940237f6256e77edae2486419b",
       "upstream_path": "s/FileSwBody",
       "upstream_sha256": "52507de3a76e15d4d7ee97f7207a453ddaf64e78c02bae1067f5902c914a229c",
-      "sha256": "7d20b769103f5b4c6bd825b0e6b419805b4a9cbdfc94de4e408138706b3637bb"
+      "sha256": "841deb25412750078ecfe38c2d765792985f112a1e0cb737d58a3d2ed551e6d6"
     },
     {
       "component": "FileSwitch",
@@ -444,7 +444,7 @@
       "revision": "93c7e2e094c314940237f6256e77edae2486419b",
       "upstream_path": "s/FileSwHdr",
       "upstream_sha256": "5b13950d986d9c3d28983d8592e3e511ad53d8564cb5dec6d94af96ca1aa8346",
-      "sha256": "a25877e8fac379ad20b669691da9b17e8e878fa9261cb5f05cd945f205d9f2c0"
+      "sha256": "48abd83bccd8e8d54ce074287ce8fc8d1daf7b082035f1d3b7512d6ded414e91"
     },
     {
       "component": "FileSwitch",
@@ -453,7 +453,7 @@
       "revision": "93c7e2e094c314940237f6256e77edae2486419b",
       "upstream_path": "s/FileTypes",
       "upstream_sha256": "015f21ff4108b69141abd182bd25f4171cb7c7bb8834adfa1a5f43382fb53bc8",
-      "sha256": "33515f2158df0c8e3c60fd79e4f4bda69caf64e02adaea5ad9bb93b2a1536da9"
+      "sha256": "f0a875064a5a37fe13e0a576800cc1b0e9d7b3924e27f2f295f62f4fc927b15e"
     },
     {
       "component": "FileSwitch",
@@ -462,7 +462,7 @@
       "revision": "93c7e2e094c314940237f6256e77edae2486419b",
       "upstream_path": "s/KernelFSW",
       "upstream_sha256": "ed81b83bf101c8c657eaee24fbe139404c3105a11a523888223726e6a5dfbb8e",
-      "sha256": "2b7abbc72da4bef54ffa22dc7c00492531382485284a646f96a456a5c835112c"
+      "sha256": "d120c59489f507f7636497a7699812be81ddec323550ca1a70b3e54ec7999693"
     },
     {
       "component": "FileSwitch",
@@ -471,7 +471,7 @@
       "revision": "93c7e2e094c314940237f6256e77edae2486419b",
       "upstream_path": "s/LowLevel",
       "upstream_sha256": "f8fc71f73fa2acf469a72d9af2974fbb3c38be1edccc0b880e056595c5aed24f",
-      "sha256": "ea02245dc0375ec987de677a0fc0e4ebd713ef5cea97af687aef67a8e6c3f8a4"
+      "sha256": "1b6ee2b8856ef923319d2f6f893ab815aa18013fb2dedb6546f9cf8812fbba96"
     },
     {
       "component": "FileSwitch",
@@ -480,7 +480,7 @@
       "revision": "93c7e2e094c314940237f6256e77edae2486419b",
       "upstream_path": "s/MsgsStuff",
       "upstream_sha256": "dafee80383fa3bd31686ba5539e2cfa9f634019a28604640b7fa49a34d70061d",
-      "sha256": "99a2fb08bdd2ff94da1a3e8fd5f51f7f4dadf0fd42671e1611cdccdf92a3620d"
+      "sha256": "44427cad0345b3181f903ee13a052a83b3575d3ebc04c2b706920ec1c3753756"
     },
     {
       "component": "FileSwitch",
@@ -489,7 +489,7 @@
       "revision": "93c7e2e094c314940237f6256e77edae2486419b",
       "upstream_path": "s/OSBGetBPut",
       "upstream_sha256": "f5d360c1ece0b4d47ff712817d8d69a795ae12ae8b75f63ad1f3977f26670d31",
-      "sha256": "94e594a3a3b857255e3bcc214e1668f93fe12dea1ab12b68c623fb704dba1b88"
+      "sha256": "65d1f5e76a6a48a9646bfbd2309180c6f7bfc21ecdeabd21129783badb953442"
     },
     {
       "component": "FileSwitch",
@@ -498,7 +498,7 @@
       "revision": "93c7e2e094c314940237f6256e77edae2486419b",
       "upstream_path": "s/OSFile",
       "upstream_sha256": "63548bd3e5fcd3a694b1cdab51a244ab9f7d4930561cf78058fe2ed249759a15",
-      "sha256": "4c2d05090a3e8e8a354174c106404656bd4f1945b476bfc80e5bfad1662813ec"
+      "sha256": "14c97ac6473803f54f6fb1c03c67c254b16c60a3564f264d3f7b6a9dfb1b9d67"
     },
     {
       "component": "FileSwitch",
@@ -507,7 +507,7 @@
       "revision": "93c7e2e094c314940237f6256e77edae2486419b",
       "upstream_path": "s/OSFind",
       "upstream_sha256": "2c7ebbd2eb0aedefe25492e8d28b508d18a54f2c9c212a3c068c3dafc1b53d14",
-      "sha256": "fa8b26debf47db6130ba66126e636d4a44263a9804ca44b5514581650e5c9c0b"
+      "sha256": "c3851a14d17d63346d00526e5b080adcaaf9c9ac4249f91d52cc9a25d5a6e279"
     },
     {
       "component": "FileSwitch",
@@ -516,7 +516,7 @@
       "revision": "93c7e2e094c314940237f6256e77edae2486419b",
       "upstream_path": "s/OSGBPB",
       "upstream_sha256": "3751da08b548c6d8369745b3391a9fb83adf3dab656f144c17e5e40b34e9fd82",
-      "sha256": "f7bcca9ee7e35a6fc4c26b293b97443ba8895e00115adbbb9e6dd305d5c2796c"
+      "sha256": "609030d978b7c6ed87e8ed20f1368cefbde1b9e881d64e7470ecea4566d1e040"
     },
     {
       "component": "FileSwitch",
@@ -525,7 +525,7 @@
       "revision": "93c7e2e094c314940237f6256e77edae2486419b",
       "upstream_path": "s/StreamBits",
       "upstream_sha256": "bb66d7b7e8d393e06dbfb616088f8ab709264d737dcdb34f1584723eb9ad7a34",
-      "sha256": "9ce2cc07624b1acc39d7dec784fed479978a25d677ae676eb69103e9eed1cb00"
+      "sha256": "9c77792d1aa8d1481de5f9548b4fecc5c18161f61e64b7fe1a1b93c22fe9aea8"
     },
     {
       "component": "FileSwitch",
@@ -534,7 +534,7 @@
       "revision": "93c7e2e094c314940237f6256e77edae2486419b",
       "upstream_path": "s/SysVars",
       "upstream_sha256": "421cad4564a3c4f1f6d63b8ad3088635937112d7b6bfdacfb20bc6949e9a20c5",
-      "sha256": "3b2cbac3a810eb40dd31c608757932896328c88b2fdc003ec7fdd4b3025e5fa8"
+      "sha256": "0e03a3b3bd42a317ff972e1bd372330369b7b1ab4657980c16f006482efe3b7b"
     },
     {
       "component": "FileSwitch",
@@ -543,7 +543,7 @@
       "revision": "93c7e2e094c314940237f6256e77edae2486419b",
       "upstream_path": "s/TopPath",
       "upstream_sha256": "c6ee3f8feac4196e03bc09e7ee02641fae6989ae477dd0c5216a512f06503577",
-      "sha256": "bb46bfa3bf4353629dd818405c690fb0b7bf438658bb23371c50d0043117bdc5"
+      "sha256": "ee6b69741380befdccb747026df1f7e9d029cd9c7a3f2b23f821d153ee45033a"
     },
     {
       "component": "HdrSrc",
@@ -552,7 +552,7 @@
       "revision": "c9113ab79d9ca2ccc49a9b7518911132ca9ffa1b",
       "upstream_path": "hdr/CPU/Generic26",
       "upstream_sha256": "9567d90f75ad960a200a5a4351e8dbb60aa246fab5557d0e38b783edf2609b13",
-      "sha256": "0ae0cd2fd3a1d8b08805a13d846860ba958a19725e029faa0911fa44c2b26277"
+      "sha256": "23855b7b6242cf0538ca8c587da10969001193245037bffc45845ceeea9c4253"
     },
     {
       "component": "HdrSrc",
@@ -561,7 +561,7 @@
       "revision": "c9113ab79d9ca2ccc49a9b7518911132ca9ffa1b",
       "upstream_path": "hdr/Machine/A440",
       "upstream_sha256": "26e3c70dde24a0ad5de009569d5efbddbf81b86a132a27ae40d2d61918077b83",
-      "sha256": "b0dfc85f7339e38325317b794f95f3183520063c82dc70ead9f17b023c1404dd"
+      "sha256": "20bdec4cc869c1ffd4ac3f1ef9850d7b966c3a0a4d81a7888a8ed03758376643"
     },
     {
       "component": "HdrSrc",
@@ -570,7 +570,7 @@
       "revision": "c9113ab79d9ca2ccc49a9b7518911132ca9ffa1b",
       "upstream_path": "hdr/Proc",
       "upstream_sha256": "ebd177dc682713b9ecac37130a70476ed31648d8d2ee92f7c529e8f5d936e9fd",
-      "sha256": "5868798ba88627a88eb1197dc6c7322e26e1886b8a936b2d4f096a40108115e9"
+      "sha256": "9f328a951b5f5568698f076b3853b790d7d4f4c00581dc8209e6a78cf83558d5"
     },
     {
       "component": "IntKey",
@@ -579,7 +579,7 @@
       "revision": "e2ab8c65d06e832e7444f73e1ff2bf3a40022583",
       "upstream_path": "Source/IntKeyBody",
       "upstream_sha256": "13c33b6957dd7306c3f6db0faa8909e122c78fb1f4371a110c162db9256ef51d",
-      "sha256": "199e19e97092fcfd3d1b0386fa438e5575265d4dac9fb52b68336d56bf7de269"
+      "sha256": "26245285cf69f95a717a5660bc83cc9cc3844402d4572cc5a171fa3f98ee6fa0"
     },
     {
       "component": "IntKey",
@@ -588,7 +588,7 @@
       "revision": "e2ab8c65d06e832e7444f73e1ff2bf3a40022583",
       "upstream_path": "UK/Source/IntKeyMod",
       "upstream_sha256": "dde90aa42f388ccd728f04882ee696f058733e141cabe567a4e361fce9d45eec",
-      "sha256": "904361808f706eb12814765c2790a7374180986243348ff4ec3d8b16786e8fc8"
+      "sha256": "303987f2949da8544e7eae727bfc19592f0fbd4b2590d009266b3f1c0d93063a"
     },
     {
       "component": "Inter",
@@ -597,7 +597,7 @@
       "revision": "e90aa354462e1d0f8826e3f19fc82b31f22c49d3",
       "upstream_path": "IntHelpSrc",
       "upstream_sha256": "451273cf2d55a2af39dd5a5cf92a54898997d349628265228e301a0f9d5b48aa",
-      "sha256": "4ea87dd0f3a7a1bb89275e4a855fb6f489761638a000acc14d6faa54d05ce9be"
+      "sha256": "04626324cccef2f062b68b6e0fdf1978bba413caae353536d1fb4fbbe599cdd9"
     },
     {
       "component": "Inter",
@@ -606,7 +606,7 @@
       "revision": "e90aa354462e1d0f8826e3f19fc82b31f22c49d3",
       "upstream_path": "s/InterBody",
       "upstream_sha256": "98d620b6dc7284f26ffa0fb1e7eedb89f5bdddf5553b088c0e2ae004cdeaa528",
-      "sha256": "d28a6a3bbb9b244ba162fb3fec5e579b71705d1e92f8cbb409d3b51f48473a08"
+      "sha256": "abac631472dff819878d90a20ff8d13bd518354a62be4dfb2b02c1e152ddd7cf"
     },
     {
       "component": "Kernel",
@@ -615,7 +615,7 @@
       "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
       "upstream_path": "TestSrc/MEMC1",
       "upstream_sha256": "24c8dc7b4450554f335634440b706d14f1ea38d25eeeef79735c4f3cf654ec1f",
-      "sha256": "8062399373afc37c546b0defc9f5931acd793c5cfc437db7c842773e3cd39296"
+      "sha256": "c63fd1d474c5a71dd471a2d435c5685816bda600b8680eaf09237a77a34d73a9"
     },
     {
       "component": "Kernel",
@@ -624,7 +624,7 @@
       "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
       "upstream_path": "s/ARM600",
       "upstream_sha256": "593aea394e1d6189af9898bc18d0160bd738635da62d3f6da142950d6fc0da9f",
-      "sha256": "9e77f226b2df43cc49f95991f333258c60cea78d8fbfd1288cdf8d03e3b001c4"
+      "sha256": "f9582b8c02c995ce4772c44791d85b012f55359181b2f9800f152314e17191fe"
     },
     {
       "component": "Kernel",
@@ -633,7 +633,7 @@
       "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
       "upstream_path": "s/Arthur2",
       "upstream_sha256": "accddba99420347c9ce3025ee1646464301bf967f90f30c855a9229029e2a2c2",
-      "sha256": "3c2ee34ce07ad2c91a9b1d3a7d9f2e905a295bf4257dbb8053eb2cbeab560b21"
+      "sha256": "5bbfaff6d076dd419934b1c1c6ca04311770b18167c79d2c928b83b417af214a"
     },
     {
       "component": "Kernel",
@@ -642,7 +642,7 @@
       "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
       "upstream_path": "s/Arthur3",
       "upstream_sha256": "80003b3300b0bdab71d2ecd44d12c5c25245d3980dac7f6360aa26bb0295605a",
-      "sha256": "ab64d3bf4fd9918dca2a1f0324e7804d451dbe340232ec5776adfb762b53da99"
+      "sha256": "a656d33c65ad92f87355fb319876b1f46a9e32d12c8fdbdb4a097883d770e576"
     },
     {
       "component": "Kernel",
@@ -651,7 +651,7 @@
       "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
       "upstream_path": "s/ArthurSWIs",
       "upstream_sha256": "1e17f15075d856a8dd079bc60b17d854c5245c0254f36d7d005d84ad89751918",
-      "sha256": "8a719204f6674717590f0fe6362ca46b48c9b1fdbd2769bcbbb561af57e94341"
+      "sha256": "edbf99c5b4e85ace53e9c668afb143b873f08b4f9b11a441626b70995428610e"
     },
     {
       "component": "Kernel",
@@ -660,7 +660,7 @@
       "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
       "upstream_path": "s/ChangeDyn",
       "upstream_sha256": "5d49efb2f0b0f0f3fd54573257789d589c834bd25c28dcfb0ff78b82e2778f38",
-      "sha256": "dcf8967ee4b019927c661dc48b15bbc06edc48212720f1484f108eaa5c017c31"
+      "sha256": "3872716e14d44da1464bc07d4cd1560a937746fd3514f4c9f24c78fde33a21e8"
     },
     {
       "component": "Kernel",
@@ -669,7 +669,7 @@
       "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
       "upstream_path": "s/ExtraSWIs",
       "upstream_sha256": "c1afc2e9ae2ce47c217a530a26cf62a312bc9ce36c676fc040f4ab6d953b5ad8",
-      "sha256": "2ed6c0e37a32c1a565a33a132a3a44d6c71aeb0e8741725a69ad423020ddd9de"
+      "sha256": "2d0909214a7a577bd8994a980de314ac776926ccd6dd3a5b4a1a1b0b45d57411"
     },
     {
       "component": "Kernel",
@@ -678,7 +678,7 @@
       "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
       "upstream_path": "s/GetAll",
       "upstream_sha256": "9f6c991bb6476716c191f11fd49ac3b5c8e4b168f99d971132e535ba36c4b522",
-      "sha256": "82fd8aab461029e542798daf30a8db1c749f9cf3651f78820a32c87b060bb6d8"
+      "sha256": "0aa69a0e3c9bf376d68ac7e86a4ce635f1b1044c667dc0798b5a50098062518a"
     },
     {
       "component": "Kernel",
@@ -687,7 +687,7 @@
       "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
       "upstream_path": "s/HeapMan",
       "upstream_sha256": "e7ca154a54f87b63862032fe26d6e97d283b993e4c07175440a650a1fc7c03bb",
-      "sha256": "78792e6caa378b95565776d636f017b1b1c1da9c0ca5a722b50a75e50f321731"
+      "sha256": "16f57b6c212a0166b118ca779f2785e067cb1091c0c9f206d4f44cf41ce1ff30"
     },
     {
       "component": "Kernel",
@@ -696,7 +696,7 @@
       "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
       "upstream_path": "s/HeapSort",
       "upstream_sha256": "4fc79e5127131a3efd3116c2a477e58c68547ce611c83e787b3cd94bf7b4939a",
-      "sha256": "e8ce8595aa8f649fa677a420e96f43e0e807ca29edf26e7d3e34ba2d8b54817f"
+      "sha256": "1bb70e92c558c44723991e8cee9ea04f4e92aa073fd6ce6312f9ec0a49ebf62c"
     },
     {
       "component": "Kernel",
@@ -705,7 +705,7 @@
       "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
       "upstream_path": "s/KbdResA1",
       "upstream_sha256": "b9435b4829db0fc3dcace90b02fbf3cbd887f51dfbd5bf6e77ac12df8e81837c",
-      "sha256": "50ba46f7a9b4e069f0f8852a786ce4f4dab547b9113775593c58c28de9bc2c4e"
+      "sha256": "5238cf215da084488e1186b0fa776edd3a857ebfab939cfed0617c07f26fb2f8"
     },
     {
       "component": "Kernel",
@@ -714,7 +714,7 @@
       "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
       "upstream_path": "s/Kernel",
       "upstream_sha256": "2f4f775f029fd3ced1b8b786f019de297770dbcc50050ed7cba6a4752cd8aa32",
-      "sha256": "4b1b2df549c2afe5140646757a1007a11bafa291fedee139e529721ebd9c7a6a"
+      "sha256": "bccf39f0bca6f2f745ae87ed1f1fa7a69c88982528095c6a177bb79f3db840b2"
     },
     {
       "component": "Kernel",
@@ -723,7 +723,7 @@
       "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
       "upstream_path": "s/MEMC1",
       "upstream_sha256": "50095191c695c266503b2810bc984e7860fb33e4dfc21a679505a2cad484574f",
-      "sha256": "7ff03524268435dfb96825dfc50253d8ceb9646db587fdabf8feb3ff8a13ae47"
+      "sha256": "6b6bfc7d84cfaaa82c970ff8d694dbf8f27d339109e2f738f642fb43bebb841f"
     },
     {
       "component": "Kernel",
@@ -732,7 +732,7 @@
       "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
       "upstream_path": "s/MEMC2",
       "upstream_sha256": "4d19cb2e6791c1d7de2810b80d0527bf485647e7f8f39623f530bf58ba2bb427",
-      "sha256": "2270c2a349d10a0da4c06d23361562019250f385869f3eb9c73c8bd773f0f187"
+      "sha256": "733753f84c6ddd3d4e341da7616f14b5a5a55435a70ee6e317b5687531794673"
     },
     {
       "component": "Kernel",
@@ -741,7 +741,7 @@
       "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
       "upstream_path": "s/MemInfo",
       "upstream_sha256": "321317eaf765c8a2c66484c132621d7afb1a4027f04a9466d93f7445fc8aab1c",
-      "sha256": "858495fcc6f825baf1440981708b6cd2eb40e0984815e43d0901da154c931179"
+      "sha256": "8945125816efa043238f9ff1c45446d17c4f0d4472cf03c295e7f35e91ef052f"
     },
     {
       "component": "Kernel",
@@ -750,7 +750,7 @@
       "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
       "upstream_path": "s/Middle",
       "upstream_sha256": "1f9b508c0622191582a12e23bea67722ab0f671471aae6b95ac894a562be1aea",
-      "sha256": "9f16f1b1a99d4889360b350997ce1df94bee4bc3c74fa60dd5dec53d4c36c266"
+      "sha256": "128ee1373d46cfbb99278089bd0b55d9d085aa64f5b558e0e8031d24eba9a463"
     },
     {
       "component": "Kernel",
@@ -759,7 +759,7 @@
       "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
       "upstream_path": "s/ModHand",
       "upstream_sha256": "16521bac6bd03038d3c22c6573dc364de51f3c3e09af54772b040324842390e1",
-      "sha256": "2950a93282187ef91aeb5e8376abe746332ae0607a83d4e3a2db2f87179f321d"
+      "sha256": "9302e5460e740ff8abcce2b99ef10465c5110f06f56d066241acd00d174f0da3"
     },
     {
       "component": "Kernel",
@@ -768,7 +768,7 @@
       "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
       "upstream_path": "s/MoreComms",
       "upstream_sha256": "a0127dca418edb20fedd483af116e9b4247b58ec0b6133a3a11cd6530b8ffd64",
-      "sha256": "14adf5150a37def5610d084fa18fa6d1d4d280db8ea22f137dce98873792ae1d"
+      "sha256": "2e2e7d5bc10d4e6a09d5c475c689ae609a26a3f10a44551b74b3b97de1b6cb1e"
     },
     {
       "component": "Kernel",
@@ -777,7 +777,7 @@
       "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
       "upstream_path": "s/MoreSWIs",
       "upstream_sha256": "d4c9d44d2d4f266fc6b4bd87bb50e569fb0e1cb3d71a78a8034387db17058be0",
-      "sha256": "d1ebc09ffcef4e6b7c37cfd2b2dff5d25279eadd380bb83d41d72904f3f9d799"
+      "sha256": "fd865ea1ca405ebf2d69b61eae74b6cdaae9853aea35c6ca0a328bf0dfe2b35c"
     },
     {
       "component": "Kernel",
@@ -786,7 +786,7 @@
       "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
       "upstream_path": "s/MsgCode",
       "upstream_sha256": "c5a33f80be88cf77921d5b9d481470d97d0796428edf72749cc297f0319367a8",
-      "sha256": "ad714a66503ea2f23a843e4655031ebbc324bf28c405ebc280d2f8b5c3e6b6dc"
+      "sha256": "cd2aee3b87040ace5879e13a435a1fc5309c3d6beb14ae3170ae6a480488ca1a"
     },
     {
       "component": "Kernel",
@@ -795,7 +795,7 @@
       "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
       "upstream_path": "s/NewIRQs",
       "upstream_sha256": "797567716b0a43bab1b255b3c432b7bd6694a2186a7293345db8457a6c469ad0",
-      "sha256": "4aca02ff7c6992b306a0546de0955bb438a2945a2c19d02a2a9474a12bd14635"
+      "sha256": "b5f5795d730f118f5121dd63a7fe32185d303eebad0e8b3a31ae63353384acfd"
     },
     {
       "component": "Kernel",
@@ -804,7 +804,7 @@
       "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
       "upstream_path": "s/NewReset",
       "upstream_sha256": "7938662542c8ace007a02b981470a3399b06e7f49b55778b39e0c69aaab55c40",
-      "sha256": "0b9c352d9ca9e2d679bff165701b95cadaa9663a9c0852784fc0687352fdd7f5"
+      "sha256": "58f8e934dde15b84cca125d317d8d746d17ce0fce7f267862d92418af2f71f25"
     },
     {
       "component": "Kernel",
@@ -813,7 +813,7 @@
       "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
       "upstream_path": "s/Oscli",
       "upstream_sha256": "33210c4e7a46832fa83d32cb4d690e661f1e95b0fa0ba6c27d17f64319ed3508",
-      "sha256": "87f9b095b2ba758b654c5fd20cfd463086ec051fb13b4d84b0aae401f7dc9ff5"
+      "sha256": "b3863827277bc6820e94d75c4c68380ff48bfccc3250d9d3d063a19849d26068"
     },
     {
       "component": "Kernel",
@@ -822,7 +822,7 @@
       "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
       "upstream_path": "s/PMF/Buffer",
       "upstream_sha256": "78a80a9ec6bb749dde18325efdd99a779ba0adc4c5bc770c85bdca7a66e698e4",
-      "sha256": "d94477ac66c97b983ea512803776de85d928ce2835c72d730e0739e9ed0ead7e"
+      "sha256": "147fdea9cc878e4960993b8dab465c11a1ea3ea3144590c480e7deeeeed67a83"
     },
     {
       "component": "Kernel",
@@ -840,7 +840,7 @@
       "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
       "upstream_path": "s/PMF/i2cutils",
       "upstream_sha256": "5047bb02f43a7d0300fe0d650a5327f34063195d03d62e7bc8cc1d8c45d8a4f6",
-      "sha256": "2b199731e5e12671f04672805fe717472cb8edb3ae617c89d2b4ddd17c03670a"
+      "sha256": "61c40e139f4c15d64f01a5294a0474ace0c2a65a997c99745bda3c6723c60a18"
     },
     {
       "component": "Kernel",
@@ -849,7 +849,7 @@
       "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
       "upstream_path": "s/PMF/key",
       "upstream_sha256": "550ff3f0a6432975dc860f53b1f5b6ce5baf704b39b80df9d29a02d60635facb",
-      "sha256": "2e49380f91a5b414fe6fadc5195c03d7a68a88b46a00773fb2f7648902091aa1"
+      "sha256": "f3bc79fcfc9a834e452ed543d56c3268fe4310bef5d72bcfa7dd49f9a2f75db4"
     },
     {
       "component": "Kernel",
@@ -858,7 +858,7 @@
       "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
       "upstream_path": "s/PMF/key2",
       "upstream_sha256": "b60c39510b45600fdd633213ea798f8a3fdf9c7d43e5f5f6310ed1ef1fdeae40",
-      "sha256": "1e6788d75a071d42e7b48ee56a0f8232690cfc6f13a113c550975a8926602c49"
+      "sha256": "abfc4a7db885cf3fd79349640c8e5cfb8273921cf1f92ab19121c46b5c988808"
     },
     {
       "component": "Kernel",
@@ -867,7 +867,7 @@
       "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
       "upstream_path": "s/PMF/mouse",
       "upstream_sha256": "207675807988cf720b22d02e2b7e2e0ad5b27d4d0a6483e6e0349b59d323f9cb",
-      "sha256": "e97e079546198ad450e7cf196fdb2c939a0d96a99de94feff8a5229199932d24"
+      "sha256": "c21d492cc79dc40571e5d203f61727d61d9b2773e9cecd97c5f579a96da07693"
     },
     {
       "component": "Kernel",
@@ -876,7 +876,7 @@
       "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
       "upstream_path": "s/PMF/osbyte",
       "upstream_sha256": "ecb8043d3ce749fc391de2696a442b2395d717e5d54ad606aa3a036e52459427",
-      "sha256": "e8de48dd8c74eaa95eaaccb8e1e1ac87fad9b835a5e067444465ef19e39df2f2"
+      "sha256": "f38e77916da9db718fa372a95545a1fbac989836ab3b5c254558e201bf435a5b"
     },
     {
       "component": "Kernel",
@@ -885,7 +885,7 @@
       "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
       "upstream_path": "s/PMF/oseven",
       "upstream_sha256": "628333cd8a88861b2ef8cb84c2f64ab0ff5f85fda2c00535106ee2cb23296811",
-      "sha256": "d6bde109e6ae2866dff89dbd8342824dd3f9187594d6c239163d9ff6ea0d2ff9"
+      "sha256": "924e7f3a5040312234a49254f89639a006de2306b4b94119365104a2a1f546f4"
     },
     {
       "component": "Kernel",
@@ -894,7 +894,7 @@
       "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
       "upstream_path": "s/PMF/osinit",
       "upstream_sha256": "0f7aeee5ef69da658fe059b205ccfdcde55e3016cabb69571ba3ad05a53a0b68",
-      "sha256": "80186bdd0b306822b099c6068e450370c4535451329889b9c2966ae4d7a6be87"
+      "sha256": "4882cb7e6ca8007e8cb5c86ebffe3061f82a404d3da82ae95484788b16fc6823"
     },
     {
       "component": "Kernel",
@@ -903,7 +903,7 @@
       "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
       "upstream_path": "s/SWINaming",
       "upstream_sha256": "e64ef23a9904e9cd237f8db45ac66d4f83ecf7a8519d38586fde297a614bd8e6",
-      "sha256": "b8ace46288f47157c54df71fe8ad37e385949f2cb3d0c23cc1ece8133e860885"
+      "sha256": "07719d92dfa6b28631d114112aae489f291ad9b56eb1a62fc6d02754401d7286"
     },
     {
       "component": "Kernel",
@@ -912,7 +912,7 @@
       "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
       "upstream_path": "s/Super1",
       "upstream_sha256": "0300ea2b71073297321349520bc6dff5a742f670b306aca4e940cd578b787be3",
-      "sha256": "345a32a789957796966462b5801aab1442a820add3f6b1831ce15bf1868f81bc"
+      "sha256": "49eb2679250372b34f18fe8d740c29a2201a5c0bcba5db3d11ace09a58614b80"
     },
     {
       "component": "Kernel",
@@ -921,7 +921,7 @@
       "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
       "upstream_path": "s/SysComms",
       "upstream_sha256": "17c14b09f6c032d2f2afb4f4584a92de2913d8c87facae02dc3a78164a9fe7e8",
-      "sha256": "9b3c050a0d2fc873a3ad6f0790d2672407be459434219cdf9bfc46d52265c6ee"
+      "sha256": "4e7f26ada7f532c257dd0bfc767a33c0a884b5f2c9e5f2afe9d8c288b7ab2ea2"
     },
     {
       "component": "Kernel",
@@ -930,7 +930,7 @@
       "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
       "upstream_path": "s/TickEvents",
       "upstream_sha256": "9e43694981aa0814fd6a381f5361433cdbc4f361f681e98d4471bb886a1deb47",
-      "sha256": "6c8466b60bda176a8f6a504db615ce33b2de5a5bae2f5a709e75977ca7035421"
+      "sha256": "484cb2769954043bdc742fd628c2fd0269553c6013810e4a08c51e2fb520edcc"
     },
     {
       "component": "Kernel",
@@ -939,7 +939,7 @@
       "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
       "upstream_path": "s/UnSqueeze",
       "upstream_sha256": "bf4134473966d975551f15c43904ee15fe1980894df75914170c27063e1cdd82",
-      "sha256": "86160d84b3c5711833758d34e4bcec7d6984895424b37f5e4dbbba575a500114"
+      "sha256": "1b7c4f447739e425d40ad78d01acaf28af7e1402cf3cef5ca5b39ababdacfc3d"
     },
     {
       "component": "Kernel",
@@ -948,7 +948,7 @@
       "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
       "upstream_path": "s/Utility",
       "upstream_sha256": "95386a55ccbe65417271abfc6725fbdf6020d82877c3ea345878e7f180d13953",
-      "sha256": "589f70927b40a57b40badb5d52c07a14bbc2ee2d0ee9f473d7c2bb6d03aab5bd"
+      "sha256": "10dcebb53191205909716f03b3c1ff9fcc2998828ea769278b2136d2bafcd831"
     },
     {
       "component": "Kernel",
@@ -957,7 +957,7 @@
       "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
       "upstream_path": "s/vdu/vducursoft",
       "upstream_sha256": "a886eb2985a4513afb10240bc37d9b4e9b2a028d54f6c48eb538edc784791d65",
-      "sha256": "cb1175e7d65711dbbe117ad91c5d512efc271f56af297e5eae41943baab7edaa"
+      "sha256": "23bb01ec823171f5be90108797b1dc74b3a074655a4aba88fb9eccb82811c33d"
     },
     {
       "component": "Kernel",
@@ -966,7 +966,7 @@
       "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
       "upstream_path": "s/vdu/vdudriver",
       "upstream_sha256": "6f95806c8ca0153a6fa750e79f783f923c6d797f0459903c2363ecea24839919",
-      "sha256": "230b4c9705b41cbcb6182899d1eb96a9eb873fbe45d455e8d4360fb3d8435761"
+      "sha256": "3be8c6e1b05e4da063749820ea09dcfea221049759b6a92d68cad491278b34c7"
     },
     {
       "component": "Kernel",
@@ -975,7 +975,7 @@
       "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
       "upstream_path": "s/vdu/vdugrafg",
       "upstream_sha256": "262e1d27801a4ba845177f4be12c07e2d1b15ecd7d7682a729ddd77d2dc413a3",
-      "sha256": "b42821a50f9e0ba45d136b5673e1e8a04b17dc282f079f11b97734a807a8b833"
+      "sha256": "2f4adf3eb02690487d9bce0df0bf9e6caae54e18b6d82e7184f264a2600ac047"
     },
     {
       "component": "Kernel",
@@ -984,7 +984,7 @@
       "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
       "upstream_path": "s/vdu/vdugrafj",
       "upstream_sha256": "e970c8dd763b6613e35d0e3d5b7a8da1fd9a049b3bb75fad4b49d8d14581fba9",
-      "sha256": "93878075891c758957807824755b22fcbf0822bbc5fe68ca168332c8231bd863"
+      "sha256": "102a67655d1dccbd2306e1f1297777e9d2a24b1f629d36fd21e374f3f7ef8829"
     },
     {
       "component": "Kernel",
@@ -993,7 +993,7 @@
       "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
       "upstream_path": "s/vdu/vdupal10",
       "upstream_sha256": "d92c6f1d8177375078249cfdb085e8b9114fcd0abbf04239fb6e1558a912b150",
-      "sha256": "9c7c3560773fb1de726c4ed6394c7f355fac806af5d9fe2fb85b761fd916b0f1"
+      "sha256": "f9bffcbac55d12aef39d01a5ddf1009f1c85e3036bbebafdf19643d6defeb668"
     },
     {
       "component": "Kernel",
@@ -1002,7 +1002,7 @@
       "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
       "upstream_path": "s/vdu/vdupal20",
       "upstream_sha256": "ad4222dbaa2f6496e5dd709e4187474a5d03e466ae8c45c9785ec40380cb0184",
-      "sha256": "ca354ecdc403d9c1a5fd2042cbe2777e4749b2f74561e3d91ff0f6b5045f7547"
+      "sha256": "b099170930e19365686b7311ad073a36a2324f7525b37addea656e9287c40aa7"
     },
     {
       "component": "Kernel",
@@ -1011,7 +1011,7 @@
       "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
       "upstream_path": "s/vdu/vdupalette",
       "upstream_sha256": "ff6a6ed018858baba05f4e6784339e722e53d5065cea7c72c3a8b4d2c9f52643",
-      "sha256": "7341aa164305c0e10d24658437f0fc554365cdc0e85b51e46a6749005ca4a52a"
+      "sha256": "ec599f50491a3349fea9161664eda09083be47bea576bcf6b8f6e0fde6accc36"
     },
     {
       "component": "Kernel",
@@ -1020,7 +1020,7 @@
       "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
       "upstream_path": "s/vdu/vduplot",
       "upstream_sha256": "464a45078d0ba478dd618e34ddc04a139e85ec6ab7f6ff767409ad71d44032d3",
-      "sha256": "1e17d5662ca023bce5a672b9b342f782cc3294c29ea7ec1c5b73a296e897dfa8"
+      "sha256": "32c4081947e6c44aa31c3427082f98d7d3aeb01d09346b80b93d0df249f4df4c"
     },
     {
       "component": "Kernel",
@@ -1029,7 +1029,7 @@
       "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
       "upstream_path": "s/vdu/vdupointer",
       "upstream_sha256": "7bc87bf319967ee925e0635014e724b3bd43c118d0990fdefd660685fed1c177",
-      "sha256": "d2a7e3bdaba724b2226fc23886fa0f6ae396f8ec9d42904395d8ae1d9a5dff9d"
+      "sha256": "bce004619d7917823a78c2bfccf93239227ddbbf65cc88f9175c2ffb29de8d1f"
     },
     {
       "component": "Kernel",
@@ -1038,7 +1038,7 @@
       "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
       "upstream_path": "s/vdu/vduswis",
       "upstream_sha256": "5c6073d31d8d48b301b12e1e9514f79535fa7bf4f68afe8db02866b3ca9d42a1",
-      "sha256": "9a26ea318ece39ae4fb94ee2d4f76d3d6fbef5c1b49a5afe2ac8f13d0153721f"
+      "sha256": "2b588882090bdcdf45ebc019fd7febbb3588b994df164ecb37ded05c7e54d2ea"
     },
     {
       "component": "Messages",
@@ -1047,7 +1047,7 @@
       "revision": "210c2af5b84654d9fa7e7ab179ef18834852f3e4",
       "upstream_path": "s/Messages",
       "upstream_sha256": "c59075171c4124cd54d1d30b3be3cff2e444d8fcfcd5a77e92c365b5b7e9c771",
-      "sha256": "28a6c0001e3963e40be61c0d5225931891e37415c028bffba3b91e799bc95183"
+      "sha256": "e1f98e86622b2ebf0c0a7740f351b5db9c1e30e0f823b785357693700e28e017"
     },
     {
       "component": "MsgTrans",
@@ -1056,7 +1056,7 @@
       "revision": "2a006cd1d002bda2d7454764fe4b93f734f17598",
       "upstream_path": "s/MsgTrans",
       "upstream_sha256": "3c0e9ee3df59966e8d3c9ba31f6d34efbb180bcfbb1fa73c6b99a7a29f620e91",
-      "sha256": "1ba8ae68e064c8554659cb545a0c44c5c4e60750d064af2c9e51cc9dd1a74f8b"
+      "sha256": "5948fb995195926a484fdf5ec7fdde7f2f0cea07eae65b857c8d8fdd43d515a0"
     },
     {
       "component": "PublicInterfaces",
@@ -1065,7 +1065,7 @@
       "revision": "403c6dd8bce92d0629634cbf57f68f43b2f30d38",
       "upstream_path": "hdr/NewErrors",
       "upstream_sha256": "b2bb808aed77f3ed7fa56fb06d6a3c7a5fe646f0d89997a1181950dcdbcbfb28",
-      "sha256": "468b4d7da14c8c8a120ee2c85a1414e12271cd5773e794dd78ea1039578355e8"
+      "sha256": "7f3d16e172ffc18cdb8182a4f11419cbd787b99c1d912a55e0e7755292b5b830"
     },
     {
       "component": "PublicInterfaces",
@@ -1074,7 +1074,7 @@
       "revision": "403c6dd8bce92d0629634cbf57f68f43b2f30d38",
       "upstream_path": "hdr/SWIs",
       "upstream_sha256": "991ab5a51bf52ec9f18ec2ff93b3f9938178db579764f1101fde235ad4d74392",
-      "sha256": "666228bf92450ab75673d9014ed3f9354c056b978429eac185ffb2d0ffb72d90"
+      "sha256": "1ef817a771d2324ba9297a9e79d66848f3b68e347ab48bad03598a78354cfa5b"
     },
     {
       "component": "ResourceFS",
@@ -1083,7 +1083,7 @@
       "revision": "fce5556d0ea1b7456b9c534038a3e437293ef90c",
       "upstream_path": "s/MsgCode",
       "upstream_sha256": "a092ae2aa09add60f4063502cfd2a46b69cb92a193ae72e16623d114a06e840d",
-      "sha256": "6b37363a9aca81d57e174ad7d1a893585f5845f83f79c04c7a244234c23443c3"
+      "sha256": "50d1ce0005ff7490e697089a7f99f7b03a565d477891dcd4c973c62250f8033d"
     },
     {
       "component": "ResourceFS",
@@ -1092,7 +1092,7 @@
       "revision": "fce5556d0ea1b7456b9c534038a3e437293ef90c",
       "upstream_path": "s/ResourceFS",
       "upstream_sha256": "9b95f189a9070b8140611e609cba10f1d6406e246e0e8bfdcd8c1e53cd68774f",
-      "sha256": "fb3eb67b08319807b2334826d0d09781218a2828d74cfdb738d13568fe44932a"
+      "sha256": "3fb80e33cf0344482e77f1f9a51c88241a93737fc5585a6bb785178d35462beb"
     },
     {
       "component": "SharedHeaders",
@@ -1103,7 +1103,7 @@
       "upstream_sha256": "9567d90f75ad960a200a5a4351e8dbb60aa246fab5557d0e38b783edf2609b13",
       "series_base_sha256": "ee4158a16b46de21f21efa9a39999563ad1fb93a1c25a4b0c4552129ff62c32b",
       "series_base": "Module-side copy of HdrSrc/hdr/CPU/Generic26; the series starts from that header after patch 0009.",
-      "sha256": "326f84d1e1478a1633e6ff391610b71d14f93ec5cbc3a17661d592e39964a0a2"
+      "sha256": "007311661f616459ff628162b16b348c72b0f4e6280e307af6f59e37f7f6489e"
     },
     {
       "component": "TerritoryManager",
@@ -1112,7 +1112,7 @@
       "revision": "e2654fe5c068ae403d13cb09f03e5162895a736f",
       "upstream_path": "s/ModHead",
       "upstream_sha256": "cc1776bd7013ffb66604e7e30b6507e2c4c7cd4225772df2499ec006d38da539",
-      "sha256": "7933b165b4a831e7bbc19ba27625dc21b9ffc64a3e34517ce563d8f818e8aa25"
+      "sha256": "5d0b4e3b76e16f2e4a9104b50b5c8a287d9f56f338353e181dad4c271d9c4e72"
     },
     {
       "component": "TerritoryManager",
@@ -1121,7 +1121,7 @@
       "revision": "e2654fe5c068ae403d13cb09f03e5162895a736f",
       "upstream_path": "s/SWIs",
       "upstream_sha256": "1cdecb320d619d7d28b4b74a0cd047c676e8f51f678cf6c6ea4b291ccf7d573c",
-      "sha256": "760f6d36240432dfc43a100a802d615564fba268e6bcbaa85bc6edf5d45125aa"
+      "sha256": "c1edc5fee6fefbff476989d77332a0cfccf4a2f27524983e18c7edb01db4211b"
     },
     {
       "component": "TerritoryManager",
@@ -1130,7 +1130,7 @@
       "revision": "e2654fe5c068ae403d13cb09f03e5162895a736f",
       "upstream_path": "s/TerrMgr",
       "upstream_sha256": "e46320218025d506d6e89a2183a245be4a03fc4b435e6f90bd6088617293c86f",
-      "sha256": "85fdc75b7c0613b3aa44868861958e6bc6b5859950a10e3223e09122284848c8"
+      "sha256": "857b308e594450f9efb07fcce2e6846f563554af146d640ab7d663a9ca63a50b"
     },
     {
       "component": "UK",
@@ -1139,7 +1139,7 @@
       "revision": "55aa82c8862f02d9db5bb4b2a9350dc8baf97192",
       "upstream_path": "s/ModHead",
       "upstream_sha256": "79446b1befba08f747d2fa731c83985f35bf85ee97918df0d6d58c81e5ec89aa",
-      "sha256": "838d5a99323c086c6228b45898ff7d7453d4318f32976783c2fb431e2daf3393"
+      "sha256": "27b1a8db6872050c19cfffbff6b2e9a1dc7658616aea8baaa042920166af06de"
     },
     {
       "component": "UK",
@@ -1148,7 +1148,7 @@
       "revision": "55aa82c8862f02d9db5bb4b2a9350dc8baf97192",
       "upstream_path": "s/Tables",
       "upstream_sha256": "635aa49a86716b215757d3b40cc13966cd5b1f1bbd3a507bc92623bcd135bcc5",
-      "sha256": "27a7c0de59439b840a746f87946e4d18cb58c7f7975e6facdcc9e5db18502183"
+      "sha256": "c61cdc6e467ad7798d7279a8b093412336691edb3aafe0782c5248380fbd65a9"
     },
     {
       "component": "UK",
@@ -1157,7 +1157,7 @@
       "revision": "55aa82c8862f02d9db5bb4b2a9350dc8baf97192",
       "upstream_path": "s/UK",
       "upstream_sha256": "a1b6d09a67b3f8bdce0771a4a4b8f39a9c3adf86968720583bbadc52c33820fb",
-      "sha256": "94d8c857bdc3ba4d2c885062a598d9743a9d31d02219d03b29fa1e1c1540a8e2"
+      "sha256": "f9df18d57bda5df6acbd33292d00a9734cd6a824581aac0491ccc495f75f862d"
     }
   ]
 }

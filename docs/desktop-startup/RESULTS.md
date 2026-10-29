@@ -26,7 +26,7 @@ also requires the retained base, rendering, font, FPA, Wimp and multitasking
 acceptance reports. To regenerate these:
 
 ```sh
-OPEN_ARCHIMEDES_OUTPUT="$PWD/build/desktop-baseline" make test desktop-test multitask-test
+ARCLIBRE_OUTPUT="$PWD/build/desktop-baseline" make test desktop-test multitask-test
 ```
 
 ROM: `build/arclibre/arclibre.rom`, delivered as `dist/arclibre.rom`.

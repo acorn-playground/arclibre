@@ -95,7 +95,7 @@ for iteration in 1...Int(args[3])! {
             return "\(e.ticks) \(String(format:"%08X %08X",e.pc,e.instruction)) \(e.registerText)\n"
         }.joined()
         try trace.write(toFile: dir + "/\(name)-instructions.log", atomically: true, encoding: .utf8)
-        try Data(m.snapshot(createdBy: "Open Archimedes kernel boot experiment")).write(to: URL(fileURLWithPath: dir + "/\(name).macarch-state"))
+        try Data(m.snapshot(createdBy: "ArcLibre kernel boot experiment")).write(to: URL(fileURLWithPath: dir + "/\(name).macarch-state"))
         // Export the public diagnostic sections; each has its upstream documented layout.
         if ["fixed-mappings","vectors-installed","pre-module"].contains(name) {
             for (tag, bytes) in m.stateSections() { try Data(bytes).write(to: URL(fileURLWithPath: dir + "/\(name)-\(tag).bin")) }

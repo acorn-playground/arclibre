@@ -1,4 +1,4 @@
-; Modified 2026 for Open Archimedes; see patches/fpemulator/0001-arm2-build.patch.
+; Modified 2026 for ArcLibre; see patches/fpemulator/0001-arm2-build.patch.
 ; Assembler source for FPA support code and emulator
 ; ==================================================
 ; Undefined instruction handler for FPA Emulator

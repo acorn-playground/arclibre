@@ -1,4 +1,4 @@
-/* Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history. */
+/* ArcLibre: modified for the ARM2 restoration; see patches/restoration. */
 /*
  * Copyright (c) 1990, Jon Thackray
  * All rights reserved.

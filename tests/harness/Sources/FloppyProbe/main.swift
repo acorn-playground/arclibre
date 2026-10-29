@@ -11,7 +11,7 @@ let manifest=try JSONSerialization.jsonObject(with:Data(contentsOf:URL(fileURLWi
 let files=manifest["files"] as! [[String:Any]]
 let disc=try FloppyImage.open(path:a[3]+"/arm2-test.adf",writeProtected:true)
 m.insertFloppy(disc,drive:0);m.fdc.trace=RingBuffer<WD1772.TraceEvent>(capacity:16384)
-try Data(m.snapshot(createdBy:"Open Archimedes protected floppy at Supervisor")).write(to:URL(fileURLWithPath:out+"/mounted-supervisor.macarch-state"))
+try Data(m.snapshot(createdBy:"ArcLibre protected floppy at Supervisor")).write(to:URL(fileURLWithPath:out+"/mounted-supervisor.macarch-state"))
 let d=m.debugger;d.setTracing(4096)
 _ = try d.addBreakpoint(.init(id:0,kind:.execute,start:4))
 _ = try d.addBreakpoint(.init(id:0,kind:.execute,start:12,end:20))

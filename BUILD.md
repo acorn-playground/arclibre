@@ -160,7 +160,7 @@ off macOS, a host portability patch that changes no emulation.
 them into `build/` and never writes into `src/`. `patches/` records each
 change against upstream, and the manifests record upstream and maintained
 hashes for every file; `tools/verify_candidate_patches.py` checks them on
-every build. `OPEN_ARCHIMEDES_OUTPUT` selects another output directory for the
+every build. `ARCLIBRE_OUTPUT` selects another output directory for the
 baseline build.
 
 ## Host portability

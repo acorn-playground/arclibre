@@ -1,4 +1,4 @@
-; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
+; ArcLibre: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
 ; Copyright 1996 Acorn Computers Ltd
 ;
 ; Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,7 +13,7 @@
 ; See the License for the specific language governing permissions and
 ; limitations under the License.
 ;
-; Open Archimedes: preserve the caller message list after task allocation.
+; ArcLibre: preserve the caller message list after task allocation.
 ; See patches/desktop-source/0003-wimp-message-list.patch.
 ; > Sources.Wimp02
 

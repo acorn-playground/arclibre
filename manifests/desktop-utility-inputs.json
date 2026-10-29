@@ -59,8 +59,8 @@
     "revision": "a21ce91e3d0a1a8c04f3e0dd72683a6d7fa2ab76",
     "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Programmer/Squash.git",
     "upstream_sha256": "16cf89d6296485428e358ffd5799945c8f53c266d16a19bc7b1ff1224dd19432",
-    "sha256": "6d78f44080ec245b4ddd87aca120e4bf8a5588afc45488122f8a55eda70e8116",
-    "bytes": 13373
+    "sha256": "5b8fcb024165be0f71327e49c079665f81c057e7989abbb3457561413c9be78a",
+    "bytes": 13350
   },
   {
     "component": "Squash",
@@ -77,8 +77,8 @@
     "revision": "a21ce91e3d0a1a8c04f3e0dd72683a6d7fa2ab76",
     "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Programmer/Squash.git",
     "upstream_sha256": "048419320b6ca83effa688a1ea63d94c95555ca3b400043d2fb737a1c661ce7f",
-    "sha256": "3cf8bc4b24328dc26a7bc4c408ee0ae2408bd2b6cf4383b760328c9784f81a7b",
-    "bytes": 14972
+    "sha256": "441dcc00d5114bffdd7c72e77a564835ffd7b73b19348f92b7f9cf583c64e206",
+    "bytes": 14949
   },
   {
     "component": "Squash",

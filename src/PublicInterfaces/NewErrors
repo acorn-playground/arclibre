@@ -1,4 +1,4 @@
-; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+; ArcLibre: modified for the ARM2 restoration; see patches/restoration.
 ; Modified 2026: correct case of the existing BadFileName string alias.
 ; Copyright 2008 Castle Technology Ltd
 ;

@@ -1,4 +1,4 @@
-# Open Archimedes ROM — Source Audit and Feasibility Study
+# ArcLibre — Source Audit and Feasibility Study
 
 **Agent hand-off specification**  
 **Date:** 25 October 2026  
@@ -234,7 +234,7 @@ Do not execute this experiment during Phase 0. Passing this boot experiment must
 
 ## 8. Required final output
 
-Create **new documentation files only**, e.g. under `docs/open-archimedes-rom-audit/` in a designated audit workspace; do not overwrite or refactor MacArch or the source repositories:
+Create **new documentation files only**, e.g. under `docs/history/audit/` in a designated audit workspace; do not overwrite or refactor MacArch or the source repositories:
 
 1. `EXECUTIVE_SUMMARY.md` — one-page verdict: **GO / CONDITIONAL GO / NO-GO**, recommended route, top five discoveries, biggest blockers and next action.
 2. `SOURCE_AND_LICENSES.md` — provenance, licences and distribution blockers.

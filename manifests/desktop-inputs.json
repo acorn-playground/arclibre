@@ -371,8 +371,8 @@
     "component": "FPASC",
     "path": "riscos/hdr/FPEmulator",
     "upstream_sha256": "ca19e559018ec968cc0a7bbcf95a38582e7ac02a6d5c05b05b79dd57493017fe",
-    "sha256": "4eccf1e3312625c82d3ccab9a8ed0a08f331d6dac5eec26a6d5df99d4199f34c",
-    "bytes": 925,
+    "sha256": "247f8e3b5bbfe71eb396d6eebc42bef08627b73cd9162d69af402d5a9fdfeb82",
+    "bytes": 918,
     "modified": true
   },
   {
@@ -491,8 +491,8 @@
     "component": "FontManager",
     "path": "s/Encoding",
     "upstream_sha256": "30d078a81bf2b3772b45358019f09a24841bd8005775b7a7aeb977549e275ea5",
-    "sha256": "733a3e1c39363e7a214cfe2ec7b2a83707a69c5c6a6fcd40cfc13e9c0648059e",
-    "bytes": 36404,
+    "sha256": "86fb32c3303fd58ed3ffe9f7359d384b417672d357a1fd39c08d064f7d9bd9d5",
+    "bytes": 36397,
     "modified": true
   },
   {
@@ -507,8 +507,8 @@
     "component": "FontManager",
     "path": "s/Font_Arith",
     "upstream_sha256": "f99607df6bc4212d0416fdcea172f62159ebe947479437f323826d2d78b75952",
-    "sha256": "6682016c497b2473f2b392816e5f54e3ce22430990ee3b212191f265b04a98aa",
-    "bytes": 33497,
+    "sha256": "84008db8c8456a4812b708a17e51519f01df71f34fd65d00d7d97953d7ff5f3e",
+    "bytes": 33490,
     "modified": true
   },
   {
@@ -523,64 +523,64 @@
     "component": "FontManager",
     "path": "s/Fonts",
     "upstream_sha256": "1000cd45d4a9d2b80dfa6a676423b3ddf5a1a08fbebdc12ee00a654fc9fc4472",
-    "sha256": "4c2f7083c67153538e81fb6be3f692f8e622d1faad76f8d528113242ad90dba0",
-    "bytes": 1958,
+    "sha256": "75eafc6e9c3d9cb4541ff655506e9094306c7a78818fc4edf648db3168b232a0",
+    "bytes": 1951,
     "modified": true
   },
   {
     "component": "FontManager",
     "path": "s/Fonts01",
     "upstream_sha256": "0fe6bd23cdb7270cb2ab801e30e2039106f1d1af6cf9a9bd14ed6478ae18d096",
-    "sha256": "c7da265fcfa91b56df28dd222e8955bd779d0b70f2d6eb12f1e032d4b66c31bb",
-    "bytes": 283033,
+    "sha256": "9a263a54b7c6f860a0ba565ac9635ee94004b961b23496f8074f30921b0e7542",
+    "bytes": 283026,
     "modified": true
   },
   {
     "component": "FontManager",
     "path": "s/Fonts02",
     "upstream_sha256": "275f87fcba33580dcd052943f26f8482834657470ee5ec83f505a3383dbf7dc1",
-    "sha256": "fb05a433630946cac545c8a6ddf68d9f77811321baccfd55dc26b4036b209efa",
-    "bytes": 214446,
+    "sha256": "ff5ac459280de92f9f0336412e84c1f3d3d7ff35f59c682a1396d98c25fb9d4e",
+    "bytes": 214439,
     "modified": true
   },
   {
     "component": "FontManager",
     "path": "s/Fonts03",
     "upstream_sha256": "eb1260288cf5e05211136d6cb8a32eb7a82f8389b6bd35c8a975ecd938c095c0",
-    "sha256": "b27d6dc42a7cb5c785390ccf53bbfab338498de6391ba06e8be08822c119494b",
-    "bytes": 119597,
+    "sha256": "910eba7e4ae8939140c59b5680f8f8357dc19d0da617dd5c9af1209b9fdbc35c",
+    "bytes": 119590,
     "modified": true
   },
   {
     "component": "FontManager",
     "path": "s/Fonts04",
     "upstream_sha256": "44e8a82b32e81f392f83e2d34d13595cef1a9f07a35ec803a7e510c9031b44c4",
-    "sha256": "ccca10b25deb1827fb08f4026effbd7d5e7231dda07ffcb1ba6c3183d233f415",
-    "bytes": 188139,
+    "sha256": "a36339cfe25ef40d5c413be5c38f6856f07bffe5bc66a900fcf0234473aaa876",
+    "bytes": 188132,
     "modified": true
   },
   {
     "component": "FontManager",
     "path": "s/FontsM",
     "upstream_sha256": "0696b912f48cea22ba9054f7148f583217569d4fb8f4618ae79db59cc8146706",
-    "sha256": "b4c40d17c06470eef86ec3c360fe27eaca73a8e815cdf4fdcc436b6faa12f3a8",
-    "bytes": 20035,
+    "sha256": "9ec98eb7cfaf08e6d1b23208d671513401355fc9ebe321573dc33f1a3d14973a",
+    "bytes": 20028,
     "modified": true
   },
   {
     "component": "FontManager",
     "path": "s/Funcache",
     "upstream_sha256": "cde0ec59d27dbb244c8a3ed022fb32e67762250f624956242c8489c27c2cd447",
-    "sha256": "c5ed709b8453af0d4ff38abd66a8f3b03eeefe16005f75deece4fe967cac4966",
-    "bytes": 51055,
+    "sha256": "b7352b5271283861b8f3a16041fd7fe6186e836713f90b343519a51b580c9ca1",
+    "bytes": 51048,
     "modified": true
   },
   {
     "component": "FontManager",
     "path": "s/ListFonts",
     "upstream_sha256": "6ad285f6bbafe711c3d579227b51d1422bf6f6214a11527c296af6bd424c0794",
-    "sha256": "b80a03391ba18b7c3f45e9f25781644404fbbb702539103642c299114927f239",
-    "bytes": 87567,
+    "sha256": "dea8be167fd861bafc2115e9e2e734763d0d8ff4882d65fe5ca8fe88de4035f5",
+    "bytes": 87560,
     "modified": true
   },
   {
@@ -955,8 +955,8 @@
     "component": "ROMFonts",
     "path": "s/ROMFonts",
     "upstream_sha256": "c957efcc6a52521dc0803498e728fe9a201d5f412b3c11d31417b758a3b2f2bd",
-    "sha256": "1d222307dce90bb0d7bde1bf2c0b3958e8b2f8b7f4907be6c3968cfd24537b0b",
-    "bytes": 8283,
+    "sha256": "3ee69c956007a2c806e57fc0b0b144aff051b9041088b76a46de221800d3e091",
+    "bytes": 8276,
     "modified": true
   },
   {
@@ -1171,16 +1171,16 @@
     "component": "Wimp",
     "path": "s/Iconbar",
     "upstream_sha256": "b0e79ab2b0a659bcb1387a0bcfdaf9b8f2a17824464bd87ad59af5b81a33adc3",
-    "sha256": "e77f25d3eeafee28d5b0e1727873ac4ad772e517587a53ccaccfda024bffe789",
-    "bytes": 23649,
+    "sha256": "a96f74159c648c29f60831b850a402ae7ec7394b8589f9c8a6e53d10868faccc",
+    "bytes": 23642,
     "modified": true
   },
   {
     "component": "Wimp",
     "path": "s/Memory",
     "upstream_sha256": "ec7c47868e82229f57b84c25358847b916a58c13448d274a287748d323ad6ff6",
-    "sha256": "bb9177d6692e3318c3d6c7457be780d92de42a0eaa3853a87352462ca4c32870",
-    "bytes": 10433,
+    "sha256": "ad739f6cc4ec31de1ece183581c99f05de2112844346d381bd7123c3b3f421a4",
+    "bytes": 10426,
     "modified": true
   },
   {
@@ -1203,8 +1203,8 @@
     "component": "Wimp",
     "path": "s/Options",
     "upstream_sha256": "0c3a911bc7786f17a815096c7bc350b1102c684b8605d01b059b353a7fd8d7c7",
-    "sha256": "b99ca9219a122f62a07cd3caad2c34850622d75d89fd399ec88eb7d94a5eb6c5",
-    "bytes": 11359,
+    "sha256": "b4a6ea8eea83ac224005feed5c77dc3feda1b123887dc650a059dd86e4dbf887",
+    "bytes": 11352,
     "modified": true
   },
   {
@@ -1219,112 +1219,112 @@
     "component": "Wimp",
     "path": "s/RosMod",
     "upstream_sha256": "30ce8d864a75531113753fd63c335ff23b9f705f51aacb9a45c456a9e60570a0",
-    "sha256": "61f2600bf5c97712e48d9b4cd99312c46f72e1a677cc784bd289286fac61be77",
-    "bytes": 6003,
+    "sha256": "09b199af8c125614ffc77a32bdaa58955f776fa252c5a92c4a445de64cd57d96",
+    "bytes": 5996,
     "modified": true
   },
   {
     "component": "Wimp",
     "path": "s/Tiling",
     "upstream_sha256": "39b0d831d70f771f99869408ec7031aa3eebecceb7460e11707ea487064e7020",
-    "sha256": "3a98c21a4acc301cb8975e989cf96523ba06ca20dca0c508cee01e47711c7219",
-    "bytes": 10396,
+    "sha256": "cd126dc80cbc92775e14d2ebadfb9bcc971f7763d0be71099d4006c3c9152867",
+    "bytes": 10389,
     "modified": true
   },
   {
     "component": "Wimp",
     "path": "s/Watchdog",
     "upstream_sha256": "f1e1b58a2710d0a1c736ecb2cf073d9f79132e49c4e7fd6e765dcf452a6a1413",
-    "sha256": "c913b19709b2ffa038e3d3080260b2da46d73854c92cc61e6523099dfbd129c4",
-    "bytes": 9334,
+    "sha256": "607954bae5e216c9c02b3576a3cbd21b393d584182d892c16627519561a91729",
+    "bytes": 9327,
     "modified": true
   },
   {
     "component": "Wimp",
     "path": "s/Wimp",
     "upstream_sha256": "93d8afa765d7afda62dc6380f47e06689d045688b231187277da80f9b06a1933",
-    "sha256": "b43c2865d416b91e2939eb4adbb215cd3e155d880f74ee1c95d8402bbc9cdf93",
-    "bytes": 2353,
+    "sha256": "d79c8cbc944a76ad2bc2a4f0646d4bf63f375f3d59abd2856861562bbd5d3100",
+    "bytes": 2346,
     "modified": true
   },
   {
     "component": "Wimp",
     "path": "s/Wimp01",
     "upstream_sha256": "8d79fda4439f2b01f4ec0af3646e0d809a1bc312d1153e3541b60631673581c5",
-    "sha256": "82bcfbf0e6007826c11a6a65b2a3ccde2a668441fb53e6bdce6c1b1d637facd8",
-    "bytes": 160077,
+    "sha256": "c84bb11571745291dcb4129772648af11fa42d49b44328b9bf94ca33c629499e",
+    "bytes": 160070,
     "modified": true
   },
   {
     "component": "Wimp",
     "path": "s/Wimp02",
     "upstream_sha256": "6cd505f7e746fcd4cd27b8d91a0e9a7c42051494f8c3d8e397f743fe406f17bb",
-    "sha256": "e2e0a179c4f3fa9243763bcbd5564f95d3bd5a86237b7d0b7cc183997c739c02",
-    "bytes": 169770,
+    "sha256": "a170d025087ed69755aff2bc4befaecc59c3beef1afd51b918a3953dbdaaa388",
+    "bytes": 169756,
     "modified": true
   },
   {
     "component": "Wimp",
     "path": "s/Wimp03",
     "upstream_sha256": "2414c6f5ecef244bb1f9f4553ebcc78cc37cf8e5096af0c0ae83bba16ef1f1fb",
-    "sha256": "6df22a8da96ad77cb52e35a2230a52ebc25915f125a93196b1dcb695469389af",
-    "bytes": 94503,
+    "sha256": "b08633108567a8a844e22f4a3d252d11a94818800f21229fe0c5f1a9b00b8ae9",
+    "bytes": 94496,
     "modified": true
   },
   {
     "component": "Wimp",
     "path": "s/Wimp04",
     "upstream_sha256": "787a57d1984766e8fffedd82112cdb8ec9ac9e87e6b2b641687181818bc3fdbb",
-    "sha256": "36b5f2415737dd4c70418625a34d8049353fc7a392d0cfbf7b9ed24527e2bccd",
-    "bytes": 155648,
+    "sha256": "81b024974ef19678c825195bad56eac71e6524959f173525ea99d5634d3163e0",
+    "bytes": 155641,
     "modified": true
   },
   {
     "component": "Wimp",
     "path": "s/Wimp05",
     "upstream_sha256": "4d4465f37dc7c008cf1c9f52965f79f0debd1ec3baecf5eefdc1e0847f2d42a2",
-    "sha256": "a984f6d1f9aae13d8fa01a50128129630e8494fe81be12981e2c6d36768d237a",
-    "bytes": 141869,
+    "sha256": "0dd977e9eac80436dd4fb9eb628b3a026223c53501b2faf2d3aaa704d6ec5b63",
+    "bytes": 141862,
     "modified": true
   },
   {
     "component": "Wimp",
     "path": "s/Wimp06",
     "upstream_sha256": "ebf9d0c20f516ba863b9f3cea9d691e656511ea2dd0956682e76f3d4f6ae8598",
-    "sha256": "0f632d6f168fdaaf3b87f4a721c19ba867b3f46ec3b0d3cef05981fa81cb06a2",
-    "bytes": 23821,
+    "sha256": "9423b5ab71297ad3e352f9af6da1b40d364cbb77b15086fdbdd6926fa98dad2c",
+    "bytes": 23814,
     "modified": true
   },
   {
     "component": "Wimp",
     "path": "s/Wimp07",
     "upstream_sha256": "d5bfd6e0ca6f59d783410eda7e4a4724d180c4df44aa5e02f5da048ea5a7e48f",
-    "sha256": "3e91536ff11bf9e0662248fd5caf6a39ef3c5ecd0e0d55a862969d3a5afd5306",
-    "bytes": 78232,
+    "sha256": "067f9a9c6b7c2bcaedbf6a489643f1e4957793c304b13d6a6c35b2762fb5778a",
+    "bytes": 78225,
     "modified": true
   },
   {
     "component": "Wimp",
     "path": "s/Wimp08",
     "upstream_sha256": "becb03ec69881f2437b77bb69106db63fa8090bddb877c61dbd66873234b70c5",
-    "sha256": "b5551117ffb730c3bd3af52017b4d52bb9485c441657f031581f1e41650a020d",
-    "bytes": 80442,
+    "sha256": "68ac7dc01fdd3372446e61a50b344f53c619b732c7e460291ad3b9c9900cdbf1",
+    "bytes": 80435,
     "modified": true
   },
   {
     "component": "Wimp",
     "path": "s/Wimp09",
     "upstream_sha256": "db5f599bc17fc1483bd3bb3148fee77f77e6f589c8609bb58a6fc73391a189c3",
-    "sha256": "93c1e659be99bc22fe15dc5a92d8a3e1303d995225605a573746c3b194e76852",
-    "bytes": 28480,
+    "sha256": "ab5cb374e0d2be44f95002a8f0449e40705b56e15303c698c1da4725b16b588e",
+    "bytes": 28473,
     "modified": true
   },
   {
     "component": "Wimp",
     "path": "s/Wimp10",
     "upstream_sha256": "d1bcc97960d0fdc9396f738d02d81ec7563a5fae6c2dd5de3dd7cdc4af873a43",
-    "sha256": "38a7257495b83787289620de46a347cc0164a7fa73066ddd831775ddc31443b1",
-    "bytes": 82639,
+    "sha256": "9b251e52bb558b1477a397707779c37edaf9fab28201844992794c9c0c9a5ca1",
+    "bytes": 82632,
     "modified": true
   },
   {

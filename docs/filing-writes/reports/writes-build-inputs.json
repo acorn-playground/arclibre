@@ -1,6 +1,6 @@
 {
   "baseline_commit": "0923b6f2025cf7e9dda26d11de06ab433bf15039",
-  "command": "OPEN_ARCHIMEDES_OUTPUT=\"$PWD/build/filing-writes\" make test",
+  "command": "ARCLIBRE_OUTPUT=\"$PWD/build/filing-writes\" make test",
   "inputs": {
     "tests/harness/Package.swift": "8662ff3c40dead09533e9e9f1867a3caa48fb9155aae78815f04363ceb7b9aa3",
     "tests/harness/Sources/WriteProbe/main.swift": "6f42d6cb0a1dffa2c72ea4a349d9b2e490e62dd16ec7b0b5e7b3b1b0f9ed29a4",

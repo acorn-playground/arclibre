@@ -57,7 +57,7 @@ for (index,name) in families.enumerated() {
  check(handle>0 && handle<256,"valid font handle")
  let info=call("Bounds "+name,0x40084,[handle])
  call("Select "+name,0x4008a,[handle])
- string(0x13200,"Open Archimedes 3.11")
+ string(0x13200,"ArcLibre RISC OS 3.1")
  let measured=call("Measure "+name,0x40085,[0,0x13200,0x7fffffff,0x7fffffff,0xffffffff,255])
  check(measured[2]>0 && measured[3]==0 && measured[5]==20,"string metrics")
  call("Font colours "+name,0x40092,[handle,0,7,0])

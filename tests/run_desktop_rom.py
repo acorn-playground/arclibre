@@ -16,7 +16,7 @@ def run(cmd,name,overrides=None):
  with (logs/(name+'.log')).open('w') as f:subprocess.run([str(v) for v in cmd],env=dict(env,**(overrides or {})),stdout=f,stderr=subprocess.STDOUT,check=True)
 run([sys.executable,REPO/'tools/prepare_emulator.py'],'emulator')
 for script in ['build_client.py','build_fixtures.py']:
- run([sys.executable,REPO/'tests'/script],script,dict(OPEN_ARCHIMEDES_OUTPUT=str(REPO/'build/desktop-baseline')))
+ run([sys.executable,REPO/'tests'/script],script,dict(ARCLIBRE_OUTPUT=str(REPO/'build/desktop-baseline')))
 fixture=REPO/'build/desktop-baseline/artifacts/discs/DA.adf'
 fixture_sha=hashlib.sha256(fixture.read_bytes()).hexdigest()
 assert fixture_sha=='6f770c2b9a63d77a02057e8263c128d30464ef3287bba1bbaf040fea98c73d52'

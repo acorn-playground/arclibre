@@ -29,8 +29,8 @@ arclibre-test-parallel: arclibre-rom extras-disc
 
 # The same steps, one after another.
 arclibre-test: arclibre-rom extras-disc
-	OPEN_ARCHIMEDES_OUTPUT="$(CURDIR)/build/desktop-baseline" $(MAKE) desktop-test multitask-test
-	OPEN_ARCHIMEDES_OUTPUT="$(CURDIR)/build/desktop-baseline" $(PYTHON) tests/run.py
+	ARCLIBRE_OUTPUT="$(CURDIR)/build/desktop-baseline" $(MAKE) desktop-test multitask-test
+	ARCLIBRE_OUTPUT="$(CURDIR)/build/desktop-baseline" $(PYTHON) tests/run.py
 	$(PYTHON) tests/check_apps_build.py --graphics
 	$(PYTHON) tests/run_squash.py build/arclibre
 	$(PYTHON) tests/run_basic_utilities.py build/arclibre
@@ -141,7 +141,7 @@ baseline: bootstrap
 
 # The same baseline for the desktop ROM's stacks, in build/desktop-baseline.
 arclibre-baseline: bootstrap
-	OPEN_ARCHIMEDES_OUTPUT="$(CURDIR)/build/desktop-baseline" $(PYTHON) tools/build.py --baseline
+	ARCLIBRE_OUTPUT="$(CURDIR)/build/desktop-baseline" $(PYTHON) tools/build.py --baseline
 
 desktop-components: bootstrap
 	$(PYTHON) tools/build_desktop.py
@@ -202,7 +202,7 @@ c-desktop-components: c-bootstrap action-components
 
 desktop-app-components: arclibre-baseline c-desktop-components
 	$(PYTHON) tools/build_palette.py
-	OPEN_ARCHIMEDES_OUTPUT="$(CURDIR)/build/desktop-defaults" $(PYTHON) tools/build.py --desktop-defaults
+	ARCLIBRE_OUTPUT="$(CURDIR)/build/desktop-defaults" $(PYTHON) tools/build.py --desktop-defaults
 	$(PYTHON) tools/build_hard_disc.py
 	$(PYTHON) tools/build_desktop_apps.py
 
