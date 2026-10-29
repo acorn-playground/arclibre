@@ -1,0 +1,2075 @@
+--- a/src/PDriver/s/PDriver
++++ b/src/PDriver/s/PDriver
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: ARM2 build for the printing disc (see patches/printing).
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -135,7 +136,7 @@
+ ;
+ ; Module header.
+ ;
+-                LEADR   Module_LoadAddr
++                AREA    |PDriver$$Code|, CODE, READONLY ; ArcLibre: AsAsm needs an area
+ 
+ module_start    & 0
+                 & Initialisation -module_start                  ; init code
+@@ -146,7 +147,7 @@
+                 & Help -module_start                            ; help string offset
+                 & 0
+ 
+-                & PrintSWI * Module_SWIChunkSize + Module_SWIApplicationBase
++                & PrintSWI_Base                         ; ArcLibre: Hdr:SWIs gives the chunk base
+                 & SWIHandler -module_start                      ; handler for SWIs
+                 & SWITable -module_start                        ; SWI decoding table
+                 & 0
+@@ -524,6 +525,7 @@
+                 Pull    "r0, wp, lr"
+ 
+                 TEQP    lr, #0                                  ; restore the flags
++                MOV     r0, r0                          ; ArcLibre: ARM2 settling after a PSR write
+                 B       %60
+ 50
+                 LDR     r0, old_job                             ; = old job handle
+@@ -1140,7 +1142,21 @@
+ 
+         [ standalone
+ resourcefsfiles
+-        ResourceFile    <Locale>.Messages,       Resources.PDrivers.Messages
++; ArcLibre: ResourceFile's layout, with the file's actual Text type and a fixed
++; zero datestamp in place of the host file's attributes.
++        DCD     %FT60 - .                       ; offset to the next file
++        DCD     &FFFFFF00                       ; Text, no datestamp
++        DCD     0
++        DCD     :FSIZE:"Resources/UK/Messages"
++        DCD     3                               ; WR/
++        DCB     "Resources.PDrivers.Messages",0
++        ALIGN
++        DCD     %FT40-%FT20+4
++20
++        BIN     Resources/UK/Messages
++40
++        ALIGN
++60
+         DCD     0
+         ]
+ 
+--- a/src/PDModules/s/Core/FontSWI
++++ b/src/PDModules/s/Core/FontSWI
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: ARM2 build for the printing disc (see patches/printing).
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -506,6 +507,7 @@
+         MOV     R0,PC
+         DivRem  R3,R1,R2,LR             ;Divide to work out extra spacing information needed
+         TEQP    R0,#0
++                MOV     r0, r0                          ; ArcLibre: ARM2 settling after a PSR write
+         MVNLT   R3,R3                   ;Ensure sign correct as converted to +VE before the divide
+ 
+         Pull    "R0"                    ;Preserve this it is important
+@@ -706,6 +708,7 @@
+         SWI     XFont_SetFont
+         MOVVC   R0,R5                   ;Restore error pointer if no error
+         TEQVCP  R6,#0                   ;And the original flags
++                MOV     r0, r0                          ; ArcLibre: ARM2 settling after a PSR write
+ 
+ fontswi_paint_return
+         MOV     R3,#intercept_all
+--- a/src/PDModules/s/Core/Header
++++ b/src/PDModules/s/Core/Header
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: ARM2 build for the printing disc (see patches/printing).
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -20,7 +21,7 @@
+ ;
+ ;----------------------------------------------------------------------------
+ 
+-        LEADR   Module_LoadAddr
++        AREA    |PDriverDP$$Code|, CODE, READONLY ; ArcLibre: AsAsm needs an area
+ 
+ Module_BaseAddr
+         DCD     0                                 ;Not an application
+--- a/src/PDModules/s/PDriverDP/Configure
++++ b/src/PDModules/s/PDriverDP/Configure
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: ARM2 build for the printing disc (see patches/printing).
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -140,7 +141,7 @@
+ ;   Exit:  Appropriate error should have been produced.
+ ; ************************************************************************
+ 
+-configure_makeerror ENTRY "r1-r2"
++configure_makeerror KernelEntry "r1-r2"
+         EOR      r1, r1, r2
+         BIC      r1, r1, #2_110
+         BICS     r1, r1, #2_11100000000
+--- a/src/PDModules/s/PDriverDP/PageBox
++++ b/src/PDModules/s/PDriverDP/PageBox
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: ARM2 build for the printing disc (see patches/printing).
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -188,7 +189,10 @@
+           B       %BT10
+ 
+ 12 ; check for singular matrix
+-          STRB    pc, job_rotation_id ; flag rotation through 90 or 270
++; ArcLibre: a non-zero flag through a register (r0 is reloaded next) rather than
++; a byte store of PC; only zero/non-zero is tested.
++          MOV     r0, #1
++          STRB    r0, job_rotation_id ; flag rotation through 90 or 270
+           LDR     r0, recttransform+4
+           LDR     r1, recttransform+8
+           CMP     r0, #0
+@@ -1262,6 +1266,7 @@
+           AND    r6, r6, #1
+           MOV    r6, r6, LSL #30
+           TEQP   r6, pc                       ; invert Z bit iff rotation
++                MOV     r0, r0                          ; ArcLibre: ARM2 settling after a PSR write
+ 
+ ;; Avoid overflow by multiplying up the scale factor, not the coordinate.
+ ;; We hope that dpi * scale factor does not overflow.
+@@ -1465,7 +1470,8 @@
+           ADD     r5, r5, #2
+           ADD     r6, r6, #2
+           LDR     r2, rectangleid
+-          STRB    pc, job_buffer_marked
++          MOV     lr, #1                ; ArcLibre: as above (return is via the stack)
++          STRB    lr, job_buffer_marked
+ 99
+           Pull   "r7-r9, pc"
+           LTORG
+--- a/src/PDModules/s/PDriverDP/Picture
++++ b/src/PDModules/s/PDriverDP/Picture
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: ARM2 build for the printing disc (see patches/printing).
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -16,7 +17,7 @@
+ 
+ ; Illustration inclusion routines for PDriverDP.
+ 
+-picture_insert ENTRY "r1"
++picture_insert KernelEntry "r1"
+         ADR     R0,ErrorBlock_PrintNoIncludedFiles
+         addr    r1, title               ; %0 -> "PDriverDP"
+         BL      LookupError             ; Always sets the V flag
+--- a/src/PDModules/s/PDriverDP/ScreenDump
++++ b/src/PDModules/s/PDriverDP/ScreenDump
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: ARM2 build for the printing disc (see patches/printing).
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -16,7 +17,7 @@
+ 
+ ; Screen dump routines for PDriverDP
+ 
+-screendump_dump ENTRY "r1"
++screendump_dump KernelEntry "r1"
+         ADR     R0,ErrorBlock_PrintNoScreenDump
+         addr    r1, title               ; %0 -> "PDriverDP"
+         BL      LookupError             ; Always sets the V flag
+--- a/src/PDModules/s/PDriverDP/Sprite
++++ b/src/PDModules/s/PDriverDP/Sprite
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: ARM2 build for the printing disc (see patches/printing).
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -41,7 +42,7 @@
+ ;------------------------------------------------------------------------------
+ 
+ sprite_greyscaled ; no sensible implementation for PrinterDrivers (so simply scale)
+-sprite_put ENTRY "R3,R4,R6-R9"
++sprite_put KernelEntry "R3,R4,R6-R9"
+ 
+         MOV     R9,#SpriteReason_PutSpriteTransformed
+ 
+@@ -243,7 +244,7 @@
+ ; out   R0 corrupt
+ ;       R3,R4 modified to be within current strip
+ 
+-scale_r3r4 ENTRY
++scale_r3r4 KernelEntry
+ 
+         MOV     R0,R3,LSL #8            ; convert to suitable co-ordinate system
+         BL      XScale                  ;   and then scale properly
+--- a/src/PDModules/s/PDriverPS/Configure
++++ b/src/PDModules/s/PDriverPS/Configure
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: ARM2 build for the printing disc (see patches/printing).
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -206,7 +207,7 @@
+ ;        R0: bit 2 set if auto-accent generation is required
+ ; Exit:  All registers preserved.
+ 
+-configure_setdriver ENTRY "r1"
++configure_setdriver KernelEntry "r1"
+         MOV     R1,#0
+         TST     R0,#&1
+         MOVEQ   R1,#0
+@@ -227,7 +228,7 @@
+ configure_vetinfo
+         Return
+ 
+-configure_makeerror ENTRY "r1-r2"
++configure_makeerror KernelEntry "r1-r2"
+         EOR     R1,R1,R2                ;Find mismatches
+         TST     R2,#&1                  ;If configured for colour, ignore
+         BICNE   R1,R1,#&1               ;  colour request mismatch
+--- a/src/PDModules/s/PDriverPS/Draw
++++ b/src/PDModules/s/PDriverPS/Draw
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: ARM2 build for the printing disc (see patches/printing).
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -125,6 +126,7 @@
+         BL      releasetemprmablock     ;  if this call doesn't return an
+         MOVVC   R0,R1                   ;  error
+         TEQVCP  R2,#0
++                MOV     r0, r0                          ; ArcLibre: ARM2 settling after a PSR write
+         B       draw_stroke_return
+ 
+ ; This is a (comparatively) easy case - we simply need to output the path
+--- a/src/PDModules/s/PDriverPS/Font
++++ b/src/PDModules/s/PDriverPS/Font
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: ARM2 build for the printing disc (see patches/printing).
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -117,7 +118,7 @@
+ 
+         [ PSTextSpeedUps
+ 
+-invalidate_fontstack    ENTRY   "r0-r3"
++invalidate_fontstack    KernelEntry   "r0-r3"
+         ADR     r1, currentfonts                ; bottom of font stack (full ascending)
+         LDR     lr, currentfontptr              ; end of the font stack
+         MOV     r3, #-1                         ; marks an invalid entry
+@@ -132,7 +133,7 @@
+ 
+         |
+ 
+-invalidate_fontstack    ENTRY   "r0"
++invalidate_fontstack    KernelEntry   "r0"
+         LDR     lr, currentPSfont
+         TEQ     lr, r0
+         MOVEQ   r0, #-1
+@@ -373,13 +374,13 @@
+ ; Exit: SUCCESS: V CLEAR and r0 = address of first character after the backslash
+ ;       FAILURE: V SET, r0 points past terminating null.
+ 
+-font_locateescape    ENTRY   "r2"
++font_locateescape    KernelEntry   "r2"
+ 00      LDRB    r2, [r0], #1    ; get the next byte
+ 
+ 01      CMP     r2, #32         ; control?
+         BLT     %FT99           ; yes, so fail
+ 
+-        TEQ     r2, #'\'        ; backslash?
++        TEQ     r2, #92         ; backslash? (ArcLibre: AsAsm reads '\' as an escape)
+         BNE     %BT00           ; no, so continue
+ 
+         LDRB    r2, [r0], #1    ; get char after backslash
+@@ -398,7 +399,7 @@
+ ; Exit: SUCCESS: V CLEAR and r0 = address of start of name text
+ ;       FAILURE: V SET and r0 undefined.
+ 
+-font_locatename         ENTRY   "r1,r3"
++font_locatename         KernelEntry   "r1,r3"
+         MOV     r1, r0          ; keep start of string handy
+         MOV     r3, #'F'        ; NAME escape
+         BL      font_locateescape
+@@ -406,7 +407,7 @@
+ 
+         MOV     r0, r1          ; not found.  get the string ptr back
+         LDRB    r1, [r0]        ; check first char
+-        TEQ     r0, #'\'        ; if it is not a backslash
++        TEQ     r0, #92        ; if it is not a backslash
+         BEQ     %FT99
+ 
+         CLRV                    ; then assume the font NAME portion starts there
+@@ -425,7 +426,7 @@
+ ;       otherwise, FAILURE: VSET
+ ;       On exit, r4 and r5 are as on entry.
+ 
+-font_compareR4andR5     ENTRY   "r0,r1,r4,r5"
++font_compareR4andR5     KernelEntry   "r0,r1,r4,r5"
+         ORRS    lr, r4, r5      ; if both pointers are zero
+         BEQ     %FT88           ; then instant match
+ 
+@@ -435,12 +436,12 @@
+ 
+ 00      LDRB    r0, [r4], #1    ; get a byte of the first string
+         LowerCase r0, lr        ; ASCII lowercase
+-        TEQ     r0, #'\'        ; make \ equivalent to 0
++        TEQ     r0, #92        ; make \ equivalent to 0
+         MOVEQ   r0, #0          ; character ends up in R0
+ 
+         LDRB    r1, [r5], #1    ; as above for second string
+         LowerCase r1, lr        ; character ends up in R1
+-        TEQ     r1, #'\'
++        TEQ     r1, #92
+         MOVEQ   r1, #0
+ 
+         CMP     r0, #32         ; is first a terminator?
+@@ -464,7 +465,7 @@
+ ; of this comparison.  Match is caseless.
+ 
+ 
+-font_comparenames       ENTRY   "r0-r5"
++font_comparenames       KernelEntry   "r0-r5"
+ 
+         ; First check the NAME portion of the strings:
+ 
+@@ -644,7 +645,7 @@
+ 
+ 00      LDRB    r14, [r0], #1                   ; get the next byte
+         TEQ     r14, #0                         ; if it's not the terminator
+-        TEQNE   r14, #"\"                       ; and not a backslash
++        TEQNE   r14, #92                        ; and not a backslash (ArcLibre: AsAsm reads "\" as an escape)
+         BNE     %BT00                           ; then continue
+         MOV     r14, #0                         ; but if it is, then put a zero over it
+         STRB    r14, [r0, #-1]                  ; remembering that we're pointing beyond it!
+--- a/src/PDModules/s/PDriverPS/Picture
++++ b/src/PDModules/s/PDriverPS/Picture
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: ARM2 build for the printing disc (see patches/printing).
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -16,7 +17,7 @@
+ 
+ ; Illustration inclusion routines for PDriverPS.
+ 
+-picture_insert ENTRY "r1"
++picture_insert KernelEntry "r1"
+         ADR     R0,ErrorBlock_PrintNoIncludedFiles
+         addr    r1, title               ; %0 -> "PDriverPS"
+         BL      LookupError             ; Always sets the V flag
+--- a/src/PDModules/s/PDriverPS/Private
++++ b/src/PDModules/s/PDriverPS/Private
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: ARM2 build for the printing disc (see patches/printing).
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -61,7 +62,7 @@
+ 
+         CMP     R2,#68                          ;Insert a "\<newline>" escape
+         BLO     output_PSstring_nonewline       ;  sequence if required to
+-        MOV     R0,#"\"                         ;  limit the length of an
++        MOV     R0,#92                          ;  limit the length of an (ArcLibre: 92 is "\")
+         [       PSDebugBPuts
+         BL      bput
+         |
+@@ -92,7 +93,7 @@
+ 
+ output_PSstring_escapedchar
+         ADD     R2,R2,#3
+-        MOV     R0,#"\"
++        MOV     R0,#92                          ;ArcLibre: "\" (AsAsm reads "\" as an escape)
+         [       PSDebugBPuts
+         BL      bput
+         |
+@@ -116,10 +117,10 @@
+         B       output_PSstring_dolastchar
+ 
+ output_PSstring_normalchar                      ;Note V clear on arrival here
+-        TEQ     R3,#"\"                         ;Escape it in if it is "\",
++        TEQ     R3,#92                          ;Escape it in if it is "\",
+         TEQNE   R3,#"("                         ;  "(" or ")"
+         TEQNE   R3,#")"
+-        MOVEQ   R0,#"\"
++        MOVEQ   R0,#92                          ;ArcLibre: "\", as above
+         ADDEQ   R2,R2,#1
+         [       PSDebugBPuts
+         BLEQ    bput
+--- a/src/PDModules/s/PDriverPS/ScreenDump
++++ b/src/PDModules/s/PDriverPS/ScreenDump
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: ARM2 build for the printing disc (see patches/printing).
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -16,7 +17,7 @@
+ 
+ ; Screen dump routines for PDriverPS
+ 
+-screendump_dump ENTRY "r1"
++screendump_dump KernelEntry "r1"
+         ADR     R0,ErrorBlock_PrintNoScreenDump
+         addr    r1, title               ; %0 -> "PDriverPS"
+         BL      LookupError             ; Always sets the V flag
+--- a/src/PDModules/s/PDriverPS/TranSprite
++++ b/src/PDModules/s/PDriverPS/TranSprite
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: ARM2 build for the printing disc (see patches/printing).
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -99,7 +100,7 @@
+         STRB    LR,passthrough
+ 
+         [       PSDebugSprite
+-        PrLnIm  "(sprite_plottransformed\n) print flush"
++        PrLnIm  "(sprite_plottransformed\\n) print flush" ; ArcLibre: a literal \n, as in aasm
+         ]
+ 
+ ; Calculate the source origin and area
+--- a/src/PDModules/s/PDriverPS/Vdu5
++++ b/src/PDModules/s/PDriverPS/Vdu5
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: ARM2 build for the printing disc (see patches/printing).
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -45,7 +46,7 @@
+         BVS     vdu5_delete_return
+         ]
+ 
+-        PrStrIm "(\177) "
++        PrStrIm "(\\177) "               ; ArcLibre: AsAsm reads \ as an escape; the job gets (\177)
+ 
+         PrPair  R1,R2
+ 
+--- a/src/PDumperSpt/s/PDumperSpt
++++ b/src/PDumperSpt/s/PDumperSpt
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: ARM2 build for the printing disc (see patches/printing).
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -221,7 +222,7 @@
+ ;
+ ;------------------------------------------------------------------------------
+ 
+-        LEADR   Module_LoadAddr
++        AREA    |PDumperSpt$$Code|, CODE, READONLY ; ArcLibre: AsAsm needs an area
+ 
+ module_base
+         & 0                             ;not an application
+@@ -233,7 +234,7 @@
+         & help -module_base
+         & 0                             ;no command table
+ 
+-        & Module_SWISystemBase + PDumperSWI * Module_SWIChunkSize
++        & PDumperSWI_Base                       ; ArcLibre: Hdr:SWIs gives the chunk base
+         & despatch -module_base
+         & table -module_base
+         & 0
+@@ -350,7 +351,7 @@
+ 
+ despatch ROUT
+       [ debugSWI
+-        ENTRY   ""
++        KernelEntry   ""
+         Debug   SWI,"PDumperSpt entered with reason,WP",R11,WP
+         Debuga  SWI,"   Input:",R0,R1,R2,R3,R4
+         Debug   SWI,"",R5,R6,R7
+@@ -365,6 +366,7 @@
+ 
+         LDR     WP,[WP]                 ;Resolve the workspace pointer
+         TEQP    PC,#SVC_mode            ;Ensure IRQs are enabled
++                MOV     r0, r0                          ; ArcLibre: ARM2 settling after a PSR write
+ 
+         CMP     R11,#(%10-%00)/4
+         ADDCC   PC,PC,R11,LSL #2        ;Despatch if within a suitable range
+@@ -658,6 +660,7 @@
+         TST     r3, #V_bit              ; leaves V alone
+         MOVNE   r0, r2                  ; If there was an error earlier
+         TEQNEP  r3, #0                  ; restore error pointer and PSR
++                MOV     r0, r0                          ; ArcLibre: ARM2 settling after a PSR write
+ 80
+         STRVS   r0, [sp]                 ;Return from the routine returning any error pointers
+         MVNVC   r0, #0                   ;Flag to say this is the first strip
+--- a/src/PDumpers/Generic/s/Header
++++ b/src/PDumpers/Generic/s/Header
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: ARM2 build for the printing disc (see patches/printing).
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -222,7 +223,7 @@
+ 
+ ;..............................................................................
+ 
+-        LEADR   Module_LoadAddr
++        AREA    |PDumperDM$$Code|, CODE, READONLY ; ArcLibre: AsAsm needs an area
+ 
+ module_start
+         & 0                             ;not an application
+--- a/src/PDumpers/PDumperDM/s/DumpJX
++++ b/src/PDumpers/PDumperDM/s/DumpJX
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: ARM2 build for the printing disc (see patches/printing).
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -470,7 +471,7 @@
+ ;      LR = modified length of the line
+ ;
+ 
+-getjx_length ENTRY "R0-R2,R6"
++getjx_length KernelEntry "R0-R2,R6"
+ stack_getjx_r0 * 0
+ 
+ ; Find trailing zeros first.
+@@ -544,7 +545,7 @@
+ ; Out:  r4 = skip remainder at output DPI inc. left margin
+ ;       r8 = skip at skip DPI inc. left margin
+ 
+-jx_adjust_skip ENTRY "r0-r2"
++jx_adjust_skip KernelEntry "r0-r2"
+         PDumper_GetLeftMargin LR
+ ;;<<        LDR     lr, [r7, #pd_leftmargin -pd_data]
+         ADD     r8, r8, lr      ; Add left margin to zero skip.
+--- a/src/PrinterManager/sources/SupportDP
++++ b/src/PrinterManager/sources/SupportDP
+@@ -1,4 +1,6 @@
+ REM > Support - for dot matrix printers
++/* Modified 2026 by ArcLibre: trace calls through Trace.h's Ftracef, as in
++   RunImage; PROCftracef exists only in trace builds (see patches/printing). */
+ 
+ /* Changes list:
+  *
+@@ -16,7 +18,7 @@
+ 
+ DEF FNdp_support(buff%)
+   LOCAL reason%,psup%,prnt%,prdt%,cnfg%,xbuff%,psize_head%,code_entry%
+-  VDU: PROCftracef("FNdp_support")
++  Ftracef("FNdp_support")
+   reason%=buff%!0
+   psup%=buff%!4
+   prnt%=buff%!8
+@@ -46,7 +48,7 @@
+ 
+ DEF PROCdp_m1
+   LOCAL colours%, pdriverdp%
+-  VDU: PROCftracef("PROCdp_m1")
++  Ftracef("PROCdp_m1")
+   REM psup%!CONST_psup_flags OR= 0
+   psup%!CONST_psup_type=&FF4
+   psup%!CONST_psup_text=%0100
+@@ -69,7 +71,7 @@
+ ENDPROC
+ 
+ DEF PROCdp_m2
+-  VDU: PROCftracef("PROCdp_m2")
++  Ftracef("PROCdp_m2")
+ /* REM We don't want to free up the RMA when we quit, thank you very much
+  * REM  IF psup%!CONST_psup_rma_block THEN 
+  * REM    VDU: PROCftracef("*** FREEING R M A ***")
+@@ -83,7 +85,7 @@
+ DEF PROCdp_m3
+   REM initialise the configuration window
+   LOCAL config%,dp_i%,dp_j%
+-  VDU: PROCftracef("PROCdp_m3")
++  Ftracef("PROCdp_m3")
+   config%=FNprinter_find_window(prnt%,"configure")
+   PROCicon_write(config%,30,FNprinter_read_string(prnt%!CONST_prnt_name))
+   PROCicon_write(config%,6,$prnt%!CONST_prnt_type)
+@@ -119,7 +121,7 @@
+ DEF PROCdp_m4
+   REM create a CNFG block with suitable defaults
+   LOCAL dp_s$,dp_i%,dp_s%,dp_t%,dp_co%,dp_ht%,B%,C%,dp_inf%,dp_x%,dp_y%
+-  VDU: PROCftracef("PROCdp_m4")
++  Ftracef("PROCdp_m4")
+ 
+   REM OSS set the text options to be no highlights, Print linefeeds.
+   REM PJC: default changed to be draft with linefeeds.
+@@ -293,7 +295,7 @@
+ DEF PROCdp_ensure_resource_file(resource$,disc$,reload_if_outofdate%)
+   LOCAL obj_type%,load_addr%,exec_addr%,file_size%,obj_attr%,rma_size%,rma_block%
+   LOCAL found_type%,found_load%,found_exec%,found_size%,c%,a%,w%
+-  VDU: PROCftracef("dp_ensure_resource_file")
++  Ftracef("dp_ensure_resource_file")
+   REM We use this to load palette files for the printers in order to reduce
+   REM the probability of having to ask for the printers disc again later.
+ 
+@@ -322,7 +324,7 @@
+   ENDIF
+ 
+   rma_size%=20+(LEN resource$+4 AND NOT 3)+4+(file_size%+3 AND NOT 3): REM Size needed for this file only
+-  VDU: PROCftracef("File "+disc$+", size "+STR$ file_size%)
++  Ftracef("File "+disc$+", size "+STR$ file_size%)
+ 
+   REM claim some RMA for the file
+   SYS "OS_Module",6,,,rma_size%+8 TO,,rma_block%: REM OSModule_Alloc
+@@ -347,7 +349,7 @@
+   REM cache any palette files that are used by dp printers and ensure
+   REM that the relevant PDumper modules are loaded
+   LOCAL dp_prnt%,dp_cnfg%,dp_graphics_prdt%,dp_pal$
+-  VDU: PROCftracef("PROCdp_m5")
++  Ftracef("PROCdp_m5")
+   dp_prnt%=prnt%
+   WHILE dp_prnt%>0
+     IF dp_prnt%!CONST_prnt_psup=psup% THEN
+@@ -368,7 +370,7 @@
+ DEF PROCdp_m6
+   REM do whatever is necessary to prime the specified printer
+   LOCAL dp_s$,dp_t$,dp_i%,xres%,yres%,halftone%,ptr%,flags%,pal%,dmp$,inf%,strip%,graphics_prdt%,text_prdt%,B%,C%
+-  VDU: PROCftracef("PROCdp_m6")
++  Ftracef("PROCdp_m6")
+   REM 7 is the magic number for the dumper driver
+   SYS "XPDriver_SelectDriver",7
+   dp_s$=FNprinter_read_string(prnt%!CONST_prnt_name)
+@@ -512,7 +514,7 @@
+ 
+ DEF PROCdp_m7
+   LOCAL queu%,dp_p%,B%,C%
+-  VDU: PROCftracef("PROCdp_m7")
++  Ftracef("PROCdp_m7")
+   queu%=!xbuff%
+   dp_p%=queu%!CONST_queu_tprv
+   IF dp_p% THEN
+@@ -525,13 +527,13 @@
+ ENDPROC
+ 
+ DEF PROCdp_p3
+-  VDU: PROCftracef("PROCdp_p3")
++  Ftracef("PROCdp_p3")
+   SYS"Wimp_CloseWindow",,xbuff%
+ ENDPROC
+ 
+ DEF PROCdp_p6
+   LOCAL wind%
+-  VDU: PROCftracef("PROCdp_p6")
++  Ftracef("PROCdp_p6")
+   REM mouseclick on the configure window
+   CASE xbuff%!8 OF
+     WHEN 2: REM menu
+@@ -577,7 +579,7 @@
+ DEF PROCdp_p8
+   REM a key press!
+   LOCAL dp_i%
+-  VDU: PROCftracef("PROCdp_p8")
++  Ftracef("PROCdp_p8")
+   dp_i%=psup%!CONST_psup_wind
+   WHILE dp_i%
+     IF dp_i%!CONST_wind_hand=!xbuff% THEN
+@@ -600,7 +602,7 @@
+ 
+ DEF PROCdp_p9
+   LOCAL adjust%,wind%,icon%,ptr%,xres%,yres%,dp_s$,dp_i%,dp_j%,dp_k%
+-  VDU: PROCftracef("PROCdp_p9")
++  Ftracef("PROCdp_p9")
+ /*
+  * REM menu selections are easy ... we just write the
+  * REM selected string into the appropriate icon.
+@@ -678,7 +680,7 @@
+ 
+ DEF PROCdp_p17
+   LOCAL wind%,dp_s$,dp_t$
+-  VDU: PROCftracef("PROCdp_p17")
++  Ftracef("PROCdp_p17")
+   CASE xbuff%!16 OF
+     WHEN &502: REM HelpRequest
+       wind%=psup%!CONST_psup_wind
+@@ -705,7 +707,7 @@
+ 
+ DEF PROCdp_save_configuration(window%)
+   LOCAL dp_i%,dp_j%,dp_k%,dp_s$,B%,C%
+-  VDU: PROCftracef("PROCdp_save_configuration")
++  Ftracef("PROCdp_save_configuration")
+   prdt%=FNprinter_find_prdata_entry(psup%,FNicon_read(window%,6))
+   PROCfree_structure(prnt%!CONST_prnt_name)
+   $buff%=FNicon_read(window%,30)
+@@ -811,7 +813,7 @@
+ 
+ DEF FNdp_res(cnfg%)
+   LOCAL xres%,yres%,graphics_prdt%
+-  VDU: PROCftracef("FNdp_res")
++  Ftracef("FNdp_res")
+   graphics_prdt%=!cnfg%!CONST_cnfg_dp_graphics
+   xres%=FNprinter_read_integer_entry(graphics_prdt%,4)
+   yres%=FNprinter_read_integer_entry(graphics_prdt%,5)
+@@ -819,7 +821,7 @@
+ 
+ DEF FNdp_qual(cnfg%)
+   LOCAL dp_i%,dp_s$,dp_t$
+-  VDU: PROCftracef("FNdp_qual")
++  Ftracef("FNdp_qual")
+   dp_i%=!cnfg%!CONST_cnfg_dp_options
+   dp_s$=FNmsg_0(psup%!CONST_psup_msg,"CO"+STR$(dp_i% AND &FF))
+   dp_t$=FNmsg_0(psup%!CONST_psup_msg,"HT"+STR$((dp_i% AND &FF00)>>8))
+@@ -876,7 +878,7 @@
+ REM 2 = large halftone, tone type 8
+ REM 4 = dithered, tone type 1
+ DEF PROCdp_decode_options(option%,RETURN strip%,RETURN tone%)
+-  VDU: PROCftracef("PROCdp_decode_options")
++  Ftracef("PROCdp_decode_options")
+   REM try to pick colour, then grey, then mono
+   IF option% AND &700000 THEN
+    strip%=5
+@@ -918,7 +920,7 @@
+ 
+ DEF PROCdp_menu(top$,rebuild%,iconpos%)
+   LOCAL wind%,dp_ix%,dp_iy%,dp_i%,dp_x%,dp_j%,dp_k%,xres%,yres%,indt%
+-  VDU: PROCftracef("PROCdp_menu")
++  Ftracef("PROCdp_menu")
+   IF rebuild% dp_menu_xpos%=xbuff%!0-64: dp_menu_ypos%=xbuff%!4
+   IF iconpos% THEN
+     !buff%=xbuff%!12:buff%!4=xbuff%!16:SYS"Wimp_GetIconState",,buff%
+@@ -992,7 +994,7 @@
+ 
+ DEF PROCdp_menu_quality(RETURN dp_menu%,RETURN dp_i%,strip$,tone%)
+   LOCAL indt%
+-  VDU: PROCftracef("PROCdp_menu_quality")
++  Ftracef("PROCdp_menu_quality")
+   indt%=(dp_menu%!28 AND &100)<>0
+   IF tone% AND 1 THEN
+     PROCmenu_item(dp_menu%,dp_i%,strip$+", "+FNmsg_0(psup%!CONST_psup_msg,"HT4"),indt%)
+@@ -1009,17 +1011,17 @@
+ ENDPROC
+ 
+ DEF FNdp_hex2(v%)
+-  VDU: PROCftracef("FNdp_hex2")
++  Ftracef("FNdp_hex2")
+ =RIGHT$("0"+STR$~v%,2)
+ 
+ REM text printing code
+ 
+ DEF PROCdp_m8
+   LOCAL dp_r%,queu%,tpub%,tprv%,text_prdt%
+-  VDU: PROCftracef("PROCdp_m8, reason "+STR$!xbuff%)
+-  VDU: PROCftracef(STR$~cnfg%)
+-  VDU: PROCftracef(STR$~cnfg%!CONST_cnfg_dp_text)
+-  VDU: PROCftracef(STR$~!cnfg%!CONST_cnfg_dp_text)
++  Ftracef("PROCdp_m8, reason "+STR$!xbuff%)
++  Ftracef(STR$~cnfg%)
++  Ftracef(STR$~cnfg%!CONST_cnfg_dp_text)
++  Ftracef(STR$~!cnfg%!CONST_cnfg_dp_text)
+   text_prdt%=!cnfg%!CONST_cnfg_dp_text
+   dp_r%=!xbuff%
+   queu%=xbuff%!4
+@@ -1042,16 +1044,16 @@
+     WHEN -18: PROCdp_18
+     WHEN -19: PROCdp_19
+   ENDCASE
+-  VDU: PROCftracef("Afterwards ...")
+-  VDU: PROCftracef(STR$~cnfg%)
+-  VDU: PROCftracef(STR$~cnfg%!CONST_cnfg_dp_text)
+-  VDU: PROCftracef(STR$~!cnfg%!CONST_cnfg_dp_text)
++  Ftracef("Afterwards ...")
++  Ftracef(STR$~cnfg%)
++  Ftracef(STR$~cnfg%!CONST_cnfg_dp_text)
++  Ftracef(STR$~!cnfg%!CONST_cnfg_dp_text)
+ ENDPROC
+ 
+ DEF PROCdp_1
+ /*  REM only called if we aren't printing a DP file */
+   LOCAL dp_i%,dp_i$,psze%,dp_j%,B%,C%,D%
+-  VDU: PROCftracef("PROCdp_1")
++  Ftracef("PROCdp_1")
+   B%=CONST_ident_TPRV:C%=CONST_tprv_dp_MAX
+   tprv%=USR(code_entry%+CONST_entry_heap_claim)
+   IFtprv%=0 ERROR CONST_error_fatal, FNmsg_0(FNdp_host_desc,"FA5")
+@@ -1092,7 +1094,7 @@
+ 
+ DEF PROCdp_2
+   LOCAL dp_s$,pheight%,graphics_prdt%
+-  VDU: PROCftracef("PROCdp_2")
++  Ftracef("PROCdp_2")
+   REM output job start string
+   dp_s$=FNprinter_read_string_entry(text_prdt%,7)
+   IF dp_s$<>"" BPUT#xbuff%!8,dp_s$;
+@@ -1119,14 +1121,14 @@
+ 
+ DEF PROCdp_4
+   REM no data to output
+-  VDU: PROCftracef("PROCdp_4")
++  Ftracef("PROCdp_4")
+   xbuff%?8=0
+ ENDPROC
+ 
+ DEF PROCdp_6
+   REM do control code processing
+   LOCAL dp_b$
+-  VDU: PROCftracef("PROCdp_6")
++  Ftracef("PROCdp_6")
+   dp_b$=FNdp_display(xbuff%!8)
+   xbuff%?8=LEN dp_b$
+   $(xbuff%+9)=dp_b$
+@@ -1135,7 +1137,7 @@
+ DEF PROCdp_7
+   REM process a backspace
+   LOCAL dp_b$
+-  VDU: PROCftracef("PROCdp_7")
++  Ftracef("PROCdp_7")
+   dp_b$=FNprinter_read_string_entry(text_prdt%,2)
+   xbuff%?8=LEN dp_b$
+   $(xbuff%+9)=dp_b$
+@@ -1143,7 +1145,7 @@
+ 
+ DEF PROCdp_9
+   LOCAL changed_bits%,clr_bits%,set_bits%,bit%,dp_b$
+-  VDU: PROCftracef("PROCdp_9")
++  Ftracef("PROCdp_9")
+   changed_bits%=tpub%!CONST_tpub_style_bits EOR xbuff%!8
+   clr_bits%=tpub%!CONST_tpub_style_bits AND changed_bits%
+   set_bits%=changed_bits% AND NOTclr_bits%
+@@ -1160,7 +1162,7 @@
+ DEF PROCdp_10
+   REM start a new line
+   LOCAL dp_s$,dp_b$
+-  VDU: PROCftracef("PROCdp_10")
++  Ftracef("PROCdp_10")
+   tpub%!CONST_tpub_line_page+=1
+   tpub%!CONST_tpub_line_doc+=1
+   IF tpub%!CONST_tpub_number_print<>0 OR tprv%!CONST_tprv_dp_left_print>0 THEN
+@@ -1184,7 +1186,7 @@
+ 
+ DEF PROCdp_11
+   LOCAL dp_b$,dp_i%
+-  VDU: PROCftracef("PROCdp_11")
++  Ftracef("PROCdp_11")
+   PROCdp_10:dp_b$=FNprinter_read_string(tpub%!CONST_tpub_line_epilogue)+$(xbuff%+9)
+   PROCdp_10:dp_b$+=FNprinter_read_string(tpub%!CONST_tpub_line_epilogue)+$(xbuff%+9)
+   dp_b$+=FNdp_style_on(4): REM superscript
+@@ -1196,14 +1198,14 @@
+ 
+ DEF PROCdp_12
+   LOCAL dp_b$
+-  VDU: PROCftracef("PROCdp_12")
++  Ftracef("PROCdp_12")
+   dp_b$=FNdp_trans($(xbuff%+8))
+   xbuff%?8=LEN dp_b$
+   $(xbuff%+9)=dp_b$
+ ENDPROC
+ 
+ DEF PROCdp_13
+-  VDU: PROCftracef("PROCdp_13")
++  Ftracef("PROCdp_13")
+   tpub%!CONST_tpub_font_num=xbuff%!8
+   xbuff%?8=0
+ ENDPROC
+@@ -1211,7 +1213,7 @@
+ DEF PROCdp_15
+ /*  REM end of job */
+   LOCAL text_prdt%,tpub%,dp_epilogue$,dp_formfeed$,dp_lineepi$
+-  VDU: PROCftracef("PROCdp_15")
++  Ftracef("PROCdp_15")
+   IF queu%!CONST_queu_type<>&FF4 THEN
+     text_prdt%=!cnfg%!CONST_cnfg_dp_text
+     tpub%=queu%!CONST_queu_tpub
+@@ -1239,7 +1241,7 @@
+ DEF PROCdp_16
+   REM process a tab
+   LOCAL dp_b$
+-  VDU: PROCftracef("PROCdp_16")
++  Ftracef("PROCdp_16")
+   dp_b$=FNprinter_read_string_entry(text_prdt%,3)
+   xbuff%?8=LEN dp_b$
+   $(xbuff%+9)=dp_b$
+@@ -1248,7 +1250,7 @@
+ DEF PROCdp_17
+   REM do a formfeed
+   LOCAL dp_b$
+-  VDU: PROCftracef("PROCdp_17")
++  Ftracef("PROCdp_17")
+   dp_b$=FNprinter_read_string_entry(text_prdt%,4)
+   xbuff%?8=LEN dp_b$
+   $(xbuff%+9)=dp_b$
+@@ -1257,14 +1259,14 @@
+ DEF PROCdp_18
+   REM change layout
+   LOCAL layout_height%,layout_top%,layout_bottom%,dp_b$,dp_i%,dp_i$,B%,C%,D%,graphics_prdt%
+-  VDU: PROCftracef("PROCdp_18")
++  Ftracef("PROCdp_18")
+   layout_height%=xbuff%!8
+   layout_top%=xbuff%!12
+   layout_bottom%=xbuff%!16
+   IF layout_height%<=tprv%!CONST_tprv_dp_height_print AND layout_top%<=layout_height%*0.33 AND layout_bottom%<=layout_height%*0.33 THEN
+     tpub%!CONST_tpub_line_max=layout_height%-layout_top%-layout_bottom%
+     IF tprv%!CONST_tprv_dp_page_prologue THEN
+-      VDU: PROCftracef("Calling heap free with ptr "+STR$~tprv%!CONST_tprv_dp_page_prologue)
++      Ftracef("Calling heap free with ptr "+STR$~tprv%!CONST_tprv_dp_page_prologue)
+       B%=CONST_ident_GSTR
+       C%=tprv%!CONST_tprv_dp_page_prologue
+       CALL code_entry%+CONST_entry_heap_free
+@@ -1296,7 +1298,7 @@
+ ENDPROC
+ 
+ DEF PROCdp_19
+-  VDU: PROCftracef("PROCdp_19")
++  Ftracef("PROCdp_19")
+   LOCAL dp_b$,dp_i%,dp_s$,bit%
+   dp_b$=FNprinter_read_string(tprv%!CONST_tprv_dp_page_prologue)
+   tpub%!CONST_tpub_line_page=0
+@@ -1322,7 +1324,7 @@
+ 
+ DEF FNdp_trans(dp_s$)
+   LOCAL dp_i%,byte%,out$,str$
+-  VDU: PROCftracef("FNdp_trans")
++  Ftracef("FNdp_trans")
+   IF dp_s$="" THEN =""
+   FOR dp_i%=1 TO LEN dp_s$
+     byte%=ASC MID$(dp_s$,dp_i%,1)
+@@ -1344,7 +1346,7 @@
+ 
+ DEF FNdp_text_char(byte%)
+   LOCAL dp_p%,dp_s$,dp_i%
+-  VDU: PROCftracef("FNdp_text_char")
++  Ftracef("FNdp_text_char")
+   dp_p%=queu%!CONST_queu_char
+   WHILE dp_p%
+     CASE TRUE OF
+@@ -1365,11 +1367,11 @@
+ =""
+ 
+ DEF FNdp_display(byte%)
+-  VDU: PROCftracef("FNdp_display")
++  Ftracef("FNdp_display")
+ ="["+RIGHT$("0"+FNtask_lower(STR$~byte%),2)+"]"
+ 
+ DEF FNdp_style_on(bit%)
+-  VDU: PROCftracef("FNdp_style_on")
++  Ftracef("FNdp_style_on")
+   CASE bit% OF
+     WHEN 0: =FNprinter_read_string_entry(text_prdt%,13): REM bold on
+     WHEN 1: =FNprinter_read_string_entry(text_prdt%,17): REM light on
+@@ -1381,7 +1383,7 @@
+ =""
+ :
+ DEF FNdp_style_off(bit%)
+-  VDU: PROCftracef("FNdp_style_off")
++  Ftracef("FNdp_style_off")
+   CASE bit% OF
+     WHEN 0: =FNprinter_read_string_entry(text_prdt%,14): REM bold off
+     WHEN 1: =FNprinter_read_string_entry(text_prdt%,18): REM light off
+@@ -1393,7 +1395,7 @@
+ =""
+ 
+ DEF FNdp_font(font%)
+-  VDU: PROCftracef("FNdp_font")
++  Ftracef("FNdp_font")
+   CASE font% OF
+     WHEN 0: =FNprinter_read_string_entry(text_prdt%,9):REM pica
+     WHEN 1: =FNprinter_read_string_entry(text_prdt%,10):REM elite
+--- a/src/PrinterManager/s/SetPrint
++++ b/src/PrinterManager/s/SetPrint
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: ARM2 build for the printing disc (see patches/printing).
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -30,6 +31,8 @@
+ 
+ OSByte_ReadPrinterDestination * 245
+ 
++        AREA    |SetPrint$$Code|, CODE, READONLY ; ArcLibre: AsAsm needs an area
++
+ Start
+         ROUT
+         ADR     r0, PrintVarName
+--- a/src/PrinterManager/UK/!Run,feb
++++ b/src/PrinterManager/UK/!Run,feb
+@@ -1,4 +1,5 @@
+ | Copyright 1996 Acorn Computers Ltd
++| Modified 2026 by ArcLibre: disc modules, no remote printing (see patches/printing).
+ |
+ | Licensed under the Apache License, Version 2.0 (the "License");
+ | you may not use this file except in compliance with the License.
+@@ -25,14 +26,18 @@
+ |
+ | Ensure that there is enough memory for !Printers, some modules and some workspace
+ WimpSlot -min 192K -max 192K
+-WimpSlot -min 128K -max 128K
++| ArcLibre: 224K, not 128K: !RunImage is crunched but not squished (Acorn's
++| squish is not public), so the program is 134K.
++WimpSlot -min 224K -max 224K
+ |
+-RMEnsure RemotePrinterMessages 1.01 RMLoad Printers:Modules.RemPrnMsgs
+-RMEnsure RemotePrinterMessages 1.01 Error !Printers needs RemotePrinterMessages version 1.01 or later
+-RMEnsure RemotePrinterSupport  1.01 RMLoad Printers:Modules.RemPrnSpt
+-RMEnsure RemotePrinterSupport  1.01 Error !Printers needs RemotePrinterSupport 1.01 or later
++| ArcLibre: no AUN remote printing (built without Sparrow); PDriver, in ROM in
++| RISC OS 3.11, is loaded from this disc. Each class's support code loads its
++| driver (PDriverDP or PDriverPS), PDumperSupport and the dumpers from
++| Printers:Modules and PDumpers.
++RMEnsure PDriver 3.25 RMLoad Printers:Modules.PDriver
++RMEnsure PDriver 3.25 Error !Printers needs PDriver version 3.25 or later
+ |
+ IconSprites Printers:!Sprites
+ /<Printers$Dir>.SetPrint
+-WimpSlot -min 128K -max 128K
++WimpSlot -min 224K -max 224K
+ /<Printers$Dir>.!RunImage
+--- a/src/PrinterManager/sources/SupportLJ
++++ b/src/PrinterManager/sources/SupportLJ
+@@ -1,4 +1,6 @@
+ REM > Support - for Laser/Desk Jet printers
++/* Modified 2026 by ArcLibre: trace calls through Trace.h's Ftracef, as in
++   RunImage; PROCftracef exists only in trace builds (see patches/printing). */
+ 
+ /* Changes list:
+  *
+@@ -16,7 +18,7 @@
+ 
+ DEF FNlj_support(buff%)
+   LOCAL reason%,psup%,prnt%,prdt%,cnfg%,xbuff%,psize_head%,code_entry%
+-  VDU: PROCftracef("PROClj_support")
++  Ftracef("PROClj_support")
+   reason%=buff%!0
+   psup%=buff%!4
+   prnt%=buff%!8
+@@ -47,7 +49,7 @@
+ DEF PROClj_m1
+   LOCAL colours%, pdriverdp%
+   REM psup%!CONST_psup_flags OR= 0
+-  VDU: PROCftracef("PROClj_m1")
++  Ftracef("PROClj_m1")
+   psup%!CONST_psup_type=&FF4
+   psup%!CONST_psup_text=%1001
+   psup%!CONST_psup_cnfg=CONST_cnfg_lj_MAX/4
+@@ -69,10 +71,10 @@
+ ENDPROC
+ 
+ DEF PROClj_m2
+-  VDU: PROCftracef("PROClj_m2")
++  Ftracef("PROClj_m2")
+ /* REM We don't want to free up the RMA when we quit, thank you very much
+  * REM  IF psup%!CONST_psup_rma_block THEN
+- * REM    VDU: PROCftracef("*** FREEING R M A ***")
++ * REM    Ftracef("*** FREEING R M A ***")
+  * REM    SYS "ResourceFS_DeregisterFiles",psup%!CONST_psup_rma_block
+  * REM    SYS "OS_Module",7,,psup%!CONST_psup_rma_block: REM OSModule_Free
+  * REM    psup%!CONST_psup_rma_block=0
+@@ -83,7 +85,7 @@
+ DEF PROClj_m3
+   REM initialise the configuration window
+   LOCAL config%,lj_i%,lj_j%
+-  VDU: PROCftracef("PROClj_m3")
++  Ftracef("PROClj_m3")
+   config%=FNprinter_find_window(prnt%,"configure")
+   PROCicon_write(config%,27,FNprinter_read_string(prnt%!CONST_prnt_name))
+   PROCicon_write(config%,6,$prnt%!CONST_prnt_type)
+@@ -122,7 +124,7 @@
+ DEF PROClj_m4
+   REM create a CNFG block with suitable defaults
+   LOCAL lj_s$,lj_i%,lj_s%,lj_t%,lj_x%,lj_y%,lj_co%,lj_ht%,B%,C%
+-  VDU: PROCftracef("PROClj_m4")
++  Ftracef("PROClj_m4")
+   REM PJC: set the text options to be draft
+   cnfg%!CONST_cnfg_lj_flags=FNstore_integer(%010000)
+   REM portrait mode is no-highlights entry
+@@ -260,7 +262,7 @@
+   REM fall back to going for the default
+   IF lj_s$="" lj_s$=FNmsg_0(psup%!CONST_psup_msg,"PAP")
+ 
+-  VDU: PROCftracef("initialise the best paper size we can find")
++  Ftracef("initialise the best paper size we can find")
+   lj_i%=psize_head%
+   WHILE lj_s$<>FNprinter_read_string(lj_i%!CONST_psze_name)
+     lj_i%=lj_i%!CONST_psze_next
+@@ -273,13 +275,13 @@
+   lj_i%=FNprinter_read_integer_entry(prdt%,11)
+   IFlj_i%<>0 prnt%!CONST_prnt_flags = prnt%!CONST_prnt_flags OR (1<<7)
+ 
+-  VDU: PROCftracef("PROClj_m4 done")
++  Ftracef("PROClj_m4 done")
+ ENDPROC
+ 
+ DEF PROClj_ensure_resource_file(resource$,disc$,reload_if_outofdate%)
+   LOCAL obj_type%,load_addr%,exec_addr%,file_size%,obj_attr%,rma_size%,rma_block%
+   LOCAL found_type%,found_load%,found_exec%,found_size%,c%,a%,w%
+-  VDU: PROCftracef("lj_ensure_resource_file("+resource$+disc$+")")
++  Ftracef("lj_ensure_resource_file("+resource$+disc$+")")
+   REM We use this to load palette files for the printers in order to reduce
+   REM the probability of having to ask for the printers disc again later.
+ 
+@@ -308,7 +310,7 @@
+   ENDIF
+ 
+   rma_size%=20+(LEN resource$+4 AND NOT 3)+4+(file_size%+3 AND NOT 3): REM Size needed for this file only
+-  VDU: PROCftracef("File "+disc$+", size "+STR$ file_size%)
++  Ftracef("File "+disc$+", size "+STR$ file_size%)
+ 
+   REM claim some RMA for the file
+   SYS "OS_Module",6,,,rma_size%+8 TO,,rma_block%: REM OSModule_Alloc
+@@ -333,7 +335,7 @@
+   REM cache any palette files that are used by lj printers and ensure
+   REM that the relevant PDumper modules are loaded
+   LOCAL lj_prnt%,lj_cnfg%,lj_graphics_prdt%,lj_pal$
+-  VDU: PROCftracef("PROClj_m5")
++  Ftracef("PROClj_m5")
+   lj_prnt%=prnt%
+   WHILE lj_prnt%>0
+     IF lj_prnt%!CONST_prnt_psup=psup% THEN
+@@ -355,7 +357,7 @@
+   REM do whatever is necessary to prime the specified printer
+   LOCAL lj_s$,lj_t$,lj_i%,lj_j%,xres%,yres%,halftone%,ptr%,pal%,dmp$,inf%,strip%,graphics_prdt%,text_prdt%
+   LOCAL format_print%,local_pl%,local_pr%,local_pb%,local_pt%,local_ph%,local_A%,local_B%,local_G%,local_B$,B%,C%
+-  VDU: PROCftracef("PROClj_m6")
++  Ftracef("PROClj_m6")
+   REM 7 is the magic number for the dumper driver
+   IF(lj_i% AND 1)=0 SYS"XPDriver_SelectDriver",7
+   lj_s$=FNprinter_read_string(prnt%!CONST_prnt_name)
+@@ -507,12 +509,12 @@
+   local_B$=FNungstrans(FNungstrans(FNlj_font(2)))
+   IF local_B$<>"" lj_t$+=" -Cd "+local_B$
+   SYS"OS_CLI","Set PDriver$TextPage "+lj_t$
+-  VDU: PROCftracef("PROClj_m6 done")
++  Ftracef("PROClj_m6 done")
+ ENDPROC
+ 
+ DEF PROClj_m7
+   LOCAL queu%,lj_p%,B%,C%
+-  VDU: PROCftracef("PROClj_m7")
++  Ftracef("PROClj_m7")
+   queu%=!xbuff%
+   lj_p%=queu%!CONST_queu_tprv
+   IF lj_p% THEN
+@@ -524,14 +526,14 @@
+ ENDPROC
+ 
+ DEF PROClj_p3
+-  VDU: PROCftracef("PROClj_p3")
++  Ftracef("PROClj_p3")
+   SYS"Wimp_CloseWindow",,xbuff%
+ ENDPROC
+ 
+ DEF PROClj_p6
+   LOCAL wind%
+   REM mouseclick on the configure window
+-  VDU: PROCftracef("PROClj_p6")
++  Ftracef("PROClj_p6")
+   CASE xbuff%!8 OF
+     WHEN 2: REM menu
+       CASE xbuff%!16 OF
+@@ -570,7 +572,7 @@
+ DEF PROClj_p8
+   REM a key press!
+   LOCAL lj_i%
+-  VDU: PROCftracef("PROClj_p8")
++  Ftracef("PROClj_p8")
+   lj_i%=psup%!CONST_psup_wind
+   WHILE lj_i%
+     IF lj_i%!CONST_wind_hand=!xbuff% THEN
+@@ -600,7 +602,7 @@
+  * REM other choices are OK, but we don't touch any
+  * REM data yet.
+  */
+-  VDU: PROCftracef("PROClj_p9")
++  Ftracef("PROClj_p9")
+   wind%=FNprinter_find_window(prnt%,"configure")
+   adjust%=FNwas_adjust_used
+   CASE lj_menu_chsn$ OF
+@@ -671,7 +673,7 @@
+ 
+ DEF PROClj_p17
+   LOCAL wind%,lj_s$,lj_t$
+-  VDU: PROCftracef("PROClj_p17")
++  Ftracef("PROClj_p17")
+   CASE xbuff%!16 OF
+     WHEN &502
+       wind%=psup%!CONST_psup_wind
+@@ -699,7 +701,7 @@
+ 
+ DEF PROClj_save_configuration(window%)
+   LOCAL lj_i%,lj_j%,lj_k%,lj_s$,B%,C%
+-  VDU: PROCftracef("PROClj_save_configuration_window")
++  Ftracef("PROClj_save_configuration_window")
+   prdt%=FNprinter_find_prdata_entry(psup%,FNicon_read(window%,6))
+   PROCfree_structure(prnt%!CONST_prnt_name)
+   $buff%=FNicon_read(window%,27)
+@@ -798,7 +800,7 @@
+ 
+ DEF FNlj_res(cnfg%)
+   LOCAL xres%,yres%,graphics_prdt%
+-  VDU: PROCftracef("FNlj_res")
++  Ftracef("FNlj_res")
+   graphics_prdt%=!cnfg%!CONST_cnfg_lj_graphics
+   xres%=FNprinter_read_integer_entry(graphics_prdt%,4)
+   yres%=FNprinter_read_integer_entry(graphics_prdt%,5)
+@@ -806,7 +808,7 @@
+ 
+ DEF FNlj_qual(cnfg%)
+   LOCAL lj_i%,lj_s$,lj_t$
+-  VDU: PROCftracef("FNlj_qual")
++  Ftracef("FNlj_qual")
+   lj_i%=!cnfg%!CONST_cnfg_lj_options
+   lj_s$=FNmsg_0(psup%!CONST_psup_msg,"CO"+STR$(lj_i% AND &FF))
+   lj_t$=FNmsg_0(psup%!CONST_psup_msg,"HT"+STR$((lj_i% AND &FF00)>>8))
+@@ -863,7 +865,7 @@
+ REM 2 = large halftone, tone type 8
+ REM 4 = dithered, tone type 1
+ DEF PROClj_decode_options(option%,RETURN strip%,RETURN tone%)
+-  VDU: PROCftracef("PROClj_decode_options")
++  Ftracef("PROClj_decode_options")
+   REM try to pick colour, then grey, then mono
+   IF option% AND &700000 THEN
+    strip%=5
+@@ -905,7 +907,7 @@
+ 
+ DEF PROClj_menu(top$,rebuild%,iconpos%)
+   LOCAL wind%,lj_ix%,lj_iy%,lj_i%,lj_x%,lj_j%,lj_k%,xres%,yres%,indt%
+-  VDU: PROCftracef("PROClj_menu")
++  Ftracef("PROClj_menu")
+   IF rebuild% THEN
+     lj_menu_xpos%=xbuff%!0-64
+     lj_menu_ypos%=xbuff%!4
+@@ -987,7 +989,7 @@
+ 
+ DEF PROClj_menu_quality(RETURN lj_menu%,RETURN lj_i%,strip$,tone%)
+   LOCAL indt%
+-  VDU: PROCftracef("PROClj_menu")
++  Ftracef("PROClj_menu")
+   indt%=(lj_menu%!28 AND &100)<>0
+   IF tone% AND 1 THEN
+     PROCmenu_item(lj_menu%,lj_i%,strip$+", "+FNmsg_0(psup%!CONST_psup_msg,"HT4"),indt%)
+@@ -1004,14 +1006,14 @@
+ ENDPROC
+ 
+ DEF FNlj_hex2(v%)
+-  VDU: PROCftracef("PROClj_hex2")
++  Ftracef("PROClj_hex2")
+ =RIGHT$("00"+STR$~v%,2)
+ 
+ REM text printing code
+ 
+ DEF PROClj_m8
+   LOCAL lj_r%,queu%,tpub%,tprv%,text_prdt%
+-  VDU: PROCftracef("PROClj_m8")
++  Ftracef("PROClj_m8")
+   text_prdt%=!cnfg%!CONST_cnfg_lj_text
+   lj_r%=!xbuff%
+   queu%=xbuff%!4
+@@ -1039,7 +1041,7 @@
+ DEF PROClj_1
+ /*  REM only called if we aren't printing an LJ data file */
+   LOCAL lj_i%,lj_i$,lj_j%,B%,C%
+-  VDU: PROCftracef("PROClj_1")
++  Ftracef("PROClj_1")
+   B%=CONST_ident_TPRV
+   C%=CONST_tprv_lj_MAX
+   tprv%=USR(code_entry%+CONST_entry_heap_claim)
+@@ -1073,7 +1075,7 @@
+   REM output job start strings
+   LOCAL format_print%,lj_pl%,lj_pr%,lj_pb%,lj_pt%,lj_ph%,psze%,lj_yt%
+   LOCAL lj_i%, lj_j%, lj_s$, lj_t$
+-  VDU: PROCftracef("PROClj_2")
++  Ftracef("PROClj_2")
+   REM first reset the printer
+   BPUT#xbuff%!8,CHR$ 27+"E";
+   REM set paper feed ...
+@@ -1147,14 +1149,14 @@
+ 
+ DEF PROClj_4
+   REM no data to output
+-  VDU: PROCftracef("PROClj_4")
++  Ftracef("PROClj_4")
+   xbuff%?8=0
+ ENDPROC
+ 
+ DEF PROClj_6
+   REM do control code processing
+   LOCAL lj_b$
+-  VDU: PROCftracef("PROClj_6")
++  Ftracef("PROClj_6")
+   lj_b$=FNlj_display(xbuff%!8)
+   xbuff%?8=LEN lj_b$
+   $(xbuff%+9)=lj_b$
+@@ -1163,7 +1165,7 @@
+ DEF PROClj_7
+   REM process a backspace
+   LOCAL lj_b$
+-  VDU: PROCftracef("PROClj_7")
++  Ftracef("PROClj_7")
+   lj_b$=FNprinter_read_string_entry(text_prdt%,2)
+   xbuff%?8=LEN(lj_b$)
+   $(xbuff%+9)=lj_b$
+@@ -1171,7 +1173,7 @@
+ 
+ DEF PROClj_9
+   LOCAL changed_bits%,clr_bits%,set_bits%,bit%,lj_b$
+-  VDU: PROCftracef("PROClj_9")
++  Ftracef("PROClj_9")
+   changed_bits%=tpub%!CONST_tpub_style_bits EOR xbuff%!8
+   clr_bits%=tpub%!CONST_tpub_style_bits AND changed_bits%
+   set_bits%=changed_bits% AND NOTclr_bits%
+@@ -1188,7 +1190,7 @@
+ DEF PROClj_10
+   REM end the previous line and start a new line
+   LOCAL lj_b$,wrap%,line_num$,lj_bit%
+-  VDU: PROCftracef("PROClj_10")
++  Ftracef("PROClj_10")
+   tpub%!CONST_tpub_line_page+=1
+   tpub%!CONST_tpub_line_doc+=1
+   FOR lj_bit%=0 TO 5
+@@ -1228,7 +1230,7 @@
+ DEF PROClj_11
+   REM print a footnote number
+   LOCAL lj_b$,lj_i%
+-  VDU: PROCftracef("PROClj_11")
++  Ftracef("PROClj_11")
+   PROClj_10: lj_b$=FNprinter_read_string(tpub%!CONST_tpub_line_epilogue)+$(xbuff%+9)
+   PROClj_10: lj_b$+=FNprinter_read_string(tpub%!CONST_tpub_line_epilogue)+$(xbuff%+9)
+   lj_b$+=FNlj_style_on(4): REM superscript
+@@ -1241,7 +1243,7 @@
+ DEF PROClj_12
+   REM do bulk string translation
+   LOCAL lj_b$
+-  VDU: PROCftracef("PROClj_12")
++  Ftracef("PROClj_12")
+   lj_b$=FNlj_trans($(xbuff%+8))
+   xbuff%?8=LEN lj_b$
+   $(xbuff%+9)=lj_b$
+@@ -1250,7 +1252,7 @@
+ DEF PROClj_13
+   REM do font change
+   LOCAL lj_b$,lj_i%
+-  VDU: PROCftracef("PROClj_13")
++  Ftracef("PROClj_13")
+   tpub%!CONST_tpub_font_num=xbuff%!8
+   lj_i%=tprv%!CONST_tprv_lj_xl
+   lj_i%+=INT((tprv%!CONST_tprv_lj_xw-tprv%!CONST_tprv_lj_xl-tprv%!CONST_tprv_lj_right_print)*FNlj_fontsize(xbuff%!8)/FNlj_fontsize(0))
+@@ -1271,7 +1273,7 @@
+ DEF PROClj_15
+   REM end of job
+   LOCAL text_prdt%,tpub%,lj_s$
+-  VDU: PROCftracef("PROClj_15")
++  Ftracef("PROClj_15")
+   IF queu%!CONST_queu_type<>&FF4 THEN
+     text_prdt%=!cnfg%!CONST_cnfg_lj_text
+     tpub%=queu%!CONST_queu_tpub
+@@ -1284,7 +1286,7 @@
+ DEF PROClj_16
+   REM process a tab
+   LOCAL lj_b$
+-  VDU: PROCftracef("PROClj_16")
++  Ftracef("PROClj_16")
+   lj_b$=CHR$ 27+"&a+"
+   lj_b$+=STR$(8-((tpub%!CONST_tpub_cpos-tprv%!CONST_tprv_lj_left_print-tprv%!CONST_tprv_lj_left_ruler+1-tprv%!CONST_tprv_lj_xt)MOD 8))+"C"
+   tpub%!CONST_tpub_xc+=8-((tpub%!CONST_tpub_cpos-tprv%!CONST_tprv_lj_left_print-tprv%!CONST_tprv_lj_left_ruler+1-tprv%!CONST_tprv_lj_xt)MOD 8)
+@@ -1294,14 +1296,14 @@
+ 
+ DEF PROClj_17
+   REM do a formfeed
+-  VDU: PROCftracef("PROClj_17")
++  Ftracef("PROClj_17")
+   xbuff%?8=0
+ ENDPROC
+ 
+ DEF PROClj_18
+   REM change layout
+   LOCAL layout_height%,layout_top%,layout_bottom%
+-  VDU: PROCftracef("PROClj_18")
++  Ftracef("PROClj_18")
+   layout_height%=xbuff%!8
+   layout_top%=xbuff%!12
+   layout_bottom%=xbuff%!16
+@@ -1315,7 +1317,7 @@
+ DEF PROClj_19
+   REM start a new page
+   LOCAL lj_b$,lj_bit%,lj_p%,lj_t$
+-  VDU: PROCftracef("PROClj_19")
++  Ftracef("PROClj_19")
+   tpub%!CONST_tpub_line_page=0
+   tpub%!CONST_tpub_page_num+=1
+   IF((!cnfg%!CONST_cnfg_lj_flags AND 8)>>3)=0 OR (tpub%!CONST_tpub_page_num MOD 2)<>0 THEN
+@@ -1355,7 +1357,7 @@
+ 
+ DEF FNlj_trans(lj_s$)
+   LOCAL lj_i%,byte%,out$,str$
+-  VDU: PROCftracef("FNlj_trans")
++  Ftracef("FNlj_trans")
+   IF lj_s$="" THEN =""
+   FOR lj_i%=1 TO LEN lj_s$
+     byte%=ASC MID$(lj_s$,lj_i%,1): str$=""
+@@ -1376,7 +1378,7 @@
+ 
+ DEF FNlj_text_char(byte%)
+   LOCAL lj_p%,lj_s$,lj_i%
+-  VDU: PROCftracef("FNlj_text_char")
++  Ftracef("FNlj_text_char")
+   lj_p%=queu%!CONST_queu_char
+   WHILE lj_p%
+     CASE TRUE OF
+@@ -1398,11 +1400,11 @@
+ =""
+ 
+ DEF FNlj_display(byte%)
+-  VDU: PROCftracef("FNlj_display")
++  Ftracef("FNlj_display")
+ ="["+RIGHT$("0"+STR$~byte%,2)+"]"
+ 
+ DEF FNlj_style_on(bit%)
+-  VDU: PROCftracef("FNlj_style_on")
++  Ftracef("FNlj_style_on")
+   CASE bit% OF
+     WHEN 0: =FNprinter_read_string_entry(text_prdt%,13): REM bold on
+     WHEN 1: =FNprinter_read_string_entry(text_prdt%,17): REM light on
+@@ -1414,7 +1416,7 @@
+ =""
+ 
+ DEF FNlj_style_off(bit%)
+-  VDU: PROCftracef("FNlj_style_off")
++  Ftracef("FNlj_style_off")
+   CASE bit% OF
+     WHEN 0: =FNprinter_read_string_entry(text_prdt%,14): REM bold off
+     WHEN 1: =FNprinter_read_string_entry(text_prdt%,18): REM light off
+@@ -1426,19 +1428,19 @@
+ =""
+ 
+ DEF FNlj_font(font%)
+-  VDU: PROCftracef("FNlj_font")
++  Ftracef("FNlj_font")
+   CASE font% OF
+     WHEN 0: =FNprinter_read_string_entry(text_prdt%,9): REM pica
+     WHEN 1: =FNprinter_read_string_entry(text_prdt%,10): REM elite
+     WHEN 2: =FNprinter_read_string_entry(text_prdt%,11): REM condensed
+     WHEN 3: =FNprinter_read_string_entry(text_prdt%,12): REM expanded
+   ENDCASE
+-  VDU: PROCftracef("FNlj_font done")
++  Ftracef("FNlj_font done")
+ =""
+ 
+ DEF FNlj_fontsize(num%)
+   REM provide notional cpi sizes
+-  VDU: PROCftracef("FNlj_fontsize")
++  Ftracef("FNlj_fontsize")
+   CASE num% OF
+     WHEN 0: =10: REM pica
+     WHEN 1: =12: REM elite
+--- a/src/PrinterManager/sources/SupportPS
++++ b/src/PrinterManager/sources/SupportPS
+@@ -1,4 +1,8 @@
+ REM > Support - for PostScript printers
++/* Modified 2026 by ArcLibre: trace calls through Trace.h's Ftracef, as in
++   RunImage; PROCftracef exists only in trace builds (see patches/printing).
++   Two other VDU:-prefixed debug lines are left out with them. MakePSFont, a
++   C module not on the disc, is loaded only if present. */
+ 
+ /* Changes list:
+  *
+@@ -47,8 +51,9 @@
+ =FALSE
+ 
+ DEF PROCps_m1
+-  VDU: PROCftracef("PROCps_m1")
+-  VDU: psup%!CONST_psup_flags=psup%!CONST_psup_flags OR 200<<8 OR %11000
++  LOCAL ps_t%
++  Ftracef("PROCps_m1")
++  /* ArcLibre: debug line left out, as the trace lines: VDU: psup%!CONST_psup_flags=psup%!CONST_psup_flags OR 200<<8 OR %11000 */
+   psup%!CONST_psup_flags = psup%!CONST_psup_flags OR (1<<5):REM need to be able to write
+   psup%!CONST_psup_type=&FF5
+   psup%!CONST_psup_text=%1011
+@@ -68,13 +73,16 @@
+   SYS"Wimp_AddMessages",buff%
+   IFFNrmload_latest_module("PDriver","Printers:Modules.PDriver")
+   IFFNrmload_latest_module("PDriverPS","Printers:Modules.PDriverPS")
+-  IFFNrmload_latest_module("MakePSFont","Printers:Modules.MakePSFont")
++  /* ArcLibre: MakePSFont (font downloading and remapping) only if it is on the disc;
++     PDriverPS ignores its absence. */
++  SYS"XOS_File",17,"Printers:Modules.MakePSFont" TO ps_t%
++  IF ps_t%=1 ps_t%=FNrmload_latest_module("MakePSFont","Printers:Modules.MakePSFont")
+ ENDPROC
+ 
+ DEF PROCps_m3
+   REM initialise the configuration window
+   LOCAL config%,ps_i%
+-  VDU: PROCftracef("PROCps_m3")
++  Ftracef("PROCps_m3")
+   config%=FNprinter_find_window(prnt%,"configure")
+   PROCicon_write(config%,13,FNprinter_read_string(prnt%!CONST_prnt_name))
+   PROCicon_write(config%,6,$prnt%!CONST_prnt_type)
+@@ -102,7 +110,7 @@
+ DEF PROCps_m4
+   REM create a CNFG block with suitable defaults
+   LOCAL ps_s$,ps_i%,ps_t%,B%,C%
+-  VDU: PROCftracef("PROCps_m4")
++  Ftracef("PROCps_m4")
+   cnfg%!CONST_cnfg_ps_flags=FNstore_integer(100<<8)
+   $buff%=FNprinter_read_string_entry(prdt%,2): B%=buff%: C%=2: prnt%!CONST_prnt_name=USR(code_entry%+CONST_entry_store_string)
+   ps_s$=FNprinter_read_string_entry(prdt%,3)
+@@ -133,7 +141,7 @@
+ DEF PROCps_m5
+   REM check to see if there are any unused font files
+   LOCAL ps_i%,ps_j%
+-  VDU: PROCftracef("PROCps_m5")
++  Ftracef("PROCps_m5")
+   PROCps_ensure_dir
+   REPEAT
+    SYS"OS_GBPB",9,"PrinterChoices:ps.Printers"+CHR$0,buff%,1,ps_i%,128,"*" TO ,,,ps_j%,ps_i%
+@@ -158,9 +166,9 @@
+     ENDWHILE
+     IF ps_j%=0 THEN
+      REM failed to match - delete the file
+-     VDU: PROCftracef("PROCps_m5: deleting PrinterChoices:ps.Printers."+$buff%)
++     Ftracef("PROCps_m5: deleting PrinterChoices:ps.Printers."+$buff%)
+      SYS"OS_File",6,"PrinterChoices:ps.Printers."+$buff%
+-     VDU: PROCftracef("PROCps_m5: deleted")
++     Ftracef("PROCps_m5: deleted")
+      REM need to reset the offset now
+      ps_i%=0
+     ENDIF
+@@ -168,7 +176,7 @@
+   UNTIL ps_i%=-1
+   REM now see if there are any printers that need fonts downloading
+   PROCps_find_fonts_to_do(prnt%)
+-  VDU: PROCftracef("PROCps_m5 done")
++  Ftracef("PROCps_m5 done")
+ ENDPROC
+ 
+ DEF PROCps_m6
+@@ -179,7 +187,7 @@
+   LOCAL local_margin%,local_pl%,local_pr%,local_pb%,local_pt%
+   LOCAL local_psze%,local_pw%,local_ph%,local_fsize%,local_w%
+   LOCAL local_h%,local_A%,local_B%,local_G%
+-  VDU: PROCftracef("PROCps_m6")
++  Ftracef("PROCps_m6")
+   SYS"PDriver_SelectDriver",0
+   ps_s$=FNprinter_read_string(prnt%!CONST_prnt_name)
+   IF ps_s$="" THEN
+@@ -219,9 +227,9 @@
+   SYS"OS_CLI","Set PDriver$PSprologue Printers:ps.PSfiles.PSprolog"
+   SYS"OS_CLI","Set PDriver$PSprologue2 Printers:ps.PSfiles."+FNprinter_read_string_entry(prdt%,8)
+   local_psze%=prnt%!CONST_prnt_psze
+-  VDU: PROCftracef("Ptr to paper size block = &"+STR$~(local_psze%))
++  Ftracef("Ptr to paper size block = &"+STR$~(local_psze%))
+   ps_s$=$local_psze%!CONST_psze_name
+-  VDU: PROCftracef("Paper size name = "+ps_s$)
++  Ftracef("Paper size name = "+ps_s$)
+   ps_i%=0
+   WHILE MID$(ps_s$,ps_i%,1)<>" " AND ps_i%<=LEN ps_s$
+     ps_i%+=1
+@@ -251,10 +259,10 @@
+   ENDIF
+ 
+   local_fsize%=(!cnfg%!CONST_cnfg_ps_flags AND &FF00)>>8
+-  VDU: PROCftracef("Local font size is "+STR$ local_fsize%)
++  Ftracef("Local font size is "+STR$ local_fsize%)
+   local_w%=0.72*local_fsize%
+   local_h%=1.2*local_fsize%
+-  VDU: PROCftracef("=> (w, h) = ("+STR$ local_w%+", "+STR$ local_h%+")")
++  Ftracef("=> (w, h) = ("+STR$ local_w%+", "+STR$ local_h%+")")
+   local_pw%=local_pw% DIV local_w%
+   local_ph%=local_ph% DIV local_h%
+   IF !cnfg%!CONST_cnfg_ps_flags AND 1 THEN
+@@ -270,12 +278,12 @@
+   ps_t$+=" -Mr "+STR$ local_psze%!CONST_psze_tright+" -Th "+STR$ local_G%
+   SYS"OS_CLI","Set PDriver$TextPage "+ps_t$
+   PROCps_add_fonts(FALSE)
+-  VDU: PROCftracef("PROCps_m6 done")
++  Ftracef("PROCps_m6 done")
+ ENDPROC
+ 
+ DEF PROCps_m7
+   LOCAL queu%,ps_p%,ps_i%,B%,C%
+-  VDU: PROCftracef("PROCps_m7")
++  Ftracef("PROCps_m7")
+   queu%=!xbuff%
+ /*  REM we're all done now - free the private block */
+   ps_p%=queu%!CONST_queu_tprv
+@@ -309,7 +317,7 @@
+   REM if the font download window is open for this printer, move on
+   REM to the next one
+   LOCAL ps_i%
+-  VDU: PROCftracef("PROCps_m9")
++  Ftracef("PROCps_m9")
+   ps_i%=psup%!CONST_psup_wind
+   WHILE ps_i%
+    IF $(ps_i%+CONST_wind_name)="download" THEN
+@@ -332,7 +340,7 @@
+ DEF PROCps_p3
+   REM a window closing
+   LOCAL ps_i%
+-  VDU: PROCftracef("PROCps_p3")
++  Ftracef("PROCps_p3")
+   SYS"Wimp_CloseWindow",,xbuff%
+   ps_i%=psup%!CONST_psup_wind
+   WHILE ps_i%
+@@ -358,7 +366,7 @@
+ DEF PROCps_p6
+   REM mouseclick on the configure window
+   LOCAL wind%
+-  VDU: PROCftracef("PROCps_p6")
++  Ftracef("PROCps_p6")
+   CASE xbuff%!8 OF
+     WHEN 2: REM Menu
+       CASE xbuff%!16 OF
+@@ -371,7 +379,7 @@
+     WHEN 4: REM Select
+       CASE xbuff%!16 OF
+         WHEN 25
+-          VDU: PROCftracef("saving and closing configuration (click SELECT)")
++          Ftracef("saving and closing configuration (click SELECT)")
+           wind%=xbuff%!12
+           PROCps_save_configuration(wind%)
+           !xbuff%=wind%
+@@ -396,14 +404,14 @@
+ DEF PROCps_p8
+   REM a key press!
+   LOCAL ps_i%
+-  VDU: PROCftracef("PROCps_p8")
++  Ftracef("PROCps_p8")
+   ps_i%=psup%!CONST_psup_wind
+   WHILE ps_i%
+     IF ps_i%!CONST_wind_hand=!xbuff% THEN
+       IF xbuff%!24=13 THEN
+         CASE $(ps_i%+CONST_wind_name)OF
+           WHEN "configure"
+-            VDU: PROCftracef("saving and closing configuration (press RETURN)")
++            Ftracef("saving and closing configuration (press RETURN)")
+             SYS "Wimp_CloseWindow",,xbuff%
+             PROCps_save_configuration(!xbuff%)
+           WHEN "download"
+@@ -430,7 +438,7 @@
+  * REM other choices are OK, but we don't touch any
+  * REM data yet.
+  */
+-  VDU: PROCftracef("PROCps_p9")
++  Ftracef("PROCps_p9")
+   wind%=FNprinter_find_window(prnt%,"configure")
+   adjust%=FNwas_adjust_used
+   CASE ps_menu_chsn$ OF
+@@ -463,7 +471,7 @@
+ 
+ DEF PROCps_p17
+   LOCAL wind%,ps_s$,ps_t$,ps_f$,size%,dest%,recv%
+-  VDU: PROCftracef("PROCps_p17")
++  Ftracef("PROCps_p17")
+   CASE xbuff%!16 OF
+   WHEN &502:
+     wind%=psup%!CONST_psup_wind
+@@ -531,12 +539,12 @@
+     xbuff%!16=&80150: REM PSPrinterDefaulted
+     SYS"Wimp_SendMessage",17,xbuff%,xbuff%!4
+   ENDCASE
+-  VDU: PROCftracef("PROCps_p17 done")
++  Ftracef("PROCps_p17 done")
+ ENDPROC
+ 
+ DEF PROCps_create_default_font_file
+   LOCAL ps_c%,ps_d%,ps_t%,ps_i%,prdt%
+-  VDU: PROCftracef("PROCps_create_default_font_file")
++  Ftracef("PROCps_create_default_font_file")
+   ps_i%=A%!CONST_interface_scratch
+ /*
+  * REM we don't know where "ps" lives on the Printers path
+@@ -572,7 +580,7 @@
+  * REM already be open for another printer
+  */
+   LOCAL ps_i%,ps_j%
+-  VDU: PROCftracef("PROCps_try_to_find")
++  Ftracef("PROCps_try_to_find")
+   REM is the download window open?
+   ps_i%=psup%!CONST_psup_wind
+   WHILE ps_i%
+@@ -599,7 +607,7 @@
+ ENDPROC
+ 
+ DEF PROCps_find_fonts_to_do(prnt%)
+-  VDU: PROCftracef("PROCps_find_fonts_to_do")
++  Ftracef("PROCps_find_fonts_to_do")
+   WHILE prnt%
+ /*
+  *  REM if we've got a printer in our class - compare the font file with our
+@@ -612,7 +620,7 @@
+ 
+ DEF PROCps_ensure_fonts(prnt%,take_action%)
+   LOCAL ps_i%,ps_j%,ps_k%,ps_s$,ps_t$,ps_e$,ps_download%,ps_changed%
+-  VDU: PROCftracef("PROCps_ensure_fonts")
++  Ftracef("PROCps_ensure_fonts")
+   cnfg%=prnt%!CONST_prnt_cnfg
+   ps_download%=FALSE: REM nothing to download yet
+   ps_changed%=FALSE
+@@ -668,9 +676,9 @@
+      IFps_k%=0 ERROR CONST_error_fatal, FNmsg_0(FNps_host_desc,"FA5")
+      ps_k%!CONST_fonts_next=prnt%!CONST_prnt_fonts: prnt%!CONST_prnt_fonts=ps_k%
+      $buff%=ps_s$: B%=buff%: C%=2: ps_k%!CONST_fonts_acorn=USR(code_entry%+CONST_entry_store_string)
+-     VDU: PROCftracef("Length of block for '"+$buff%+"' is &"+STR$~(!((ps_k%!CONST_fonts_acorn)-8)))
++     Ftracef("Length of block for '"+$buff%+"' is &"+STR$~(!((ps_k%!CONST_fonts_acorn)-8)))
+      $buff%=ps_t$: B%=buff%: C%=2: ps_k%!CONST_fonts_foreign=USR(code_entry%+CONST_entry_store_string)
+-     VDU: PROCftracef("Length of block for '"+$buff%+"' is &"+STR$~(!((ps_k%!CONST_fonts_foreign)-8)))
++     Ftracef("Length of block for '"+$buff%+"' is &"+STR$~(!((ps_k%!CONST_fonts_foreign)-8)))
+      ps_k%!CONST_fonts_flags=1
+      IF ps_j%=0 THEN
+       ps_download%=TRUE: REM got SOMETHING to download
+@@ -709,7 +717,7 @@
+ DEF PROCps_download_fonts(wind%)
+   LOCAL ps_i%,ps_c%,ps_j%,ps_k%,ps_l%,ps_s$,B%,C%,D%,E%,F%,G%,ptr%
+   LOCAL ERROR
+-  VDU: PROCftracef("PROCps_download_fonts")
++  Ftracef("PROCps_download_fonts")
+   REM Check that there is a password.
+   IF FNicon_read(wind%,5)="" ERROR CONST_error_ok,FNmsg_0(psup%!CONST_psup_msg,"OK0")
+   SYS"Hourglass_On"
+@@ -777,12 +785,12 @@
+   CALL code_entry%+CONST_entry_add_queue_entry
+   PROCps_find_fonts_to_do(prnt%!CONST_prnt_next)
+   SYS"Hourglass_Off"
+-  VDU: PROCftracef("PROCps_download_fonts done")
++  Ftracef("PROCps_download_fonts done")
+ ENDPROC
+ 
+ DEF PROCps_lose_fonts
+   LOCAL ps_i%,ps_old_i%
+-  VDU: PROCftracef("PROCps_lose_fonts")
++  Ftracef("PROCps_lose_fonts")
+   ps_i%=prnt%!CONST_prnt_fonts
+   WHILE ps_i%
+    IF ps_i%!CONST_fonts_flags AND 1<<30 THEN
+@@ -804,7 +812,7 @@
+ 
+ DEF PROCps_add_fonts(only_mapped%)
+   LOCAL ps_i%,ps_j%,ps_old_driver%
+-  VDU: PROCftracef("PROCps_add_fonts")
++  Ftracef("PROCps_add_fonts")
+   SYS"PDriver_SelectDriver",0 TO ps_old_driver%
+   SYS"PDriver_MiscOp",1: REM clear all fonts
+   ps_i%=prnt%!CONST_prnt_fonts
+@@ -823,12 +831,12 @@
+    ps_i%=ps_i%!CONST_fonts_next
+   ENDWHILE
+   SYS"PDriver_SelectDriver",ps_old_driver%
+-  VDU: PROCftracef("PROCps_add_fonts done")
++  Ftracef("PROCps_add_fonts done")
+ ENDPROC
+ 
+ DEF PROCps_save_configuration(window%)
+   LOCAL ps_i%,ps_j%,ps_k%,ps_s$,B%,C%
+-  VDU: PROCftracef("PROCps_save_configuration_window")
++  Ftracef("PROCps_save_configuration_window")
+   prdt%=FNprinter_find_prdata_entry(psup%,FNicon_read(window%,6))
+   PROCfree_structure(prnt%!CONST_prnt_name)
+   $buff%=FNicon_read(window%,13)
+@@ -880,7 +888,7 @@
+ 
+ DEF PROCps_menu(top$,rebuild%,iconpos%)
+   LOCAL wind%,prdt%,ps_i%,ps_ix%,ps_iy%
+-  VDU: PROCftracef("PROCps_menu")
++  Ftracef("PROCps_menu")
+   IF rebuild% THEN
+    ps_menu_xpos%=xbuff%!0-64
+    ps_menu_ypos%=xbuff%!4
+@@ -912,7 +920,7 @@
+ 
+ DEF PROCps_m8
+   LOCAL ps_r%,queu%,tpub%,tprv%
+-  VDU: PROCftracef("PROCps_m8")
++  Ftracef("PROCps_m8")
+   ps_r%=!xbuff%
+   queu%=xbuff%!4
+   tpub%=queu%!CONST_queu_tpub
+@@ -945,7 +953,7 @@
+   LOCAL local_psze%,local_format_print%,local_pw%
+   LOCAL last_char%
+   LOCAL ps_i%,ps_s$,ps_h,ps_w,B%,C%
+-  VDU: PROCftracef("PROCps_1")
++  Ftracef("PROCps_1")
+ /*  REM this is the first call to us, so let's claim our private text block */
+   B%=CONST_ident_TPRV: C%=CONST_tprv_ps_MAX
+   tprv%=USR(code_entry%+CONST_entry_heap_claim)
+@@ -987,12 +995,12 @@
+ 
+   B%=buff%: C%=2: tprv%!CONST_tprv_ps_transform=USR(code_entry%+CONST_entry_store_string)
+   tprv%!CONST_tprv_ps_fsize=(!cnfg%!CONST_cnfg_ps_flags AND &FF00)>>8
+-  VDU: PROCftracef("Local font size is "+STR$ tprv%!CONST_tprv_ps_fsize)
++  Ftracef("Local font size is "+STR$ tprv%!CONST_tprv_ps_fsize)
+ 
+   ps_w=0.72*tprv%!CONST_tprv_ps_fsize /*: REM courier character width is 60% of size. Also starring "hack." JRC 31 Mar '92 */
+   ps_h=1.2*tprv%!CONST_tprv_ps_fsize: REM allow 10% leading
+ 
+-  VDU: PROCftracef("=> (w, h) = ("+STR$ ps_w+", "+STR$ ps_h+")")
++  Ftracef("=> (w, h) = ("+STR$ ps_w+", "+STR$ ps_h+")")
+ 
+   local_pw%=local_pw% DIV ps_w: REM size of page in characters
+   tprv%!CONST_tprv_ps_ph=tprv%!CONST_tprv_ps_ph DIV ps_h
+@@ -1022,7 +1030,7 @@
+ 
+ DEF PROCps_add_char(RETURN last%,char%,trans$)
+   LOCAL ps_p%,B%,C%
+-  VDU: PROCftracef("PROCps_add_char")
++  Ftracef("PROCps_add_char")
+   B%=CONST_ident_CHAR: C%=7+LEN trans$
+   ps_p%=USR(code_entry%+CONST_entry_heap_claim)
+   IFps_p%=0 ERROR CONST_error_fatal, FNmsg_0(FNps_host_desc,"FA5")
+@@ -1041,7 +1049,7 @@
+ DEF PROCps_2
+   REM Produce any required job initialisation output
+   LOCAL ps_c%
+-  VDU: PROCftracef("PROCps_2")
++  Ftracef("PROCps_2")
+   ps_c%=xbuff%!8
+   PROCps_header(ps_c%)
+   PROCps_prolog(ps_c%)
+@@ -1051,7 +1059,7 @@
+ 
+ DEF PROCps_header(ps_c%)
+   LOCAL ps_old_job%,ps_old_driver%
+-  VDU: PROCftracef("PROCps_header")
++  Ftracef("PROCps_header")
+   REM need to ensure that PDriverPS is the selected driver
+   SYS"PDriver_SelectDriver",0 TO ps_old_driver%
+   REM get PDriverPS to output the job header and start a job
+@@ -1068,7 +1076,7 @@
+   LOCAL ps_f%,ps_h%,ps_old_driver%,ps_b$,ps_bo$,ps_m$,ps_mo$
+   LOCAL ps_acc%
+   LOCAL ERROR
+-  VDU: PROCftracef("PROCps_encoding")
++  Ftracef("PROCps_encoding")
+   REM SYS"XOS_Find",&40,"Printers:ps.PSfiles.PSencoding" TO ps_h%;ps_f%
+   REM IF ps_f% AND 1 ps_h%=0
+   REM IF ps_h%=0 ERROR CONST_error_ok,FNmsg_0(psup%!CONST_psup_msg,"ErrEnc"): REM Error opening PSencoding file
+@@ -1076,7 +1084,7 @@
+   SYS"PDriver_SelectDriver",0 TO ps_old_driver%
+   SYS"PDriver_SelectJob",ps_c% TO ps_h%
+   ON ERROR LOCAL RESTORE ERROR: SYS"PDriver_SelectJob",ps_h%: ERROR ERR,REPORT$
+-  VDU: ON ERROR LOCAL RESTORE ERROR: SYS"PDriver_SelectJob",ps_h%: ERROR ERR,REPORT$+" ("+STR$ ERL+")"
++  /* ArcLibre: debug line left out: VDU: ON ERROR LOCAL RESTORE ERROR: SYS"PDriver_SelectJob",ps_h%: ERROR ERR,REPORT$+" ("+STR$ ERL+")" */
+ 
+   REM if accented chars button checked, then use RF/RFE proc for remapping.  Otherwise send
+   REM inline code, which does not do PostScript runtime accent generation.
+@@ -1111,7 +1119,7 @@
+ 
+ DEF PROCps_prolog(ps_c%)
+   LOCAL ps_f%,ps_h%
+-  VDU: PROCftracef("PROCps_prologue")
++  Ftracef("PROCps_prologue")
+   SYS"XOS_Find",&4F,"Printers:ps.PSfiles.PStprolog" TO ps_h%;ps_f%
+   IF ps_f% AND 1 ps_h%=0
+   IF ps_h%=0 ERROR CONST_error_ok,$(ps_h%+4)
+@@ -1119,7 +1127,7 @@
+ ENDPROC
+ 
+ DEF PROCps_outputfile(ps_h%,ps_c%)
+-  VDU: PROCftracef("PROCps_output")
++  Ftracef("PROCps_output")
+   WHILE NOT EOF#ps_h%
+     BPUT#ps_c%,GET$#ps_h%
+   ENDWHILE
+@@ -1128,7 +1136,7 @@
+ 
+ DEF PROCps_setupline(ps_c%)
+   LOCAL ps_s$
+-  VDU: PROCftracef("PROCps_setupline")
++  Ftracef("PROCps_setupline")
+   BPUT#ps_c%,"%%EndProlog"
+   ps_s$=FNtask_read_env("PDriver$PSextra",xbuff%)
+   IF ps_s$<>"" THEN
+@@ -1142,7 +1150,7 @@
+ DEF PROCps_3
+   REM Produce page header
+   LOCAL ps_s$,old_pos%,local_psze%,local_style_bits%,ps_c%,ps_t$,ps_w,ps_h,@%
+-  VDU: PROCftracef("PROCps_3")
++  Ftracef("PROCps_3")
+   local_style_bits%=tpub%!CONST_tpub_style_bits
+   tpub%!CONST_tpub_style_bits=64: REM title bit
+   ps_c%=xbuff%!8
+@@ -1154,10 +1162,10 @@
+   BPUT#ps_c%,"%%PageBoundingBox: "+FNprinter_read_string(tprv%!CONST_tprv_ps_bbox)
+   BPUT#ps_c%,FNprinter_read_string(tprv%!CONST_tprv_ps_transform);
+   BPUT#ps_c%," "+STR$(1.2*tprv%!CONST_tprv_ps_fsize);
+-  VDU: PROCftracef("Local font size is "+STR$(1.2*tprv%!CONST_tprv_ps_fsize))
++  Ftracef("Local font size is "+STR$(1.2*tprv%!CONST_tprv_ps_fsize))
+   ps_w=0.72*tprv%!CONST_tprv_ps_fsize: REM courier character width is 60% of size
+   ps_h=1.2*tprv%!CONST_tprv_ps_fsize
+-  VDU: PROCftracef("=> (w, h) = ("+STR$ ps_w+", "+STR$ ps_h+")")
++  Ftracef("=> (w, h) = ("+STR$ ps_w+", "+STR$ ps_h+")")
+ 
+   @%="+g10.9"
+   BPUT#ps_c%," "+STR$ ps_w+" "+STR$ ps_h+" StartPage"
+@@ -1178,7 +1186,7 @@
+ DEF PROCps_4
+   REM post line processing
+   LOCAL ps_i%,ps_b$
+-  VDU: PROCftracef("PROCps_4")
++  Ftracef("PROCps_4")
+   REM if we've output something and we aren't formatting, end the string
+   IF xbuff%!8<>0 AND tpub%!CONST_tpub_format_flag=0 ps_b$=") SS"
+   REM if we've reached the end or we're ending the page ...
+@@ -1198,7 +1206,7 @@
+ DEF PROCps_6
+   REMM Do control code processing
+   LOCAL ps_s$
+-  VDU: PROCftracef("PROCps_6")
++  Ftracef("PROCps_6")
+   ps_s$=FNps_display(xbuff%!8)
+   xbuff%?8=LEN ps_s$
+   $(xbuff%+9)=ps_s$
+@@ -1208,7 +1216,7 @@
+   REM handle a backspace
+   REM simple! just move back to where the last character is!
+   LOCAL ps_b$
+-  VDU: PROCftracef("PROCps_7")
++  Ftracef("PROCps_7")
+   PROCps_8: REM stores its value in xbuff%+9
+   ps_b$=") SS "+$(xbuff%+9)
+   xbuff%?8=LEN ps_b$
+@@ -1218,7 +1226,7 @@
+ DEF PROCps_8
+   REM handle line splitting
+   LOCAL ps_b$,ps_i
+-  VDU: PROCftracef("PROCps_8")
++  Ftracef("PROCps_8")
+   ps_i=tprv%!CONST_tprv_ps_xl
+   ps_i+=tprv%!CONST_tprv_ps_col*(tprv%!CONST_tprv_ps_cw+1)
+   ps_i+=(tpub%!CONST_tpub_cpos-tprv%!CONST_tprv_ps_xl)*(FNps_fontsize(0)/FNps_fontsize(tpub%!CONST_tpub_font_num))
+@@ -1230,7 +1238,7 @@
+ DEF PROCps_9
+   REM handle style changes
+   LOCAL ps_b$
+-  VDU: PROCftracef("PROCps_9")
++  Ftracef("PROCps_9")
+   ps_b$=") SS "+STR$(xbuff%!8 AND &7F)+" ("
+   xbuff%?8=LEN ps_b$
+   $(xbuff%+9)=ps_b$
+@@ -1239,7 +1247,7 @@
+ DEF PROCps_10
+   REM start a new line
+   LOCAL ps_b$,line_num$,wrap%,ps_i
+-  VDU: PROCftracef("PROCps_10")
++  Ftracef("PROCps_10")
+   tpub%!CONST_tpub_line_page+=1
+   tpub%!CONST_tpub_line_doc+=1
+   ps_i=tprv%!CONST_tprv_ps_left_print+tprv%!CONST_tprv_ps_col*(tprv%!CONST_tprv_ps_cw+1)
+@@ -1276,7 +1284,7 @@
+ DEF PROCps_11
+   REM print footnote number
+   LOCAL ps_b$,ps_i%
+-  VDU: PROCftracef("PROCps_11")
++  Ftracef("PROCps_11")
+   PROCps_10: REM stores its value in xbuff%+9
+   ps_b$=$(xbuff%+9)+") SS "
+   PROCps_10: ps_b$+=$(xbuff%+9)+") SS "+STR$((tpub%!CONST_tpub_style_bits OR 1<<4)AND &7F)+" ("
+@@ -1293,7 +1301,7 @@
+ DEF PROCps_12
+   REM string translation
+   LOCAL ps_b$
+-  VDU: PROCftracef("PROCps_12")
++  Ftracef("PROCps_12")
+   ps_b$=FNps_trans($(xbuff%+8))
+   xbuff%?8=LEN ps_b$
+   $(xbuff%+9)=ps_b$
+@@ -1302,7 +1310,7 @@
+ DEF PROCps_13
+   REM handle font change
+   LOCAL font_new%,ps_b$,ps_i%
+-  VDU: PROCftracef("PROCps_13")
++  Ftracef("PROCps_13")
+   font_new%=xbuff%!8
+   ps_i%=tprv%!CONST_tprv_ps_xl
+   ps_i%+=INT((tprv%!CONST_tprv_ps_cw-tprv%!CONST_tprv_ps_xl-tprv%!CONST_tprv_ps_right_print)*FNps_fontsize(font_new%)/FNps_fontsize(0))
+@@ -1323,14 +1331,14 @@
+ 
+ DEF PROCps_14
+   REM finish page
+-  VDU: PROCftracef("PROCps_14")
++  Ftracef("PROCps_14")
+   BPUT#xbuff%!8,"EndPage"
+ ENDPROC
+ 
+ DEF PROCps_15
+   REM finish job
+   LOCAL ps_c%,cnct%,ps_ptr%,ps_ext%,ps_data%,ps_p%,B%,C%
+-  VDU: PROCftracef("PROCps_15")
++  Ftracef("PROCps_15")
+   ps_c%=xbuff%!8
+   IF queu%!CONST_queu_type<>&FF5 THEN
+    REM get the list of fonts ...
+@@ -1387,7 +1395,7 @@
+ DEF PROCps_16
+   REM process a tab character
+   LOCAL ps_b$
+-  VDU: PROCftracef("PROCps_16")
++  Ftracef("PROCps_16")
+   ps_b$=STRING$(8-((tpub%!CONST_tpub_cpos-tprv%!CONST_tprv_ps_left_print-tprv%!CONST_tprv_ps_left_ruler+1-6*tpub%!CONST_tpub_number_print)MOD8)," ")
+   tpub%!CONST_tpub_cpos+=LEN ps_b$
+   xbuff%?8=LEN ps_b$
+@@ -1396,14 +1404,14 @@
+ 
+ DEF PROCps_17
+   REM no formfeed text ...
+-  VDU: PROCftracef("PROCps_17")
++  Ftracef("PROCps_17")
+   xbuff%?8=0
+ ENDPROC
+ 
+ DEF PROCps_18
+   REM change layout
+   LOCAL layout_height%,layout_top%,layout_bottom%
+-  VDU: PROCftracef("PROCps_18")
++  Ftracef("PROCps_18")
+   layout_height%=xbuff%!8
+   layout_top%=xbuff%!12
+   layout_bottom%=xbuff%!16
+@@ -1416,14 +1424,14 @@
+ 
+ DEF PROCps_19
+   REM start new page
+-  VDU: PROCftracef("PROCps_19")
++  Ftracef("PROCps_19")
+   tpub%!CONST_tpub_line_page=tprv%!CONST_tprv_ps_mt
+   xbuff%?8=0
+ ENDPROC
+ 
+ DEF FNps_fontsize(num%)
+   REM provide notional cpi sizes
+-  VDU: PROCftracef("FNps_fontsize")
++  Ftracef("FNps_fontsize")
+   CASE num% OF
+   WHEN 0: =10: REM pica
+   WHEN 1: =12: REM elite
+@@ -1434,7 +1442,7 @@
+ 
+ DEF FNps_trans(ps_s$)
+   LOCAL ps_i%,byte%,out$,str$
+-  VDU: PROCftracef("FNps_trans")
++  Ftracef("FNps_trans")
+   IF ps_s$="" THEN =""
+   FOR ps_i%=1 TO LEN ps_s$
+     byte%=ASC MID$(ps_s$,ps_i%,1)
+@@ -1466,7 +1474,7 @@
+ 
+ DEF FNps_display(byte%)
+   LOCAL buf$
+-  VDU: PROCftracef("FNps_display")
++  Ftracef("FNps_display")
+   tpub%!CONST_tpub_cpos+=4
+   buf$=") SS "+STR$((tpub%!CONST_tpub_style_bits AND &7F)OR 1)+" ("
+   REM                                          bold_bit ^
+@@ -1475,7 +1483,7 @@
+ =buf$
+ 
+ DEF FNps_oct(byte%)
+-  VDU: PROCftracef("FNps_oct")
++  Ftracef("FNps_oct")
+ =CHR$92+CHR$((byte%>>6 AND 7)+48)+CHR$((byte%>>3 AND 7)+48)+CHR$((byte% AND 7)+48) /* CHR$92: was "\"  AMcC: 20-Sep-94 */
+ 
+ DEF PROCps_ensure_dir

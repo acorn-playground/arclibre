@@ -1,0 +1,612 @@
+{
+  "project": "ArcLibre",
+  "milestone": "A5000-family I/O; NetFS file-server, DOSFS formats and IIC write gates; PostScript and LaserJet printing",
+  "date": "2026-10-29",
+  "compatibility_target": "Unmodified RISC OS 3.11 applications and games; not yet established",
+  "build": "make arclibre-test",
+  "package": "make arclibre-package",
+  "acceptance": {
+    "status": "PASS",
+    "desktop_application_double_click": true,
+    "nested_obey_and_application_exit": true,
+    "buffered_fast_mouse_clicks": true,
+    "application_cold_boots": 3,
+    "cold_boots": 3,
+    "identical_observations": true,
+    "identical_rendered_memory": true,
+    "rom_sha256": "701b6f144a4db78b8f5a35092cd97d74bfb0b4aa382b55065fcf9d8c51bc76df",
+    "kernel_sha256": "8a5868f9fc592f56db4a95b0b83363b38d51a9bb17782459a927caf9aa259421",
+    "kernel_unchanged": false,
+    "emulator_unchanged": true,
+    "no_guest_code_injection": true,
+    "no_host_module_loading": true,
+    "original_startup_tasks": [
+      "Desktop",
+      "Filer",
+      "TaskManager",
+      "Pinboard",
+      "ADFSFiler",
+      "ResFiler",
+      "Free"
+    ],
+    "additional_startup_tasks": [
+      "ArcPalette"
+    ],
+    "persistent_tasks": 7,
+    "floppy_root_and_nested_directories_by_mouse": true,
+    "f12_catalogue_file_error_recovery_program_exit": true,
+    "shell_task_terminates_and_desktop_resumes": true,
+    "wd1772_reads_and_fiq_observed": true,
+    "read_only_test_media": true,
+    "test_floppy_sha256": "6f770c2b9a63d77a02057e8263c128d30464ef3287bba1bbaf040fea98c73d52",
+    "task_manager_opened_by_real_mouse": true,
+    "reported_memory_bytes": 4194304,
+    "all_undefined_exceptions_classified": true,
+    "hardware_cursor_visible_and_moves": true,
+    "missing_spriteextend_negative_control": true,
+    "negative_removes_only_spriteextend": true,
+    "negative_rom_sha256": "00029440a8edbbe9dab768188922a92d8c540094e59682f83728157b67688416",
+    "sprite_checker_c_reference_cases": 29,
+    "screen_sha256": [
+      "0c0509746af61eb21af6f3a9cd6ea9e2b0737192a1dba93cb79f88b0053e1468",
+      "9a9ba42dae4b0227aec076105a9394533ef15a75084bb07b0c5e8f7700b9f44c",
+      "dac26af49747d80e8aa14566fee7501b03740a22742ceabea9694001be18b225",
+      "0ef858455d7e0c0039bc5869b3a97e1cf8cdb804aa92cbd50c599d50b0761a99",
+      "3e8898512131c094f598985013313a51bac54b6909007bae9718bb683efc86d1",
+      "286b39d26108d64a95c6b58bc2eee8fa310c999fd9a30683a0b3219aee21e461",
+      "fefac5bb545f820a8ac223540213c393fdac007bcadfd6ebc769258b46fb7dbc",
+      "07e74fd349e2763af0db3563b55605a9793f7c047969bb8c67c595b3de6d7e58",
+      "e70170bfdcf5f3b4f08ed1238da55f40613008e36680db335f022125df4e0f04",
+      "d0e70df0fbd5102cac117fb7da3f40d5bc2590388b7b8427784fffdcbc67968e",
+      "a3906f410cc6abadda58ae69ff92268d505da389cfff3b88a41f99bea54863e6",
+      "3e8898512131c094f598985013313a51bac54b6909007bae9718bb683efc86d1",
+      "ce265b396cebcc018946305f297416503e6669a2c483915e79c4b3c4bb33a5e2"
+    ]
+  },
+  "modules": [
+    {
+      "component": "FileSwitch",
+      "title": "FileSwitch",
+      "base": 58865392,
+      "length": 48832,
+      "sha256": "6bc54f7d09a58070544ba936ee2bbdddd2655654a0990f56795d9ead0be5440e"
+    },
+    {
+      "component": "ResourceFS",
+      "title": "ResourceFS",
+      "base": 58914228,
+      "length": 3144,
+      "sha256": "1bb85e896b2c8c3c7726ea2dda0e5a29eb0535d8344a147acb28ac0819ee6247"
+    },
+    {
+      "component": "MsgTrans",
+      "title": "MessageTrans",
+      "base": 58917376,
+      "length": 3592,
+      "sha256": "6c1ea7e28ac1c3505d8e3569b54322470137dd5ba2161ddef490d98fce0065e9"
+    },
+    {
+      "component": "Messages",
+      "title": "Messages",
+      "base": 58920972,
+      "length": 403700,
+      "sha256": "d482b59944989bafaf4d5009413b52fa91f74f6f563aff4dde9e48af30834511"
+    },
+    {
+      "component": "TerritoryManager",
+      "title": "TerritoryManager",
+      "base": 59324676,
+      "length": 6572,
+      "sha256": "80957c1bb7c64bd4a558b161f2379982d76e3abc9767a6f54229f55a7d7febb5"
+    },
+    {
+      "component": "UK",
+      "title": "UK",
+      "base": 59331252,
+      "length": 6464,
+      "sha256": "23e7f55d1d8166f15bba89ca24b002572056e5abcf26e922ec11c9aa888ebcbe"
+    },
+    {
+      "component": "Inter",
+      "title": "International",
+      "base": 59337720,
+      "length": 13096,
+      "sha256": "0d413abbb58e1bbca1072c917feac92bdfcb0f35da6060a0d692ec79c95700d4"
+    },
+    {
+      "component": "IntKey",
+      "title": "InternationalKeyboard",
+      "base": 59350820,
+      "length": 3948,
+      "sha256": "3733aa9d0052a9da9467befe46cf8780a0eea4e39d2768ec3936993110f28b8e"
+    },
+    {
+      "component": "Desktop",
+      "title": "Desktop",
+      "base": 59354772,
+      "length": 3424,
+      "sha256": "faf6b5b750e25bdb1134470686ec1a7bf5f46aae73bae8ca0ae58def8fc04d2b"
+    },
+    {
+      "component": "Podule",
+      "title": "Podule",
+      "base": 59358200,
+      "length": 5816,
+      "sha256": "d55d92fe197ed638e3564df7084248e8e8b2b11fce23d3b493cc174b30c3a856"
+    },
+    {
+      "component": "FileCore",
+      "title": "FileCore",
+      "base": 59364020,
+      "length": 67812,
+      "sha256": "ed1b0475a0627b9afefb08ba6f98e160a319334ee72c0d6252219d1c5f9b55ba"
+    },
+    {
+      "component": "ADFS",
+      "title": "ADFS",
+      "base": 59431836,
+      "length": 34592,
+      "sha256": "d39cfe9ef69cd9f3609d7260819a13105175f7a555f28b224578aebd538b64f6"
+    },
+    {
+      "component": "FPEmulator",
+      "title": "FPEmulator",
+      "base": 59466432,
+      "length": 26700,
+      "sha256": "be6a5904849685002e9e862fe859cdf5369eaf55d0b9590546b949d5ff1cb665"
+    },
+    {
+      "component": "Colours",
+      "title": "ColourTrans",
+      "base": 59493136,
+      "length": 16376,
+      "sha256": "52296a453b64f326e88ff13bcd7ba2588adc768befd0d56f2d4920883337b51b"
+    },
+    {
+      "component": "DrawMod",
+      "title": "Draw",
+      "base": 59509516,
+      "length": 10104,
+      "sha256": "ecc01224286a82aec6093257f3fe2ed7bc2161a6fe4e9bdb19a68204376bc139"
+    },
+    {
+      "component": "Super",
+      "title": "SuperSample",
+      "base": 59519624,
+      "length": 2320,
+      "sha256": "bebfbebfc17810fe639f1c2ace12a74b257664ff6d86a389e701fab5ce5c1981"
+    },
+    {
+      "component": "Hourglass",
+      "title": "Hourglass",
+      "base": 59521948,
+      "length": 2148,
+      "sha256": "7fac03c7c82bfd5afc7a38d48a660afefb7453af51ed8a6928a52bfe9462b49a"
+    },
+    {
+      "component": "FontManager",
+      "title": "FontManager",
+      "base": 59524100,
+      "length": 60084,
+      "sha256": "e69268f15b0f8e8d27448ba1064a3fb773e4fd692d23364cf28900cf3d23b163"
+    },
+    {
+      "component": "ROMFonts",
+      "title": "ROMFonts",
+      "base": 59584188,
+      "length": 250000,
+      "sha256": "909493b93e4b4250feeb352d049298d5d09371cbbd5d40ab5b9ddf00ad464fd6"
+    },
+    {
+      "component": "SprExtend",
+      "title": "SpriteExtend",
+      "base": 59834192,
+      "length": 20348,
+      "sha256": "ee7d6eae1094204a5b5ff7471e273cc22704f4bdc7bf37b36b338ac77f5ee067"
+    },
+    {
+      "component": "Wimp",
+      "title": "WindowManager",
+      "base": 59854544,
+      "length": 81548,
+      "sha256": "63ad5548e1beda590ef52760c417d7c4396aa0323c04ae6427a140f1fe6a5942"
+    },
+    {
+      "component": "Switcher",
+      "title": "TaskManager",
+      "base": 59936096,
+      "length": 13840,
+      "sha256": "8a7dfcc613ae03fcec2eeaffe8c95be4f84d7ea989f0965826e7d9aa9225c1a5"
+    },
+    {
+      "component": "Filer",
+      "title": "Filer",
+      "base": 59949940,
+      "length": 29648,
+      "sha256": "cba920dee0dcb56ed5efac9b392a525e8e4f293d758ff28e5f38bbd062d80f1f"
+    },
+    {
+      "component": "Pinboard",
+      "title": "Pinboard",
+      "base": 59979592,
+      "length": 17620,
+      "sha256": "f6acbdd0029e817f6b914a2819e461708c6f6a4a2aabf1160590d2e25b36850d"
+    },
+    {
+      "component": "ADFSFiler",
+      "title": "ADFSFiler",
+      "base": 59997216,
+      "length": 16884,
+      "sha256": "b261454fcb7bea1c9f9d32298f324230f08e96d738127e8218a81e4afcd77c82"
+    },
+    {
+      "component": "ShellCLI",
+      "title": "ShellCLI",
+      "base": 60014104,
+      "length": 1412,
+      "sha256": "a54bdc4d7bcf6ef6f95cf718877b074df6bedd13414dd1a0ff4c54f60d1f27de"
+    },
+    {
+      "component": "Obey",
+      "title": "Obey",
+      "base": 60015520,
+      "length": 2216,
+      "sha256": "dc5558cbc95513f92e54634038de14f2914b039dbef7ba0739b6d8201b60c66d"
+    },
+    {
+      "component": "Buffers",
+      "title": "BufferManager",
+      "base": 60017740,
+      "length": 4292,
+      "sha256": "87fa92a9a23e95c8cfecdf2dde905efba90d9cb6b30fb1d78651846c3b8f3f1c"
+    },
+    {
+      "component": "Chars",
+      "title": "!Chars",
+      "base": 60022036,
+      "length": 5232,
+      "sha256": "fa46fc09993573f1744c8f4a129e70e9b8673392b4b5c2ca4059ac39295a0dcf"
+    },
+    {
+      "component": "Help",
+      "title": "!Help",
+      "base": 60027272,
+      "length": 9016,
+      "sha256": "387db92df89a341a92f1f0870cf9d6e037e9070e73be2710532d2b43a0811134"
+    },
+    {
+      "component": "ArcCalc",
+      "title": "!Calc",
+      "base": 60036292,
+      "length": 4952,
+      "sha256": "2a0a18be1987e299a770627a0a07715da858f740fa265bbb5915d498a98c55cd"
+    },
+    {
+      "component": "ArcConfigure",
+      "title": "!Configure",
+      "base": 60041248,
+      "length": 24932,
+      "sha256": "8c77fc9d8e5ae5cfe4e51ac870576eb49c9f4fc853b8a09d9fec98862704982d"
+    },
+    {
+      "component": "Sound0",
+      "title": "SoundDMA",
+      "base": 60066184,
+      "length": 3604,
+      "sha256": "7e0c2ccb08dca0de3e16aab4e1d6ed89f6bfd2938c4f77bd2a9c88fb6e205be9"
+    },
+    {
+      "component": "Sound1",
+      "title": "SoundChannels",
+      "base": 60069792,
+      "length": 5180,
+      "sha256": "0dd69acd17c5919721fa3adbdad9d912d548fb7afe0dea46e4e0fc4a1f673402"
+    },
+    {
+      "component": "Sound2",
+      "title": "SoundScheduler",
+      "base": 60074976,
+      "length": 2064,
+      "sha256": "e28eaebfaf6e08a4e8693424427858315c2ead9c474d1fedf792af2d8d5e68e6"
+    },
+    {
+      "component": "WaveSynth",
+      "title": "WaveSynth",
+      "base": 60077044,
+      "length": 2712,
+      "sha256": "7b615d798ad9d74ee4b2fe655098ac3451a8385db84f1ab4a355171438f6da55"
+    },
+    {
+      "component": "Percussion",
+      "title": "Percussion",
+      "base": 60079760,
+      "length": 2932,
+      "sha256": "39c2385bf917938d0b58888a0316745b88c9448f885c5cfb6d0a4bc9d047ab77"
+    },
+    {
+      "component": "DragASprit",
+      "title": "DragASprite",
+      "base": 60082696,
+      "length": 4352,
+      "sha256": "bfe083b13a4725a981f00daf0f738df0e10f4293db3b8a7bbd933ac1a4110c71"
+    },
+    {
+      "component": "SpriteUtil",
+      "title": "SpriteUtils",
+      "base": 60087052,
+      "length": 1508,
+      "sha256": "fdcf91cbff2a36e10d0913dd685b5e7d461e14fb7be37b207780c4c23a931f78"
+    },
+    {
+      "component": "FilerSWIs",
+      "title": "FilerSWIs",
+      "base": 60088564,
+      "length": 748,
+      "sha256": "dfeca7e2b7f4dc4de5902fd8381345b5088d4bff81ba76d9ca3d7d132c079aec"
+    },
+    {
+      "component": "BASIC",
+      "title": "BASIC",
+      "base": 60089316,
+      "length": 52604,
+      "sha256": "07070557add4a4c86b94f6c1c205942f6c69eee36be00cf24854207c2ebfd96a"
+    },
+    {
+      "component": "BASICTrans",
+      "title": "BASICTrans",
+      "base": 60141924,
+      "length": 3404,
+      "sha256": "3b2469f761e0b723b458fdfc29f8d4e3da26e129455043b96107a7c8db2f90bb"
+    },
+    {
+      "component": "ResFiler",
+      "title": "ResourceFiler",
+      "base": 60145332,
+      "length": 1852,
+      "sha256": "fc5d193c153ec849f9e0626d8f90f2a2d36c5ce352f9bbb77b6d4c70b27d9c1e"
+    },
+    {
+      "component": "ArcPalette",
+      "title": "PaletteUtil",
+      "base": 60147188,
+      "length": 4916,
+      "sha256": "77a242362e79391f41fd8690ec195f92b6951500994f4fcbe411fc3f86307b1b"
+    },
+    {
+      "component": "Filter",
+      "title": "FilterManager",
+      "base": 60152108,
+      "length": 2224,
+      "sha256": "a7cd802f7662006d7b631a778076336303585a91f259a9dc447144e1f3cc7650"
+    },
+    {
+      "component": "TaskWindow",
+      "title": "TaskWindow",
+      "base": 60154336,
+      "length": 9580,
+      "sha256": "e0b4fb1e99453fcb3a717df29551f3d4aaa694218f999b392cde6d578ff189db"
+    },
+    {
+      "component": "DeviceFS",
+      "title": "DeviceFS",
+      "base": 60163920,
+      "length": 8016,
+      "sha256": "0391f15430baecb491cdba0b4f61dfef4e2c3ed2697ac8589a80c076d6ca667f"
+    },
+    {
+      "component": "SystemDevs",
+      "title": "SystemDevices",
+      "base": 60171940,
+      "length": 3424,
+      "sha256": "f3846226d388b7ff28c53b085c03626411f60d6e8df6a19875961141ebf97951"
+    },
+    {
+      "component": "PipeFS",
+      "title": "PipeFS",
+      "base": 60175368,
+      "length": 4352,
+      "sha256": "b68d0f0c679d0510168d8ec2395d6555115fb786450a387ee5956eed94f1652a"
+    },
+    {
+      "component": "Parallel",
+      "title": "ParallelDeviceDriver",
+      "base": 60179724,
+      "length": 4240,
+      "sha256": "05178f025381937c1e34b2aeb47f4f7321a1f3b93b02643e5e373b79c9594c8e"
+    },
+    {
+      "component": "Serial",
+      "title": "SerialDeviceDriver",
+      "base": 60183968,
+      "length": 6280,
+      "sha256": "e7f70973181ca9d387652a9a9d017b6679a277600eca7400c865f98a0c62ee7d"
+    },
+    {
+      "component": "SerialSpt",
+      "title": "SerialDeviceSupport",
+      "base": 60190252,
+      "length": 1700,
+      "sha256": "b0779660572de5394d0b05dcbed3762f3423492a2391d61c44bbcf83a2804a02"
+    },
+    {
+      "component": "RamFS",
+      "title": "RamFS",
+      "base": 60191956,
+      "length": 1684,
+      "sha256": "65d60ad308db135033aff8a77c765eb9ce2c04ab4c4aee581bf0b0496486769a"
+    },
+    {
+      "component": "RAMFSFiler",
+      "title": "RAMFSFiler",
+      "base": 60193644,
+      "length": 2432,
+      "sha256": "b362cf1173cdbbef0fda0ac9fd7a0f43dcdb8f44109b2a18551327760dd85187"
+    },
+    {
+      "component": "Free",
+      "title": "Free",
+      "base": 60196080,
+      "length": 5108,
+      "sha256": "2374963af7ae2ac8c57c6aaf082210fe4a6be35fdadcf42ec523d607704f7074"
+    },
+    {
+      "component": "ScrBlank",
+      "title": "ScreenBlanker",
+      "base": 60201192,
+      "length": 2016,
+      "sha256": "fc207757258d3334dd7433abdc6ec34f81ac77ea49809a293c7ffebbb124182c"
+    },
+    {
+      "component": "StringLib",
+      "title": "StringLib",
+      "base": 60203212,
+      "length": 2692,
+      "sha256": "c45252e2191c28b24eaf80f9efbcbd4fcda38524128cf89ecce7a2b7ecf3ed83"
+    },
+    {
+      "component": "IIC",
+      "title": "IIC",
+      "base": 60205908,
+      "length": 1096,
+      "sha256": "ca2ebdd0d030aa2037eea9a178f9471755ac805b38b5bdbb92cb6d2cf1538d81"
+    },
+    {
+      "component": "RTCAdjust",
+      "title": "RTCAdjust",
+      "base": 60207008,
+      "length": 1836,
+      "sha256": "3dea6b3efb199f36abb7a2f34710ecc90f0016a1703e8a382ea449a3909e76b2"
+    },
+    {
+      "component": "Debugger",
+      "title": "Debugger",
+      "base": 60208848,
+      "length": 8852,
+      "sha256": "450612ad437c5b7558bf6f0393f7c2185ebf61ec9b234f07e8bb4455b90273cb"
+    },
+    {
+      "component": "Econet",
+      "title": "Econet",
+      "base": 60217704,
+      "length": 12880,
+      "sha256": "77563c1ed257e7dc3092c89daf3fa1cc03d9e1637498f3e0b5d616fb1950a4e6"
+    },
+    {
+      "component": "BBCEconet",
+      "title": "BBCEconet",
+      "base": 60230588,
+      "length": 2172,
+      "sha256": "63e63c02c1fd7532ce1cccec1118acc90088e39686203c0e5d271488e451f759"
+    },
+    {
+      "component": "NetFS",
+      "title": "NetFS",
+      "base": 60232764,
+      "length": 24820,
+      "sha256": "c3ed1cfb2c793586fa38a0f504d1bac7908fb5d38c6ba1324258281cad8179b9"
+    },
+    {
+      "component": "NetFiler",
+      "title": "NetFiler",
+      "base": 60257588,
+      "length": 8308,
+      "sha256": "8fc915e9adc274933c2acc79cc6d3e2fb38fec17a5e3126643e1c1073e4e216c"
+    },
+    {
+      "component": "NetPrint",
+      "title": "NetPrint",
+      "base": 60265900,
+      "length": 8144,
+      "sha256": "7bbfd68212e005ac812c28b62c9ac983c7957d9d0c2857090f98542f185f25ea"
+    },
+    {
+      "component": "NetStatus",
+      "title": "NetStatus",
+      "base": 60274048,
+      "length": 800,
+      "sha256": "33b66a44f2f6c96025528331b8f0ed60b658bd2ea893d3fc792a9ad6210a79cd"
+    },
+    {
+      "component": "ARM3Support",
+      "title": "ARM3Support",
+      "base": 60274852,
+      "length": 1156,
+      "sha256": "c56befa133643e5f8534057569c68a60fdef59980be385a8a3c9844b9a27cbbc"
+    },
+    {
+      "component": "SharedCLib",
+      "title": "SharedCLibrary",
+      "base": 60276012,
+      "length": 185056,
+      "sha256": "b30a8ee8b46808873e6f0805b479408f142709b20f172b0b349c9ab62427dac5"
+    },
+    {
+      "component": "FilerAct",
+      "title": "Filer_Action",
+      "base": 60461072,
+      "length": 32256,
+      "sha256": "0487d132f1e9fb907a11a4532b0be15babe55e1f160fe797433caa5d0440e7bb"
+    },
+    {
+      "component": "Edit",
+      "title": "!Edit",
+      "base": 60493332,
+      "length": 17588,
+      "sha256": "d45d4bb59360fd6c8ec5e2265cb4f0536b3746ef4089aec57c17ceedc0717ed8"
+    },
+    {
+      "component": "Draw",
+      "title": "!Draw",
+      "base": 60510924,
+      "length": 180576,
+      "sha256": "e3472f4c93e1f028881bcb71529c89e00b3381047691a42e5d94439f0b012d2d"
+    },
+    {
+      "component": "Paint",
+      "title": "!Paint",
+      "base": 60691504,
+      "length": 98456,
+      "sha256": "92b4a467c7f068946e828b104e5b6b3962273c91d8879a0a469eee31860f89f2"
+    },
+    {
+      "component": "Squash",
+      "title": "Squash",
+      "base": 60789964,
+      "length": 7204,
+      "sha256": "f92d4cc34de96f0cec2bee896dbe4467b5d67c5315ecd0a9d847c1759a91fe22"
+    }
+  ],
+  "edit_acceptance": "docs/archimedes-desktop/reports/edit-acceptance.json",
+  "rom_sha256": "701b6f144a4db78b8f5a35092cd97d74bfb0b4aa382b55065fcf9d8c51bc76df",
+  "graphics_acceptance": "docs/archimedes-desktop/reports/graphics-acceptance.json",
+  "integration": "docs/archimedes-desktop/reports/integration.json",
+  "used_bytes": 2076916,
+  "free_bytes": 20236,
+  "palette_acceptance": "docs/archimedes-desktop/reports/palette-acceptance.json",
+  "editing_acceptance": "docs/archimedes-desktop/reports/editing-acceptance.json",
+  "sprite_command_acceptance": "docs/archimedes-desktop/reports/sprite-command-acceptance.json",
+  "task_services_acceptance": "docs/archimedes-desktop/reports/task-services-acceptance.json",
+  "menu_acceptance": "docs/archimedes-desktop/reports/menu-acceptance.json",
+  "menu_negative_control": "docs/archimedes-desktop/reports/menu-negative-control.json",
+  "desktop_acceptance": "docs/archimedes-desktop/reports/desktop-acceptance.json",
+  "sound_acceptance": "docs/archimedes-desktop/reports/sound-acceptance.json",
+  "drag_acceptance": "docs/archimedes-desktop/reports/drag-acceptance.json",
+  "filing_acceptance": "docs/archimedes-desktop/reports/filing-acceptance.json",
+  "streams_acceptance": "docs/archimedes-desktop/reports/streams-acceptance.json",
+  "ram_filing_acceptance": "docs/archimedes-desktop/reports/ram-filing-acceptance.json",
+  "utilities_acceptance": "docs/archimedes-desktop/reports/utilities-acceptance.json",
+  "stream_sleep_negative": "docs/streams/reports/sleep-negative.json",
+  "squash_acceptance": "docs/archimedes-desktop/reports/squash-acceptance.json",
+  "basic_utilities_acceptance": "docs/archimedes-desktop/reports/basic-utilities-acceptance.json",
+  "clock_acceptance": "docs/archimedes-desktop/reports/clock-acceptance.json",
+  "dosfs_acceptance": "docs/archimedes-desktop/reports/dosfs-acceptance.json",
+  "debugger_acceptance": "docs/archimedes-desktop/reports/debugger-acceptance.json",
+  "format_acceptance": "docs/archimedes-desktop/reports/format-acceptance.json",
+  "arm3_acceptance": "docs/archimedes-desktop/reports/arm3-acceptance.json",
+  "network_acceptance": "docs/archimedes-desktop/reports/network-acceptance.json",
+  "hardware_acceptance": "docs/archimedes-desktop/reports/hardware-acceptance.json",
+  "printing_acceptance": "docs/archimedes-desktop/reports/printing-acceptance.json",
+  "dosfs_formats_acceptance": "docs/archimedes-desktop/reports/dosfs-formats-acceptance.json",
+  "new_io_acceptance": "docs/archimedes-desktop/reports/new-io-acceptance.json",
+  "netfs_acceptance": "docs/archimedes-desktop/reports/netfs-acceptance.json"
+}

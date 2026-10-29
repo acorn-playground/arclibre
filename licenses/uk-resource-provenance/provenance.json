@@ -1,0 +1,19 @@
+{
+  "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Internat/Territory/TerritoryModule.git",
+  "revision": "24e19b0ecea527441e5c72a8c945e6a1c6be99d9",
+  "purpose": "License/provenance corroboration only; no runtime source or resource bytes taken from this later cohort.",
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "path": "Resources/UK/Territory",
+      "sha256": "777ca171533d7bd451f56da5fc04c1b0c9b122b22caa3994a3722f005e02746e"
+    },
+    {
+      "path": "Resources/UK/Messages",
+      "sha256": "d5a7466eacde52fdbd283d0275515eb82b0c5e8f4410b0b1c84d5e917b48ddd1"
+    }
+  ]
+}

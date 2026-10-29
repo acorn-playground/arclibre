@@ -1,0 +1,128 @@
+--- a/TerritoryManager/s/SWIs
++++ b/TerritoryManager/s/SWIs
+@@ -26,6 +26,7 @@
+ 
+         MVN     R14,#I_bit
+         TSTP    R14,PC                          ; re-enable interrupts
++        MOV     r0, r0 ; ARM2 PSR/bank-select settling.
+ ;
+         LDR     wsptr,[R12]                     ; wsptr --> workspace
+ 
+--- a/TerritoryManager/s/ModHead
++++ b/TerritoryManager/s/ModHead
+@@ -13,10 +13,10 @@
+ ; limitations under the License.
+ ;
+ ; > s.ModHead
+-        LEADR   Module_LoadAddr
++        ORG     0
+ 
+         ASSERT  (.=Module_BaseAddr)
+-MySWIBase       *       Module_SWISystemBase + TerritorySWI * Module_SWIChunkSize
++MySWIBase       *       TerritorySWI_Base
+ 
+ 
+         DCD     0
+@@ -725,7 +725,7 @@
+         ADD     R1,R2,#25*1024
+         ADD     R4,R2,#4
+         ADRL    R2,spritedata
+-        LDR     R3,=:FSIZE:"z.SystemDisc"
++        LDR     R3,=:FSIZE:"SystemDiscSquashed"
+         MOV     R5,#25*1024
+         STR     R5,[R4,#-4]
+         SWI     XSquash_Decompress
+@@ -857,7 +857,7 @@
+         Pull    pc,,^
+ 
+ open_messages_file
+-        ENTRY   r0-r2
++        KernelEntry   r0-r2
+         LDR     r0, message_file_block
+         CMP     r0, #0
+         EXIT    NE
+@@ -870,7 +870,7 @@
+         STRVC   r2, message_file_block
+         EXIT
+ 
+-message_write0 ENTRY r0-r7
++message_write0 KernelEntry r0-r7
+         BL      open_messages_file
+         BVS     %F30
+         MOV     r1, r0
+@@ -894,7 +894,7 @@
+ 30      STR     r0, [sp]
+         EXIT
+ 
+-message_errorlookup ENTRY r1-r7
++message_errorlookup KernelEntry r1-r7
+         BL      open_messages_file
+         EXIT    VS
+         MOV     r4, r1
+@@ -906,7 +906,7 @@
+         LTORG
+ 
+ spritedata
+-        BIN     "z.SystemDisc"
++        BIN     SystemDiscSquashed
+         ALIGN
+ 
+         LNK     s.SWIs
+--- a/UK/s/Tables
++++ b/UK/s/Tables
+@@ -140,7 +140,7 @@
+    DCB    " ","!", 34,"#","$","%","&","'","(",")","*","+",",","-",".","/"
+    DCB    "0","1","2","3","4","5","6","7","8","9",":",";","<","=",">","?"
+    DCB    "@","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o"
+-   DCB    "p","q","r","s","t","u","v","w","x","y","z","[","\","]","^","_"
++   DCB    "p","q","r","s","t","u","v","w","x","y","z","[",&5C,"]","^","_"
+    DCB    "`","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o"
+    DCB    "p","q","r","s","t","u","v","w","x","y","z","{","|","}","~",127
+    DCB    128,"Ç","Ç",131,132,"Ü","Ü",135,136,137,138,139,"å","ç","é","è"
+@@ -164,7 +164,7 @@
+    DCB    " ","!", 34,"#","$","%","&","'","(",")","*","+",",","-",".","/"
+    DCB    "0","1","2","3","4","5","6","7","8","9",":",";","<","=",">","?"
+    DCB    "@","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O"
+-   DCB    "P","Q","R","S","T","U","V","W","X","Y","Z","[","\","]","^","_"
++   DCB    "P","Q","R","S","T","U","V","W","X","Y","Z","[",&5C,"]","^","_"
+    DCB    "`","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O"
+    DCB    "P","Q","R","S","T","U","V","W","X","Y","Z","{","|","}","~",127
+    DCB    128,"Å","Å",131,132,"Ö","Ö",135,136,137,138,139,"å","ç","é","è"
+@@ -212,7 +212,7 @@
+    DCB    " ","!", 34,"#","$","%","&","'","(",")","*","+",",","-",".","/"
+    DCB    "0","1","2","3","4","5","6","7","8","9",":",";","<","=",">","?"
+    DCB    "@","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O"
+-   DCB    "P","Q","R","S","T","U","V","W","X","Y","Z","[","\","]","^","_"
++   DCB    "P","Q","R","S","T","U","V","W","X","Y","Z","[",&5C,"]","^","_"
+    DCB    "`","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o"
+    DCB    "p","q","r","s","t","u","v","w","x","y","z","{","|","}","~",127
+    DCB    128,"W","w",131,132,"Y","y",135,136,137,138,139,"å","ç","é","è"
+--- a/UK/s/ModHead
++++ b/UK/s/ModHead
+@@ -13,7 +13,7 @@
+ ; limitations under the License.
+ ;
+ ; > Sources.ModHead
+-        LEADR   Module_LoadAddr
++        ORG     0
+ 
+         ASSERT  (.=Module_BaseAddr)
+ 
+@@ -189,7 +189,7 @@
+         Pull    "R0-R11,PC",,^          ; don't refuse to die
+ 
+ open_messages_file
+-        ENTRY   r0-r2
++        KernelEntry   r0-r2
+         LDR     r0, message_file_block
+         CMP     r0, #0
+         EXIT    NE
+@@ -202,7 +202,7 @@
+         STRVC   r2, message_file_block
+         EXIT
+ 
+-message_errorlookup ENTRY r1-r7
++message_errorlookup KernelEntry r1-r7
+         BL      open_messages_file
+         EXIT    VS
+         MOV     r4, r1

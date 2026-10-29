@@ -1,0 +1,10 @@
+{
+  "Econet": "Econet/hdr/Econet",
+  "FilerAct": "FilerAct/hdr/FilerAct",
+  "DragASprit": "DragASprit/hdr/DragASprit",
+  "MsgMenus": "MsgTrans/hdr/MsgMenus",
+  "WimpSpace": "Wimp/hdr/WimpSpace",
+  "HostDebug": "HostFS/hdr/HostDebug",
+  "ShareD": "ArcLibre/hdr/ShareD",
+  "Shell": "ShellCLI/hdr/Shell"
+}

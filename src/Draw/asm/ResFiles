@@ -1,0 +1,16 @@
+;       hdr.ResFiles - declare files for ResourceFS
+;
+; ArcLibre: preserve the source catalogue's ,ff9 type and use deterministic
+; metadata. Unix :FLOAD:/:FEXEC: would use Text and the checkout's mtime.
+        DCD     SpritesEnd - .
+        DCD     &FFFFF900, 0, :FSIZE:"Resources.Sprites", 3
+        DCB     "Resources.Draw.Sprites",0
+        ALIGN
+        DCD     SpritesDataEnd - SpritesData + 4
+SpritesData
+        BIN     Resources.Sprites
+SpritesDataEnd
+        ALIGN
+SpritesEnd
+
+        END

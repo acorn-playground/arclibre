@@ -1,0 +1,1552 @@
+--- a/ADFS/s/ADFS
++++ b/ADFS/s/ADFS
+@@ -14,7 +14,7 @@
+ ;
+ ; ADFS
+ 
+-        GET     Ver.<Machine>
++        GET     Ver.A1
+         GET     s.Fixes
+         GET     DevVersion
+ 
+--- a/ADFS/s/AdfsMacros
++++ b/ADFS/s/AdfsMacros
+@@ -221,6 +221,7 @@
+         Pull    "LR"
+ 15
+         TEQP    PC, R0          ;restore PSR
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         nop                     ;delay in case mode change
+         Pull    "R0,R1,LR"
+ 21
+--- a/ADFS/s/Adfs15
++++ b/ADFS/s/Adfs15
+@@ -194,6 +194,7 @@
+  ]
+         BIC     LR, LR, #F_bit :OR: I_bit       ;enable FIQ, IRQ
+         TEQP    PC, LR
++        MOV     r0, r0 ; ARM2 bank-select settling.
+ 
+         TSTS    R1, #BackgroundOp
+         MOVEQ   LR, #1
+@@ -555,6 +556,7 @@
+         MOV     R3, SB
+ 
+         TEQP    PC, #FIQ_mode
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         nop                             ;delay for mode change
+ 
+         LDMIA   R7, {Ram,End}
+@@ -568,15 +570,18 @@
+         ADD     FDC,IOCfiq,#FdcAddress-IOC
+ 
+         TEQP    PC, #SVC_mode
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         nop                             ;delay for mode change
+ 
+  [ Debug1
+         Push    "r3,r4"
+         TEQP    PC, #FIQ_mode
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         nop                             ;delay for mode change
+         MOV     r3, Ram
+         MOV     r4, End
+         TEQP    PC, #SVC_mode
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         nop                             ;delay for mode change
+         DREG    r3, "(Ram,End)=(",cc
+         DREG    r4, ",",cc
+@@ -1271,10 +1276,12 @@
+ DecFiq ROUT
+         Push    "R0,SB,LR"
+         TEQP    PC, #I_bit :OR: SVC_mode        ;disable IRQ to prevent reentrance
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         LDRB    LR, FiqCtr
+         SUBS    LR, LR, #1
+         STRB    LR, FiqCtr
+         TEQEQP  PC, #Z_bit :OR: SVC_mode        ;re-enable IRQs now if about to release
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         LDREQ   R0, FiqRelease
+         LDREQ   SB, FileCorePrivate
+         MOV     LR, PC          ;set return link
+@@ -1296,6 +1303,7 @@
+         Push    "R0,SB,LR"
+  ]
+         TEQP    PC, #I_bit :OR: SVC_mode        ;go to SVC mode from IRQ mode
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         nop                                     ;keep IRQs disabled as may need to
+                                         ;release FIQ before restart
+         MOV     R0, LR                          ; Preserve SVC_R14
+@@ -1309,10 +1317,12 @@
+         MOV     LR, R0          ;will return here - restore SVC_R14
+  [ FlpMultiFS
+         TEQP    R1, #0          ; return to callers mode (not necessarily IRQ mode)
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         nop
+         Pull    "R0,R1,SB,PC",,^
+  |
+         TEQP    PC, #IRQ_mode
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         nop
+         Pull    "R0,SB,PC",,^
+  ]
+@@ -1395,6 +1405,7 @@
+         Push    "R0-R2,R6,R7,LR"
+         ORR     LR, LR, #F_bit :OR: I_bit
+         TEQP    PC, LR         ;disable FIQ,IRQ
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         ASSERT  Timer0Period = 20000
+         MOV     R2,     #Timer0Period :AND: &FF
+         ORR     R2, R2, #Timer0Period :AND: &FF00
+@@ -1456,6 +1467,7 @@
+         Push    "R0-R2,LR"
+         ORR     LR, LR, #I_bit
+         TEQP    PC, LR                  ;disable IRQ stops motor timer
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         MOV     R2, R0
+ 
+         LDRB    R1, SelectedFloppy
+@@ -1524,6 +1536,7 @@
+  ]
+         ORR     LR, LR, #I_bit
+         TEQP    PC, LR                  ;disable IRQ
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         LDR     R3, =LatchBSoftCopy
+         LDRB    R2, [R3]
+         BIC     R2, R2, R1
+@@ -1855,6 +1868,7 @@
+  ]
+         ORR     LR, LR, #I_bit  ;disable IRQ to prevent motor timeout
+         TEQP    PC, LR
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         DrvRecPtr  R4,R1
+         LDRB    R5, [R4,#DrvFlags]
+         LDR     R6, [R4,#DrvSequenceNum]
+@@ -2011,6 +2025,7 @@
+         Push    "R0,R1,LR"
+         ORR     LR, LR, #I_bit
+         TEQP    PC, LR          ;disable IRQ
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         MOV     R0, R1
+         BL      SelectFloppy
+         MOV     R0, #0          ;Turn motor on
+--- a/ADFS/s/Adfs14
++++ b/ADFS/s/Adfs14
+@@ -394,6 +394,7 @@
+ 
+         MOV     LR,PC                   ; save current irq state
+         TEQP    PC,#SVC_mode            ; enable IRQs
++        MOV     r0, r0 ; ARM2 bank-select settling.
+ 
+ ; busy wait loop
+ 
+@@ -403,6 +404,7 @@
+         BEQ     %BT30                   ; branch if not
+ 
+         TEQP    PC,LR                   ; restore IRQ state
++        MOV     r0, r0 ; ARM2 bank-select settling.
+ 
+ ; operation has completed - load registers for return
+ 
+@@ -891,6 +893,7 @@
+         Push    "$WinIDEIRQRegsA,LR"
+         MOV     R0,PC                           ; save mode
+         TEQP    PC,#SVC_mode :OR: I_bit         ; keep IRQs disabled
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         NOP
+ 
+ ; Now in SVC mode - save regs
+@@ -1524,6 +1527,7 @@
+         Pull    "$WinIDEIRQRegsB,LR"
+ 
+         TEQP    PC,R0
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         NOP
+ 
+ ; Now back in original mode
+@@ -1553,6 +1557,7 @@
+         Push    "$WinIDEIRQRegsA,LR"    ; same regs as IRQHandler
+         MOV     R0,PC                   ; save mode
+         TEQP    PC,#SVC_mode :OR: I_bit ; keep IRQs disabled
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         NOP
+ 
+ ; Now in SVC mode - save main regs
+@@ -2461,6 +2466,7 @@
+ ; Enable interrupts to improve latency
+ 
+         TEQP    PC,#SVC_mode            ; enable IRQs
++        MOV     r0, r0 ; ARM2 bank-select settling.
+  [ Debug22
+ 
+         DREG    r0, "Read ",cc
+@@ -2562,6 +2568,7 @@
+ ; Enable interrupts to improve latency
+ 
+         TEQP    PC,#SVC_mode            ; enable IRQs
++        MOV     r0, r0 ; ARM2 bank-select settling.
+  [ Debug22
+ 
+         DREG    r0,"Write ",cc
+@@ -2736,11 +2743,13 @@
+         Push    "R3"
+         MOV     R3,PC
+         TEQP    PC,#SVC_mode :OR: I_bit
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         NOP
+         Push    "LR"
+         BREG    R2,"TickIdle "
+         Pull    "LR"
+         TEQP    PC,R3
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         NOP
+         Pull    "R3"
+  ]
+@@ -2772,6 +2781,7 @@
+         MOV     R1,SB                           ; R1 = value for R12
+         MOV     R2,PC                           ; save current mode
+         TEQP    PC,#SVC_mode :OR: I_bit         ; switch to SVC mode
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         NOP                                     ; prevent contention
+         Push    "LR"                            ; save r14_svc
+  [ Debug21
+@@ -2788,6 +2798,7 @@
+ 
+         Pull    "LR"                            ; restore r14_svc
+         TEQP    PC,R2                           ; restore original mode
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         NOP                                     ; prevent contention
+ 
+         BL      UnlockIDEController
+@@ -2849,6 +2860,7 @@
+ ; Enable interrupts so that the timer works
+ 
+         TEQP    PC,#SVC_mode
++        MOV     r0, r0 ; ARM2 bank-select settling.
+ 
+ ; Start the command
+ 
+@@ -2903,6 +2915,7 @@
+ 
+         Pull    "R6,R7,LR"
+         TEQP    PC,LR                           ; restore IRQ state
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         B       SetVOnR0                        ; set/clear V
+ 
+ ;*********************************************************************
+@@ -3111,6 +3124,7 @@
+ ; disable IRQs
+ 
+         TEQP    PC,#SVC_mode :OR: I_bit
++        MOV     r0, r0 ; ARM2 bank-select settling.
+ 
+ ; determine whether it's podule or motherboard
+ 
+@@ -3404,6 +3418,7 @@
+ 
+         ORR     LR,LR,#I_bit
+         TEQP    PC,LR
++        MOV     r0, r0 ; ARM2 bank-select settling.
+ 
+ ; lock controller if possible
+ 
+--- a/ADFS/s/Adfs13
++++ b/ADFS/s/Adfs13
+@@ -510,6 +510,7 @@
+ ; Enable interrupts so timers work
+ 
+         TEQP    PC,#SVC_mode
++        MOV     r0, r0 ; ARM2 bank-select settling.
+ 
+ ; Set R5 = timeout
+ 
+--- a/ADFS/s/Adfs50
++++ b/ADFS/s/Adfs50
+@@ -610,6 +610,7 @@
+ 	Push	LR
+ 
+ 	TEQP	PC,#SVC_mode+I_bit
++        MOV     r0, r0 ; ARM2 bank-select settling.
+ 	MOV	R0,R0
+ 
+ 	TEQ	R0,#0			; Unlock if R0 = 0
+@@ -1555,6 +1556,7 @@
+         ORRVS   r1, r1, #V_bit
+         BICVS   r1, r1, #Z_bit  ; NE on error
+         TEQP    pc, r1
++        MOV     r0, r0 ; ARM2 bank-select settling.
+ 
+         STRVS   r0,[sp]
+         Pull    "r0,r1,pc"
+--- a/ADFS/s/Adfs05
++++ b/ADFS/s/Adfs05
+@@ -96,6 +96,7 @@
+         ASSERT  SVC_mode=3
+         ORR     R0, LR, #SVC_mode
+         TEQP    PC, R0          ;go to SVC mode preserving flags
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         nop
+         Push    "LR"
+  [ SpoolOff
+@@ -150,6 +151,7 @@
+         BIC     LR, R0, #3
+         ORR     LR, LR, #SVC_mode :OR: Z_bit
+         TEQP    PC, LR          ;go to supervisor mode, preserve FI, set EQ
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         nop                     ;delay for mode change
+         Push     "LR"
+  [ SpoolOff
+@@ -766,6 +768,7 @@
+         ASSERT  SVC_mode=3
+         ORR     lr, r3, #SVC_mode       ; r3 = SVC
+         TEQP    pc, lr
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         nop
+         Push    "lr"                    ; SVC stack
+         MOV     pc, r3                  ; return
+--- a/ADFS/s/ModHeader
++++ b/ADFS/s/ModHeader
+@@ -12,7 +12,7 @@
+ ; See the License for the specific language governing permissions and
+ ; limitations under the License.
+ ;
+-        LEADR   Module_LoadAddr
++        AREA ModuleCode, CODE, READONLY
+ org
+ 
+ ;Module Header
+--- a/ADFS/s/Adfs18
++++ b/ADFS/s/Adfs18
+@@ -969,6 +969,7 @@
+ 
+         ORR     LR, LR, #I_bit
+         TEQP    LR, #0                  ; Disable IRQ's
++        MOV     r0, r0 ; ARM2 bank-select settling.
+ 
+         LDRB    R1, [R2, #FlpDCBcdb+1]  ; Get drive select
+         AND     R1, R1, #3              ; Retain drive select bits
+@@ -990,6 +991,7 @@
+         MOVNES  PC, LR                  ; And exit
+ 
+         TEQP    LR, #0                  ; Restore IRQ's
++        MOV     r0, r0 ; ARM2 bank-select settling.
+ 
+ ; Process index pulse message, R2->DCB
+ 20
+@@ -1192,6 +1194,7 @@
+ 
+         MOV     R0, PC                  ; Save mode bits
+         TEQP    PC, #I_bit + F_bit + FIQ_mode ; FIQ mode, FIQ/IRQ disabled
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         nop                             ; delay for mode change
+ 
+         ADR     LR, %FT59
+@@ -1263,6 +1266,7 @@
+ 
+         ORR     R0, R0, #I_bit          ; Ensure IRQ's disabled
+         TEQP    R0, #0                  ; Restore CPU mode
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         nop
+ 
+  [ Debug10s :LAND: {FALSE}
+@@ -1462,6 +1466,7 @@
+         ; Faff about in SVC mode to preserve flags etc
+         MOV     r0, pc
+         TEQP    pc, #SVC_mode + I_bit
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         NOP
+         Push    "r0, lr"                ; SVC_lr
+         MOV     r0, #MEMC_mystate
+@@ -1471,6 +1476,7 @@
+         STRVC   r0, FlpMEMCstate
+         Pull    "r0, lr"                ; SVC_lr
+         TEQP    pc, r0
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         NOP
+ 83
+         Pull    "R0,R1,R3,LR"           ; Restore regs
+@@ -1577,6 +1583,7 @@
+         STMIA   r1, {r8-r13}
+         MOV     r1, pc
+         TEQP    pc, #I_bit :OR: SVC_mode
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         nop
+         Push    "r0,r2,lr"
+         MOV     r2, #ScratchSpace
+@@ -1595,6 +1602,7 @@
+         DLINE   ")"
+         Pull    "r0,r2,lr"
+         TEQP    r1, #0
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         nop
+  ]
+         MOV     PC, LR
+@@ -1628,6 +1636,7 @@
+         STMIA   r1, {r8-r13}
+         MOV     r1, pc
+         TEQP    pc, #I_bit :OR: SVC_mode
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         nop
+         Push    "r0,r2,lr"
+         MOV     r2, #ScratchSpace
+@@ -1646,6 +1655,7 @@
+         DLINE   ")"
+         Pull    "r0,r2,lr"
+         TEQP    r1, #0
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         nop
+  ]
+         MOV     PC, LR
+@@ -1660,6 +1670,7 @@
+         STMIA   r1, {r8-r13}
+         MOV     r1, pc
+         TEQP    pc, #I_bit :OR: SVC_mode
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         nop
+         Push    "r0,r2,lr"
+         MOV     r2, #ScratchSpace
+@@ -1678,6 +1689,7 @@
+         DLINE   ")"
+         Pull    "r0,r2,lr"
+         TEQP    r1, #0
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         nop
+  ]
+         MOV     PC, LR
+@@ -1701,6 +1713,7 @@
+         STMIA   r1, {r8-r13}
+         MOV     r1, pc
+         TEQP    pc, #I_bit :OR: SVC_mode
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         nop
+         Push    "r0,r2,lr"
+         MOV     r2, #ScratchSpace
+@@ -1719,6 +1732,7 @@
+         DLINE   ")"
+         Pull    "r0,r2,lr"
+         TEQP    r1, #0
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         nop
+  ]
+         MOV     PC, LR
+@@ -1752,6 +1766,7 @@
+         STMIA   r1, {r8-r13}
+         MOV     r1, pc
+         TEQP    pc, #I_bit :OR: SVC_mode
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         nop
+         Push    "r0,r2,lr"
+         MOV     r2, #ScratchSpace
+@@ -1773,6 +1788,7 @@
+         DLINE   ")"
+         Pull    "r0,r2,lr"
+         TEQP    r1, #0
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         nop
+  ]
+         MOV     PC, LR
+@@ -1831,12 +1847,14 @@
+ 
+         MOV     r3, pc
+         TEQP    pc, #I_bit + F_bit + FIQ_mode
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         nop
+ 
+         ; r0 = bytes left to transfer
+         MOV     r0, r12
+ 
+         TEQP    pc, r3
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         nop
+ 
+         CMP     r0, #0
+@@ -1871,12 +1889,14 @@
+ 
+         MOV     r3, pc
+         TEQP    pc, #I_bit + F_bit + FIQ_mode
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         nop
+ 
+         ; r0 = bytes left to transfer
+         MOV     r0, r12
+ 
+         TEQP    pc, r3
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         nop
+ 
+  [ Debug10t
+@@ -1921,9 +1941,11 @@
+         ; Well, actually it's for the '665
+         MOV     r1, pc
+         TEQP    PC, #FIQ_mode :OR: I_bit :OR: F_bit
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         NOP
+         MOV     r0, r12
+         TEQP    PC, r1
++        MOV     r0, r0 ; ARM2 bank-select settling.
+  [ Debug10s :LAND: {FALSE}
+         NOP
+         LDR     lr, [r2, #FlpDCBbuffer]
+@@ -1975,6 +1997,7 @@
+ 03
+         Pull    "lr"
+         TEQP    pc, lr
++        MOV     r0, r0 ; ARM2 bank-select settling.
+  ]
+         BLLO    FlpAdvanceScatter                  ; There's more the controller's taken
+ 
+@@ -2203,6 +2226,7 @@
+ 
+         ORR     LR, LR, #I_bit
+         TEQP    LR, #0                  ; Disable IRQ's
++        MOV     r0, r0 ; ARM2 bank-select settling.
+ 
+         LDRB    R1, [R2, #FlpDCBcdb+1]  ; Get drive select
+         AND     R1, R1, #3              ; Retain drive select bits
+@@ -2224,6 +2248,7 @@
+ ; Drive is ready, fall thru to drive ready message
+ 
+         TEQP    LR, #0                  ; Restore IRQ state
++        MOV     r0, r0 ; ARM2 bank-select settling.
+ 
+ ; Process drive ready message (index pulse), R2->DCB
+ 20
+@@ -2487,6 +2512,7 @@
+ 
+         ORR     LR, LR, #I_bit
+         TEQP    LR, #0                  ; Disable IRQ's
++        MOV     r0, r0 ; ARM2 bank-select settling.
+ 
+         LDRB    R1, [R2, #FlpDCBcdb+1]  ; Get drive select
+         AND     R1, R1, #3              ; Retain drive select bits
+@@ -2527,6 +2553,7 @@
+         Push    "R0,R1,LR"
+         ORR     LR, LR, #I_bit          ; Ensure IRQ's disabled
+         TEQP    LR, #0
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         MOV     LR, #FlpPhaseReset      ; Assume waiting for reset
+         STRB    LR, [R2, #FlpDCBphase]  ; Update phase
+         baddr   R0, FlpStateReset       ; Reset state address
+@@ -2540,6 +2567,7 @@
+         Push    "R0,R1,LR"
+         ORR     LR, LR, #I_bit          ; Ensure IRQ's disabled
+         TEQP    LR, #0
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         LDRB    LR, FlpDriveLock        ; Get lock state
+         ORR     LR, LR, #bit0+bit2      ; Set command lock bit, inhibit empty
+         STRB    LR, FlpDriveLock        ; Update lock state
+@@ -2676,6 +2704,7 @@
+ 
+         ORR     LR, LR, #I_bit
+         TEQP    LR, #0                  ; Disable IRQ's
++        MOV     r0, r0 ; ARM2 bank-select settling.
+ 
+ ; Select requested drive
+ 
+@@ -2733,6 +2762,7 @@
+ 
+         ORR     LR, LR, #I_bit
+         TEQP    LR, #0                  ; Disable IRQ's
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         baddr   R0, FlpStateReset       ; Reset state address
+         LDR     LR, FlpState            ; Get current FDC state
+         TEQS    LR, R0                  ; Currently reset?
+@@ -3130,6 +3160,7 @@
+         Push    "r1"
+         MOV     r1, pc
+         TEQP    pc, #SVC_mode + I_bit
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         NOP
+         Push    "r1,lr"
+         MOV     r1, #0
+@@ -3139,6 +3170,7 @@
+         SWI     XOS_UpdateMEMC
+         Pull    "r1,lr"
+         TEQP    pc, r1
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         NOP
+         Pull    "r1"
+ 05
+--- a/ADFS/s/Consts
++++ b/ADFS/s/Consts
+@@ -300,6 +300,6 @@
+  ]
+  ASSERT ADFSDirCacheCMOS = &C7
+ 
+-AdfsSwiBase     * Module_SWISystemBase + Module_SWIChunkSize * ADFSSWI
++AdfsSwiBase     * ADFSSWI_Base
+ 
+         END
+--- a/ADFS/s/Adfs20
++++ b/ADFS/s/Adfs20
+@@ -193,13 +193,14 @@
+ DoEject ROUT
+         MOVS    pc, lr
+  |
+-DoEject ENTRY "r0-r4"
++DoEject KernelEntry "r0-r4"
+         TST     r1, #(1 :SHL: 31)               ; Eject preferred drive,
+         MOVNE   r1, #0                          ; which is zero.
+ 
+         MOV     r3, pc
+         ORR     r0, r3, #(I_bit :OR: F_bit)
+         TEQP    r0, #0                          ; Disable IRQs and FIQs
++        MOV     r0, r0 ; ARM2 bank-select settling.
+ 
+         LDRB    r4, DiscLatchCopy               ; Read soft copy
+         BIC     r2, r4, #&80                    ; Pull eject line low
+@@ -219,6 +220,7 @@
+         STRB    r4, [r2]                        ; Restore soft copy
+ 
+         TEQP    r3, #0                          ; Restore IRQ and FIQ status
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         NOP                                     ; EXIT uses r13 (ARM2as)
+         EXITS
+  ]
+--- a/ADFS/s/Adfs11
++++ b/ADFS/s/Adfs11
+@@ -264,6 +264,7 @@
+         TEQ     r0, #&ff
+         MOV     lr, pc
+         TEQP    lr, #Z_bit
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         Pull    "r0,r1,pc",EQ
+ 
+         ; Do an abort
+@@ -605,6 +606,7 @@
+         MOV     R9, LR
+         ORR     R0, LR, #I_bit
+         TEQP    PC, R0                  ;disable IRQs
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         ASSERT  InterruptBits = InterruptPtr + 4
+         ADR     R0, InterruptPtr
+         LDMIA   R0, {R0,R1}
+@@ -626,6 +628,7 @@
+ 
+         STRB    R4, [R0]
+         TEQP    PC, LR                  ;restore IRQ state
++        MOV     r0, r0 ; ARM2 bank-select settling.
+ 
+         MOV     R0, #CAbort             ;to avoid write gate assert bug after specify
+         BL      CommandHDC
+@@ -923,11 +926,13 @@
+         MOV     R1, PC
+         ORR     R9, R1, #I_bit
+         TEQP    PC, R9
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         LDR     R9, WScatter
+         LDR     R2, [R9,#4]
+         TEQS    R2, #0
+         BEQ     TransferEnd     ;IRQs still disabled
+         TEQP    PC, R1
++        MOV     r0, r0 ; ARM2 bank-select settling.
+ 
+ 80
+         LDR     R1, WDefectList
+@@ -939,6 +944,7 @@
+         MOV     R3, PC
+         ORR     R4, R3, #I_bit
+         TEQP    PC, R4                  ;disable IRQs
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         ASSERT  InterruptBits = InterruptPtr + 4
+         ADR     R0, InterruptPtr
+         LDMIA   R0, {R0,R1}
+@@ -960,6 +966,7 @@
+ 
+         STRB    R2, [R0]
+         TEQP    PC, R3                  ;restore IRQ state
++        MOV     r0, r0 ; ARM2 bank-select settling.
+ ;TURN LIGHTS OFF BY SELECTING DRIVE 0 WHICH DOESN'T EXIST
+         MOV     R0, #0
+         STR     R0, parameters
+@@ -1037,6 +1044,7 @@
+  ]
+ 
+         TEQP    PC, #I_bit :OR: SVC_mode
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         nop
+         MOV     R0, LR
+         MOV     R1, SB
+@@ -1045,6 +1053,7 @@
+         LDR     PC, [R1, #:INDEX: WinnieCallAfter]
+         MOV     LR, R0          ;will return here
+         TEQP    PC, #IRQ_mode :OR: I_bit
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         nop
+         Pull    $WinIrqRegs,,^
+ 
+@@ -1053,6 +1062,7 @@
+         CMPS    LR, #NormalEntry
+         BNE     TimerReturn
+         TEQP    PC, #SVC_mode   ;reenable IRQs
++        MOV     r0, r0 ; ARM2 bank-select settling.
+ 
+         TEQS    R4, #0          ;IF position in transfer is now in background part
+         ADDMI   R2, R2, R4      ;(only happens on write foreground part >0, background
+@@ -1158,6 +1168,7 @@
+ 
+         ORR     R5, LR, #I_bit  ;disable IRQs to prevent more pairs being added
+         TEQP    PC, R5
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         LDR     R5, WScatter
+         LDMIA   R5, {R0,R1}
+         SUBS    R4, R2, R1
+@@ -1213,6 +1224,7 @@
+                         ;IF BackgroundOp also check for 0 length pair
+         ORR     R1, LR, #I_bit
+         TEQP    PC, R1          ;disable IRQ to prevent more pairs being added
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         LDR     R1, WScatter
+         LDR     R1, [R1,#4]
+         TEQS    R1, #0
+@@ -1309,6 +1321,7 @@
+         LDR     R0, = DefaultHDC + dataRead
+         ORR     R1, R9, #I_bit
+         TEQP    PC, R1                  ;disable IRQs
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         CMPS    R0, HDC                 ;IF EQ C=1
+ 
+         AND     R0, R5, #8
+@@ -1325,6 +1338,7 @@
+         ORRCC   R0, R0, R2
+         STRNEB  R0, [R1]                ;head select 3 is bit 6 on podule
+         TEQP    PC, R9                  ;reenable IRQs
++        MOV     r0, r0 ; ARM2 bank-select settling.
+ 
+         CMPS    R7, #0                  ;did we do a seek ?
+         BGT     WaitForSeekCompleteRTSViaR9
+@@ -1428,6 +1442,7 @@
+         BL      TubeChar
+  ]
+         TEQP    PC, #I_bit :OR: SVC_mode        ;disable IRQs to CPU
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         ADD     R0, SB, #:INDEX: InterruptPtr   ;enable IRQs from HDC
+         ASSERT  InterruptBits=InterruptPtr+4
+         LDMIA   R0, {R0,R1}
+@@ -1674,6 +1689,7 @@
+         Pull    "R0-R11,LR"
+  [ {TRUE}
+         TEQP    PC, R0
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         nop
+   [ Debug5
+         SetBorder  0,0,0
+@@ -1681,6 +1697,7 @@
+         Pull    "R0,PC",,^
+  |
+         TEQP    PC, #IRQ_mode :OR: I_bit
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         nop
+   [ Debug5
+         SetBorder  0,0,0
+@@ -1699,6 +1716,7 @@
+         Push    "LR"
+  ]
+         TEQP    PC, #I_bit :OR: SVC_mode
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         nop
+         Push    "R0-R11,LR"
+  [ Debug6
+@@ -1743,6 +1761,7 @@
+  [ WinIRQenable
+         Pull    "R0,LR"
+         TEQP    PC, R0                  ; Restore CPU mode and IRQ state
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         NOP
+ 
+         ADR     R0, InterruptPtr
+@@ -1778,6 +1797,7 @@
+ 
+         MOV     R0, PC
+         TEQP    PC,#SVC_mode            ; Re-enable IRQ's during transfer
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         NOP
+         Push    "R0,LR"                 ; Save CPU mode, interrupt mask and SVC_lr
+  ]
+@@ -2087,6 +2107,7 @@
+         MOV     R0, PC                  ;disable IRQs to stop possible extension
+         ORR     LR, R0, #I_bit
+         TEQP    PC, LR
++        MOV     r0, r0 ; ARM2 bank-select settling.
+ 
+         MOV     R1, #0                  ;init total write left
+         LDR     R2, WScatter
+@@ -2134,6 +2155,7 @@
+         STRB    R1, parameters+7
+ 35
+         TEQP    PC, R0
++        MOV     r0, r0 ; ARM2 bank-select settling.
+ 40
+ 
+         MOV     R0, #CWrite
+@@ -2146,6 +2168,7 @@
+  [ WinIRQenable
+         Pull    "R0,LR"
+         TEQP    PC, R0                  ; Restore CPU mode and IRQ state
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         NOP
+ 
+         ADR     R0, InterruptPtr
+@@ -2180,6 +2203,7 @@
+ 
+         MOV     R0, PC
+         TEQP    PC,#SVC_mode            ; Re-enable IRQ's during transfer
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         NOP
+         Push    "R0,LR"                 ; Save CPU mode, interrupt mask and SVC_lr
+  ]
+@@ -2820,6 +2844,7 @@
+         LDR     LR, = DefaultHDC + dataRead
+         TEQS    R0, LR
+         TEQNEP  PC, #I_bit :OR: SVC_mode        ;preserves NE
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         MOVNE   R0, #IOC
+         LDRNEB  LR, [R0, #IOCIRQMSKB]
+         ORRNE   LR, LR, #podule_IRQ_bit
+--- a/ADFS/s/MFormat
++++ b/ADFS/s/MFormat
+@@ -69,7 +69,7 @@
+         TEQNE   lr, #"^"
+         TEQNE   lr, #"&"
+         TEQNE   lr, #"*"
+-        TEQNE   lr, #"\"
++        TEQNE   lr, #&5C
+         TEQNE   lr, #":"
+         TEQNE   lr, #""""
+         TEQNE   lr, #"."
+--- a/ADFS/s/Adfs10
++++ b/ADFS/s/Adfs10
+@@ -466,6 +466,7 @@
+  MOV    R9, LR
+  ORR    R0, LR, #I_bit
+  TEQP   PC, R0                  ;disable IRQs
++        MOV     r0, r0 ; ARM2 bank-select settling.
+  ASSERT InterruptBits = InterruptPtr + 4
+  ADR    R0, InterruptPtr
+  LDMIA  R0, {R0,R1}
+@@ -487,6 +488,7 @@
+ 
+  STRB   R4, [R0]
+  TEQP   PC, LR                  ;restore IRQ state
++        MOV     r0, r0 ; ARM2 bank-select settling.
+  BL     GetResult               ;->/ R0, Z
+ 
+  MOV    R0, #CAbort             ;to avoid write gate assert bug after specify
+@@ -728,11 +730,13 @@
+  MOV    R1, PC
+  ORR    R9, R1, #I_bit
+  TEQP   PC, R9
++        MOV     r0, r0 ; ARM2 bank-select settling.
+  LDR    R9, WScatter
+  LDR    R2, [R9,#4]
+  TEQS   R2, #0
+  BEQ    TransferEnd     ;IRQs still disabled
+  TEQP   PC, R1
++        MOV     r0, r0 ; ARM2 bank-select settling.
+ 
+ 80
+  LDR    R1, WDefectList
+@@ -744,6 +748,7 @@
+  MOV    R3, PC
+  ORR    R4, R3, #I_bit
+  TEQP   PC, R4                  ;disable IRQs
++        MOV     r0, r0 ; ARM2 bank-select settling.
+  ASSERT InterruptBits = InterruptPtr + 4
+  ADR    R0, InterruptPtr
+  LDMIA  R0, {R0,R1}
+@@ -765,6 +770,7 @@
+ 
+  STRB   R2, [R0]
+  TEQP   PC, R3                  ;restore IRQ state
++        MOV     r0, r0 ; ARM2 bank-select settling.
+ ;TURN LIGHTS OFF BY SELECTING DRIVE 0 WHICH DOESN'T EXIST
+  MOV    R0, #0
+  STR    R0, parameters
+@@ -836,6 +842,7 @@
+  ]
+ 
+  TEQP   PC, #I_bit :OR: SVC_mode
++        MOV     r0, r0 ; ARM2 bank-select settling.
+  nop
+  MOV    R0, LR
+  MOV    R1, SB
+@@ -844,6 +851,7 @@
+  LDR    PC, [R1, #:INDEX: WinnieCallAfter]
+  MOV    LR, R0          ;will return here
+  TEQP   PC, #IRQ_mode :OR: I_bit
++        MOV     r0, r0 ; ARM2 bank-select settling.
+  nop
+  Pull   $WinIrqRegs,,^
+ 
+@@ -852,6 +860,7 @@
+  CMPS   LR, #NormalEntry
+  BNE    TimerReturn
+  TEQP   PC, #SVC_mode   ;reenable IRQs
++        MOV     r0, r0 ; ARM2 bank-select settling.
+ 
+  TEQS   R4, #0          ;IF position in transfer is now in background part
+  ADDMI  R2, R2, R4      ;(only happens on write foreground part >0, background
+@@ -952,6 +961,7 @@
+ 
+  ORR    R5, LR, #I_bit  ;disable IRQs to prevent more pairs being added
+  TEQP   PC, R5
++        MOV     r0, r0 ; ARM2 bank-select settling.
+  LDR    R5, WScatter
+  LDMIA  R5, {R0,R1}
+  SUBS   R4, R2, R1
+@@ -1007,6 +1017,7 @@
+                         ;IF BackgroundOp also check for 0 length pair
+  ORR    R1, LR, #I_bit
+  TEQP   PC, R1          ;disable IRQ to prevent more pairs being added
++        MOV     r0, r0 ; ARM2 bank-select settling.
+  LDR    R1, WScatter
+  LDR    R1, [R1,#4]
+  TEQS   R1, #0
+@@ -1103,6 +1114,7 @@
+  LDR    R0, =DefaultHDC
+  ORR    R1, R9, #I_bit
+  TEQP   PC, R1                  ;disable IRQs
++        MOV     r0, r0 ; ARM2 bank-select settling.
+  CMPS   R0, HDC                 ;IF EQ C=1
+ 
+  AND    R0, R5, #8
+@@ -1119,6 +1131,7 @@
+  ORRCC  R0, R0, R2
+  STRNEB R0, [R1]                ;head select 3 is bit 6 on podule
+  TEQP   PC, R9                  ;reenable IRQs
++        MOV     r0, r0 ; ARM2 bank-select settling.
+ 
+  CMPS   R7, #0                  ;did we do a seek ?
+  BGT    WaitForSeekCompleteRTSViaR9
+@@ -1221,6 +1234,7 @@
+  BL     TubeChar
+  ]
+  TEQP   PC, #I_bit :OR: SVC_mode        ;disable IRQs to CPU
++        MOV     r0, r0 ; ARM2 bank-select settling.
+  ADD    R0, SB, #:INDEX: InterruptPtr   ;enable IRQs from HDC
+  ASSERT InterruptBits=InterruptPtr+4
+  LDMIA  R0, {R0,R1}
+@@ -1414,6 +1428,7 @@
+  ASSERT SVC_mode=3
+  ORR    LR, R3, #SVC_mode
+  TEQP   PC, LR
++        MOV     r0, r0 ; ARM2 bank-select settling.
+  nop
+  Push   "LR"
+  SWI    XOS_CallAfter
+@@ -1421,6 +1436,7 @@
+  BICVC  R3, R3, #V_bit
+  ORRVS  R3, R3, #V_bit
+  TEQP   PC, R3
++        MOV     r0, r0 ; ARM2 bank-select settling.
+  nop
+ 
+  BVS    %FT86
+@@ -1444,6 +1460,7 @@
+  ]
+  Pull   "R0-R11,LR"
+  TEQP   PC, #IRQ_mode :OR: I_bit
++        MOV     r0, r0 ; ARM2 bank-select settling.
+  nop
+  [ Debug5
+  SetBorder 0,0,0
+@@ -1456,6 +1473,7 @@
+  ]
+  Push   "LR"
+  TEQP   PC, #I_bit :OR: SVC_mode
++        MOV     r0, r0 ; ARM2 bank-select settling.
+  nop
+  Push   "R0-R11,LR"
+  [ Debug6
+@@ -1692,6 +1710,7 @@
+  MOV    R0, PC                  ;disable IRQs to stop possible extension
+  ORR    LR, R0, #I_bit
+  TEQP   PC, LR
++        MOV     r0, r0 ; ARM2 bank-select settling.
+ 
+  MOV    R1, #0                  ;init total write left
+  LDR    R2, WScatter
+@@ -1739,6 +1758,7 @@
+  STRB   R1, parameters+7
+ 35
+  TEQP   PC, R0
++        MOV     r0, r0 ; ARM2 bank-select settling.
+ 40
+ 
+  MOV    R0, #CWrite
+@@ -2120,6 +2140,7 @@
+  LDR    LR, =DefaultHDC
+  TEQS   R0, LR
+  TEQNEP PC, #I_bit :OR: SVC_mode        ;preserves NE
++        MOV     r0, r0 ; ARM2 bank-select settling.
+  MOVNE  R0, #IOC
+  LDRNEB LR, [R0, #IOCIRQMSKB]
+  ORRNE  LR, LR, #podule_IRQ_bit
+--- a/ADFS/s/Adfs17
++++ b/ADFS/s/Adfs17
+@@ -234,6 +234,7 @@
+         MOV     R2, PC                          ; Save CPU mode
+         ORR     LR, R2, #SVC_mode
+         TEQP    LR, #0                          ; Switch to SVC mode
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         NOP
+         Push    "LR"                            ; Save SVC_LR
+ 
+@@ -244,6 +245,7 @@
+ 
+         Pull    "LR"                            ; Restore SVC_LR
+         TEQP    R2, #0                          ; Restore CPU mode
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         NOP
+ 
+  [ Debug10p
+@@ -611,6 +613,7 @@
+         MOV     R0, PC                  ; Save CPU mode and IRQ state
+         Push    "LR"                    ; Save IRQ_lr
+         TEQP    PC, #SVC_mode
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         NOP
+         Push    "R0,LR"                 ; Save mode and SVC_lr
+ 
+@@ -624,6 +627,7 @@
+ 
+         Pull    "R0,LR"                 ; Restore SVC_lr
+         TEQP    PC, R0                  ; Restore CPU mode/IRQ state
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         NOP
+         Pull    "PC",,^
+  |
+@@ -669,6 +673,7 @@
+         MOV     R0, PC                  ; Save CPU mode and IRQ state
+         Push    "LR"                    ; Save IRQ_lr
+         TEQP    PC, #SVC_mode
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         NOP
+         Push    "R0,LR"                 ; Save mode and SVC_lr
+  |
+@@ -708,6 +713,7 @@
+ 
+         Pull    "R0,LR"                 ; Restore SVC_lr
+         TEQP    PC, R0                  ; Restore CPU mode/IRQ state
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         NOP
+         Pull    "PC",,^
+  |
+--- a/ADFS/s/Adfs19
++++ b/ADFS/s/Adfs19
+@@ -468,6 +468,7 @@
+         MOV     LR, #I_bit
+         TST     LR, PC                  ; IRQ's disabled?
+         TEQEQP  LR, PC                  ; No, then disable them
++        MOV     r0, r0 ; ARM2 bank-select settling.
+ 
+         MOV     R0, #IOC                ; R0-> IOC registers
+         LDRB    LR, [R0, #IOCIRQMSKB]   ; Get IRQB mask bits
+@@ -1073,8 +1074,10 @@
+         MOV     R2, PC                  ; Save current mode
+  [ FlpPostIrqOn
+         TEQP    PC, #SVC_mode           ; Switch to SVC mode, IRQ's enabled
++        MOV     r0, r0 ; ARM2 bank-select settling.
+  |
+         TEQP    PC, #SVC_mode + I_bit   ; Switch to SVC mode, IRQ's disabled
++        MOV     r0, r0 ; ARM2 bank-select settling.
+  ]
+         nop                             ; Delay for mode change
+         Push    "R2,R6,LR"              ; Save old mode and SVC LR on SVC stack
+@@ -1110,6 +1113,7 @@
+ 
+         Pull    "R2,R6,LR"              ; Restore SVC regs
+         TEQP    R2, #0                  ; Restore IRQ mode
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         nop                             ; Delay for mode change
+         Pull    "R2,PC",,^              ; Return from post
+ 
+@@ -1135,6 +1139,7 @@
+         Push    "R2,LR"                 ; Save caller's regs
+         MOV     R2, PC                  ; Save current mode
+         TEQP    PC, #SVC_mode + I_bit   ; Switch to SVC mode, IRQ's disabled
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         nop                             ; Delay for mode change
+         Push    "R0-R9,LR"              ; Save old mode and SVC LR on SVC stack
+ 
+@@ -1279,6 +1284,7 @@
+         STREQ   sp, FlpDCBqueue
+ 
+         TEQP    PC, #SVC_mode           ; Enable IRQs during the long part with interlock on
++        MOV     r0, r0 ; ARM2 bank-select settling.
+  ]
+ 
+         LDR     R0, =OpMask :OR: BackgroundOp
+@@ -1318,6 +1324,7 @@
+ 
+  [ fix_9
+         TEQP    pc, #SVC_mode :OR: I_bit ; IRQs off whilst interlock off
++        MOV     r0, r0 ; ARM2 bank-select settling.
+ 
+         ; release interlock on the DCB
+         LDR     R0, FlpDCBqueue
+@@ -1334,6 +1341,7 @@
+ 90
+         Pull    "R0-R9,LR"              ; Restore SVC regs
+         TEQP    R2, #0                  ; Restore IRQ mode
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         nop                             ; Delay for mode change
+         Pull    "R2,PC",,^              ; Restore caller's regs and exit
+ 
+@@ -1918,6 +1926,7 @@
+ 
+         ORR     LR, LR, #I_bit
+         TEQP    LR, #0                  ; Disable IRQ's
++        MOV     r0, r0 ; ARM2 bank-select settling.
+ 
+         LDRB    LR, FlpDriveLock        ; Get lock status
+         ORR     LR, LR, #bit1           ; Set lock
+@@ -1970,6 +1979,7 @@
+ 
+         ORR     LR, LR, #I_bit
+         TEQP    LR, #0                  ; Disable IRQ's
++        MOV     r0, r0 ; ARM2 bank-select settling.
+ 
+         LDRB    LR, FlpDriveLock        ; Get lock status
+         BIC     LR, LR, #bit1           ; Reset lock
+--- a/FileCore/s/FileCore25
++++ b/FileCore/s/FileCore25
+@@ -776,15 +776,18 @@
+ ExtendFileCache
+         Push    "R0-R4,R8,R10,LR"
+         TEQP    PC, #I_bit :OR: SVC_mode        ;disable IRQ
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         LDRB    R0, Interlocks
+         EOR     R0, R0, #DirCacheLock
+         TSTS    R0, #DirCacheLock
+         LDRNEB  LR, Flags
+         TSTNES  LR, #CacheGood
+         TEQEQP  PC, #Z_bit :OR: SVC_mode        ;if EQ reenable IRQ maintaining Z=1
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         BEQ     %FT55
+         STRB    R0, Interlocks  ;lock dir cache
+         TEQP    PC, #SVC_mode   ;reenable IRQ
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         LDR     R8, FileBufsStart
+         SUB     R8, R8, #1*K
+         SUB     R8, R8, #BufferData+CacheMin
+--- a/FileCore/s/InitDieSvc
++++ b/FileCore/s/InitDieSvc
+@@ -723,6 +723,7 @@
+         MOV     LR, #&FF
+         STRB    LR, BackgroundFiqLock
+         TEQP    PC, #SVC_mode           ;enable IRQs
++        MOV     r0, r0 ; ARM2 bank-select settling.
+ 02                              ;wait until finished with FIQ
+         LDRB    LR, FiqOwnership
+         TEQS    LR, #0
+--- a/FileCore/s/FileCore40
++++ b/FileCore/s/FileCore40
+@@ -40,7 +40,7 @@
+ UserRootChar    * "&"
+ LibChar         * "%"
+ CsdChar         * "@"
+-BackChar        * "\"
++BackChar        * &5C
+ 
+ UpChar          * "^"
+ 
+--- a/FileCore/s/FileCore15
++++ b/FileCore/s/FileCore15
+@@ -42,6 +42,7 @@
+         ASSERT  SVC_mode=3
+         ORR     R0, LR, #SVC_mode :OR: I_bit
+         TEQP    PC, R0          ;go to SVC mode preserving flags
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         nop
+         Push    "LR"
+  [ SpoolOff
+@@ -94,6 +95,7 @@
+ 
+ ThroughZero
+         TEQP    PC, #F_bit :OR: I_bit :OR: SVC_mode
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         nop
+         STR     R13,[R0,-R0]
+         MOV     R13,#ScratchSpace+?ScratchSpace
+@@ -110,6 +112,7 @@
+ 
+ Undefined
+         TEQP    PC, #F_bit :OR: I_bit :OR: SVC_mode
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         nop
+         STR     R13,[R0,-R0]
+         MOV     R13,#ScratchSpace+?ScratchSpace
+@@ -126,6 +129,7 @@
+ 
+ PrefetchAbort
+         TEQP    PC, #F_bit :OR: I_bit :OR: SVC_mode
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         nop
+         STR     R13,[R0,-R0]
+         MOV     R13,#ScratchSpace+?ScratchSpace
+@@ -142,6 +146,7 @@
+ 
+ DataAbort
+         TEQP    PC, #F_bit :OR: I_bit :OR: SVC_mode
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         nop
+         STR     R13,[R0,-R0]
+         MOV     R13,#ScratchSpace+?ScratchSpace
+@@ -158,6 +163,7 @@
+ 
+ AddressException
+         TEQP    PC, #F_bit :OR: I_bit :OR: SVC_mode
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         nop
+         STR     R13,[R0,-R0]
+         MOV     R13,#ScratchSpace+?ScratchSpace
+@@ -225,6 +231,7 @@
+         BIC     LR, R0, #3
+         ORR     LR, LR, #SVC_mode :OR: Z_bit :OR: I_bit
+         TEQP    PC, LR          ;go to supervisor mode, preserve FI, set EQ
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         nop                     ;delay for mode change
+         Push    "LR"
+  [ SpoolOff
+@@ -416,6 +423,7 @@
+         TSTS    R6, #BackgroundOp       ;AND last sub op not background
+         BEQ     %FT90                   ;THEN need to do backround part if any
+         TEQP    PC, #I_bit :OR: SVC_mode
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         LDMIA   R3, {R6,R7}
+         TEQS    R6, #0
+         ADDMI   R3, R3, R6
+@@ -423,8 +431,10 @@
+         TEQS    R7, #0          ;is background part zero length ?
+         BLEQ    %FT99           ;V=0, R7=0
+         TEQNEP  PC, #SVC_mode
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         BLNE    DoDiscOp        ;(R1-R4->R0-R4,V) preserves Z
+         TEQP    PC, #SVC_mode
++        MOV     r0, r0 ; ARM2 bank-select settling.
+  ]
+ 90
+         LDRB    LR, LockedDrive
+@@ -641,6 +651,7 @@
+         MOVNE   R0, #UpCall_MediaSearchEnd
+         BLNE    OnlyXOS_UpCall
+         TEQP    PC, R4
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         LDRB    LR, [R6,#DiscUsage]
+         SUB     LR, LR, #1        ;protection from FreeDiscRec off
+         STRB    LR, [R6,#DiscUsage]
+@@ -1922,11 +1933,13 @@
+  ]
+         Push    "R0-R2,LR"
+         TEQP    PC, #I_bit :OR: SVC_mode        ;disable IRQ to prevent re-entrance
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         LDRB    R2, FiqOwnership
+         TEQS    R2, #0
+         BNE     %FT90                   ;already claimed
+ 
+         TEQP    PC, #SVC_mode           ;can re-enable IRQs as cannot get background
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         MOV     R1, #Service_ClaimFIQ   ;release unless at least one claim
+         SWI     XOS_ServiceCall         ;(R1)
+         MOV     R1, #IOC
+@@ -1956,12 +1969,14 @@
+  ]
+         Push    "R0-R2,LR"
+         TEQP    PC, #I_bit :OR: SVC_mode        ;disable IRQ to prevent re-entrance
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         LDRB    R2, FiqOwnership
+         SUBS    R2, R2, #1
+         STRB    R2, FiqOwnership
+         BNE     %FT90
+ 
+         TEQP    PC, #SVC_mode           ;can reenable IRQs as background claim can't
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         MOV     R1, #IOC                ;succeed until after release
+         STRB    R2, [R1,#IOCFIQMSK]     ;Disable all FIQs
+         MOV     R1, #Service_ReleaseFIQ
+@@ -1995,6 +2010,7 @@
+         Pull    "R0-R2,PC",NE
+ 
+         TEQP    PC, #I_bit :OR: SVC_mode        ;disable IRQ to prevent re-entrance
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         LDRB    R2, FiqOwnership
+         TEQS    R2, #0
+         BNE     %FT90                   ;already claimed
+--- a/FileCore/s/FileCore00
++++ b/FileCore/s/FileCore00
+@@ -17,7 +17,7 @@
+ 
+         TTL     "Start of module, declarations and workspace allocation"
+ 
+-        LEADR   Module_LoadAddr
++        AREA ModuleCode, CODE, READONLY
+ org
+ Module_BaseAddr
+ 
+@@ -30,7 +30,7 @@
+         & Title           - org
+         & HelpString      - org
+         & ComTab          - org
+-FileCoreSwiBase * Module_SWISystemBase + FileCoreSWI * Module_SWIChunkSize
++FileCoreSwiBase * FileCoreSWI_Base
+         & FileCoreSwiBase
+         & SwiEntry        - org
+         & SwiNames        - org
+@@ -197,6 +197,7 @@
+         DREG    PC, "PC:"
+ 01
+         TEQP    PC,SB
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         MOV     R0,R0
+         Pull    "SB,LR,R0"
+  ]
+@@ -282,6 +283,7 @@
+         DREG    PC, "PC:"
+ 01
+         TEQP    PC,SB
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         MOV     R0,R0
+         Pull    "SB,LR,R0"
+  ]
+--- a/FileCore/s/FileCore31
++++ b/FileCore/s/FileCore31
+@@ -749,6 +749,7 @@
+         MOV     R4, R4, LSR #3  ;zone
+         MOV     R3, #0          ;zone free = 0 for next zone
+         TEQP    PC, R9          ;restore flags
++        MOV     r0, r0 ; ARM2 bank-select settling.
+ 10
+         ADDNE   R3, R3, R7      ;zone free += gap size
+         ADDNE   R6, R6, R7      ;disc free += gap size
+--- a/FileCore/s/FormSrvcs
++++ b/FileCore/s/FormSrvcs
+@@ -388,6 +388,7 @@
+         MOVNE   lr, pc
+         ORRNE   lr, lr, #V_bit
+         TEQNEP  pc, lr
++        MOV     r0, r0 ; ARM2 bank-select settling.
+ 90
+         ; Drop the stack frame and return error if generated.
+         ADD     sp, sp, #16+1024
+--- a/FileCore/s/GenSWIs
++++ b/FileCore/s/GenSWIs
+@@ -1169,6 +1169,7 @@
+         ; Toggle Z bit to give NE if an r8-based SWI...
+         MOV     lr, pc
+         TEQP    lr, #Z_bit
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         TEQNE   r8, #0
+         MOVNE   r12, r8
+ 
+--- a/FileCore/s/MyMacros
++++ b/FileCore/s/MyMacros
+@@ -232,6 +232,7 @@
+         Pull    "LR"
+ 15
+         TEQP    PC, R0          ;restore PSR
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         nop                     ;delay in case mode change
+         Pull    "R0,R1,LR"
+ 21
+--- a/FileCore/s/FormSWIs
++++ b/FileCore/s/FormSWIs
+@@ -1416,6 +1416,7 @@
+         ; Toggle the Z bit
+         MOV     lr, pc
+         TEQP    lr, #Z_bit
++        MOV     r0, r0 ; ARM2 bank-select settling.
+ 
+         MOV     r5, r4
+         ADD     r6, r5, r3
+--- a/FileCore/s/FileCore80
++++ b/FileCore/s/FileCore80
+@@ -2343,6 +2343,7 @@
+         MOVNES  PC, LR                  ;give up if another thread owns the controller
+ 
+         TEQP    PC, #SVC_mode           ;ensure IRQs enabled
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         Push    "R0-R2,LR"
+  [ F                            ;FOR DEBUGGING
+         ; Return if IRQsema set
+@@ -2840,15 +2841,18 @@
+         BEQ     %FT90
+ 
+         TEQP    PC, #I_bit :OR: SVC_mode        ;disable IRQ
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         LDRB    R0, Interlocks
+         EOR     R0, R0, #DirCacheLock
+         TSTS    R0, #DirCacheLock
+         LDRNEB  LR, Flags
+         TSTNES  LR, #CacheGood
+         TEQEQP  PC, #Z_bit :OR: SVC_mode        ;if EQ reenable IRQ maintaining Z=1
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         BEQ     %FT90
+         STRB    R0, Interlocks  ;lock dir cache
+         TEQP    PC, #SVC_mode   ;reenable IRQ
++        MOV     r0, r0 ; ARM2 bank-select settling.
+ 
+         LDR     R8, FileBufsStart
+         SUB     R8, R8, #1*K
+@@ -3234,6 +3238,7 @@
+         BNE     %FT95                   ;return if still doing a previous tick
+ 
+         TEQP    PC, #I_bit :OR: SVC_mode ;go to supervisor mode, IRQs off
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         nop
+         Push    "R0,R1,R4-R11,LR"
+         ORR     R2, R2, #TimerLock      ;lock timer
+@@ -3253,6 +3258,7 @@
+ 
+         Pull    "R0,R1,R4-R11,LR"
+         TEQP    PC, #I_bit :OR: IRQ_mode
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         BIC     R2, R2, #TimerLock
+         STRB    R2, Interlocks
+         Pull    "R2,R3,PC",,^
+@@ -4128,6 +4134,7 @@
+         BNE     %FT10
+ 
+         TEQP    PC, #F_bit :OR: I_bit :OR: SVC_mode     ;disable FIQ and IRQ
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         LDR     R4, [R0,#ProcessStatus]
+         ASSERT  CanExtend=bit30
+         TEQS    R4, R4, LSR #31         ;C=1 <=> can extend
+@@ -4135,6 +4142,7 @@
+         ADDCS   R6, R6, R3
+         STRCS   R6, [R2, #4]
+         TEQP    PC, #SVC_mode
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         ASSERT  CanExtend=bit30
+         TEQS    R4, R4, LSR #31         ;C=1 <=> can extend
+         B       %FT20
+@@ -4142,10 +4150,12 @@
+ 
+ 10
+         TEQP    PC, #F_bit :OR: I_bit :OR: SVC_mode     ;disable FIQ and IRQ
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         LDR     R4, [R0,#ProcessStatus]                 ;to make these atomic
+         TEQS    R4, R4, LSR #31         ;C=1 <=> can extend
+         STMCSIA  LR!,{R1,R3}
+         TEQP    PC, #SVC_mode
++        MOV     r0, r0 ; ARM2 bank-select settling.
+  [ DebugGs
+         DREG    r1," +",cc
+         DREG    r3,",",cc
+@@ -4217,10 +4227,12 @@
+ ;        DLINE   ")",cc
+  ]
+         TEQP    PC, #F_bit :OR: I_bit :OR: SVC_mode     ;disable FIQ and IRQ
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         LDR     R4, [R0,#ProcessStatus]                 ;to make these atomic
+         TEQS    R4, R4, LSR #31         ;C=1 <=> can extend
+         STMCSIA  R3!,{R2,LR}
+         TEQP    PC, #SVC_mode
++        MOV     r0, r0 ; ARM2 bank-select settling.
+ 
+         ASSERT  CanExtend=bit30
+         MOVS    R4, R4, LSR #31         ;C=1 <=> can extend
+@@ -4987,6 +4999,7 @@
+  ]
+         Push    "R0,LR"
+         TEQP    PC, #I_bit :OR: SVC_mode        ;for write behind
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         LDR     R0, [BufPtr,#YoungerBuf]
+         LDR     LR, [BufPtr,#OlderBuf]
+         STR     R0, [LR,#YoungerBuf]
+@@ -5010,6 +5023,7 @@
+  ]
+         Push    "LR"
+         TEQP    PC, #I_bit :OR: SVC_mode        ;for write behind
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         LDR     LR, [R2,#OlderBuf]
+         STR     BufPtr,[LR,#YoungerBuf]
+         STR     LR, [BufPtr,#OlderBuf]
+@@ -5031,6 +5045,7 @@
+  ]
+         Push    "R0,LR"
+         TEQP    PC, #I_bit :OR: SVC_mode        ;for write behind
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         STR     BufPtr, [BufPtr, #BufFcb]       ;invalidate so hash lookup fails
+         LDR     R0, [BufPtr,#NextInFile]
+         LDR     LR, [BufPtr,#PrevInFile]
+@@ -5063,6 +5078,7 @@
+         Push    "R0,LR"
+         ADD     R0, BufPtr, #BufFileOff
+         TEQP    PC, #I_bit :OR: SVC_mode        ;for write behind
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         ASSERT  BufFcb = BufFileOff + 4
+         LDMIA   R0, {R0,LR}
+         EOR     R0, LR, R0, LSR #8
+@@ -5090,6 +5106,7 @@
+         Push    "R0,LR"
+         ORR     R0, LR, #I_bit
+         TEQP    PC, LR
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         MOV     R0, #0
+         LDRB    LR, [R0,#CannotReset]
+         ADD     LR, LR, #1
+@@ -5108,6 +5125,7 @@
+         Push    "R0,LR"
+         ORR     R0, LR, #I_bit
+         TEQP    PC, LR
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         MOV     R0, #0
+         LDRB    LR, [R0,#CannotReset]
+         SUB     LR, LR, #1
+@@ -5662,6 +5680,7 @@
+         MOVNE   R0, #UpCall_MediaSearchEnd
+         BLNE    OnlyXOS_UpCall
+         TEQP    PC, R4          ;restore V
++        MOV     r0, r0 ; ARM2 bank-select settling.
+ 
+         ; Release the disc record
+         LDR     R3, [SP,#2*4]
+@@ -5820,6 +5839,7 @@
+ Check ROUT
+         Push    "R0-R3,BufSz,R5,R6,Fcb,BufPtr,LR"
+         TEQP    PC, #SVC_mode :OR: I_bit
++        MOV     r0, r0 ; ARM2 bank-select settling.
+ 
+         MOV     R1, #0  ;count buffers
+         LDR     R5, [R1, #&FFC]
+--- a/FileCore/s/FileCore20
++++ b/FileCore/s/FileCore20
+@@ -565,6 +565,7 @@
+         MOV     r7, pc
+         BL      DoSwiDiscardReadSectorsCache
+         TEQP    pc, r7
++        MOV     r0, r0 ; ARM2 bank-select settling.
+ 
+         Pull    "r0,r1,r3,r4,r7,r11,pc"
+ 
+--- a/FileCore/s/Commands
++++ b/FileCore/s/Commands
+@@ -2769,6 +2769,7 @@
+         ORRVS   r1, r1, #V_bit
+         BICVS   r1, r1, #Z_bit  ; NE on error
+         TEQP    pc, r1
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         STRVS   R0, [SP]
+         Pull    "R0,PC"
+ 
+--- a/FileCore/s/FileCore60
++++ b/FileCore/s/FileCore60
+@@ -2513,6 +2513,7 @@
+         ; Make sure V is clear and return r8
+         MOV     lr, pc
+         TSTP    lr, #ARM_CC_Mask :AND: :NOT: V_bit
++        MOV     r0, r0 ; ARM2 bank-select settling.
+ 
+         STR     r8, [sp, #3*4]
+ 
+--- a/FileCore/s/FileCore35
++++ b/FileCore/s/FileCore35
+@@ -510,6 +510,7 @@
+         BLCS    RoundUpSector   ;(R0,R3->R0)
+         TEQS    R0, R4
+         TEQNEP  PC, #SVC_mode   ;if not same rounded size return C=0, V=0. Preserves Z
++        MOV     r0, r0 ; ARM2 bank-select settling.
+         Pull    "R0,R1,R3-R4,R7-R11,PC",NE
+         Pull    "R0,R1,R3-R4,R7-R11,PC",CS      ;C=1,V=0 same size and shared or 0 len
+ 

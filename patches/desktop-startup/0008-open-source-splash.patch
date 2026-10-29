@@ -1,0 +1,86 @@
+--- a/src/Desktop/s/Desktop
++++ b/src/Desktop/s/Desktop
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: show open-source derivation and original attribution.
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -233,6 +234,7 @@
+ WelcomeString2  DCB     "CopyRt",0
+ WelcomeString3  DCB     "Init",0
+ WelcomeString4  DCB     "Pre",0
++WelcomeOrigin   DCB     "Origin",0
+ WelcomeFont     DCB     "Trinity.Medium",0
+ WelcomeFont2    DCB     "Trinity.Bold",0
+                 ALIGN
+@@ -931,6 +933,7 @@
+ Welcome_nx      #       4
+ Welcome_ny      #       4
+ Welcome_npix    #       4
++Welcome_origin_width #  4
+ Welcome_Matrix  #       32
+ Welcome_Buffer  #       20
+ Welcome_Count   #       4
+@@ -1040,6 +1043,20 @@
+         MOV     r10,r2                  ; xw2
+         Debug   we,"Width of string 2 ",r10
+ 
++; Measure the separate source-provenance line in the same 18-point font.
++        ADRL    r1,WelcomeOrigin
++        BL      MsgLookup
++        BVS     WelcomeError_TwoFonts
++        MOV     r2,#&40000000
++        MOV     r3,#&40000000
++        MOV     r4,#-1
++        MOV     r5,#255
++        SWI     XFont_StringWidth
++        MOVVC   r1,r2
++        SWIVC   XFont_ConverttoOS
++        BVS     WelcomeError_TwoFonts
++        STR     r2,Welcome_origin_width
++
+         Debug   we,"About to find third font"
+         ADRL    r1,WelcomeFont2
+         MOV     r2,#14*16
+@@ -1091,6 +1108,10 @@
+         ADD     r8,r8,#100
+         CMP     r8,r11
+         MOVLT   r8,r11                  ; lx
++        LDR     r0,Welcome_origin_width
++        ADD     r0,r0,#100
++        CMP     r8,r0
++        MOVLT   r8,r0
+         Debug   we,"lx ",r8
+ 
+         LDR     r1,Welcome_npix
+@@ -1213,6 +1234,19 @@
+         SUB     r3,r5,r10,LSR #1
+         Push    "r4"
+         SUB     r4,r4,#80
++        SWI     XFont_Paint
++        Pull    "r4"
++        BVS     WelcomeError_ThreeFonts
++
++; Keep the Acorn notice intact, with the source derivation centred beneath it.
++        ADRL    r1,WelcomeOrigin
++        BL      MsgLookup
++        BVS     WelcomeError_ThreeFonts
++        MOV     r2,#2_10000
++        LDR     r3,Welcome_origin_width
++        SUB     r3,r5,r3,LSR #1
++        Push    "r4"
++        SUB     r4,r4,#132
+         SWI     XFont_Paint
+         Pull    "r4"
+         BVS     WelcomeError_ThreeFonts
+--- a/src/Desktop/Resources/UK/Messages
++++ b/src/Desktop/Resources/UK/Messages
+@@ -1,5 +1,6 @@
+ RO3:ArcLibre
+-CopyRt:Derived from RISC OS - © Acorn Computers Ltd, 1995
++CopyRt:© Acorn Computers Ltd, 1995
++Origin:Derived from the RISC OS open-source release
+ Init:Initialising...
+ Pre:
+ Alarm:%Run Resources:$.Apps.!Alarm

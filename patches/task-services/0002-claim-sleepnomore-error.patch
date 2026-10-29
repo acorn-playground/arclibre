@@ -1,0 +1,12 @@
+--- a/src/TaskWindow/s/Taskman
++++ b/src/TaskWindow/s/Taskman
+@@ -3046,6 +3046,9 @@
+         TEQ     r0, r1
+         LDRNE   r12, NextBlock    ; else see if they match
+         BNE     %b50
++        ; Modified 2026 ArcLibre: claim the vector on a SleepNoMore error.
++        ; lr names the next vector owner; the caller return is on the stack.
++        Pull    lr
+         ADR     r0, ErrorBlock_TaskWindow_FileSleep
+         B       CopyError
+ 

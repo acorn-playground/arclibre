@@ -1,0 +1,24 @@
+# Pinned sources, patches and evidence have recorded byte-level hashes.
+# Disable automatic line-ending conversion, even with core.autocrlf enabled.
+* -text
+
+# Use LF for new repository-level documentation and configuration only.
+/.gitignore text eol=lf
+/.gitattributes text eol=lf
+/README.md text eol=lf
+/CONTRIBUTING.md text eol=lf
+/LICENSING.md text eol=lf
+/BUILD.md text eol=lf
+
+# Binary assets may legitimately occur inside pinned source snapshots.
+*.gz binary
+*.zip binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.pdf binary
+*.rom binary
+*.aof binary
+*.adf binary
+*.jfd binary
+*.macarch-state binary

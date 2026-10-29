@@ -1,0 +1,78 @@
+--- a/src/Alarm/s/Main
++++ b/src/Alarm/s/Main
+@@ -1,4 +1,6 @@
++        AREA Alarm,CODE,READONLY
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: relocatable ARM2 ROM build with generated resources.
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -25,7 +27,7 @@
+ 
+ Module_BaseAddr
+ 
+-        GET     s.AppName         ; read ApplicationName
++        GET     s/AppName         ; read ApplicationName
+ 
+         GET     Hdr:ListOpts
+         GET     Hdr:Macros
+@@ -34,9 +36,8 @@
+         GET     Hdr:Services
+         GET     Hdr:Proc
+         GET     Hdr:ResourceFS
+-        GET     s.Version
++        GET     s/Version
+ 
+-        LEADR   Module_LoadAddr
+ 
+ 
+ ; **************** Module code starts here **********************
+@@ -68,7 +69,7 @@
+ ;       App_Init - Initialisation entry
+ ;
+ 
+-App_Init ENTRY "r0"
++App_Init KernelEntry "r0"
+ 
+         ADR     R0, resourcefsfiles
+         SWI     XResourceFS_RegisterFiles   ; ignore errors (starts on Service_ResourceFSStarting)
+@@ -80,7 +81,7 @@
+ ;       App_Die - Die entry
+ ;
+ 
+-App_Die ENTRY "r0"
++App_Die KernelEntry "r0"
+ 
+         ADR     R0, resourcefsfiles
+         SWI     XResourceFS_DeregisterFiles
+@@ -101,7 +102,7 @@
+ ;       R3 = workspace pointer for module
+ ; Out   R2 called with R0 -> files, R3 -> workspace
+ 
+-svc_resourcefsstarting ENTRY "R0-R3"
++svc_resourcefsstarting KernelEntry "R0-R3"
+ 
+         ADR     R0, resourcefsfiles
+         MOV     LR, PC                          ; get return address
+@@ -110,7 +111,7 @@
+         EXITS
+ 
+ resourcefsfiles
+-        GET     s.ResFiles
++        GET     s/ResFiles
+         DCD     0
+ 
+         END
+--- a/src/Alarm/s/ResFiles
++++ b/src/Alarm/s/ResFiles
+@@ -25,8 +25,8 @@
+         ResourceFile Resources.<Locale>.Messages,   Resources.$ApplicationName..Messages
+         ResourceFile Resources.<Locale>.Template3D, Resources.$ApplicationName..Templates
+       |
+-        ResourceFile Resources.!RunImage,           Resources.$ApplicationName..!RunImage
+-        ResourceFile Resources.Code,                Resources.$ApplicationName..Code
++        GET     RunImageResource.s
++        GET     CodeResource.s
+ 
+       ]
+ 

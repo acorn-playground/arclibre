@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "rom_sha256": "bf5ca56ebd6f7fd7dc4149360d97f76f009abed8879693470421998d59f11791",
+  "cold_runs": 3,
+  "filing_scenarios": 42,
+  "write_flows": 18,
+  "fresh_negative_cam_control": true,
+  "baseline_media_failure_reproduced": true,
+  "suites": [
+    "static kernel and modules",
+    "boot",
+    "CAM",
+    "keyboard",
+    "messages",
+    "territory",
+    "IntKey",
+    "floppy/FIQ",
+    "filing",
+    "controlled writes",
+    "pixels/font"
+  ],
+  "source_tree": "src",
+  "generated_root": "build/filing-writes"
+}

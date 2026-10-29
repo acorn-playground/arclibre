@@ -1,0 +1,51 @@
+{
+  "status": "IMPORTED_AS_DISC_MODULE",
+  "revision": "ec870faf21127aba600c58b3571115ac164e40f3",
+  "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ImageFS/DOSFS.git",
+  "selected_file_metadata": [
+    {
+      "component": "DOSFS",
+      "path": "LICENSE",
+      "revision": "ec870faf21127aba600c58b3571115ac164e40f3",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ImageFS/DOSFS.git",
+      "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bytes": 11358
+    },
+    {
+      "component": "DOSFS",
+      "path": "c/BOOTblock",
+      "revision": "ec870faf21127aba600c58b3571115ac164e40f3",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ImageFS/DOSFS.git",
+      "upstream_sha256": "5917a3e541ddfefd7e948e648966696f14c23ce3c4ab640a4432cb147fcd6a25",
+      "sha256": "5917a3e541ddfefd7e948e648966696f14c23ce3c4ab640a4432cb147fcd6a25",
+      "bytes": 7316
+    },
+    {
+      "component": "DOSFS",
+      "path": "cmhg/DOSFShdr",
+      "revision": "ec870faf21127aba600c58b3571115ac164e40f3",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ImageFS/DOSFS.git",
+      "upstream_sha256": "5d441bc88d42c1afce6d0e17a45c9ec1119bd94470dcc92ec3c229dcd5b21cd0",
+      "sha256": "5d441bc88d42c1afce6d0e17a45c9ec1119bd94470dcc92ec3c229dcd5b21cd0",
+      "bytes": 1873
+    },
+    {
+      "component": "DOSFS",
+      "path": "s/StaticDefs",
+      "revision": "ec870faf21127aba600c58b3571115ac164e40f3",
+      "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ImageFS/DOSFS.git",
+      "upstream_sha256": "6b65d120e2caceba9b1b0d3dc8b3dff9b247a087a31f6738646d51b7d293791e",
+      "sha256": "6b65d120e2caceba9b1b0d3dc8b3dff9b247a087a31f6738646d51b7d293791e",
+      "bytes": 11537
+    }
+  ],
+  "concern": "(historical) Default format sector contains MSDOS3.3 OEM text, IO SYS/MSDOS SYS names and opaque x86 boot instructions. No separate provenance established for these embedded bytes. Component-level Apache notice alone has not resolved this specific payload review.",
+  "affected_operation": "DOSFS_LayoutStructure writes the embedded default sector when formatting; ordinary FAT access is a separate path.",
+  "next_step": "See docs/dosfs/RESULTS.md limits: *Format is blocked on the current ROM by FileCore EnsureFSLock calling the absent FSLock module.",
+  "resolution": {
+    "boot_sector": "Upstream s/StaticDefs template excised at import (manifests/dosfs-inputs.json records upstream, excised-block and baseline hashes); c/BOOTblock not imported; replaced by the independently written non-system data-disc sector src/ArcLibre/s/DOSFSBoot, checked by tools/check_dosfs_boot.py.",
+    "module_header": "Hand-written src/ArcLibre/s/DOSFSHdr implementing the cmhg/DOSFShdr contract; no CMHG or CMunge output. Self-relocation by src/ArcLibre/s/DOSFSReloc with a table derived from two binary links.",
+    "results": "docs/dosfs/RESULTS.md"
+  }
+}

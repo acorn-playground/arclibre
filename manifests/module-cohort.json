@@ -1,0 +1,67 @@
+[
+  {
+    "component": "FileSwitch",
+    "revision": "93c7e2e094c314940237f6256e77edae2486419b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/FileSwitch.git"
+  },
+  {
+    "component": "ResourceFS",
+    "revision": "fce5556d0ea1b7456b9c534038a3e437293ef90c",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ResourceFS/ResourceFS.git"
+  },
+  {
+    "component": "Messages",
+    "revision": "210c2af5b84654d9fa7e7ab179ef18834852f3e4",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Internat/Messages.git"
+  },
+  {
+    "component": "Kernel",
+    "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Kernel.git"
+  },
+  {
+    "component": "MsgTrans",
+    "revision": "2a006cd1d002bda2d7454764fe4b93f734f17598",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Internat/MsgTrans.git"
+  },
+  {
+    "component": "Squash header and host asset compressor/decompressor",
+    "revision": "a21ce91e3d0a1a8c04f3e0dd72683a6d7fa2ab76",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Programmer/Squash.git"
+  },
+  {
+    "component": "Public allocation headers only",
+    "revision": "403c6dd8bce92d0629634cbf57f68f43b2f30d38",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Programmer/HdrSrc.git"
+  },
+  {
+    "component": "TerritoryManager",
+    "revision": "e2654fe5c068ae403d13cb09f03e5162895a736f",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Internat/Territory/TerritoryManager.git"
+  },
+  {
+    "component": "UK",
+    "revision": "55aa82c8862f02d9db5bb4b2a9350dc8baf97192",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Internat/Territory/UK.git"
+  },
+  {
+    "component": "IntKey",
+    "revision": "e2ab8c65d06e832e7444f73e1ff2bf3a40022583",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Internat/IntKey.git"
+  },
+  {
+    "component": "Inter",
+    "revision": "e90aa354462e1d0f8826e3f19fc82b31f22c49d3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Internat/Inter.git"
+  },
+  {
+    "component": "FileCore",
+    "revision": "708e0ddb5a077e68690a1719038368860081e785",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/FileCore.git"
+  },
+  {
+    "component": "ADFS",
+    "revision": "b32ebc4dd79436ecb942c773759583cd7365b178",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ADFS/ADFS.git"
+  }
+]

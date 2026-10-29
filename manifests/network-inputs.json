@@ -1,0 +1,562 @@
+[
+  {
+    "component": "Econet",
+    "path": "LICENSE",
+    "revision": "413ae41f105d8fa01f72ccb6c425cdc1ed0c4e0b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Networking/Econet.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358,
+    "modified": false
+  },
+  {
+    "component": "Econet",
+    "path": "Makefile",
+    "revision": "413ae41f105d8fa01f72ccb6c425cdc1ed0c4e0b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Networking/Econet.git",
+    "upstream_sha256": "c482142a1eb788512d00b77713c92c882def65eea0380870a32cf0b97ca6e99b",
+    "sha256": "c482142a1eb788512d00b77713c92c882def65eea0380870a32cf0b97ca6e99b",
+    "bytes": 2958,
+    "modified": false
+  },
+  {
+    "component": "Econet",
+    "path": "NewOS",
+    "revision": "413ae41f105d8fa01f72ccb6c425cdc1ed0c4e0b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Networking/Econet.git",
+    "upstream_sha256": "4e5bc8620717a0ad7eeafe779cb94257b4b146c854ca1e06332d50818d1c979b",
+    "sha256": "4e5bc8620717a0ad7eeafe779cb94257b4b146c854ca1e06332d50818d1c979b",
+    "bytes": 274,
+    "modified": false
+  },
+  {
+    "component": "Econet",
+    "path": "Time+Date",
+    "revision": "413ae41f105d8fa01f72ccb6c425cdc1ed0c4e0b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Networking/Econet.git",
+    "upstream_sha256": "2515d72e1a2d1c4d04232087c29b1b9218a29d418f3ad4b68a59220f4d08ab60",
+    "sha256": "2515d72e1a2d1c4d04232087c29b1b9218a29d418f3ad4b68a59220f4d08ab60",
+    "bytes": 265,
+    "modified": false
+  },
+  {
+    "component": "Econet",
+    "path": "hdr/Econet",
+    "revision": "413ae41f105d8fa01f72ccb6c425cdc1ed0c4e0b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Networking/Econet.git",
+    "upstream_sha256": "f0acf214a555ef6201292c769dc9811abb35de3f7ba773be7d7f9fcfa9579d98",
+    "sha256": "f0acf214a555ef6201292c769dc9811abb35de3f7ba773be7d7f9fcfa9579d98",
+    "bytes": 21315,
+    "modified": false
+  },
+  {
+    "component": "Econet",
+    "path": "Resources/UK/Messages",
+    "revision": "413ae41f105d8fa01f72ccb6c425cdc1ed0c4e0b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Networking/Econet.git",
+    "upstream_sha256": "7ddb2db3499351d755f8ce852aa5bf4b0b6736d145368fbff3e072ec3c76b774",
+    "sha256": "7ddb2db3499351d755f8ce852aa5bf4b0b6736d145368fbff3e072ec3c76b774",
+    "bytes": 2109,
+    "modified": false
+  },
+  {
+    "component": "Econet",
+    "path": "s/Background",
+    "revision": "413ae41f105d8fa01f72ccb6c425cdc1ed0c4e0b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Networking/Econet.git",
+    "upstream_sha256": "741cadd0db8b6e78840182dd64be7865845b8627dbe777cda72e1745c04c8729",
+    "sha256": "54cd6502354abc2ffaf5ce65edd0cff798c5bd12dd33650de493405ab2dfadfe",
+    "bytes": 27082,
+    "modified": true
+  },
+  {
+    "component": "Econet",
+    "path": "s/Commands",
+    "revision": "413ae41f105d8fa01f72ccb6c425cdc1ed0c4e0b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Networking/Econet.git",
+    "upstream_sha256": "7c2a40dad81590db4abe8850b705e4a44073f26be139387d0a0fa2734ee32594",
+    "sha256": "7c2a40dad81590db4abe8850b705e4a44073f26be139387d0a0fa2734ee32594",
+    "bytes": 19097,
+    "modified": false
+  },
+  {
+    "component": "Econet",
+    "path": "s/Interface",
+    "revision": "413ae41f105d8fa01f72ccb6c425cdc1ed0c4e0b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Networking/Econet.git",
+    "upstream_sha256": "78c36de2be507b21b175ba6dc70d89faf499191bc468857a77abf0f5b990dd45",
+    "sha256": "91bfe74470a249ee9c7c172c3e4b0b75d3955955a78fb4448ed56c54c11673c4",
+    "bytes": 71303,
+    "modified": true
+  },
+  {
+    "component": "Econet",
+    "path": "s/Macros",
+    "revision": "413ae41f105d8fa01f72ccb6c425cdc1ed0c4e0b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Networking/Econet.git",
+    "upstream_sha256": "5e7f94c8062818e105e2ba0e11a29fad83ac729344e24a9e18593919729f9031",
+    "sha256": "708a8b48c663babf58f1203b30a6857e01c5fdf7d0e9b6608bf8db3930e57916",
+    "bytes": 14500,
+    "modified": true
+  },
+  {
+    "component": "Econet",
+    "path": "s/Memory",
+    "revision": "413ae41f105d8fa01f72ccb6c425cdc1ed0c4e0b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Networking/Econet.git",
+    "upstream_sha256": "f480e6fda4ac440b7416e7a533eeafdcfab2b433f5363eed24146a8b57396519",
+    "sha256": "f480e6fda4ac440b7416e7a533eeafdcfab2b433f5363eed24146a8b57396519",
+    "bytes": 8533,
+    "modified": false
+  },
+  {
+    "component": "Econet",
+    "path": "s/Module",
+    "revision": "413ae41f105d8fa01f72ccb6c425cdc1ed0c4e0b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Networking/Econet.git",
+    "upstream_sha256": "e8fd1a859415134d699a94d2011b053ad630447d0f8bc57ba946a63cfacfd42e",
+    "sha256": "50accba9ead2b8d571292ba314f7e76eee9c6908abba2159fc504d50815818e8",
+    "bytes": 59677,
+    "modified": true
+  },
+  {
+    "component": "Econet",
+    "path": "s/Receive",
+    "revision": "413ae41f105d8fa01f72ccb6c425cdc1ed0c4e0b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Networking/Econet.git",
+    "upstream_sha256": "73b5c3a0ef7e8aa871b28832b9ec08f4bace44cea30241a8b9cd1ea288df7d55",
+    "sha256": "01c840894b889f5135092a3355518f6fc1265a8c90e9bca6f5970bc88e528423",
+    "bytes": 27124,
+    "modified": true
+  },
+  {
+    "component": "Econet",
+    "path": "s/Transmit",
+    "revision": "413ae41f105d8fa01f72ccb6c425cdc1ed0c4e0b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Networking/Econet.git",
+    "upstream_sha256": "dd64ca6328ddf9686e52409f8e17eed268f52f406df6fa750d979f91c5418740",
+    "sha256": "1d548cf7602148b94508cc2e9f40c600dbe09de8336d83d6f712ccf89e3c853b",
+    "bytes": 15357,
+    "modified": true
+  },
+  {
+    "component": "BBCEconet",
+    "path": "LICENSE",
+    "revision": "5a1db236887c5c9da3f6176b49799b40c495f934",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Networking/BBCEconet.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358,
+    "modified": false
+  },
+  {
+    "component": "BBCEconet",
+    "path": "Makefile",
+    "revision": "5a1db236887c5c9da3f6176b49799b40c495f934",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Networking/BBCEconet.git",
+    "upstream_sha256": "c63beaf2b7695fcb7f84fe48949d1bf0511edfcb298d2bd099fc4dd338c458cb",
+    "sha256": "c63beaf2b7695fcb7f84fe48949d1bf0511edfcb298d2bd099fc4dd338c458cb",
+    "bytes": 1875,
+    "modified": false
+  },
+  {
+    "component": "BBCEconet",
+    "path": "Time+Date",
+    "revision": "5a1db236887c5c9da3f6176b49799b40c495f934",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Networking/BBCEconet.git",
+    "upstream_sha256": "9a721b50192549273669625994b275f2576f622a9583ba888f9584664e4415f5",
+    "sha256": "9a721b50192549273669625994b275f2576f622a9583ba888f9584664e4415f5",
+    "bytes": 265,
+    "modified": false
+  },
+  {
+    "component": "BBCEconet",
+    "path": "s/Interface",
+    "revision": "5a1db236887c5c9da3f6176b49799b40c495f934",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Networking/BBCEconet.git",
+    "upstream_sha256": "398f65710f7ea9bf8747397680fe885344ac02dd5a868c1d8af22e5317dcec6e",
+    "sha256": "5be8bfd08ad2bde935d7cbfba0ba1461c49820648f4f8893c438b8280f62abb7",
+    "bytes": 22865,
+    "modified": true
+  },
+  {
+    "component": "BBCEconet",
+    "path": "s/Module",
+    "revision": "5a1db236887c5c9da3f6176b49799b40c495f934",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Networking/BBCEconet.git",
+    "upstream_sha256": "b3ee6caca620353048c6e05487265b91ee86e0f7fe5cbb4266e97925e5ad11be",
+    "sha256": "c2f50f0dc075fa46b923ba95444524b961d7bf02f38e6ac05c9c71d0c7fc31a2",
+    "bytes": 6122,
+    "modified": true
+  },
+  {
+    "component": "NetFS",
+    "path": "LICENSE",
+    "revision": "3b392f000e60fdc44c885f4e05100349b15d3a38",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/NetFS/NetFS.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358,
+    "modified": false
+  },
+  {
+    "component": "NetFS",
+    "path": "Makefile",
+    "revision": "3b392f000e60fdc44c885f4e05100349b15d3a38",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/NetFS/NetFS.git",
+    "upstream_sha256": "fff05b1a054fd718fcdbf21abf7499aefb3552ee2613379005b81f9c2875ddbf",
+    "sha256": "fff05b1a054fd718fcdbf21abf7499aefb3552ee2613379005b81f9c2875ddbf",
+    "bytes": 1929,
+    "modified": false
+  },
+  {
+    "component": "NetFS",
+    "path": "CurrentOS",
+    "revision": "3b392f000e60fdc44c885f4e05100349b15d3a38",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/NetFS/NetFS.git",
+    "upstream_sha256": "7ada6f8fa0d19487d06a46dde08e44138f1f6e56a3aebeb996bb8a1be0fa1666",
+    "sha256": "7ada6f8fa0d19487d06a46dde08e44138f1f6e56a3aebeb996bb8a1be0fa1666",
+    "bytes": 474,
+    "modified": false
+  },
+  {
+    "component": "NetFS",
+    "path": "HelpTexts",
+    "revision": "3b392f000e60fdc44c885f4e05100349b15d3a38",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/NetFS/NetFS.git",
+    "upstream_sha256": "4558a6465ed03f962773aca97f1bfb77e7c5f38530acdec878c54e3862c6d0ae",
+    "sha256": "4558a6465ed03f962773aca97f1bfb77e7c5f38530acdec878c54e3862c6d0ae",
+    "bytes": 6563,
+    "modified": false
+  },
+  {
+    "component": "NetFS",
+    "path": "Time+Date",
+    "revision": "3b392f000e60fdc44c885f4e05100349b15d3a38",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/NetFS/NetFS.git",
+    "upstream_sha256": "30bd6c51175ce1de2ae692dc8847d33561793db8d957eb21699a03641203360c",
+    "sha256": "30bd6c51175ce1de2ae692dc8847d33561793db8d957eb21699a03641203360c",
+    "bytes": 265,
+    "modified": false
+  },
+  {
+    "component": "NetFS",
+    "path": "Resources/UK/Messages",
+    "revision": "3b392f000e60fdc44c885f4e05100349b15d3a38",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/NetFS/NetFS.git",
+    "upstream_sha256": "bb5807eb23462e8130c7a751fba4481d1330a8f3de6ba602c47f69dfc1bb90c0",
+    "sha256": "bb5807eb23462e8130c7a751fba4481d1330a8f3de6ba602c47f69dfc1bb90c0",
+    "bytes": 3828,
+    "modified": false
+  },
+  {
+    "component": "NetFS",
+    "path": "s/Catalog",
+    "revision": "3b392f000e60fdc44c885f4e05100349b15d3a38",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/NetFS/NetFS.git",
+    "upstream_sha256": "060c8e16c39a8814633c552bf2f2f9f4ca47b74896d54ab738676de70e91d399",
+    "sha256": "5433bb89ed1e437bcf4bea61c2fdb9fcbad3186f8b238c86eac42dd8cb1c3394",
+    "bytes": 28184,
+    "modified": true
+  },
+  {
+    "component": "NetFS",
+    "path": "s/Commands",
+    "revision": "3b392f000e60fdc44c885f4e05100349b15d3a38",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/NetFS/NetFS.git",
+    "upstream_sha256": "fb7bde8fdeb6ed19306c09afbc43d04bd2c9da119cf4f5c1d80b397c74d6cc24",
+    "sha256": "6d9f0d7a46caafaea7735485478a2da67894c0017507e724e80cc29a4053eccc",
+    "bytes": 123143,
+    "modified": true
+  },
+  {
+    "component": "NetFS",
+    "path": "s/Configure",
+    "revision": "3b392f000e60fdc44c885f4e05100349b15d3a38",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/NetFS/NetFS.git",
+    "upstream_sha256": "3757761a6f6a332fceb24c133a23091c8845e7c2858d5dad2fdbc1f9b070dff5",
+    "sha256": "3757761a6f6a332fceb24c133a23091c8845e7c2858d5dad2fdbc1f9b070dff5",
+    "bytes": 10447,
+    "modified": false
+  },
+  {
+    "component": "NetFS",
+    "path": "s/FileSystem",
+    "revision": "3b392f000e60fdc44c885f4e05100349b15d3a38",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/NetFS/NetFS.git",
+    "upstream_sha256": "87e50c61ac4e3a24fef87954194853a6b95248c8c78b237aa8820272123f22c9",
+    "sha256": "87e50c61ac4e3a24fef87954194853a6b95248c8c78b237aa8820272123f22c9",
+    "bytes": 49767,
+    "modified": false
+  },
+  {
+    "component": "NetFS",
+    "path": "s/Functions",
+    "revision": "3b392f000e60fdc44c885f4e05100349b15d3a38",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/NetFS/NetFS.git",
+    "upstream_sha256": "0716eb6bf67376047b115e892b45d141eae013b344a39d848a374b43351c168e",
+    "sha256": "608b5142feee15094918ca4dffce4b52af7c87f936fddc77bf46d6ad85720f8c",
+    "bytes": 61946,
+    "modified": true
+  },
+  {
+    "component": "NetFS",
+    "path": "s/Interface",
+    "revision": "3b392f000e60fdc44c885f4e05100349b15d3a38",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/NetFS/NetFS.git",
+    "upstream_sha256": "617fd1e86f769c115d5e012d50bc512fa95facce6fb3a4ea4ff2b1feb2cf8060",
+    "sha256": "1431807ec12b800f8555b6ffe5955db8fe328cb18a95691406896b8e24bb564a",
+    "bytes": 60336,
+    "modified": true
+  },
+  {
+    "component": "NetFS",
+    "path": "s/Memory",
+    "revision": "3b392f000e60fdc44c885f4e05100349b15d3a38",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/NetFS/NetFS.git",
+    "upstream_sha256": "ecd0df6bae9c05fa9e234a8997b6d4b869ccd9d7ab2a8fa6db1c6706d145c38e",
+    "sha256": "ecd0df6bae9c05fa9e234a8997b6d4b869ccd9d7ab2a8fa6db1c6706d145c38e",
+    "bytes": 8092,
+    "modified": false
+  },
+  {
+    "component": "NetFS",
+    "path": "s/Module",
+    "revision": "3b392f000e60fdc44c885f4e05100349b15d3a38",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/NetFS/NetFS.git",
+    "upstream_sha256": "1c48bd43752fb8b4458812a2d4195ba2ade09c05a5c7e863d9ae1f1db9e54ab0",
+    "sha256": "1b8d9b3095c0d5a16390e646b1b320613f794d5bd53fcd57ad2227071cb124f1",
+    "bytes": 14984,
+    "modified": true
+  },
+  {
+    "component": "NetFS",
+    "path": "s/OsFile",
+    "revision": "3b392f000e60fdc44c885f4e05100349b15d3a38",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/NetFS/NetFS.git",
+    "upstream_sha256": "c6bff342d4bc452b41ce173878a1893c9545f7fa03df72044c1c1c2346a6bf3d",
+    "sha256": "c6bff342d4bc452b41ce173878a1893c9545f7fa03df72044c1c1c2346a6bf3d",
+    "bytes": 37043,
+    "modified": false
+  },
+  {
+    "component": "NetFS",
+    "path": "s/Random",
+    "revision": "3b392f000e60fdc44c885f4e05100349b15d3a38",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/NetFS/NetFS.git",
+    "upstream_sha256": "95066f74fc1a78351175216f1a1ef470dd851365fd9fb84586d792a5c3ebba15",
+    "sha256": "b63ddf1e1dd1ddd5e3de3df5dd8a383bafd1ddaa2d6087bf848618d89e9f5e47",
+    "bytes": 57682,
+    "modified": true
+  },
+  {
+    "component": "NetFiler",
+    "path": "LICENSE",
+    "revision": "e0076648687f4cec1a685cee59b164164ab4f593",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/NetFS/NetFiler.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358,
+    "modified": false
+  },
+  {
+    "component": "NetFiler",
+    "path": "Makefile",
+    "revision": "e0076648687f4cec1a685cee59b164164ab4f593",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/NetFS/NetFiler.git",
+    "upstream_sha256": "3e4a505338eb628a7255cf6944505ea4398685decad52e39e1afc9fc712c606e",
+    "sha256": "3e4a505338eb628a7255cf6944505ea4398685decad52e39e1afc9fc712c606e",
+    "bytes": 1755,
+    "modified": false
+  },
+  {
+    "component": "NetFiler",
+    "path": "Version",
+    "revision": "e0076648687f4cec1a685cee59b164164ab4f593",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/NetFS/NetFiler.git",
+    "upstream_sha256": "b20a878d3a5f9321a9fa438dc5ff2030689b10390800434c8982bff6326a2517",
+    "sha256": "b20a878d3a5f9321a9fa438dc5ff2030689b10390800434c8982bff6326a2517",
+    "bytes": 261,
+    "modified": false
+  },
+  {
+    "component": "NetFiler",
+    "path": "Resources/UK/Messages",
+    "revision": "e0076648687f4cec1a685cee59b164164ab4f593",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/NetFS/NetFiler.git",
+    "upstream_sha256": "0ef6007fa3d7c1556183054a9d22eed3c9cf3a1211850c3cc014b19316519bb1",
+    "sha256": "0ef6007fa3d7c1556183054a9d22eed3c9cf3a1211850c3cc014b19316519bb1",
+    "bytes": 1707,
+    "modified": false
+  },
+  {
+    "component": "NetFiler",
+    "path": "Resources/UK/Templates,fec",
+    "revision": "e0076648687f4cec1a685cee59b164164ab4f593",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/NetFS/NetFiler.git",
+    "upstream_sha256": "75be95d654c3f1c6c9e8cab5fcc7cbc7a50e4ca8d9790b926ac50837b5d94ac3",
+    "sha256": "75be95d654c3f1c6c9e8cab5fcc7cbc7a50e4ca8d9790b926ac50837b5d94ac3",
+    "bytes": 849,
+    "modified": false
+  },
+  {
+    "component": "NetFiler",
+    "path": "s/NetFiler",
+    "revision": "e0076648687f4cec1a685cee59b164164ab4f593",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/NetFS/NetFiler.git",
+    "upstream_sha256": "86b5070fcd95b9b3fcca128cf92ab05bc8e88644fed974b648f602a9144516dc",
+    "sha256": "e700aaf4bb71905f4f712caf023fd10495f08c5e007b4291f4d74c41307744c4",
+    "bytes": 139767,
+    "modified": true
+  },
+  {
+    "component": "NetPrint",
+    "path": "LICENSE",
+    "revision": "c7aa0ed874824eb9d396d2c1a814e9f4cad2ffa7",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/NetPrint.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358,
+    "modified": false
+  },
+  {
+    "component": "NetPrint",
+    "path": "Makefile",
+    "revision": "c7aa0ed874824eb9d396d2c1a814e9f4cad2ffa7",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/NetPrint.git",
+    "upstream_sha256": "828a3b90ec34011dc34d0bd5e430ec0184603faf714dcd0dd84c9d7288296408",
+    "sha256": "828a3b90ec34011dc34d0bd5e430ec0184603faf714dcd0dd84c9d7288296408",
+    "bytes": 1816,
+    "modified": false
+  },
+  {
+    "component": "NetPrint",
+    "path": "NewOS",
+    "revision": "c7aa0ed874824eb9d396d2c1a814e9f4cad2ffa7",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/NetPrint.git",
+    "upstream_sha256": "f4c848d91a85cbdd8a18e5261bec36e0c9c930d8df37b77cf04fb7548e5c8575",
+    "sha256": "f4c848d91a85cbdd8a18e5261bec36e0c9c930d8df37b77cf04fb7548e5c8575",
+    "bytes": 344,
+    "modified": false
+  },
+  {
+    "component": "NetPrint",
+    "path": "HelpTexts",
+    "revision": "c7aa0ed874824eb9d396d2c1a814e9f4cad2ffa7",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/NetPrint.git",
+    "upstream_sha256": "50a6fd226dfc6a35c68a588793bdeb3bbf47175b2d1d9a5c87a14f27e9b16d67",
+    "sha256": "50a6fd226dfc6a35c68a588793bdeb3bbf47175b2d1d9a5c87a14f27e9b16d67",
+    "bytes": 2430,
+    "modified": false
+  },
+  {
+    "component": "NetPrint",
+    "path": "Time+Date",
+    "revision": "c7aa0ed874824eb9d396d2c1a814e9f4cad2ffa7",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/NetPrint.git",
+    "upstream_sha256": "f2b0622e84ef112e7ed10a2b099584280f89e942fa300f7f26ca1bc062fc6ca0",
+    "sha256": "f2b0622e84ef112e7ed10a2b099584280f89e942fa300f7f26ca1bc062fc6ca0",
+    "bytes": 265,
+    "modified": false
+  },
+  {
+    "component": "NetPrint",
+    "path": "Resources/UK/Messages",
+    "revision": "c7aa0ed874824eb9d396d2c1a814e9f4cad2ffa7",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/NetPrint.git",
+    "upstream_sha256": "2c68225b7c84ccea3cf41185162d4d5f3c8d26a61046cf46de4c2424adaf608e",
+    "sha256": "2c68225b7c84ccea3cf41185162d4d5f3c8d26a61046cf46de4c2424adaf608e",
+    "bytes": 1637,
+    "modified": false
+  },
+  {
+    "component": "NetPrint",
+    "path": "s/Commands",
+    "revision": "c7aa0ed874824eb9d396d2c1a814e9f4cad2ffa7",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/NetPrint.git",
+    "upstream_sha256": "61dafb5c4a75d107b767d10ea941f00cb8b07fa6761479f989a6f4d37a84ab77",
+    "sha256": "61dafb5c4a75d107b767d10ea941f00cb8b07fa6761479f989a6f4d37a84ab77",
+    "bytes": 23942,
+    "modified": false
+  },
+  {
+    "component": "NetPrint",
+    "path": "s/FileSystem",
+    "revision": "c7aa0ed874824eb9d396d2c1a814e9f4cad2ffa7",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/NetPrint.git",
+    "upstream_sha256": "80d27b6a91ddf11e6216a20248a273007e3995704b66353b4d7ae046550f680f",
+    "sha256": "1e59f1f692cc3577f9ec14b8a307935fc8c1123b792579b4445e1462571d30b8",
+    "bytes": 53200,
+    "modified": true
+  },
+  {
+    "component": "NetPrint",
+    "path": "s/Interface",
+    "revision": "c7aa0ed874824eb9d396d2c1a814e9f4cad2ffa7",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/NetPrint.git",
+    "upstream_sha256": "0c7ab6fdab8c013114daf8b48234ae82cdb1cd9f65da01f39b1c6b0c736be64b",
+    "sha256": "cec29b3e38303fc9eb45cbc81828c80e041a5aff22608355c72d997706b059e0",
+    "bytes": 48591,
+    "modified": true
+  },
+  {
+    "component": "NetPrint",
+    "path": "s/Module",
+    "revision": "c7aa0ed874824eb9d396d2c1a814e9f4cad2ffa7",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/NetPrint.git",
+    "upstream_sha256": "4bc6e454f251abc85a469cf3c452eb475662d205da552c07f60c93c1a2f6d881",
+    "sha256": "d0478baa2dc434cc2777a2c0c82a018e4550706d47cbaf884b0b8e133981df11",
+    "bytes": 18793,
+    "modified": true
+  },
+  {
+    "component": "HdrSrc",
+    "path": "hdr/PoduleReg",
+    "revision": "403c6dd8bce92d0629634cbf57f68f43b2f30d38",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Programmer/HdrSrc.git",
+    "upstream_sha256": "f446652c55c6987cd1ec6d5b2d7789f409730a193306d4fefda201535562cc5f",
+    "sha256": "f446652c55c6987cd1ec6d5b2d7789f409730a193306d4fefda201535562cc5f",
+    "bytes": 3482,
+    "modified": false
+  },
+  {
+    "component": "NetStatus",
+    "path": "LICENSE",
+    "revision": "3e8e96c5cbfff5a5824e9a1f0d3498a501d4ce11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Networking/NetStatus.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358,
+    "modified": false
+  },
+  {
+    "component": "NetStatus",
+    "path": "Makefile",
+    "revision": "3e8e96c5cbfff5a5824e9a1f0d3498a501d4ce11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Networking/NetStatus.git",
+    "upstream_sha256": "8e8de1875bf68666e0ab854629a5e333907cf50bf4796f520a49473ab9097ecc",
+    "sha256": "8e8de1875bf68666e0ab854629a5e333907cf50bf4796f520a49473ab9097ecc",
+    "bytes": 1599,
+    "modified": false
+  },
+  {
+    "component": "NetStatus",
+    "path": "Time+Date",
+    "revision": "3e8e96c5cbfff5a5824e9a1f0d3498a501d4ce11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Networking/NetStatus.git",
+    "upstream_sha256": "cf0bed3f94abc749ab6d62c99d306e7f80e45ec1b466aa253736cd5acc5210a9",
+    "sha256": "cf0bed3f94abc749ab6d62c99d306e7f80e45ec1b466aa253736cd5acc5210a9",
+    "bytes": 265,
+    "modified": false
+  },
+  {
+    "component": "NetStatus",
+    "path": "s/Module",
+    "revision": "3e8e96c5cbfff5a5824e9a1f0d3498a501d4ce11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Networking/NetStatus.git",
+    "upstream_sha256": "d7ce0e1cb5ad773599746312958e5b99949316e45172bc90701f94efc90fe84c",
+    "sha256": "489b9d67bbacd9f62ee98a8424817ba7d7fb36b87a9f2cde746520dc14eea0ef",
+    "bytes": 12445,
+    "modified": true
+  }
+]

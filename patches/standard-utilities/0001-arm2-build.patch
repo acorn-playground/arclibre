@@ -1,0 +1,251 @@
+--- a/src/ScrBlank/s/ScrBlank
++++ b/src/ScrBlank/s/ScrBlank
+@@ -1,4 +1,6 @@
++        AREA ScrBlank,CODE,READONLY
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: relocatable ARM2 assembly contracts.
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -137,7 +139,7 @@
+         DCD     TitleStr        - Module_BaseAddr
+         DCD     HelpStr         - Module_BaseAddr
+         DCD     Command         - Module_BaseAddr
+-        DCD     Module_SWISystemBase + ScreenBlankerSWI * Module_SWIChunkSize
++        DCD     ScreenBlankerSWI_Base
+         DCD     SWIDecode - Module_BaseAddr
+         DCD     SWINames  - Module_BaseAddr
+         DCD     0
+@@ -222,14 +224,14 @@
+ 
+ ; R1 is time in cs.  Leaves time in ticks in R0.
+ 
+-ConvertCSToTicks        ENTRY   "R1,R2"
++ConvertCSToTicks        KernelEntry   "R1,R2"
+         MOV     R2, #TickDelta
+         DivRem  R0, R1, R2, LR
+         EXIT
+ 
+ ; R0 is time in ticks.  Leaves time in seconds in R1.
+ 
+-ConvertTicksToSecs      ENTRY   "R0,R2"
++ConvertTicksToSecs      KernelEntry   "R0,R2"
+         MOV     R2, #TicksPerSec
+         DivRem  R1, R0, R2, LR
+         EXIT
+@@ -266,7 +268,7 @@
+ ; Wakes the screen and cancels flashing, if it's happening
+ ; Input registers corrupted
+ 
+-Subr_SetTimeout ENTRY           ; CORRUPTS REGISTERS
++Subr_SetTimeout KernelEntry           ; CORRUPTS REGISTERS
+ Go_SetTimeout
+         TEQ     R1, #0          ; 0 means "never blank"
+         MOVEQ   R0, #0
+@@ -310,7 +312,7 @@
+  ]
+         ALIGN
+ 
+-BlankTime       ENTRY
++BlankTime       KernelEntry
+         LDR     R12, [R12]              ; get workspace pointer
+ 
+         TEQ     R1,#0
+@@ -369,7 +371,7 @@
+ BlnkTim  DCB    "Tm", 0
+                 ALIGN
+ 
+-DecodePar       ENTRY   "R6"
++DecodePar       KernelEntry   "R6"
+         LDRB    R1,[R0]
+         CMP     R1,#"0"                 ; Check if par is a number
+         BLT     DecodeParFlag
+@@ -407,7 +409,7 @@
+         ORRS    PC, LR, #V_bit
+ 
+ 
+-ClaimWriteCV  ENTRY  "R0-R3"
++ClaimWriteCV  KernelEntry  "R0-R3"
+         LDR     R3,VecStat
+         TST     R3,#VecStat_WrchVClaimed
+         EXITS   NE                      ; Exit if already claimed.
+@@ -419,7 +421,7 @@
+         STR     R3,VecStat              ; set WrchV flag
+         EXITS
+ 
+-ReleaseWriteCV  ENTRY "R0-R3"
++ReleaseWriteCV  KernelEntry "R0-R3"
+         LDR     R3,VecStat
+         TST     R3,#VecStat_WrchVClaimed
+         EXITS   EQ                      ; Exit if not already claimed.
+@@ -448,7 +450,7 @@
+ ; keypress.  This can 'disable' the blanker when using an editor eg. TWIN
+ ; which keeps an onscreen clock.
+ 
+-ClaimVectorsAndStuff  ENTRY "R0-R3"
++ClaimVectorsAndStuff  KernelEntry "R0-R3"
+ 
+         MOV     R1,#0
+         STR     R1,LastMouse
+@@ -563,7 +565,7 @@
+ 
+ ; Used by Service_Reset; only reclaim if it's a soft reset.
+ 
+-ReclaimVectorsAndStuff ENTRY "R0-R2"
++ReclaimVectorsAndStuff KernelEntry "R0-R2"
+         MOV     R0, #&FD
+         MOV     R1, #0
+         MOV     R2, #&FF
+@@ -604,7 +606,7 @@
+ 
+         TEQ     R1,#Service_ModeChange
+         BNE     %FT00
+-        ENTRY   "R0"
++        KernelEntry   "R0"
+         BL      TurnScreenOn       ; if so, then screen ON.
+         LDR     R0,TimeOn
+         STR     R0,timer
+@@ -652,7 +654,7 @@
+         MOVNE   PC, LR
+         ; fall thru...
+ 
+-Action  ENTRY   "R0"
++Action  KernelEntry   "R0"
+         BL      CancelFlash
+         EXIT    NE              ; screen must not be unblanked yet
+         LDR     R0,TimeOn
+@@ -667,7 +669,7 @@
+ ; Tick is called from OS_CallEvery, and is therefore effectively an interrupt
+ ; handler.
+ 
+-Tick    ENTRY   "R0-R5"
++Tick    KernelEntry   "R0-R5"
+ 
+ ; Locate mouse and see if it's changed.  If so, unblank.
+         MOV     R4,PC           ; save current mode
+@@ -741,7 +743,7 @@
+         STR     R0,timer
+         EXIT
+ 
+-RemovePendingCallBacks  ENTRY   "R0-R1"
++RemovePendingCallBacks  KernelEntry   "R0-R1"
+         [ NewService
+         ADR     R0, CallBackHandler
+         MOV     R1, R12
+@@ -759,7 +761,7 @@
+ ; Could determine current state of screen here, and issue the right call
+ ; instead of registering the state in the callback R12.
+ 
+-CallBackHandler  ENTRY  "R0-R12"
++CallBackHandler  KernelEntry  "R0-R12"
+         [ NewService
+         LDR     R0, FlashFlags
+         LDR     R1, NextService
+@@ -774,7 +776,7 @@
+ 
+ ; Turn the screen off.
+ 
+-TurnScreenOff  ENTRY       "R0-R9"
++TurnScreenOff  KernelEntry       "R0-R9"
+ 
+ ; We could be in an interrupt, so we have to save the svc_link register
+ ; before calling any SWI's
+@@ -813,7 +815,7 @@
+ 
+ ; Turn the screen on
+ 
+-TurnScreenOn  ENTRY       "R0-R9"
++TurnScreenOn  KernelEntry       "R0-R9"
+ 
+ ; We could be in an interrupt, so we have to save the svc_link register
+ ; before calling any SWI's
+@@ -855,7 +857,7 @@
+         ALIGN
+ 
+ openmsgfile
+-        ENTRY   r0-r2
++        KernelEntry   r0-r2
+         LDR     r0, messagefile
+         CMP     r0, #0
+         ADREQ   r0, messageblock
+@@ -867,7 +869,7 @@
+         EXIT
+ 
+ error_lookup
+-        ENTRY   r1-r2
++        KernelEntry   r1-r2
+         BL      openmsgfile
+         EXIT    VS
+         LDR     r1, messagefile
+--- a/src/StringLib/s/MsgCode
++++ b/src/StringLib/s/MsgCode
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: relocatable ARM2 assembly contracts.
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -25,7 +26,7 @@
+ ;        R11 -> message file block
+ ; Exit:  R0 -> String or V set error return
+ 
+-lookup_zero_file_r11 ENTRY "r1-r7"
++lookup_zero_file_r11 KernelEntry "r1-r7"
+         MOV     r1, r0                          ; Token
+         MOVS    r0, r11                         ; File handle
+         EXITS   EQ                              ; No file so return zero
+@@ -48,7 +49,7 @@
+ ; Open the message file, using the 16 byte block passed in R11.
+ ; Preserves all registers, if error then R0->error block, V set.
+ 
+-open_message_file_r11 ENTRY "r0-r2"
++open_message_file_r11 KernelEntry "r0-r2"
+         MOV     r0, r11                         ; Block passed for file
+         ADR     r1, message_filename
+         MOV     r2, #0
+@@ -61,7 +62,7 @@
+ ; Close the message file block passed in R11 (or ignore if 0).
+ ; Preserves all registers, if error then R0->error block, V set.
+ 
+-close_message_file_r11 ENTRY "r0"
++close_message_file_r11 KernelEntry "r0"
+         MOVS    r0, r11                         ; Message file block.
+         EXITS   EQ                              ; No file so return.
+ 
+--- a/src/StringLib/s/StringLib
++++ b/src/StringLib/s/StringLib
+@@ -1,4 +1,6 @@
++        AREA StringLib,CODE,READONLY
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: relocatable ARM2 assembly contracts.
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -62,8 +64,7 @@
+ Host_Debug SETL False
+ 
+ ; Now we can start the module
+-
+-   LEADR Module_LoadAddr    ; give output the right addresses
++; Explicit relocatable AREA replaces LEADR.
+ 
+ Module_Base                ; label for calculating offsets
+    & 0 ; not application
+@@ -85,7 +86,7 @@
+ 
+ 
+ ; the initialisation :
+-Initialise_Module ENTRY "r11",16        ; MessageTrans file block on stack
++Initialise_Module KernelEntry "r11",16        ; MessageTrans file block on stack
+    MOV     r11, sp                      ; held in r11
+    LDR     R3, WorkSpaceSize
+    LDR     R2, [R12]     ; check for reinitialisation
+@@ -211,7 +212,7 @@
+         TEQ     r1, #Service_ResourceFSStarted
+         MOVNES  pc, r14
+ 
+-change_names ENTRY "r0-r3, r11", 16     ; MessageTrans file block on
++change_names KernelEntry "r0-r3, r11", 16     ; MessageTrans file block on
+         MOV     r11, sp                 ; stack held in r11.
+         BL      open_message_file_r11
+         EXITS   VS                      ; Give up if no file.

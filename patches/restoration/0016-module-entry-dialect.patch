@@ -1,0 +1,3286 @@
+--- a/MsgTrans/s/MsgTrans
++++ b/MsgTrans/s/MsgTrans
+@@ -147,7 +147,7 @@
+ ; Module header
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-        LEADR   Module_LoadAddr
++        ORG     0 ; position-independent module, offsets relative to header
+ 
+         ASSERT  (.=Module_BaseAddr)
+ 
+@@ -189,7 +189,7 @@
+ ; Init entry - claim and initialise workspace.
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-Init    ENTRY
++Init    KernelEntry
+ 
+         LDR     r2, [r12]
+         TEQ     r2,#0
+@@ -268,7 +268,7 @@
+         ;       The module workspace is freed by the kernel on exit.
+ 
+ 
+-Die     ENTRY
++Die     KernelEntry
+ 
+         ; Don't bother closing our own messages files because we're going to
+         ; reopen them anyway on initialisation.
+@@ -425,7 +425,7 @@
+ ;       R2 = size of buffer required to hold file
+ ;            if R0 bit 0 set, the buffer is not required for read-only access
+ 
+-SWIMessageTrans_FileInfo ENTRY "r3"
++SWIMessageTrans_FileInfo KernelEntry "r3"
+ 
+         BL      internal_fileinfo
+         BICVC   r0, r0, #flg_sqshinresourcefs           ; flag not for external consumption
+@@ -448,7 +448,7 @@
+         DCB     "Recursion in MessageTrans",0
+         ALIGN
+ 
+-internal_fileinfo ENTRY "r1,r4-r6"
++internal_fileinfo KernelEntry "r1,r4-r6"
+ 
+         LDR     lr, ThreadNess
+         CMP     lr, #MaxThreadNess
+@@ -1125,7 +1125,7 @@
+         XError  TokenNotFound
+         Pull    "pc"
+ 
+-internal_lookup ENTRY "r0-r9"
++internal_lookup KernelEntry "r0-r9"
+ 
+         Debug   xx,"MessageTrans_Lookup",r0,r1,r2,r3,r4,r5
+         DebugS  xx,"Token =",r1
+@@ -1458,7 +1458,7 @@
+ ; SWI MessageTrans_CloseFile
+ ; In    R0 -> 4-word data structure passed to MessageTrans_OpenFile
+ 
+-SWIMessageTrans_CloseFile ENTRY "r0-r2"
++SWIMessageTrans_CloseFile KernelEntry "r0-r2"
+ 
+         Debug   xx,"MessageTrans_CloseFile",r0
+ 
+@@ -1500,7 +1500,7 @@
+ ;       R3 = bytes remaining in buffer (should be 0 if you got it right)
+ ;       "Buffer overflow" error if buffer is too small
+ 
+-SWIMessageTrans_MakeMenus ENTRY "r1, r4-r11"
++SWIMessageTrans_MakeMenus KernelEntry "r1, r4-r11"
+ 
+         Debug   xx,"MessageTrans_MakeMenus", r0, r1, r2, r3
+ 
+@@ -1623,7 +1623,7 @@
+ ; In    r1 -> start of token
+ ; Out   r1 -> byte after end of token
+ 
+-skiptoken ENTRY
++skiptoken KernelEntry
+ 
+ 01      LDRB    r14, [ r1 ], #1                         ; skip the token
+         CMP     r14, #","
+@@ -1645,7 +1645,7 @@
+ ;       R2 -> terminator (character 10 if R2=0 on entry, 0 otherwise)
+ ;       R3 = size of result, excluding terminator
+ 
+-int_lookup_nopars ENTRY "r4-r7"
++int_lookup_nopars KernelEntry "r4-r7"
+ 
+         MOV     r4, #0
+         MOV     r5, #0
+--- a/FileSwitch/s/FSControl
++++ b/FileSwitch/s/FSControl
+@@ -196,7 +196,7 @@
+ ;            VS: error has been set
+ ;            VC: file has been run ok (eg. *EXECed OR PIC transient)
+ 
+-TryRunningFile ENTRY "r0-r6,fscb" ; Try not to keep too much stacked for RUN
++TryRunningFile KernelEntry "r0-r6,fscb" ; Try not to keep too much stacked for RUN
+ 
+  [ debugrun
+         DSTRING r1, "tryrunning "
+@@ -494,7 +494,7 @@
+ ; Out   VC: r0 -> string to do with as you wish
+ ;       string is in ActionVariable, just dying to be freed
+ 
+-ReadActionVariable ENTRY "r1-r4, r6" ; r0 result
++ReadActionVariable KernelEntry "r1-r4, r6" ; r0 result
+ 
+  [ debugcontrol :LOR: debugrun
+         DREG    r2, "Action variable for load=",cc
+@@ -578,7 +578,7 @@
+ ; Out   r2, r3 preserved
+ ;       core contains 'abc', 0
+ 
+-ConvertHex3 ENTRY "r1"
++ConvertHex3 KernelEntry "r1"
+ 
+         MOV     r1, #8                  ; MSN at base bit 8
+         BL      NibbleToText
+@@ -598,7 +598,7 @@
+ 
+ ; Out   r1 = nibble at bitfield converted to base 16
+ 
+-NibbleToText ENTRY
++NibbleToText KernelEntry
+ 
+         MOV     r1, r2, ROR r1
+         AND     r1, r1, #15
+@@ -656,7 +656,7 @@
+ ;       All linked areas in this domain freed
+ ;       Current FS restored
+ 
+-StartUpTheApplication ENTRY "r0-r7,fscb"
++StartUpTheApplication KernelEntry "r0-r7,fscb"
+ 
+         ; Copy command line *before* UpCalling etc to ensure it
+         ; doesn't get destroyed before needed
+@@ -772,7 +772,7 @@
+ ; In    r0 -> command first bit
+ ;       r1 -> command tail to append
+ 
+-CopyCommandLineAndReadTime ENTRY "r0-r2"
++CopyCommandLineAndReadTime KernelEntry "r0-r2"
+ 
+  [ debugrun
+  DSTRING r0, "CopyCommandLineAndReadTime: First bit ",cc
+@@ -807,7 +807,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; In    r2 -> string (CtrlChar term) to append to r1 string
+ 
+-AppendStringIfNotNull ENTRY "r2"
++AppendStringIfNotNull KernelEntry "r2"
+ 
+  [ debugrun
+  DSTRING r2, "AppendStringIfNotNull: "
+@@ -1233,7 +1233,7 @@
+ ; ========
+ 
+ ; In    r1 -> command tail
+-PSDPath DCB "\", 0
++PSDPath DCB &5C, 0
+         ALIGN
+ 
+ BackEntry
+@@ -1334,7 +1334,7 @@
+ ;       &1000   directory
+ ;       &2000   application
+ ;
+-InfoToFileType ENTRY "r3"
++InfoToFileType KernelEntry "r3"
+         TEQ     r6, #object_file
+         BNE     %FT10
+ 
+@@ -1593,7 +1593,7 @@
+ ; Out
+ ; FileSwitch's internals updated to keep up-to-date with the change
+ 
+-SortOutRenameCarnage ENTRY "r0,r3,r4,scb"
++SortOutRenameCarnage KernelEntry "r0,r3,r4,scb"
+ 
+         ; For each open file check whether it's one that's been renamed, and change its name if it is
+ 
+@@ -1626,7 +1626,7 @@
+ ;
+ ; Out   If has been renamed, then contents of scb have been updated
+ ;
+-SortOutRenameCarnage_OneFile ENTRY "r0-r3"
++SortOutRenameCarnage_OneFile KernelEntry "r0-r3"
+ 
+         ; Check fscb
+         LDR     r14, scb_fscb
+@@ -1734,7 +1734,7 @@
+ ;
+ ; Out   If has been renamed, then dirs updated
+ ;
+-SortOutRenameCarnage_TheDirs ENTRY "r0-r4,r8"
++SortOutRenameCarnage_TheDirs KernelEntry "r0-r4,r8"
+         MOV     r8, sp
+ 
+         ; Construct on the stack a suitable prefix
+@@ -2204,7 +2204,7 @@
+ ;
+ ; Out
+ ;
+-NameDiscSortOutCarnage ENTRY "r1,r2,r3,r4,r5"
++NameDiscSortOutCarnage KernelEntry "r1,r2,r3,r4,r5"
+ 
+  [ debugmultifs
+         DSTRING r1, "NameDiscSortOutCarnage from ",cc
+@@ -2303,7 +2303,7 @@
+ ; Out   regs preserved, except
+ ;       r2 = boot option
+ 
+-int_ReadBootOptionGiven ENTRY   "r0,r1,r3-r5"           ; Don't trust the lower layers AT ALL
++int_ReadBootOptionGiven KernelEntry   "r0,r1,r3-r5"           ; Don't trust the lower layers AT ALL
+ 
+         TEQ     r0, #0
+         BEQ     %FT50
+@@ -2421,7 +2421,7 @@
+ 
+ ; Out   r0 <> 0 for good FSs and =0 for bad FSs
+ 
+-faff_boot_option_startup_given ENTRY "r2,r3"
++faff_boot_option_startup_given KernelEntry "r2,r3"
+ 
+         ; Check if FS supports the entry
+         LDR     r0, [fscb, #fscb_info]
+--- a/FileSwitch/s/OSGBPB
++++ b/FileSwitch/s/OSGBPB
+@@ -170,7 +170,7 @@
+ 
+ ; Out   r1 trashed
+ 
+-Xfer_ReadBytes ENTRY "scb, $streaminfo"
++Xfer_ReadBytes KernelEntry "scb, $streaminfo"
+ 
+         AND     r1, r1, #&FF            ; r1b is file handle
+         ADR     r14, streamtable
+@@ -342,7 +342,7 @@
+ 
+ ; In    r0 = reason, scb^ valid. Rest of data in gbpb_block
+ 
+-UnbufferedMultiple ENTRY "r5-r7" ; We can use r0-r4 here (restored by toplevel)
++UnbufferedMultiple KernelEntry "r5-r7" ; We can use r0-r4 here (restored by toplevel)
+ 
+         TST     status, #scb_unbuffgbpb ; Can FS do this quickly ?
+         BEQ     %FT01                   ; Nope !
+@@ -415,7 +415,7 @@
+ 
+ ; No need to invalidate caches as appropriate routines will do so
+ 
+-BufferedMultipleRead ENTRY "r1, bcb"
++BufferedMultipleRead KernelEntry "r1, bcb"
+ 
+         TEQ     r0, #OSGBPB_ReadFromGiven ; Only difference between the two ops
+         ADR     r14, gbpb_memadr
+@@ -619,7 +619,7 @@
+ 
+ ; Out   r1 = number of bytes done
+ 
+-FillFromBuffer ENTRY "r0-r3" ; Result poked into stack
++FillFromBuffer KernelEntry "r0-r3" ; Result poked into stack
+ 
+  [ debugosgbpb
+  DREG r0, "FillFromBuffer: fileptr ",cc
+@@ -660,7 +660,7 @@
+ 
+ ; No need to invalidate caches as appropriate routines will do so
+ 
+-BufferedMultipleWrite ENTRY "r1, bcb"
++BufferedMultipleWrite KernelEntry "r1, bcb"
+ 
+         TEQ     r0, #OSGBPB_WriteAtGiven ; Only difference between the two ops
+         LDREQ   fileptr, gbpb_fileptr
+@@ -866,7 +866,7 @@
+ 
+ ; WriteMultiple needs to extend the file
+ 
+-GBPBExtendFile ENTRY "r0-r2, fileptr, extent"
++GBPBExtendFile KernelEntry "r0-r2, fileptr, extent"
+ 
+ ; Make file large enough to take data - if file extension takes place, tell
+ ; filing system the old extent as well as the new size, so only valid data gets
+@@ -944,7 +944,7 @@
+ 
+ ; In    r2 -> memory to put info
+ 
+-Daft_ReadName ENTRY "r2,r3,r5,fscb", 4
++Daft_ReadName KernelEntry "r2,r3,r5,fscb", 4
+ 
+  [ debugdaftgbpb
+         DREG    r2, "Daft_ReadName to "
+@@ -1016,7 +1016,7 @@
+ 
+ ; In    r2 -> memory to put info
+ 
+-Daft_ReadDiscName ENTRY "r0,r1,r2,r3,r4,r5", 4
++Daft_ReadDiscName KernelEntry "r0,r1,r2,r3,r4,r5", 4
+ 
+         ; Save destination in r4
+         MOV     r4, r2
+@@ -1078,7 +1078,7 @@
+ ; Out   gbpb_nbytes  = number of names NOT read
+ ;       gbpb_fileptr = next offset in directory
+ 
+-Daft_ReadCSDEntries ENTRY "r0-r6" ; GBPB saves r0-r1; FSFunc saves r6-wp
++Daft_ReadCSDEntries KernelEntry "r0-r6" ; GBPB saves r0-r1; FSFunc saves r6-wp
+ 
+         ; Do business for '@'
+         ADR     r1, %F90
+@@ -1158,7 +1158,7 @@
+ ;       r3 at SWI level = number of names read (will be zero if eod)
+ ;       r4 at SWI level = next offset in directory
+ 
+-Daft_ReadDirEntries ENTRY "r0-r10" ; FSFunc only preserves r6 up
++Daft_ReadDirEntries KernelEntry "r0-r10" ; FSFunc only preserves r6 up
+ 
+ ; Common code to start us off
+ 
+@@ -1542,7 +1542,7 @@
+ mbshftL  RN 11                          ; These two go at end to save a word
+ mbshftR  RN 12                          ; and an extra Pull lr!
+ 
+-MoveBytes ENTRY
++MoveBytes KernelEntry
+ 
+  [ debugosgbpb
+  DREG r1, "Copying data from ",cc
+--- a/FileSwitch/s/DirStore
++++ b/FileSwitch/s/DirStore
+@@ -83,7 +83,7 @@
+ ; Out   r1 = 0 if not found
+ ;       r5 reduced by length of variable
+ 
+-SimpleReadDir ENTRY    "r0-r8", 512
++SimpleReadDir KernelEntry    "r0-r8", 512
+ 
+         MOV     r8, sp
+         MOV     r7, #0
+@@ -134,7 +134,7 @@
+ ;
+ ; Returns path corresponding to directory, or NULL if unset
+ ;
+-ReadDirWithSuppliedDefault ENTRY "r0-r3,r6-r8"
++ReadDirWithSuppliedDefault KernelEntry "r0-r3,r6-r8"
+ 
+  [ debugdirstore
+  DREG r2, "Reading dir "
+@@ -189,7 +189,7 @@
+ ; & - $
+ ; % - &.Library,$.Library,@
+ ;
+-ReadDirWithDefault ENTRY "r3"
++ReadDirWithDefault KernelEntry "r3"
+         LDR     lr, [fscb, #fscb_info]
+         TST     lr, #fsinfo_handlesurdetc
+         ADREQ   lr, DirDefaultTab
+@@ -248,7 +248,7 @@
+ ; This limitation is on purpose: its is designed to handle multi-option
+ ; % only, which should be supplied internally only.
+ ;
+-ExpandingReadDirWithDefault ENTRY "r0,r1,r2,r3"
++ExpandingReadDirWithDefault KernelEntry "r0,r1,r2,r3"
+         MOV     r1, #0
+         BL      ReadDirWithDefault
+         EXIT    VS
+@@ -271,7 +271,7 @@
+ 
+         EXIT
+ 
+-ExpandOneDir ENTRY "r0-r4", 8
++ExpandOneDir KernelEntry "r0-r4", 8
+ 
+  [ debugdirstore
+  DREG r2, "Expanding dir ",cc
+@@ -359,7 +359,7 @@
+ ReadDir_Special # 4
+ ReadDir_LocalSize * :INDEX:{VAR}
+ 
+-ReadDir ENTRY   "r0-r9,fscb", ReadDir_LocalSize
++ReadDir KernelEntry   "r0-r9,fscb", ReadDir_LocalSize
+  [ debugdirstore
+  DREG r0, "Read dirstore to "
+  ]
+@@ -505,7 +505,7 @@
+ ;
+ ; Sets the directory to be the given object
+ ;
+-SetDirFromObject ENTRY "r0-r8"
++SetDirFromObject KernelEntry "r0-r8"
+  [ debugdirstore
+  DSTRING r1, "Setting dirstore with string "
+  ]
+@@ -567,7 +567,7 @@
+ ;
+ ; Unsets the directory
+ ;
+-UnsetDir ENTRY
++UnsetDir KernelEntry
+         LDR     lr, [fscb, #fscb_info]
+         TST     lr, #fsinfo_handlesurdetc
+         BEQ     %FT10
+@@ -593,7 +593,7 @@
+ ; Unsets the directory without checking whether the filing system allows
+ ; that directory to be set or not.
+ ;
+-int_UnsetDir ENTRY "r0-r4,r6-r8"
++int_UnsetDir KernelEntry "r0-r4,r6-r8"
+         MOV     r8, sp
+         MOV     r7, #0
+         MOV     r6, r2
+@@ -617,7 +617,7 @@
+ ;
+ ; Out   error possible
+ ;
+-CopyDir ENTRY "r0-r8,fscb"
++CopyDir KernelEntry "r0-r8,fscb"
+         MOV     r8, sp
+         MOV     r7, #0
+         BL      fscbscbTofscb
+@@ -685,7 +685,7 @@
+ Default_Lib DCB "&", 0
+ Default_URD DCB "$", 0
+ 
+-ChangeDirectory ENTRY "r0-r6"
++ChangeDirectory KernelEntry "r0-r6"
+ 
+         ; Check for "" directory setting
+         LDRB    r14, [r1]
+@@ -776,7 +776,7 @@
+ ;
+ ; Out   Directory path OS_WriteCed
+ ;
+-DisplayDirectoryPath ENTRY "r0-r7"
++DisplayDirectoryPath KernelEntry "r0-r7"
+         GetLumpOfStack r5, #MaxFilenameSpace, #MaxFilenameSpace, #2048, %FA95
+ 
+         ; Save dir to display for later
+@@ -864,7 +864,7 @@
+ ;
+ ; expected uses: from Service_DiscDismounted and rename
+ 
+-AlterMatchingDirs ENTRY "r0-r9"
++AlterMatchingDirs KernelEntry "r0-r9"
+  [ debugservice
+         DSTRING r1, "AlterMatchingDirs(",cc
+         DSTRING r2, ",",cc
+@@ -1010,7 +1010,7 @@
+ ;
+ ; expect use: from Service_DiscDismounted
+ 
+-UnsetMatchingDirs ENTRY "r1-r3"
++UnsetMatchingDirs KernelEntry "r1-r3"
+  [ debugservice
+         DSTRING r2,"UnsetMatchingDirs(",cc
+         DLINE   ")"
+--- a/FileSwitch/s/CtrlUtils
++++ b/FileSwitch/s/CtrlUtils
+@@ -37,7 +37,7 @@
+ ;       r4 = special field^ for root fs
+ ;       r5 = root fscb^
+ ;
+-int_ConstructFullPathWithoutFSAndSpecial ENTRY
++int_ConstructFullPathWithoutFSAndSpecial KernelEntry
+         TEQ     fscb, #Nowt
+         BEQ     %FT10
+         LDRB    r14, [fscb, #fscb_info]
+@@ -94,7 +94,7 @@
+ ;       r4 = special field^ for root fs
+ ;       r5 = root fscb^
+ ;
+-int_ConstructPathWithoutFS ENTRY "r1,r2,r3"
++int_ConstructPathWithoutFS KernelEntry "r1,r2,r3"
+ 
+         ; Get to root FS and special
+         MOV     r3, #0
+@@ -153,7 +153,7 @@
+ ;       r3 reduced by length of string inserted, will be sent
+ ;               negative to correct value for full string
+ ;
+-int_ConstructFullPath ENTRY "r1,r2,r3,r4,r5"
++int_ConstructFullPath KernelEntry "r1,r2,r3,r4,r5"
+ 
+         ; Get to root FS and special
+         MOV     r3, #0
+@@ -216,7 +216,7 @@
+ ;               negative to correct value for full string
+ ;       Buffer overflow error generated if r3<0 at the end
+ ;
+-int_ConstructFullPathWithError ENTRY
++int_ConstructFullPathWithError KernelEntry
+         BL      int_ConstructFullPath
+         CMP     r3, #0
+         addr    r0, ErrorBlock_BuffOverflow, LT
+@@ -234,7 +234,7 @@
+ ; Out
+ ;       stack dropped by enough and hole filled in with path
+ ;
+-int_ConstructFullPathOnStack ENTRY "r2,r3,r7"
++int_ConstructFullPathOnStack KernelEntry "r2,r3,r7"
+         MOV     r7, sp
+         MOV     r2, #ARM_CC_Mask
+         MOV     r3, #0
+@@ -255,7 +255,7 @@
+ ;       fscb^ set
+ ;
+ MaxFilenameSpace * 400
+-int_CatExTitle ENTRY "r0-r5,fscb"
++int_CatExTitle KernelEntry "r0-r5,fscb"
+  [ debugcontrol
+  DSTRING r1, "CatExTitle tail is "
+  DREG r6, "scb^/special field^ is "
+@@ -379,7 +379,7 @@
+         DCD     VduExt_WindowWidth
+         DCD     -1
+ 
+-int_CatExBody ENTRY "r0-r9", CatExBody_FrameSize
++int_CatExBody KernelEntry "r0-r9", CatExBody_FrameSize
+         MOV     CatExBodyFrame, sp
+         SUB     sp, sp, #CatSpace + CatStringSpace
+ 
+@@ -606,7 +606,7 @@
+ ;
+ ; Out   spaces spewed (r0, VS error return mechanism)
+ ;
+-SpewSpaces ENTRY "r6"
++SpewSpaces KernelEntry "r6"
+         B       %FT20
+ 10
+         SWI     XOS_WriteI+space
+@@ -640,7 +640,7 @@
+ FileInfoFormat  DCB "FileInfo",0
+         ALIGN
+ 
+-int_CatExItem ENTRY     "r0-r9"
++int_CatExItem KernelEntry     "r0-r9"
+         TEQ     r8, #0
+         ADREQ   r0, CatFormat
+         TEQ     r8, #1
+@@ -709,7 +709,7 @@
+ ;
+ ; Out   r6 advanced or error (r0,VS errors)
+ ;
+-int_StuffFilenameIntoBuffer ENTRY "r3"
++int_StuffFilenameIntoBuffer KernelEntry "r3"
+         MOV     r3, #12
+         BL      int_StuffRPaddedStringIntoBuffer
+         EXIT
+@@ -725,7 +725,7 @@
+ ;
+ ; Out   r6 advanced or error (r0,VS errors)
+ ;
+-int_StuffAttsIntoBuffer ENTRY "r0,r3", 8
++int_StuffAttsIntoBuffer KernelEntry "r0,r3", 8
+         MOV     r3, sp
+ 
+         ; D
+@@ -786,7 +786,7 @@
+ ExLoadExecFormat DCB "ExLdEx",0
+         ALIGN
+ 
+-int_StuffLoadExecIntoBuffer ENTRY "r4,r5"
++int_StuffLoadExecIntoBuffer KernelEntry "r4,r5"
+         ADR     r4, ExDateFormat
+         ADR     r5, ExLoadExecFormat
+         BL      int_GenStuffLoadExecIntoBuffer
+@@ -808,7 +808,7 @@
+ FileInfoLoadExecFormat DCB "FileInLdEx",0
+         ALIGN
+ 
+-int_StuffExactLoadExecIntoBuffer ENTRY "r4,r5"
++int_StuffExactLoadExecIntoBuffer KernelEntry "r4,r5"
+         ADR     r4, FileInfoDateFormat
+         ADR     r5, FileInfoLoadExecFormat
+         BL      int_GenStuffLoadExecIntoBuffer
+@@ -831,7 +831,7 @@
+ DirText DCB "Dr",0
+         ALIGN
+ 
+-int_GenStuffLoadExecIntoBuffer ENTRY "r0-r4",24
++int_GenStuffLoadExecIntoBuffer KernelEntry "r0-r4",24
+ 
+         ; Is it a directory?
+         TST     r0, #object_directory
+@@ -940,7 +940,7 @@
+ ;
+ ; Out   r6 advanced or error (r0,VS errors)
+ ;
+-int_StuffFileSizeIntoBuffer ENTRY "r0-r2"
++int_StuffFileSizeIntoBuffer KernelEntry "r0-r2"
+         MOV     r0, r4
+         MOV     r1, r6
+         SUB     r2, r7, r6
+@@ -959,7 +959,7 @@
+ ;
+ ; Out   r6 advanced or error (r0,VS errors)
+ ;
+-int_StuffExactFileSizeIntoBuffer ENTRY "r0-r2"
++int_StuffExactFileSizeIntoBuffer KernelEntry "r0-r2"
+         MOV     r0, r4
+         MOV     r1, r6
+         SUB     r2, r7, r6
+@@ -982,7 +982,7 @@
+ ;
+ ; Stuffs the name into the buffer padded to width
+ ;
+-int_StuffLPaddedStringIntoBuffer ENTRY "r3"
++int_StuffLPaddedStringIntoBuffer KernelEntry "r3"
+         BL      strlen_accumulate
+         RSBS    r3, r3, #0
+         MOVLO   r3, #0
+@@ -1005,7 +1005,7 @@
+ ;
+ ; Stuffs the name into the buffer padded to width
+ ;
+-int_StuffRPaddedStringIntoBuffer ENTRY "r3"
++int_StuffRPaddedStringIntoBuffer KernelEntry "r3"
+         RSB     r3, r3, #0
+         BL      strlen_accumulate
+         BL      int_StuffStringIntoBuffer
+@@ -1028,7 +1028,7 @@
+ ;
+ ; Stuffs the given number of spaces into the buffer
+ ;
+-int_StuffSpacesIntoBuffer ENTRY "r0,r3"
++int_StuffSpacesIntoBuffer KernelEntry "r0,r3"
+         MOV     r0, #space
+         B       %FT20
+ 10
+@@ -1051,7 +1051,7 @@
+ ; Out   r6 advanced by string length, or error (r0,VS)
+ ;       terminator not placed into buffer
+ ;
+-int_StuffStringIntoBuffer ENTRY "r0,r1"
++int_StuffStringIntoBuffer KernelEntry "r0,r1"
+         B       %FT20
+ 10
+         BL      int_StuffByteIntoBuffer
+@@ -1075,7 +1075,7 @@
+ ;
+ ; Out   r6 advanced by 1, or error (r0,VS)
+ ;
+-int_StuffByteIntoBuffer ENTRY "r0"
++int_StuffByteIntoBuffer KernelEntry "r0"
+         CMP     r6, r7
+         STRLOB  r0, [r6], #1
+         EXIT    LO
+@@ -1105,7 +1105,7 @@
+ ;
+ ; Will generate an error if the object doesn't exist
+ ;
+-Process_WildPathnameMustExist ENTRY
++Process_WildPathnameMustExist KernelEntry
+         BL      Process_WildPathname
+         EXIT    VS
+         TEQ     r0, #object_nothing
+--- a/FileSwitch/s/Ensure
++++ b/FileSwitch/s/Ensure
+@@ -48,7 +48,7 @@
+ ; The path should be in canonical form.
+ ;
+ 
+-EnsureCanonicalObject ENTRY "r7,r8,r9"
++EnsureCanonicalObject KernelEntry "r7,r8,r9"
+  [ debugensure
+  DSTRING r6,"EnsureCanonicalObject ",cc
+  DSTRING r1," "
+@@ -175,7 +175,7 @@
+ ; The performs a similar function to AssessDestinationForPath, except it
+ ; ensures the end object exists/doesn't exist.
+ ;
+-EnsureObjectCommon ENTRY "r7"
++EnsureObjectCommon KernelEntry "r7"
+ 
+  [ debugensure
+  Push "r1,r6"
+@@ -203,7 +203,7 @@
+ ;
+ ; Out   File opened and attached in all the right places
+ ;
+-OpenMultiFSFile ENTRY "r1,r2,r3,r4,r5,r7,scb"
++OpenMultiFSFile KernelEntry "r1,r2,r3,r4,r5,r7,scb"
+         addr    r2, anull
+         MOV     r5, #open_update
+         MOV     r7, #open_update :OR: open_mustopen :OR: open_nodir :OR: open_nopath
+@@ -290,7 +290,7 @@
+ ;               unchanged.
+ ;       EQ, NE as appropriate
+ ;
+-strcmp_forimagefilepath ENTRY "r1,r2,r3,r4"
++strcmp_forimagefilepath KernelEntry "r1,r2,r3,r4"
+         Internat_CaseConvertLoad r14,Lower
+ 10      LDRB    r3, [r2], #1
+         LDRB    r4, [r1], #1
+@@ -332,7 +332,7 @@
+ ; the fscb is correct as it may be the case that a deeper nesting of
+ ; fscbs is required.
+ 
+-AssessDestinationForPath ENTRY "r2,r3,scb"
++AssessDestinationForPath KernelEntry "r2,r3,scb"
+ 
+  [ debugensure
+  DSTRING r1, "Assessing destination for "
+@@ -428,7 +428,7 @@
+ ; the fscb is correct as it may be the case that a deeper nesting of
+ ; fscbs is required.
+ 
+-AssessDestinationForPathTailForDirRead ENTRY "r2,r3,scb"
++AssessDestinationForPathTailForDirRead KernelEntry "r2,r3,scb"
+  [ debugensure
+  DSTRING r1, "Assessing destination for dir read on "
+  ]
+@@ -531,7 +531,7 @@
+ ; This checks for the path being a MultiFS path and uses that first.
+ ; The results are adjusted for MultiFSness.
+ ;
+-SimpleReadCatalogueInfo ENTRY
++SimpleReadCatalogueInfo KernelEntry
+ 
+  [ debugensure
+  DSTRING r6,"SimpleReadCatalogueInfo(#",cc
+@@ -570,7 +570,7 @@
+ ;
+ ; Out   r2 = fscb of the root non-MultiFS
+ ;
+-fscbscbTofscb ENTRY "r6"
++fscbscbTofscb KernelEntry "r6"
+  [ debugensure
+  DREG fscb,"fscbscbTofscb(",cc
+  DREG r6,",",cc
+--- a/FileSwitch/s/KernelFSW
++++ b/FileSwitch/s/KernelFSW
+@@ -20,7 +20,7 @@
+         EXPORT  BGetEntry
+         EXPORT  BPutEntry
+  |
+-        LEADR   Module_LoadAddr
++        ORG     0 ; position-independent module, offsets relative to header
+  ]
+ 
+ 
+--- a/FileSwitch/s/Canonical
++++ b/FileSwitch/s/Canonical
+@@ -44,7 +44,7 @@
+ ;
+ ; Out   filepath reduced.
+ 
+-ReduceParents ENTRY "r0-r3"
++ReduceParents KernelEntry "r0-r3"
+  [ chopoffdollarfrompaths
+         MOV     r1, r2                  ; Start of $ or .$ sequence
+         LDRB    r0, [r2], #1
+@@ -158,7 +158,7 @@
+ ;       R2 = unchanged, RMAlloced disc^ or NULL
+ ;
+ 
+-CanonicaliseSpecialAndDisc ENTRY "r0,r3,r4,r5,r6,r7,r8", 4
++CanonicaliseSpecialAndDisc KernelEntry "r0,r3,r4,r5,r6,r7,r8", 4
+  [ debugcanonical
+         DSTRING r1, "Canonicalise #",cc
+         DSTRING r2, "::"
+@@ -424,7 +424,7 @@
+ ; Out   r1 = path^ after disc and .
+ ;       r2 = disc^ or NULL
+ 
+-GetDiscFromPath ENTRY
++GetDiscFromPath KernelEntry
+ 
+         ; Check for the presence of a disc name
+         LDRB    r14, [r1]
+@@ -460,7 +460,7 @@
+ ; Out   r0 = Absolute char in path or 0 if none there
+ ;       r1 = path^ (path without disc, special field or absolute)
+ ;
+-GetAbsolute ENTRY "r2"
++GetAbsolute KernelEntry "r2"
+         LDRB    r0, [r1]
+         BL      IsAbsolute
+         MOVNE   r0, #0
+@@ -488,7 +488,7 @@
+ ; and the parts for reconstruction into a path returned.
+ ;
+ 
+-ObtainAbsoluteParts ENTRY "r0-r5,r7", 4
++ObtainAbsoluteParts KernelEntry "r0-r5,r7", 4
+  [ debugcanonical
+  DSTRING r1,"Obtain absolute parts of "
+  DREG r3, "Relativity is "
+@@ -692,7 +692,7 @@
+         addr    r3, Default_CSD_Path, EQ
+         TEQ     r7, #"%"
+         addr    r3, Default_LibD_Path, EQ
+-        TEQ     r7, #"\"
++        TEQ     r7, #&5C
+         addr    r3, Default_PSD_Path, EQ
+         TEQ     r7, #"&"
+         addr    r3, Default_URD_Path, EQ
+@@ -703,7 +703,7 @@
+         addr    r3, Default_CSD_Whan_Path, EQ
+         TEQ     r7, #"%"
+         addr    r3, Default_LibD_Whan_Path, EQ
+-        TEQ     r7, #"\"
++        TEQ     r7, #&5C
+         addr    r3, Default_PSD_Whan_Path, EQ
+         TEQ     r7, #"&"
+         addr    r3, Default_URD_Whan_Path, EQ
+@@ -831,7 +831,7 @@
+ 95
+         TEQ     r0, #"@"
+         MOVEQ   r4, #Dir_Current
+-        TEQ     r0, #"\"
++        TEQ     r0, #&5C
+         MOVEQ   r4, #Dir_Previous
+         TEQ     r0, #"&"
+         MOVEQ   r4, #Dir_UserRoot
+@@ -859,7 +859,7 @@
+ ; Path gets parents reduced.
+ ;
+ 
+-StitchAbsolutePartsTogether ENTRY "r0,r1,r2,r3,r4,r5,r6,r7,r8,r9"
++StitchAbsolutePartsTogether KernelEntry "r0,r1,r2,r3,r4,r5,r6,r7,r8,r9"
+  [ debugcanonical
+  DSTRING r0,"Constructing new path from ",cc
+  DSTRING r2," ",cc
+@@ -1037,7 +1037,7 @@
+ ; Out   Path canonicalised
+ ;
+ 
+-CanonicalisePath ENTRY "r0,r1,r2,r3,r6,r7"
++CanonicalisePath KernelEntry "r0,r1,r2,r3,r6,r7"
+         MOV     r7, r1
+         LDR     r1, [r1]
+         LDR     r6, [r6]
+@@ -1076,7 +1076,7 @@
+ ;
+ MinWildCardSpace * &10
+ MaxWildCardSpace * &400
+-ResolveWildcardBySteam ENTRY "r1,r3,r4,r5,r6,r7"
++ResolveWildcardBySteam KernelEntry "r1,r3,r4,r5,r6,r7"
+ 
+         ; Hold wildcard for later
+         MOV     r7, r2
+@@ -1179,7 +1179,7 @@
+ ; Out   r2 = RMAlloced resolved wildcard, or NULL if not found
+ ;
+ 
+-ResolveWildcard ENTRY "r0,r1,r2,r3,r4,r5,fscb"
++ResolveWildcard KernelEntry "r0,r1,r2,r3,r4,r5,fscb"
+ 
+         ; Ensure the directory exists, but don't care about it's attributes
+         BL      EnsureCanonicalObject
+@@ -1292,7 +1292,7 @@
+ ;
+ ; Out   r2 advanced to next . or terminator
+ ;
+-SkipToLeafEnd ENTRY
++SkipToLeafEnd KernelEntry
+ 10
+         LDRB    r14, [r2], #1
+         TEQ     r14, #"."
+@@ -1311,7 +1311,7 @@
+ ;
+ ; Out   Path has resolvable wildcards resolved
+ ;
+-UnWildcardPath ENTRY "r0,r1,r2,r3,r4,r5,r7"
++UnWildcardPath KernelEntry "r0,r1,r2,r3,r4,r5,r7"
+ 
+  [ debugcanonical
+  Push r1
+--- a/FileSwitch/s/FileSwHdr
++++ b/FileSwitch/s/FileSwHdr
+@@ -46,7 +46,7 @@
+         EXPORT  BGetEntry
+         EXPORT  BPutEntry
+  |
+-        LEADR   Module_LoadAddr
++        ORG     0 ; position-independent module, offsets relative to header
+  ]
+ 
+ TAB     *       09
+--- a/FileSwitch/s/FSUtils
++++ b/FileSwitch/s/FSUtils
+@@ -400,7 +400,7 @@
+ 
+ ; Out   Only r7, r8, wp preserved
+ 
+-CopyWildObject ENTRY
++CopyWildObject KernelEntry
+ 
+  [ debugcopy
+  DREG sp,"Entering CopyWildObject; sp = "
+@@ -541,7 +541,7 @@
+ 
+ ; Out   VS: error; all strings deallocated, old + new
+ 
+-Copy_MakeNewLeaves ENTRY "r0-r2"
++Copy_MakeNewLeaves KernelEntry "r0-r2"
+ 
+  [ debugcopy
+  ADR r1, util_objectname
+@@ -576,7 +576,7 @@
+ 
+ ; Out   VS: error - both strings deallocated (no such thing as old fullnames)
+ 
+-Copy_MakeFullnames ENTRY "r0-r2, r4"
++Copy_MakeFullnames KernelEntry "r0-r2, r4"
+ 
+  [ debugcopy
+  DLINE "Copy_MakeFullnames"
+@@ -630,7 +630,7 @@
+ 
+ ; Out   VS: error - both strings deallocated, else V preserved (snazzy)
+ 
+-Copy_FreeFullnames ENTRY "r0, r2-r3"
++Copy_FreeFullnames KernelEntry "r0, r2-r3"
+ 
+  [ debugcopy
+  DLINE "Copy_FreeFullnames"
+@@ -671,7 +671,7 @@
+ ;       VC: object copied, skipped, or was dir & ~recurse
+ ;       VS: failed in copying object, or aborted
+ 
+-CopyObject ENTRY
++CopyObject KernelEntry
+ 
+  [ debugcopy
+  DLINE "CopyObject"
+@@ -732,7 +732,7 @@
+ ;       VC: file copied or skipped
+ ;       VS: failed to copy file
+ 
+-CopyFile ENTRY
++CopyFile KernelEntry
+ 
+  [ debugcopy
+  DLINE "CopyFile"
+@@ -1174,7 +1174,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; Out   V preserved or set
+ 
+-Copy_CloseSrc ENTRY "r0-r2"
++Copy_CloseSrc KernelEntry "r0-r2"
+ 
+         LDRB    r1, copy_srchandle      ; Already closed ?
+         TEQ     r1, #0
+@@ -1216,7 +1216,7 @@
+ ;       VC: directory copied, or skipped
+ ;       VS: failed to copy directory, or aborted
+ 
+-CopyDirectory ENTRY
++CopyDirectory KernelEntry
+ 
+  [ debugcopy
+         DLINE   "CopyDirectory ",cc
+@@ -1339,7 +1339,7 @@
+ ;       VC, EQ: copy file
+ ;       VC, NE: don't copy file
+ 
+-CopyFile_EnsureDestFileWriteable ENTRY
++CopyFile_EnsureDestFileWriteable KernelEntry
+ 
+  [ debugcopy
+  BL %FT00
+@@ -1361,7 +1361,7 @@
+ 
+ 
+ 00
+- ENTRY
++ KernelEntry
+  DLINE "Copy_EnsureDestFileWriteable"
+  ]
+         LDMIA   r8, {r1, r6, fscb}      ; copy_name, copy_special, copy_fscb
+@@ -1580,7 +1580,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; In    r5 = source object attributes
+ 
+-Copy_DeleteSourceAfterCopy ENTRY "r1"
++Copy_DeleteSourceAfterCopy KernelEntry "r1"
+ 
+  [ debugcopy
+  DLINE "Copy_DeleteSourceAfterCopy"
+@@ -1620,7 +1620,7 @@
+ ;       VC, EQ -> do it
+ ;       VC, NE -> don't do it
+ 
+-CopyFile_Confirm ENTRY "r0, r1, r2"
++CopyFile_Confirm KernelEntry "r0, r1, r2"
+ 
+         BL      Util_DateRange          ; See if dates allow it
+         EXIT    NE
+@@ -1667,7 +1667,7 @@
+ 
+ ; Out   VS: error
+ 
+-CopyFile_Verbose ENTRY "r0, r1, r2, r9"
++CopyFile_Verbose KernelEntry "r0, r1, r2, r9"
+ 
+         BL      Util_IncrementFiles_TestVerbose
+ 
+@@ -1727,7 +1727,7 @@
+ 
+ ; Out   VS: error
+ 
+-CopyDirectory_VerboseCDir ENTRY "r0, r2"
++CopyDirectory_VerboseCDir KernelEntry "r0, r2"
+ 
+         LDR     r14, util_bitset
+         TST     r14, #util_verbose
+@@ -1746,7 +1746,7 @@
+ ; Out   VC: ok
+ ;       VS: error copied, or VSet on entry
+ 
+-Copy_PromptSource ENTRY "r0, r1"
++Copy_PromptSource KernelEntry "r0, r1"
+ 
+         MOV     r1, #copy_at_source
+ 
+@@ -1790,7 +1790,7 @@
+ ; Out   VC: r0 corrupt
+ ;       VS: r0 -> error, not copied
+ 
+-PromptSpaceBar ENTRY
++PromptSpaceBar KernelEntry
+ 
+         BL      message_gswrite02
+         BLVC    ReadC_Escape
+@@ -1804,7 +1804,7 @@
+ ; Out   VC: r0 = char
+ ;       VS: r0 -> error, not copied
+ 
+-ReadC_Escape ENTRY "r1, r2"
++ReadC_Escape KernelEntry "r1, r2"
+ 
+         MOV     r0, #15                 ; Flush current input buffer
+         MOV     r1, #1
+@@ -1818,7 +1818,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; Out   r2 = size of largest block in rma that we can/ought to claim
+ 
+-SDescribeRMA ENTRY "r0, r3"
++SDescribeRMA KernelEntry "r0, r3"
+ 
+         MOV     r0, #ModHandReason_RMADesc ; Try RMA now
+         SWI     XOS_Module              ; r2 := maxblocksize; r3 := totalsize
+@@ -1842,7 +1842,7 @@
+ ; Out   r1 = apl size
+ ;       r2 -> apl
+ 
+-SClaimAPL ENTRY "r0, r3"
++SClaimAPL KernelEntry "r0, r3"
+ 
+         LDRB    r14, copy_owns_apl_flag
+         TEQ     r14, #0
+@@ -1875,7 +1875,7 @@
+ 
+ ; Out   V accumulated, block freed to appropriate owner
+ 
+-SFreeCopy ENTRY "r0-r2"
++SFreeCopy KernelEntry "r0-r2"
+ 
+  [ debugcopy
+  DREG r2, "SFreeCopy "
+--- a/FileSwitch/s/SysVars
++++ b/FileSwitch/s/SysVars
+@@ -67,7 +67,7 @@
+ ; Out   r0 -> tempfs or Nowt, flags preserved or
+ ;       VS and error set
+ ;
+-ReadTempFS ENTRY "r1-r4, fscb"
++ReadTempFS KernelEntry "r1-r4, fscb"
+         addr    r0, fsw_tempfs
+ 10
+         addr    r3, anull
+@@ -101,7 +101,7 @@
+ ; Out   - and TempFS set, flags preserved, or
+ ;       VS and error set
+ ;
+-SetTempFS ENTRY "r0,r1,r2,r4"
++SetTempFS KernelEntry "r0,r1,r2,r4"
+         addr    r0, fsw_tempfs
+ 10
+         TEQ     r2, #Nowt
+--- a/FileSwitch/s/FSCommands
++++ b/FileSwitch/s/FSCommands
+@@ -18,7 +18,7 @@
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-Access_Code ENTRY
++Access_Code KernelEntry
+ 
+         MOV     r4, #FSControl_Access
+ 
+@@ -134,7 +134,7 @@
+ enumdir_entries * 24                    ; NB. Must be EVEN st. *6 -> WordAlign
+ enumdir_bsize   * enumdir_entries * 6   ; 24 names at ~5 or 6 chars each
+ 
+-EnumDir_Code ENTRY "r0-r1, r7, r9-r10" ; Low registers used sp relative
++EnumDir_Code KernelEntry "r0-r1, r7, r9-r10" ; Low registers used sp relative
+ 
+         LDR     wp, [r12]               ; Need it again !
+ 
+@@ -209,7 +209,7 @@
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-SetType_Code ENTRY "r0"
++SetType_Code KernelEntry "r0"
+ 
+         MOV     r1, r0                  ; Get filename^
+         BL      SkipOverNameAndSpaces   ; Point to string arg
+@@ -250,7 +250,7 @@
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-Up_Code ENTRY
++Up_Code KernelEntry
+ 
+         LDR     wp, [r12]               ; Actually need this for once !
+ 
+@@ -288,7 +288,7 @@
+  [ hascopy
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-Copy_Code ENTRY "r7, r8"
++Copy_Code KernelEntry "r7, r8"
+ 
+         LDR     wp, [r12]               ; Really do need it
+ 
+@@ -388,7 +388,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; In    r1 -> string
+ 
+-SussCopyOptions ENTRY
++SussCopyOptions KernelEntry
+ 
+         SUBS    r8, r3, #0              ; r8 := r3. CSet
+ 
+@@ -452,7 +452,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; In    r1 -> string
+ 
+-SussWipeOptions ENTRY
++SussWipeOptions KernelEntry
+ 
+         SUBS    r8, r3, #0              ; r8 := r3. CSet
+ 
+@@ -482,7 +482,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; In    r1 -> string
+ 
+-SussCountOptions ENTRY
++SussCountOptions KernelEntry
+ 
+         SUBS    r8, r3, #0              ; r8 := r3. CSet
+ 
+@@ -514,7 +514,7 @@
+ ;       r1 updated past char if not term
+ ;       CC if negated, CS otherwise
+ 
+-SetAndGetUtilOption ENTRY "r2"
++SetAndGetUtilOption KernelEntry "r2"
+ 
+         ORRCS   r3, r3, r8              ; If CSet, set option
+         BICCC   r3, r3, r8              ; If CClear, clear option
+@@ -554,7 +554,7 @@
+ CFS0    DCB     "CFS0",0
+         ALIGN
+ 
+-FileSystem_Code ENTRY "r0-r4, fp"       ; r0 is return code if VSet. fp for err
++FileSystem_Code KernelEntry "r0-r4, fp"       ; r0 is return code if VSet. fp for err
+ 
+         LDR     wp, [r12]               ; Possible errors may be composite
+         MOV     fp, #0                  ; No frame, so don't set globalerror
+@@ -633,7 +633,7 @@
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-ReadFileCMOS ENTRY "r0, r1"
++ReadFileCMOS KernelEntry "r0, r1"
+ 
+         MOV     r0, #ReadCMOS
+ 
+@@ -657,7 +657,7 @@
+ TruncateOffString DCB "CT1",0
+ TruncateOnOffString DCB "CT2",0
+ 
+-Truncate_Code ENTRY
++Truncate_Code KernelEntry
+         LDR     wp, [r12]               ; Possible errors may be composite
+         MOV     fp, #0                  ; No frame, so don't set globalerror
+ 
+--- a/FileSwitch/s/FSShared
++++ b/FileSwitch/s/FSShared
+@@ -29,7 +29,7 @@
+ ; Out   VC: r0 = r1 = handle
+ ;       VS: r0 -> error (FilingSystemError or 'NotFound')
+ 
+-OpenFileWithWinge ENTRY
++OpenFileWithWinge KernelEntry
+ 
+         ORR     r0, r0, #open_nodir + open_mustopen
+         SWI     XOS_Find
+@@ -50,7 +50,7 @@
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-SkipOverNameAndSpaces ENTRY
++SkipOverNameAndSpaces KernelEntry
+ 
+         BL      SkipToSpace
+ 
+@@ -62,7 +62,7 @@
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-SkipToSpace ENTRY "r0"
++SkipToSpace KernelEntry "r0"
+ 
+ 10      LDRB    r0, [r1], #1
+         CMP     r0, #delete
+@@ -78,7 +78,7 @@
+ 
+ ; Number gets printed RJ in a field of 4 if possible, or more as necessary
+ 
+-PrintR0Decimal ENTRY "r0-r3"
++PrintR0Decimal KernelEntry "r0-r3"
+ 
+         SUB     sp, sp, #16
+         MOV     r3, r1                  ; Save flag
+--- a/FileSwitch/s/OSFind
++++ b/FileSwitch/s/OSFind
+@@ -79,7 +79,7 @@
+ 
+         [ Version >= 160 :LAND: Version < 162
+ 
+-checkallclosed  ENTRY  "r1, r2, scb, fscb"
++checkallclosed  KernelEntry  "r1, r2, scb, fscb"
+ 
+         LDR     fscb, tempfs
+         TEQ     fscb, #0
+@@ -152,7 +152,7 @@
+ ; Out   VC: file closed
+ ;       VS: failed to close, or no file on this channel
+ 
+-CloseThisFile ENTRY "scb"
++CloseThisFile KernelEntry "scb"
+ 
+         BL      FindValidStream         ; Returns scb^ if VClear
+         BLVC    FlushAndCloseStream     ; Gets streaminfo itself
+@@ -173,7 +173,7 @@
+ ; Out   VC: all files closed
+ ;       VS: fail, no particular handle faulted
+ 
+-CloseAllFiles ENTRY "fscb"
++CloseAllFiles KernelEntry "fscb"
+ 
+         BL      ReadTempFS
+         EXIT    VS
+@@ -194,7 +194,7 @@
+ ; Out   VC: all files closed
+ ;       VS: failed to close one or more files
+ 
+-CloseAllFilesEverywhere ENTRY "r1, scb, fscb"
++CloseAllFilesEverywhere KernelEntry "r1, scb, fscb"
+ 
+         MOV     fscb, #0
+ 
+@@ -252,7 +252,7 @@
+ ; Out
+ ;   error possible
+ ;
+-TryGetFileClosed ENTRY "r1-r3"
++TryGetFileClosed KernelEntry "r1-r3"
+         MOV     r3, sp
+         BL      int_ConstructFullPathOnStack
+         MOV     r2, sp
+@@ -306,7 +306,7 @@
+ ; Out   VC: r0 = FileSwitch handle, 0 if not found
+ ;       VS: naff
+ 
+-OpenFile ENTRY "r0-r7, scb" ; We poke the result into the stack
++OpenFile KernelEntry "r0-r7, scb" ; We poke the result into the stack
+ 
+  [ debugosfind
+  Push r1
+@@ -462,7 +462,7 @@
+ ;       OpenOut preserves file load/exec/attr. Always sets scb_modified
+ ;       All fail if no read or write permission
+ 
+-DoTheOpen_Common ENTRY "r0-r5" ; Result poked into stacked r0
++DoTheOpen_Common KernelEntry "r0-r5" ; Result poked into stacked r0
+ 
+  [ debugosfind
+  DSTRING r1, "DoTheOpen_Common - tail:",cc
+@@ -513,7 +513,7 @@
+ 
+ ; Out   r0 = new FileSwitch handle
+ 
+-OpenFileForCopy ENTRY "r1-r7" ; Untrusting of what goes in in the depths ...
++OpenFileForCopy KernelEntry "r1-r7" ; Untrusting of what goes in in the depths ...
+ 
+         ; Generate all but the error name for the open
+         MOV     r5, r0
+@@ -558,7 +558,7 @@
+ ; r5 is the path tail used to open
+ ; fscb is the fscb used to open
+ 
+-TryToOpenFile ENTRY "r2,r5,r6,r7,r8" ; r2 needs to be kept around
++TryToOpenFile KernelEntry "r2,r5,r6,r7,r8" ; r2 needs to be kept around
+ 
+         ; Check there IS a filing system to be based upon
+         TEQ     fscb, #Nowt
+@@ -681,7 +681,7 @@
+ 
+ ; Out   stream deallocated if error
+ 
+-StuffTheStreamInfo ENTRY "r1"
++StuffTheStreamInfo KernelEntry "r1"
+ 
+         STR     r1, scb_fshandle
+         STR     r3, scb_extent
+--- a/FileSwitch/s/FSPath
++++ b/FileSwitch/s/FSPath
+@@ -59,7 +59,7 @@
+ ;               bit     meaning when set
+ ;               0       Don't allow mutli-element paths (for write operations)
+ ;
+-FSPath_Init_Variable ENTRY      "r0,r2,r3,r4,r5,r6", 4
++FSPath_Init_Variable KernelEntry      "r0,r2,r3,r4,r5,r6", 4
+         addr    r3, anull
+         B       %FT10
+ 
+@@ -172,7 +172,7 @@
+ ;
+ ; In    r0 = workspace word of path search context
+ ;
+-FSPath_DisposeContext ENTRY "r1"
++FSPath_DisposeContext KernelEntry "r1"
+ 10
+         LDR     r1, [r0]
+         TEQ     r1, #Nowt
+@@ -192,7 +192,7 @@
+ ;       r2 = start of FS prefix (0 if no prefix)
+ ;       r3 = length of FS prefix (0 if no prefix)
+ ;
+-FSPath_FindFSPrefix ENTRY "r0,r1"
++FSPath_FindFSPrefix KernelEntry "r0,r1"
+         MOV     r2, #0
+         MOV     r3, #0
+ 
+@@ -253,7 +253,7 @@
+ ;
+ str_dollarpath_message  DCB     "$Path_Message", 0
+                         ALIGN
+-FSPath_ExtractFS ENTRY  "r0,r1,r5,r6"
++FSPath_ExtractFS KernelEntry  "r0,r1,r5,r6"
+ 
+         ; Save type of error to generate
+         MOV     r5, r0
+@@ -362,7 +362,7 @@
+ DollarPathSuffix DCB "$Path", 0
+         ALIGN
+ 
+-FSPath_TestForPathLikePrefix ENTRY "r0,r1,r2,r4"
++FSPath_TestForPathLikePrefix KernelEntry "r0,r1,r2,r4"
+  [ debugpath
+         DSTRING r1,"Checking for a <path>: prefix on "
+  ]
+@@ -473,7 +473,7 @@
+ ; Out   EQ variable not present
+ ;       NE variable present
+ ;
+-FSPath_TestVarPresent ENTRY "r0,r1,r2,r3,r4"
++FSPath_TestVarPresent KernelEntry "r0,r1,r2,r3,r4"
+         MOV     r0, r1
+         MOV     r1, #-1
+         MOV     r2, #-1
+@@ -497,7 +497,7 @@
+ ; Out   Error or var with val attached at beginning of
+ ;       path search context.
+ ;
+-FSPath_AddVarToContext ENTRY "r0,r1,r2,r3,r4,r5,r6"
++FSPath_AddVarToContext KernelEntry "r0,r1,r2,r3,r4,r5,r6"
+  [ debugpath
+  DSTRING r2,"Adding variable ",cc
+  DSTRING r3," with default "
+@@ -607,7 +607,7 @@
+ ;
+ ; Out   Path string has had spaces removed
+ ;
+-FSPath_PackPath ENTRY "r0,r1"
++FSPath_PackPath KernelEntry "r0,r1"
+         MOV     r0, r1
+ 10
+         LDRB    r14, [r0], #1
+@@ -631,7 +631,7 @@
+ ; element is discarded from the pathenum context and the process
+ ; repeated. If there was a path part, then it is resolved.
+ ;
+-FSPath_StepContext ENTRY "r3"
++FSPath_StepContext KernelEntry "r3"
+         MOV     r3, #0
+         BL      FSPath_StepCommon
+         BLNE    FSPath_ResolveContext
+@@ -651,7 +651,7 @@
+ ; element is discarded from the pathenum context and the process
+ ; repeated. If there was a path part, then it is resolved.
+ ;
+-FSPath_StepCommon ENTRY "r1,r2,r6"
++FSPath_StepCommon KernelEntry "r1,r2,r6"
+  [ debugpath
+         DREG    r3, "StepCommon:"
+  ]
+@@ -721,7 +721,7 @@
+ ;
+ ; Out   EQ if all done, NE it there's more
+ ;
+-FSPath_AllDone ENTRY "r3"
++FSPath_AllDone KernelEntry "r3"
+         MOV     r3, #1
+         BL      FSPath_StepCommon
+         EXIT
+@@ -742,7 +742,7 @@
+ ; <path>: is stripped and the process repeated on the new first
+ ; element.
+ ;
+-FSPath_ResolveContext ENTRY "r0,r1,r2,r3,r4,r5,r6"
++FSPath_ResolveContext KernelEntry "r0,r1,r2,r3,r4,r5,r6"
+  [ debugpath
+         DLINE   "ResolveContext"
+  ]
+@@ -803,7 +803,7 @@
+ ;
+ ; Out   r3 += length of next prefix in that pathenum context
+ ;
+-FSPath_LengthOfNextPrefix ENTRY "r0,r1"
++FSPath_LengthOfNextPrefix KernelEntry "r0,r1"
+         SUB     r0, r0, #FSPathEnum_Next
+ 10
+         LDR     r0, [r0, #FSPathEnum_Next]
+@@ -829,7 +829,7 @@
+ ;
+ ; Out   r1 advanced to end of copied prefix
+ ;
+-FSPath_CopyNextPrefix ENTRY "r0,r2"
++FSPath_CopyNextPrefix KernelEntry "r0,r2"
+         SUB     r0, r0, #FSPathEnum_Next
+ 10
+         LDR     r0, [r0, #FSPathEnum_Next]
+--- a/FileSwitch/s/TopPath
++++ b/FileSwitch/s/TopPath
+@@ -90,11 +90,11 @@
+ Appendment      #       4       ; Path tail to append to prefix(es) from path variable(s)
+ TopPath_ContextSize #   0
+ 
+-TopPath_DoBusinessToPath ENTRY "r7"
++TopPath_DoBusinessToPath KernelEntry "r7"
+         BL      TopPath_DoBusinessToPathFSPrefix
+         EXIT
+ 
+-TopPath_DoBusinessToPathFSPrefix ENTRY "r0-r9",:INDEX:TopPath_ContextSize
++TopPath_DoBusinessToPathFSPrefix KernelEntry "r0-r9",:INDEX:TopPath_ContextSize
+  [ debugpath
+         DREG    r6, "DoBusinessToPath r6 in is "
+  ]
+@@ -507,7 +507,7 @@
+ ;
+ ; Uses PassedFilename, FullFilename and SpecialField
+ ;
+-TopPath_DoBusinessForDirectoryRead ENTRY "r0,r2,r3,r4,r5,r6"
++TopPath_DoBusinessForDirectoryRead KernelEntry "r0,r2,r3,r4,r5,r6"
+         ADR     r0, PassedFilename
+ 
+         LDRB    r14, [r1]
+@@ -568,7 +568,7 @@
+ ;       Note that non-existant things on an openalways filing system will be
+ ;       accepted as directories
+ ;
+-TopPath_EnsureThingIsDirectory ENTRY   "r0,r1,r2"
++TopPath_EnsureThingIsDirectory KernelEntry   "r0,r1,r2"
+ 
+         ; Error if does not exist
+         CMP     r0, #object_nothing     ; VC
+@@ -628,7 +628,7 @@
+ ; Out   Error - user's path was real grubby!
+ ;       or path has been copied, cleaned and policed
+ ;
+-TopPath_CopyCleanTransAndPoliceWithError ENTRY "r0,r1,r2,r4,r5,r6"
++TopPath_CopyCleanTransAndPoliceWithError KernelEntry "r0,r1,r2,r4,r5,r6"
+         MOV     r6, r0
+ 
+         GetLumpOfStack  r5, #16, #StaticName_length, #2048, %F90
+@@ -742,7 +742,7 @@
+ ;       FullFilename
+ ;       SpecialField
+ 
+-TopPath_DoBusinessToPathForRun ENTRY "r0-r6"
++TopPath_DoBusinessToPathForRun KernelEntry "r0-r6"
+         ADR     r0, PassedFilename
+         addr    r2, RunPathVariableNameCR
+         ADD     r3, r2, #(RunPathVariableDefault - RunPathVariableNameCR)
+@@ -784,7 +784,7 @@
+ ;
+ ; Out   Name policed (VS if error)
+ ;
+-PoliceFullName ENTRY "r1,r2,r3"
++PoliceFullName KernelEntry "r1,r2,r3"
+ 
+         BL      FSPath_FindFSPrefix
+  [ debugpath
+--- a/FileSwitch/s/FileTypes
++++ b/FileSwitch/s/FileTypes
+@@ -116,7 +116,7 @@
+ ;       r2 = unchanged
+ ;       r3 = unchanged
+ ;
+-AdjustObjectTypeReMultiFS ENTRY "r1,r2"
++AdjustObjectTypeReMultiFS KernelEntry "r1,r2"
+ 
+         ; Is it a file?
+         TEQ     r0, #object_file
+@@ -159,7 +159,7 @@
+ ;       any             if error==not found
+ ;                               then map to object_notfound
+ ;
+-ComplexAdjustObjectTypeReMultiFS ENTRY "r1,r2"
++ComplexAdjustObjectTypeReMultiFS KernelEntry "r1,r2"
+ 
+         BVS     %FT50
+ 
+--- a/FileSwitch/s/OSFile
++++ b/FileSwitch/s/OSFile
+@@ -652,7 +652,7 @@
+ ;
+ ; Out   r0 corrupt and SpecialField, FullFilename and PassedFilename freed
+ ;
+-JunkFileStrings ENTRY "r0"
++JunkFileStrings KernelEntry "r0"
+         ADR     r0, SpecialField
+         BL      SFreeLinkedString
+         ADR     r0, FullFilename
+@@ -678,7 +678,7 @@
+ ;
+ ; Out   Op done
+ ;
+-int_DeleteCreateFileOp ENTRY "r1,r6,fscb"
++int_DeleteCreateFileOp KernelEntry "r1,r6,fscb"
+  [ debugosfile
+  DREG r7, "Deletecreate op=",cc
+  DSTRING r1, " on "
+@@ -737,7 +737,7 @@
+ ;       r6 = file handle/special field^
+ ;       fscb^ set up
+ ;
+-int_DoLoadFile ENTRY "r0,r1,r2,r3,r5,r7"
++int_DoLoadFile KernelEntry "r0,r1,r2,r3,r5,r7"
+         BL      TryGetFileClosed
+         EXIT    VS
+ 
+@@ -802,7 +802,7 @@
+ ;       fscb^ set up
+ ;       PassedFilename
+ ;
+-int_DoSaveFile ENTRY "r0,r1,r2,r3,r5,r7,scb"
++int_DoSaveFile KernelEntry "r0,r1,r2,r3,r5,r7,scb"
+  [ debugosfile
+         DREG    r0, "Saving over a ",cc
+         DSTRING r1, " called ",cc
+--- a/FileSwitch/s/FSUtils2
++++ b/FileSwitch/s/FSUtils2
+@@ -107,7 +107,7 @@
+ 
+ ; Out   Only r7, wp preserved
+ 
+-WipeWildObject ENTRY
++WipeWildObject KernelEntry
+ 
+  [ debugwipe
+  DLINE "WipeWildObject"
+@@ -199,7 +199,7 @@
+ ;       VC: object deleted, skipped by user, date, or dir & ~recurse
+ ;       VS: failed in deletion, or aborted
+ 
+-WipeObject ENTRY
++WipeObject KernelEntry
+ 
+  [ debugwipe
+  DLINE "WipeObject"
+@@ -250,7 +250,7 @@
+ ;       VC: file deleted, or skipped
+ ;       VS: failed to delete file, or aborted
+ 
+-WipeFile ENTRY
++WipeFile KernelEntry
+ 
+  [ debugwipe
+  DLINE "WipeFile"
+@@ -310,7 +310,7 @@
+ ;       VC: directory deleted, or skipped
+ ;       VS: failed to delete directory, or aborted
+ 
+-WipeDirectory ENTRY
++WipeDirectory KernelEntry
+ 
+  [ debugwipe
+  DLINE "WipeDirectory"
+@@ -383,7 +383,7 @@
+ fsw_delete_directory    DCB     "CW2", 0
+         ALIGN
+ 
+-WipeFile_Confirm ENTRY "r0, r1, r2"
++WipeFile_Confirm KernelEntry "r0, r1, r2"
+ 
+         BL      Util_DateRange          ; See if dates allow it
+         EXIT    NE
+@@ -445,7 +445,7 @@
+ fsw_file_deleted        DCB     "CW0", 0        ; File %0 deleted
+ fsw_directory_deleted   DCB     "CW6", 0        ; Directory %0 deleted
+ 
+-WipeFile_Verbose ENTRY "r0,r2"
++WipeFile_Verbose KernelEntry "r0,r2"
+ 
+         BL      Util_IncrementFiles_TestVerbose
+         EXIT    EQ                      ; EQ -> ~verbose
+@@ -483,7 +483,7 @@
+ 
+ ; Out   VS: error
+ 
+-WipeFile_VerboseLocked ENTRY "r0,r2"
++WipeFile_VerboseLocked KernelEntry "r0,r2"
+ 
+         LDR     r14, util_bitset
+         TST     r14, #util_verbose
+--- a/FileSwitch/s/FSCommon
++++ b/FileSwitch/s/FSCommon
+@@ -114,7 +114,7 @@
+ ; Out   VC: ok, r2 -> block
+ ;       VS: fail, r2 -> Nowt
+ 
+-SMustGetArea ENTRY "r0"
++SMustGetArea KernelEntry "r0"
+ 
+  [ debugheap
+  DREG r3,"SMustGetArea "
+@@ -139,7 +139,7 @@
+ ;       VC, EQ: failed to claim block (no room), r2 -> Nowt; errorbuffer valid
+ ;       VS    : bad fail, r2 -> Nowt
+ 
+-SGetArea ENTRY "r0, r1, r3"
++SGetArea KernelEntry "r0, r1, r3"
+ 
+  [ debugheap
+         DREG r3,"SGetArea "
+@@ -188,7 +188,7 @@
+ 
+ ; Out   r2 -> allocated core if successful
+ 
+-STrySysHeap ENTRY "r0, r1, r3"
++STrySysHeap KernelEntry "r0, r1, r3"
+ 
+  [ debugheap
+  DREG r3,"STrySysHeap ",cc
+@@ -236,7 +236,7 @@
+ ; Out   VC: r2 = Nowt, block freed
+ ;       VS: r2 = Nowt, fail or VSet on entry
+ 
+-SFreeArea ENTRY "r0, r1"
++SFreeArea KernelEntry "r0, r1"
+ 
+  [ debugheap
+         DREG r2,"SFreeArea "
+@@ -290,7 +290,7 @@
+ ; Out   VC: block freed and new one obtained; pointer to block updated
+ ;       VS: fail
+ 
+-SNewArea ENTRY "r0, r2"
++SNewArea KernelEntry "r0, r2"
+ 
+  [ debugheap
+  DREG r3,"SNewArea "
+@@ -315,7 +315,7 @@
+ ; Out   r1 -> Heap block, with string copied into it, or 0
+ ;       pointer to block updated accordingly
+ 
+-SNewString ENTRY "r2, r3"
++SNewString KernelEntry "r2, r3"
+ 
+  [ debugheap
+  DSTRING r1,"SNewString ",cc
+@@ -365,7 +365,7 @@
+ ; Out   VC: r2 = !r0 -> new block obtained (past the link)
+ ;       VS: fail
+ 
+-SGetLinkedArea ENTRY "r0, r3"
++SGetLinkedArea KernelEntry "r0, r3"
+ 
+  [ debugheap
+  DREG r0,"SGetLinkedArea: var ",cc
+@@ -419,7 +419,7 @@
+ ; Out   VC: r1 -> new block obtained
+ ;       VS: fail
+ 
+-SGetLinkedString ENTRY "r0, r2-r4"
++SGetLinkedString KernelEntry "r0, r2-r4"
+ 
+  [ Version >= 170
+         TEQ     r1, #NULL
+@@ -471,7 +471,7 @@
+ ;       VS: fail
+ ;
+ 
+-SNewLinkedString ENTRY
++SNewLinkedString KernelEntry
+         BL      SFreeLinkedString
+         BLVC    SGetLinkedString
+         EXIT
+@@ -495,7 +495,7 @@
+ ; Out   VC: block freed
+ ;       VS: failed to free block, or V set initially
+ 
+-SFreeLinkedArea ENTRY "r0, r2"
++SFreeLinkedArea KernelEntry "r0, r2"
+ 
+         LDR     r2, [r0]                ; Get this block^
+         SUB     r2, r2, #la_hsize       ; Get real memory^
+@@ -545,7 +545,7 @@
+ ;
+ ; As SFreeLinkedArea, but checks for NULL/Nowt first
+ 
+-SFreeLinkedString ENTRY
++SFreeLinkedString KernelEntry
+         LDR     r14, [r0]
+         TEQ     r14, #NULL
+         TEQNE   r14, #Nowt
+@@ -565,7 +565,7 @@
+ 
+ ; In    r2 -> block
+ 
+-DelinkLinkedArea ENTRY "r0, r2"
++DelinkLinkedArea KernelEntry "r0, r2"
+ 
+         SUB     r2, r2, #la_hsize       ; Get real memory^
+  [ debugheap
+@@ -611,7 +611,7 @@
+ ; Out   VC: blocks freed
+ ;       VS: failed to free all blocks
+ 
+-SFreeAllLinkedAreas ENTRY "r0, r2, r3"
++SFreeAllLinkedAreas KernelEntry "r0, r2, r3"
+ 
+         ADR     r0, LinkedAreas - la_link
+         MOV     r3, #0                  ; Free blocks allocated in this domain
+@@ -646,7 +646,7 @@
+ ; Out   VC: blocks freed
+ ;       VS: failed to free all blocks
+ 
+-SFreeAllLinkedAreasEverywhere ENTRY "r0, r2"
++SFreeAllLinkedAreasEverywhere KernelEntry "r0, r2"
+ 
+  [ debugheap
+  DLINE "SFreeAllLinkedAreasEverywhere"
+@@ -690,7 +690,7 @@
+ ;       VC, EQ: failed to claim block (no room), r2 -> Nowt
+ ;       VS    : bad fail, r2 -> Nowt
+ 
+-SGetRMA ENTRY "r0-r1, r3"
++SGetRMA KernelEntry "r0-r1, r3"
+ 
+  [ debugheap
+         DREG r3,"SGetRMA ",cc
+@@ -740,7 +740,7 @@
+ 
+ ; Out   r3 = number of chars (can be used as size for Heap)
+ 
+-strlen ENTRY "r0, r4"
++strlen KernelEntry "r0, r4"
+ 
+         MOV     r4, #space-1
+ 
+@@ -772,7 +772,7 @@
+ 
+ ; Out   r3 += number of chars (can be used as size for Heap)
+ 
+-strlen_accumulate ENTRY "r0, r1"
++strlen_accumulate KernelEntry "r0, r1"
+ 
+         MOV     r14, #space-1
+ 
+@@ -803,7 +803,7 @@
+ 
+ ; Out   new string in r1 = "r1" :CC: "r2" :CC: 0
+ 
+-strcat ENTRY "r1, r2, r4"
++strcat KernelEntry "r1, r2, r4"
+ 
+         MOV     r4, #space-1
+ 
+@@ -863,7 +863,7 @@
+ ;
+ ; r1 advanced to end of new string (points at the terminator).
+ 
+-strcat_advance ENTRY "r2, r4"
++strcat_advance KernelEntry "r2, r4"
+ 
+         MOV     r4, #space-1
+ 
+@@ -927,7 +927,7 @@
+ ; Out   EQ: r1 -> character (found)
+ ;       NE: r1 = 0 (not found)
+ 
+-strchr ENTRY
++strchr KernelEntry
+ 
+ 10      LDRB    r14, [r1], #1
+         TEQ     r0, r14
+@@ -954,7 +954,7 @@
+ 
+ ; Out   EQ/NE as appropriate
+ 
+-strcmp ENTRY "r1-r4"
++strcmp KernelEntry "r1-r4"
+ 
+         TEQ     r1, #Nowt
+         MOVEQ   r1, #0
+@@ -1000,7 +1000,7 @@
+ 
+ ; Out   EQ/NE as appropriate
+ 
+-strncmp ENTRY "r1-r5"
++strncmp KernelEntry "r1-r5"
+         Internat_CaseConvertLoad r14,Lower
+ 
+ 10      CMP     r3, #0
+@@ -1037,7 +1037,7 @@
+ ;
+ ; Out: EQ/NE for match (EQ if matches)
+ 
+-WildMatch ENTRY "r1-r4,r10,r11"
++WildMatch KernelEntry "r1-r4,r10,r11"
+ 
+  [ debugname :LOR: debugdaftgbpb
+  DSTRING r2,"WildMatch: trying to match ",cc
+@@ -1118,7 +1118,7 @@
+ ; EQ - yes, it's a child and r2 -> 1st char beyond match
+ ; NE - no, it isn't and r2 -> 1st mismatch char
+ 
+-IsAChild_advance ENTRY "r0,r1,r3"
++IsAChild_advance KernelEntry "r0,r1,r3"
+         Internat_CaseConvertLoad r14,Lower
+ 30
+         LDRB    r0, [r2], #1
+@@ -1170,7 +1170,7 @@
+ 
+ ; Out   r2,r3 updated, flags preserved
+ 
+-SReadTime ENTRY "r0-r1, r4", 8 ; Uses local stack for block
++SReadTime KernelEntry "r0-r1, r4", 8 ; Uses local stack for block
+ 
+         MOV     r4, #&FF000000          ; Create &FFFFFttt
+         ORR     r2, r2, r4, ASR #12     ; Fill bits 31-12 with 1's
+@@ -1207,7 +1207,7 @@
+ ;       VC, NE: expanded variable in pathname
+ ;       VC, EQ: variable is not set, null string set in buffer
+ 
+-SReadVariable ENTRY "r0-r4"
++SReadVariable KernelEntry "r0-r4"
+ 
+  [ debugpath
+  DSTRING r0,"Reading variable ",cc
+@@ -1391,7 +1391,7 @@
+ ;       r1 = variable value^
+ ;       r4 = Variable type to set
+ ;
+-SSetVariable ENTRY "r1-r6"
++SSetVariable KernelEntry "r1-r6"
+         MOV     r6, #NULL
+ 
+         TEQ     r1, #Nowt
+@@ -1434,7 +1434,7 @@
+ ;       r1 = variable value^
+ ;       r4 = Variable type to set
+ ;
+-SSetVariableIfMissing ENTRY "r0-r4"
++SSetVariableIfMissing KernelEntry "r0-r4"
+         ; Test the variable exists, or not
+         MOV     r1, #Nowt       ; To ensure address extinction, just in case
+         MOV     r2, #-1
+@@ -1458,7 +1458,7 @@
+ ; In    r2 -> start of block
+ ;       r5 -> end of block
+ 
+-ValidateR2R5_ReadFromCore ENTRY "r0, r1"
++ValidateR2R5_ReadFromCore KernelEntry "r0, r1"
+ 
+  [ debugosfile
+  DREG r2, "Validate for read from core: ",cc
+@@ -1552,7 +1552,7 @@
+ ;
+ ; As XOS_NewLine, except CopyError is performed on error and r0 is always preserved
+ ;
+-XOS_NewLine_CopyError ENTRY "r0"
++XOS_NewLine_CopyError KernelEntry "r0"
+         SWI     XOS_NewLine
+         BLVS    CopyErrorExternal
+         EXIT
+--- a/FileSwitch/s/FSUtils3
++++ b/FileSwitch/s/FSUtils3
+@@ -94,7 +94,7 @@
+ 
+ ; Out   Only r7, wp preserved
+ 
+-CountWildObject ENTRY
++CountWildObject KernelEntry
+ 
+  [ debugcount
+  DLINE "CountWildObject"
+@@ -182,7 +182,7 @@
+ ;       VC: object counted, skipped by user, date, or dir & ~recurse
+ ;       VS: failed in count, or aborted
+ 
+-CountObject ENTRY
++CountObject KernelEntry
+ 
+  [ debugcount
+  DLINE "CountObject"
+@@ -233,7 +233,7 @@
+ ;       VC: file counted, or skipped
+ ;       VS: failed to count file, or aborted
+ 
+-CountFile ENTRY
++CountFile KernelEntry
+ 
+  [ debugcount
+  DLINE "CountFile"
+@@ -262,7 +262,7 @@
+ ;       VC: directory counted, or skipped
+ ;       VS: failed to count directory, or aborted
+ 
+-CountDirectory ENTRY
++CountDirectory KernelEntry
+ 
+  [ debugcount
+  DLINE "CountDirectory"
+@@ -304,7 +304,7 @@
+ fsw_count_directory     DCB     "Cc1", 0
+         ALIGN
+ 
+-CountFile_Confirm ENTRY "r0, r1, r2"
++CountFile_Confirm KernelEntry "r0, r1, r2"
+ 
+         BL      Util_DateRange          ; See if dates allow it
+         EXIT    NE
+@@ -347,7 +347,7 @@
+ fsw_directory_counted   DCB     "Cc3", 0
+         ALIGN
+ 
+-CountFile_Verbose ENTRY "r0, r2, r9"
++CountFile_Verbose KernelEntry "r0, r2, r9"
+ 
+         LDR     r9, util_length         ; Always increment size copied
+         LDR     r14, util_totalsize
+@@ -401,7 +401,7 @@
+ 
+ ; Out   r7 -> util_block
+ 
+-Util_CommonStart ENTRY
++Util_CommonStart KernelEntry
+  [ debugutil
+         DSTRING r1, "Util_Commonstart(",cc
+         DREG    r2, ",",cc
+@@ -506,7 +506,7 @@
+ ; Out   VS: r0 -> error
+ ;       VC: r0 corrupt
+ 
+-Util_FilesDone ENTRY "r0-r5", 96
++Util_FilesDone KernelEntry "r0-r5", 96
+ 
+         LDR     r0, util_nfiles
+         MOV     r1, sp
+@@ -567,7 +567,7 @@
+ 
+ ; Out   r0 advanced to relevant for number
+ 
+-Util_PluralAdvanceTag ENTRY
++Util_PluralAdvanceTag KernelEntry
+         CMP     r1, #0
+         BLHI    %FT50
+         CMP     r1, #1
+@@ -595,7 +595,7 @@
+ ; Out   EQ: wild spec
+ ;       NE: not wild
+ 
+-Util_CheckWildName ENTRY "r1"
++Util_CheckWildName KernelEntry "r1"
+ 
+         ; NULL strings are not wildcards
+         TEQ     r1, #NULL
+@@ -627,7 +627,7 @@
+ 
+ ;       VS: error set
+ 
+-Util_MakeFileStrings ENTRY "r0,r1,r2"
++Util_MakeFileStrings KernelEntry "r0,r1,r2"
+ 
+  [ debugutil
+  DLINE "Util_MakeFileStrings"
+@@ -678,7 +678,7 @@
+ 
+ ; In fact, no error must come from these!
+ 
+-Util_FreeFileStrings_R7 ENTRY "r1-r2"
++Util_FreeFileStrings_R7 KernelEntry "r1-r2"
+ 
+  [ debugutil
+  DLINE "Freeing r7 leaf,dir"
+@@ -711,7 +711,7 @@
+ 
+ ; In    r0 -> record
+ 
+-Util_AppendLeafToDir ENTRY "r1-r4"
++Util_AppendLeafToDir KernelEntry "r1-r4"
+ 
+  [ debugutil
+  DLINE "Util_AppendLeafToDir"
+@@ -841,7 +841,7 @@
+ ; Out   VC: r0 corrupt
+ ;       VS: r0 -> error block
+ 
+-Util_PrintName ENTRY "r1-r7, fscb"
++Util_PrintName KernelEntry "r1-r7, fscb"
+ 
+  [ debugutil
+         DLINE   "Util_PrintName",cc
+@@ -926,7 +926,7 @@
+ ; Out   VC: r0 corrupt
+ ;       VS: r0 -> error block
+ 
+-Util_PrintNameNL ENTRY
++Util_PrintNameNL KernelEntry
+         BL      Util_PrintName
+         SWIVC   XOS_NewLine
+         EXIT
+@@ -946,7 +946,7 @@
+         TEQ     r8, #0
+         SUBNE   sp, sp, #13*4
+         SUBEQ   sp, sp, #9*4
+-        ENTRY   "r0-r6,r9-r10"
++        KernelEntry   "r0-r6,r9-r10"
+ 
+         ; Save the generally applicable stuff
+         LDR     r0, [r7, #copy_dirprefix] ; Push names
+@@ -999,7 +999,7 @@
+ ; Out   Contexts unnested, stack freed
+ ;       r0 = old value of util_nskipped
+ ;       r1 = util_length (old value of util_totalsize)
+-Util_OutOfDirectory ENTRY   "r2-r6,r9-r10"
++Util_OutOfDirectory KernelEntry   "r2-r6,r9-r10"
+ 
+         TEQ     r8, #0
+         ADDEQ   r14, sp, #8*4 + 9*4
+@@ -1045,7 +1045,7 @@
+ ;       r3 = number of names read. 0 if at eod
+ ;       Info + name in util_load .. util_objectname
+ 
+-Util_ReadDirEntry ENTRY "r0-r2, r4-r6, fscb" ; FSFunc only preserves r6 up
++Util_ReadDirEntry KernelEntry "r0-r2, r4-r6, fscb" ; FSFunc only preserves r6 up
+ 
+         LDR     r4, util_direntry
+  [ debugutil
+@@ -1100,7 +1100,7 @@
+ ;       HI: Object is a directory
+ ;       VS: fulkup or not found
+ 
+-Util_SingleObjectSetup ENTRY
++Util_SingleObjectSetup KernelEntry
+ 
+         MOV     r0, #fsfile_ReadInfo
+         BL      CallFSFile_Given_R7
+@@ -1134,7 +1134,7 @@
+ 
+ ; Out   EQ -> matched
+ 
+-Util_TryMatch ENTRY "r1,r2"
++Util_TryMatch KernelEntry "r1,r2"
+ 
+         MOV     r1, r4
+         MOV     r2, r9                  ; Source pattern
+@@ -1153,14 +1153,14 @@
+ ;       NE: or not as the case may be
+ ;       VClear always
+ 
+-Util_SpecialDir ENTRY "r1"
++Util_SpecialDir KernelEntry "r1"
+ 
+         LDRB    r14, [r1]               ; Is it exactly 'x' where x = special ?
+         CMP     r14, #"$"               ; Root ?
+         CMPNE   r14, #"&"               ; URD ?
+         CMPNE   r14, #"@"               ; CSD ?
+         CMPNE   r14, #"%"               ; LIB ?
+-        CMPNE   r14, #"\"               ; PSD ?
++        CMPNE   r14, #&5C               ; PSD ?
+         LDREQB  r14, [r1, #1]
+         CMPEQ   r14, #0                 ; followed by terminator
+         EXIT    EQ
+@@ -1199,7 +1199,7 @@
+ ;       VC, EQ: confirmed
+ ;       VC, NE: not confirmed
+ 
+-Util_GetConfirm ENTRY "r0-r2"
++Util_GetConfirm KernelEntry "r0-r2"
+  [ debugutil
+         DLINE   "Util_GetConfirm",cc
+         DREG    r8, " r8 in is ",cc
+@@ -1370,7 +1370,7 @@
+ ; Out   EQ -> ok, do it (whatever it is you propose to do !)
+ ;       NE -> don't do it
+ 
+-Util_DateRange ENTRY "r0-r5"
++Util_DateRange KernelEntry "r0-r5"
+ 
+         LDR     r14, util_bitset        ; Ok if no datelimit set
+         TST     r14, #util_datelimit
+@@ -1436,7 +1436,7 @@
+ ; Out   EQ: Not verbose
+ ;       NE: Verbose
+ 
+-Util_IncrementFiles_TestVerbose ENTRY
++Util_IncrementFiles_TestVerbose KernelEntry
+ 
+         LDR     r14, util_nfiles        ; Another one bites the dust
+         ADD     r14, r14, #1
+@@ -1459,7 +1459,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; Must preserve flags
+ 
+-Util_IncrementSkipped ENTRY
++Util_IncrementSkipped KernelEntry
+ 
+  [ debugutil
+  DLINE "Skipping object"
+@@ -1472,7 +1472,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; Must preserve flags
+ 
+-Util_DecrementDirEntry ENTRY
++Util_DecrementDirEntry KernelEntry
+ 
+         LDR     r14, util_direntry
+  [ debugutil
+@@ -1492,7 +1492,7 @@
+ ;       assumes that the destination is already assessed
+  ]
+ 
+-CallFSFile_Given_R7 ENTRY "r0-r6, fscb"
++CallFSFile_Given_R7 KernelEntry "r0-r6, fscb"
+ 
+         LDMIA   r7, {r1, r6, fscb}      ; copy_name, copy_special, copy_fscb
+  [ debugutil
+@@ -1520,7 +1520,7 @@
+ ; Out   VC: Escape clear
+ ;       VS: r0 -> error, Escape acknowledged
+ 
+-STestEscape ENTRY
++STestEscape KernelEntry
+ 
+         SWI     XOS_ReadEscapeState
+         EXIT    CC
+@@ -1528,7 +1528,7 @@
+ ; .............................................................................
+ ; Out   VS, r0 -> error, not copied
+ 
+-SAckEscape ENTRY
++SAckEscape KernelEntry
+ 
+         MOV     r0, #&7E                ; Acknowledge ESCAPE
+         SWI     XOS_Byte                ; May give error to override Escape
+--- a/FileSwitch/s/StreamBits
++++ b/FileSwitch/s/StreamBits
+@@ -94,7 +94,7 @@
+ ; Out   VC: r3 = external handle and scb^ allocated
+ ;       VS: failed to allocate
+ 
+-AllocateStream ENTRY "r1, r2, r4"
++AllocateStream KernelEntry "r1, r2, r4"
+ 
+  [ debugstream
+  DLINE "Entering AllocateStream"
+@@ -184,7 +184,7 @@
+ ; Out   VC: ok
+ ;       VS: fail
+ 
+-DeallocateStream ENTRY "r0-r4, bcb"
++DeallocateStream KernelEntry "r0-r4, bcb"
+ 
+  [ debugstream
+  DREG scb,"Deallocating scb ",cc
+@@ -281,7 +281,7 @@
+ ;       NE: scb^
+ ;       EQ: no stream on this handle, scb -> UnallocatedStream
+ 
+-FindStream ENTRY
++FindStream KernelEntry
+ 
+         ADR     r14, streamtable
+         LDR     scb, [r14, r1, LSL #2]
+@@ -301,7 +301,7 @@
+ ; Out   VC: scb^, flags preserved
+ ;       VS: no stream on this handle
+ 
+-FindValidStream ENTRY "r1"
++FindValidStream KernelEntry "r1"
+ 
+         AND     r1, r1, #&FF            ; Mask external handles with &FF always
+         ADR     r14, streamtable
+@@ -348,7 +348,7 @@
+ ; Out   VC: bcb^ -> new buffer, put on bcb list
+ ;       VS: failed to allocate buffer
+ 
+-AllocateBuffer ENTRY "r0, r2-r3"
++AllocateBuffer KernelEntry "r0, r2-r3"
+ 
+  [ debugstream
+  DREG bufmask,"AllocateBuffer: bufmask "
+@@ -373,7 +373,7 @@
+ 
+ ; Out   bcb allocated
+ 
+-ClaimBuffer ENTRY "r0-r3, bufmask"
++ClaimBuffer KernelEntry "r0-r3, bufmask"
+ 
+  [ debugstream
+  DREG bufmask,"ClaimBuffer: bufmask "
+@@ -446,7 +446,7 @@
+ ;       EQ: no stream flushed
+ ;       NE: stream flushed, bcb -> buffer freed for our use
+ 
+-FlushSomeone ENTRY "r0-r3, bufmask, scb"
++FlushSomeone KernelEntry "r0-r3, bufmask, scb"
+ 
+         LDRB    r1, scb_exthandle       ; Start at this handle
+         MOV     r3, r1
+@@ -531,7 +531,7 @@
+ 
+ ; Out   V accumulated
+ 
+-DeallocateBuffer ENTRY "r2"
++DeallocateBuffer KernelEntry "r2"
+ 
+  [ debugstream
+  DREG bcb,"Deallocating bcb "
+@@ -565,7 +565,7 @@
+ ;       NE: found, bcb^ -> buffer control block
+ ; VClear always
+ 
+-FindFileBuffer ENTRY "r0"
++FindFileBuffer KernelEntry "r0"
+ 
+         BIC     r0, fileptr, bufmask    ; Where buffer base would be
+  [ debugstream
+@@ -607,7 +607,7 @@
+ 
+ ; In    fileptr = where to get it, scb, extent, bufmask valid
+ 
+-GetFileBuffer ENTRY
++GetFileBuffer KernelEntry
+ 
+  [ debugstream
+  DREG fileptr, "GetFileBuffer: fileptr = "
+@@ -677,7 +677,7 @@
+ 
+ ; Out   bcb^ valid, pertaining to fileptr
+ 
+-EnsureBufferValidForWrite ENTRY "r1-r2"
++EnsureBufferValidForWrite KernelEntry "r1-r2"
+ 
+         BL      FindFileBuffer          ; Got the right buffer here ?
+         EXIT    NE                      ; [yes]
+@@ -719,7 +719,7 @@
+ ; Out   VC: bcb^ and buffer data valid, pertaining to fileptr
+ ;       VS: failed to get buffer
+ 
+-EnsureBufferValid ENTRY
++EnsureBufferValid KernelEntry
+ 
+  [ debugstream
+  DREG fileptr,"Ensure valid buffer at fileptr "
+@@ -745,7 +745,7 @@
+ ;       r1 = upper limit, exclusive
+ ;       scb^ and bufmask valid
+ 
+-DiscardBuffersBetween ENTRY "r0-r1, bcb"
++DiscardBuffersBetween KernelEntry "r0-r1, bcb"
+ 
+  [ debugstream
+  DREG r0,"Discarding buffers between ",cc
+@@ -785,7 +785,7 @@
+ 
+ ; Out   VC: new extent NOT set (for GBPB porpoises !)
+ 
+-ExtendFileWithZeroes ENTRY "r0-r2, fileptr, bcb, fscb" ; Nasty temporary
++ExtendFileWithZeroes KernelEntry "r0-r2, fileptr, bcb, fscb" ; Nasty temporary
+ 
+  [ debugstream
+  DREG r2, "Extending to ",cc
+@@ -862,7 +862,7 @@
+ ; In    r0 = offset in buffer;
+ ;       bufmask and bcb valid
+ 
+-ZeroBufferFromPosition ENTRY "r0-r1"
++ZeroBufferFromPosition KernelEntry "r0-r1"
+ 
+         LDRB    r14, bcb_status         ; Buffer modified
+         ORR     r14, r14, #bcb_modified
+@@ -898,7 +898,7 @@
+ ; In    r2 = offset in file
+ ;       r1 = number of bytes to zero (can be zero)
+ 
+-ZeroFileFromPosition ENTRY "r0-r3"
++ZeroFileFromPosition KernelEntry "r0-r3"
+ 
+  [ debugstream
+  DREG r1,"Writing ",cc
+@@ -920,7 +920,7 @@
+ 
+ ; Out   r2 = given size, scb^.allocsize updated
+ 
+-EnsureFileSize ENTRY "r0, r3"
++EnsureFileSize KernelEntry "r0, r3"
+ 
+  [ debugstream
+  DREG r2,"Ensuring file size of "
+@@ -953,7 +953,7 @@
+         TST     status, #scb_write      ; Should we do this ?
+         BICEQS  pc, lr, #V_bit
+ 
+-        ENTRY   "r0, r2" ; FSArgs corrupts only r2
++        KernelEntry   "r0, r2" ; FSArgs corrupts only r2
+  [ debugstream
+  DREG extent,"Setting final file extent to "
+  ]
+@@ -983,7 +983,7 @@
+ ;       V set => [globalerror] set and data intact in buffer
+ 
+ 
+-FlushBuffer_IfNoError ENTRY "r1"
++FlushBuffer_IfNoError KernelEntry "r1"
+ 
+         MOV     r1, #0
+ 
+@@ -1025,7 +1025,7 @@
+ ; Out   VC: ok
+ ;       VS: fail
+ 
+-FlushStream ENTRY "r0, r2, bcb" ; FSArgs corrupts just r2
++FlushStream KernelEntry "r0, r2, bcb" ; FSArgs corrupts just r2
+ 
+  [ debugstream
+  DREG scb,"Flushing scb ",cc
+@@ -1070,7 +1070,7 @@
+ ; Out   VC: ok
+ ;       VS: fail
+ 
+-FlushAndCloseStream ENTRY "r0-r2,$streaminfo" ; r3 and r6 in streaminfo
++FlushAndCloseStream KernelEntry "r0-r2,$streaminfo" ; r3 and r6 in streaminfo
+ 
+  [ debugstream
+  Push r1
+--- a/FileSwitch/s/FileSwBody
++++ b/FileSwitch/s/FileSwBody
+@@ -1045,7 +1045,7 @@
+ 
+ ; I can now just about survive RMTidy, I guess !
+ 
+-FileSwitch_Init ENTRY "r7"
++FileSwitch_Init KernelEntry "r7"
+ 
+         ; Macro to disallow rip-off RAM loaded version (te he ;-)
+         ChkKernelVersion
+@@ -1494,7 +1494,7 @@
+ ;       VS -> fail
+ ;       r0-r2 trashed
+ 
+-FileSwitch_ResetInitCommon ENTRY
++FileSwitch_ResetInitCommon KernelEntry
+ 
+  [ debuginit
+  DLINE "ResetInitCommon"
+@@ -1528,7 +1528,7 @@
+ 
+ FileSwitch_Service_TerritoryStarted
+         LDR     R12,[R12]
+-ReadCaseTables ENTRY
++ReadCaseTables KernelEntry
+         BL      open_message_file
+         MOV     r0, #-1
+         SWI     XTerritory_UpperCaseTable
+@@ -1637,7 +1637,7 @@
+ 
+ ; Select Filing System by number
+ 
+-FileSwitch_Service_StartUpFS ENTRY "r0, r2"
++FileSwitch_Service_StartUpFS KernelEntry "r0, r2"
+ 
+         MOV     r0, #FSControl_SelectFS
+         AND     r1, r2, #&FF
+@@ -1647,7 +1647,7 @@
+ 
+ ; .............................................................................
+ 
+-FileSwitch_Service_Reset ENTRY "r0-r2, fscb, fp"
++FileSwitch_Service_Reset KernelEntry "r0-r2, fscb, fp"
+ 
+         LDR     wp, [r12]
+         MOV     fp, #0                  ; No frame, so don't set globalerror
+@@ -1701,7 +1701,7 @@
+ 
+ ; Out   service unclaimed and dirs unset as appropriate
+ 
+-FileSwitch_Service_DiscDismounted ENTRY "fp"
++FileSwitch_Service_DiscDismounted KernelEntry "fp"
+         MOV     fp, #0
+         LDR     wp,[r12]
+         BL      UnsetMatchingDirs
+@@ -1716,7 +1716,7 @@
+ ; Out   service unclaimed, applicable MultiFS files closed and
+ ;       r3 incremented by number of files closed
+ 
+-FileSwitch_Service_CloseFile ENTRY "r0,r1,r2,r3,r6,scb,fscb,fp"
++FileSwitch_Service_CloseFile KernelEntry "r0,r1,r2,r3,r6,scb,fscb,fp"
+  [ debugservice
+         DSTRING r2, "Service_CloseFile(",cc
+         DLINE   ")"
+@@ -1827,7 +1827,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; Vector claim/release routines
+ 
+-SitOnVectors ENTRY "r0-r4"
++SitOnVectors KernelEntry "r0-r4"
+ 
+         ADR     r4, FileSwitch_VectorTable
+         ADR     r3, FileSwitch_VectorNumberTable
+@@ -1865,7 +1865,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; Out   V preserved
+ 
+-DelinkTheLot ENTRY "r0-r4"
++DelinkTheLot KernelEntry "r0-r4"
+ 
+         ADR     r4, FileSwitch_VectorTable
+         ADR     r3, FileSwitch_VectorNumberTable
+--- a/FileSwitch/s/OSBGetBPut
++++ b/FileSwitch/s/OSBGetBPut
+@@ -527,7 +527,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; Ensure both caches invalid
+ 
+-Init_InvalidateBGetCache ENTRY "r1"
++Init_InvalidateBGetCache KernelEntry "r1"
+ 
+         LDR     r14, =DeadHandle
+         STR     r14, BGet_handle        ; Invalidate handles
+--- a/FileSwitch/s/LowLevel
++++ b/FileSwitch/s/LowLevel
+@@ -42,7 +42,7 @@
+ ; Out   VC: r0 and fileblock updated
+ ;       VS: failed
+ 
+-CallFSFile_Given ENTRY "r0-r12" ; Never (ever) trust lower level routines
++CallFSFile_Given KernelEntry "r0-r12" ; Never (ever) trust lower level routines
+ 
+  [ osfile5cache
+         ; OSFile5Cache format:
+@@ -539,7 +539,7 @@
+         DCD     2_00000000000000000000000000000000      ;c0
+         DCD     2_00000000000000000000000000000000      ;e0
+ 
+-SortSpecialForFSEntry ENTRY "r1,r2"
++SortSpecialForFSEntry KernelEntry "r1,r2"
+  [ debuglowspecial
+         DREG    r6, "Sorting special field = "
+  ]
+@@ -678,7 +678,7 @@
+ ;
+ ; Out   r1 string has $. stripped if appropriate
+ ;
+-SortSpecialForFSExit ENTRY "r1,r2,r3"
++SortSpecialForFSExit KernelEntry "r1,r2,r3"
+ 
+         LDR     lr, [fscb, #fscb_info]
+         TST     lr, #&ff
+@@ -787,7 +787,7 @@
+ ; Out   VC: ok, r0-r5 may (or may not) be modified, but don't trust 'em
+ ;       VS: fail
+ 
+-CallFSFunc_Given ENTRY "r6-r12", 8 ; Never (ever) trust lower level routines
++CallFSFunc_Given KernelEntry "r6-r12", 8 ; Never (ever) trust lower level routines
+ 
+  [ debuglowfunc
+  DREG r0,"FSFunc: rc ",cc
+@@ -928,7 +928,7 @@
+ ;                                                 (for writeable files only)
+ ;       VS: fail. handle = 0
+ 
+-CallFSOpen ENTRY "r5-r12" ; Never (ever) trust lowel level routines
++CallFSOpen KernelEntry "r5-r12" ; Never (ever) trust lowel level routines
+ 
+  [ debuglowosfind
+  DSTRING r1,"FSOpen file in is "
+@@ -1073,7 +1073,7 @@
+ ; Out   VC: ok, r0 = char and flags as set by Filing System
+ ;       VS: fail
+ 
+-CallFSBGet_Guts ENTRY "r1-r12" ; Never (ever) trust lower level routines
++CallFSBGet_Guts KernelEntry "r1-r12" ; Never (ever) trust lower level routines
+ 
+         MOV     r8, #fscb_get
+         BL      CallFSCommon
+@@ -1085,7 +1085,7 @@
+ 
+ ; .............................................................................
+ 
+-CallFSBGet ENTRY
++CallFSBGet KernelEntry
+ 
+         MakeCritical
+         BL      CallFSBGet_Guts
+@@ -1104,7 +1104,7 @@
+ ; Out   VC: ok
+ ;       VS: fail
+ 
+-CallFSGetBuffer_Guts ENTRY "r0-r12" ; Never (ever) trust lower level routines
++CallFSGetBuffer_Guts KernelEntry "r0-r12" ; Never (ever) trust lower level routines
+ 
+         ADR     r2, bcb_bufferdata      ; Memory to be loaded
+         ADD     r3, bufmask, #1         ; Correct size to use
+@@ -1173,7 +1173,7 @@
+ 
+ ; .............................................................................
+ 
+-CallFSGetBuffer ENTRY
++CallFSGetBuffer KernelEntry
+ 
+         MakeCritical
+         BL      CallFSGetBuffer_Guts
+@@ -1191,7 +1191,7 @@
+ 
+ ; .............................................................................
+ 
+-CallFSGetData ENTRY
++CallFSGetData KernelEntry
+ 
+         MakeCritical
+         BL      CallFSGetData_Guts
+@@ -1210,7 +1210,7 @@
+ ; Out   VC: ok
+ ;       VS: fail
+ 
+-CallFSBPut_Guts ENTRY "r0-r12" ; Never (ever) trust lower level routines
++CallFSBPut_Guts KernelEntry "r0-r12" ; Never (ever) trust lower level routines
+ 
+         AND     r0, r0, #&FF            ; Just in case people don't like it
+         MOV     r2, #-1                 ; Doing BPut not Multiple
+@@ -1224,7 +1224,7 @@
+ 
+ ; .............................................................................
+ 
+-CallFSBPut ENTRY
++CallFSBPut KernelEntry
+ 
+         MakeCritical
+         BL      CallFSBPut_Guts
+@@ -1245,7 +1245,7 @@
+ ; Out   VC: ok
+ ;       VS: fail
+ 
+-CallFSPutBuffer_Guts ENTRY "r0-r12" ; Never (ever) trust lower level routines
++CallFSPutBuffer_Guts KernelEntry "r0-r12" ; Never (ever) trust lower level routines
+ 
+         ADR     r2, bcb_bufferdata      ; Memory to be loaded
+         ADD     r3, bufmask, #1         ; Correct size to use
+@@ -1304,7 +1304,7 @@
+ ; Called from FlushBuffer/_2/_IfNoError
+ ; Does not mark 'data lost' automatically on error - this is done higher up
+ 
+-CallFSPutBuffer ENTRY
++CallFSPutBuffer KernelEntry
+ 
+         MakeCritical
+         BL      CallFSPutBuffer_Guts
+@@ -1314,7 +1314,7 @@
+ 
+ ; .............................................................................
+ 
+-CallFSPutData ENTRY
++CallFSPutData KernelEntry
+ 
+         MakeCritical
+         BL      CallFSPutData_Guts
+@@ -1335,7 +1335,7 @@
+ ; Out   VC: ok, gbpb block updated here !!!
+ ;       VS: fail
+ 
+-CallFSMultiple_Guts ENTRY "r0-r12" ; Never (ever) trust lower level routines
++CallFSMultiple_Guts KernelEntry "r0-r12" ; Never (ever) trust lower level routines
+ 
+         ADR     r14, gbpb_memadr
+         LDMIA   r14, {memadr, nbytes, fileptr}
+@@ -1359,7 +1359,7 @@
+ 
+ ; .............................................................................
+ 
+-CallFSMultiple ENTRY
++CallFSMultiple KernelEntry
+ 
+         MakeCritical
+         BL      CallFSMultiple_Guts
+@@ -1378,7 +1378,7 @@
+ ; Out   VC: ok, r2 may be modified according to r0
+ ;       VS: fail
+ 
+-CallFSArgs_Guts ENTRY "r0-r1, r3-r12" ; Never (ever) trust lower level routines
++CallFSArgs_Guts KernelEntry "r0-r1, r3-r12" ; Never (ever) trust lower level routines
+ 
+         TEQ     r0, #fsargs_EnsureSize
+         BNE     %FT10
+@@ -1414,7 +1414,7 @@
+ 
+ ; .............................................................................
+ 
+-CallFSArgs ENTRY
++CallFSArgs KernelEntry
+ 
+         MakeCritical
+         BL      CallFSArgs_Guts
+@@ -1435,7 +1435,7 @@
+ ; Out   VC: ok
+ ;       VS: fail
+ 
+-CallFSClose_Guts ENTRY "r0-r12" ; Never (ever) trust lower level routines
++CallFSClose_Guts KernelEntry "r0-r12" ; Never (ever) trust lower level routines
+ 
+  [ debuglowosfind
+  DREG r2, "FSClose called with r2=",cc
+@@ -1471,7 +1471,7 @@
+ 
+ ; .............................................................................
+ 
+-CallFSClose ENTRY
++CallFSClose KernelEntry
+ 
+         MakeCritical
+         BL      CallFSClose_Guts
+@@ -1576,7 +1576,7 @@
+ ; Out   VC: ok
+ ;       VS: naff name (null)
+ 
+-CheckNullName ENTRY
++CheckNullName KernelEntry
+ 
+         CMP     fscb, #Nowt             ; Must do a quick check here to
+         BEQ     %FT90                   ; prevent ye olde address extinctions
+@@ -1608,7 +1608,7 @@
+ ; This expands filenames into sensible UpCallable values from their moderately useless
+ ; MultiFS forms.
+ 
+-DoUpCallModifyingFile ENTRY "r0-r12"    ; Push *everything* to bullet-proof against UpCall clients
++DoUpCallModifyingFile KernelEntry "r0-r12"    ; Push *everything* to bullet-proof against UpCall clients
+ 
+  [ debugupcall
+  DREG   r9, "UpCall number "
+@@ -1749,7 +1749,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; In    scb, status, fileptr, extent, bufmask ok
+ 
+-DebugStreamInfo ENTRY "r0, bcb"
++DebugStreamInfo KernelEntry "r0, bcb"
+ 
+  DREG scb,"Stream info: scb ",cc
+  DLINE " status ",cc
+--- a/FileSwitch/s/FSCtrl2
++++ b/FileSwitch/s/FSCtrl2
+@@ -164,14 +164,14 @@
+           ^     0
+ fscb_link       #       4
+ fscb_startuptext #      4       ; Ptr to text to be printed on Filing System startup
+-fscb_open       #       4       ; --\
++fscb_open       #       4       ; --\ (diagram)
+ fscb_get        #       4       ;   |
+ fscb_put        #       4       ;   } Addresses in same order and offset as FS_xxx
+ fscb_args       #       4       ;   |
+ fscb_close      #       4       ;   |
+ fscb_file       #       4       ; --/
+ fscb_info       #       4
+-fscb_func       #       4       ; --\
++fscb_func       #       4       ; --\ (diagram)
+ fscb_gbpb       #       4       ; --/
+ 
+ fscb_modulebase  #      4       ; Ptr to module base (for * decoding primarily)
+@@ -532,7 +532,7 @@
+ 
+ ; Out   fscb^ valid or Nowt if not found. VClear always
+ 
+-LookupFSNumber ENTRY
++LookupFSNumber KernelEntry
+ 
+         LDR     fscb, fschain           ; Point to first fscb
+ 
+@@ -563,7 +563,7 @@
+ ;       if not  : r1 unchanged, fscb = Nowt
+ ;                 r3 = span
+ ;
+-LookupFSName ENTRY "r4"
++LookupFSName KernelEntry "r4"
+         MOV     r4, r0
+         BL      PoliceFSNameWithError
+         BLVC    FindFSName
+@@ -583,7 +583,7 @@
+ ;               r1 unchanged
+ ;               fscb = Nowt
+ ;
+-FindFSName ENTRY "r0,r2,r3,r5"
++FindFSName KernelEntry "r0,r2,r3,r5"
+         LDR     fscb, fschain
+ 
+ 10      TEQ     fscb, #Nowt
+@@ -626,7 +626,7 @@
+ ;
+ ; Out   fscb = Nowt or fscb^ for image FS
+ ;
+-LookupIFSType ENTRY
++LookupIFSType KernelEntry
+         LDR     fscb, fschain
+ 
+ 10      TEQ     fscb, #Nowt
+@@ -677,7 +677,7 @@
+ ; Out   r1 -> terminating char
+ ;       r3 = length of name to (but excluding) terminating char
+ ;
+-PoliceFSNameWithError ENTRY "r0"
++PoliceFSNameWithError KernelEntry "r0"
+         MOV     r3, #0
+ 
+ 01      LDRB    r0, [r1, r3]            ; Is it terminated correctly ?
+@@ -765,7 +765,7 @@
+ UntitledFSToken DCB     "UntFS",0
+                 ALIGN
+ 
+-PrintFilingSystemText ENTRY "r0-r5, r6, fscb" ; FSFunc only preserves r6 up
++PrintFilingSystemText KernelEntry "r0-r5, r6, fscb" ; FSFunc only preserves r6 up
+ 
+  [ debugcontrol
+  DLINE "FS startup banner: ",cc
+@@ -910,7 +910,7 @@
+ ; Out   VC: Removed or not found
+ ;       VS: failed to free block
+ 
+-RemoveFS ENTRY "r0, r2"
++RemoveFS KernelEntry "r0, r2"
+ 
+  [ debugcontrol
+  Push r1
+@@ -1132,7 +1132,7 @@
+                                         ; as it might be a macro variable
+ dft_size     *  :INDEX: @
+ 
+-DecodeFileType ENTRY "r0-r2, r4" ; Result r2 poked into stack
++DecodeFileType KernelEntry "r0-r2, r4" ; Result r2 poked into stack
+ 
+         SUB     sp, sp, #dft_size       ; Room for the variable string + result
+ 
+@@ -1220,7 +1220,7 @@
+ ; Out   VC: ok
+ ;       VS: error in r0, not copied
+ 
+-PrintR0Chars ENTRY
++PrintR0Chars KernelEntry
+ 
+         SWI     XOS_WriteC
+         MOVVC   r0, r0, ROR #8
+@@ -1430,7 +1430,7 @@
+ ; Out   EQ name ok; term found before end of name
+ ;       NE term not found before end of name, or non-alphas before # char
+ 
+-LookForAGoodTerm ENTRY "r0, r2, r4"
++LookForAGoodTerm KernelEntry "r0, r2, r4"
+ 
+         MOV     r4, r0                  ; IsAlphanumeric uses r0
+ 
+@@ -1538,7 +1538,7 @@
+ 
+ ; <allowed/wild char>   ::=     <allowed char> | <wild char>
+ 
+-; <absolute char>       ::=     $ | & | % | @ | \
++; <absolute char>       ::=     $ | & | % | @ | \ (diagram)
+ 
+ ; <passed name>         ::=     <filename> <name term>
+ ;                             | " <filename> "
+@@ -1580,7 +1580,7 @@
+ ; Out   VC -> ok, things set up
+ ;       VS -> fail, no error set
+ 
+-PoliceName ENTRY "r0-r1"
++PoliceName KernelEntry "r0-r1"
+ 
+  [ debugname
+  DSTRING r1,"Policing name "
+@@ -1666,7 +1666,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; Most of the time we want to give an error
+ 
+-PoliceNameWithError ENTRY
++PoliceNameWithError KernelEntry
+ 
+         BL      PoliceName
+         BLVS    SetMagicBadFileName     ; VSet too
+@@ -1685,7 +1685,7 @@
+ ;
+ ; Out   VSet if bad, no error set
+ ;
+-PoliceSpecial ENTRY "r0,r1"
++PoliceSpecial KernelEntry "r0,r1"
+ 05
+         LDRB    r0, [r1], #1
+         CMP     r0, #space-1
+@@ -1722,7 +1722,7 @@
+         TEQNE   r0, #"&"                ; URD
+         TEQNE   r0, #"@"                ; CSD
+         TEQNE   r0, #"%"                ; LIB. New symbol
+-        TEQNE   r0, #"\"                ; PSD. New symbol
++        TEQNE   r0, #&5C                ; PSD. New symbol
+         MOV     pc, lr
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+@@ -1735,7 +1735,7 @@
+         CMP     r0, #"_"                ; Must check first to prevent > '_' in
+         MOVEQ   pc, lr                  ; CS
+ 
+-        ENTRY                           ; Need r14 temp
++        KernelEntry                           ; Need r14 temp
+         CMP     r0, #"0"
+         RSBCSS  r14, r0, #"9"
+         EXIT    CS
+--- a/FileSwitch/s/MsgsStuff
++++ b/FileSwitch/s/MsgsStuff
+@@ -20,7 +20,7 @@
+ ;
+ ; In    r0 = pointer to error block with text <tag>
+ ; Out   r0 = pointer to translated error block flags preserved (error not marked in globalerror)
+-copy_error ENTRY "r1-r7"
++copy_error KernelEntry "r1-r7"
+         ADR     R4, MsgsNul
+ 10
+         ADR     R5, MsgsNul
+@@ -113,7 +113,7 @@
+ ; In    r0 = pointer to nul-terminated tag
+ ; Out   r0 = pointer to ctrl-char terminated string
+ ;       error possible
+-message_lookup ENTRY "r0-r7"
++message_lookup KernelEntry "r0-r7"
+  [ debugmsgstuff
+         DSTRING r0,"message_lookup(",cc
+         DLINE   ")->",cc
+@@ -156,7 +156,7 @@
+ ;       r1 = pointer to terminating char in buffer
+ ;       r2 = number of bytes free in buffer
+ ;       error possible
+-message_lookup2_into_buffer ENTRY "r0-r7"
++message_lookup2_into_buffer KernelEntry "r0-r7"
+         ADR     R4, MsgsNul
+ 10
+         ADR     R5, MsgsNul
+@@ -233,7 +233,7 @@
+ ; In    r0 = pointer to nul-terminated <tag>
+ ; Out   all regs preserved (except r0 on error)
+ ;       error possible
+-message_gswrite0 ENTRY "r0-r7", 256
++message_gswrite0 KernelEntry "r0-r7", 256
+         ADR     R4, MsgsNul
+ 10
+         ADR     R5, MsgsNul
+@@ -300,7 +300,7 @@
+ ; In    r0 = pointer to nul-terminated <tag>
+ ; Out   all regs preserved (except r0 on error)
+ ;       error possible
+-message_write0 ENTRY "r0-r7", 768
++message_write0 KernelEntry "r0-r7", 768
+         ADR     R4, MsgsNul
+ 10
+         ADR     R5, MsgsNul
+@@ -394,7 +394,7 @@
+ ;
+ ; In    -
+ ; Out   r0,VS possible - globalerror not set
+-open_message_file ENTRY "r0-r2"
++open_message_file KernelEntry "r0-r2"
+ 
+         ; Ensure file not open already
+         LDR     r1, message_file_flags
+--- a/FileSwitch/s/FSErrors
++++ b/FileSwitch/s/FSErrors
+@@ -62,7 +62,7 @@
+ 
+ ; Out   VSet always
+ 
+-CopyError ENTRY
++CopyError KernelEntry
+ 
+         BL      copy_error
+         BL      CopyErrorStore
+@@ -85,7 +85,7 @@
+ 
+ ; Out   VSet always
+ 
+-CopyErrorExternal ENTRY
++CopyErrorExternal KernelEntry
+ 
+         ; Check for the lowlevel errors and copy with translation
+         ADR     lr, ErrorBlock_UnsupportedFSEntry
+@@ -133,7 +133,7 @@
+ ; Out   r0 -> the real error block
+ ;       VSet always
+ 
+-MagicCopyError ENTRY    "r4"
++MagicCopyError KernelEntry    "r4"
+ 
+         MOV     r4, r1
+         BL      copy_error1
+@@ -153,7 +153,7 @@
+ 
+ ; Out   VSet always
+ 
+-MagicCopyErrorSpan ENTRY "r0-r4"
++MagicCopyErrorSpan KernelEntry "r0-r4"
+ 
+         ADD     r4, r3, #1+3
+         BIC     r4, r4, #3
+@@ -190,7 +190,7 @@
+ 
+ ; Out   VSet always
+ 
+-CopyErrorAppendingString ENTRY "r0-r3"
++CopyErrorAppendingString KernelEntry "r0-r3"
+ 
+ 10
+         ; Copy substitution tag onto stack to prepend the error number from the real error
+@@ -237,7 +237,7 @@
+ 
+ ; Out   VSet always
+ 
+-AppendHandleToError ENTRY "r0-r5", (?fsw_on_file_handle + 4 + 12 + 3) :AND: :NOT: 3
++AppendHandleToError KernelEntry "r0-r5", (?fsw_on_file_handle + 4 + 12 + 3) :AND: :NOT: 3
+ 
+         TST     r1, #&FF                ; 'on handle 0' is silly !
+         BEQ     %FA85
+@@ -273,7 +273,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; In    r1 -> filename to use
+ 
+-SetMagicFileNotFound ENTRY "r0"
++SetMagicFileNotFound KernelEntry "r0"
+         ADR     r0, MagicErrorBlock_FileNotFound
+ 
+ 50      BL      MagicCopyError
+@@ -322,7 +322,7 @@
+         ADR     r0, MagicErrorBlock_BadNulFileName
+         B       %BT60
+ 
+-SetErrorStreamIsDirectory ENTRY "r0,r1,r3,r6,fscb"     ; scb valid
++SetErrorStreamIsDirectory KernelEntry "r0,r1,r3,r6,fscb"     ; scb valid
+ 
+         LDR     r1, scb_path
+         LDR     r6, scb_special
+@@ -363,7 +363,7 @@
+ ;                         Standard  errors
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-SetErrorNoSelectedFilingSystem ENTRY "r0"
++SetErrorNoSelectedFilingSystem KernelEntry "r0"
+ 
+         ADR     r0, ErrorBlock_NoSelectedFilingSystem
+ 
+--- a/FileSwitch/hdr/LowFSI
++++ b/FileSwitch/hdr/LowFSI
+@@ -87,14 +87,14 @@
+          ^      0
+ FS_name  #      4
+ FS_startuptext # 4
+-FS_open  #      4 ; --\
++FS_open  #      4 ; --\ (diagram)
+ FS_get   #      4 ;   |
+ FS_put   #      4 ;   } Module offsets in same order and offset as fscb_xxx
+ FS_args  #      4 ;   |
+ FS_close #      4 ;   |
+ FS_file  #      4 ; --/
+ FS_info  #      4
+-FS_func  #      4 ; --\
++FS_func  #      4 ; --\ (diagram)
+ FS_gbpb  #      4 ; --/ For fast unbuffered gbpb
+ FS_extra #      4 ; extra information word
+ FS_size  *      @-FS_name
+--- a/ResourceFS/s/MsgCode
++++ b/ResourceFS/s/MsgCode
+@@ -24,7 +24,7 @@
+ ; Out:  r0 -> Translated error block or another error (token no found etc.)
+ ;       All other registers preserved, V always set, other flags undefined
+ 
+-copy_error_one ENTRY "r2-r7"
++copy_error_one KernelEntry "r2-r7"
+         BL      open_message_file               ; Ensure file is open
+         EXIT    VS                              ; Return the error
+ 
+@@ -47,7 +47,7 @@
+ 
+ ; OSS Open the messages file if it is closed.
+ 
+-open_message_file ENTRY "r0-r2"
++open_message_file KernelEntry "r0-r2"
+         LDR     r1 , message_file_open
+         TEQ     r1, #0                          ; Check the open flag
+         EXIT    NE                              ; Return - it is open
+--- a/ResourceFS/s/ResourceFS
++++ b/ResourceFS/s/ResourceFS
+@@ -84,7 +84,7 @@
+ 
+ hostvdu SETL    false
+ 
+-        LEADR   Module_LoadAddr
++        ORG     0 ; position-independent module, offsets relative to header
+ 
+ TAB     *       9
+ LF      *       10
+@@ -231,7 +231,7 @@
+ 
+ ; In    R0 -> set of files to register
+ 
+-SWIROMFS_RegisterFiles ENTRY "R1"
++SWIROMFS_RegisterFiles KernelEntry "R1"
+ 
+         BL      registerfiles
+         BLVC    Issue_Service_ResourceFSStarted
+@@ -242,7 +242,7 @@
+ ; In    R0 -> set of files to be registered
+ ;       R3 -> workspace (called from Service_ResourceFSStarting)
+ 
+-SVCROMFS_RegisterFiles ENTRY "R12"
++SVCROMFS_RegisterFiles KernelEntry "R12"
+ 
+         MOV     R12, R3                         ; R3 = workspace pointer
+         BL      registerfiles
+@@ -254,7 +254,7 @@
+ ; In    R0 -> set of files to be registered
+ ;       R12 -> workspace
+ 
+-registerfiles ENTRY "R1-R3"
++registerfiles KernelEntry "R1-R3"
+ 
+         Debug   rg,"ResourceFS_RegisterFiles:",R0
+ 
+@@ -289,7 +289,7 @@
+ 
+ ; In    R0 -> set of files to deregister
+ 
+-SWIROMFS_DeregisterFiles ENTRY "R1-R2"
++SWIROMFS_DeregisterFiles KernelEntry "R1-R2"
+ 
+         Debug   rg,"ResourceFS_DeregisterFiles:",R0
+ 
+@@ -327,7 +327,7 @@
+ ;              [R2, #link_data] = R0
+ ;       No match: R2 = 0
+ 
+-findlink_r0 ENTRY
++findlink_r0 KernelEntry
+ 
+         ADR     R1, ROMFSFileData - link_next
+ 
+@@ -378,7 +378,7 @@
+ ;       ROMFS_Init - Initialisation entry
+ ;
+ 
+-ROMFS_Init ENTRY
++ROMFS_Init KernelEntry
+ 
+         LDR     R2, [R12]               ; have we got workspace yet ?
+         TEQ     R2, #0
+@@ -433,7 +433,7 @@
+ 
+ ; Declare ResourceFS: to FileSwitch (called on Init and Service_FSRedeclare)
+ 
+-ROMFS_Declare ENTRY "R1-R3"
++ROMFS_Declare KernelEntry "R1-R3"
+ 
+         MOV     R0, #FSControl_AddFS    ; add this filing system
+         addr    R1, Module_BaseAddr
+@@ -448,7 +448,7 @@
+ 
+ SVC_ReadUpperCaseTable
+         LDR     R12,[R12]
+-ReadUpperCaseTable ENTRY
++ReadUpperCaseTable KernelEntry
+         MOV     r0, #-1
+         SWI     XTerritory_UpperCaseTable
+         MOVVS   r0, #0
+@@ -462,7 +462,7 @@
+ ;
+ ; Deallocate link blocks, issue Service_ResourceFSDying and FSControl_RemoveFS
+ 
+-ROMFS_Die ENTRY
++ROMFS_Die KernelEntry
+ 
+         LDR     R12, [R12]              ; R12 -> workspace
+ 
+@@ -774,7 +774,7 @@
+ ;       This causes all directories to be re-scanned!
+ ;       It's hard to work out which directories are being created / deleted
+ 
+-modifyingfiles ENTRY "R0-R10"
++modifyingfiles KernelEntry "R0-R10"
+ 
+         LDR     R8, fsinfoword          ; R8 = fs info word
+         MOV     R9, R0                  ; R9 = reason code
+@@ -798,7 +798,7 @@
+ ; out:  R0-R6, R12 corrupted
+ ;
+ 
+-ResourceFS_Code ENTRY
++ResourceFS_Code KernelEntry
+         MOV     R0, #FSControl_SelectFS
+         addr    R1, StringROM           ; ADR or ADRL as appropriate
+         SWI     XOS_FSControl           ; select filing system
+@@ -825,7 +825,7 @@
+ 
+         LDR     R12, [R12]
+ 
+-svc_fsredeclare ENTRY   "R0-R3"
++svc_fsredeclare KernelEntry   "R0-R3"
+ 
+         BL      ROMFS_Declare                   ; else redeclare myself
+ 
+@@ -839,7 +839,7 @@
+ ;       R1-R? parameters
+ ;
+ 
+-ROMFS_OSFile ENTRY
++ROMFS_OSFile KernelEntry
+         Debug   fs, "ResourceFS:OS_File"
+         TEQ     R0, #fsfile_Load
+         BEQ     %FT10                   ; load file
+@@ -922,7 +922,7 @@
+ ; in:   R0 = reason code
+ ;
+ 
+-ROMFS_FSFunc ENTRY
++ROMFS_FSFunc KernelEntry
+ 
+         Debug   fs,"FSFunc",R0
+ 
+@@ -1107,7 +1107,7 @@
+ ;       R6 -> special field (irrelevant)
+ ;
+ 
+-ROMFS_Open ENTRY
++ROMFS_Open KernelEntry
+         CMP     R0, #fsopen_Update
+         BHI     NotSupportedError
+         TEQ     R0, #fsopen_ReadOnly
+@@ -1142,7 +1142,7 @@
+ ;     FileSwitch will not call this with R4 > file length, but R4+R3 can be
+ ;
+ 
+-ROMFS_MediaToBuffer ENTRY
++ROMFS_MediaToBuffer KernelEntry
+ 
+         LDR     R14,[R1,#-4]            ; R14 = file length + 4
+         SUB     R14,R14,#4              ; R14 = file length
+@@ -1174,7 +1174,7 @@
+ ;       R6 -> actual filename
+ ;
+ 
+-FindFile ENTRY
++FindFile KernelEntry
+ 
+         BL      FindFileOrDirectory
+         TEQ     R0, #2
+@@ -1182,7 +1182,7 @@
+ 
+         EXIT
+ 
+-FindFileOrDirectory ENTRY
++FindFileOrDirectory KernelEntry
+ 
+         LDRB    r14, [r1]
+         TEQ     r14, #"$"
+@@ -1312,7 +1312,7 @@
+ stk_R2  *       2 * 4           ; stack positions for return
+ stk_R4  *       3 * 4
+ 
+-FindDirEntry ENTRY "R0,R1,R2,R4,R9-R11"
++FindDirEntry KernelEntry "R0,R1,R2,R4,R9-R11"
+ 
+         MOV     R0, R1                          ; R0 -> file name
+ 
+@@ -1393,7 +1393,7 @@
+ ; Out   GT if R10 > R11, or (R10 or R11 is null)
+ ;       LE if R10 <= R11
+ 
+-compare_R10_R11 ENTRY "R1,R2"
++compare_R10_R11 KernelEntry "R1,R2"
+ 
+         Internat_UpperCaseLoad  R2
+ 
+@@ -1425,13 +1425,13 @@
+ ; in:   R1 -> wildcarded pathname
+ ; out:  R1 -> pathname, with "$.", "@.", "%." or "\." removed
+ 
+-skipdollar ENTRY
++skipdollar KernelEntry
+ 
+         LDRB    R14, [R1]
+         CMP     R14, #"$"
+         CMPNE   R14, #"@"
+         CMPNE   R14, #"%"
+-        CMPNE   R14, #"\"
++        CMPNE   R14, #&5C
+         EXIT    NE
+ 
+         LDRB    R14, [R1, #1]
+@@ -1454,7 +1454,7 @@
+ ; NB: new version also matches names whose leading pathnames match the wildcard spec.
+ ;
+ 
+-WildMatch ENTRY "R0-R3"
++WildMatch KernelEntry "R0-R3"
+ 
+         Internat_UpperCaseLoad R10
+ 
+--- a/Messages/s/Messages
++++ b/Messages/s/Messages
+@@ -36,7 +36,7 @@
+ hostvdu SETL    false
+ 
+ 
+-        LEADR   Module_LoadAddr
++        ORG     0 ; position-independent module, offsets relative to header
+ 
+ 
+ ; **************** Module code starts here **********************
+@@ -65,7 +65,7 @@
+ ;
+ 
+ Messages_Init
+-        ENTRY
++        KernelEntry
+         ADR     r0, Messages
+         SWI     XResourceFS_RegisterFiles
+         EXITS
+@@ -77,7 +77,7 @@
+ ;
+ 
+ Messages_Die
+-        ENTRY
++        KernelEntry
+         ADR     r0, Messages
+         SWI     XResourceFS_DeregisterFiles
+         EXIT
+@@ -104,7 +104,7 @@
+ ; Out   r2 called with r0 -> files, r3 -> workspace
+ 
+ svc_desktopstarting
+-        ENTRY "r0-r5"
++        KernelEntry "r0-r5"
+         ADR     r0, Messages
+         MOV     lr, pc                          ; get return address
+         MOV     pc, r2                          ; r2 = address to call
+@@ -117,7 +117,7 @@
+       ]
+ 
+ Messages
+-        BIN     <resdata>
++        BIN     ResourcesData
+         ALIGN
+         DCD     0
+ 

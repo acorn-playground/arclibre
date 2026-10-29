@@ -1,0 +1,44 @@
+; SPDX-License-Identifier: Apache-2.0
+; Copyright 2026 ArcLibre contributors.
+; New ROM wrapper for the ArcLibre desk calculator. It registers the
+; calculator's application files (Resources:$.Apps.!Calc and its tokenised
+; BASIC program) with ResourceFS, as the ROM's other BASIC applications do.
+        AREA |ArcCalc$$Code|, CODE, READONLY
+Base
+        GET Hdr:ListOpts
+        GET Hdr:Macros
+        GET Hdr:System
+        GET Hdr:ModHand
+        GET Hdr:Services
+        GET Hdr:ResourceFS
+        DCD 0,Init-Base,Die-Base,Service-Base
+        DCD Title-Base,Help-Base,0
+        DCD 0,0,0,0                     ; no SWIs
+Title   DCB "!Calc",0
+Help    DCB "!Calc",9,9,"1.00 (ArcLibre, 27 Oct 2026)",0
+        ALIGN
+Init
+        STMFD sp!,{r0,lr}
+        ADR r0,Files
+        SWI XResourceFS_RegisterFiles   ; ignore errors: registered again on ResourceFS start
+        CLRV
+        LDMFD sp!,{r0,pc}
+Die
+        STMFD sp!,{r0,lr}
+        ADR r0,Files
+        SWI XResourceFS_DeregisterFiles ; ignore errors: ResourceFS may already be gone
+        CLRV
+        LDMFD sp!,{r0,pc}
+ ; Service_ResourceFSStarting: R2 is ResourceFS's routine, called with R0 -> files.
+Service
+        TEQ r1,#Service_ResourceFSStarting
+        MOVNE pc,lr
+        STMFD sp!,{r0-r3,lr}
+        ADR r0,Files
+        MOV lr,pc
+        MOV pc,r2
+        LDMFD sp!,{r0-r3,pc}
+Files
+        GET CalcFiles.s
+        DCD 0
+        END

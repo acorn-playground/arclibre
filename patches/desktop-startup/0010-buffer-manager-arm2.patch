@@ -1,0 +1,325 @@
+--- a/src/Buffers/s/Buffers
++++ b/src/Buffers/s/Buffers
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: relocatable ARM2 AsAsm build.
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -89,6 +90,7 @@
+ ;                      but the new interface is much faster.
+ ;
+ 
++                AREA Buffers,CODE,READONLY
+                 GET     Hdr:ListOpts
+                 GET     Hdr:Macros
+                 GET     Hdr:System
+@@ -169,6 +171,7 @@
+ $label          MOV     $reg, pc                ; save PSR in $reg
+                 TST     $reg, #I_bit            ; if interrupts on (bit clear)
+                 TEQEQP  $reg, #I_bit            ; then disable them
++        NOP                                     ; ARM2 processor-state settling
+                 MEND
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+@@ -264,7 +267,7 @@
+                 & help-ModuleStart      ; help string pointer
+                 & 0
+ 
+-                & Module_SWISystemBase + BufferManagerSWI * Module_SWIChunkSize
++                & BufferManagerSWI_Base
+                 & swijump-ModuleStart
+                 & switable-ModuleStart
+                 & 0                     ; no special decoding
+@@ -317,7 +320,7 @@
+ ; into, this saves having to claim it when we append to the buffer.
+ ;
+ 
+-init            ENTRY
++init            KernelEntry
+ 
+                 LDR     r2, [wp]
+                 TEQ     r2, #0                  ; any workspace?
+@@ -354,7 +357,7 @@
+                 STR     r0, Flags               ; mark as callback still pending
+                 EXIT
+ 
+-ClaimVectors    ENTRY
++ClaimVectors    KernelEntry
+                 MOV     r0, #INSV               ; grab insert vector
+                 ADRL    r1, InsVHandler
+                 MOV     r2, wp
+@@ -369,7 +372,7 @@
+                 SWIVC   XOS_Claim
+                 EXIT
+ 
+-ReleaseVectors  ENTRY   "r0"
++ReleaseVectors  KernelEntry   "r0"
+                 MOV     r0, #INSV               ; release remove vector
+                 ADRL    r1, InsVHandler
+                 MOV     r2, wp
+@@ -389,7 +392,7 @@
+ ; so that SWIs can be issued.
+ ;
+ 
+-CallBackRoutine ENTRY   "r1"                    ; issue the service call
++CallBackRoutine KernelEntry   "r1"                    ; issue the service call
+ 
+                 LDR     r1, Flags
+                 BIC     r1, r1, #f_CallBackPending
+@@ -426,7 +429,7 @@
+ ; buffer list) as this will not be removed by the kernel.
+ ;
+ 
+-final           ENTRY
++final           KernelEntry
+ 
+                 LDR     wp, [wp]                ; wp -> workspace
+ 
+@@ -685,7 +688,7 @@
+ ; the internal register function.
+ ;
+ 
+-b_Create        ENTRY   "r0-r4"
++b_Create        KernelEntry   "r0-r4"
+ 
+                 Debug   makebuffer, "create: flags, size, handle:", r0, r1, r2
+ 
+@@ -746,7 +749,7 @@
+ ; using CreateBuffer.
+ ;
+ 
+-b_Remove        ENTRY   "r0,r2"
++b_Remove        KernelEntry   "r0,r2"
+ 
+                 BL      findbuffer              ; r11 -> record if V=0.
+                 BVS     %FT99
+@@ -789,7 +792,7 @@
+ ;
+ ; (Called from SWI and from b_Create)
+ 
+-b_Register      ENTRY   "r0-r3"
++b_Register      KernelEntry   "r0-r3"
+ 
+                 Debug   register, "register: flags, buffer, end, handle:", r0, r1, r2, r3
+ 
+@@ -936,7 +939,7 @@
+ ;
+ ; (Called from SWI and from b_Remove)
+ 
+-b_Deregister    ENTRY   "r0"
++b_Deregister    KernelEntry   "r0"
+ 
+                 Debug   deregister, "deregister: handle:",r0
+                 BL      findbuffer
+@@ -989,7 +992,7 @@
+ ;       new = (old AND r2) EOR r1
+ ;
+ 
+-b_ModifyFlags   ENTRY
++b_ModifyFlags   KernelEntry
+ 
+                 Debug   modflags, "modifyflags: handle, EOR, AND:", r0, r1, r2
+ 
+@@ -998,6 +1001,7 @@
+ 
+                 MOV     lr, pc
+                 TEQP    pc, #SVC_mode + I_bit           ; disable IRQs to do atomic update of flags
++        NOP                                     ; ARM2 processor-state settling
+ 
+                 LDR     r10, [r11, #buffer_Flags]       ; only allow user to modify bottom 8 bits
+                 AND     r2, r10, r2
+@@ -1006,6 +1010,7 @@
+                 STR     r2, [r11, #buffer_Flags]
+ 
+                 TEQP    lr, #0                          ; restore old IRQ status
++        NOP                                     ; ARM2 processor-state settling
+ 
+                 Debug   modflags, "modifyflags: old, new:", r1, r2
+ 
+@@ -1054,7 +1059,7 @@
+ ; and r4 is the same except it is passed in r12.
+ ;
+ 
+-b_Link          ENTRY   "r0-r2"
++b_Link          KernelEntry   "r0-r2"
+ 
+                 Debug   link, "link: buffer, wake up, detach, private, wp:",r0, r1, r2, r3, r4
+ 
+@@ -1129,7 +1134,7 @@
+ ; want to use the buffer, or when their detach SWI has been received.
+ ;
+ 
+-b_UnLink        ENTRY   "r0-r2"
++b_UnLink        KernelEntry   "r0-r2"
+ 
+                 Debug   unlink, "unlink: handle", r0
+ 
+@@ -1190,7 +1195,7 @@
+ ; the buffer record.
+ ;
+ 
+-b_GetInfo       ENTRY
++b_GetInfo       KernelEntry
+ 
+                 Debug   getinfo, "getinfo: handle:", r0
+ 
+@@ -1237,7 +1242,7 @@
+ ; This call can be used to read/modify the threshold value being used.
+ ;
+ 
+-b_Threshold     ENTRY   "r4-r7"
++b_Threshold     KernelEntry   "r4-r7"
+ 
+                 Debug   threshold, "threshold: buffer handle, threshold:", r0, r1
+ 
+@@ -1305,7 +1310,7 @@
+ ;       internal buffer id and with the workspace pointer in r12.
+ ;
+ b_InternalInfo
+-        ENTRY
++        KernelEntry
+ 
+         ADR     r1, ServiceRoutine              ; return service routine address
+         MOV     r2, wp                          ; and workspace pointer
+@@ -1468,6 +1473,7 @@
+         Call    r11, buffer_WakeUpCode
+ 30
+         TEQP    r9, #0                          ; restore old PSR
++        NOP                                     ; ARM2 processor-state settling
+         CLC                                     ; set C => successful insert
+         Pull    "r0,r1,r4-r9,r11,pc"
+ 
+@@ -1487,6 +1493,7 @@
+         Pull    "lr"                            ; restore SVC_lr
+ 50
+         TEQP    r9, #0                          ; restore old mode/IRQs
++        NOP                                     ; ARM2 processor-state settling
+         SEC                                     ; set C => insert failed
+         Pull    "r0,r1,r4-r9,r11,pc"
+ 
+@@ -1593,6 +1600,7 @@
+         Pull    "lr"                            ; restore SVC_lr
+ 85
+         TEQP    r9, #0                          ; restore old CPU mode/IRQs
++        NOP                                     ; ARM2 processor-state settling
+         CMP     r3, #1                          ; C=0 if all done, otherwise C=1
+ 
+         Pull    "r0,r1,r4-r9,r11,pc"
+@@ -1740,6 +1748,7 @@
+         Pull    "lr"                            ; restore SVC_lr
+ 30
+         TEQP    r10, #0                         ; restore old CPU mode/IRQ state
++        NOP                                     ; ARM2 processor-state settling
+         CLC                                     ; C=0 => remove successful
+         Pull    "r1,r4-r11,pc"
+ 
+@@ -1750,6 +1759,7 @@
+         STREQ   r4, [r11, #buffer_Flags]        ; then mark as dormant
+ 
+         TEQP    r10, #0                         ; restore old CPU mode/IRQ state
++        NOP                                     ; ARM2 processor-state settling
+         SEC                                     ; C=1 => remove failed
+         Pull    "r1,r4-r11,pc"
+ 
+@@ -1853,6 +1863,7 @@
+         STRHS   r4, [r11, #buffer_Flags]        ; then mark as dormant
+ 90
+         TEQP    r10, #0                         ; restore old CPU mode/IRQ state
++        NOP                                     ; ARM2 processor-state settling
+         CMP     r3, #1                          ; C=0 if all done, otherwise C=1
+         Pull    "r0,r1,r4-r11,pc"
+ 
+@@ -1932,6 +1943,7 @@
+                 Debug   cnpv,"CnpV called"
+ 
+                 TEQP    r10, #0                 ; restore PSR (need original V and C)
++        NOP                                     ; ARM2 processor-state settling
+                 Pull    "r10"                   ; and r10
+                 ADRVC   lr, CnpVClaim           ; if free/used space then set up stack to munge output on return
+                 STRVC   lr, [sp, #4]
+@@ -2025,6 +2037,7 @@
+         BLHI    SendEmptyingUpCall              ; then issue UpCall
+ 10
+         TEQP    r6, #0                          ; restore old IRQ state
++        NOP                                     ; ARM2 processor-state settling
+         Pull    "r4-r6,r11,pc"
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+@@ -2097,6 +2110,7 @@
+         Pull    "lr"                            ; restore SVC_lr
+ 20
+         TEQP    r9, #0                          ; restore old CPU mode/IRQ state
++        NOP                                     ; ARM2 processor-state settling
+         RSBS    r4, r3, #0                      ; C=1 if no block to return, otherwise C=0
+         Pull    "r4-r9,r11,pc"
+ 
+@@ -2110,7 +2124,7 @@
+ ;
+ ; out:  r4 has b_ThresholdExceeded bit set
+ 
+-SendFillingUpCall ENTRY "r0-r3, r9"
++SendFillingUpCall KernelEntry "r0-r3, r9"
+                 ORR     r4, r4, #b_ThresholdExceeded
+                 STR     r4, [r11, #buffer_Flags]
+                 MOV     r0, #UpCall_BufferFilling
+@@ -2118,6 +2132,7 @@
+                 MOV     r2, #0                  ; indicate filling in r2 as well as in r0
+                 MOV     r3, pc
+                 TEQP    pc, #SVC_mode + I_bit
++        NOP                                     ; ARM2 processor-state settling
+                 MOV     r9, #UpCallV
+                 Push    "lr"
+                 SWI     XOS_CallAVector         ; issue UpCall
+@@ -2137,7 +2152,7 @@
+ ;
+ ; out:  r4 has b_ThresholdExceeded bit clear
+ 
+-SendEmptyingUpCall ENTRY "r0-r3, r9"
++SendEmptyingUpCall KernelEntry "r0-r3, r9"
+                 BIC     r4, r4, #b_ThresholdExceeded
+                 STR     r4, [r11, #buffer_Flags]
+                 MOV     r0, #UpCall_BufferEmptying
+@@ -2145,6 +2160,7 @@
+                 MOV     r2, #-1                 ; indicate emptying in r2 as well as in r0
+                 MOV     r3, pc
+                 TEQP    pc, #SVC_mode + I_bit
++        NOP                                     ; ARM2 processor-state settling
+                 MOV     r9, #UpCallV
+                 Push    "lr"
+                 SWI     XOS_CallAVector         ; issue UpCall
+@@ -2269,7 +2285,7 @@
+ ; Generate an error based on the error token given.  Does not assume that
+ ; the messages file is open.  Will attempt to open it, then look it up.
+ 
+-MakeErrorWithModuleName ENTRY "r1-r7"
++MakeErrorWithModuleName KernelEntry "r1-r7"
+                 ADRL    r4, title
+                 B       MakeErrorEntry
+ 
+--- a/src/Buffers/s/MoveBlock
++++ b/src/Buffers/s/MoveBlock
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: ARM2 AsAsm and explicit processor-state settling.
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -47,7 +48,7 @@
+ mbshftL  RN 11                          ; These two go at end to save a word
+ mbshftR  RN 12                          ; and an extra Pull lr!
+ 
+-MoveBytes ENTRY "r0-r3"
++MoveBytes KernelEntry "r0-r3"
+         TEQ     mbcnt, #0               ; if no bytes to do
+         TEQNE   r1, r2                  ; or in the same place
+         EXITS   EQ                      ; then exit
+@@ -153,7 +154,7 @@
+         BL      MovByt210
+         EXITS
+ 
+-MovByt210 ENTRY "mbshftL, mbshftR"      ; need more registers this section
++MovByt210 KernelEntry "mbshftL, mbshftR"      ; need more registers this section
+ 
+         AND     mbshftR, mbsrcptr, #3   ; Offset
+         BIC     mbsrcptr, mbsrcptr, #3  ; Align src^

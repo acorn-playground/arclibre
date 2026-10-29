@@ -1,0 +1,92 @@
+[
+  {
+    "component": "IIC",
+    "path": "LICENSE",
+    "revision": "3a9726dcc5cf61a5722dbcec9bc52f2468e9e57a",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/IIC.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358,
+    "modified": false
+  },
+  {
+    "component": "IIC",
+    "path": "Makefile",
+    "revision": "3a9726dcc5cf61a5722dbcec9bc52f2468e9e57a",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/IIC.git",
+    "upstream_sha256": "3ceedec7309f0a003bacd69bf7d03991991006164e5ee0573ae2605b88ca25a1",
+    "sha256": "3ceedec7309f0a003bacd69bf7d03991991006164e5ee0573ae2605b88ca25a1",
+    "bytes": 1820,
+    "modified": false
+  },
+  {
+    "component": "IIC",
+    "path": "Resources/UK/Messages",
+    "revision": "3a9726dcc5cf61a5722dbcec9bc52f2468e9e57a",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/IIC.git",
+    "upstream_sha256": "d2ffcfccd1bee7b02acea4b34502128d636f6b58a93d886a0ac792d8a8ff4357",
+    "sha256": "d2ffcfccd1bee7b02acea4b34502128d636f6b58a93d886a0ac792d8a8ff4357",
+    "bytes": 37,
+    "modified": false
+  },
+  {
+    "component": "IIC",
+    "path": "hdr/IIC",
+    "revision": "3a9726dcc5cf61a5722dbcec9bc52f2468e9e57a",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/IIC.git",
+    "upstream_sha256": "d354d8d2d92f5441f5fb399e3de57469be6da8da5984f3a6bc1b0c376413bed6",
+    "sha256": "d354d8d2d92f5441f5fb399e3de57469be6da8da5984f3a6bc1b0c376413bed6",
+    "bytes": 1920,
+    "modified": false
+  },
+  {
+    "component": "IIC",
+    "path": "s/IICMod",
+    "revision": "3a9726dcc5cf61a5722dbcec9bc52f2468e9e57a",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/IIC.git",
+    "upstream_sha256": "3c54fb62d6205df23c262c35aa1ec6d32b3b43b3d8011edbb98d9c1befd1621e",
+    "sha256": "a8cd7e879dd9190e5242b69ae97354cc7f316ec6932180cfaaeb2507e1c5e4ea",
+    "bytes": 16106,
+    "modified": true
+  },
+  {
+    "component": "RTCAdjust",
+    "path": "LICENSE",
+    "revision": "a0f37cd91cdd45e99d1643c77512a76b0f875d0e",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/RTCAdjust.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358,
+    "modified": false
+  },
+  {
+    "component": "RTCAdjust",
+    "path": "Makefile",
+    "revision": "a0f37cd91cdd45e99d1643c77512a76b0f875d0e",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/RTCAdjust.git",
+    "upstream_sha256": "f927466961e740a0aa5409c1af00eec2ee08f3ae0aca209eb5f4935a69f65eb6",
+    "sha256": "f927466961e740a0aa5409c1af00eec2ee08f3ae0aca209eb5f4935a69f65eb6",
+    "bytes": 1707,
+    "modified": false
+  },
+  {
+    "component": "RTCAdjust",
+    "path": "Resources/UK/Messages",
+    "revision": "a0f37cd91cdd45e99d1643c77512a76b0f875d0e",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/RTCAdjust.git",
+    "upstream_sha256": "e60e33ef05b47382708ec90392d22d0bf35316cf6096191db39c55ace3726a9e",
+    "sha256": "e60e33ef05b47382708ec90392d22d0bf35316cf6096191db39c55ace3726a9e",
+    "bytes": 51,
+    "modified": false
+  },
+  {
+    "component": "RTCAdjust",
+    "path": "s/RTC",
+    "revision": "a0f37cd91cdd45e99d1643c77512a76b0f875d0e",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/RTCAdjust.git",
+    "upstream_sha256": "596bdda142fcd4b2a9621717c86521023d2a1220008faca9b6b87775016235c3",
+    "sha256": "e0f352d32a7336f26f0e777aa9f2171dbdbc01094ba2f58622cf7d2626e59359",
+    "bytes": 19053,
+    "modified": true
+  }
+]

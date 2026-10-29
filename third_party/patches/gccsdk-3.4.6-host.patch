@@ -1,0 +1,122 @@
+--- a/gcc/configure.in
++++ b/gcc/configure.in
+@@ -197,6 +197,9 @@
+ changequote([,])dnl
+ 	cpu_type="I386"
+ 	;;
++  aarch64-*)
++        cpu_type="AARCH64"
++        ;;
+   mips-*)
+         cpu_type="MIPS"
+         ;;
+--- a/gcc/gcc/gcc/config/arm/arm-protos.h
++++ b/gcc/gcc/gcc/config/arm/arm-protos.h
+@@ -155,6 +155,7 @@
+ extern rtx aof_pic_entry (rtx, int);
+ extern char *aof_text_section (void);
+ extern char *aof_data_section (void);
++extern char *aof_rodata_section (void);
+ extern void aof_add_import (const char *);
+ extern void aof_delete_import (const char *);
+ extern void zero_init_section (void);
+--- a/gcc/gcc/gcc/expr.c
++++ b/gcc/gcc/gcc/expr.c
+@@ -134,7 +134,7 @@
+ static rtx enqueue_insn (rtx, rtx);
+ static unsigned HOST_WIDE_INT move_by_pieces_ninsns (unsigned HOST_WIDE_INT,
+ 						     unsigned int);
+-static void move_by_pieces_1 (rtx (*) (rtx, ...), enum machine_mode,
++static void move_by_pieces_1 (insn_gen_fn, enum machine_mode,
+ 			      struct move_by_pieces *);
+ static bool block_move_libcall_safe_for_call_parm (void);
+ static bool emit_block_move_via_movstr (rtx, rtx, rtx, unsigned);
+@@ -144,7 +144,7 @@
+ static rtx clear_by_pieces_1 (void *, HOST_WIDE_INT, enum machine_mode);
+ static void clear_by_pieces (rtx, unsigned HOST_WIDE_INT, unsigned int);
+ static void store_by_pieces_1 (struct store_by_pieces *, unsigned int);
+-static void store_by_pieces_2 (rtx (*) (rtx, ...), enum machine_mode,
++static void store_by_pieces_2 (insn_gen_fn, enum machine_mode,
+ 			       struct store_by_pieces *);
+ static bool clear_storage_via_clrstr (rtx, rtx, unsigned);
+ static rtx clear_storage_via_libcall (rtx, rtx);
+@@ -1257,7 +1257,7 @@
+    to make a move insn for that mode.  DATA has all the other info.  */
+ 
+ static void
+-move_by_pieces_1 (rtx (*genfun) (rtx, ...), enum machine_mode mode,
++move_by_pieces_1 (insn_gen_fn genfun, enum machine_mode mode,
+ 		  struct move_by_pieces *data)
+ {
+   unsigned int size = GET_MODE_SIZE (mode);
+@@ -2533,7 +2533,7 @@
+    to make a move insn for that mode.  DATA has all the other info.  */
+ 
+ static void
+-store_by_pieces_2 (rtx (*genfun) (rtx, ...), enum machine_mode mode,
++store_by_pieces_2 (insn_gen_fn genfun, enum machine_mode mode,
+ 		   struct store_by_pieces *data)
+ {
+   unsigned int size = GET_MODE_SIZE (mode);
+--- a/gcc/gcc/gcc/gengtype.c
++++ b/gcc/gcc/gcc/gengtype.c
+@@ -1123,6 +1123,8 @@
+       const char * s2;
+       int l1;
+       int l2;
++      if ((size_t) (basename - f) < strlen (lang_dir_names [i]) + 1)
++        continue;
+       s1 = basename - strlen (lang_dir_names [i]) - 1;
+       s2 = lang_dir_names [i];
+       l1 = strlen (s1);
+--- a/gcc/gcc/gcc/recog.h
++++ b/gcc/gcc/gcc/recog.h
+@@ -213,7 +213,10 @@
+ 
+ typedef int (*insn_operand_predicate_fn) (rtx, enum machine_mode);
+ typedef const char * (*insn_output_fn) (rtx *, rtx);
+-typedef rtx (*insn_gen_fn) (rtx, ...);
++/* Generated functions have fixed, differing arities. They are not variadic.
++   Darwin ARM64 passes variadic arguments on the stack: preserve the fixed-call
++   convention with this C89 unprototyped dispatch pointer. */
++typedef rtx (*insn_gen_fn) ();
+ 
+ struct insn_operand_data
+ {
+--- a/gcc/riscos-aof/as/Makefile
++++ b/gcc/riscos-aof/as/Makefile
+@@ -9,7 +9,7 @@
+ endif
+ 
+ INCLUDES = -I. -I../../
+-CFLAGS += -W -Werror
++CFLAGS += -W -Wno-error
+ 
+ asobjdir = $(objdir)/riscos-aof/as/$(STAGE)
+ 
+--- a/gcc/riscos-aof/Makefile
++++ b/gcc/riscos-aof/Makefile
+@@ -12,11 +12,10 @@
+ 
+ export bin_dir gcc_bin_dir
+ 
+-all:	as drlink infozip ld nm libfile decaof cmunge resgen
++all:	as drlink infozip ld nm libfile decaof resgen
+ 
+ riscos-dist:
+ 	$(MAKE) -C as riscos-dist
+-	$(MAKE) -C cmunge riscos-dist
+ 	$(MAKE) -C decaof riscos-dist
+ 	$(MAKE) -C drlink riscos-dist
+ 	$(MAKE) -C infozip riscos-dist
+@@ -33,9 +32,8 @@
+ .PHONY: libfile
+ .PHONY: nm
+ .PHONY: decaof
+-.PHONY: cmunge
+ .PHONY: resgen
+ 
+-as drlink infozip ld libfile nm decaof cmunge resgen:
++as drlink infozip ld libfile nm decaof resgen:
+ 	mkdir -p $(objdir)/riscos-aof/$@/$(STAGE)
+ 	$(MAKE) -C $@ "STAGE=$(STAGE)"

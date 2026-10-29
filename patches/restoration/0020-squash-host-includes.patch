@@ -1,0 +1,20 @@
+--- a/Squash/c/cssr
++++ b/Squash/c/cssr
+@@ -36,7 +36,6 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+-#include "kernel.h"
+ 
+ #include "debug.h"
+ #include "cssr.h"
+--- a/Squash/c/zssr
++++ b/Squash/c/zssr
+@@ -35,7 +35,6 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+-#include "kernel.h"
+ 
+ #include "debug.h"
+ #include "zssr.h"

@@ -1,0 +1,34 @@
+[
+  {
+    "component": "RamFS",
+    "path": "src/RamFS/Resources/UK/Messages",
+    "resource": "Resources.RAMFS.Messages",
+    "filetype": 4095,
+    "sha256": "64b0b0e13c8e9bafee1e2282815bbbece808db4e456b60f944dc36017f982f05",
+    "license_basis": "Pinned component Apache-2.0; no separate notice in selected messages/templates"
+  },
+  {
+    "component": "RAMFSFiler",
+    "path": "src/RAMFSFiler/Resources/UK/Messages",
+    "resource": "Resources.RAMFSFiler.Messages",
+    "filetype": 4095,
+    "sha256": "d347619f5b034a97779c39092b07928bcdf3bb65708828b219f9eaebbb57c1ec",
+    "license_basis": "Pinned component Apache-2.0; no separate notice in selected messages/templates"
+  },
+  {
+    "component": "Free",
+    "path": "src/Free/Resources/UK/Messages",
+    "resource": "Resources.Free.Messages",
+    "filetype": 4095,
+    "sha256": "c22c86452651f757fe8caeb3143ef8cb5c9bac18f377d4756f44a2845bd56ca7",
+    "license_basis": "Pinned component Apache-2.0; no separate notice in selected messages/templates"
+  },
+  {
+    "component": "Free",
+    "path": "src/Free/Resources/UK/Template2D,fec",
+    "resource": "Resources.Free.Templates",
+    "filetype": 4076,
+    "sha256": "4657091df03627581a9f939196e0a047148ec8cd794cf0de8931520c008563be",
+    "license_basis": "Pinned component Apache-2.0; no separate notice in selected messages/templates"
+  }
+]

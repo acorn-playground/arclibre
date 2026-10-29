@@ -1,0 +1,115 @@
+--- a/src/SpriteUtil/s/MsgCode
++++ b/src/SpriteUtil/s/MsgCode
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: explicit relocatable area and workspace addressing.
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -46,7 +47,7 @@
+ 
+         LDR     r0, message_file_open
+         TEQ     r0, #0
+-        ADRNE   r0, message_file_block
++        ADDNE   r0, r12, #:INDEX:message_file_block
+         SWINE   XMessageTrans_CloseFile
+         MOV     r0, #0
+         STR     r0, message_file_open
+@@ -74,7 +75,7 @@
+ ; Out   r7-r11 preserved (always called last in *command handlers)
+ ;       All other registers may be trashed
+ 
+-gs_lookup_print_string_four ENTRY "r7"
++gs_lookup_print_string_four Entry "r7"
+         BL      open_message_file_workspace
+         EXIT    VS
+ 
+@@ -97,7 +98,7 @@
+ 
+ ; r2 -> block, r3 = size of block as required by MessageTrans
+ 
+-        ADR     r0, message_file_block          ; Message file handle
++        ADD   r0, r12, #:INDEX:message_file_block          ; Message file handle
+         SWI     XMessageTrans_GSLookup
+         MOVVS   r6, r0                          ; Squirrel error away
+         BVS     free_block
+@@ -129,7 +130,7 @@
+         ALIGN
+ 
+ 
+-open_message_file_workspace ENTRY "r1-r3"
++open_message_file_workspace Entry "r1-r3"
+         MOV     r6, r0                          ; Save message token
+         LDR     r2, [r12]                       ; Got workspace yet?
+         TEQ     r2, #0
+@@ -151,7 +152,7 @@
+         TEQ     r1, #0
+         EXIT    NE                              ; R0 has NOT been trashed here
+ open_file
+-        ADR     r0, message_file_block
++        ADD   r0, r12, #:INDEX:message_file_block
+         ADR     r1, message_filename
+         MOV     r2, #0
+         SWI     XMessageTrans_OpenFile
+--- a/src/SpriteUtil/s/SpriteUtil
++++ b/src/SpriteUtil/s/SpriteUtil
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: explicit relocatable area and workspace addressing.
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -63,7 +64,7 @@
+ CR      *       13
+  ]
+ 
+-        LEADR   Module_LoadAddr
++        AREA    SpriteUtils, CODE, READONLY
+ 
+ ; *************************** Module starts here ******************************
+ 
+@@ -129,7 +130,7 @@
+ 
+ 50 ; Common entry point
+ 
+-        ENTRY
++        Entry
+         MOV     r2, r0                  ; Pointer to name
+         MOV     r0, r6                  ; rc
+         SWI     XOS_SpriteOp
+@@ -212,7 +213,7 @@
+ 
+ 50 ; Common entry point
+ 
+-        ENTRY
++        Entry
+         BL      TwoNamePtrs
+         MOV     r0, r6
+         SWI     XOS_SpriteOp
+@@ -228,7 +229,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; In    r0-r6 trashable
+ 
+-SDelete_Code ENTRY
++SDelete_Code Entry
+ 
+         MOV R2,R0               ;Pointer to name
+ 
+@@ -256,7 +257,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; In    r0-r6 trashable
+ 
+-SInfo_Code ENTRY
++SInfo_Code Entry
+         MOV     r0, #SpriteReason_ReadAreaCB
+         SWI     XOS_SpriteOp
+         BVC     SInfo_Cod10
+@@ -351,7 +352,7 @@
+ 
+ ; Out   r0 corrupt
+ 
+-PrintR0Decimal ENTRY "r1, r2"
++PrintR0Decimal Entry "r1, r2"
+ 
+         SUB     sp, sp, #20             ; Leave 20 bytes as a buffer (more than
+                                         ; enough)

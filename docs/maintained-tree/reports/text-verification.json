@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "capture": "banner",
+      "display_pixels": 163840,
+      "font_bytes": 1792,
+      "ascii_glyphs": 0
+    },
+    {
+      "capture": "text-fixture",
+      "display_pixels": 163840,
+      "font_bytes": 1792,
+      "ascii_glyphs": 95
+    }
+  ],
+  "public_international_latin1_changes": [
+    {
+      "character": 252,
+      "row": 2,
+      "before": 0,
+      "after": 102
+    }
+  ],
+  "pre_module_original_font_preserved": true
+}

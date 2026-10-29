@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "scope": "Wrong message number rejected by the independent classic client",
+  "rom_sha256": "bb9d384592b076b630c95ac174ca1985a97fe18dc70025985bae80f34a3063cf",
+  "negative_rom_sha256": "c7dec977361075cbc49e8bd1240a9972f6edce59dbf22d64690ce67e4eb8e8b4",
+  "changed_word_address": 59879808,
+  "old_message": 262336,
+  "negative_message": 524480,
+  "expected_failure": "classic menu client assertion failure"
+}

@@ -1,0 +1,92 @@
+{
+  "status": "PASS",
+  "rom_sha256": "2e0fda2cd4217ad2d7185c77218e8484bd0a947ce6b984a9891a0ce68a73453c",
+  "cause": "Unconditional Debugger.resume at a timed slice boundary suppressed an as-yet-unobserved breakpoint at the current PC",
+  "fix": "Resume only when actually stopped; preserve all exception accounting assertions",
+  "trials": [
+    {
+      "trial": 1,
+      "before_observed": 22054,
+      "after_observed": 22055,
+      "counter": 22055,
+      "difference": [
+        {
+          "operation": "insert",
+          "old_range": [
+            12781,
+            12781
+          ],
+          "new_range": [
+            12781,
+            12782
+          ],
+          "events": [
+            {
+              "component": "SharedCLib",
+              "pc": 60154476,
+              "psr": 671088643,
+              "word": 3996127504
+            }
+          ]
+        }
+      ],
+      "other_observations_and_saved_disc_and_screenshots_identical": true
+    },
+    {
+      "trial": 2,
+      "before_observed": 22054,
+      "after_observed": 22055,
+      "counter": 22055,
+      "difference": [
+        {
+          "operation": "insert",
+          "old_range": [
+            12781,
+            12781
+          ],
+          "new_range": [
+            12781,
+            12782
+          ],
+          "events": [
+            {
+              "component": "SharedCLib",
+              "pc": 60154476,
+              "psr": 671088643,
+              "word": 3996127504
+            }
+          ]
+        }
+      ],
+      "other_observations_and_saved_disc_and_screenshots_identical": true
+    },
+    {
+      "trial": 3,
+      "before_observed": 22054,
+      "after_observed": 22055,
+      "counter": 22055,
+      "difference": [
+        {
+          "operation": "insert",
+          "old_range": [
+            12781,
+            12781
+          ],
+          "new_range": [
+            12781,
+            12782
+          ],
+          "events": [
+            {
+              "component": "SharedCLib",
+              "pc": 60154476,
+              "psr": 671088643,
+              "word": 3996127504
+            }
+          ]
+        }
+      ],
+      "other_observations_and_saved_disc_and_screenshots_identical": true
+    }
+  ]
+}

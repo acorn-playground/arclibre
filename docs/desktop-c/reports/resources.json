@@ -1,0 +1,26 @@
+[
+  {
+    "name": "CLib.Messages",
+    "source": "src/RISC_OSLib/clib/Resources/UK/Messages",
+    "sha256": "ad496a149662c11ee01e059d8dac7a8e0627ed43ccd9fbfd56779e4d2f2ff8b9",
+    "filetype": 4095
+  },
+  {
+    "name": "RISC_OSLib.Messages",
+    "source": "src/RISC_OSLib/rlib/Resources/UK/Messages",
+    "sha256": "84509cd6bd07dfa526790553196175f18f3c80bb07e8d59bc398e97b09674d80",
+    "filetype": 4095
+  },
+  {
+    "name": "FilerAct.Messages",
+    "source": "src/FilerAct/Resources/UK/Messages",
+    "sha256": "647d3d6727480a687f454714b85d1428a50498b803c1dbf8f5fb5c97a8060960",
+    "filetype": 4095
+  },
+  {
+    "name": "FilerAct.Templates",
+    "source": "src/FilerAct/Resources/UK/Templates,fec",
+    "sha256": "281ea91f40d4561945604b611fc10222cf02f77ddd965409beb6e5e71bbf731a",
+    "filetype": 4076
+  }
+]

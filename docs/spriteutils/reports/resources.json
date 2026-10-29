@@ -1,0 +1,8 @@
+[
+  {
+    "component": "SpriteUtil",
+    "path": "src/SpriteUtil/Resources/UK/Messages",
+    "sha256": "8f5d0562d2b4c32a5be7ae58692faf2577e71967d317f4940b68bca2da784804",
+    "license_basis": "Pinned component Apache-2.0; no separate native-asset notice"
+  }
+]

@@ -1,0 +1,6909 @@
+{
+  "status": "PASS",
+  "rom_sha256": "c5855025f912c86f056e5a6e0b6979866022e3eba8be210290e956f4969fd9a3",
+  "trials": 3,
+  "independent_cold_boots": 6,
+  "identical_repeats": true,
+  "original_edit_and_apps": true,
+  "real_st506_controller": true,
+  "no_guest_code_injection": true,
+  "emulator_unchanged": true,
+  "save_then_power_off_then_desktop_double_click": true,
+  "actual_edit_buffer_and_on_disc_bytes_match": true,
+  "saved_cmos_reloaded_without_overrides": true,
+  "payload_sha256": "a4f01ed6cb3dd1f556a41a0611d517e403f20ef58fc166075cec4cad27de05fd",
+  "result": {
+    "media": {
+      "sha256": "3760aa788845cfd5f6b9079d15edb6abba71ac9730f719008ffa0e37ba28ce12",
+      "files": {
+        "Document": {
+          "load": 4294967112,
+          "execute": 1327162783,
+          "length": 83,
+          "address": 15,
+          "attributes": 3
+        },
+        "ReadMe": {
+          "load": 4294967091,
+          "execute": 1855547904,
+          "length": 35,
+          "address": 14,
+          "attributes": 3
+        }
+      },
+      "bytes": 20152320,
+      "free_bytes": 20148224,
+      "checksums_and_allocation_accounting": true
+    },
+    "phases": {
+      "write": {
+        "result": {
+          "cmos": [
+            0,
+            64,
+            7,
+            0,
+            0,
+            129,
+            102,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            118,
+            2,
+            69,
+            12,
+            111,
+            64,
+            0,
+            0,
+            0,
+            44,
+            56,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            16,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            234,
+            8,
+            0,
+            254,
+            0,
+            235,
+            0,
+            8,
+            0,
+            0,
+            0,
+            0,
+            16,
+            80,
+            32,
+            8,
+            10,
+            44,
+            128,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            3,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            98,
+            19,
+            0,
+            0,
+            4,
+            253,
+            16,
+            9,
+            255,
+            1,
+            96,
+            0,
+            17,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            240,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            10,
+            1,
+            0,
+            0,
+            2,
+            0,
+            0
+          ],
+          "errors": [],
+          "exceptions": [
+            2,
+            682,
+            252015,
+            0,
+            0,
+            0,
+            73126,
+            0
+          ],
+          "generated_sprite_code": [
+            {
+              "pc": 25221412,
+              "word": 3834773508
+            },
+            {
+              "pc": 25221412,
+              "word": 3852316736
+            },
+            {
+              "pc": 25221416,
+              "word": 3791654927
+            },
+            {
+              "pc": 25221416,
+              "word": 3885150219
+            },
+            {
+              "pc": 25221420,
+              "word": 3785359904
+            },
+            {
+              "pc": 25221420,
+              "word": 3786453547
+            },
+            {
+              "pc": 25221424,
+              "word": 597737472
+            },
+            {
+              "pc": 25221424,
+              "word": 3816816898
+            },
+            {
+              "pc": 25221428,
+              "word": 866173455
+            },
+            {
+              "pc": 25221428,
+              "word": 3785420814
+            },
+            {
+              "pc": 25221432,
+              "word": 3834773508
+            },
+            {
+              "pc": 25221432,
+              "word": 3852312636
+            },
+            {
+              "pc": 25221436,
+              "word": 3791654927
+            },
+            {
+              "pc": 25221436,
+              "word": 3811639296
+            },
+            {
+              "pc": 25221440,
+              "word": 60817408
+            },
+            {
+              "pc": 25221440,
+              "word": 3785359904
+            },
+            {
+              "pc": 25221444,
+              "word": 345112580
+            },
+            {
+              "pc": 25221444,
+              "word": 3816816898
+            },
+            {
+              "pc": 25221448,
+              "word": 295698736
+            },
+            {
+              "pc": 25221448,
+              "word": 3785420814
+            },
+            {
+              "pc": 25221452,
+              "word": 329310209
+            },
+            {
+              "pc": 25221452,
+              "word": 3852312636
+            },
+            {
+              "pc": 25221456,
+              "word": 293601662
+            },
+            {
+              "pc": 25221456,
+              "word": 3811639296
+            },
+            {
+              "pc": 25221460,
+              "word": 60817408
+            },
+            {
+              "pc": 25221460,
+              "word": 3762917383
+            },
+            {
+              "pc": 25221464,
+              "word": 362655808
+            },
+            {
+              "pc": 25221464,
+              "word": 3767111687
+            },
+            {
+              "pc": 25221468,
+              "word": 395489291
+            },
+            {
+              "pc": 25221468,
+              "word": 3791654927
+            },
+            {
+              "pc": 25221472,
+              "word": 295743803
+            },
+            {
+              "pc": 25221472,
+              "word": 3786408480
+            },
+            {
+              "pc": 25221476,
+              "word": 201326574
+            },
+            {
+              "pc": 25221476,
+              "word": 345112580
+            },
+            {
+              "pc": 25221480,
+              "word": 295698736
+            },
+            {
+              "pc": 25221480,
+              "word": 3889827841
+            },
+            {
+              "pc": 25221484,
+              "word": 329310209
+            },
+            {
+              "pc": 25221484,
+              "word": 3785364065
+            },
+            {
+              "pc": 25221488,
+              "word": 293601662
+            },
+            {
+              "pc": 25221488,
+              "word": 3763965958
+            },
+            {
+              "pc": 25221492,
+              "word": 989855735
+            },
+            {
+              "pc": 25221492,
+              "word": 3762917383
+            },
+            {
+              "pc": 25221496,
+              "word": 3767111687
+            },
+            {
+              "pc": 25221496,
+              "word": 3785380389
+            },
+            {
+              "pc": 25221500,
+              "word": 3784393252
+            },
+            {
+              "pc": 25221500,
+              "word": 3786453547
+            },
+            {
+              "pc": 25221504,
+              "word": 597737472
+            },
+            {
+              "pc": 25221504,
+              "word": 704643092
+            },
+            {
+              "pc": 25221508,
+              "word": 866173455
+            },
+            {
+              "pc": 25221508,
+              "word": 3797450753
+            },
+            {
+              "pc": 25221512,
+              "word": 3405774840
+            },
+            {
+              "pc": 25221512,
+              "word": 3791654927
+            },
+            {
+              "pc": 25221516,
+              "word": 3786408480
+            },
+            {
+              "pc": 25221516,
+              "word": 3852333132
+            },
+            {
+              "pc": 25221520,
+              "word": 201326563
+            },
+            {
+              "pc": 25221524,
+              "word": 3889827841
+            },
+            {
+              "pc": 25221528,
+              "word": 3785364065
+            },
+            {
+              "pc": 25221532,
+              "word": 3763965958
+            },
+            {
+              "pc": 25221536,
+              "word": 989855732
+            },
+            {
+              "pc": 25221540,
+              "word": 3784069669
+            },
+            {
+              "pc": 25221544,
+              "word": 3784393252
+            },
+            {
+              "pc": 25221548,
+              "word": 704643092
+            },
+            {
+              "pc": 25221552,
+              "word": 3797450753
+            },
+            {
+              "pc": 25221556,
+              "word": 3405774840
+            },
+            {
+              "pc": 25221560,
+              "word": 3852333132
+            },
+            {
+              "pc": 25221592,
+              "word": 3787735045
+            },
+            {
+              "pc": 25221596,
+              "word": 3852328988
+            },
+            {
+              "pc": 25221600,
+              "word": 3814588417
+            },
+            {
+              "pc": 25221604,
+              "word": 3405774825
+            },
+            {
+              "pc": 25221608,
+              "word": 3851673600
+            },
+            {
+              "pc": 25221612,
+              "word": 3759071237
+            },
+            {
+              "pc": 25221616,
+              "word": 3784237060
+            },
+            {
+              "pc": 25221620,
+              "word": 3833847812
+            },
+            {
+              "pc": 25221624,
+              "word": 3818930434
+            },
+            {
+              "pc": 25221628,
+              "word": 3818934272
+            },
+            {
+              "pc": 25221632,
+              "word": 3797450753
+            },
+            {
+              "pc": 25221636,
+              "word": 3405774809
+            },
+            {
+              "pc": 25221636,
+              "word": 3787735045
+            },
+            {
+              "pc": 25221640,
+              "word": 3852328988
+            },
+            {
+              "pc": 25221640,
+              "word": 3852333132
+            },
+            {
+              "pc": 25221644,
+              "word": 3814588417
+            },
+            {
+              "pc": 25221648,
+              "word": 3405774825
+            },
+            {
+              "pc": 25221652,
+              "word": 3851673600
+            },
+            {
+              "pc": 25221656,
+              "word": 3759071237
+            },
+            {
+              "pc": 25221660,
+              "word": 3784237060
+            },
+            {
+              "pc": 25221664,
+              "word": 3833847812
+            },
+            {
+              "pc": 25221668,
+              "word": 3818930434
+            },
+            {
+              "pc": 25221672,
+              "word": 3818934272
+            },
+            {
+              "pc": 25221676,
+              "word": 3797450753
+            },
+            {
+              "pc": 25221680,
+              "word": 3405774809
+            },
+            {
+              "pc": 25221684,
+              "word": 3852333132
+            }
+          ],
+          "initialisations": [
+            {
+              "component": "Desktop",
+              "name": "Desktop",
+              "psr": 1610612736,
+              "version": 300
+            },
+            {
+              "component": "Filer",
+              "name": "Filer",
+              "psr": 1073741824,
+              "version": 300
+            },
+            {
+              "component": "ADFSFiler",
+              "name": "ADFS Filer",
+              "psr": 1610612736,
+              "version": 300
+            },
+            {
+              "component": "ResFiler",
+              "name": "Resource Filer",
+              "psr": 1610612736,
+              "version": 300
+            },
+            {
+              "component": "Switcher",
+              "name": "Task Manager",
+              "psr": 1610612736,
+              "version": 300
+            },
+            {
+              "component": "Pinboard",
+              "name": "Pinboard",
+              "psr": 1610612736,
+              "version": 300
+            },
+            {
+              "component": "Kernel",
+              "name": "Edit",
+              "psr": 536870912,
+              "version": 300
+            }
+          ],
+          "phase": "write",
+          "rom_sha256": "c5855025f912c86f056e5a6e0b6979866022e3eba8be210290e956f4969fd9a3",
+          "sprite_vector_calls": 409,
+          "status": "PASS",
+          "task_count": 6,
+          "text_buffers": [
+            {
+              "buffer": 81928,
+              "gap_end": 50,
+              "gap_start": 0,
+              "structure": 68856,
+              "text": "",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 49,
+              "gap_start": 0,
+              "structure": 68856,
+              "text": "A",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 49,
+              "gap_start": 1,
+              "structure": 68856,
+              "text": "Ar",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 49,
+              "gap_start": 2,
+              "structure": 68856,
+              "text": "Arc",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 49,
+              "gap_start": 3,
+              "structure": 68856,
+              "text": "ArcL",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 49,
+              "gap_start": 4,
+              "structure": 68856,
+              "text": "ArcLi",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 49,
+              "gap_start": 5,
+              "structure": 68856,
+              "text": "ArcLib",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 49,
+              "gap_start": 6,
+              "structure": 68856,
+              "text": "ArcLibr",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 49,
+              "gap_start": 7,
+              "structure": 68856,
+              "text": "ArcLibre",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 49,
+              "gap_start": 8,
+              "structure": 68856,
+              "text": "ArcLibre ",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 49,
+              "gap_start": 9,
+              "structure": 68856,
+              "text": "ArcLibre d",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 49,
+              "gap_start": 10,
+              "structure": 68856,
+              "text": "ArcLibre do",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 49,
+              "gap_start": 11,
+              "structure": 68856,
+              "text": "ArcLibre doc",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 49,
+              "gap_start": 12,
+              "structure": 68856,
+              "text": "ArcLibre docu",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 49,
+              "gap_start": 13,
+              "structure": 68856,
+              "text": "ArcLibre docum",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 49,
+              "gap_start": 14,
+              "structure": 68856,
+              "text": "ArcLibre docume",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 49,
+              "gap_start": 15,
+              "structure": 68856,
+              "text": "ArcLibre documen",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 49,
+              "gap_start": 16,
+              "structure": 68856,
+              "text": "ArcLibre document",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 49,
+              "gap_start": 17,
+              "structure": 68856,
+              "text": "ArcLibre document ",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 49,
+              "gap_start": 18,
+              "structure": 68856,
+              "text": "ArcLibre document s",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 49,
+              "gap_start": 19,
+              "structure": 68856,
+              "text": "ArcLibre document sa",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 49,
+              "gap_start": 20,
+              "structure": 68856,
+              "text": "ArcLibre document sav",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 49,
+              "gap_start": 21,
+              "structure": 68856,
+              "text": "ArcLibre document save",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 49,
+              "gap_start": 22,
+              "structure": 68856,
+              "text": "ArcLibre document saved",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 49,
+              "gap_start": 23,
+              "structure": 68856,
+              "text": "ArcLibre document saved ",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 49,
+              "gap_start": 24,
+              "structure": 68856,
+              "text": "ArcLibre document saved b",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 49,
+              "gap_start": 25,
+              "structure": 68856,
+              "text": "ArcLibre document saved by",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 49,
+              "gap_start": 26,
+              "structure": 68856,
+              "text": "ArcLibre document saved by ",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 49,
+              "gap_start": 27,
+              "structure": 68856,
+              "text": "ArcLibre document saved by t",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 49,
+              "gap_start": 28,
+              "structure": 68856,
+              "text": "ArcLibre document saved by th",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 49,
+              "gap_start": 29,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 49,
+              "gap_start": 30,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the ",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 49,
+              "gap_start": 31,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the o",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 49,
+              "gap_start": 32,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the or",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 49,
+              "gap_start": 33,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the ori",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 49,
+              "gap_start": 34,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the orig",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 49,
+              "gap_start": 35,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the origi",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 49,
+              "gap_start": 36,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the origin",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 49,
+              "gap_start": 37,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the origina",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 49,
+              "gap_start": 38,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the original",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 49,
+              "gap_start": 39,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the original ",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 49,
+              "gap_start": 40,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the original E",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 49,
+              "gap_start": 41,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the original Ed",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 49,
+              "gap_start": 42,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the original Edi",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 49,
+              "gap_start": 43,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the original Edit",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 49,
+              "gap_start": 44,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the original Edit.",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 50,
+              "gap_start": 46,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the original Edit.\n",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 49,
+              "gap_start": 46,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the original Edit.\nS",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 49,
+              "gap_start": 47,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the original Edit.\nSe",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 49,
+              "gap_start": 48,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the original Edit.\nSec",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 49,
+              "gap_start": 49,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the original Edit.\nSeco",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 61,
+              "gap_start": 50,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the original Edit.\nSecon",
+              "text_start": 0,
+              "top": 62
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 61,
+              "gap_start": 51,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the original Edit.\nSecond",
+              "text_start": 0,
+              "top": 62
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 61,
+              "gap_start": 52,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the original Edit.\nSecond ",
+              "text_start": 0,
+              "top": 62
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 61,
+              "gap_start": 53,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the original Edit.\nSecond l",
+              "text_start": 0,
+              "top": 62
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 61,
+              "gap_start": 54,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the original Edit.\nSecond li",
+              "text_start": 0,
+              "top": 62
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 61,
+              "gap_start": 55,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the original Edit.\nSecond lin",
+              "text_start": 0,
+              "top": 62
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 61,
+              "gap_start": 56,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the original Edit.\nSecond line",
+              "text_start": 0,
+              "top": 62
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 61,
+              "gap_start": 57,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the original Edit.\nSecond line ",
+              "text_start": 0,
+              "top": 62
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 61,
+              "gap_start": 58,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the original Edit.\nSecond line s",
+              "text_start": 0,
+              "top": 62
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 61,
+              "gap_start": 59,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the original Edit.\nSecond line su",
+              "text_start": 0,
+              "top": 62
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 61,
+              "gap_start": 60,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the original Edit.\nSecond line sur",
+              "text_start": 0,
+              "top": 62
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 61,
+              "gap_start": 61,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the original Edit.\nSecond line surv",
+              "text_start": 0,
+              "top": 62
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 76,
+              "gap_start": 62,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the original Edit.\nSecond line survi",
+              "text_start": 0,
+              "top": 77
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 76,
+              "gap_start": 63,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the original Edit.\nSecond line surviv",
+              "text_start": 0,
+              "top": 77
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 76,
+              "gap_start": 64,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the original Edit.\nSecond line survive",
+              "text_start": 0,
+              "top": 77
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 76,
+              "gap_start": 65,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the original Edit.\nSecond line survives",
+              "text_start": 0,
+              "top": 77
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 76,
+              "gap_start": 66,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the original Edit.\nSecond line survives ",
+              "text_start": 0,
+              "top": 77
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 76,
+              "gap_start": 67,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the original Edit.\nSecond line survives a",
+              "text_start": 0,
+              "top": 77
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 76,
+              "gap_start": 68,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the original Edit.\nSecond line survives a ",
+              "text_start": 0,
+              "top": 77
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 76,
+              "gap_start": 69,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the original Edit.\nSecond line survives a c",
+              "text_start": 0,
+              "top": 77
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 76,
+              "gap_start": 70,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the original Edit.\nSecond line survives a co",
+              "text_start": 0,
+              "top": 77
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 76,
+              "gap_start": 71,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the original Edit.\nSecond line survives a col",
+              "text_start": 0,
+              "top": 77
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 76,
+              "gap_start": 72,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the original Edit.\nSecond line survives a cold",
+              "text_start": 0,
+              "top": 77
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 76,
+              "gap_start": 73,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the original Edit.\nSecond line survives a cold ",
+              "text_start": 0,
+              "top": 77
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 76,
+              "gap_start": 74,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the original Edit.\nSecond line survives a cold r",
+              "text_start": 0,
+              "top": 77
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 76,
+              "gap_start": 75,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the original Edit.\nSecond line survives a cold re",
+              "text_start": 0,
+              "top": 77
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 76,
+              "gap_start": 76,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the original Edit.\nSecond line survives a cold res",
+              "text_start": 0,
+              "top": 77
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 95,
+              "gap_start": 77,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the original Edit.\nSecond line survives a cold rest",
+              "text_start": 0,
+              "top": 96
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 95,
+              "gap_start": 78,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the original Edit.\nSecond line survives a cold resta",
+              "text_start": 0,
+              "top": 96
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 95,
+              "gap_start": 79,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the original Edit.\nSecond line survives a cold restar",
+              "text_start": 0,
+              "top": 96
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 95,
+              "gap_start": 80,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the original Edit.\nSecond line survives a cold restart",
+              "text_start": 0,
+              "top": 96
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 95,
+              "gap_start": 81,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the original Edit.\nSecond line survives a cold restart.",
+              "text_start": 0,
+              "top": 96
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 96,
+              "gap_start": 83,
+              "structure": 68856,
+              "text": "ArcLibre document saved by the original Edit.\nSecond line survives a cold restart.\n",
+              "text_start": 0,
+              "top": 96
+            }
+          ],
+          "undefined": [
+            {
+              "component": "FPEmulator",
+              "pc": 59555808,
+              "psr": 2281701379,
+              "word": 3998236944
+            },
+            {
+              "component": "Wimp",
+              "pc": 59977064,
+              "psr": 2818572291,
+              "word": 3996127504
+            },
+            {
+              "component": "Wimp",
+              "pc": 59977104,
+              "psr": 1744830467,
+              "word": 3995078928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59977064,
+              "psr": 2818572291,
+              "word": 3996127504
+            },
+            {
+              "component": "Wimp",
+              "pc": 59977104,
+              "psr": 1744830467,
+              "word": 3995078928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976784,
+              "psr": 671088643,
+              "word": 3995095312
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976824,
+              "psr": 671088643,
+              "word": 3995095312
+            },
+            {
+              "component": "Wimp",
+              "pc": 59977064,
+              "psr": 2818572291,
+              "word": 3996127504
+            },
+            {
+              "component": "Wimp",
+              "pc": 59977104,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976784,
+              "psr": 671088643,
+              "word": 3995095312
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976824,
+              "psr": 671088643,
+              "word": 3995095312
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976784,
+              "psr": 671088643,
+              "word": 3995095312
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976824,
+              "psr": 671088643,
+              "word": 3995095312
+            },
+            {
+              "component": "Wimp",
+              "pc": 59977064,
+              "psr": 2818572291,
+              "word": 3996127504
+            },
+            {
+              "component": "Wimp",
+              "pc": 59977104,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976784,
+              "psr": 671088643,
+              "word": 3995095312
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976824,
+              "psr": 671088643,
+              "word": 3995095312
+            },
+            {
+              "component": "Wimp",
+              "pc": 59977064,
+              "psr": 2818572291,
+              "word": 3996127504
+            },
+            {
+              "component": "Wimp",
+              "pc": 59977104,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976784,
+              "psr": 671088643,
+              "word": 3995095312
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976824,
+              "psr": 671088643,
+              "word": 3995095312
+            },
+            {
+              "component": "Wimp",
+              "pc": 59977064,
+              "psr": 2818572291,
+              "word": 3996127504
+            },
+            {
+              "component": "Wimp",
+              "pc": 59977104,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976784,
+              "psr": 671088643,
+              "word": 3995095312
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976824,
+              "psr": 671088643,
+              "word": 3995095312
+            },
+            {
+              "component": "Wimp",
+              "pc": 59977064,
+              "psr": 2818572291,
+              "word": 3996127504
+            },
+            {
+              "component": "Wimp",
+              "pc": 59977104,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976784,
+              "psr": 671088643,
+              "word": 3995095312
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976824,
+              "psr": 671088643,
+              "word": 3995095312
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59977064,
+              "psr": 2818572291,
+              "word": 3996127504
+            },
+            {
+              "component": "Wimp",
+              "pc": 59977104,
+              "psr": 1744830467,
+              "word": 3995078928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60341048,
+              "psr": 1744830467,
+              "word": 2116026640
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60170212,
+              "psr": 671088643,
+              "word": 3989061898
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976784,
+              "psr": 671088643,
+              "word": 3995095312
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976824,
+              "psr": 671088643,
+              "word": 3995095312
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            }
+          ],
+          "writes": 11
+        },
+        "trace": {
+          "status": "PASS",
+          "scope": "All undefined exceptions; sampled ROM instruction paths, not exhaustive branch coverage",
+          "generated_sprite_instructions": 91,
+          "classified_software_fpa_traps": 682,
+          "unclassified_undefined_exceptions": 0,
+          "modules": {
+            "FileSwitch": 485,
+            "ResourceFS": 5,
+            "MsgTrans": 155,
+            "Messages": 2,
+            "TerritoryManager": 10,
+            "UK": 7,
+            "Inter": 2,
+            "IntKey": 4,
+            "Desktop": 72,
+            "FileCore": 10,
+            "ADFS": 19,
+            "FPEmulator": 127,
+            "Colours": 516,
+            "DrawMod": 916,
+            "Super": 120,
+            "Hourglass": 75,
+            "FontManager": 2304,
+            "ROMFonts": 2,
+            "SprExtend": 26,
+            "Wimp": 1480,
+            "Filer": 12,
+            "Switcher": 9,
+            "Pinboard": 13,
+            "ADFSFiler": 10,
+            "ShellCLI": 6,
+            "Obey": 4,
+            "Buffers": 43,
+            "Sound0": 91,
+            "Sound1": 20,
+            "Sound2": 48,
+            "WaveSynth": 2,
+            "Percussion": 2,
+            "DragASprit": 0,
+            "FilerSWIs": 0,
+            "BASIC": 2,
+            "BASICTrans": 0,
+            "ResFiler": 10,
+            "SharedCLib": 2298,
+            "FilerAct": 4,
+            "Edit": 6
+          }
+        },
+        "screens": {
+          "edit-new.png": "8dcb4dcc3f9d024604c52e6c941ba6e992cff963deb0940fd5ee424503603f47",
+          "desktop.png": "fba8f64ea8e81dd027cdb7e312de74ab4f3b602b06227b2ebbaadd4ad124cb11",
+          "apps.png": "c96903dc5aaf8ff39c0e1644446378d391d9cdbca7de90e72d1e519741a4fec9",
+          "edit-saved.png": "5da7a4efe99387e7982c29b8097342b6ec265b23a6af56ee0ed5d481e6ee4840",
+          "hard-disc-root.png": "ac8856349171477a173052ad6b1d1e7cb03749f0ed2c18d6a82b59d31247dbf8",
+          "edit-start.png": "176e39bfdc30b6c2803484dcbb40fc8ddb407a7473d7558a06edfe16026b684c",
+          "edit-typed.png": "707c5171e79c2c5a669e6bc348a6bf5d54e604757c92acccd3804d2871c601a2",
+          "edit-save-dialogue.png": "b090a008fe72381548710617949a033e5fe4dd158ce144354585a5789becc6be",
+          "welcome.png": "6c97a87a5065defbaef154e3c9a4fc192d9a3a6f5b7390817532581147946421"
+        }
+      },
+      "reopen": {
+        "result": {
+          "cmos": [
+            0,
+            136,
+            1,
+            0,
+            0,
+            129,
+            102,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            118,
+            2,
+            65,
+            12,
+            111,
+            64,
+            0,
+            0,
+            0,
+            44,
+            56,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            16,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            234,
+            4,
+            0,
+            254,
+            0,
+            235,
+            0,
+            8,
+            0,
+            0,
+            0,
+            0,
+            16,
+            80,
+            32,
+            8,
+            10,
+            44,
+            128,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            3,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            98,
+            19,
+            0,
+            0,
+            4,
+            253,
+            16,
+            9,
+            255,
+            1,
+            96,
+            0,
+            17,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            240,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            10,
+            1,
+            0,
+            0,
+            2,
+            0,
+            0
+          ],
+          "errors": [],
+          "exceptions": [
+            2,
+            116,
+            116329,
+            0,
+            0,
+            0,
+            38131,
+            0
+          ],
+          "generated_sprite_code": [
+            {
+              "pc": 25221940,
+              "word": 3834773508
+            },
+            {
+              "pc": 25221944,
+              "word": 3791654927
+            },
+            {
+              "pc": 25221948,
+              "word": 3785359904
+            },
+            {
+              "pc": 25221952,
+              "word": 3816816898
+            },
+            {
+              "pc": 25221956,
+              "word": 3785420814
+            },
+            {
+              "pc": 25221960,
+              "word": 3852312636
+            },
+            {
+              "pc": 25221964,
+              "word": 3811639296
+            },
+            {
+              "pc": 25221968,
+              "word": 60817408
+            },
+            {
+              "pc": 25221972,
+              "word": 345112580
+            },
+            {
+              "pc": 25221976,
+              "word": 295698736
+            },
+            {
+              "pc": 25221980,
+              "word": 329310209
+            },
+            {
+              "pc": 25221984,
+              "word": 293601662
+            },
+            {
+              "pc": 25221988,
+              "word": 3762917383
+            },
+            {
+              "pc": 25221992,
+              "word": 3767111687
+            },
+            {
+              "pc": 25221996,
+              "word": 3791654927
+            },
+            {
+              "pc": 25222000,
+              "word": 3786408480
+            },
+            {
+              "pc": 25222004,
+              "word": 201326574
+            },
+            {
+              "pc": 25222008,
+              "word": 3889827841
+            },
+            {
+              "pc": 25222012,
+              "word": 3785364065
+            },
+            {
+              "pc": 25222016,
+              "word": 3763965958
+            },
+            {
+              "pc": 25222020,
+              "word": 989855735
+            },
+            {
+              "pc": 25222024,
+              "word": 3785380389
+            },
+            {
+              "pc": 25222028,
+              "word": 3784393252
+            },
+            {
+              "pc": 25222032,
+              "word": 704643092
+            },
+            {
+              "pc": 25222036,
+              "word": 3797450753
+            },
+            {
+              "pc": 25222040,
+              "word": 3405774840
+            },
+            {
+              "pc": 25222044,
+              "word": 3852333132
+            },
+            {
+              "pc": 25222120,
+              "word": 3787735045
+            },
+            {
+              "pc": 25222124,
+              "word": 3852328988
+            },
+            {
+              "pc": 25222128,
+              "word": 3814588417
+            },
+            {
+              "pc": 25222132,
+              "word": 3405774825
+            },
+            {
+              "pc": 25222136,
+              "word": 3851673600
+            },
+            {
+              "pc": 25222140,
+              "word": 3759071237
+            },
+            {
+              "pc": 25222144,
+              "word": 3784237060
+            },
+            {
+              "pc": 25222148,
+              "word": 3833847812
+            },
+            {
+              "pc": 25222152,
+              "word": 3818930434
+            },
+            {
+              "pc": 25222156,
+              "word": 3818934272
+            },
+            {
+              "pc": 25222160,
+              "word": 3797450753
+            },
+            {
+              "pc": 25222164,
+              "word": 3405774809
+            },
+            {
+              "pc": 25222168,
+              "word": 3852333132
+            }
+          ],
+          "initialisations": [
+            {
+              "component": "Desktop",
+              "name": "Desktop",
+              "psr": 1610612736,
+              "version": 300
+            },
+            {
+              "component": "Filer",
+              "name": "Filer",
+              "psr": 1073741824,
+              "version": 300
+            },
+            {
+              "component": "ADFSFiler",
+              "name": "ADFS Filer",
+              "psr": 1610612736,
+              "version": 300
+            },
+            {
+              "component": "ResFiler",
+              "name": "Resource Filer",
+              "psr": 1610612736,
+              "version": 300
+            },
+            {
+              "component": "Switcher",
+              "name": "Task Manager",
+              "psr": 1610612736,
+              "version": 300
+            },
+            {
+              "component": "Pinboard",
+              "name": "Pinboard",
+              "psr": 1610612736,
+              "version": 300
+            },
+            {
+              "component": "Kernel",
+              "name": "Edit",
+              "psr": 536870912,
+              "version": 300
+            }
+          ],
+          "phase": "reopen",
+          "rom_sha256": "c5855025f912c86f056e5a6e0b6979866022e3eba8be210290e956f4969fd9a3",
+          "sprite_vector_calls": 262,
+          "status": "PASS",
+          "task_count": 6,
+          "text_buffers": [
+            {
+              "buffer": 81928,
+              "gap_end": 50,
+              "gap_start": 0,
+              "structure": 68876,
+              "text": "",
+              "text_start": 0,
+              "top": 50
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 20,
+              "gap_start": 0,
+              "structure": 68876,
+              "text": "\u0010\u00f1\u009f\u00e5\u0004\u0000\u0000\u00ea\u0004\u0000\u0000\u00ea\u0004\u0000\u0000\u00ea\u0004\u0000\u0000\u00ea\u0004\u0000\u0000\u00ea\u0004\u0000\u0000\u00ea\b\u00f0O\u00e2\b\u00f0O\u00e2\b\u00f0O\u00e2\b\u00f0O\u00e2\b\u00f0O\u00e2\b\u00f0O\u00e2\u0088\u00ff\u009f\u00e5\u0088\u00ff\u009f\u00e5\u0088\u00ff\u009f\u00e5\u0088\u00ff\u009f\u00e5\u0088\u00ff\u009f\u00e5\u0088\u00ff\u009f\u00e506\u00e0\u00ea2\u00a6\u00a0",
+              "text_start": 0,
+              "top": 103
+            },
+            {
+              "buffer": 81928,
+              "gap_end": 20,
+              "gap_start": 0,
+              "structure": 68876,
+              "text": "ArcLibre document saved by the original Edit.\nSecond line survives a cold restart.\n",
+              "text_start": 0,
+              "top": 103
+            }
+          ],
+          "undefined": [
+            {
+              "component": "FPEmulator",
+              "pc": 59555808,
+              "psr": 2281701379,
+              "word": 3998236944
+            },
+            {
+              "component": "Wimp",
+              "pc": 59977064,
+              "psr": 2818572291,
+              "word": 3996127504
+            },
+            {
+              "component": "Wimp",
+              "pc": 59977104,
+              "psr": 1744830467,
+              "word": 3995078928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59977064,
+              "psr": 2818572291,
+              "word": 3996127504
+            },
+            {
+              "component": "Wimp",
+              "pc": 59977104,
+              "psr": 1744830467,
+              "word": 3995078928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976784,
+              "psr": 671088643,
+              "word": 3995095312
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976824,
+              "psr": 671088643,
+              "word": 3995095312
+            },
+            {
+              "component": "Wimp",
+              "pc": 59977064,
+              "psr": 2818572291,
+              "word": 3996127504
+            },
+            {
+              "component": "Wimp",
+              "pc": 59977104,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976784,
+              "psr": 671088643,
+              "word": 3995095312
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976824,
+              "psr": 671088643,
+              "word": 3995095312
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976784,
+              "psr": 671088643,
+              "word": 3995095312
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976824,
+              "psr": 671088643,
+              "word": 3995095312
+            },
+            {
+              "component": "Wimp",
+              "pc": 59977064,
+              "psr": 2818572291,
+              "word": 3996127504
+            },
+            {
+              "component": "Wimp",
+              "pc": 59977104,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976784,
+              "psr": 671088643,
+              "word": 3995095312
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976824,
+              "psr": 671088643,
+              "word": 3995095312
+            },
+            {
+              "component": "Wimp",
+              "pc": 59977064,
+              "psr": 2818572291,
+              "word": 3996127504
+            },
+            {
+              "component": "Wimp",
+              "pc": 59977104,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976784,
+              "psr": 671088643,
+              "word": 3995095312
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976824,
+              "psr": 671088643,
+              "word": 3995095312
+            },
+            {
+              "component": "Wimp",
+              "pc": 59977064,
+              "psr": 2818572291,
+              "word": 3996127504
+            },
+            {
+              "component": "Wimp",
+              "pc": 59977104,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976784,
+              "psr": 671088643,
+              "word": 3995095312
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976824,
+              "psr": 671088643,
+              "word": 3995095312
+            },
+            {
+              "component": "Wimp",
+              "pc": 59977064,
+              "psr": 2818572291,
+              "word": 3996127504
+            },
+            {
+              "component": "Wimp",
+              "pc": 59977104,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976784,
+              "psr": 671088643,
+              "word": 3995095312
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976824,
+              "psr": 671088643,
+              "word": 3995095312
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59977064,
+              "psr": 2818572291,
+              "word": 3996127504
+            },
+            {
+              "component": "Wimp",
+              "pc": 59977104,
+              "psr": 1744830467,
+              "word": 3995078928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60341048,
+              "psr": 1744830467,
+              "word": 2116026640
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60170212,
+              "psr": 671088643,
+              "word": 3989061898
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976784,
+              "psr": 671088643,
+              "word": 3995095312
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976824,
+              "psr": 671088643,
+              "word": 3995095312
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "Wimp",
+              "pc": 59976772,
+              "psr": 1744830467,
+              "word": 236998928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242248,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242276,
+              "psr": 671088643,
+              "word": 3995091216
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242204,
+              "psr": 671088643,
+              "word": 3996127504
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242216,
+              "psr": 671088643,
+              "word": 3995078928
+            },
+            {
+              "component": "SharedCLib",
+              "pc": 60242224,
+              "psr": 671088643,
+              "word": 3989651712
+            }
+          ],
+          "writes": 0
+        },
+        "trace": {
+          "status": "PASS",
+          "scope": "All undefined exceptions; sampled ROM instruction paths, not exhaustive branch coverage",
+          "generated_sprite_instructions": 40,
+          "classified_software_fpa_traps": 116,
+          "unclassified_undefined_exceptions": 0,
+          "modules": {
+            "FileSwitch": 1832,
+            "ResourceFS": 5,
+            "MsgTrans": 176,
+            "Messages": 2,
+            "TerritoryManager": 10,
+            "UK": 7,
+            "Inter": 2,
+            "IntKey": 4,
+            "Desktop": 72,
+            "FileCore": 2279,
+            "ADFS": 477,
+            "FPEmulator": 127,
+            "Colours": 482,
+            "DrawMod": 916,
+            "Super": 120,
+            "Hourglass": 75,
+            "FontManager": 2304,
+            "ROMFonts": 2,
+            "SprExtend": 26,
+            "Wimp": 1382,
+            "Filer": 12,
+            "Switcher": 28,
+            "Pinboard": 13,
+            "ADFSFiler": 10,
+            "ShellCLI": 6,
+            "Obey": 4,
+            "Buffers": 43,
+            "Sound0": 91,
+            "Sound1": 20,
+            "Sound2": 48,
+            "WaveSynth": 2,
+            "Percussion": 2,
+            "DragASprit": 0,
+            "FilerSWIs": 0,
+            "BASIC": 2,
+            "BASICTrans": 0,
+            "ResFiler": 10,
+            "SharedCLib": 1832,
+            "FilerAct": 4,
+            "Edit": 6
+          }
+        },
+        "screens": {
+          "desktop.png": "fba8f64ea8e81dd027cdb7e312de74ab4f3b602b06227b2ebbaadd4ad124cb11",
+          "edit-reopened.png": "3a2c2b15df9342b46bc45a0fe7c84d625914d2e9c491b5d038c11f7a2dc9a694",
+          "hard-disc-root.png": "a85b9a16ea5ff7e703fd6c35a1183e390c8907ed0657dadf38af6e9965782b8c",
+          "welcome.png": "6c97a87a5065defbaef154e3c9a4fc192d9a3a6f5b7390817532581147946421"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+diff --git a/src/Kernel/s/PMF/KbdDrA1 b/src/Kernel/s/PMF/KbdDrA1
+index cce231f..a339c63 100644
+--- a/src/Kernel/s/PMF/KbdDrA1
++++ b/src/Kernel/s/PMF/KbdDrA1
+@@ -315,6 +315,11 @@ AcknowledgeId
+         MOV     r0, #0
+         MOV     r10, #KEYV
+         BL      CallVector
++  [ :DEF: ArcLibreDelivered
++; Modified 2026: KEYV returns with R12 corrupted (0), so the Tx enable below wrote
++; RAM &28 (FIQ code space) instead of IOC; reload it as the key paths do.
++        MOV     r12, #IOC
++  ]
+  |
+         BL      GotKbId
+  ]
+diff --git a/src/Kernel/s/PMF/osbyte b/src/Kernel/s/PMF/osbyte
+index cbac760..6160a11 100644
+--- a/src/Kernel/s/PMF/osbyte
++++ b/src/Kernel/s/PMF/osbyte
+@@ -29,7 +29,13 @@ OsbyteSetCountry * &46
+ OsbyteSetAlphKey * &47
+ OsbyteWrchDests * &EC   ; only OS_Byte variable which isn't pure any more!
+ 
++ [ :DEF: ArcLibreDelivered
++; Modified 2026: the delivered ROM reports RISC OS 3.10/3.11's &A4; software reads
++; INKEY(-256) >= &A5 as RISC OS 3.5 (Risc PC memory map and VIDC20).
++ArthurINKEY256 * &A4    ; INKEY-256 value
++ |
+ ArthurINKEY256 * &A6    ; INKEY-256 value
++ ]
+ 
+ ; *****************************************************************************
+ 

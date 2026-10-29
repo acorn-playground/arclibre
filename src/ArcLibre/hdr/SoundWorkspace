@@ -1,0 +1,7 @@
+; SPDX-License-Identifier: Apache-2.0
+; ArcLibre original-machine exports from the pinned restored KernelWS.
+; tools/build_sound.py checks these values against the assembled kernel.
+IOCControlSoftCopy * &106
+TopOfDMAPhysRAM    * &80000
+TopOfDMAWorkSpace  * &1F08000
+        END

@@ -1,0 +1,22 @@
+--- a/FileCore/s/FileCore20
++++ b/FileCore/s/FileCore20
+@@ -328,7 +328,7 @@
+         LDR     r0, [r3, #DiscType]
+         LDR     lr, [r5, #DiscType]
+         TEQ     r0, lr
+-        ASSERT  (SectorSize :MOD 4) = 0
++        ASSERT  (SectorSize :MOD: 4) = 0
+         ASSERT  SecsPerTrk = SectorSize+1
+         ASSERT  Heads = SecsPerTrk+1
+         ASSERT  Density = Heads+1
+--- a/FileCore/s/FileCore33
++++ b/FileCore/s/FileCore33
+@@ -731,7 +731,7 @@
+         TSTS    R0, R1
+         BICNE   R0, R0, R1
+         ADDNE   R0, R0, LR
+- [ Debug5 :LOR DebugE
++ [ Debug5 :LOR: DebugE
+         DREG    R0, "<-RoundUp/RoundUpSector(value:",cc
+         DLINE   ")"
+  ]

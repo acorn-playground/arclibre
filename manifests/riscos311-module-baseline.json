@@ -1,0 +1,464 @@
+{
+  "source": "https://www.chiark.greenend.org.uk/~theom/riscos/mods/311.html",
+  "provenance": "All 88 titles and versions cross-checked visually against four user-supplied ROMModules screenshots on 2026-10-26. These independently match the published observed listing at source. Machine model not supplied. One observed system-ROM configuration, not a universal all-machine specification. No reference ROM bytes read or extracted.",
+  "modules": [
+    {
+      "title": "UtilityModule",
+      "version": "3.11",
+      "observed_status": "Active"
+    },
+    {
+      "title": "Podule",
+      "version": "1.26",
+      "observed_status": "Active"
+    },
+    {
+      "title": "FileSwitch",
+      "version": "2.08",
+      "observed_status": "Active"
+    },
+    {
+      "title": "ResourceFS",
+      "version": "0.14",
+      "observed_status": "Active"
+    },
+    {
+      "title": "Messages",
+      "version": "0.45",
+      "observed_status": "Active"
+    },
+    {
+      "title": "MessageTrans",
+      "version": "0.23",
+      "observed_status": "Active"
+    },
+    {
+      "title": "TerritoryManager",
+      "version": "0.13",
+      "observed_status": "Active"
+    },
+    {
+      "title": "UK",
+      "version": "0.18",
+      "observed_status": "Active"
+    },
+    {
+      "title": "WindowManager",
+      "version": "3.16",
+      "observed_status": "Active"
+    },
+    {
+      "title": "Desktop",
+      "version": "2.43",
+      "observed_status": "Active"
+    },
+    {
+      "title": "TaskManager",
+      "version": "0.75",
+      "observed_status": "Active"
+    },
+    {
+      "title": "!Alarm",
+      "version": "2.37",
+      "observed_status": "Active"
+    },
+    {
+      "title": "!Calc",
+      "version": "0.52",
+      "observed_status": "Active"
+    },
+    {
+      "title": "!Chars",
+      "version": "1.13",
+      "observed_status": "Active"
+    },
+    {
+      "title": "!Help",
+      "version": "2.19",
+      "observed_status": "Active"
+    },
+    {
+      "title": "Printers",
+      "version": "0.34",
+      "observed_status": "Active"
+    },
+    {
+      "title": "ADFSFiler",
+      "version": "0.61",
+      "observed_status": "Active"
+    },
+    {
+      "title": "ARM3Support",
+      "version": "1.09",
+      "observed_status": "Dormant"
+    },
+    {
+      "title": "BASIC",
+      "version": "1.05",
+      "observed_status": "Active"
+    },
+    {
+      "title": "BASICTrans",
+      "version": "1.00",
+      "observed_status": "Active"
+    },
+    {
+      "title": "BufferManager",
+      "version": "0.22",
+      "observed_status": "Active"
+    },
+    {
+      "title": "ColourTrans",
+      "version": "1.07",
+      "observed_status": "Active"
+    },
+    {
+      "title": "Debugger",
+      "version": "1.39",
+      "observed_status": "Active"
+    },
+    {
+      "title": "DeviceFS",
+      "version": "0.26",
+      "observed_status": "Active"
+    },
+    {
+      "title": "DragASprite",
+      "version": "0.03",
+      "observed_status": "Active"
+    },
+    {
+      "title": "Draw",
+      "version": "1.05",
+      "observed_status": "Active"
+    },
+    {
+      "title": "Econet",
+      "version": "5.62",
+      "observed_status": "Dormant"
+    },
+    {
+      "title": "BBCEconet",
+      "version": "0.14",
+      "observed_status": "Dormant"
+    },
+    {
+      "title": "FileCore",
+      "version": "2.41",
+      "observed_status": "Active"
+    },
+    {
+      "title": "ADFS",
+      "version": "2.67",
+      "observed_status": "Active"
+    },
+    {
+      "title": "RamFS",
+      "version": "2.10",
+      "observed_status": "Dormant"
+    },
+    {
+      "title": "Filer",
+      "version": "1.64",
+      "observed_status": "Active"
+    },
+    {
+      "title": "FilerSWIs",
+      "version": "0.03",
+      "observed_status": "Active"
+    },
+    {
+      "title": "FontManager",
+      "version": "3.07",
+      "observed_status": "Active"
+    },
+    {
+      "title": "FPEmulator",
+      "version": "2.87",
+      "observed_status": "Active"
+    },
+    {
+      "title": "Free",
+      "version": "0.21",
+      "observed_status": "Active"
+    },
+    {
+      "title": "Hourglass",
+      "version": "2.08",
+      "observed_status": "Active"
+    },
+    {
+      "title": "IIC",
+      "version": "0.12",
+      "observed_status": "Active"
+    },
+    {
+      "title": "International",
+      "version": "1.24",
+      "observed_status": "Active"
+    },
+    {
+      "title": "IRQUtils",
+      "version": "2.50",
+      "observed_status": "Active"
+    },
+    {
+      "title": "Joystick",
+      "version": "0.02",
+      "observed_status": "Dormant"
+    },
+    {
+      "title": "NetFS",
+      "version": "5.78",
+      "observed_status": "Dormant"
+    },
+    {
+      "title": "BroadcastLoader",
+      "version": "1.02",
+      "observed_status": "Dormant"
+    },
+    {
+      "title": "NetFiler",
+      "version": "0.72",
+      "observed_status": "Active"
+    },
+    {
+      "title": "NetPrint",
+      "version": "5.43",
+      "observed_status": "Dormant"
+    },
+    {
+      "title": "NetStatus",
+      "version": "2.06",
+      "observed_status": "Active"
+    },
+    {
+      "title": "Obey",
+      "version": "0.29",
+      "observed_status": "Active"
+    },
+    {
+      "title": "PaletteUtil",
+      "version": "0.45",
+      "observed_status": "Active"
+    },
+    {
+      "title": "ParallelDeviceDriver",
+      "version": "0.34",
+      "observed_status": "Active"
+    },
+    {
+      "title": "PDriver",
+      "version": "3.18",
+      "observed_status": "Active"
+    },
+    {
+      "title": "PDriverDP",
+      "version": "3.28",
+      "observed_status": "Active"
+    },
+    {
+      "title": "PDumperSupport",
+      "version": "0.11",
+      "observed_status": "Active"
+    },
+    {
+      "title": "PDumperDM",
+      "version": "0.34",
+      "observed_status": "Active"
+    },
+    {
+      "title": "InternationalKeyboard",
+      "version": "0.31",
+      "observed_status": "Active"
+    },
+    {
+      "title": "Pinboard",
+      "version": "0.50",
+      "observed_status": "Active"
+    },
+    {
+      "title": "PipeFS",
+      "version": "0.13",
+      "observed_status": "Active"
+    },
+    {
+      "title": "Portable",
+      "version": "0.29",
+      "observed_status": "Dormant"
+    },
+    {
+      "title": "RAMFSFiler",
+      "version": "0.28",
+      "observed_status": "Active"
+    },
+    {
+      "title": "ResourceFiler",
+      "version": "0.12",
+      "observed_status": "Active"
+    },
+    {
+      "title": "ROMFonts",
+      "version": "0.14",
+      "observed_status": "Active"
+    },
+    {
+      "title": "RTCAdjust",
+      "version": "0.03",
+      "observed_status": "Active"
+    },
+    {
+      "title": "ScreenBlanker",
+      "version": "2.15",
+      "observed_status": "Active"
+    },
+    {
+      "title": "SerialDeviceDriver",
+      "version": "0.21",
+      "observed_status": "Active"
+    },
+    {
+      "title": "SerialDeviceSupport",
+      "version": "0.17",
+      "observed_status": "Active"
+    },
+    {
+      "title": "ShellCLI",
+      "version": "0.25",
+      "observed_status": "Running"
+    },
+    {
+      "title": "SoundDMA",
+      "version": "1.20",
+      "observed_status": "Active"
+    },
+    {
+      "title": "SoundChannels",
+      "version": "1.27",
+      "observed_status": "Active"
+    },
+    {
+      "title": "SoundScheduler",
+      "version": "1.17",
+      "observed_status": "Active"
+    },
+    {
+      "title": "SpriteExtend",
+      "version": "0.46",
+      "observed_status": "Active"
+    },
+    {
+      "title": "SpriteUtils",
+      "version": "1.09",
+      "observed_status": "Active"
+    },
+    {
+      "title": "Squash",
+      "version": "0.21",
+      "observed_status": "Active"
+    },
+    {
+      "title": "SuperSample",
+      "version": "0.07",
+      "observed_status": "Active"
+    },
+    {
+      "title": "SystemDevices",
+      "version": "1.25",
+      "observed_status": "Active"
+    },
+    {
+      "title": "TaskWindow",
+      "version": "0.47",
+      "observed_status": "Active"
+    },
+    {
+      "title": "WindowUtils",
+      "version": "2.50",
+      "observed_status": "Active"
+    },
+    {
+      "title": "FilterManager",
+      "version": "0.08",
+      "observed_status": "Active"
+    },
+    {
+      "title": "WaveSynth",
+      "version": "1.13",
+      "observed_status": "Active"
+    },
+    {
+      "title": "StringLib",
+      "version": "1.11",
+      "observed_status": "Active"
+    },
+    {
+      "title": "Percussion",
+      "version": "1.10",
+      "observed_status": "Active"
+    },
+    {
+      "title": "SharedCLibrary",
+      "version": "3.99",
+      "observed_status": "Active"
+    },
+    {
+      "title": "Filer_Action",
+      "version": "0.29",
+      "observed_status": "Active"
+    },
+    {
+      "title": "!Configure",
+      "version": "1.41",
+      "observed_status": "Active"
+    },
+    {
+      "title": "!Draw",
+      "version": "0.88",
+      "observed_status": "Active"
+    },
+    {
+      "title": "!Paint",
+      "version": "1.61",
+      "observed_status": "Active"
+    },
+    {
+      "title": "!Edit",
+      "version": "1.44",
+      "observed_status": "Active"
+    },
+    {
+      "title": "DOSFS",
+      "version": "0.43",
+      "observed_status": "Active"
+    },
+    {
+      "title": "ADFSUtils",
+      "version": "0.05",
+      "observed_status": "Active"
+    },
+    {
+      "title": "NetUtils",
+      "version": "0.99",
+      "observed_status": "Dormant"
+    }
+  ],
+  "user_evidence": [
+    {
+      "path": "docs/system-audit/reports/riscos311-rommodules-1.png",
+      "sha256": "7bc4bd792fff8c428e38073e5c9457d8e70de3c7e9bcd08d7e47b88bca5d665f"
+    },
+    {
+      "path": "docs/system-audit/reports/riscos311-rommodules-2.png",
+      "sha256": "dcfa1021830eab50c5eaa65714655ba09bcc7cd15259187ae9f67c53169b4515"
+    },
+    {
+      "path": "docs/system-audit/reports/riscos311-rommodules-3.png",
+      "sha256": "c2db8d5fe4a19d52d53ad56744899cfa6beaf54e7729c9838c1e978f6cc3b39d"
+    },
+    {
+      "path": "docs/system-audit/reports/riscos311-rommodules-4.png",
+      "sha256": "d225089d11f2fe46a62661493ec441651bbf980bd2ef6b83e4d299b4b48a710c"
+    }
+  ]
+}

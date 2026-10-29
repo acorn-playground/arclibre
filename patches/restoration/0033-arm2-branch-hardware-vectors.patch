@@ -1,0 +1,61 @@
+diff --git a/src/Kernel/s/GetAll b/src/Kernel/s/GetAll
+index b9b7925..2b49966 100644
+--- a/src/Kernel/s/GetAll
++++ b/src/Kernel/s/GetAll
+@@ -369,7 +369,15 @@ AssemblePointerV        SETL    {TRUE}          ; Use PointerV.
+ PollMouse               SETL    {FALSE}         ; Poll mouse.
+ 
+                         GBLL    ProcessorVectors
++; Modified 2026: the delivered ROM has RISC OS 3.11's hardware vectors, branches
++; written at &0-&1C, not 3.60's LDR PC through 0 page (OS_ClaimProcessorVector is a
++; RISC OS 3.5 SWI). Software that chains a vector by relocating the branch it
++; replaces (games such as SWIV; the ARM2 FPEmulator) needs branches there.
++ [ :DEF: ArcLibreDelivered
++ProcessorVectors        SETL    {FALSE}
++ |
+ ProcessorVectors        SETL    {TRUE}          ; Processor vectors indirected through 0 page.
++ ]
+ 
+                     GBLS  GetUnsqueeze
+  [ SqueezeMods
+diff --git a/src/Kernel/s/Middle b/src/Kernel/s/Middle
+index f8391e4..6adfa14 100644
+--- a/src/Kernel/s/Middle
++++ b/src/Kernel/s/Middle
+@@ -790,7 +790,9 @@ BranchThroughZeroInstruction
+  [ ProcessorVectors
+         LDR     PC, .+ProcVec_Branch0
+  |
+-        B       .+(RESET1-0)
++ ; Modified 2026: this instruction is copied to address 0. ARM2 PC wraps at 64 MiB.
++ ; Encode the signed 24-word displacement from its RAM execution address.
++        DCD &EA000000 :OR: (((RESET1 - 0 - 8) :SHR: 2) :AND: &FFFFFF)
+  ]
+ 
+ 
+diff --git a/src/Kernel/s/NewReset b/src/Kernel/s/NewReset
+index ef6aa04..1bf6d0b 100644
+--- a/src/Kernel/s/NewReset
++++ b/src/Kernel/s/NewReset
+@@ -2044,7 +2044,9 @@ BranchThroughZeroInstruction2
+  [ ProcessorVectors
+         LDR     PC, .+ProcVec_Branch0
+  |
+-        B       .+(RESET1-0)
++ ; Modified 2026: this instruction is copied to address 0. ARM2 PC wraps at 64 MiB.
++ ; Encode the signed 24-word displacement from its RAM execution address.
++        DCD &EA000000 :OR: (((RESET1 - 0 - 8) :SHR: 2) :AND: &FFFFFF)
+  ]
+ 
+ MonitorKeypadTable      ; internal key number, CMOS bits
+@@ -2175,7 +2177,9 @@ RealIRQHandler
+  [ ProcessorVectors
+         LDR     PC, .-&18+ProcVec_IRQ
+  |
+-        B     Initial_IRQ_Code+.-&18
++ ; Modified 2026: this instruction is copied to address &18. ARM2 PC wraps at 64 MiB.
++ ; Encode the signed 24-word displacement from its RAM execution address.
++        DCD &EA000000 :OR: (((Initial_IRQ_Code - &18 - 8) :SHR: 2) :AND: &FFFFFF)
+  ]
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

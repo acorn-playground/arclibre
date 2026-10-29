@@ -1,0 +1,34 @@
+{
+  "arclibre": {
+    "status": "PASS",
+    "rom_sha256": "94fb12c8fdde58bff239890de5f66f95bf6b4590f7a7cdb60d2812903a6a45a0",
+    "cold_boots": 3,
+    "emulator_unchanged": true
+  },
+  "sound": {
+    "status": "PASS",
+    "rom_sha256": "94fb12c8fdde58bff239890de5f66f95bf6b4590f7a7cdb60d2812903a6a45a0",
+    "cold_boots": 3,
+    "emulator_unchanged": true
+  },
+  "desktop-actions": {
+    "status": "PASS",
+    "rom_sha256": "94fb12c8fdde58bff239890de5f66f95bf6b4590f7a7cdb60d2812903a6a45a0",
+    "cold_boots": 3,
+    "emulator_unchanged": true
+  },
+  "desktop-c-runtime": {
+    "status": "PASS",
+    "rom_sha256": "94fb12c8fdde58bff239890de5f66f95bf6b4590f7a7cdb60d2812903a6a45a0",
+    "cold_boots_per_operation": 3,
+    "emulator_unchanged": true
+  },
+  "private-zarch/acceptance": {
+    "status": "PASS",
+    "rom_sha256": "94fb12c8fdde58bff239890de5f66f95bf6b4590f7a7cdb60d2812903a6a45a0",
+    "cold_boots": 3,
+    "scope": "Desktop double-click, game entry, title, keyboard start and bounded three-second paired flight/fire/steering tests; not full-game compatibility",
+    "external_disc_sha256": "bc082f7313cf8b20714f842cb30d5aec3eb4677f3acc3131f8b3235b20a6f86f",
+    "emulator_unchanged": true
+  }
+}

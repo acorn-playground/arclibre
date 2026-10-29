@@ -1,0 +1,44 @@
+{
+  "status": "PASS",
+  "matrix1_bytes": 128,
+  "matrix2_current_bytes": 1023,
+  "weights": [
+    [
+      1,
+      2,
+      3,
+      4,
+      3,
+      2,
+      1
+    ],
+    [
+      1,
+      2,
+      4,
+      6,
+      6,
+      6,
+      4,
+      2,
+      1
+    ],
+    [
+      1,
+      4,
+      8,
+      12,
+      13,
+      12,
+      8,
+      4,
+      1
+    ]
+  ],
+  "table_sha256": [
+    "0f8c4426483100977466e8996dc1afb55f60bbdabe393c85950e1eaab8753af5",
+    "2f1d680f27d8d087bf9c0aa8c0a6f011fb8ca32b1bb7326365cf923e38faed6d",
+    "b52950f49b6dffc8571e0b4c434bb1f621b03c73800dcd700cebe68c2210c5cc",
+    "dcebc2f724e2f12fca8c023a15fc84c467f1007834cc08a07075b3ea3ebb3e94"
+  ]
+}

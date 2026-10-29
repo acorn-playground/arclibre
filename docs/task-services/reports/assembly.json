@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "modules": [
+    {
+      "component": "Filter",
+      "status": "STATIC_ARM2_PASS",
+      "bytes": 2224,
+      "sha256": "a7cd802f7662006d7b631a778076336303585a91f259a9dc447144e1f3cc7650",
+      "aof_sha256": "4349564ff274cb405ffde2cd6ded8bd8b729400133e1c93fc366ee4e3ca5dc66",
+      "integer_instructions": 473,
+      "relocations": 0,
+      "unresolved_symbols": 0,
+      "swi_base": 271936
+    },
+    {
+      "component": "TaskWindow",
+      "status": "STATIC_ARM2_PASS",
+      "bytes": 9576,
+      "sha256": "f26145fb5e7530bebf7f7415ebda7e3775646929f251eba38e6cc68ee2bac4e4",
+      "aof_sha256": "82298ff772bba86b9f381e221d928fbcc7939720d7d3d1a8de6c0c1b3f71c386",
+      "integer_instructions": 2174,
+      "relocations": 0,
+      "unresolved_symbols": 0,
+      "swi_base": 275328
+    }
+  ],
+  "resources_sha256": "71f744c5a37636803b546ffec10af788e29c6fa8c6072f972cce778aef73da73"
+}

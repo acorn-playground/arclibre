@@ -1,0 +1,15 @@
+--- a/src/Wimp/s/!Palette
++++ b/src/Wimp/s/!Palette
+@@ -12,9 +12,11 @@
+ ; See the License for the specific language governing permissions and
+ ; limitations under the License.
+ ;
++; ArcLibre: RISC OS 3.11 shows the desktop background grey (Wimp colour 4)
++; in the screen border. See patches/desktop-source/0004-wimp-border-colour.patch.
+         DCD     &FFFFFF00,&DDDDDD00,&BBBBBB00,&99999900
+         DCD     &77777700,&55555500,&33333300,&00000000
+         DCD     &99440000,&00EEEE00,&00CC0000,&0000DD00
+         DCD     &BBEEEE00,&00885500,&00BBFF00,&FFBB0000
+-        DCD     &00000000,&FFFF0000,&99000000,&0000FF00
++        DCD     &77777700,&FFFF0000,&99000000,&0000FF00
+         END

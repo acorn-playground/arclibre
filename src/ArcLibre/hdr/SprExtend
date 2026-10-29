@@ -1,0 +1,24 @@
+; SPDX-License-Identifier: Apache-2.0
+; ArcLibre: Hdr:SprExtend for the printing modules. The JPEG SWIs of
+; SpriteExtend, numbered from SpriteExtendJPEGSWI_Base in Hdr:SWIs in the
+; order of SpriteExtend's own SWI table (src/SprExtend/Sources/SWIs).
+
+        SUBT    Exported SpriteExtend JPEG SWIs => Hdr.SprExtend
+
+OldOpt  SETA    {OPT}
+        OPT     OptNoList+OptNoP1List
+
+SWIClass        SETS    SpriteExtendJPEGSWI_Name
+
+        ^       SpriteExtendJPEGSWI_Base
+
+        AddSWI  Info                            ; &49980
+        AddSWI  FileInfo                        ; &49981
+        AddSWI  PlotScaled                      ; &49982
+        AddSWI  PlotFileScaled                  ; &49983
+        AddSWI  PlotTransformed                 ; &49984
+        AddSWI  PlotFileTransformed             ; &49985
+        AddSWI  PDriverIntercept                ; &49986
+
+        OPT     OldOpt
+        END

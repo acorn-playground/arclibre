@@ -1,0 +1,2486 @@
+[
+  {
+    "component": "FilerAct",
+    "path": "Doc/All",
+    "revision": "e2c9bb13ec47443521e1e13fef55abbfc213239d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/FilerAct.git",
+    "upstream_sha256": "041d53683dfcca2fd74f06f2e2c68aacefc1d3a0b55ce58e90d4918304bdc72a",
+    "sha256": "041d53683dfcca2fd74f06f2e2c68aacefc1d3a0b55ce58e90d4918304bdc72a",
+    "bytes": 6051
+  },
+  {
+    "component": "FilerAct",
+    "path": "Doc/Log",
+    "revision": "e2c9bb13ec47443521e1e13fef55abbfc213239d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/FilerAct.git",
+    "upstream_sha256": "7ac26f73945696db2a8476164dc395a8b0adba12a26546127f3f765c30aae4f4",
+    "sha256": "7ac26f73945696db2a8476164dc395a8b0adba12a26546127f3f765c30aae4f4",
+    "bytes": 3856
+  },
+  {
+    "component": "FilerAct",
+    "path": "Doc/slowdosfs",
+    "revision": "e2c9bb13ec47443521e1e13fef55abbfc213239d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/FilerAct.git",
+    "upstream_sha256": "cdccf6726291db0fe6c6d1de0ed80db01cb8dd7d8b9b10f24983678d62700f4d",
+    "sha256": "cdccf6726291db0fe6c6d1de0ed80db01cb8dd7d8b9b10f24983678d62700f4d",
+    "bytes": 2262
+  },
+  {
+    "component": "FilerAct",
+    "path": "LICENSE",
+    "revision": "e2c9bb13ec47443521e1e13fef55abbfc213239d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/FilerAct.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358
+  },
+  {
+    "component": "FilerAct",
+    "path": "Makefile",
+    "revision": "e2c9bb13ec47443521e1e13fef55abbfc213239d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/FilerAct.git",
+    "upstream_sha256": "f51b684033468a1e82368e12c44f04ed246ccd8abfde985fc9b0337d4cf99200",
+    "sha256": "f51b684033468a1e82368e12c44f04ed246ccd8abfde985fc9b0337d4cf99200",
+    "bytes": 3937
+  },
+  {
+    "component": "FilerAct",
+    "path": "Resources/UK/Help",
+    "revision": "e2c9bb13ec47443521e1e13fef55abbfc213239d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/FilerAct.git",
+    "upstream_sha256": "b8fc9e48c711ac34f5e92d46212cb551dba096889736fdec3b2ed5958b9edee1",
+    "sha256": "b8fc9e48c711ac34f5e92d46212cb551dba096889736fdec3b2ed5958b9edee1",
+    "bytes": 75
+  },
+  {
+    "component": "FilerAct",
+    "path": "Resources/UK/Messages",
+    "revision": "e2c9bb13ec47443521e1e13fef55abbfc213239d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/FilerAct.git",
+    "upstream_sha256": "647d3d6727480a687f454714b85d1428a50498b803c1dbf8f5fb5c97a8060960",
+    "sha256": "647d3d6727480a687f454714b85d1428a50498b803c1dbf8f5fb5c97a8060960",
+    "bytes": 2141
+  },
+  {
+    "component": "FilerAct",
+    "path": "Resources/UK/Template2D,fec",
+    "revision": "e2c9bb13ec47443521e1e13fef55abbfc213239d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/FilerAct.git",
+    "upstream_sha256": "3a2d426ef4bda00992632b45966da6015e097a3fc90aeb8bffb3f0fa30432179",
+    "sha256": "3a2d426ef4bda00992632b45966da6015e097a3fc90aeb8bffb3f0fa30432179",
+    "bytes": 996
+  },
+  {
+    "component": "FilerAct",
+    "path": "Resources/UK/Templates,fec",
+    "revision": "e2c9bb13ec47443521e1e13fef55abbfc213239d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/FilerAct.git",
+    "upstream_sha256": "281ea91f40d4561945604b611fc10222cf02f77ddd965409beb6e5e71bbf731a",
+    "sha256": "281ea91f40d4561945604b611fc10222cf02f77ddd965409beb6e5e71bbf731a",
+    "bytes": 1050
+  },
+  {
+    "component": "FilerAct",
+    "path": "Syntax",
+    "revision": "e2c9bb13ec47443521e1e13fef55abbfc213239d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/FilerAct.git",
+    "upstream_sha256": "ac81bb24a1fca407fc30d45ad79d6cc92a76eb1aeec707480641969b80b86a43",
+    "sha256": "ac81bb24a1fca407fc30d45ad79d6cc92a76eb1aeec707480641969b80b86a43",
+    "bytes": 22
+  },
+  {
+    "component": "FilerAct",
+    "path": "c/Buttons",
+    "revision": "e2c9bb13ec47443521e1e13fef55abbfc213239d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/FilerAct.git",
+    "upstream_sha256": "2657e94b4663f72455936b47bad4b2f95fc6c58aa8310acf07dc2257ef198f74",
+    "sha256": "2657e94b4663f72455936b47bad4b2f95fc6c58aa8310acf07dc2257ef198f74",
+    "bytes": 14489
+  },
+  {
+    "component": "FilerAct",
+    "path": "c/Chains",
+    "revision": "e2c9bb13ec47443521e1e13fef55abbfc213239d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/FilerAct.git",
+    "upstream_sha256": "46a265faafe10557b5ad14aff0ecf4140ebea6ff27b28d40f289d80156328784",
+    "sha256": "46a265faafe10557b5ad14aff0ecf4140ebea6ff27b28d40f289d80156328784",
+    "bytes": 2175
+  },
+  {
+    "component": "FilerAct",
+    "path": "c/Initialise",
+    "revision": "e2c9bb13ec47443521e1e13fef55abbfc213239d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/FilerAct.git",
+    "upstream_sha256": "48e10cdecafcfa2869910b4836d4671ac7e7d23cbf2d5c3b102e0634da086a84",
+    "sha256": "48e10cdecafcfa2869910b4836d4671ac7e7d23cbf2d5c3b102e0634da086a84",
+    "bytes": 6056
+  },
+  {
+    "component": "FilerAct",
+    "path": "c/actionwind",
+    "revision": "e2c9bb13ec47443521e1e13fef55abbfc213239d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/FilerAct.git",
+    "upstream_sha256": "9bcca4cbfaf599f4e23ebc9412c0bad32ef410d81969c976b95176a9716b451a",
+    "sha256": "9bcca4cbfaf599f4e23ebc9412c0bad32ef410d81969c976b95176a9716b451a",
+    "bytes": 79119
+  },
+  {
+    "component": "FilerAct",
+    "path": "c/debug",
+    "revision": "e2c9bb13ec47443521e1e13fef55abbfc213239d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/FilerAct.git",
+    "upstream_sha256": "cf6d19fcd248f7637013cfa58f505aaae0a7f8f52e7c632c470dd4cc89793c00",
+    "sha256": "cf6d19fcd248f7637013cfa58f505aaae0a7f8f52e7c632c470dd4cc89793c00",
+    "bytes": 1314
+  },
+  {
+    "component": "FilerAct",
+    "path": "c/listfiles",
+    "revision": "e2c9bb13ec47443521e1e13fef55abbfc213239d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/FilerAct.git",
+    "upstream_sha256": "01590b264b7c6a9d65f164158870819529776e02bd5111525b59289f5ca74708",
+    "sha256": "01590b264b7c6a9d65f164158870819529776e02bd5111525b59289f5ca74708",
+    "bytes": 39059
+  },
+  {
+    "component": "FilerAct",
+    "path": "c/memmanage",
+    "revision": "e2c9bb13ec47443521e1e13fef55abbfc213239d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/FilerAct.git",
+    "upstream_sha256": "524c81558b02abd8dc6779928687feaf73afbf086ce16c42e58245ee2eda71e3",
+    "sha256": "524c81558b02abd8dc6779928687feaf73afbf086ce16c42e58245ee2eda71e3",
+    "bytes": 53703
+  },
+  {
+    "component": "FilerAct",
+    "path": "h/Buttons",
+    "revision": "e2c9bb13ec47443521e1e13fef55abbfc213239d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/FilerAct.git",
+    "upstream_sha256": "aeffd510472f852417f9b35fdda4321e92fbdf5c58f77f23202cdd4064bb8302",
+    "sha256": "aeffd510472f852417f9b35fdda4321e92fbdf5c58f77f23202cdd4064bb8302",
+    "bytes": 1106
+  },
+  {
+    "component": "FilerAct",
+    "path": "h/Chains",
+    "revision": "e2c9bb13ec47443521e1e13fef55abbfc213239d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/FilerAct.git",
+    "upstream_sha256": "43deb064e6a25f357be956a9e975d3af8e96e8c3e6282a496965c47170cf3418",
+    "sha256": "43deb064e6a25f357be956a9e975d3af8e96e8c3e6282a496965c47170cf3418",
+    "bytes": 1686
+  },
+  {
+    "component": "FilerAct",
+    "path": "h/Initialise",
+    "revision": "e2c9bb13ec47443521e1e13fef55abbfc213239d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/FilerAct.git",
+    "upstream_sha256": "9488315e59df0c429fb2964366725be6ed8be40e7aaf84da8197e2ab45fc73b9",
+    "sha256": "9488315e59df0c429fb2964366725be6ed8be40e7aaf84da8197e2ab45fc73b9",
+    "bytes": 964
+  },
+  {
+    "component": "FilerAct",
+    "path": "h/actionwind",
+    "revision": "e2c9bb13ec47443521e1e13fef55abbfc213239d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/FilerAct.git",
+    "upstream_sha256": "3974405f72e8de3390a6e404092e4071eb0afd3b753da6b15dd7891613a1845e",
+    "sha256": "3974405f72e8de3390a6e404092e4071eb0afd3b753da6b15dd7891613a1845e",
+    "bytes": 6049
+  },
+  {
+    "component": "FilerAct",
+    "path": "h/allerrs",
+    "revision": "e2c9bb13ec47443521e1e13fef55abbfc213239d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/FilerAct.git",
+    "upstream_sha256": "a385e0209436efa84771829dab1814fc6bca057e3fde05a9dbc9280a91b6c661",
+    "sha256": "a385e0209436efa84771829dab1814fc6bca057e3fde05a9dbc9280a91b6c661",
+    "bytes": 1634
+  },
+  {
+    "component": "FilerAct",
+    "path": "h/debug",
+    "revision": "e2c9bb13ec47443521e1e13fef55abbfc213239d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/FilerAct.git",
+    "upstream_sha256": "7a6973f0396c1a61aa4c5c6a638642f79635f2f297ea2fc58778dfff5ce7ba53",
+    "sha256": "7a6973f0396c1a61aa4c5c6a638642f79635f2f297ea2fc58778dfff5ce7ba53",
+    "bytes": 1034
+  },
+  {
+    "component": "FilerAct",
+    "path": "h/listfiles",
+    "revision": "e2c9bb13ec47443521e1e13fef55abbfc213239d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/FilerAct.git",
+    "upstream_sha256": "f5cb2b141d92eaef34137dcba258448efef7dd14f235bf392d608591ba60e5ec",
+    "sha256": "f5cb2b141d92eaef34137dcba258448efef7dd14f235bf392d608591ba60e5ec",
+    "bytes": 4778
+  },
+  {
+    "component": "FilerAct",
+    "path": "h/malloc+",
+    "revision": "e2c9bb13ec47443521e1e13fef55abbfc213239d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/FilerAct.git",
+    "upstream_sha256": "48ce215779fb3cac2a0527818d728bc6ad5ba0913cbda23defe18b0d88b6ec09",
+    "sha256": "48ce215779fb3cac2a0527818d728bc6ad5ba0913cbda23defe18b0d88b6ec09",
+    "bytes": 1041
+  },
+  {
+    "component": "FilerAct",
+    "path": "h/memmanage",
+    "revision": "e2c9bb13ec47443521e1e13fef55abbfc213239d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/FilerAct.git",
+    "upstream_sha256": "f1ed626f430482bfcaa32827729ed8fe3075417391003ec5adc1433dcd62acb8",
+    "sha256": "f1ed626f430482bfcaa32827729ed8fe3075417391003ec5adc1433dcd62acb8",
+    "bytes": 1744
+  },
+  {
+    "component": "FilerAct",
+    "path": "hdr/FilerAct",
+    "revision": "e2c9bb13ec47443521e1e13fef55abbfc213239d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/FilerAct.git",
+    "upstream_sha256": "69ef15ee9cf0f84efacf828c1c2105d559c5b13c32278713ab2984b1d5a80792",
+    "sha256": "69ef15ee9cf0f84efacf828c1c2105d559c5b13c32278713ab2984b1d5a80792",
+    "bytes": 2693
+  },
+  {
+    "component": "FilerAct",
+    "path": "s/AppName",
+    "revision": "e2c9bb13ec47443521e1e13fef55abbfc213239d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/FilerAct.git",
+    "upstream_sha256": "b4b100f6b83e64ba351963b8e066c882f4dc35e08436b865cd3c22f09c4487ae",
+    "sha256": "b4b100f6b83e64ba351963b8e066c882f4dc35e08436b865cd3c22f09c4487ae",
+    "bytes": 820
+  },
+  {
+    "component": "FilerAct",
+    "path": "s/ResFiles",
+    "revision": "e2c9bb13ec47443521e1e13fef55abbfc213239d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/FilerAct.git",
+    "upstream_sha256": "3898116691102ffb1e385ca5db8a96dbf49fe3654150ef2ade00ae7056dfd057",
+    "sha256": "3898116691102ffb1e385ca5db8a96dbf49fe3654150ef2ade00ae7056dfd057",
+    "bytes": 1550
+  },
+  {
+    "component": "FilerAct",
+    "path": "s/allerrs",
+    "revision": "e2c9bb13ec47443521e1e13fef55abbfc213239d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/FilerAct.git",
+    "upstream_sha256": "501e70a9e14d2a436cc9076dadfa17621d2af1f071b74f0c3248dfe30cd06b93",
+    "sha256": "501e70a9e14d2a436cc9076dadfa17621d2af1f071b74f0c3248dfe30cd06b93",
+    "bytes": 1286
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "Doc/_swidoc",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "4becc8a527d40a24fd3d55a8bda062f29c2b8e81b7fab0e21f7aad2fd1cd36fd",
+    "sha256": "4becc8a527d40a24fd3d55a8bda062f29c2b8e81b7fab0e21f7aad2fd1cd36fd",
+    "bytes": 3633
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "Doc/ctl",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "e826485e41cbf99c10b99115b62812881bfa1640eebf741d78614404c85fcf27",
+    "sha256": "e826485e41cbf99c10b99115b62812881bfa1640eebf741d78614404c85fcf27",
+    "bytes": 14125
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "LICENSE",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "MakeDecAOF",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "ce45a7df73c1903c88a6f0cc3af33c2b548e57e10d09dcc7dc63dcd5eef178cb",
+    "sha256": "ce45a7df73c1903c88a6f0cc3af33c2b548e57e10d09dcc7dc63dcd5eef178cb",
+    "bytes": 2858
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "Makefile",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "a1dc8f38b3f57ba98a2586451dc293474c102a8d0f50b20f53bbe2003f1c732a",
+    "sha256": "a1dc8f38b3f57ba98a2586451dc293474c102a8d0f50b20f53bbe2003f1c732a",
+    "bytes": 22189
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "c/Arthur",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "8015cb1b5518ee2ab8a4e7a328a11074f2d18709d1733e2ae423f05b077cefee",
+    "sha256": "8015cb1b5518ee2ab8a4e7a328a11074f2d18709d1733e2ae423f05b077cefee",
+    "bytes": 15173
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "c/Super",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "e25bd1f28b4885c26c7804944a38c318b4f5eac95f588bc0a8c5c696c3420c5e",
+    "sha256": "e25bd1f28b4885c26c7804944a38c318b4f5eac95f588bc0a8c5c696c3420c5e",
+    "bytes": 1477
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "c/alloc",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "76f9a38c24cd3d3645a0ac6b354bfbdd0c0d59ebdd6aeb179f83faf48fc0fd83",
+    "sha256": "76f9a38c24cd3d3645a0ac6b354bfbdd0c0d59ebdd6aeb179f83faf48fc0fd83",
+    "bytes": 57043
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "c/armprof",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "599a16e5042871417b777ac7e4446a68accaaadfec38ac6d2e4bf7032e70da25",
+    "sha256": "599a16e5042871417b777ac7e4446a68accaaadfec38ac6d2e4bf7032e70da25",
+    "bytes": 8501
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "c/armsys",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "8972db20994e4be2945702d8cc33b67931581b704abb76985caaa813796d8d1e",
+    "sha256": "0eb066572255357d385b4319d04e93ad1ad4b5fb3ff6bbe84fc6ea026d1d3c4f",
+    "bytes": 26513
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "c/bsearch",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "3f92afd3e71ceeed411b80e4d27f82aa4fce2469682837799412d42b1b7fc61c",
+    "sha256": "3f92afd3e71ceeed411b80e4d27f82aa4fce2469682837799412d42b1b7fc61c",
+    "bytes": 2245
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "c/ctype",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "c0be331c74a47dd54b862a0a6b125d6d6a13c980988ac0beda3b7b7c157a6e26",
+    "sha256": "c0be331c74a47dd54b862a0a6b125d6d6a13c980988ac0beda3b7b7c157a6e26",
+    "bytes": 13039
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "c/date",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "1a2aea45868ad31ce7ebdbd011bed3005debdc1e59d9b34044aca55b3564fc97",
+    "sha256": "1a2aea45868ad31ce7ebdbd011bed3005debdc1e59d9b34044aca55b3564fc97",
+    "bytes": 852
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "c/error",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "2c2a7fda74eaf84ef446dca7d2f5d38b2392e7495e245fd66f9c9477882b7a23",
+    "sha256": "2c2a7fda74eaf84ef446dca7d2f5d38b2392e7495e245fd66f9c9477882b7a23",
+    "bytes": 2724
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "c/fpprintf",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "ab882fd8ef0ece082bce951e5d3b01b5afb1fd8f9a9227f4fa6317c4bcef7c92",
+    "sha256": "ab882fd8ef0ece082bce951e5d3b01b5afb1fd8f9a9227f4fa6317c4bcef7c92",
+    "bytes": 22566
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "c/locale",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "035bc2e2e30df46693880eb15a397adb2fee28568b1d62ebb2751df9a6725768",
+    "sha256": "035bc2e2e30df46693880eb15a397adb2fee28568b1d62ebb2751df9a6725768",
+    "bytes": 14436
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "c/math",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "ee1e901f62c278cb66e78fa247f956187038fcbaae3a89137f4123982f9706d9",
+    "sha256": "ee1e901f62c278cb66e78fa247f956187038fcbaae3a89137f4123982f9706d9",
+    "bytes": 32975
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "c/printf",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "9e8601d6faa522dccb14c0a401b2a513dd879dd0469c0c1df57a39a6487a8ee9",
+    "sha256": "9e8601d6faa522dccb14c0a401b2a513dd879dd0469c0c1df57a39a6487a8ee9",
+    "bytes": 21018
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "c/scanf",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "40b4329eac3c9df4d8d183e159e715c499d2589fb8ab703b1eadaf1980ad05bc",
+    "sha256": "40b4329eac3c9df4d8d183e159e715c499d2589fb8ab703b1eadaf1980ad05bc",
+    "bytes": 30213
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "c/signal",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "08f088f71f4a6c25f71c001e7cfb6016f69a78e73ea6cd2dce6d0da14aa52c33",
+    "sha256": "08f088f71f4a6c25f71c001e7cfb6016f69a78e73ea6cd2dce6d0da14aa52c33",
+    "bytes": 5250
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "c/sort",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "2153a4c922c72cc27633ab10fd9a86257ef8ebd0c7a418cb3f28e5ed2ccd02d3",
+    "sha256": "2153a4c922c72cc27633ab10fd9a86257ef8ebd0c7a418cb3f28e5ed2ccd02d3",
+    "bytes": 14010
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "c/stdio",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "c2838bc5d913fbb0fd8988754d683aa77708489051e613add7b8cadb06f66a96",
+    "sha256": "c2838bc5d913fbb0fd8988754d683aa77708489051e613add7b8cadb06f66a96",
+    "bytes": 37071
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "c/stdlib",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "f6b1c81afd25a6ed2dcb5c7079e1ddfc5730b727d63ef05367ab0971bf2c704b",
+    "sha256": "f6b1c81afd25a6ed2dcb5c7079e1ddfc5730b727d63ef05367ab0971bf2c704b",
+    "bytes": 6182
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "c/string",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "adfb1c6a4f73916f3074d124c89fa2dd2d9546a888e478f1859996bf90108edd",
+    "sha256": "adfb1c6a4f73916f3074d124c89fa2dd2d9546a888e478f1859996bf90108edd",
+    "bytes": 13464
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "c/time",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "a5d1f5459c7afd16f0ac31da5967a6cf27d84dcd5b673f4fc1b39eb2c59deb88",
+    "sha256": "a5d1f5459c7afd16f0ac31da5967a6cf27d84dcd5b673f4fc1b39eb2c59deb88",
+    "bytes": 9544
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "c/xmath",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "b85d2de467720f0c2519d57e5407355f304db78e1813f8ee6caf596b28b6b2a3",
+    "sha256": "b85d2de467720f0c2519d57e5407355f304db78e1813f8ee6caf596b28b6b2a3",
+    "bytes": 1561
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "clib/Resources/UK/Messages",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "ad496a149662c11ee01e059d8dac7a8e0627ed43ccd9fbfd56779e4d2f2ff8b9",
+    "sha256": "ad496a149662c11ee01e059d8dac7a8e0627ed43ccd9fbfd56779e4d2f2ff8b9",
+    "bytes": 2140
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "clib/h/assert",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "2ff10bf47cdb1b040baf307276e9a9c751642a1fc0d9a52db6dfdafec853c02f",
+    "sha256": "2ff10bf47cdb1b040baf307276e9a9c751642a1fc0d9a52db6dfdafec853c02f",
+    "bytes": 1823
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "clib/h/ctype",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "62a062c190dc3873b2bac6ab0bfd3960600427c6aefd2ebac2b9c411e47cca44",
+    "sha256": "62a062c190dc3873b2bac6ab0bfd3960600427c6aefd2ebac2b9c411e47cca44",
+    "bytes": 3805
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "clib/h/errno",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "ae0dcfa715efbb43c573e7a0bf42594ff59835f0afcbdca3ad06edc2a3f3db97",
+    "sha256": "ae0dcfa715efbb43c573e7a0bf42594ff59835f0afcbdca3ad06edc2a3f3db97",
+    "bytes": 2796
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "clib/h/float",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "b7215bf1b237b4466381512b1488720c1ac3eea061da15583a820116fb992c6d",
+    "sha256": "b7215bf1b237b4466381512b1488720c1ac3eea061da15583a820116fb992c6d",
+    "bytes": 3326
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "clib/h/kernel",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "0265003d9dbc318b83eb2505d84de85d2400960783ad7f24c9829d54ccd7ac1c",
+    "sha256": "0265003d9dbc318b83eb2505d84de85d2400960783ad7f24c9829d54ccd7ac1c",
+    "bytes": 14569
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "clib/h/limits",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "fef7b69d0f4e9f78218cd614a6202c68624bfeed04e6a965fba8810ff7e51460",
+    "sha256": "fef7b69d0f4e9f78218cd614a6202c68624bfeed04e6a965fba8810ff7e51460",
+    "bytes": 2324
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "clib/h/locale",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "fd4ed620f517cd9712bdbce69ff2971048148a5f85729fab784eb5a6dfa69625",
+    "sha256": "fd4ed620f517cd9712bdbce69ff2971048148a5f85729fab784eb5a6dfa69625",
+    "bytes": 9155
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "clib/h/math",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "141abf45f1e3f97120085434c4df97ccb7de5d1532cbaa0d7708ffdce99b7387",
+    "sha256": "f2c964f882df4e74ba24392fefd3262e21b82c495a39df1892c819738cb96549",
+    "bytes": 7567
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "clib/h/old/Arthur",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "df56a37c48a23f725f141be0eec1eb3039ed5356b7bbb7fbbe098d56b517825a",
+    "sha256": "df56a37c48a23f725f141be0eec1eb3039ed5356b7bbb7fbbe098d56b517825a",
+    "bytes": 37972
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "clib/h/old/Super",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "54cc01e3ccc1014c169b5bc0d7333d1253b93eaaec17fe6dd1c0fcfca1d20570",
+    "sha256": "54cc01e3ccc1014c169b5bc0d7333d1253b93eaaec17fe6dd1c0fcfca1d20570",
+    "bytes": 4713
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "clib/h/setjmp",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "c8314e031ad0a922dc53f6c4bafdc980d676d3c80c3cecb6133578fd5e64ca7a",
+    "sha256": "c8314e031ad0a922dc53f6c4bafdc980d676d3c80c3cecb6133578fd5e64ca7a",
+    "bytes": 3696
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "clib/h/signal",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "7c9708d7d6baaa645d52623f622ebfa3514a0b1c9bcfe1a3494dc017a22f6eaf",
+    "sha256": "7c9708d7d6baaa645d52623f622ebfa3514a0b1c9bcfe1a3494dc017a22f6eaf",
+    "bytes": 4864
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "clib/h/stdarg",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "924bf72189ba76ff76dae1897be1b12ca312b60b2f7fd868fc7e8548a9474092",
+    "sha256": "22b017036d24547e7d21c022656868fae7d5a8ca7eef92f0f04a776b27d557dd",
+    "bytes": 6211
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "clib/h/stddef",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "37d03f319e646dd3d59ca603494d3a5a0f8c5c9415528502a4bbc245985d9394",
+    "sha256": "483d29b9b43f8993b13210cd56e397b04977eaccabca466845359fb25508ddb4",
+    "bytes": 2687
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "clib/h/stdio",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "016134137e7632fa706df47bdd2d404d7fc18b72b773c73c81ca8d7d6e67aa9f",
+    "sha256": "07d8bf1b34b034d03ef79b7048a0d1eba2ebfe57a936f1d641e3d2a0afef368d",
+    "bytes": 35621
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "clib/h/stdlib",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "634c4b4d9735aa77d2d0188332154f5ecf57bf159817fba2f07881bfc8458fa0",
+    "sha256": "634c4b4d9735aa77d2d0188332154f5ecf57bf159817fba2f07881bfc8458fa0",
+    "bytes": 26202
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "clib/h/string",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "edfb2c84f25dc0c3a4ffd468337cce6df6c0341e4c6660d7329ae0b759bc99f8",
+    "sha256": "edfb2c84f25dc0c3a4ffd468337cce6df6c0341e4c6660d7329ae0b759bc99f8",
+    "bytes": 12203
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "clib/h/time",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "85a04b81e5f71beab24943858cc15f3d15bb069e19bce0647c4c3c108575fded",
+    "sha256": "85a04b81e5f71beab24943858cc15f3d15bb069e19bce0647c4c3c108575fded",
+    "bytes": 9168
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "clib/h/varargs",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "1ba852b2b529fc43283e6ab161acf16b69583ad51ed1b5a4604c461a63fb2a18",
+    "sha256": "1ba852b2b529fc43283e6ab161acf16b69583ad51ed1b5a4604c461a63fb2a18",
+    "bytes": 925
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "clib/s/cl_body",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "f6423dbc74f9bf2a2e9e4df2c505640dd8faaafd37ddb20584e855c01399c313",
+    "sha256": "f6423dbc74f9bf2a2e9e4df2c505640dd8faaafd37ddb20584e855c01399c313",
+    "bytes": 28068
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "clib/s/cl_data",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "b4b43c77cfa9096ae6f3d96f46717f86d1483047abeab0f1345181d47073ae71",
+    "sha256": "b4b43c77cfa9096ae6f3d96f46717f86d1483047abeab0f1345181d47073ae71",
+    "bytes": 1466
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "clib/s/cl_entries",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "8bc7980fe0e4485765f3bdf65692c3eec842dd1996dd373b2a32ce8b3d6ae557",
+    "sha256": "8bc7980fe0e4485765f3bdf65692c3eec842dd1996dd373b2a32ce8b3d6ae557",
+    "bytes": 8982
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "clib/s/cl_init",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "f2ea327f79ca78b55e2ff0d35a285024d460930b08e82bc67b4c549a77e47d0c",
+    "sha256": "f2ea327f79ca78b55e2ff0d35a285024d460930b08e82bc67b4c549a77e47d0c",
+    "bytes": 2593
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "clib/s/cl_mod_a",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "49a3b286857fd1b8570aa85cfee3ff5b69972988f963ea0025d953f47893d9b2",
+    "sha256": "49a3b286857fd1b8570aa85cfee3ff5b69972988f963ea0025d953f47893d9b2",
+    "bytes": 2212
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "clib/s/cl_mod_r",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "f44e6aa0b4cdb34def981cdce8f54470ce31ba12e513fb9c6a33fc594051b027",
+    "sha256": "f44e6aa0b4cdb34def981cdce8f54470ce31ba12e513fb9c6a33fc594051b027",
+    "bytes": 2688
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "clib/s/cl_obj_r",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "36aa6311c6dae8d38b0835d2707fb4f17184116bb175287c8f9894ebf7740217",
+    "sha256": "36aa6311c6dae8d38b0835d2707fb4f17184116bb175287c8f9894ebf7740217",
+    "bytes": 1502
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "clib/s/cl_rmhdr",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "87a304be4bc29b368078d6d30ccc1403644158bcb6364db8c8a29a169e5e7d81",
+    "sha256": "87a304be4bc29b368078d6d30ccc1403644158bcb6364db8c8a29a169e5e7d81",
+    "bytes": 2721
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "clib/s/cl_spare",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "f7bd4fa53659bead59d1c11b41d68bddef40a144b2592410ce9984dfeb794eac",
+    "sha256": "5cc97ed59621a64e6c9917d5642984ec00bb845d20f198572e5207c2f6f7f805",
+    "bytes": 1264
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "clib/s/cl_statics",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "9946fbe1626039b7bb30e014d2fccb07c4283c4640cbb86afa632e06c7984cea",
+    "sha256": "9946fbe1626039b7bb30e014d2fccb07c4283c4640cbb86afa632e06c7984cea",
+    "bytes": 1029
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "clib/s/cl_stub",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "5b0f13895b5d5106b6bbb029592e6d9ce58daa357ff66b22cd12a1d810ce25f9",
+    "sha256": "5b0f13895b5d5106b6bbb029592e6d9ce58daa357ff66b22cd12a1d810ce25f9",
+    "bytes": 9830
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "clib/s/cl_stub_r",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "858ee47fc21a1015455f096ba4b662e4ee699cea34a48e8129908199e51664f7",
+    "sha256": "858ee47fc21a1015455f096ba4b662e4ee699cea34a48e8129908199e51664f7",
+    "bytes": 747
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "clib/s/cl_stub_rm",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "f75a30f700a082c3cf0693f07ad82ca574d1e2305f4fdc0f943737c22ec932af",
+    "sha256": "f75a30f700a082c3cf0693f07ad82ca574d1e2305f4fdc0f943737c22ec932af",
+    "bytes": 776
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "clib/s/clibdata",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "9efe3cc08caf33f6d19ccdc0bb8bd1fedcd6710c51d1dd13b5c9c5dd03519ab8",
+    "sha256": "9efe3cc08caf33f6d19ccdc0bb8bd1fedcd6710c51d1dd13b5c9c5dd03519ab8",
+    "bytes": 1123
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "clib/s/h_signal",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "af9a97664b0d289fb4f9efa5ac859c4ef975d6bbaea81c0521a9c4cddf64efa2",
+    "sha256": "af9a97664b0d289fb4f9efa5ac859c4ef975d6bbaea81c0521a9c4cddf64efa2",
+    "bytes": 923
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "clib/s/initmod_r",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "162277a683e7dce9204610ffbdf9b286a0073f203e38756062d63034c093eb2d",
+    "sha256": "162277a683e7dce9204610ffbdf9b286a0073f203e38756062d63034c093eb2d",
+    "bytes": 879
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "h/alloc",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "73431d332fa2eacde465a6aec25b09dfc6f08810c979e2dc547cf7e510bebd73",
+    "sha256": "73431d332fa2eacde465a6aec25b09dfc6f08810c979e2dc547cf7e510bebd73",
+    "bytes": 10353
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "h/hostsys",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "c1cd71f9656a0d2b43eccad45dbfd154fcfc5631f30ed68b375a485c7ec06398",
+    "sha256": "c1cd71f9656a0d2b43eccad45dbfd154fcfc5631f30ed68b375a485c7ec06398",
+    "bytes": 9759
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "h/ibmfloat",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "cd62289b791e0647a7e9ac12a87d5237d5308a60b654b4c09759d3b9a1e34df9",
+    "sha256": "cd62289b791e0647a7e9ac12a87d5237d5308a60b654b4c09759d3b9a1e34df9",
+    "bytes": 1841
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "h/ieeefloat",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "648749e247becd56a5d58066026de5c16e16cc92dbe4e8ac5341e6a6945f9605",
+    "sha256": "648749e247becd56a5d58066026de5c16e16cc92dbe4e8ac5341e6a6945f9605",
+    "bytes": 2061
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "h/territory",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "89a4b51457869d88e1a15fa35dc50bbdb70f2f612aa43bd820ff861de319e9eb",
+    "sha256": "89a4b51457869d88e1a15fa35dc50bbdb70f2f612aa43bd820ff861de319e9eb",
+    "bytes": 1739
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "h/xmath",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "c42bb66734275518ed290d4f66c372d7c261d7136281817d3cbe3ee4591d5cde",
+    "sha256": "c42bb66734275518ed290d4f66c372d7c261d7136281817d3cbe3ee4591d5cde",
+    "bytes": 953
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "hdr/SharedCLib",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "72eccf23c0aec7f06e85ad7c69089a0baef9b0fabb1fa7c4c7f1d1632363e1de",
+    "sha256": "72eccf23c0aec7f06e85ad7c69089a0baef9b0fabb1fa7c4c7f1d1632363e1de",
+    "bytes": 1178
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "kernel/s/k_body",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "2b04195f09c05662945ea91935fd95ba7ecccf0069fc5dbb591c364e6dfa066f",
+    "sha256": "12406b311bb14240fe4e95d4110fd69be1ef4900a1c87f88ec3686c1c99204b5",
+    "bytes": 101385
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "kernel/s/k_data",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "0985dde98092283f3379f7d0ebfe429c79047dd2b648d3fc58caeac3a481cf1a",
+    "sha256": "0985dde98092283f3379f7d0ebfe429c79047dd2b648d3fc58caeac3a481cf1a",
+    "bytes": 3669
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "kernel/s/k_entries",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "ec919938e90e5858d1be0982f1977ac588bdb87ef00d68a6232a92e72e928e63",
+    "sha256": "ec919938e90e5858d1be0982f1977ac588bdb87ef00d68a6232a92e72e928e63",
+    "bytes": 3273
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "kernel/s/k_init",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "dd577442b90363e4c9d81c01e97d83b266e59530ab08bbdb57066f7a686903ce",
+    "sha256": "dd577442b90363e4c9d81c01e97d83b266e59530ab08bbdb57066f7a686903ce",
+    "bytes": 1608
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "kernel/s/k_mod_a",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "603e933da539a75b68c661ea8e63fb53a50072f39364f0c251af6ff13faf166c",
+    "sha256": "603e933da539a75b68c661ea8e63fb53a50072f39364f0c251af6ff13faf166c",
+    "bytes": 1683
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "kernel/s/k_mod_r",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "e8c49b2b4f8e953fc41c1eb72a985723c0a70490d153f0ca240cc219e75db240",
+    "sha256": "e8c49b2b4f8e953fc41c1eb72a985723c0a70490d153f0ca240cc219e75db240",
+    "bytes": 2901
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "kernel/s/k_obj_a",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "2b25934ce7937df625daa750bbb2b315550dacbccc7d2d8cecbb7f2caa272fba",
+    "sha256": "2b25934ce7937df625daa750bbb2b315550dacbccc7d2d8cecbb7f2caa272fba",
+    "bytes": 1304
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "kernel/s/k_obj_r",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "0dd74d89e9de78a6b034374b16020a62ef1eb754a1b3e59de4938c8b1b873536",
+    "sha256": "0dd74d89e9de78a6b034374b16020a62ef1eb754a1b3e59de4938c8b1b873536",
+    "bytes": 1367
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "kernel/s/swiv",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "1e20b4e815a308f3ef6a6d57d784859c21794c7b82138cc8278dc0c91c91f746",
+    "sha256": "1e20b4e815a308f3ef6a6d57d784859c21794c7b82138cc8278dc0c91c91f746",
+    "bytes": 4828
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/Resources/UK/Messages",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "84509cd6bd07dfa526790553196175f18f3c80bb07e8d59bc398e97b09674d80",
+    "sha256": "84509cd6bd07dfa526790553196175f18f3c80bb07e8d59bc398e97b09674d80",
+    "bytes": 1209
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/akbd",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "8926770567163475d90732ddd14a69acaeecdd79c9bc299d422ff1309d57999d",
+    "sha256": "8926770567163475d90732ddd14a69acaeecdd79c9bc299d422ff1309d57999d",
+    "bytes": 1886
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/alarm",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "abb46c0d8c09923e631c3688984f17f1e4fc2358aa934c19430eb1dbd514b2ed",
+    "sha256": "abb46c0d8c09923e631c3688984f17f1e4fc2358aa934c19430eb1dbd514b2ed",
+    "bytes": 4922
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/baricon",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "82067433bcb416a92c4be4f5ba1ae87c826e5d4e5ed91f8afd8436dc64aebdc1",
+    "sha256": "82067433bcb416a92c4be4f5ba1ae87c826e5d4e5ed91f8afd8436dc64aebdc1",
+    "bytes": 7345
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/bbc",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "4a759d003896b00782128b468572481882f86a29bd3f7bdf095983db687263aa",
+    "sha256": "4a759d003896b00782128b468572481882f86a29bd3f7bdf095983db687263aa",
+    "bytes": 13774
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/colourmenu",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "d97413c390acb070437b3472688dc8c6c2c044322d124404b964bbcee4f90f2c",
+    "sha256": "d97413c390acb070437b3472688dc8c6c2c044322d124404b964bbcee4f90f2c",
+    "bytes": 2583
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/colourtran",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "33be63cf14d9f0e272b4a82c83c79d67f6e736f5286c523f808374a07a21a9c1",
+    "sha256": "33be63cf14d9f0e272b4a82c83c79d67f6e736f5286c523f808374a07a21a9c1",
+    "bytes": 9440
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/coords",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "35dfc7aeddc98ef3aed8a8e09cfda9e25ca8eabc83dc348c48e6f1a5c51c49a5",
+    "sha256": "35dfc7aeddc98ef3aed8a8e09cfda9e25ca8eabc83dc348c48e6f1a5c51c49a5",
+    "bytes": 7805
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/ctl",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "37a525ed9d636446fc6ce0ce338fc6516a917885e1d83758a6a3844db0a74bb6",
+    "sha256": "37a525ed9d636446fc6ce0ce338fc6516a917885e1d83758a6a3844db0a74bb6",
+    "bytes": 93496
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/date",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "1a2aea45868ad31ce7ebdbd011bed3005debdc1e59d9b34044aca55b3564fc97",
+    "sha256": "1a2aea45868ad31ce7ebdbd011bed3005debdc1e59d9b34044aca55b3564fc97",
+    "bytes": 852
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/dbox",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "c96430622319f4cfbb8ab7abd0470dcf1c0d51fb7b10a4d6be6f83c4e7bf4efc",
+    "sha256": "c96430622319f4cfbb8ab7abd0470dcf1c0d51fb7b10a4d6be6f83c4e7bf4efc",
+    "bytes": 28087
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/dboxfile",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "4c3136df00ee74f0db18d16c619610cb47d4a5f65dcc0bf7f3ba22a9dfc6fb0e",
+    "sha256": "4c3136df00ee74f0db18d16c619610cb47d4a5f65dcc0bf7f3ba22a9dfc6fb0e",
+    "bytes": 1695
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/dboxquery",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "cead180dfe5063e2bd8f7ffae9421c4850ad274391a37e834cf5a25de4a09be4",
+    "sha256": "cead180dfe5063e2bd8f7ffae9421c4850ad274391a37e834cf5a25de4a09be4",
+    "bytes": 2926
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/dboxtcol",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "d3aa767a78a42b9aa1abf69e67d336b5bf9ea9dda482ebeeceb9f76ca2dd25dd",
+    "sha256": "a8e6cf5db5618dfcc07a0d218dfff53b0c09da9dd12f1c4c60c7a3bf49b638d6",
+    "bytes": 8942
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/dragasprit",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "c935cf2878ed551993dcdfb64ce31bb72130f9bafe06c48b7464a557e03da4b4",
+    "sha256": "c935cf2878ed551993dcdfb64ce31bb72130f9bafe06c48b7464a557e03da4b4",
+    "bytes": 1541
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/drawcheck",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "8845c120433c4d80e9e2349bad721e76d6a28af95a11240f7d9c60a4f35a680d",
+    "sha256": "8845c120433c4d80e9e2349bad721e76d6a28af95a11240f7d9c60a4f35a680d",
+    "bytes": 29389
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/drawfdiag",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "cb91e7e27a9510b1ce698e0a1c3b4d9d00e2f4409bf90eb0f34ce5d9e49f55ae",
+    "sha256": "cb91e7e27a9510b1ce698e0a1c3b4d9d00e2f4409bf90eb0f34ce5d9e49f55ae",
+    "bytes": 18945
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/drawfiles",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "f55240f225c8982f2b798a7bd8b5d597b6c0af8fcf683cb81d0c147e95f4db60",
+    "sha256": "f55240f225c8982f2b798a7bd8b5d597b6c0af8fcf683cb81d0c147e95f4db60",
+    "bytes": 19053
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/drawfobj",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "47cf687c19a079b4eb31001f474b06d1da6681fea3abc593963417bc482f0454",
+    "sha256": "47cf687c19a079b4eb31001f474b06d1da6681fea3abc593963417bc482f0454",
+    "bytes": 19516
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/drawmod",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "5fa9bdda2fced5284e93bd9e91326e27a2bb59ca48d082e9b915b02ff2843eb0",
+    "sha256": "5fa9bdda2fced5284e93bd9e91326e27a2bb59ca48d082e9b915b02ff2843eb0",
+    "bytes": 6124
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/drawtextc",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "959ecb6e4d70b96a133b9b1d71ebd05d9e102e14df8c9eeed41d43b0f0fe66a2",
+    "sha256": "959ecb6e4d70b96a133b9b1d71ebd05d9e102e14df8c9eeed41d43b0f0fe66a2",
+    "bytes": 60983
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/event",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "95c8f46264ff2238f629283712ea045ecfdba0fe56997927c548187602591014",
+    "sha256": "95c8f46264ff2238f629283712ea045ecfdba0fe56997927c548187602591014",
+    "bytes": 7132
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/fileicon",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "e6af7aefa81e3e00f887e2339e53ed49e671792d0df2bdc31112ec2211cff7bf",
+    "sha256": "e6af7aefa81e3e00f887e2339e53ed49e671792d0df2bdc31112ec2211cff7bf",
+    "bytes": 2522
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/flex",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "a7c9e73b8f2617d6af6dc6a7273dbd977994b91e42c361e3db169c9f5a2660d5",
+    "sha256": "a7c9e73b8f2617d6af6dc6a7273dbd977994b91e42c361e3db169c9f5a2660d5",
+    "bytes": 18181
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/font",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "718cb330b357deb98698ccdc084eff6ae9996c0aece940900a564c4d797a53e5",
+    "sha256": "718cb330b357deb98698ccdc084eff6ae9996c0aece940900a564c4d797a53e5",
+    "bytes": 14697
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/heap",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "81fed281e1275e4a7c2e3ce7518a618251907609cb7f23012dbeed1867ee3187",
+    "sha256": "81fed281e1275e4a7c2e3ce7518a618251907609cb7f23012dbeed1867ee3187",
+    "bytes": 5379
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/help",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "1b82b5f71a4dfe81d46a7237efdf7e0ff3eeef8f98be8f87e7bb7dfce19473f5",
+    "sha256": "1b82b5f71a4dfe81d46a7237efdf7e0ff3eeef8f98be8f87e7bb7dfce19473f5",
+    "bytes": 4577
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/magnify",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "c5a6f5d3d656030c22cd8f83400e856bb0bcc520285839b8e4be6de7f8879537",
+    "sha256": "c5a6f5d3d656030c22cd8f83400e856bb0bcc520285839b8e4be6de7f8879537",
+    "bytes": 1880
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/menu",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "40546ca1ae707d734d703f793619ec7a9c474e728120d710f9d83fa2644d2695",
+    "sha256": "40546ca1ae707d734d703f793619ec7a9c474e728120d710f9d83fa2644d2695",
+    "bytes": 13890
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/msgs",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "188b5a6e283175ad0f5433e01546284df0e92d4fdf9a42288f67bc565077d5f6",
+    "sha256": "188b5a6e283175ad0f5433e01546284df0e92d4fdf9a42288f67bc565077d5f6",
+    "bytes": 5654
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/oldflex",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "3d88a04a799c02e6434ed921dbc9d1689285b4f64e39d243f3d8195a7d323f39",
+    "sha256": "3d88a04a799c02e6434ed921dbc9d1689285b4f64e39d243f3d8195a7d323f39",
+    "bytes": 13887
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/os",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "b2b09c1953d2b909a20eddc430e8f9c1193ed2e4ebbd4535786e7a33bb325994",
+    "sha256": "b2b09c1953d2b909a20eddc430e8f9c1193ed2e4ebbd4535786e7a33bb325994",
+    "bytes": 2497
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/pointer",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "315277953987203ce99f96f2e230a8f0e01280aa776107d7da1ecd83f30bebeb",
+    "sha256": "315277953987203ce99f96f2e230a8f0e01280aa776107d7da1ecd83f30bebeb",
+    "bytes": 2186
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/print",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "c4a7555694c4e4305d9176b2068a51c1217ec3fe2323970edbad76ec9eb11255",
+    "sha256": "c4a7555694c4e4305d9176b2068a51c1217ec3fe2323970edbad76ec9eb11255",
+    "bytes": 6259
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/res",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "bc78c79929aa4dd7a3057e4b84b4c7b3d0311e999f81c38f4d98e9926e8866f7",
+    "sha256": "bc78c79929aa4dd7a3057e4b84b4c7b3d0311e999f81c38f4d98e9926e8866f7",
+    "bytes": 2242
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/resspr",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "bd1557dccafc4990e8a4888ad1db7a31733f515f25f92971d184210df749b345",
+    "sha256": "bd1557dccafc4990e8a4888ad1db7a31733f515f25f92971d184210df749b345",
+    "bytes": 3802
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/saveas",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "cd34da6026f7ca6a14159c864e4836699c0c24f126eb5976dfd705e9d7ebb21c",
+    "sha256": "cd34da6026f7ca6a14159c864e4836699c0c24f126eb5976dfd705e9d7ebb21c",
+    "bytes": 4406
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/sprite",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "dc0556d89224ba1b527dfc724b51bf51d14064e41b8e1e7d216051965e38e67d",
+    "sha256": "dc0556d89224ba1b527dfc724b51bf51d14064e41b8e1e7d216051965e38e67d",
+    "bytes": 22003
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/template",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "b098f102dd92c15ba691c1708e74175a292e4b37e2246c9aa4cb2a6d02e564bb",
+    "sha256": "b098f102dd92c15ba691c1708e74175a292e4b37e2246c9aa4cb2a6d02e564bb",
+    "bytes": 5947
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/trace",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "7c59c4cbbd97b5da15a275315c8d1c0f7bfe8602ccb42476ef0d2f6acc0f7cf6",
+    "sha256": "7c59c4cbbd97b5da15a275315c8d1c0f7bfe8602ccb42476ef0d2f6acc0f7cf6",
+    "bytes": 3736
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/txt",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "174bfc55e5eb343537eedc543a3f11194ea5527413a82c6687c3e179c598e01b",
+    "sha256": "174bfc55e5eb343537eedc543a3f11194ea5527413a82c6687c3e179c598e01b",
+    "bytes": 13000
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/txt1",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "bc023b39a330ab20672a803b27d65ab914fb2a6db3de73bc6810932628160fa4",
+    "sha256": "bc023b39a330ab20672a803b27d65ab914fb2a6db3de73bc6810932628160fa4",
+    "bytes": 113626
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/txt3",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "a16c7aafcd0d19e569aaecfbd6b09a26eefcf037bbc63752e245f42d2d22c24f",
+    "sha256": "a16c7aafcd0d19e569aaecfbd6b09a26eefcf037bbc63752e245f42d2d22c24f",
+    "bytes": 5225
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/txtar",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "7e30b49a1d16d9f804b6d90e2e114867db2d2d58af39e291a12c16cc46b81859",
+    "sha256": "7e30b49a1d16d9f804b6d90e2e114867db2d2d58af39e291a12c16cc46b81859",
+    "bytes": 86933
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/txtedit",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "9b65c52cf7912467a31818520be7d1fbf408f64039a203b0ef7f1a9717956a5a",
+    "sha256": "9b65c52cf7912467a31818520be7d1fbf408f64039a203b0ef7f1a9717956a5a",
+    "bytes": 122269
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/txtfile",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "64185283ce1c9b0bfe4b1ee2bba3421c82d66a782b901a1f04e6ca53ce1f1adb",
+    "sha256": "64185283ce1c9b0bfe4b1ee2bba3421c82d66a782b901a1f04e6ca53ce1f1adb",
+    "bytes": 19294
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/txtfind",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "9bc7c2ef1497a827134011b4927a888b5cd9d75e883e8529c8f1eec71e5e1e37",
+    "sha256": "9bc7c2ef1497a827134011b4927a888b5cd9d75e883e8529c8f1eec71e5e1e37",
+    "bytes": 27022
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/txtmisc",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "d85019ab04356c9da80405183bc0799ad296bde495d682aacbc23ef9bb2ad213",
+    "sha256": "d85019ab04356c9da80405183bc0799ad296bde495d682aacbc23ef9bb2ad213",
+    "bytes": 26367
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/txtopt",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "6a57e8ff28bd007a81056a5380f6a783f758f993a4eb73ba02eb503c0c070777",
+    "sha256": "6a57e8ff28bd007a81056a5380f6a783f758f993a4eb73ba02eb503c0c070777",
+    "bytes": 1269
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/txtoptmenu",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "572950c70c520f4744b4c39ea0b3192b49c81f23ed602c745a41b7c208932454",
+    "sha256": "572950c70c520f4744b4c39ea0b3192b49c81f23ed602c745a41b7c208932454",
+    "bytes": 12799
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/txtregexp",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "e7f86e67a8d084bbcebce39380eda41d94edab4d7b697ab0f9c0c150978a38d9",
+    "sha256": "e7f86e67a8d084bbcebce39380eda41d94edab4d7b697ab0f9c0c150978a38d9",
+    "bytes": 31290
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/txtscrap",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "29cd190ba404f7bab11a193df93285c4e33f0c9b84de7fcb8311b5fcdbfb1566",
+    "sha256": "29cd190ba404f7bab11a193df93285c4e33f0c9b84de7fcb8311b5fcdbfb1566",
+    "bytes": 1692
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/txtundo",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "70f40df74a2fd4dbf1df5342f806a2f7e36b3827839715481f6688f869283296",
+    "sha256": "70f40df74a2fd4dbf1df5342f806a2f7e36b3827839715481f6688f869283296",
+    "bytes": 12014
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/txtwin",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "63afefe235426a0e476f88d4bc04121b2fe447a76ca819d859d111050774ba6e",
+    "sha256": "63afefe235426a0e476f88d4bc04121b2fe447a76ca819d859d111050774ba6e",
+    "bytes": 2234
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/version",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "0fc062d17605ec94f608292fe6d4834f96b6a8fb580ff02095aaa08d0129f627",
+    "sha256": "0fc062d17605ec94f608292fe6d4834f96b6a8fb580ff02095aaa08d0129f627",
+    "bytes": 917
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/visdelay",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "e2a7de68953aa58d22a505b499926c5c3ca9e48a5784fe773c63d6294cf18815",
+    "sha256": "e2a7de68953aa58d22a505b499926c5c3ca9e48a5784fe773c63d6294cf18815",
+    "bytes": 1772
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/werr",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "3ff6dd1ec126b470d0fdd9d1c1fd64a5e9b0e6b507a959000ffcfa2cb53d7930",
+    "sha256": "3ff6dd1ec126b470d0fdd9d1c1fd64a5e9b0e6b507a959000ffcfa2cb53d7930",
+    "bytes": 2413
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/wimp",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "02499ff16c0407548f56d251980b70ef493674d020ffb4b4b22bd8d53e2510fe",
+    "sha256": "7d1e094e8f6760b00207f5dd63345ddb29d89db09d33cb1b9a577c12aaaa644b",
+    "bytes": 13897
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/wimpt",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "3115cc717acd22cbf9b3eb1b54ec00ec0a599399adc829bc233d6f33f5f77dc6",
+    "sha256": "3115cc717acd22cbf9b3eb1b54ec00ec0a599399adc829bc233d6f33f5f77dc6",
+    "bytes": 7414
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/win",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "6cedde876197ce458551bddfb4739ec2327cc0a5c68611433b92c3034ec50828",
+    "sha256": "6cedde876197ce458551bddfb4739ec2327cc0a5c68611433b92c3034ec50828",
+    "bytes": 10994
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/xferrecv",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "7cc6367bbd42a6d1b6672cfb86be9ef9e1eaa7383ba7138d6a43407803652b61",
+    "sha256": "7cc6367bbd42a6d1b6672cfb86be9ef9e1eaa7383ba7138d6a43407803652b61",
+    "bytes": 9064
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/c/xfersend",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "c3262681600851a13a30101285452f9fbae0c7de0f4c77ef16231913f5ec7aff",
+    "sha256": "c3262681600851a13a30101285452f9fbae0c7de0f4c77ef16231913f5ec7aff",
+    "bytes": 24124
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/DrawIntern/drawcvttyp",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "20ab7ffb9d2e83e1ba8fc1de6d74b62a650e93a33c0f9a06c326705113585569",
+    "sha256": "20ab7ffb9d2e83e1ba8fc1de6d74b62a650e93a33c0f9a06c326705113585569",
+    "bytes": 2480
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/DrawIntern/drawfile1",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "721e8e4d266d669c9d3edc15a8c3282ae18a482d698612e621fb65110103fd3b",
+    "sha256": "721e8e4d266d669c9d3edc15a8c3282ae18a482d698612e621fb65110103fd3b",
+    "bytes": 21715
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/DrawIntern/drawfile2",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "a588db01d0db9b5a03a0c669ca1957be4b85eecac53adc5b3bd472acc0a4c5d8",
+    "sha256": "a588db01d0db9b5a03a0c669ca1957be4b85eecac53adc5b3bd472acc0a4c5d8",
+    "bytes": 3070
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/EditIntern/message",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "77de7728cef2fd63d2569ea9e09c395a2a1c718089f5156197d866ed92ad4267",
+    "sha256": "77de7728cef2fd63d2569ea9e09c395a2a1c718089f5156197d866ed92ad4267",
+    "bytes": 2123
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/EditIntern/shell",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "666c29134b9399260d718fdccd5ad8f6a14fde7069f5078de22840be9c9e1527",
+    "sha256": "666c29134b9399260d718fdccd5ad8f6a14fde7069f5078de22840be9c9e1527",
+    "bytes": 865
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/EditIntern/shellasm",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "bce22de343819da1e483bbc9b74b957ce5c910c78de69feed32eb16c11aa5e4d",
+    "sha256": "bce22de343819da1e483bbc9b74b957ce5c910c78de69feed32eb16c11aa5e4d",
+    "bytes": 724
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/EditIntern/slist",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "7b89d9dc1e0c56459f4524e8949d40e7bb67faa2c3027d3321686c31d4c93646",
+    "sha256": "7b89d9dc1e0c56459f4524e8949d40e7bb67faa2c3027d3321686c31d4c93646",
+    "bytes": 1974
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/EditIntern/txt1",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "7ba8c4297a1619e7c318fcd58f2a991688d08b06a37f0ccb49d26455e8d6d5e3",
+    "sha256": "7ba8c4297a1619e7c318fcd58f2a991688d08b06a37f0ccb49d26455e8d6d5e3",
+    "bytes": 13869
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/EditIntern/txt3",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "3542b09a2f0c4a94c77ff64a0c843698e938a5d13ac13f4f95beb9e952245276",
+    "sha256": "3542b09a2f0c4a94c77ff64a0c843698e938a5d13ac13f4f95beb9e952245276",
+    "bytes": 2401
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/EditIntern/txtar",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "8ad515081758f7a58f5c05cd957b018c9251af879c0ad009c517da9532d7242c",
+    "sha256": "8ad515081758f7a58f5c05cd957b018c9251af879c0ad009c517da9532d7242c",
+    "bytes": 2612
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/EditIntern/txtfile",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "43740c9010b291a10a28ca0bdb77a160b17d5a09fbbb41512d08ec3685b2f604",
+    "sha256": "43740c9010b291a10a28ca0bdb77a160b17d5a09fbbb41512d08ec3685b2f604",
+    "bytes": 2008
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/EditIntern/txtfind",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "33cc0a959837a159e96e4dadd49fd3722c51925a757b4182ac2ecc474ec097d1",
+    "sha256": "33cc0a959837a159e96e4dadd49fd3722c51925a757b4182ac2ecc474ec097d1",
+    "bytes": 3003
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/EditIntern/txtmisc",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "cad7bc5735f34843e9f2a99509dd8b058fcd02e1cc632ab9fee22d2868194e3c",
+    "sha256": "cad7bc5735f34843e9f2a99509dd8b058fcd02e1cc632ab9fee22d2868194e3c",
+    "bytes": 4611
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/EditIntern/txtoptmenu",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "a164e96a5a8fa3f7d4a92cc9ebaaa6201ea148f473e03f44e5697490e8379e23",
+    "sha256": "a164e96a5a8fa3f7d4a92cc9ebaaa6201ea148f473e03f44e5697490e8379e23",
+    "bytes": 1206
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/EditIntern/txtover",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "da63e32bc93b73bda9a00e0d1f6860ca57869f81bc73d67527a247440472e083",
+    "sha256": "da63e32bc93b73bda9a00e0d1f6860ca57869f81bc73d67527a247440472e083",
+    "bytes": 669
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/EditIntern/txtregexp",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "4aaf9fd0191ecbee6d1d57469a22ce431ecd40a864aa0f43d513a4a91c653e57",
+    "sha256": "4aaf9fd0191ecbee6d1d57469a22ce431ecd40a864aa0f43d513a4a91c653e57",
+    "bytes": 7733
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/EditIntern/txtundo",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "b52eb8895b261d5a653956b91c7e00f0aa12c4d9f5b607199f5e700cfecb9c4f",
+    "sha256": "b52eb8895b261d5a653956b91c7e00f0aa12c4d9f5b607199f5e700cfecb9c4f",
+    "bytes": 4508
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/README",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "822d794c188b59994979c4ef417907ad75a6428f07caf70959f913d2a10881e6",
+    "sha256": "822d794c188b59994979c4ef417907ad75a6428f07caf70959f913d2a10881e6",
+    "bytes": 887
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/VerIntern/messages",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "c41e7a742058b1c0694e31600190e32cfd4fd6a55f40c494f2e2de469ad23dff",
+    "sha256": "c41e7a742058b1c0694e31600190e32cfd4fd6a55f40c494f2e2de469ad23dff",
+    "bytes": 10286
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/VerIntern/version",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "6fcf60ba6808f864f1230c51b356357ae1715d0281134b1972d14290e84cd1f4",
+    "sha256": "6fcf60ba6808f864f1230c51b356357ae1715d0281134b1972d14290e84cd1f4",
+    "bytes": 637
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/akbd",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "d2cbc34484c1af2f3f5b93cb671c8fed51c4b8f0c5b49d17b91dd24c82c86b15",
+    "sha256": "d2cbc34484c1af2f3f5b93cb671c8fed51c4b8f0c5b49d17b91dd24c82c86b15",
+    "bytes": 2816
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/alarm",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "b6f16b945f26efeba4deeed2302736707366c1634ab4986109efd0d6749ceb9a",
+    "sha256": "b6f16b945f26efeba4deeed2302736707366c1634ab4986109efd0d6749ceb9a",
+    "bytes": 5911
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/baricon",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "2dee3256b88688b111f7cb93bc22b708d0b6912f0e8bddc5dc2ddefedf4d7c0e",
+    "sha256": "2dee3256b88688b111f7cb93bc22b708d0b6912f0e8bddc5dc2ddefedf4d7c0e",
+    "bytes": 5859
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/bbc",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "b9a72e32644a5608d9cc0ecc2f6ec1a848633283c0c6c26396409794860c77d8",
+    "sha256": "b9a72e32644a5608d9cc0ecc2f6ec1a848633283c0c6c26396409794860c77d8",
+    "bytes": 13997
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/colourmenu",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "4442973e6feffa1fdea7472e8af9b241fcc72634a16d820febe137f7bf0f1813",
+    "sha256": "4442973e6feffa1fdea7472e8af9b241fcc72634a16d820febe137f7bf0f1813",
+    "bytes": 2140
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/colourpick",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "2694a1c85d4945c6e2ef7b65b2bea0f79870841c933d785fa2d32a4002d768c8",
+    "sha256": "2694a1c85d4945c6e2ef7b65b2bea0f79870841c933d785fa2d32a4002d768c8",
+    "bytes": 4623
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/colourtran",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "f4107586737f7f5967b0b4d939ab1fea98bbe5f1b481af0814d8d70920ea65cb",
+    "sha256": "f4107586737f7f5967b0b4d939ab1fea98bbe5f1b481af0814d8d70920ea65cb",
+    "bytes": 13632
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/coords",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "3c23c1ce2a51e3d405ef2c8b5b951e8f662b4f7fcf365ae9612af41c8cdf99b1",
+    "sha256": "3c23c1ce2a51e3d405ef2c8b5b951e8f662b4f7fcf365ae9612af41c8cdf99b1",
+    "bytes": 7398
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/ctl",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "f4fd2571ec9e713ca1637a343494b2a85068575fd2952ddcc1b9bfe32a93b53c",
+    "sha256": "f4fd2571ec9e713ca1637a343494b2a85068575fd2952ddcc1b9bfe32a93b53c",
+    "bytes": 16443
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/dbox",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "8e91771e8f7cb647fafa821f2633480796fc2495b4ff880a1fbe9073b8866ee3",
+    "sha256": "8e91771e8f7cb647fafa821f2633480796fc2495b4ff880a1fbe9073b8866ee3",
+    "bytes": 18146
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/dboxfile",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "aeff579ef50a24ace03669ced76044cbe78baa67675c5b9fc82e7f960d9498cc",
+    "sha256": "aeff579ef50a24ace03669ced76044cbe78baa67675c5b9fc82e7f960d9498cc",
+    "bytes": 3093
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/dboxquery",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "99dda0f19b7f42021227a7ca3bea599a8adecf60860b585f055359cfd35428a1",
+    "sha256": "99dda0f19b7f42021227a7ca3bea599a8adecf60860b585f055359cfd35428a1",
+    "bytes": 7921
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/dboxtcol",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "1dfdc315923ebf506f3d3d68b7cd65ba1f806ec720bdb3ba66264e997ae0ef1e",
+    "sha256": "1dfdc315923ebf506f3d3d68b7cd65ba1f806ec720bdb3ba66264e997ae0ef1e",
+    "bytes": 2987
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/dragasprit",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "898cbc985d12e972a729d4941310b7dd2ac858f58446534dff9c195eed7f20d8",
+    "sha256": "898cbc985d12e972a729d4941310b7dd2ac858f58446534dff9c195eed7f20d8",
+    "bytes": 3070
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/drawfdiag",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "f0ca6ad0c2cb6995150c9c47e973d81a06052c5711c8613bf0be12af8fb828b8",
+    "sha256": "f0ca6ad0c2cb6995150c9c47e973d81a06052c5711c8613bf0be12af8fb828b8",
+    "bytes": 14774
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/drawferror",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "6f890e9c42e1e4da8668bbb1020386279d7824ab696e1e71742f96410c8fdc7e",
+    "sha256": "6f890e9c42e1e4da8668bbb1020386279d7824ab696e1e71742f96410c8fdc7e",
+    "bytes": 5793
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/drawfobj",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "26ff29e960b76689523dd743fd05cfa2b9d8ba37cbf80e7e73cf66c3813e0b86",
+    "sha256": "26ff29e960b76689523dd743fd05cfa2b9d8ba37cbf80e7e73cf66c3813e0b86",
+    "bytes": 11643
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/drawftypes",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "cee51928923715a7199af4ca4a39ef4c4bb3721e71fca54e109b771116705584",
+    "sha256": "cee51928923715a7199af4ca4a39ef4c4bb3721e71fca54e109b771116705584",
+    "bytes": 12072
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/drawmod",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "dff690ed925c6ed239e5810db28724437d00a03aad3ea688cbc4c88b9315fe90",
+    "sha256": "dff690ed925c6ed239e5810db28724437d00a03aad3ea688cbc4c88b9315fe90",
+    "bytes": 20833
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/event",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "438ad57963c603195944a39aae01551c3e060a173cc031db42eb00e72fc02255",
+    "sha256": "438ad57963c603195944a39aae01551c3e060a173cc031db42eb00e72fc02255",
+    "bytes": 6805
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/fileicon",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "49970bf05ff7c8e095c70cb51859206228e48b1c3a6e7ed8b65b728a1293bda4",
+    "sha256": "49970bf05ff7c8e095c70cb51859206228e48b1c3a6e7ed8b65b728a1293bda4",
+    "bytes": 2179
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/flex",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "8ee964c5bc1c375e1d1fcedf73484a9feddc5098a578d6f5be85be47a7e857c2",
+    "sha256": "8ee964c5bc1c375e1d1fcedf73484a9feddc5098a578d6f5be85be47a7e857c2",
+    "bytes": 4172
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/font",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "7c7daa76caa3ff7e0575e55226ce9daba508b0f103b8e7da82885229c7e7c2f9",
+    "sha256": "7c7daa76caa3ff7e0575e55226ce9daba508b0f103b8e7da82885229c7e7c2f9",
+    "bytes": 19230
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/heap",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "9dd9a8d2dcbf176b13f414964a2bb10da60f98ce5954bf18b9609ac7a98f1b5e",
+    "sha256": "9dd9a8d2dcbf176b13f414964a2bb10da60f98ce5954bf18b9609ac7a98f1b5e",
+    "bytes": 2629
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/help",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "0012463e80cfd9ef9ffd9b76efd4aef09df2d840bc382f88b9a8ffc1492c9d31",
+    "sha256": "0012463e80cfd9ef9ffd9b76efd4aef09df2d840bc382f88b9a8ffc1492c9d31",
+    "bytes": 7677
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/magnify",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "0648230d96874200932bd37f82bf73f0f72b1e1ea882e16b0435d250833f14fd",
+    "sha256": "0648230d96874200932bd37f82bf73f0f72b1e1ea882e16b0435d250833f14fd",
+    "bytes": 4141
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/menu",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "cf4b83ab7727368eb7f5aac5b1c0167b1135f670250328f8f5712d52390b7870",
+    "sha256": "cf4b83ab7727368eb7f5aac5b1c0167b1135f670250328f8f5712d52390b7870",
+    "bytes": 6653
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/msgs",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "265da36be70248a9f2f29174d80b93f6a50693198b6fef6c9d5ae091bd71c5af",
+    "sha256": "265da36be70248a9f2f29174d80b93f6a50693198b6fef6c9d5ae091bd71c5af",
+    "bytes": 4867
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/msgtrans",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "0de36738c669711aeb9be4091299477a3bb6e1e70613bab652e4d0ae0a347606",
+    "sha256": "0de36738c669711aeb9be4091299477a3bb6e1e70613bab652e4d0ae0a347606",
+    "bytes": 3678
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/os",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "b0360f5ce0425310aec2814b4d09b53d8581b98e7bbceea579a73e5c60c64291",
+    "sha256": "b0360f5ce0425310aec2814b4d09b53d8581b98e7bbceea579a73e5c60c64291",
+    "bytes": 9190
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/pointer",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "d1da6411ab46183133a9e484d9db1244953219ebf35cea76d3440e89a88cee8e",
+    "sha256": "d1da6411ab46183133a9e484d9db1244953219ebf35cea76d3440e89a88cee8e",
+    "bytes": 2378
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/print",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "6a2fd5a99356221e52e0fa4b3858c41927aa9f9e9d99dde4db50175bb660cdac",
+    "sha256": "6a2fd5a99356221e52e0fa4b3858c41927aa9f9e9d99dde4db50175bb660cdac",
+    "bytes": 11414
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/res",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "99fa8cc15dc3f7410a07f39e24c705e65feef871bedadc89451532f7142995a0",
+    "sha256": "99fa8cc15dc3f7410a07f39e24c705e65feef871bedadc89451532f7142995a0",
+    "bytes": 2917
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/resspr",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "5f18103c9c8d2c09ea16454b43a8267abe63b8eed210c57c4713c919dd1f7480",
+    "sha256": "5f18103c9c8d2c09ea16454b43a8267abe63b8eed210c57c4713c919dd1f7480",
+    "bytes": 2589
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/saveas",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "15dde778ef3099f67f2a2bde439259adb069c2da68808b2f3455988843190325",
+    "sha256": "15dde778ef3099f67f2a2bde439259adb069c2da68808b2f3455988843190325",
+    "bytes": 4219
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/sprite",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "e0b545ca69ca0b7af2d1667199ac7a3f0e283a17caef31f6f95b1ad31b47391f",
+    "sha256": "e0b545ca69ca0b7af2d1667199ac7a3f0e283a17caef31f6f95b1ad31b47391f",
+    "bytes": 17983
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/template",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "7d1444e926c2237f929c2f6810278dfffca44a0a037ece4ef01eb656e7423690",
+    "sha256": "7d1444e926c2237f929c2f6810278dfffca44a0a037ece4ef01eb656e7423690",
+    "bytes": 5057
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/trace",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "5ea7290c3d7efc0d582b9e7ac5b14a67ec918eb75ac07432226b46666dae3b73",
+    "sha256": "5ea7290c3d7efc0d582b9e7ac5b14a67ec918eb75ac07432226b46666dae3b73",
+    "bytes": 2697
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/txt",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "f51d620e6c734b1620ac5d8edd1ba664c6e97d891d2cfe209321c176eb8dbb3a",
+    "sha256": "f51d620e6c734b1620ac5d8edd1ba664c6e97d891d2cfe209321c176eb8dbb3a",
+    "bytes": 27750
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/txtedit",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "657430ef62c8072174f8a64890b6a06294ac73181615637a22bac993a4c67d43",
+    "sha256": "657430ef62c8072174f8a64890b6a06294ac73181615637a22bac993a4c67d43",
+    "bytes": 16165
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/txtopt",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "db73d9958c7a495cbec7c89c30a2263fcf4fad3122bd65c682818058f07190d1",
+    "sha256": "db73d9958c7a495cbec7c89c30a2263fcf4fad3122bd65c682818058f07190d1",
+    "bytes": 2592
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/txtscrap",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "581cf72ffb9a4604a3671e4daf4cbdaff6143af6cf161545f8330691bf99c79e",
+    "sha256": "581cf72ffb9a4604a3671e4daf4cbdaff6143af6cf161545f8330691bf99c79e",
+    "bytes": 2643
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/txtwin",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "0673d16fc3829f53a67ac5ebbfe2abb78e35a7680c1c123b168b57daf2b0ba78",
+    "sha256": "0673d16fc3829f53a67ac5ebbfe2abb78e35a7680c1c123b168b57daf2b0ba78",
+    "bytes": 3144
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/typdat",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "3da75bbe19369bde135b5080bd95c1cdb366a205253c98da7190518ce257623d",
+    "sha256": "3da75bbe19369bde135b5080bd95c1cdb366a205253c98da7190518ce257623d",
+    "bytes": 1371
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/visdelay",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "a38bf695340a6a14568cd2d310ce49704385883b12aadd13618ab5129f082f52",
+    "sha256": "a38bf695340a6a14568cd2d310ce49704385883b12aadd13618ab5129f082f52",
+    "bytes": 2461
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/werr",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "9c4fb7dcaebce4426754b8e940fb647f0e5833a310a098ae9c1d60623ecccffc",
+    "sha256": "9c4fb7dcaebce4426754b8e940fb647f0e5833a310a098ae9c1d60623ecccffc",
+    "bytes": 2058
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/wimp",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "4b581b731a13f950648ce4da13d84bea68c317b2bcb0784f4f6b19f8ae074e35",
+    "sha256": "4b581b731a13f950648ce4da13d84bea68c317b2bcb0784f4f6b19f8ae074e35",
+    "bytes": 31465
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/wimpt",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "b545ad2eec3fb19c5998dab0bfafc272cfb5cb4a0b0564abbe5e89b528d84198",
+    "sha256": "b545ad2eec3fb19c5998dab0bfafc272cfb5cb4a0b0564abbe5e89b528d84198",
+    "bytes": 10128
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/win",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "b53c31807f97f80fbae581cbf0c9ca38b75222d768941fb9a82e95d86f459562",
+    "sha256": "b53c31807f97f80fbae581cbf0c9ca38b75222d768941fb9a82e95d86f459562",
+    "bytes": 13898
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/xferrecv",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "2e3c80d06dba093a9305c7fa9ef416993085d07f92359d867de9112f52a92380",
+    "sha256": "2e3c80d06dba093a9305c7fa9ef416993085d07f92359d867de9112f52a92380",
+    "bytes": 5601
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/h/xfersend",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "9e607da59416e7365280755618b7dd8cf05150cf869853ab1521f3b52f42deea",
+    "sha256": "9e607da59416e7365280755618b7dd8cf05150cf869853ab1521f3b52f42deea",
+    "bytes": 14641
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/romobjects",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "03c50e20301661b28cb0470794c3c4525ede43258d9fde517c4721845fe358ee",
+    "sha256": "03c50e20301661b28cb0470794c3c4525ede43258d9fde517c4721845fe358ee",
+    "bytes": 1114
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/s/asmdefs",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "ca09358077c1f385fcd0e4763d2d8f2883bf468e2407396caf3dbef4384e1994",
+    "sha256": "ca09358077c1f385fcd0e4763d2d8f2883bf468e2407396caf3dbef4384e1994",
+    "bytes": 666
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/s/base",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "0e24c86d35b0fc269962480a60dce5f5f02dd624b8e14b6507d4f2898fa32b1c",
+    "sha256": "0e24c86d35b0fc269962480a60dce5f5f02dd624b8e14b6507d4f2898fa32b1c",
+    "bytes": 809
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/s/bastxt",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "8f0fa85f5e255e1a56c885ae9dff69e7460eb32745a5e6242bbcfa19191bebc0",
+    "sha256": "8f0fa85f5e255e1a56c885ae9dff69e7460eb32745a5e6242bbcfa19191bebc0",
+    "bytes": 11531
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/s/defs",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "74e53d8616699e9024cb882985dc01c84f701bbfd23953b6dc66a1b1c3d779a8",
+    "sha256": "74e53d8616699e9024cb882985dc01c84f701bbfd23953b6dc66a1b1c3d779a8",
+    "bytes": 667
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/s/initmod_r",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "e54d8a3898c79f2c546b79e76566487b2bec25074a55f85c7cfac2e4ddb0896c",
+    "sha256": "e54d8a3898c79f2c546b79e76566487b2bec25074a55f85c7cfac2e4ddb0896c",
+    "bytes": 879
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/s/poll",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "c951dcdb36774da801118bacdcd8f9b6d2b2bc6f7fa74d45c1e624bdf1b7d387",
+    "sha256": "c951dcdb36774da801118bacdcd8f9b6d2b2bc6f7fa74d45c1e624bdf1b7d387",
+    "bytes": 5561
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/s/rl_data",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "149559b9501291f91258ea3e093baf546bdab96ef7973ea22a8b36ca81896275",
+    "sha256": "149559b9501291f91258ea3e093baf546bdab96ef7973ea22a8b36ca81896275",
+    "bytes": 772
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/s/rl_entries",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "79b02e84afe197e571919358ddba9858a95498a905f2f0d84a2767b5e36da9e3",
+    "sha256": "79b02e84afe197e571919358ddba9858a95498a905f2f0d84a2767b5e36da9e3",
+    "bytes": 28415
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/s/rl_mod_r",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "089ec33323e7739d35ba55ad6d911618af67e533260ba7cf34509e678eb71136",
+    "sha256": "089ec33323e7739d35ba55ad6d911618af67e533260ba7cf34509e678eb71136",
+    "bytes": 1426
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/s/rl_spare",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "5a5c8f5674750c77c79dfbcda562c0a91b0a3fb5814d0324189981947e9f154d",
+    "sha256": "8f9d160137a202a4517b79be7d6e64004d762635ffd83a14a924641491387c46",
+    "bytes": 2791
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/s/rl_stub_a",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "78d9b2f095ea34f49b1a3064105fca341063167a0b21a6d32477ad14bcae6b6a",
+    "sha256": "78d9b2f095ea34f49b1a3064105fca341063167a0b21a6d32477ad14bcae6b6a",
+    "bytes": 804
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/s/rl_stub_r",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "c9b479067e474aa6e09fa5e89c851d6577cdec32579a2767da943910f7d0fb46",
+    "sha256": "c9b479067e474aa6e09fa5e89c851d6577cdec32579a2767da943910f7d0fb46",
+    "bytes": 777
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/s/rl_stub_rm",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "febb2c4b2806442e19f15a988d983011d6255d95b15f99a4ce3dc303fb363a6c",
+    "sha256": "febb2c4b2806442e19f15a988d983011d6255d95b15f99a4ce3dc303fb363a6c",
+    "bytes": 806
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/s/rlibdata",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "7ce9f292291beb627688adc83999b81570ef34fb077ad7eabd459881e581bfcb",
+    "sha256": "7ce9f292291beb627688adc83999b81570ef34fb077ad7eabd459881e581bfcb",
+    "bytes": 1147
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/s/rom_defs",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "ca09358077c1f385fcd0e4763d2d8f2883bf468e2407396caf3dbef4384e1994",
+    "sha256": "ca09358077c1f385fcd0e4763d2d8f2883bf468e2407396caf3dbef4384e1994",
+    "bytes": 666
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/s/swi",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "2c8e554e4fa9ebc04831575d32684d94817dc48bde0864f1b64cc9986eb47d6a",
+    "sha256": "2c8e554e4fa9ebc04831575d32684d94817dc48bde0864f1b64cc9986eb47d6a",
+    "bytes": 12902
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "rlib/swi",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "7606428e9e8f84d5b684148007a39fd5c212bbfaaa78e7eab453d6b256008338",
+    "sha256": "7606428e9e8f84d5b684148007a39fd5c212bbfaaa78e7eab453d6b256008338",
+    "bytes": 28
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "s/Art_n_r",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "97ff7a41fad542542240db6cbf03e5c78499600c4fdc04b5484d448be77b08e4",
+    "sha256": "97ff7a41fad542542240db6cbf03e5c78499600c4fdc04b5484d448be77b08e4",
+    "bytes": 980
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "s/Art_o_r",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "b7512efd9af5b623b15af12301397e39bbf5e4e7e43bd6b29548f24711db62f3",
+    "sha256": "b7512efd9af5b623b15af12301397e39bbf5e4e7e43bd6b29548f24711db62f3",
+    "bytes": 976
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "s/arthurasm",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "b347b92bfc4eb7081d23aba58e0ec146d759e2f8ef70fae27ab8f94c483e7f67",
+    "sha256": "b347b92bfc4eb7081d23aba58e0ec146d759e2f8ef70fae27ab8f94c483e7f67",
+    "bytes": 3810
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "s/h_brazil",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "e6abec2b39ef474e8198f48ff2ec4403cb8d461e6712f719d40ed2431b1cd267",
+    "sha256": "e6abec2b39ef474e8198f48ff2ec4403cb8d461e6712f719d40ed2431b1cd267",
+    "bytes": 5745
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "s/h_modmacro",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "e84852eeac4eb5dfad164f3000702495de0bcab78cccbc9569f2e121ca1794df",
+    "sha256": "e84852eeac4eb5dfad164f3000702495de0bcab78cccbc9569f2e121ca1794df",
+    "bytes": 7576
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "s/h_objmacro",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "3d8eb84945d05e0ecdda087451aa6467e6e4b574dd3cdd0bc84362d29b0f6600",
+    "sha256": "3d8eb84945d05e0ecdda087451aa6467e6e4b574dd3cdd0bc84362d29b0f6600",
+    "bytes": 2484
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "s/h_regs",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "f7b1b8b190ba580e565efb5cadb04ad479092654d123623239fdb71ca52caffb",
+    "sha256": "f7b1b8b190ba580e565efb5cadb04ad479092654d123623239fdb71ca52caffb",
+    "bytes": 3038
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "s/h_stack",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "a3ac7fa0ac84f0b81e01c03c7cef563f52dfd6c9b410211a3a551431b08ed353",
+    "sha256": "a3ac7fa0ac84f0b81e01c03c7cef563f52dfd6c9b410211a3a551431b08ed353",
+    "bytes": 1612
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "s/h_stubs",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "4ae7a3445ed1fe078e9cee7cdbbdf5c75900def70dd4fe7c736d724dbd4d5d91",
+    "sha256": "4ae7a3445ed1fe078e9cee7cdbbdf5c75900def70dd4fe7c736d724dbd4d5d91",
+    "bytes": 2869
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "s/h_workspc",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "0959ccde33b9acfbf8e2a452e732d658878d2b6abd6bb814020b0579c009500f",
+    "sha256": "0959ccde33b9acfbf8e2a452e732d658878d2b6abd6bb814020b0579c009500f",
+    "bytes": 715
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "s/initmodule",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "85edcc10e5d331cf43f315a198cf4212f746df3a60bbeec5ff72722860671eda",
+    "sha256": "85edcc10e5d331cf43f315a198cf4212f746df3a60bbeec5ff72722860671eda",
+    "bytes": 15166
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "s/makehswis",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "a4e5bac5a8cc77d08dec4331934986f0bbcc06e5ffd239e580118b5fad09f873",
+    "sha256": "a4e5bac5a8cc77d08dec4331934986f0bbcc06e5ffd239e580118b5fad09f873",
+    "bytes": 12928
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "s/memcpy",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "048610522b2030532fa8e40e0b4287c20459654b19857371b14f316985afc9d9",
+    "sha256": "048610522b2030532fa8e40e0b4287c20459654b19857371b14f316985afc9d9",
+    "bytes": 19912
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "s/modulewrap",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "14c13beb6b7430504dc73583c66f7163a2fd8336b001bbbacf28b72ca9b0da03",
+    "sha256": "14c13beb6b7430504dc73583c66f7163a2fd8336b001bbbacf28b72ca9b0da03",
+    "bytes": 22411
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "s/overmgr",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "8707bc3a5cf84254c5a5ea8f6456e60e0c1c067711137939f6afd176334936cb",
+    "sha256": "8707bc3a5cf84254c5a5ea8f6456e60e0c1c067711137939f6afd176334936cb",
+    "bytes": 17591
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "s/version",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "5dd5d53ec81237e724cbaff9d9fde0d93eddf29ecd31c365ac7c0bac72861cd3",
+    "sha256": "5dd5d53ec81237e724cbaff9d9fde0d93eddf29ecd31c365ac7c0bac72861cd3",
+    "bytes": 634
+  },
+  {
+    "component": "RISC_OSLib",
+    "path": "syms/A_Entries",
+    "revision": "5e08cc7c4aae4163c8c964e5c19ac033f7d5fb85",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Lib/RISC_OSLib.git",
+    "upstream_sha256": "65cbdb00b3305dce5de1df0fe5e43d15eff3aca3a46cfbe1cd2945e7f34228d8",
+    "sha256": "65cbdb00b3305dce5de1df0fe5e43d15eff3aca3a46cfbe1cd2945e7f34228d8",
+    "bytes": 2498
+  }
+]

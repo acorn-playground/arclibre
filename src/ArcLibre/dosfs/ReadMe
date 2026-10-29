@@ -1,0 +1,56 @@
+ArcLibre DOSFS disc
+===================
+
+This disc holds DOSFS 0.62, the original Acorn filing system for PC
+(MS-DOS FAT) discs, built for ArcLibre as a module that is loaded from disc.
+It is not part of the ArcLibre ROM.
+
+Loading DOSFS
+-------------
+
+From the desktop, double-click the DOSFS file in this disc's directory
+viewer (a Module file runs *RMRun, which loads it). Or press F12 and type
+
+  *RMLoad ADFS::DOSFS.$.DOSFS
+
+then press Return twice. *Help DOSFS shows the loaded module, and
+*Help DOSMap and *Help CopyBoot describe its commands.
+
+DOSFS needs about 55K of module area (50K for the module, 5K for its
+workspace), plus buffers for each PC disc in use. *RMKill DOSFS removes it
+again.
+
+Using PC discs
+--------------
+
+With DOSFS loaded, ADFS recognises PC discs in the floppy drive (ArcLibre
+has tested 720K DOS/M discs). Open the drive icon as usual, or use paths
+such as ADFS::0.$.README/TXT. PC names are at most eight characters plus a
+three-character extension; RISC OS shows the dot as "/". With *Configure
+Truncate On, longer names are shortened to eight characters; a longer
+extension is always an error. Files are typed from their extensions with
+*DOSMap, for example
+
+  *DOSMap TXT FFF
+
+Formatting: DOSFS provides the DOS/M, DOS/Q and other formats for *Format
+and the drive icon's Format menu. ArcLibre has tested formatting 720K
+DOS/M discs, for example
+
+  *Format 0 DOS/M
+
+(answer Y to confirm), then reading them back as PC (FAT12) discs.
+
+The boot sector DOSFS writes when formatting is a data-disc sector: a PC
+started from the disc only shows a message asking for the disc to be
+removed. DOSFS cannot make PC system (boot) discs; *CopyBoot copies
+another disc's PC boot code.
+
+Licences
+--------
+
+DOSFS is Copyright 1996 Acorn Computers Ltd and is distributed under the
+Apache License 2.0. The module header, the default boot sector and the
+build were written for ArcLibre, also under the Apache License 2.0. The
+sources and full notices are in the ArcLibre source archive (src/DOSFS,
+src/ArcLibre, LICENSING.md).

@@ -1,0 +1,21 @@
+{
+  "Message_Notify": 262208,
+  "Message_PrintFile": 524608,
+  "Message_MenuWarning": 262336,
+  "Message_ModeChange": 262337,
+  "Message_TaskInitialise": 262338,
+  "Message_TaskCloseDown": 262339,
+  "Message_SlotSize": 262340,
+  "Message_SetSlot": 262341,
+  "Message_TaskNameRq": 262342,
+  "Message_TaskNameIs": 262343,
+  "Message_TaskStarted": 262344,
+  "Message_MenusDeleted": 262345,
+  "Message_Iconize": 262346,
+  "Message_WindowClosed": 262347,
+  "Message_WindowInfo": 262348,
+  "Message_Swap": 262349,
+  "Message_ToolsChanged": 262350,
+  "Message_FontChanged": 262351,
+  "Message_IconizeAt": 262352
+}

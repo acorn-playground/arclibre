@@ -1,0 +1,17 @@
+{
+  "status": "REPRODUCED",
+  "rom_sha256": "361281151b3079b4046c72f3fb7cc4574ff01b04ce53e4fffa09a4c7e2d0d8b1",
+  "application": "User-owned !Impress on a disposable copy of Hard Disc 4_.hdf",
+  "source_disc_sha256": "056501f766d8beca198ac29ddaa2840913ee4688bbf1ec409701a2912bd089c7",
+  "observation": "Main menu opens and highlights the arrow; submenu does not appear.",
+  "wimp_send_address": "0391C454",
+  "message_size": 40,
+  "message_action": "000800C0",
+  "expected_action": "000400C0",
+  "submenu_placeholder": "00008000",
+  "selection": [
+    1,
+    -1
+  ],
+  "guest_memory_patches": false
+}

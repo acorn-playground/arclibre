@@ -1,0 +1,18 @@
+diff --git a/src/ADFS/s/Adfs05 b/src/ADFS/s/Adfs05
+index b1ebf94..53c7519 100644
+--- a/src/ADFS/s/Adfs05
++++ b/src/ADFS/s/Adfs05
+@@ -516,8 +516,12 @@ ReadNewCMOS0
+  |
+         MOV     R4, R2, LSR #3
+  ]
++ ; ArcLibre: the A1 build includes Adfs11's real byte-addressed ST506
++ ; driver. Preserve the historical baseline unless the A440 profile opts in.
++ [ :LNOT: :DEF: ArcLibreST506
+  [ Top16Write
+-        BIC     R4, R4, #7              ; ST506=0
++        BIC     R4, R4, #7              ; historical ST506 suppression
++ ]
+  ]
+         BVS     %FT95
+         CMPS    R3, #4                  ;if >4 floppies CMOS corrupt

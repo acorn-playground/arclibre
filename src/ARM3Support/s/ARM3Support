@@ -1,0 +1,261 @@
+; SPDX-License-Identifier: Apache-2.0
+; Copyright 2026 ArcLibre contributors.
+; New ARM3 cache support for ArcLibre. RISC OS 3.11 had an ARM3Support module
+; whose source was never published; this implements its documented interface
+; (RISC OS 3 PRM, ARM3 chapter): *Cache, *Configure Cache and the Cache_ SWIs
+; at chunk &280. On an ARM3 it sets the cacheable, updateable and disruptive
+; areas to the 3.60 kernel's ARM3 defaults and turns the cache on unless it is
+; configured off. On any other processor initialisation fails, so the module
+; stays dormant and its commands and SWIs are unknown, as on 3.11.
+        AREA |ARM3Support$$Code|, CODE, READONLY
+Base
+        GET Hdr:ListOpts
+        GET Hdr:Macros
+        GET Hdr:System
+        GET Hdr:ModHand
+ARM3SWI_Base    *       &280
+CacheCMOS       *       &C3             ; SystemSpeedCMOS
+CacheBit        *       1:SHL:5         ; set: the cache is configured off
+V_bit           *       1:SHL:28
+I_and_F_bits    *       3:SHL:26
+CacheOnValue    *       3               ; the 3.60 kernel's ARM3 control value
+        DCD 0,Init-Base,0,0
+        DCD Title-Base,Help-Base,Commands-Base
+        DCD ARM3SWI_Base,SWIHandler-Base,SWINames-Base,0
+Title   DCB "ARM3Support",0
+Help    DCB "ARM3Support",9,"1.00 (27 Oct 2026) ArcLibre",0
+SWINames
+        DCB "Cache",0,"Control",0,"Cacheable",0,"Updateable",0,"Disruptive",0,"Flush",0,0
+        ALIGN
+Commands
+        DCB "Cache",0
+        ALIGN
+        DCD CacheCommand-Base,&00010000,CacheSyntax-Base,CacheHelp-Base
+        DCB "Cache",0
+        ALIGN
+        DCD CacheConfigure-Base,&40010000,ConfigureSyntax-Base,ConfigureHelp-Base
+        DCB 0
+CacheHelp       DCB "*Cache turns the cache on or off, or gives the cache state.",13,10,0
+CacheSyntax     DCB "Syntax: *Cache [On|Off]",0
+ConfigureHelp   DCB "*Configure Cache determines the default state of the cache.",13,10,0
+ConfigureSyntax DCB "Syntax: *Configure Cache On|Off",0
+ ; Each message is word aligned so that ADR can reach it.
+        ALIGN
+CacheOn         DCB "Cache on",0
+        ALIGN
+CacheOff        DCB "Cache off",0
+        ALIGN
+StatusOn        DCB "Cache      On",0
+        ALIGN
+StatusOff       DCB "Cache      Off",0
+        ALIGN
+StatusSyntax    DCB "Cache      On|Off",0
+        ALIGN
+ErrorNotARM3    DCD &280
+        DCB "ARM3 not fitted",0
+        ALIGN
+ErrorSyntax     DCD &DC
+        DCB "Syntax: *Cache [On|Off]",0
+        ALIGN
+ErrorNoSuchSWI  DCD &1E6
+        DCB "SWI not known",0
+        ALIGN
+ ; The 3.60 kernel's ARM3 defaults (s/NewReset): ROM and non-screen logical
+ ; RAM cacheable; logical RAM updateable; the MEMC CAM disruptive, so that
+ ; remapping pages (task switching) flushes the cache.
+CacheableDefault        DCD     2_11111100000000000111110011111111
+UpdateableDefault       DCD     2_00000000000000000111111111111111
+DisruptiveDefault       DCD     2_11110000000000000000000000000000
+
+ ; Initialisation: fail (staying dormant) unless the processor is an ARM3.
+Init
+        STMFD   sp!,{r0-r3,lr}
+        BL      DetectARM3
+        BNE     NotARM3
+        LDR     r0,CacheableDefault
+        MCR     p15,0,r0,c3,c0
+        LDR     r0,UpdateableDefault
+        MCR     p15,0,r0,c4,c0
+        LDR     r0,DisruptiveDefault
+        MCR     p15,0,r0,c5,c0
+        MOV     r0,#161                 ; read the configured cache state
+        MOV     r1,#CacheCMOS
+        SWI     XOS_Byte
+        MRC     p15,0,r0,c2,c0
+        TST     r2,#CacheBit
+        BICNE   r0,r0,#1
+        ORREQ   r0,r0,#CacheOnValue
+        MCR     p15,0,r0,c1,c0          ; flush before the cache is used
+        MCR     p15,0,r0,c2,c0
+        LDMFD   sp!,{r0-r3,lr}
+        BICS    pc,lr,#V_bit
+NotARM3
+        ADR     r0,ErrorNotARM3
+        ADD     sp,sp,#4
+        LDMFD   sp!,{r1-r3,lr}
+        ORRS    pc,lr,#V_bit
+
+ ; Out: EQ if the processor is an ARM3 (CP15 register 0 reads &xxxx03xx).
+ ; Elsewhere the MRC is undefined: with interrupts off, the undefined
+ ; instruction vector briefly returns straight past it, leaving r0 zero.
+DetectARM3
+        STMFD   sp!,{r2,r3,lr}
+        MOV     r3,pc
+        ORR     r0,r3,#I_and_F_bits
+        TEQP    r0,#0
+        MOV     r0,r0
+        MOV     r1,#4
+        LDR     r2,[r1]
+        LDR     r0,UndefinedReturn
+        STR     r0,[r1]
+        MOV     r0,#0
+        MRC     p15,0,r0,c0,c0
+        STR     r2,[r1]
+        TEQP    r3,#0
+        MOV     r0,r0
+        AND     r0,r0,#&FF00
+        TEQ     r0,#&0300
+        LDMFD   sp!,{r2,r3,pc}
+UndefinedReturn
+        MOVS    pc,lr
+
+ ; SWIs: Cache_Control, _Cacheable, _Updateable and _Disruptive take an EOR
+ ; mask in r0 and an AND mask in r1, set the register to (old AND r1) EOR r0
+ ; and return the old value in r0. Cache_Flush flushes the cache.
+SWIHandler
+        CMP     r11,#5
+        ADDLO   pc,pc,r11,LSL #2
+        B       BadSWI
+        B       CacheControl
+        B       CacheCacheable
+        B       CacheUpdateable
+        B       CacheDisruptive
+        B       CacheFlush
+BadSWI
+        ADR     r0,ErrorNoSuchSWI
+        ORRS    pc,lr,#V_bit
+CacheControl
+        MRC     p15,0,r10,c2,c0
+        AND     r12,r10,r1
+        EOR     r12,r12,r0
+        BIC     r11,r12,r10             ; flush when the cache is turned on
+        TST     r11,#1
+        MCRNE   p15,0,r12,c1,c0
+        MCR     p15,0,r12,c2,c0
+        MOV     r0,r10
+        MOV     pc,lr
+CacheCacheable
+        MRC     p15,0,r10,c3,c0
+        AND     r12,r10,r1
+        EOR     r12,r12,r0
+        MCR     p15,0,r12,c3,c0
+        MOV     r0,r10
+        MOV     pc,lr
+CacheUpdateable
+        MRC     p15,0,r10,c4,c0
+        AND     r12,r10,r1
+        EOR     r12,r12,r0
+        MCR     p15,0,r12,c4,c0
+        MOV     r0,r10
+        MOV     pc,lr
+CacheDisruptive
+        MRC     p15,0,r10,c5,c0
+        AND     r12,r10,r1
+        EOR     r12,r12,r0
+        MCR     p15,0,r12,c5,c0
+        MOV     r0,r10
+        MOV     pc,lr
+CacheFlush
+        MCR     p15,0,r0,c1,c0
+        MOV     pc,lr
+
+ ; *Cache [On|Off]: change, or with no parameter show, the cache state.
+CacheCommand
+        STMFD   sp!,{lr}
+        TEQ     r1,#0
+        BEQ     CacheShow
+        BL      Decode
+        ADRVS   r0,ErrorSyntax
+        LDMVSFD sp!,{pc}
+        MRC     p15,0,r1,c2,c0
+        TEQ     r0,#0
+        BICNE   r1,r1,#1
+        ORREQ   r1,r1,#CacheOnValue
+        MCREQ   p15,0,r0,c1,c0          ; flush before turning the cache on
+        MCR     p15,0,r1,c2,c0
+        LDMFD   sp!,{pc}
+CacheShow
+        MRC     p15,0,r1,c2,c0
+        TST     r1,#1
+        ADRNE   r0,CacheOn
+        ADREQ   r0,CacheOff
+        SWI     XOS_Write0
+        SWIVC   XOS_NewLine
+        LDMFD   sp!,{pc}
+
+ ; *Configure Cache: r0 = 0 (show syntax), 1 (*Status) or -> On|Off.
+CacheConfigure
+        STMFD   sp!,{r0-r3,lr}
+        MOV     r3,r0
+        MOV     r0,#161
+        MOV     r1,#CacheCMOS
+        SWI     XOS_Byte
+        CMP     r3,#1
+        ADRLO   r0,StatusSyntax
+        BLO     ConfigurePrint
+        BEQ     ConfigureStatus
+        MOV     r0,r3
+        BL      Decode
+        BVS     ConfigureBad
+        BIC     r2,r2,#CacheBit
+        ORR     r2,r2,r0
+        MOV     r0,#162
+        MOV     r1,#CacheCMOS           ; Decode corrupted r1
+        SWI     XOS_Byte
+        B       ConfigureExit
+ConfigureStatus
+        TST     r2,#CacheBit
+        ADREQ   r0,StatusOn
+        ADRNE   r0,StatusOff
+ConfigurePrint
+        SWI     XOS_Write0
+        SWIVC   XOS_NewLine
+ConfigureExit
+        STRVS   r0,[sp]
+        LDMFD   sp!,{r0-r3,pc}
+ConfigureBad
+        MOV     r0,#0                   ; "Bad configure option"
+        STR     r0,[sp]
+        LDMFD   sp!,{r0-r3,lr}
+        ORRS    pc,lr,#V_bit
+
+ ; In: r0 -> "On" or "Off" (any case), after optional spaces.
+ ; Out: r0 = 0 (on) or CacheBit (off); V set if neither. r1, r3 corrupted.
+Decode
+        LDRB    r1,[r0],#1
+        CMP     r1,#" "
+        BEQ     Decode
+        ORR     r1,r1,#&20
+        TEQ     r1,#"o"
+        BNE     DecodeBad
+        LDRB    r1,[r0],#1
+        ORR     r1,r1,#&20
+        TEQ     r1,#"n"
+        MOVEQ   r3,#0
+        BEQ     DecodeEnd
+        TEQ     r1,#"f"
+        BNE     DecodeBad
+        LDRB    r1,[r0],#1
+        ORR     r1,r1,#&20
+        TEQ     r1,#"f"
+        BNE     DecodeBad
+        MOV     r3,#CacheBit
+DecodeEnd
+        LDRB    r1,[r0]
+        CMP     r1,#" "
+        BHI     DecodeBad
+        MOV     r0,r3
+        BICS    pc,lr,#V_bit
+DecodeBad
+        ORRS    pc,lr,#V_bit
+        END

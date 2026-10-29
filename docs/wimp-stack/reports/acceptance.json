@@ -1,0 +1,94 @@
+{
+  "status": "PASS",
+  "cold_runs": 3,
+  "identical_results": true,
+  "message_list_negative_control": {
+    "status": "EXPECTED_FAILURE",
+    "instruction_offset": 10452,
+    "replaced": "LDR R3,[SP,#12]",
+    "replacement": "NOP",
+    "module_sha256": "540395f38c40aefb3adf9dff596389c9c374590fad1c0e67cadb41a6a70ae20f",
+    "failure": "caller message-interest list preserved",
+    "contract": {
+      "copied_list": [
+        156,
+        8,
+        0,
+        0
+      ],
+      "message_bytes": 4,
+      "message_pointer": 26021688,
+      "original_list": [
+        67,
+        82,
+        65,
+        79,
+        0,
+        0,
+        0,
+        0
+      ],
+      "task_block": 26021368
+    }
+  },
+  "rom_sha256": "bf5ca56ebd6f7fd7dc4149360d97f76f009abed8879693470421998d59f11791",
+  "inputs": {
+    "modules": {
+      "FPEmulator": "be6a5904849685002e9e862fe859cdf5369eaf55d0b9590546b949d5ff1cb665",
+      "Hourglass": "7fac03c7c82bfd5afc7a38d48a660afefb7453af51ed8a6928a52bfe9462b49a",
+      "FontManager": "e69268f15b0f8e8d27448ba1064a3fb773e4fd692d23364cf28900cf3d23b163",
+      "ROMFonts": "909493b93e4b4250feeb352d049298d5d09371cbbd5d40ab5b9ddf00ad464fd6",
+      "Wimp": "d9a865d9b29fbb993e22497b6e2ba243829fbeb076e3a25511e76d68aeeccf17",
+      "DrawMod": "ecc01224286a82aec6093257f3fe2ed7bc2161a6fe4e9bdb19a68204376bc139",
+      "Colours": "52296a453b64f326e88ff13bcd7ba2588adc768befd0d56f2d4920883337b51b",
+      "Super": "bebfbebfc17810fe639f1c2ace12a74b257664ff6d86a389e701fab5ce5c1981"
+    },
+    "resources": [
+      "Resources.Colours.Messages",
+      "Resources.DrawMod.Messages",
+      "Resources.Fonts.Messages",
+      "Resources.FPEmulator.Messages",
+      "Resources.Wimp.Messages",
+      "Resources.Wimp.Templates",
+      "Resources.Wimp.Sprites",
+      "Resources.Wimp.Sprites22",
+      "Resources.Wimp.Tools"
+    ],
+    "resources_sha256": "f1c9d1599b3f4f3c6a40d6e79c548b82769c3a4c39faf97214a8c7ab220fc18a",
+    "diagnostic_client_sha256": "606974c4a7fad317dd8997cea758cee3c3c04920e03d7cc1fbb642fc0d073085"
+  },
+  "swi_calls_per_run": 74,
+  "requested_wimp_api": 310,
+  "reported_wimp_version": 366,
+  "task_mode": "USR26",
+  "original_memc_path": true,
+  "event_reasons": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    8,
+    12,
+    17
+  ],
+  "real_keyboard_and_mouse": true,
+  "real_message_delivery": true,
+  "fpa_registers_and_fpsr_preserved": true,
+  "pixel_verification": {
+    "client_text_ink_pixels": 404,
+    "translated_interior_pixels": 43806,
+    "closed_desktop_pixels": 163840
+  },
+  "framebuffer_hashes": {
+    "window": "25b8c346e05b2cde0a0bc4072c947e95f3f0adbf2deae1cb635d2a35725d13e0",
+    "moved": "b671f9ad5c7ef5570f3c6be95dbaf0ce9ffa866e560cd3d691bd782fdb30a560",
+    "closed": "d4b24af3c1a009fab49dbf8bea1acbd698322ea6575a9cde0c8cbbf18f1f10a7"
+  },
+  "baseline_rom_modified": false,
+  "emulator_modified": false,
+  "sampled_module_trace_audit": true,
+  "scope": "One diagnostic task, window, input, self-message, FPA save/restore and cleanup; not multi-task scheduling, full desktop or RISC OS 3.11 conformance"
+}

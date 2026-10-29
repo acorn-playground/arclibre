@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "rom_sha256": "41fd4e9504c03aab4b0a62909c5addb6b77d1a91a695ee39e2ea09654c769b9d",
+  "cause": "Fixed elapsed-time boundary landed in normal sound IRQ; test now observes its real bounded return to USR26.",
+  "cold_boots": 3,
+  "identical_boundary": {
+    "elapsed_ticks": 11922,
+    "final_pc": 261068,
+    "final_psr": 1073741824,
+    "initial_pc": 25300016,
+    "initial_psr": 2147483650
+  },
+  "game_and_rom_unchanged": true,
+  "private_assets_excluded": true
+}

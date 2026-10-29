@@ -1,0 +1,2498 @@
+{
+  "rom_sha256": "294d5aec83438e1aad9a69bbf5b5c562f6187aa21f7fac246d0a0e79be2beacc",
+  "used_bytes": 1893244,
+  "free_bytes": 203908,
+  "baseline_source": "https://www.chiark.greenend.org.uk/~theom/riscos/mods/311.html",
+  "scope": "Module identity/registered table inventory only; not SWI or command semantics certification. Aliases, UKCommand service handlers and external programs are not enumerated.",
+  "comparison": [
+    {
+      "title": "UtilityModule",
+      "version": "3.11",
+      "observed_status": "Active",
+      "status": "present"
+    },
+    {
+      "title": "Podule",
+      "version": "1.26",
+      "observed_status": "Active",
+      "status": "absent"
+    },
+    {
+      "title": "FileSwitch",
+      "version": "2.08",
+      "observed_status": "Active",
+      "status": "present"
+    },
+    {
+      "title": "ResourceFS",
+      "version": "0.14",
+      "observed_status": "Active",
+      "status": "present"
+    },
+    {
+      "title": "Messages",
+      "version": "0.45",
+      "observed_status": "Active",
+      "status": "present"
+    },
+    {
+      "title": "MessageTrans",
+      "version": "0.23",
+      "observed_status": "Active",
+      "status": "present"
+    },
+    {
+      "title": "TerritoryManager",
+      "version": "0.13",
+      "observed_status": "Active",
+      "status": "present"
+    },
+    {
+      "title": "UK",
+      "version": "0.18",
+      "observed_status": "Active",
+      "status": "present"
+    },
+    {
+      "title": "WindowManager",
+      "version": "3.16",
+      "observed_status": "Active",
+      "status": "present"
+    },
+    {
+      "title": "Desktop",
+      "version": "2.43",
+      "observed_status": "Active",
+      "status": "present"
+    },
+    {
+      "title": "TaskManager",
+      "version": "0.75",
+      "observed_status": "Active",
+      "status": "present"
+    },
+    {
+      "title": "!Alarm",
+      "version": "2.37",
+      "observed_status": "Active",
+      "status": "absent"
+    },
+    {
+      "title": "!Calc",
+      "version": "0.52",
+      "observed_status": "Active",
+      "status": "absent"
+    },
+    {
+      "title": "!Chars",
+      "version": "1.13",
+      "observed_status": "Active",
+      "status": "absent"
+    },
+    {
+      "title": "!Help",
+      "version": "2.19",
+      "observed_status": "Active",
+      "status": "absent"
+    },
+    {
+      "title": "Printers",
+      "version": "0.34",
+      "observed_status": "Active",
+      "status": "absent"
+    },
+    {
+      "title": "ADFSFiler",
+      "version": "0.61",
+      "observed_status": "Active",
+      "status": "present"
+    },
+    {
+      "title": "ARM3Support",
+      "version": "1.09",
+      "observed_status": "Dormant",
+      "status": "absent"
+    },
+    {
+      "title": "BASIC",
+      "version": "1.05",
+      "observed_status": "Active",
+      "status": "present"
+    },
+    {
+      "title": "BASICTrans",
+      "version": "1.00",
+      "observed_status": "Active",
+      "status": "present"
+    },
+    {
+      "title": "BufferManager",
+      "version": "0.22",
+      "observed_status": "Active",
+      "status": "present"
+    },
+    {
+      "title": "ColourTrans",
+      "version": "1.07",
+      "observed_status": "Active",
+      "status": "present"
+    },
+    {
+      "title": "Debugger",
+      "version": "1.39",
+      "observed_status": "Active",
+      "status": "absent"
+    },
+    {
+      "title": "DeviceFS",
+      "version": "0.26",
+      "observed_status": "Active",
+      "status": "absent"
+    },
+    {
+      "title": "DragASprite",
+      "version": "0.03",
+      "observed_status": "Active",
+      "status": "present"
+    },
+    {
+      "title": "Draw",
+      "version": "1.05",
+      "observed_status": "Active",
+      "status": "present"
+    },
+    {
+      "title": "Econet",
+      "version": "5.62",
+      "observed_status": "Dormant",
+      "status": "absent"
+    },
+    {
+      "title": "BBCEconet",
+      "version": "0.14",
+      "observed_status": "Dormant",
+      "status": "absent"
+    },
+    {
+      "title": "FileCore",
+      "version": "2.41",
+      "observed_status": "Active",
+      "status": "present"
+    },
+    {
+      "title": "ADFS",
+      "version": "2.67",
+      "observed_status": "Active",
+      "status": "present"
+    },
+    {
+      "title": "RamFS",
+      "version": "2.10",
+      "observed_status": "Dormant",
+      "status": "absent"
+    },
+    {
+      "title": "Filer",
+      "version": "1.64",
+      "observed_status": "Active",
+      "status": "present"
+    },
+    {
+      "title": "FilerSWIs",
+      "version": "0.03",
+      "observed_status": "Active",
+      "status": "present"
+    },
+    {
+      "title": "FontManager",
+      "version": "3.07",
+      "observed_status": "Active",
+      "status": "present"
+    },
+    {
+      "title": "FPEmulator",
+      "version": "2.87",
+      "observed_status": "Active",
+      "status": "present"
+    },
+    {
+      "title": "Free",
+      "version": "0.21",
+      "observed_status": "Active",
+      "status": "absent"
+    },
+    {
+      "title": "Hourglass",
+      "version": "2.08",
+      "observed_status": "Active",
+      "status": "present"
+    },
+    {
+      "title": "IIC",
+      "version": "0.12",
+      "observed_status": "Active",
+      "status": "absent"
+    },
+    {
+      "title": "International",
+      "version": "1.24",
+      "observed_status": "Active",
+      "status": "present"
+    },
+    {
+      "title": "IRQUtils",
+      "version": "2.50",
+      "observed_status": "Active",
+      "status": "absent"
+    },
+    {
+      "title": "Joystick",
+      "version": "0.02",
+      "observed_status": "Dormant",
+      "status": "absent"
+    },
+    {
+      "title": "NetFS",
+      "version": "5.78",
+      "observed_status": "Dormant",
+      "status": "absent"
+    },
+    {
+      "title": "BroadcastLoader",
+      "version": "1.02",
+      "observed_status": "Dormant",
+      "status": "absent"
+    },
+    {
+      "title": "NetFiler",
+      "version": "0.72",
+      "observed_status": "Active",
+      "status": "absent"
+    },
+    {
+      "title": "NetPrint",
+      "version": "5.43",
+      "observed_status": "Dormant",
+      "status": "absent"
+    },
+    {
+      "title": "NetStatus",
+      "version": "2.06",
+      "observed_status": "Active",
+      "status": "absent"
+    },
+    {
+      "title": "Obey",
+      "version": "0.29",
+      "observed_status": "Active",
+      "status": "present"
+    },
+    {
+      "title": "PaletteUtil",
+      "version": "0.45",
+      "observed_status": "Active",
+      "status": "partial replacement: ArcPalette"
+    },
+    {
+      "title": "ParallelDeviceDriver",
+      "version": "0.34",
+      "observed_status": "Active",
+      "status": "absent"
+    },
+    {
+      "title": "PDriver",
+      "version": "3.18",
+      "observed_status": "Active",
+      "status": "absent"
+    },
+    {
+      "title": "PDriverDP",
+      "version": "3.28",
+      "observed_status": "Active",
+      "status": "absent"
+    },
+    {
+      "title": "PDumperSupport",
+      "version": "0.11",
+      "observed_status": "Active",
+      "status": "absent"
+    },
+    {
+      "title": "PDumperDM",
+      "version": "0.34",
+      "observed_status": "Active",
+      "status": "absent"
+    },
+    {
+      "title": "InternationalKeyboard",
+      "version": "0.31",
+      "observed_status": "Active",
+      "status": "present"
+    },
+    {
+      "title": "Pinboard",
+      "version": "0.50",
+      "observed_status": "Active",
+      "status": "present"
+    },
+    {
+      "title": "PipeFS",
+      "version": "0.13",
+      "observed_status": "Active",
+      "status": "absent"
+    },
+    {
+      "title": "Portable",
+      "version": "0.29",
+      "observed_status": "Dormant",
+      "status": "absent"
+    },
+    {
+      "title": "RAMFSFiler",
+      "version": "0.28",
+      "observed_status": "Active",
+      "status": "absent"
+    },
+    {
+      "title": "ResourceFiler",
+      "version": "0.12",
+      "observed_status": "Active",
+      "status": "present"
+    },
+    {
+      "title": "ROMFonts",
+      "version": "0.14",
+      "observed_status": "Active",
+      "status": "present"
+    },
+    {
+      "title": "RTCAdjust",
+      "version": "0.03",
+      "observed_status": "Active",
+      "status": "absent"
+    },
+    {
+      "title": "ScreenBlanker",
+      "version": "2.15",
+      "observed_status": "Active",
+      "status": "absent"
+    },
+    {
+      "title": "SerialDeviceDriver",
+      "version": "0.21",
+      "observed_status": "Active",
+      "status": "absent"
+    },
+    {
+      "title": "SerialDeviceSupport",
+      "version": "0.17",
+      "observed_status": "Active",
+      "status": "absent"
+    },
+    {
+      "title": "ShellCLI",
+      "version": "0.25",
+      "observed_status": "Running",
+      "status": "present"
+    },
+    {
+      "title": "SoundDMA",
+      "version": "1.20",
+      "observed_status": "Active",
+      "status": "present"
+    },
+    {
+      "title": "SoundChannels",
+      "version": "1.27",
+      "observed_status": "Active",
+      "status": "present"
+    },
+    {
+      "title": "SoundScheduler",
+      "version": "1.17",
+      "observed_status": "Active",
+      "status": "present"
+    },
+    {
+      "title": "SpriteExtend",
+      "version": "0.46",
+      "observed_status": "Active",
+      "status": "present"
+    },
+    {
+      "title": "SpriteUtils",
+      "version": "1.09",
+      "observed_status": "Active",
+      "status": "present"
+    },
+    {
+      "title": "Squash",
+      "version": "0.21",
+      "observed_status": "Active",
+      "status": "absent"
+    },
+    {
+      "title": "SuperSample",
+      "version": "0.07",
+      "observed_status": "Active",
+      "status": "present"
+    },
+    {
+      "title": "SystemDevices",
+      "version": "1.25",
+      "observed_status": "Active",
+      "status": "absent"
+    },
+    {
+      "title": "TaskWindow",
+      "version": "0.47",
+      "observed_status": "Active",
+      "status": "absent"
+    },
+    {
+      "title": "WindowUtils",
+      "version": "2.50",
+      "observed_status": "Active",
+      "status": "absent"
+    },
+    {
+      "title": "FilterManager",
+      "version": "0.08",
+      "observed_status": "Active",
+      "status": "absent"
+    },
+    {
+      "title": "WaveSynth",
+      "version": "1.13",
+      "observed_status": "Active",
+      "status": "present"
+    },
+    {
+      "title": "StringLib",
+      "version": "1.11",
+      "observed_status": "Active",
+      "status": "absent"
+    },
+    {
+      "title": "Percussion",
+      "version": "1.10",
+      "observed_status": "Active",
+      "status": "present"
+    },
+    {
+      "title": "SharedCLibrary",
+      "version": "3.99",
+      "observed_status": "Active",
+      "status": "present"
+    },
+    {
+      "title": "Filer_Action",
+      "version": "0.29",
+      "observed_status": "Active",
+      "status": "present"
+    },
+    {
+      "title": "!Configure",
+      "version": "1.41",
+      "observed_status": "Active",
+      "status": "absent"
+    },
+    {
+      "title": "!Draw",
+      "version": "0.88",
+      "observed_status": "Active",
+      "status": "present"
+    },
+    {
+      "title": "!Paint",
+      "version": "1.61",
+      "observed_status": "Active",
+      "status": "present"
+    },
+    {
+      "title": "!Edit",
+      "version": "1.44",
+      "observed_status": "Active",
+      "status": "present"
+    },
+    {
+      "title": "DOSFS",
+      "version": "0.43",
+      "observed_status": "Active",
+      "status": "absent"
+    },
+    {
+      "title": "ADFSUtils",
+      "version": "0.05",
+      "observed_status": "Active",
+      "status": "absent"
+    },
+    {
+      "title": "NetUtils",
+      "version": "0.99",
+      "observed_status": "Dormant",
+      "status": "absent"
+    }
+  ],
+  "modules": [
+    {
+      "title": "UtilityModule",
+      "help": "MOS Utilities\t3.60 (13 Apr 1995)",
+      "base": 58754780,
+      "length": 110688,
+      "entries": [
+        {
+          "name": "Break",
+          "kind": "help-only",
+          "flags": 268435456,
+          "code_offset": 0,
+          "syntax_offset": 0,
+          "help_offset": 4294941736
+        },
+        {
+          "name": "Configure",
+          "kind": "command",
+          "flags": 822018048,
+          "code_offset": 13732,
+          "syntax_offset": 0,
+          "help_offset": 13708
+        },
+        {
+          "name": "Commands",
+          "kind": "help-code-entry",
+          "flags": 805306368,
+          "code_offset": 0,
+          "syntax_offset": 0,
+          "help_offset": 2344
+        },
+        {
+          "name": "Echo",
+          "kind": "command",
+          "flags": 285147136,
+          "code_offset": 2292,
+          "syntax_offset": 0,
+          "help_offset": 4294942040
+        },
+        {
+          "name": "Error",
+          "kind": "command",
+          "flags": 285147137,
+          "code_offset": 2856,
+          "syntax_offset": 4294942126,
+          "help_offset": 4294942118
+        },
+        {
+          "name": "Eval",
+          "kind": "command",
+          "flags": 285147137,
+          "code_offset": 2968,
+          "syntax_offset": 4294942142,
+          "help_offset": 4294942134
+        },
+        {
+          "name": "FileCommands",
+          "kind": "help-code-entry",
+          "flags": 805306368,
+          "code_offset": 0,
+          "syntax_offset": 0,
+          "help_offset": 2472
+        },
+        {
+          "name": "GOS",
+          "kind": "command",
+          "flags": 268435456,
+          "code_offset": 2828,
+          "syntax_offset": 4294941792,
+          "help_offset": 4294942157
+        },
+        {
+          "name": "IF",
+          "kind": "command",
+          "flags": 285147138,
+          "code_offset": 9468,
+          "syntax_offset": 4294942071,
+          "help_offset": 4294942064
+        },
+        {
+          "name": "Ignore",
+          "kind": "command",
+          "flags": 268500992,
+          "code_offset": 3224,
+          "syntax_offset": 4294942056,
+          "help_offset": 4294942048
+        },
+        {
+          "name": "Modules",
+          "kind": "command",
+          "flags": 805306368,
+          "code_offset": 1376,
+          "syntax_offset": 4294941800,
+          "help_offset": 1248
+        },
+        {
+          "name": "PowerOn",
+          "kind": "help-only",
+          "flags": 268435456,
+          "code_offset": 0,
+          "syntax_offset": 0,
+          "help_offset": 4294941752
+        },
+        {
+          "name": "Reset",
+          "kind": "help-only",
+          "flags": 268435456,
+          "code_offset": 0,
+          "syntax_offset": 0,
+          "help_offset": 4294941744
+        },
+        {
+          "name": "RMClear",
+          "kind": "command",
+          "flags": 268435456,
+          "code_offset": 1232,
+          "syntax_offset": 4294941904,
+          "help_offset": 4294941896
+        },
+        {
+          "name": "RMEnsure",
+          "kind": "command",
+          "flags": 285147138,
+          "code_offset": 3976,
+          "syntax_offset": 4294941768,
+          "help_offset": 4294941760
+        },
+        {
+          "name": "RMFaster",
+          "kind": "command",
+          "flags": 268500993,
+          "code_offset": 1116,
+          "syntax_offset": 4294941824,
+          "help_offset": 4294941816
+        },
+        {
+          "name": "RMInsert",
+          "kind": "command",
+          "flags": 268566529,
+          "code_offset": 4294956780,
+          "syntax_offset": 4294942110,
+          "help_offset": 4294942102
+        },
+        {
+          "name": "RMKill",
+          "kind": "command",
+          "flags": 268500993,
+          "code_offset": 1184,
+          "syntax_offset": 4294941840,
+          "help_offset": 4294941832
+        },
+        {
+          "name": "RMLoad",
+          "kind": "command",
+          "flags": 285147137,
+          "code_offset": 1208,
+          "syntax_offset": 4294941856,
+          "help_offset": 4294941848
+        },
+        {
+          "name": "RMReInit",
+          "kind": "command",
+          "flags": 285147137,
+          "code_offset": 1240,
+          "syntax_offset": 4294941920,
+          "help_offset": 4294941912
+        },
+        {
+          "name": "RMRun",
+          "kind": "command",
+          "flags": 285147137,
+          "code_offset": 1216,
+          "syntax_offset": 4294941872,
+          "help_offset": 4294941864
+        },
+        {
+          "name": "RMTidy",
+          "kind": "command",
+          "flags": 268435456,
+          "code_offset": 1224,
+          "syntax_offset": 4294941888,
+          "help_offset": 4294941880
+        },
+        {
+          "name": "ROMModules",
+          "kind": "command",
+          "flags": 268435456,
+          "code_offset": 3312,
+          "syntax_offset": 4294941936,
+          "help_offset": 4294941928
+        },
+        {
+          "name": "Set",
+          "kind": "command",
+          "flags": 285147138,
+          "code_offset": 2168,
+          "syntax_offset": 4294941952,
+          "help_offset": 4294941944
+        },
+        {
+          "name": "SetEval",
+          "kind": "command",
+          "flags": 285147138,
+          "code_offset": 2256,
+          "syntax_offset": 4294941984,
+          "help_offset": 4294941976
+        },
+        {
+          "name": "SetMacro",
+          "kind": "command",
+          "flags": 285147138,
+          "code_offset": 2248,
+          "syntax_offset": 4294941968,
+          "help_offset": 4294941960
+        },
+        {
+          "name": "Show",
+          "kind": "command",
+          "flags": 268500992,
+          "code_offset": 1684,
+          "syntax_offset": 4294942000,
+          "help_offset": 4294941992
+        },
+        {
+          "name": "Status",
+          "kind": "command",
+          "flags": 285147136,
+          "code_offset": 14492,
+          "syntax_offset": 0,
+          "help_offset": 4294942078
+        },
+        {
+          "name": "Syntax",
+          "kind": "help-only",
+          "flags": 268435456,
+          "code_offset": 0,
+          "syntax_offset": 0,
+          "help_offset": 4294941776
+        },
+        {
+          "name": "Time",
+          "kind": "command",
+          "flags": 268435456,
+          "code_offset": 3180,
+          "syntax_offset": 4294942016,
+          "help_offset": 4294942008
+        },
+        {
+          "name": "Unplug",
+          "kind": "command",
+          "flags": 268566528,
+          "code_offset": 4294956176,
+          "syntax_offset": 4294942094,
+          "help_offset": 4294942086
+        },
+        {
+          "name": "Unset",
+          "kind": "command",
+          "flags": 268500993,
+          "code_offset": 2264,
+          "syntax_offset": 4294942032,
+          "help_offset": 4294942024
+        }
+      ]
+    },
+    {
+      "title": "FileSwitch",
+      "help": "FileSwitch\t2.27 (06 Mar 1995)",
+      "base": 58865472,
+      "length": 48832,
+      "entries": [
+        {
+          "name": "Access",
+          "kind": "command",
+          "flags": 268566529,
+          "code_offset": 3180,
+          "syntax_offset": 745,
+          "help_offset": 737
+        },
+        {
+          "name": "Cat",
+          "kind": "command",
+          "flags": 268500992,
+          "code_offset": 3260,
+          "syntax_offset": 761,
+          "help_offset": 753
+        },
+        {
+          "name": "CDir",
+          "kind": "command",
+          "flags": 268566529,
+          "code_offset": 3692,
+          "syntax_offset": 777,
+          "help_offset": 769
+        },
+        {
+          "name": "Copy",
+          "kind": "command",
+          "flags": 285147138,
+          "code_offset": 3836,
+          "syntax_offset": 793,
+          "help_offset": 785
+        },
+        {
+          "name": "Count",
+          "kind": "command",
+          "flags": 285147137,
+          "code_offset": 4004,
+          "syntax_offset": 809,
+          "help_offset": 801
+        },
+        {
+          "name": "Dir",
+          "kind": "command",
+          "flags": 268500992,
+          "code_offset": 3276,
+          "syntax_offset": 825,
+          "help_offset": 817
+        },
+        {
+          "name": "EnumDir",
+          "kind": "command",
+          "flags": 268632066,
+          "code_offset": 3432,
+          "syntax_offset": 841,
+          "help_offset": 833
+        },
+        {
+          "name": "Ex",
+          "kind": "command",
+          "flags": 268500992,
+          "code_offset": 3360,
+          "syntax_offset": 856,
+          "help_offset": 849
+        },
+        {
+          "name": "FileInfo",
+          "kind": "command",
+          "flags": 268500993,
+          "code_offset": 3300,
+          "syntax_offset": 871,
+          "help_offset": 863
+        },
+        {
+          "name": "Info",
+          "kind": "command",
+          "flags": 268500993,
+          "code_offset": 3288,
+          "syntax_offset": 887,
+          "help_offset": 879
+        },
+        {
+          "name": "LCat",
+          "kind": "command",
+          "flags": 268500992,
+          "code_offset": 3348,
+          "syntax_offset": 903,
+          "help_offset": 895
+        },
+        {
+          "name": "LEx",
+          "kind": "command",
+          "flags": 268500992,
+          "code_offset": 3312,
+          "syntax_offset": 919,
+          "help_offset": 911
+        },
+        {
+          "name": "Lib",
+          "kind": "command",
+          "flags": 268500992,
+          "code_offset": 3324,
+          "syntax_offset": 935,
+          "help_offset": 927
+        },
+        {
+          "name": "Rename",
+          "kind": "command",
+          "flags": 268566530,
+          "code_offset": 3224,
+          "syntax_offset": 951,
+          "help_offset": 943
+        },
+        {
+          "name": "Run",
+          "kind": "command",
+          "flags": 285147137,
+          "code_offset": 3336,
+          "syntax_offset": 967,
+          "help_offset": 959
+        },
+        {
+          "name": "SetType",
+          "kind": "command",
+          "flags": 268763138,
+          "code_offset": 3640,
+          "syntax_offset": 983,
+          "help_offset": 975
+        },
+        {
+          "name": "Shut",
+          "kind": "command",
+          "flags": 268435456,
+          "code_offset": 3236,
+          "syntax_offset": 999,
+          "help_offset": 991
+        },
+        {
+          "name": "ShutDown",
+          "kind": "command",
+          "flags": 268435456,
+          "code_offset": 3248,
+          "syntax_offset": 1015,
+          "help_offset": 1007
+        },
+        {
+          "name": "Stamp",
+          "kind": "command",
+          "flags": 268500993,
+          "code_offset": 3680,
+          "syntax_offset": 1031,
+          "help_offset": 1023
+        },
+        {
+          "name": "Up",
+          "kind": "command",
+          "flags": 268500992,
+          "code_offset": 3736,
+          "syntax_offset": 1046,
+          "help_offset": 1039
+        },
+        {
+          "name": "Wipe",
+          "kind": "command",
+          "flags": 285147137,
+          "code_offset": 3936,
+          "syntax_offset": 1061,
+          "help_offset": 1053
+        },
+        {
+          "name": "Back",
+          "kind": "command",
+          "flags": 268435456,
+          "code_offset": 3372,
+          "syntax_offset": 1077,
+          "help_offset": 1069
+        },
+        {
+          "name": "URD",
+          "kind": "command",
+          "flags": 268500992,
+          "code_offset": 3384,
+          "syntax_offset": 1093,
+          "help_offset": 1085
+        },
+        {
+          "name": "NoDir",
+          "kind": "command",
+          "flags": 268435456,
+          "code_offset": 3396,
+          "syntax_offset": 1109,
+          "help_offset": 1101
+        },
+        {
+          "name": "NoURD",
+          "kind": "command",
+          "flags": 268435456,
+          "code_offset": 3408,
+          "syntax_offset": 1125,
+          "help_offset": 1117
+        },
+        {
+          "name": "NoLib",
+          "kind": "command",
+          "flags": 268435456,
+          "code_offset": 3420,
+          "syntax_offset": 1141,
+          "help_offset": 1133
+        },
+        {
+          "name": "FileSystem",
+          "kind": "configuration",
+          "flags": 1342177280,
+          "code_offset": 4468,
+          "syntax_offset": 1157,
+          "help_offset": 1149
+        },
+        {
+          "name": "Truncate",
+          "kind": "configuration",
+          "flags": 1342177280,
+          "code_offset": 4756,
+          "syntax_offset": 1173,
+          "help_offset": 1165
+        }
+      ]
+    },
+    {
+      "title": "ResourceFS",
+      "help": "ResourceFS\t0.15 (28 Oct 1994)",
+      "base": 58914308,
+      "length": 3144,
+      "entries": [
+        {
+          "name": "ResourceFS",
+          "kind": "command",
+          "flags": 268435456,
+          "code_offset": 1516,
+          "syntax_offset": 528,
+          "help_offset": 520
+        }
+      ]
+    },
+    {
+      "title": "MessageTrans",
+      "help": "MessageTrans\t0.31 (11 Jan 1995)",
+      "base": 58917456,
+      "length": 3592,
+      "entries": []
+    },
+    {
+      "title": "Messages",
+      "help": "UK Messages\t0.79 (01 Feb 1995)",
+      "base": 58921052,
+      "length": 380828,
+      "entries": []
+    },
+    {
+      "title": "TerritoryManager",
+      "help": "Territory Mgr\t0.23 (15 Feb 1995)",
+      "base": 59301884,
+      "length": 6572,
+      "entries": [
+        {
+          "name": "Territories",
+          "kind": "command",
+          "flags": 268435456,
+          "code_offset": 100,
+          "syntax_offset": 989,
+          "help_offset": 981
+        },
+        {
+          "name": "Territory",
+          "kind": "configuration",
+          "flags": 1342242817,
+          "code_offset": 200,
+          "syntax_offset": 1005,
+          "help_offset": 997
+        },
+        {
+          "name": "DST",
+          "kind": "configuration",
+          "flags": 1342177280,
+          "code_offset": 388,
+          "syntax_offset": 1021,
+          "help_offset": 1013
+        },
+        {
+          "name": "NODST",
+          "kind": "configuration",
+          "flags": 1342177280,
+          "code_offset": 540,
+          "syntax_offset": 1021,
+          "help_offset": 1013
+        },
+        {
+          "name": "TimeZone",
+          "kind": "configuration",
+          "flags": 1342242817,
+          "code_offset": 588,
+          "syntax_offset": 1037,
+          "help_offset": 1029
+        }
+      ]
+    },
+    {
+      "title": "UK",
+      "help": "UK Territory\t0.22 (31 Oct 1994)",
+      "base": 59308460,
+      "length": 6464,
+      "entries": []
+    },
+    {
+      "title": "International",
+      "help": "International\t1.26 (28 Oct 1994)",
+      "base": 59314928,
+      "length": 13096,
+      "entries": [
+        {
+          "name": "Alphabet",
+          "kind": "command",
+          "flags": 268500992,
+          "code_offset": 596,
+          "syntax_offset": 268,
+          "help_offset": 260
+        },
+        {
+          "name": "Country",
+          "kind": "command",
+          "flags": 268500992,
+          "code_offset": 840,
+          "syntax_offset": 284,
+          "help_offset": 276
+        },
+        {
+          "name": "Keyboard",
+          "kind": "command",
+          "flags": 268500992,
+          "code_offset": 760,
+          "syntax_offset": 300,
+          "help_offset": 292
+        },
+        {
+          "name": "Country",
+          "kind": "configuration",
+          "flags": 1342177280,
+          "code_offset": 944,
+          "syntax_offset": 316,
+          "help_offset": 308
+        },
+        {
+          "name": "Alphabets",
+          "kind": "command",
+          "flags": 268435456,
+          "code_offset": 436,
+          "syntax_offset": 332,
+          "help_offset": 324
+        },
+        {
+          "name": "Countries",
+          "kind": "command",
+          "flags": 268435456,
+          "code_offset": 468,
+          "syntax_offset": 348,
+          "help_offset": 340
+        }
+      ]
+    },
+    {
+      "title": "InternationalKeyboard",
+      "help": "Int'l Keyboard\t0.36 (27 Jun 1994)",
+      "base": 59328028,
+      "length": 3948,
+      "entries": []
+    },
+    {
+      "title": "Desktop",
+      "help": "Desktop\t\t2.50 (07 Feb 1995)",
+      "base": 59331980,
+      "length": 3424,
+      "entries": [
+        {
+          "name": "Desktop",
+          "kind": "command",
+          "flags": 285147136,
+          "code_offset": 132,
+          "syntax_offset": 120,
+          "help_offset": 112
+        }
+      ]
+    },
+    {
+      "title": "FileCore",
+      "help": "FileCore\t2.91 (31 Mar 1995)",
+      "base": 59335408,
+      "length": 67788,
+      "entries": [
+        {
+          "name": "Backup",
+          "kind": "filing-command",
+          "flags": 2416185090,
+          "code_offset": 34096,
+          "syntax_offset": 32024,
+          "help_offset": 32016
+        },
+        {
+          "name": "Bye",
+          "kind": "filing-command",
+          "flags": 2415919104,
+          "code_offset": 35348,
+          "syntax_offset": 32040,
+          "help_offset": 32032
+        },
+        {
+          "name": "CheckMap",
+          "kind": "filing-command",
+          "flags": 2415984896,
+          "code_offset": 35392,
+          "syntax_offset": 32056,
+          "help_offset": 32048
+        },
+        {
+          "name": "Compact",
+          "kind": "filing-command",
+          "flags": 2415984896,
+          "code_offset": 35968,
+          "syntax_offset": 32072,
+          "help_offset": 32064
+        },
+        {
+          "name": "Defect",
+          "kind": "filing-command",
+          "flags": 2416050946,
+          "code_offset": 36800,
+          "syntax_offset": 32088,
+          "help_offset": 32080
+        },
+        {
+          "name": "Dismount",
+          "kind": "filing-command",
+          "flags": 2415984896,
+          "code_offset": 38364,
+          "syntax_offset": 32104,
+          "help_offset": 32096
+        },
+        {
+          "name": "Drive",
+          "kind": "filing-command",
+          "flags": 2415984897,
+          "code_offset": 38952,
+          "syntax_offset": 32120,
+          "help_offset": 32112
+        },
+        {
+          "name": "Free",
+          "kind": "filing-command",
+          "flags": 2415984896,
+          "code_offset": 39148,
+          "syntax_offset": 32136,
+          "help_offset": 32128
+        },
+        {
+          "name": "Map",
+          "kind": "filing-command",
+          "flags": 2415984896,
+          "code_offset": 39884,
+          "syntax_offset": 32152,
+          "help_offset": 32144
+        },
+        {
+          "name": "Mount",
+          "kind": "filing-command",
+          "flags": 2415984896,
+          "code_offset": 40312,
+          "syntax_offset": 32168,
+          "help_offset": 32160
+        },
+        {
+          "name": "NameDisc",
+          "kind": "filing-command",
+          "flags": 2416050946,
+          "code_offset": 40536,
+          "syntax_offset": 32184,
+          "help_offset": 32176
+        },
+        {
+          "name": "NameDisk",
+          "kind": "filing-command",
+          "flags": 2416050946,
+          "code_offset": 40536,
+          "syntax_offset": 32184,
+          "help_offset": 32176
+        },
+        {
+          "name": "Verify",
+          "kind": "filing-command",
+          "flags": 2415984896,
+          "code_offset": 40740,
+          "syntax_offset": 32200,
+          "help_offset": 32192
+        }
+      ]
+    },
+    {
+      "title": "ADFS",
+      "help": "ADFS\t\t3.13 (24 Mar 1995)",
+      "base": 59403200,
+      "length": 34592,
+      "entries": [
+        {
+          "name": "ADFS",
+          "kind": "command",
+          "flags": 268435456,
+          "code_offset": 31096,
+          "syntax_offset": 28200,
+          "help_offset": 28192
+        },
+        {
+          "name": "Format",
+          "kind": "filing-command",
+          "flags": 2953056001,
+          "code_offset": 32392,
+          "syntax_offset": 28208,
+          "help_offset": 32180
+        },
+        {
+          "name": "ADFSbuffers",
+          "kind": "configuration",
+          "flags": 1342177280,
+          "code_offset": 31232,
+          "syntax_offset": 28224,
+          "help_offset": 28216
+        },
+        {
+          "name": "ADFSDirCache",
+          "kind": "configuration",
+          "flags": 1342177280,
+          "code_offset": 31336,
+          "syntax_offset": 28240,
+          "help_offset": 28232
+        },
+        {
+          "name": "Drive",
+          "kind": "configuration",
+          "flags": 1342177280,
+          "code_offset": 31452,
+          "syntax_offset": 28256,
+          "help_offset": 28248
+        },
+        {
+          "name": "Floppies",
+          "kind": "configuration",
+          "flags": 1342177280,
+          "code_offset": 31560,
+          "syntax_offset": 28272,
+          "help_offset": 28264
+        },
+        {
+          "name": "HardDiscs",
+          "kind": "configuration",
+          "flags": 1342177280,
+          "code_offset": 31676,
+          "syntax_offset": 28288,
+          "help_offset": 28280
+        },
+        {
+          "name": "IDEDiscs",
+          "kind": "configuration",
+          "flags": 1342177280,
+          "code_offset": 31792,
+          "syntax_offset": 28304,
+          "help_offset": 28296
+        },
+        {
+          "name": "Step",
+          "kind": "configuration",
+          "flags": 1342177280,
+          "code_offset": 31912,
+          "syntax_offset": 28320,
+          "help_offset": 28312
+        }
+      ]
+    },
+    {
+      "title": "FPEmulator",
+      "help": "FPEmulator\t4.28 (04 Dec 2009) (1.13EMZ)",
+      "base": 59437796,
+      "length": 26700,
+      "entries": []
+    },
+    {
+      "title": "ColourTrans",
+      "help": "Colour Selector\t1.64 (10 Mar 1995)",
+      "base": 59464500,
+      "length": 16376,
+      "entries": [
+        {
+          "name": "ColourTransMapSize",
+          "kind": "command",
+          "flags": 268633859,
+          "code_offset": 12316,
+          "syntax_offset": 0,
+          "help_offset": 204
+        },
+        {
+          "name": "ColourTransMap",
+          "kind": "command",
+          "flags": 285147137,
+          "code_offset": 12424,
+          "syntax_offset": 0,
+          "help_offset": 204
+        },
+        {
+          "name": "ColourTransLoadings",
+          "kind": "command",
+          "flags": 268633859,
+          "code_offset": 12868,
+          "syntax_offset": 0,
+          "help_offset": 204
+        }
+      ]
+    },
+    {
+      "title": "Draw",
+      "help": "Drawing Module\t1.09 (15 Nov 1994)",
+      "base": 59480880,
+      "length": 10104,
+      "entries": []
+    },
+    {
+      "title": "SuperSample",
+      "help": "SuperSample\t0.09 (13 Oct 1994)",
+      "base": 59490988,
+      "length": 2320,
+      "entries": []
+    },
+    {
+      "title": "Hourglass",
+      "help": "Hourglass\t2.11 (28 Jun 1994)",
+      "base": 59493312,
+      "length": 2148,
+      "entries": []
+    },
+    {
+      "title": "FontManager",
+      "help": "Font Manager\t3.33 (28 Oct 1994)",
+      "base": 59495464,
+      "length": 60084,
+      "entries": [
+        {
+          "name": "FontList",
+          "kind": "command",
+          "flags": 268435456,
+          "code_offset": 1960,
+          "syntax_offset": 633,
+          "help_offset": 641
+        },
+        {
+          "name": "FontCat",
+          "kind": "command",
+          "flags": 268435456,
+          "code_offset": 3524,
+          "syntax_offset": 649,
+          "help_offset": 657
+        },
+        {
+          "name": "FontMax1",
+          "kind": "configuration",
+          "flags": 1342242817,
+          "code_offset": 872,
+          "syntax_offset": 481,
+          "help_offset": 473
+        },
+        {
+          "name": "FontMax2",
+          "kind": "configuration",
+          "flags": 1342242817,
+          "code_offset": 896,
+          "syntax_offset": 497,
+          "help_offset": 489
+        },
+        {
+          "name": "FontMax3",
+          "kind": "configuration",
+          "flags": 1342242817,
+          "code_offset": 920,
+          "syntax_offset": 513,
+          "help_offset": 505
+        },
+        {
+          "name": "FontMax4",
+          "kind": "configuration",
+          "flags": 1342242817,
+          "code_offset": 944,
+          "syntax_offset": 529,
+          "help_offset": 521
+        },
+        {
+          "name": "FontMax5",
+          "kind": "configuration",
+          "flags": 1342242817,
+          "code_offset": 968,
+          "syntax_offset": 545,
+          "help_offset": 537
+        },
+        {
+          "name": "FontMax",
+          "kind": "configuration",
+          "flags": 1342242817,
+          "code_offset": 844,
+          "syntax_offset": 465,
+          "help_offset": 457
+        },
+        {
+          "name": "LoadFontCache",
+          "kind": "command",
+          "flags": 268500993,
+          "code_offset": 1336,
+          "syntax_offset": 561,
+          "help_offset": 553
+        },
+        {
+          "name": "SaveFontCache",
+          "kind": "command",
+          "flags": 268500993,
+          "code_offset": 1740,
+          "syntax_offset": 577,
+          "help_offset": 569
+        },
+        {
+          "name": "FontInstall",
+          "kind": "command",
+          "flags": 268501248,
+          "code_offset": 9128,
+          "syntax_offset": 593,
+          "help_offset": 585
+        },
+        {
+          "name": "FontLibrary",
+          "kind": "command",
+          "flags": 268501248,
+          "code_offset": 9196,
+          "syntax_offset": 625,
+          "help_offset": 617
+        },
+        {
+          "name": "FontRemove",
+          "kind": "command",
+          "flags": 268501249,
+          "code_offset": 9172,
+          "syntax_offset": 609,
+          "help_offset": 601
+        }
+      ]
+    },
+    {
+      "title": "ROMFonts",
+      "help": "ROM Fonts\t0.16 (11 Feb 1994)",
+      "base": 59555552,
+      "length": 250000,
+      "entries": []
+    },
+    {
+      "title": "SpriteExtend",
+      "help": "SpriteExtension\t0.99 (29 Mar 1995)",
+      "base": 59805556,
+      "length": 20348,
+      "entries": []
+    },
+    {
+      "title": "WindowManager",
+      "help": "Window Manager\t3.66 (06 Mar 1995)",
+      "base": 59825908,
+      "length": 81548,
+      "entries": [
+        {
+          "name": "IconSprites",
+          "kind": "command",
+          "flags": 268500993,
+          "code_offset": 2056,
+          "syntax_offset": 104,
+          "help_offset": 96
+        },
+        {
+          "name": "Pointer",
+          "kind": "command",
+          "flags": 268500992,
+          "code_offset": 8096,
+          "syntax_offset": 120,
+          "help_offset": 112
+        },
+        {
+          "name": "ToolSprites",
+          "kind": "command",
+          "flags": 268500992,
+          "code_offset": 77336,
+          "syntax_offset": 136,
+          "help_offset": 128
+        },
+        {
+          "name": "WimpFlags",
+          "kind": "configuration",
+          "flags": 1342242817,
+          "code_offset": 12116,
+          "syntax_offset": 152,
+          "help_offset": 144
+        },
+        {
+          "name": "WimpMode",
+          "kind": "command",
+          "flags": 285147137,
+          "code_offset": 1048,
+          "syntax_offset": 321,
+          "help_offset": 314
+        },
+        {
+          "name": "WimpPalette",
+          "kind": "command",
+          "flags": 268500993,
+          "code_offset": 16092,
+          "syntax_offset": 279,
+          "help_offset": 272
+        },
+        {
+          "name": "WimpSlot",
+          "kind": "command",
+          "flags": 268828673,
+          "code_offset": 66952,
+          "syntax_offset": 293,
+          "help_offset": 286
+        },
+        {
+          "name": "WimpTask",
+          "kind": "command",
+          "flags": 285147137,
+          "code_offset": 948,
+          "syntax_offset": 307,
+          "help_offset": 300
+        },
+        {
+          "name": "WimpWriteDir",
+          "kind": "command",
+          "flags": 268500993,
+          "code_offset": 888,
+          "syntax_offset": 336,
+          "help_offset": 328
+        },
+        {
+          "name": "WimpDragDelay",
+          "kind": "configuration",
+          "flags": 1342242817,
+          "code_offset": 12060,
+          "syntax_offset": 168,
+          "help_offset": 160
+        },
+        {
+          "name": "WimpFont",
+          "kind": "configuration",
+          "flags": 1342242817,
+          "code_offset": 12108,
+          "syntax_offset": 184,
+          "help_offset": 176
+        },
+        {
+          "name": "WimpDragMove",
+          "kind": "configuration",
+          "flags": 1342242817,
+          "code_offset": 12068,
+          "syntax_offset": 200,
+          "help_offset": 192
+        },
+        {
+          "name": "WimpDoubleClickDelay",
+          "kind": "configuration",
+          "flags": 1342242817,
+          "code_offset": 12076,
+          "syntax_offset": 216,
+          "help_offset": 208
+        },
+        {
+          "name": "WimpDoubleClickMove",
+          "kind": "configuration",
+          "flags": 1342242817,
+          "code_offset": 12084,
+          "syntax_offset": 232,
+          "help_offset": 224
+        },
+        {
+          "name": "WimpAutoMenuDelay",
+          "kind": "configuration",
+          "flags": 1342242817,
+          "code_offset": 12092,
+          "syntax_offset": 248,
+          "help_offset": 240
+        },
+        {
+          "name": "WimpMenuDragDelay",
+          "kind": "configuration",
+          "flags": 1342242817,
+          "code_offset": 12100,
+          "syntax_offset": 264,
+          "help_offset": 256
+        },
+        {
+          "name": "WimpKillSprite",
+          "kind": "command",
+          "flags": 268500993,
+          "code_offset": 9832,
+          "syntax_offset": 351,
+          "help_offset": 344
+        }
+      ]
+    },
+    {
+      "title": "Filer",
+      "help": "Filer\t\t1.85 (15 Dec 1994)",
+      "base": 59907460,
+      "length": 29648,
+      "entries": [
+        {
+          "name": "Filer_OpenDir",
+          "kind": "command",
+          "flags": 269352961,
+          "code_offset": 580,
+          "syntax_offset": 209,
+          "help_offset": 201
+        },
+        {
+          "name": "Filer_CloseDir",
+          "kind": "command",
+          "flags": 268501249,
+          "code_offset": 916,
+          "syntax_offset": 225,
+          "help_offset": 217
+        },
+        {
+          "name": "Filer_Run",
+          "kind": "command",
+          "flags": 268500993,
+          "code_offset": 956,
+          "syntax_offset": 241,
+          "help_offset": 233
+        },
+        {
+          "name": "Filer_Boot",
+          "kind": "command",
+          "flags": 268501249,
+          "code_offset": 1148,
+          "syntax_offset": 257,
+          "help_offset": 249
+        },
+        {
+          "name": "Desktop_Filer",
+          "kind": "command",
+          "flags": 268435456,
+          "code_offset": 476,
+          "syntax_offset": 273,
+          "help_offset": 265
+        }
+      ]
+    },
+    {
+      "title": "TaskManager",
+      "help": "Task Manager\t0.95 (07 Feb 1995)",
+      "base": 59937112,
+      "length": 13840,
+      "entries": [
+        {
+          "name": "Desktop_TaskManager",
+          "kind": "command",
+          "flags": 268435456,
+          "code_offset": 452,
+          "syntax_offset": 177,
+          "help_offset": 169
+        },
+        {
+          "name": "ChangeDynamicArea",
+          "kind": "command",
+          "flags": 285147136,
+          "code_offset": 236,
+          "syntax_offset": 161,
+          "help_offset": 153
+        }
+      ]
+    },
+    {
+      "title": "Pinboard",
+      "help": "Pinboard\t0.66 (09 Jan 1995)",
+      "base": 59950956,
+      "length": 17620,
+      "entries": [
+        {
+          "name": "Desktop_Pinboard",
+          "kind": "command",
+          "flags": 268435456,
+          "code_offset": 96,
+          "syntax_offset": 729,
+          "help_offset": 721
+        },
+        {
+          "name": "AddTinyDir",
+          "kind": "command",
+          "flags": 268501248,
+          "code_offset": 164,
+          "syntax_offset": 745,
+          "help_offset": 737
+        },
+        {
+          "name": "RemoveTinyDir",
+          "kind": "command",
+          "flags": 268501248,
+          "code_offset": 416,
+          "syntax_offset": 761,
+          "help_offset": 753
+        },
+        {
+          "name": "Pinboard",
+          "kind": "command",
+          "flags": 268566528,
+          "code_offset": 316,
+          "syntax_offset": 776,
+          "help_offset": 769
+        },
+        {
+          "name": "Pin",
+          "kind": "command",
+          "flags": 268632323,
+          "code_offset": 1368,
+          "syntax_offset": 791,
+          "help_offset": 783
+        },
+        {
+          "name": "BackDrop",
+          "kind": "command",
+          "flags": 268632320,
+          "code_offset": 1540,
+          "syntax_offset": 807,
+          "help_offset": 799
+        }
+      ]
+    },
+    {
+      "title": "ADFSFiler",
+      "help": "ADFSFiler\t0.83 (09 Mar 1995)",
+      "base": 59968580,
+      "length": 16884,
+      "entries": [
+        {
+          "name": "Desktop_ADFSFiler",
+          "kind": "command",
+          "flags": 268632064,
+          "code_offset": 252,
+          "syntax_offset": 193,
+          "help_offset": 185
+        }
+      ]
+    },
+    {
+      "title": "ShellCLI",
+      "help": "ShellCLI\t0.28 (28 Oct 1994)",
+      "base": 59985468,
+      "length": 1412,
+      "entries": [
+        {
+          "name": "ShellCLI",
+          "kind": "command",
+          "flags": 268435456,
+          "code_offset": 320,
+          "syntax_offset": 304,
+          "help_offset": 312
+        }
+      ]
+    },
+    {
+      "title": "Obey",
+      "help": "Obey\t\t0.33 (17 Nov 1994)",
+      "base": 59986884,
+      "length": 2216,
+      "entries": [
+        {
+          "name": "Obey",
+          "kind": "command",
+          "flags": 285147136,
+          "code_offset": 1028,
+          "syntax_offset": 150,
+          "help_offset": 142
+        }
+      ]
+    },
+    {
+      "title": "BufferManager",
+      "help": "Buffer Manager\t0.24 (31 Oct 1994)",
+      "base": 59989104,
+      "length": 4292,
+      "entries": []
+    },
+    {
+      "title": "SoundDMA",
+      "help": "SoundDMA\t1.48 (03 Mar 1995)",
+      "base": 59993400,
+      "length": 3604,
+      "entries": [
+        {
+          "name": "Audio",
+          "kind": "command",
+          "flags": 268500993,
+          "code_offset": 320,
+          "syntax_offset": 261,
+          "help_offset": 253
+        },
+        {
+          "name": "Speaker",
+          "kind": "command",
+          "flags": 268500993,
+          "code_offset": 336,
+          "syntax_offset": 277,
+          "help_offset": 269
+        },
+        {
+          "name": "Stereo",
+          "kind": "command",
+          "flags": 268566530,
+          "code_offset": 484,
+          "syntax_offset": 293,
+          "help_offset": 285
+        },
+        {
+          "name": "SoundSystem",
+          "kind": "configuration",
+          "flags": 1342308353,
+          "code_offset": 624,
+          "syntax_offset": 309,
+          "help_offset": 301
+        }
+      ]
+    },
+    {
+      "title": "SoundChannels",
+      "help": "SoundChannels\t1.29 (28 Oct 1994)",
+      "base": 59997008,
+      "length": 5180,
+      "entries": [
+        {
+          "name": "Volume",
+          "kind": "command",
+          "flags": 268500993,
+          "code_offset": 512,
+          "syntax_offset": 421,
+          "help_offset": 413
+        },
+        {
+          "name": "Voices",
+          "kind": "command",
+          "flags": 268435456,
+          "code_offset": 640,
+          "syntax_offset": 437,
+          "help_offset": 429
+        },
+        {
+          "name": "ChannelVoice",
+          "kind": "command",
+          "flags": 268566530,
+          "code_offset": 860,
+          "syntax_offset": 453,
+          "help_offset": 445
+        },
+        {
+          "name": "Sound",
+          "kind": "command",
+          "flags": 268697604,
+          "code_offset": 948,
+          "syntax_offset": 469,
+          "help_offset": 461
+        },
+        {
+          "name": "Tuning",
+          "kind": "command",
+          "flags": 268500993,
+          "code_offset": 556,
+          "syntax_offset": 485,
+          "help_offset": 477
+        },
+        {
+          "name": "SoundDefault",
+          "kind": "configuration",
+          "flags": 1342373888,
+          "code_offset": 1040,
+          "syntax_offset": 501,
+          "help_offset": 493
+        }
+      ]
+    },
+    {
+      "title": "SoundScheduler",
+      "help": "SoundScheduler\t1.19 (28 Oct 1994)",
+      "base": 60002192,
+      "length": 2064,
+      "entries": [
+        {
+          "name": "Tempo",
+          "kind": "command",
+          "flags": 268500993,
+          "code_offset": 252,
+          "syntax_offset": 225,
+          "help_offset": 217
+        },
+        {
+          "name": "QSound",
+          "kind": "command",
+          "flags": 268763141,
+          "code_offset": 320,
+          "syntax_offset": 241,
+          "help_offset": 233
+        }
+      ]
+    },
+    {
+      "title": "WaveSynth",
+      "help": "WaveSynth\t1.13 (20 Mar 1992)",
+      "base": 60004260,
+      "length": 2712,
+      "entries": []
+    },
+    {
+      "title": "Percussion",
+      "help": "Percussion\t1.10 (23 Mar 1992)",
+      "base": 60006976,
+      "length": 2932,
+      "entries": []
+    },
+    {
+      "title": "DragASprite",
+      "help": "Drag A Sprite\t0.11 (26 Sep 1994)",
+      "base": 60009912,
+      "length": 4352,
+      "entries": []
+    },
+    {
+      "title": "SpriteUtils",
+      "help": "SpriteUtils\t1.10 (28 Oct 1994)",
+      "base": 60014268,
+      "length": 1508,
+      "entries": [
+        {
+          "name": "SChoose",
+          "kind": "command",
+          "flags": 268500993,
+          "code_offset": 700,
+          "syntax_offset": 468,
+          "help_offset": 460
+        },
+        {
+          "name": "SGet",
+          "kind": "command",
+          "flags": 268500993,
+          "code_offset": 772,
+          "syntax_offset": 644,
+          "help_offset": 636
+        },
+        {
+          "name": "SFlipX",
+          "kind": "command",
+          "flags": 268500993,
+          "code_offset": 748,
+          "syntax_offset": 564,
+          "help_offset": 556
+        },
+        {
+          "name": "SFlipY",
+          "kind": "command",
+          "flags": 268500993,
+          "code_offset": 756,
+          "syntax_offset": 580,
+          "help_offset": 572
+        },
+        {
+          "name": "SDelete",
+          "kind": "command",
+          "flags": 285147137,
+          "code_offset": 836,
+          "syntax_offset": 484,
+          "help_offset": 476
+        },
+        {
+          "name": "SList",
+          "kind": "command",
+          "flags": 268435456,
+          "code_offset": 1036,
+          "syntax_offset": 500,
+          "help_offset": 492
+        },
+        {
+          "name": "SLoad",
+          "kind": "command",
+          "flags": 268500993,
+          "code_offset": 724,
+          "syntax_offset": 516,
+          "help_offset": 508
+        },
+        {
+          "name": "SMerge",
+          "kind": "command",
+          "flags": 268500993,
+          "code_offset": 732,
+          "syntax_offset": 532,
+          "help_offset": 524
+        },
+        {
+          "name": "SNew",
+          "kind": "command",
+          "flags": 268435456,
+          "code_offset": 764,
+          "syntax_offset": 548,
+          "help_offset": 540
+        },
+        {
+          "name": "SSave",
+          "kind": "command",
+          "flags": 268500993,
+          "code_offset": 740,
+          "syntax_offset": 628,
+          "help_offset": 620
+        },
+        {
+          "name": "SInfo",
+          "kind": "command",
+          "flags": 268435456,
+          "code_offset": 896,
+          "syntax_offset": 660,
+          "help_offset": 652
+        },
+        {
+          "name": "SRename",
+          "kind": "command",
+          "flags": 268566530,
+          "code_offset": 804,
+          "syntax_offset": 596,
+          "help_offset": 588
+        },
+        {
+          "name": "SCopy",
+          "kind": "command",
+          "flags": 268566530,
+          "code_offset": 828,
+          "syntax_offset": 612,
+          "help_offset": 604
+        },
+        {
+          "name": "ScreenSave",
+          "kind": "command",
+          "flags": 268500993,
+          "code_offset": 796,
+          "syntax_offset": 676,
+          "help_offset": 668
+        },
+        {
+          "name": "ScreenLoad",
+          "kind": "command",
+          "flags": 268500993,
+          "code_offset": 784,
+          "syntax_offset": 692,
+          "help_offset": 684
+        }
+      ]
+    },
+    {
+      "title": "FilerSWIs",
+      "help": "FilerSWIs\t0.03 (04 Mar 1992)",
+      "base": 60015780,
+      "length": 748,
+      "entries": []
+    },
+    {
+      "title": "BASIC",
+      "help": "BBC BASIC V\t1.14 (17 Nov 1994)",
+      "base": 60016532,
+      "length": 52604,
+      "entries": [
+        {
+          "name": "BASIC",
+          "kind": "command",
+          "flags": 285147136,
+          "code_offset": 168,
+          "syntax_offset": 121,
+          "help_offset": 113
+        }
+      ]
+    },
+    {
+      "title": "BASICTrans",
+      "help": "BASICTrans\t2.00 (13 May 1993) International",
+      "base": 60069140,
+      "length": 3404,
+      "entries": []
+    },
+    {
+      "title": "ResourceFiler",
+      "help": "ResourceFiler\t0.14 (28 Oct 1994)",
+      "base": 60072548,
+      "length": 1852,
+      "entries": [
+        {
+          "name": "Desktop_ResourceFiler",
+          "kind": "command",
+          "flags": 268435456,
+          "code_offset": 212,
+          "syntax_offset": 89,
+          "help_offset": 81
+        }
+      ]
+    },
+    {
+      "title": "ArcPalette",
+      "help": "ArcLibre Palette\t0.03 (26 Oct 2026)",
+      "base": 60074404,
+      "length": 3304,
+      "entries": [
+        {
+          "name": "Desktop_ArcPalette",
+          "kind": "command",
+          "flags": 0,
+          "code_offset": 432,
+          "syntax_offset": 164,
+          "help_offset": 164
+        }
+      ]
+    },
+    {
+      "title": "SharedCLibrary",
+      "help": "C Library\t4.79 (01 Mar 1995)",
+      "base": 60077712,
+      "length": 191848,
+      "entries": []
+    },
+    {
+      "title": "Filer_Action",
+      "help": "Filer_Action\t0.39 (31 Oct 1994)",
+      "base": 60269564,
+      "length": 33504,
+      "entries": [
+        {
+          "name": "Filer_Action",
+          "kind": "command",
+          "flags": 285147136,
+          "code_offset": 208,
+          "syntax_offset": 122,
+          "help_offset": 130
+        }
+      ]
+    },
+    {
+      "title": "!Edit",
+      "help": "!Edit\t\t1.54 (23 Feb 1995)",
+      "base": 60303072,
+      "length": 17904,
+      "entries": [
+        {
+          "name": "Desktop_Edit",
+          "kind": "command",
+          "flags": 285147136,
+          "code_offset": 196,
+          "syntax_offset": 118,
+          "help_offset": 129
+        }
+      ]
+    },
+    {
+      "title": "!Draw",
+      "help": "!Draw\t\t1.09 (07 Mar 1995)",
+      "base": 60320980,
+      "length": 190084,
+      "entries": [
+        {
+          "name": "Desktop_Draw",
+          "kind": "command",
+          "flags": 285147136,
+          "code_offset": 196,
+          "syntax_offset": 118,
+          "help_offset": 129
+        }
+      ]
+    },
+    {
+      "title": "!Paint",
+      "help": "!Paint\t\t1.94 (17 Feb 1995)",
+      "base": 60511068,
+      "length": 102428,
+      "entries": [
+        {
+          "name": "Desktop_Paint",
+          "kind": "command",
+          "flags": 285147136,
+          "code_offset": 200,
+          "syntax_offset": 119,
+          "help_offset": 131
+        }
+      ]
+    }
+  ],
+  "kernel_system_commands": {
+    "title": "Kernel system command table",
+    "help": "RISC OS\t\t3.60 (13 Apr 1995)",
+    "base": 58727964,
+    "length": 137504,
+    "entries": [
+      {
+        "name": "Append",
+        "kind": "command",
+        "flags": 268500993,
+        "code_offset": 5148,
+        "syntax_offset": 1693,
+        "help_offset": 1685
+      },
+      {
+        "name": "Build",
+        "kind": "command",
+        "flags": 268500993,
+        "code_offset": 5164,
+        "syntax_offset": 1709,
+        "help_offset": 1701
+      },
+      {
+        "name": "Close",
+        "kind": "command",
+        "flags": 268435456,
+        "code_offset": 3572,
+        "syntax_offset": 1725,
+        "help_offset": 1717
+      },
+      {
+        "name": "Create",
+        "kind": "command",
+        "flags": 268697601,
+        "code_offset": 5560,
+        "syntax_offset": 1741,
+        "help_offset": 1733
+      },
+      {
+        "name": "Delete",
+        "kind": "command",
+        "flags": 268500993,
+        "code_offset": 5640,
+        "syntax_offset": 1757,
+        "help_offset": 1749
+      },
+      {
+        "name": "Dump",
+        "kind": "command",
+        "flags": 268632065,
+        "code_offset": 4520,
+        "syntax_offset": 1773,
+        "help_offset": 1765
+      },
+      {
+        "name": "Exec",
+        "kind": "command",
+        "flags": 268500992,
+        "code_offset": 4040,
+        "syntax_offset": 1789,
+        "help_offset": 1781
+      },
+      {
+        "name": "FX",
+        "kind": "command",
+        "flags": 268763137,
+        "code_offset": 3592,
+        "syntax_offset": 1804,
+        "help_offset": 1797
+      },
+      {
+        "name": "GO",
+        "kind": "command",
+        "flags": 285147136,
+        "code_offset": 3440,
+        "syntax_offset": 0,
+        "help_offset": 1670
+      },
+      {
+        "name": "Help",
+        "kind": "command",
+        "flags": 285147136,
+        "code_offset": 2068,
+        "syntax_offset": 0,
+        "help_offset": 2001
+      },
+      {
+        "name": "Key",
+        "kind": "command",
+        "flags": 285147137,
+        "code_offset": 3904,
+        "syntax_offset": 1819,
+        "help_offset": 1811
+      },
+      {
+        "name": "Load",
+        "kind": "command",
+        "flags": 268566529,
+        "code_offset": 5376,
+        "syntax_offset": 1851,
+        "help_offset": 1843
+      },
+      {
+        "name": "List",
+        "kind": "command",
+        "flags": 268632065,
+        "code_offset": 4172,
+        "syntax_offset": 1835,
+        "help_offset": 1827
+      },
+      {
+        "name": "Opt",
+        "kind": "command",
+        "flags": 268566528,
+        "code_offset": 5696,
+        "syntax_offset": 1883,
+        "help_offset": 1875
+      },
+      {
+        "name": "Print",
+        "kind": "command",
+        "flags": 268500993,
+        "code_offset": 4160,
+        "syntax_offset": 1867,
+        "help_offset": 1859
+      },
+      {
+        "name": "Quit",
+        "kind": "command",
+        "flags": 268435456,
+        "code_offset": 53300,
+        "syntax_offset": 1328,
+        "help_offset": 1304
+      },
+      {
+        "name": "Remove",
+        "kind": "command",
+        "flags": 268500993,
+        "code_offset": 5652,
+        "syntax_offset": 1899,
+        "help_offset": 1891
+      },
+      {
+        "name": "Save",
+        "kind": "command",
+        "flags": 268828674,
+        "code_offset": 5464,
+        "syntax_offset": 1915,
+        "help_offset": 1907
+      },
+      {
+        "name": "Shadow",
+        "kind": "command",
+        "flags": 268500992,
+        "code_offset": 3812,
+        "syntax_offset": 1931,
+        "help_offset": 1923
+      },
+      {
+        "name": "Spool",
+        "kind": "command",
+        "flags": 268500992,
+        "code_offset": 4056,
+        "syntax_offset": 1947,
+        "help_offset": 1939
+      },
+      {
+        "name": "SpoolOn",
+        "kind": "command",
+        "flags": 268500992,
+        "code_offset": 4068,
+        "syntax_offset": 1963,
+        "help_offset": 1955
+      },
+      {
+        "name": "TV",
+        "kind": "command",
+        "flags": 268632064,
+        "code_offset": 3784,
+        "syntax_offset": 1978,
+        "help_offset": 1971
+      },
+      {
+        "name": "Type",
+        "kind": "command",
+        "flags": 268632065,
+        "code_offset": 4208,
+        "syntax_offset": 1993,
+        "help_offset": 1985
+      }
+    ]
+  }
+}

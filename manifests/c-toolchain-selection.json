@@ -1,0 +1,293 @@
+{
+  "upstream_sha256": "28efa3447f15b8b9513ef0619db76025a8af6615d9fae55b385e730cf39b4000",
+  "selected_sha256": "760ee12234370669dd2001c4827112442c56321a7a0690fef489ccd0a774fb54",
+  "excluded_prefix": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge",
+  "excluded_files": [
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/ChangeLog",
+      "sha256": "5590e91cf1a70010857c29993dca72ed057959c642e845934640ca3b0192d5d1",
+      "bytes": 92
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/Docs/.gitignore",
+      "sha256": "78a72bce794eebbaf76053ff46c1d83da92b39987ddbc3da887f0c0670e6be19",
+      "bytes": 21
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/Docs/Authors",
+      "sha256": "8ea11ccfe5fdd607d16fcfd25c5b2d5aab5cf1c7939cd8f3549332912107307d",
+      "bytes": 597
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/Docs/Copyright",
+      "sha256": "508f6b64142ee56515d09a9135c52d2dacbe000b8d8f9310a0b23c84f908b407",
+      "bytes": 1800
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/Docs/History",
+      "sha256": "6be2a00ba1a6f3c53f0897c37d2cf69934b85d026f6980b611d0429568fccb33",
+      "bytes": 81824
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/Docs/Manual",
+      "sha256": "e60dc8f6008ad9045baa1b3991a27e4523da0da1450aae3bfefe2ad0486ca162",
+      "bytes": 35291
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/Docs/Warranty",
+      "sha256": "10380d565de333c502b9aecf24e0890f37f68cfc2361f819cd43d3e2714c16a7",
+      "bytes": 347
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/Examples/!Clean,feb",
+      "sha256": "c1345ddb64cd7cc9f4328560e107accc5a29a40f67817d71a9960987ff83da6f",
+      "bytes": 77
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/Examples/!Make,feb",
+      "sha256": "0a7aedef800f834258594893d4e905dddbb58e8e2521deb5ccfa7cc490fe1319",
+      "bytes": 999
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/Examples/MdlHdr.cmhg",
+      "sha256": "afac557d25f152556677148e519d2e19abd0a10f46c2bbda4847b17974581403",
+      "bytes": 1432
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/Examples/blank.cmhg",
+      "sha256": "97ff41513f88777830d0b2aecdef4c387aeb2e26f7f3cf812ee94dd49e87b9c5",
+      "bytes": 8903
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/Examples/inc/test",
+      "sha256": "db976194c6ff3262609110d9664569540181c20d51e191fcb878db3b0ddd020e",
+      "bytes": 46
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/Examples/minimal.cmhg",
+      "sha256": "56780fbc8ac1478cc5050875721388e0012678bfc01cafbcfd48b1e678047552",
+      "bytes": 84
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/Examples/module.cmhg",
+      "sha256": "7cefd324373f364c9fe63dcc93732d7cbb397ba435be7ecda9355899945f8616",
+      "bytes": 1932
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/Examples/moviefs.cmhg",
+      "sha256": "b227c81e74102a4b94152a50780e739358f58aec2e3b0895768835763d2e9de6",
+      "bytes": 1468
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/Makefile",
+      "sha256": "35f4a01d395679d2ce822ad7253940987f75fba8154111a683eddd17a85fc174",
+      "bytes": 2165
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/MemCheck.h",
+      "sha256": "a341da7a6e8518b2b18953a43a532f15ee6a4ecf6012cb70bd663d6bb2397a09",
+      "bytes": 20158
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/README",
+      "sha256": "f929829a5dd9b2f1d51d50f8978ed45fffd00136225c1e9e987828eda147346b",
+      "bytes": 1539
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/VersionNum",
+      "sha256": "1393d2debaf3f2c61692f55b7685d688bb1d7c9180afae45d971f5cce9266205",
+      "bytes": 884
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/apcscli.c",
+      "sha256": "3e64613e2217d22194d98b60f25fb6490bf31430d86dc6e37e32da0f20e916ef",
+      "bytes": 5680
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/apcscli.h",
+      "sha256": "465934bd73e9b872d1469c6f217a27aeb3757eaa20f89e2fc03fd574585b9a45",
+      "bytes": 3261
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/assemble.c",
+      "sha256": "fec81e5349a5b0ae7e3b1a797796926e3009191d3baaf04828ba63c09156e7b7",
+      "bytes": 2028
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/assemble.h",
+      "sha256": "9a4fcf0e3f199942e67e3d3ad689edfa2fb9600d60b75318e3e20320c67d27c0",
+      "bytes": 131
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/blank.c",
+      "sha256": "e0e7e10d53373434bd86976c336d5c216ccc6c35ad163f88839ea781e3d1b363",
+      "bytes": 2484
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/blank.h",
+      "sha256": "ed3296ed77ab442f5178f5d1163c7a7ef5c7f3375e10cb44937af19d4d8601da",
+      "bytes": 154
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/comments.c",
+      "sha256": "53fa05787e6b0b6b649b18ad9fb43358cbe2d710383cd15c252445b7ffdcbfe7",
+      "bytes": 1244
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/comments.h",
+      "sha256": "270a1741957528b5bfbb6544ddbcfff34dc3be034e4781be4d4bb3a28fd4025b",
+      "bytes": 1077
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/copyright.h",
+      "sha256": "54cdd1045cb073b829abc76d0e5c26956771ae9042ef3f284b186cceeca065be",
+      "bytes": 399
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/datestamp.c",
+      "sha256": "21976ce45f4f0d41d384b696b911175b795a2192a190e137bfdf6466003ab540",
+      "bytes": 3437
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/datestamp.h",
+      "sha256": "627db5da72a083573c7b4ac09d49cbfe8dc0feef4179520565f4b065a35a32bf",
+      "bytes": 130
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/error.c",
+      "sha256": "7667bbd5f92495f48c16ed1b4e6e699a97f3555530a4f31600869a3cd359da58",
+      "bytes": 1592
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/error.h",
+      "sha256": "eb38b9cb060ec88a107ddb15c4af3cc8f2354f32abef770f8e2f6bb42a9b4abb",
+      "bytes": 199
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/filename.c",
+      "sha256": "dbf98733ea8ddab7f52b88579105099116ef8eb467ea75393b88ab1fd0e3d0f8",
+      "bytes": 5903
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/filename.h",
+      "sha256": "9d069d5bae971fa16d2de62e4dca2b1eacc57ba04023581f5c583e4d8474a858",
+      "bytes": 3200
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/format.c",
+      "sha256": "9c52fa590a784233023ee8e6e30a2b3591385d198a2817a513b98fc81e8cabfd",
+      "bytes": 4209
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/format.h",
+      "sha256": "12f0a3bd622c08f0da1e9af3a233ad5a4253b239d27409a14952a35c9b8c9688",
+      "bytes": 1643
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/gfile.c",
+      "sha256": "dcf25ea885c118f05304febc87c785da8eb49693800a76e21d7345f383c887b3",
+      "bytes": 7649
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/gfile.h",
+      "sha256": "b4bf26d1eedaff4a429ef87e91d7f4fc6919161f9a874d1106ac77b0251e90cb",
+      "bytes": 3479
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/main.c",
+      "sha256": "a8376d3ea41ab9a35c8b8af6b05303d00d2b433726196117a59ae2fe2e95e0d0",
+      "bytes": 3784
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/mem.c",
+      "sha256": "a799deff4f113eabb1d50818cfeff9e946a296767d68a11de2a76ac61f79ed2e",
+      "bytes": 452
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/mem.h",
+      "sha256": "8e3602c515dd0debefc428af508183aa422cf3a86299b496cad9f40be55b4d39",
+      "bytes": 164
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/options.c",
+      "sha256": "e566ebc0cdeba8824e1cb9414fcd47008e3b1a1707714b26743abf920a5ae5c6",
+      "bytes": 13945
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/options.h",
+      "sha256": "cea85491d2a5d10372b71d4faf90cf2fafc159ce4f8ce06f63948fc2eca520d9",
+      "bytes": 6175
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/readfile.c",
+      "sha256": "a089ef5a69157e99a0d811e4481c0d957fc051def97de0e059710be769c91002",
+      "bytes": 60328
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/readfile.h",
+      "sha256": "4baba4b0d2ce788323a7653308185c11f23ec3f329836b06e49c878f56ec38e1",
+      "bytes": 2906
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/str.c",
+      "sha256": "aa85a8cf0be33d77cce76e2bee004992953a03bc54998cff934a0bf6c7b4c198",
+      "bytes": 4991
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/str.h",
+      "sha256": "859d05feaf03715ba5cc7379fc844cd3e140147d750d494988800d12f5b50136",
+      "bytes": 521
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/system.c",
+      "sha256": "d9906729816c6b24bc4b66466d533f855bc892680936312a791c4ff6ace98ffe",
+      "bytes": 4000
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/system.h",
+      "sha256": "5b6304e13f5749643a172e4b11337de7dbad00d9337cdd62132bcb0ce7069f6b",
+      "bytes": 589
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/throwback.c",
+      "sha256": "12d9e1c494687fd3d38558ab3a55493d974a82503dea5c2f6a6ba4ce39b0b372",
+      "bytes": 1878
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/throwback.h",
+      "sha256": "badc6eeaf82464cdb9a3b6b29b2c5f546f555a22a9079c053f071496ee2a48d9",
+      "bytes": 494
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/writeexport.c",
+      "sha256": "a2b5c3e6e2b9e7ee8ac31d129897394df68e6af579336d93ddc277c006f49f85",
+      "bytes": 3427
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/writeexport.h",
+      "sha256": "1c53bf90d2ee93b36cbfcc2f8b3a19b2c0a59b7881d36f431430964a1943721c",
+      "bytes": 171
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/writefile.c",
+      "sha256": "69760bc09bc945462352446796460ad025127ca515154e972d752a3b6638c908",
+      "bytes": 54088
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/writefile.h",
+      "sha256": "9f4c8e3e625ae980d25d39c3da08256493be70451422e51662333acd6a557a21",
+      "bytes": 135
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/writeheader.c",
+      "sha256": "8c5a6b376b049735113cda10e9f4041f5be238d3b803fca40d650428994c35d0",
+      "bytes": 32915
+    },
+    {
+      "path": "gccsdk-f79cb59110e2d13566678d923dadba0f97a1321d/gcc/riscos-aof/cmunge/writeheader.h",
+      "sha256": "a5133ef5f6ffd6a99a36d9cbfc50d24d4e4b2555fd28208014f55651fe8b35cb",
+      "bytes": 141
+    }
+  ],
+  "retained_payloads_unchanged": true
+}

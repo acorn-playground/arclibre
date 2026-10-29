@@ -1,0 +1,13 @@
+{
+  "rom_sha256": "716d26e7166b27a1c306a0bcfb40a1ef01b275fb95bf68f28da02ab751f753d4",
+  "status": "FAIL_ERROR_FLAG_LOST",
+  "observation": {
+    "error": "You can't close that file - a task window is waiting for it",
+    "number": 2692,
+    "psr": 536870915,
+    "r0": 25170944,
+    "r1": 25265460,
+    "ticks": 1153037517
+  },
+  "trace_source": "build/streams/blocking-5/pipe-close-return-13-trace.log"
+}

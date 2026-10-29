@@ -1,0 +1,440 @@
+/* Copyright 2003 Castle Technology Ltd
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
+
+struct string
+{
+  struct string *next;
+  int starting_line;
+  int length;
+  char *copy;
+};
+
+static struct string head;
+static char *tokens[256];
+static int lineno;
+
+bool findmatch(FILE *f, const char *s)
+{
+  int c;
+  do
+  {
+    c = fgetc(f);
+  }
+  while (c == *s++);
+  ungetc(c, f);
+  return !*--s;
+}
+
+void readline(FILE *f, char **pb)
+{
+  bool instring = false;
+  int c;
+  while ((c = fgetc(f)), c != '\n' && c != '\r')
+  {
+    if (instring)
+    {
+      if (c == '"')
+      {
+        c = fgetc(f);
+        if (c != '"')
+        {
+          instring = false;
+          ungetc(c, f);
+        }
+        else
+        {
+          *(*pb)++ = c;
+        }
+      }
+      else
+      {
+        *(*pb)++ = c;
+      }
+    }
+    else
+    {
+      if (c >= '0' && c <= '9')
+      {
+        ungetc(c, f);
+        int i;
+        fscanf(f, "%d", &i);
+        *(*pb)++ = i;
+      }
+      else
+      {
+        if (c == '"')
+        {
+          instring = true;
+        }
+        else
+        {
+          if (c != ' ' && c != ',')
+          {
+            int i;
+            ungetc(c, f);
+            if (findmatch(f, "TokenEscapeChar,Token"))
+            {
+              fscanf(f, "%d", &i);
+              *(*pb)++ = 0x1B;
+              *(*pb)++ = i;
+            }
+            else
+            {
+              printf("Line %d: bad element\n", lineno);
+              do
+              {
+                c = fgetc(f);
+              }
+              while (c != ',' && c > ' ');
+            }
+          }
+        }
+      }
+    }
+  }
+  ungetc(c, f);
+}
+
+void *newblock(size_t size)
+{
+  void *b = malloc(size);
+  if (!b)
+  {
+    printf("Failed to allocate %d bytes\n", size);
+    exit(EXIT_FAILURE);
+  }
+  return b;
+}
+
+void readtokens(const char *tokenfile)
+{
+  FILE *f = fopen(tokenfile, "r");
+  if (f == NULL)
+  {
+    printf("Can't open '%s'\n", tokenfile);
+    exit(EXIT_FAILURE);
+  }
+  memset(tokens, NULL, sizeof tokens);
+  while (!feof(f))
+  {
+    if (findmatch(f, "Token"))
+    {
+      int c = fgetc(f);
+      if (c < '0' || c > '9') continue;
+      ungetc(c, f);
+      int i;
+      fscanf(f, "%d", &i);
+      if (findmatch(f, "String = "))
+      {
+        char buffer[256];
+        char *pb = buffer;
+        readline(f, &pb);
+        tokens[i] = newblock(pb - buffer /* added '+ 1' */ + 1);
+        memcpy(tokens[i], buffer, pb - buffer + 1);
+        tokens[i][pb - buffer /* removed '+ 1' */] = '\0';
+      }
+    }
+    else
+    {
+      fgetc(f);
+    }
+  }
+}
+
+bool islab(char c)
+{
+  if ((c < 'a' || c > 'z') &&
+      (c < 'A' || c > 'Z') &&
+      (c < '0' || c > '9') && c != '_')
+  {
+    return false;
+  }
+  else
+  {
+    return true;
+  }
+}
+
+void readentries(const char *sourcefile)
+{
+  FILE *f = fopen(sourcefile, "r");
+  char buffer[0x5000];
+  char *p = buffer;
+  int starting_line = -1;
+  struct string *tail = &head;
+  head.next = NULL;
+  lineno = 1;
+  if (!f)
+  {
+    printf("Can't open '%s'\n", sourcefile);
+    exit(EXIT_FAILURE);
+  }
+  int c;
+  while ((c = fgetc(f)) != EOF)
+  {
+    if (islab(c))
+    {
+      struct string *newstring = newblock(sizeof (struct string));
+      newstring->copy = NULL;
+      if (p != buffer)
+      {
+        tail->copy = newblock(p - buffer);
+        memcpy(tail->copy, buffer, p - buffer);
+        tail->starting_line = starting_line;
+        tail->length = p - buffer;
+        tail->next = newstring;
+        tail = newstring;
+        tail->next = NULL;
+        starting_line = -1;
+        p = buffer;
+      }
+      do
+      {
+        c = fgetc(f);
+      }
+      while (islab(c));
+    }
+    if (c == ' ')
+    {
+      do
+      {
+        c = fgetc(f);
+      }
+      while (c == ' ');
+      if (c == '=')
+      {
+        if (starting_line == -1)
+        {
+          starting_line = lineno;
+        }
+        readline(f, &p);
+      }
+    }
+    while (c != '\n' && c != '\r' && c != EOF)
+    {
+      c = fgetc(f);
+    }
+    lineno++;
+  }
+  if (p != buffer)
+  {
+    tail->copy = newblock(p - buffer);
+    memcpy(tail->copy, buffer, p - buffer);
+    tail->starting_line = starting_line;
+    tail->length = p - buffer;
+  }
+  fclose(f);
+}
+
+bool tokenise(void)
+{
+  bool tokenisation_happened = false;
+  int tokeni = 0;
+  do
+  {
+    if (tokens[tokeni] == NULL) continue;
+    for (struct string *string = &head; string != NULL; string = string->next)
+    {
+      char *p_string = string->copy;
+      if (p_string != NULL)
+      {
+        while (p_string < string->copy + string->length)
+        {
+          char *p_string_test = p_string;
+          char *p_token = tokens[tokeni];
+          do
+          {
+            if (*p_string_test++ != *p_token++) break;
+          }
+          while (p_token[-1] != 0 || p_token[-2] == 0x1B);
+          if (p_token[-1] == 0 && p_token[-2] != 0x1B)
+          {
+            tokenisation_happened = true;
+            *p_string++ = 0x1B;
+            *p_string++ = tokeni;
+            char *p_string_source = p_string_test - 1;
+            while (p_string_source < string->copy + string->length)
+            {
+              *p_string++ = *p_string_source++;
+            }
+            string->length -= ((p_token - 1) - tokens[tokeni]) - 2;
+          }
+          p_string++;
+        }
+      }
+    }
+  }
+  while (++tokeni < 0x100);
+  return tokenisation_happened;
+}
+
+void copyline(FILE *fs, FILE *fd)
+{
+  char buffer[0x5000];
+  int bytecount = 0;
+  int c;
+  do
+  {
+    c = fgetc(fs);
+    buffer[bytecount++] = c;
+  }
+  while (c != '\n' && !feof(fs));
+  char *p = buffer;
+  if (!feof(fs))
+  {
+    while (islab(*p))
+    {
+      putc(*p++, fd);
+      bytecount--;
+    }
+    for (; *p == ' '; bytecount--)
+    {
+      putc(*p++, fd);
+    }
+    if (*p == '=')
+    {
+      putc(' ', fd);
+      putc(';', fd);
+    }
+    for (; bytecount > 0; bytecount--)
+    {
+      putc(*p++, fd);
+    }
+  }
+}
+
+void outputentries(const char *destfile, const char *sourcefile)
+{
+  int linein = 0;
+  FILE *fd = fopen(destfile, "w");
+  if (!fd)
+  {
+    printf("Can't open '%s'\n", destfile);
+    exit(EXIT_FAILURE);
+  }
+  FILE *fs = fopen(sourcefile, "r");
+  if (!fs)
+  {
+    printf("Can't open '%s'\n", sourcefile);
+    fclose(fd);
+    exit(EXIT_FAILURE);
+  }
+  fprintf(fd, "     TTL ==> %s\n\n", destfile);
+  for (struct string *string = &head; string != NULL; string = string->next)
+  {
+    if (!string->copy) continue;
+    while (string->starting_line > linein && !feof(fs))
+    {
+      copyline(fs, fd);
+      linein++;
+    }
+    fprintf(fd, "     =  ");
+    int i_out = 8;
+    int i_in = 0;
+    bool instring = false;
+    bool comma_needed = false;
+    for (; string->length > i_in; i_in++)
+    {
+      if (i_out > 70)
+      {
+        if (instring) fputs("\"", fd);
+        fprintf(fd, "\n     =  ");
+        i_out = 8;
+        instring = comma_needed = false;
+      }
+      char c = string->copy[i_in];
+      if (c >= ' ')
+      {
+        if (!instring)
+        {
+          if (comma_needed)
+          {
+            fputc(',', fd);
+            i_out++;
+          }
+          putc('"', fd);
+          instring = true;
+          i_out++;
+        }
+        putc(string->copy[i_in], fd);
+        if (string->copy[i_in] == '"')
+        {
+          putc('"', fd);
+        }
+        i_out++;
+        comma_needed = false;
+      }
+      else
+      {
+        if (i_out > 50 && string->copy[i_in] == 0x1B)
+        {
+          if (instring) fputs("\"", fd);
+          fprintf(fd, "\n     =  ");
+          i_out = 8;
+          instring = comma_needed = false;
+        }
+        if (instring)
+        {
+          fprintf(fd, "\",");
+          instring = false;
+          i_out++;
+        }
+        if (comma_needed)
+        {
+          fputc(',', fd);
+          i_out++;
+        }
+        comma_needed = true;
+        if (string->copy[i_in] == 0x1B)
+        {
+          fprintf(fd, "TokenEscapeChar,Token%d", string->copy[++i_in]);
+          i_out += 25;
+        }
+        else
+        {
+          fprintf(fd, "%3d", string->copy[i_in]);
+          i_out += 4;
+        }
+      }
+    }
+    if (instring) fputc('"', fd);
+    fprintf(fd, "\n");
+  }
+  while (!feof(fs))
+  {
+    copyline(fs, fd);
+  }
+  fclose(fs);
+  fclose(fd);
+}
+
+int main(int argc, char *argv[])
+{
+  puts("Tokenise V0.01 [APT 5-Apr-88]");
+  if (argc != 4)
+  {
+    puts("Use Tokenise <tokenfile> <sourcefile> <destfile>");
+    exit(EXIT_FAILURE);
+  }
+  readtokens(argv[1]);
+  readentries(argv[2]);
+  while (tokenise());
+  outputentries(argv[3], argv[2]);
+  return EXIT_SUCCESS;
+}

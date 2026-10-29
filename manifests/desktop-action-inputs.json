@@ -1,0 +1,245 @@
+[
+  {
+    "component": "DragASprit",
+    "path": "Doc/Log",
+    "revision": "31057aec4e4f93497ac66d5f8c83ede58d08322e",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/DragASprit.git",
+    "upstream_sha256": "1d1b05c2372e6eb4b0f2ad8c43db401b08dcdbe34b000d8095b2cfa842d09711",
+    "sha256": "1d1b05c2372e6eb4b0f2ad8c43db401b08dcdbe34b000d8095b2cfa842d09711",
+    "bytes": 368
+  },
+  {
+    "component": "DragASprit",
+    "path": "Doc/Use",
+    "revision": "31057aec4e4f93497ac66d5f8c83ede58d08322e",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/DragASprit.git",
+    "upstream_sha256": "8416c9dc06cc81e1d68c76893199975af0523ff1d180e28813cbdecea5605802",
+    "sha256": "8416c9dc06cc81e1d68c76893199975af0523ff1d180e28813cbdecea5605802",
+    "bytes": 2395
+  },
+  {
+    "component": "DragASprit",
+    "path": "LICENSE",
+    "revision": "31057aec4e4f93497ac66d5f8c83ede58d08322e",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/DragASprit.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358
+  },
+  {
+    "component": "DragASprit",
+    "path": "Makefile",
+    "revision": "31057aec4e4f93497ac66d5f8c83ede58d08322e",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/DragASprit.git",
+    "upstream_sha256": "2f80727b33037fe5e721832e65fac15672d52870c8dadaf34b3f586aa37cb548",
+    "sha256": "2f80727b33037fe5e721832e65fac15672d52870c8dadaf34b3f586aa37cb548",
+    "bytes": 1670
+  },
+  {
+    "component": "DragASprit",
+    "path": "hdr/DragASprit",
+    "revision": "31057aec4e4f93497ac66d5f8c83ede58d08322e",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/DragASprit.git",
+    "upstream_sha256": "ed65b4739b48fa70c043660f9ec0aba028a54602b4ec75ff19fc954d4a9d05ab",
+    "sha256": "ed65b4739b48fa70c043660f9ec0aba028a54602b4ec75ff19fc954d4a9d05ab",
+    "bytes": 2091
+  },
+  {
+    "component": "DragASprit",
+    "path": "s/DebugOpts",
+    "revision": "31057aec4e4f93497ac66d5f8c83ede58d08322e",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/DragASprit.git",
+    "upstream_sha256": "f6cd30df5dd078672ffa0b68d2fe743574b5bfacc2e6177c5af422e7435dd2aa",
+    "sha256": "f6cd30df5dd078672ffa0b68d2fe743574b5bfacc2e6177c5af422e7435dd2aa",
+    "bytes": 1252
+  },
+  {
+    "component": "DragASprit",
+    "path": "s/Drag",
+    "revision": "31057aec4e4f93497ac66d5f8c83ede58d08322e",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/DragASprit.git",
+    "upstream_sha256": "593f71d18c5f8d502ae97643ef4d95c26f015e27e0813b6c4107af628ef115d9",
+    "sha256": "aec1a021cbe22969b6fe87de09cdfcca4f341cb1861c1f419c330d79d46db956",
+    "bytes": 16052
+  },
+  {
+    "component": "DragASprit",
+    "path": "s/Gets",
+    "revision": "31057aec4e4f93497ac66d5f8c83ede58d08322e",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/DragASprit.git",
+    "upstream_sha256": "4d0a194eddf64a69314ad3e7df02d74253d7bbe64d5f03c29e375836b5e435a0",
+    "sha256": "b3de6aedbe9bad7782f3c6249fbc82d4c2272f97d4df68f80beb16128786a45c",
+    "bytes": 1288
+  },
+  {
+    "component": "DragASprit",
+    "path": "s/StartUp",
+    "revision": "31057aec4e4f93497ac66d5f8c83ede58d08322e",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/DragASprit.git",
+    "upstream_sha256": "4cdaeac01b7e27d3210ecc398190b10f9d8fa097970ac6e8047eba9c5d68374a",
+    "sha256": "d515e733bb71802aa8ea8d93cd2bb92cd2b0ba82c884577c4e8e08b10f735758",
+    "bytes": 33360
+  },
+  {
+    "component": "DragASprit",
+    "path": "s/Support",
+    "revision": "31057aec4e4f93497ac66d5f8c83ede58d08322e",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/DragASprit.git",
+    "upstream_sha256": "aecb50a7c5d92e90340256a2d98e34486b1885b835b33380efb69fcd4e04527d",
+    "sha256": "587c644973cb4fb1cd692f775a42d576638e680a6259585e11d77a713a419f9b",
+    "bytes": 3718
+  },
+  {
+    "component": "FilerSWIs",
+    "path": "Doc/FilerSWIs",
+    "revision": "e76e9cdf66526a6f1a822b65bb8dd0ee1ac7003f",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/FilerSWIs.git",
+    "upstream_sha256": "aa4f9738c86af64bb47e88f055415fd33d4c39242f4ab194cead475ca3943462",
+    "sha256": "aa4f9738c86af64bb47e88f055415fd33d4c39242f4ab194cead475ca3943462",
+    "bytes": 2461
+  },
+  {
+    "component": "FilerSWIs",
+    "path": "Doc/log",
+    "revision": "e76e9cdf66526a6f1a822b65bb8dd0ee1ac7003f",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/FilerSWIs.git",
+    "upstream_sha256": "77c0619b480ce1b527403ab0137920e23f33410c9782a51d7ab602c8aab1243c",
+    "sha256": "77c0619b480ce1b527403ab0137920e23f33410c9782a51d7ab602c8aab1243c",
+    "bytes": 328
+  },
+  {
+    "component": "FilerSWIs",
+    "path": "LICENSE",
+    "revision": "e76e9cdf66526a6f1a822b65bb8dd0ee1ac7003f",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/FilerSWIs.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358
+  },
+  {
+    "component": "FilerSWIs",
+    "path": "Makefile",
+    "revision": "e76e9cdf66526a6f1a822b65bb8dd0ee1ac7003f",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/FilerSWIs.git",
+    "upstream_sha256": "3d5742d1fdfa4c7a61fbfc60c6bc3fd47542dc28137eeef597b1fc0c9f5af7fe",
+    "sha256": "3d5742d1fdfa4c7a61fbfc60c6bc3fd47542dc28137eeef597b1fc0c9f5af7fe",
+    "bytes": 1509
+  },
+  {
+    "component": "FilerSWIs",
+    "path": "Version",
+    "revision": "e76e9cdf66526a6f1a822b65bb8dd0ee1ac7003f",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/FilerSWIs.git",
+    "upstream_sha256": "c1be0ada1a0e86c426d6440a31dfb0da8a90dc673b53f650a7da8adfa8b612c8",
+    "sha256": "c1be0ada1a0e86c426d6440a31dfb0da8a90dc673b53f650a7da8adfa8b612c8",
+    "bytes": 201
+  },
+  {
+    "component": "FilerSWIs",
+    "path": "s/FilerSWIs",
+    "revision": "e76e9cdf66526a6f1a822b65bb8dd0ee1ac7003f",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/FilerSWIs.git",
+    "upstream_sha256": "7d3e5257c4889429d0681f3d41ad9cbc8ade8c000b4bed6ab990a247b99c8a36",
+    "sha256": "cf2f84e09a76334af7f6d52fb0968fe1aa8123e3fdabd90ed362d4421f02f081",
+    "bytes": 9150
+  },
+  {
+    "component": "SpriteUtil",
+    "path": "Help",
+    "revision": "b74d38f3b2b69d1b6cda5377c4b102de1f5be10f",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Video/Render/SpriteUtil.git",
+    "upstream_sha256": "11112dac383295fe7df74215760c7a51f9ece2bd97165c6b8e20dc3dda06e21a",
+    "sha256": "11112dac383295fe7df74215760c7a51f9ece2bd97165c6b8e20dc3dda06e21a",
+    "bytes": 710
+  },
+  {
+    "component": "SpriteUtil",
+    "path": "HelpSrc",
+    "revision": "b74d38f3b2b69d1b6cda5377c4b102de1f5be10f",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Video/Render/SpriteUtil.git",
+    "upstream_sha256": "3c31a35b0f685dbe1b7d5f417ed50dd969e68e1673b7aee5f6aa6247f36847d7",
+    "sha256": "3c31a35b0f685dbe1b7d5f417ed50dd969e68e1673b7aee5f6aa6247f36847d7",
+    "bytes": 5032
+  },
+  {
+    "component": "SpriteUtil",
+    "path": "LICENSE",
+    "revision": "b74d38f3b2b69d1b6cda5377c4b102de1f5be10f",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Video/Render/SpriteUtil.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358
+  },
+  {
+    "component": "SpriteUtil",
+    "path": "Makefile",
+    "revision": "b74d38f3b2b69d1b6cda5377c4b102de1f5be10f",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Video/Render/SpriteUtil.git",
+    "upstream_sha256": "6f553419dd1fd759605d2a874f21b7edbfe4bb60b1339cff4402075efd37d1b9",
+    "sha256": "6f553419dd1fd759605d2a874f21b7edbfe4bb60b1339cff4402075efd37d1b9",
+    "bytes": 1825
+  },
+  {
+    "component": "SpriteUtil",
+    "path": "MkClean,fd7",
+    "revision": "b74d38f3b2b69d1b6cda5377c4b102de1f5be10f",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Video/Render/SpriteUtil.git",
+    "upstream_sha256": "582523773415917e0f2eca726e681c8cd14f86e954040bed1973973a2a8f98c4",
+    "sha256": "582523773415917e0f2eca726e681c8cd14f86e954040bed1973973a2a8f98c4",
+    "bytes": 618
+  },
+  {
+    "component": "SpriteUtil",
+    "path": "MkRom,fd7",
+    "revision": "b74d38f3b2b69d1b6cda5377c4b102de1f5be10f",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Video/Render/SpriteUtil.git",
+    "upstream_sha256": "4d61cb362e354b47df1706b0266e93ed2bc1813bcc5a29f9a878dc5c52a72698",
+    "sha256": "4d61cb362e354b47df1706b0266e93ed2bc1813bcc5a29f9a878dc5c52a72698",
+    "bytes": 616
+  },
+  {
+    "component": "SpriteUtil",
+    "path": "Resources/UK/Messages",
+    "revision": "b74d38f3b2b69d1b6cda5377c4b102de1f5be10f",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Video/Render/SpriteUtil.git",
+    "upstream_sha256": "8f5d0562d2b4c32a5be7ae58692faf2577e71967d317f4940b68bca2da784804",
+    "sha256": "8f5d0562d2b4c32a5be7ae58692faf2577e71967d317f4940b68bca2da784804",
+    "bytes": 1693
+  },
+  {
+    "component": "SpriteUtil",
+    "path": "Syntax",
+    "revision": "b74d38f3b2b69d1b6cda5377c4b102de1f5be10f",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Video/Render/SpriteUtil.git",
+    "upstream_sha256": "f7dfab291d6c011b643030932fd7cb09ed179e8837136a862d0d5c5891291aa6",
+    "sha256": "f7dfab291d6c011b643030932fd7cb09ed179e8837136a862d0d5c5891291aa6",
+    "bytes": 525
+  },
+  {
+    "component": "SpriteUtil",
+    "path": "Version",
+    "revision": "b74d38f3b2b69d1b6cda5377c4b102de1f5be10f",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Video/Render/SpriteUtil.git",
+    "upstream_sha256": "1dfa9294108b75f0fe731408708c56af62937101903178f8c0d51bf5b1653826",
+    "sha256": "1dfa9294108b75f0fe731408708c56af62937101903178f8c0d51bf5b1653826",
+    "bytes": 215
+  },
+  {
+    "component": "SpriteUtil",
+    "path": "s/MsgCode",
+    "revision": "b74d38f3b2b69d1b6cda5377c4b102de1f5be10f",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Video/Render/SpriteUtil.git",
+    "upstream_sha256": "88a21bac060845183cb9df8c9b57111196cf9729f1c7a96b5304791a942e399f",
+    "sha256": "61b0345d22ef4d90906e1e180528b202c36c9155d9e52dc7c3d9c2011514838b",
+    "bytes": 5862
+  },
+  {
+    "component": "SpriteUtil",
+    "path": "s/SpriteUtil",
+    "revision": "b74d38f3b2b69d1b6cda5377c4b102de1f5be10f",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Video/Render/SpriteUtil.git",
+    "upstream_sha256": "932dda86f046b4f7655b3ec9f73caa17e5b829005ac5137125d3fe5a2ef00a86",
+    "sha256": "fb8d891edbe20f37b5bb9ca0ec73a9839dd92a8691cb323baff2615e250bd6c6",
+    "bytes": 13318
+  }
+]

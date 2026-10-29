@@ -1,0 +1,51 @@
+{
+  "status": "PASS",
+  "baseline_negative_control_reproduces_failure": true,
+  "repeat_state_identical": true,
+  "checks": [
+    {
+      "kind": "natural",
+      "run": 1,
+      "stages": 6,
+      "descriptors_per_stage": 8192,
+      "software_cam_entries_per_stage": 128
+    },
+    {
+      "kind": "natural",
+      "run": 2,
+      "stages": 6,
+      "descriptors_per_stage": 8192,
+      "software_cam_entries_per_stage": 128
+    },
+    {
+      "kind": "natural",
+      "run": 3,
+      "stages": 6,
+      "descriptors_per_stage": 8192,
+      "software_cam_entries_per_stage": 128
+    },
+    {
+      "kind": "fixtures",
+      "run": 1,
+      "stages": 9,
+      "descriptors_per_stage": 8192,
+      "software_cam_entries_per_stage": 128
+    },
+    {
+      "kind": "fixtures",
+      "run": 2,
+      "stages": 9,
+      "descriptors_per_stage": 8192,
+      "software_cam_entries_per_stage": 128
+    },
+    {
+      "kind": "fixtures",
+      "run": 3,
+      "stages": 9,
+      "descriptors_per_stage": 8192,
+      "software_cam_entries_per_stage": 128
+    }
+  ],
+  "partial_shrink_error_number": "0x1c1",
+  "no_fabricated_mappings": true
+}

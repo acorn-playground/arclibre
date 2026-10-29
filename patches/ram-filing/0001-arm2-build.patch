@@ -1,0 +1,591 @@
+--- a/src/RamFS/s/Defns
++++ b/src/RamFS/s/Defns
+@@ -1,3 +1,4 @@
++; Modified 2026 ArcLibre: ARM2 assembly, canonical SWIs and A440 provider profile.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -98,9 +99,9 @@
+ RamFSId        * 23      ;magic filing system number
+ 
+  [ T
+-RamFSSwiBase    * Module_SWISystemBase + Module_SWIChunkSize * RamFSSWI
++RamFSSwiBase    * RamFSSWI_Base
+ 
+-                ^ RamFSSwiBase :OR bit17
++                ^ RamFSSwiBase :OR: bit17
+ XRamFS_DiscOp   # 1
+                 # 1
+ XRamFS_Drives   # 1
+--- a/src/RamFS/s/Header
++++ b/src/RamFS/s/Header
+@@ -1,3 +1,4 @@
++; Modified 2026 ArcLibre: explicit ARM2 assembly and include contracts.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -15,8 +16,7 @@
+ ; >Header
+ 
+         TTL     "Module header"
+-
+-        LEADR   Module_LoadAddr
++; LEADR omitted: explicit relocatable code area.
+ org
+ 
+ ;Module Header
+--- a/src/RamFS/s/MsgCode
++++ b/src/RamFS/s/MsgCode
+@@ -1,3 +1,4 @@
++; Modified 2026 ArcLibre: explicit ARM2 assembly and include contracts.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -24,7 +25,7 @@
+ ; Out:  r0 -> Translated error block or another error (token no found etc.)
+ ;       All other registers preserved, V always set, other flags undefined
+ 
+-copy_error_one ENTRY "r2-r7"
++copy_error_one KernelEntry "r2-r7"
+         BL      open_message_file               ; Ensure file is open
+         EXIT    VS                              ; Return the error
+ 
+@@ -46,7 +47,7 @@
+ 
+ ; OSS Open the messages file if it is closed.
+ 
+-open_message_file ENTRY "r0-r2"
++open_message_file KernelEntry "r0-r2"
+         LDR     r1 , message_file_open
+         TEQ     r1, #0                          ; Check the open flag
+         EXIT    NE                              ; Return - it is open
+--- a/src/RamFS/s/RamFS
++++ b/src/RamFS/s/RamFS
+@@ -1,3 +1,4 @@
++; Modified 2026 ArcLibre: explicit ARM2 assembly and include contracts.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -18,6 +19,8 @@
+ ; This expects to be AASMed in the parent of directory asm
+ ; which is expected to contain all the sources.
+ 
++        AREA |RamFS$$Code|, CODE, READONLY
++        KEEP
+         GBLL    test_version
+ test_version SETL {FALSE}
+         GET     Version
+@@ -35,15 +38,15 @@
+         GET     Hdr:FSNumbers
+         GET     Hdr:NewErrors
+ 
+-        GET     s.MyMacros
+-        GET     s.Defns
+-        GET     s.DebugOpts
+-        GET     s.Header
+-        GET     s.Errors
+-        GET     s.RamFS00
+-        GET     s.RamFS05
+-        GET     s.RamFS15
+-        GET     s.TokenHelp
+-        GET     s.RamFS50
+-        GET     s.MsgCode
++        GET     s/MyMacros
++        GET     s/Defns
++        GET     s/DebugOpts
++        GET     s/Header
++        GET     s/Errors
++        GET     s/RamFS00
++        GET     s/RamFS05
++        GET     s/RamFS15
++        GET     s/TokenHelp
++        GET     s/RamFS50
++        GET     s/MsgCode
+         END
+--- a/src/RamFS/s/RamFS_Test
++++ b/src/RamFS/s/RamFS_Test
+@@ -1,3 +1,4 @@
++; Modified 2026 ArcLibre: explicit ARM2 assembly and include contracts.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -36,15 +37,15 @@
+         GET     Hdr:File
+         GET     Hdr:NewErrors
+ 
+-        GET     s.MyMacros
+-        GET     s.Defns
+-        GET     s.DebugOpts
+-        GET     s.Header
+-        GET     s.Errors
+-        GET     s.RamFS00
+-        GET     s.RamFS05
+-        GET     s.RamFS15
+-        GET     s.TokenHelp
+-        GET     s.RamFS50
+-        GET     s.MsgCode
++        GET     s/MyMacros
++        GET     s/Defns
++        GET     s/DebugOpts
++        GET     s/Header
++        GET     s/Errors
++        GET     s/RamFS00
++        GET     s/RamFS05
++        GET     s/RamFS15
++        GET     s/TokenHelp
++        GET     s/RamFS50
++        GET     s/MsgCode
+         END
+--- a/src/RAMFSFiler/s/MsgCode
++++ b/src/RAMFSFiler/s/MsgCode
+@@ -1,3 +1,4 @@
++; Modified 2026 ArcLibre: explicit ARM2 assembly and include contracts.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -38,7 +39,7 @@
+ ; Must use ripple through error (VC) all the way to ensure the flag that
+ ; says whether the file is valid or not gets set at the end.
+ 
+-copy_menus ENTRY "r1-r3"
++copy_menus KernelEntry "r1-r3"
+  [ debug
+         DLINE   "Re-making menu tree"
+  ]
+@@ -74,7 +75,7 @@
+ ; Out   r0 corrupt if VC, else r0 -> error block if VS
+ ;       r3 = size of string excluding terminator
+ 
+-lookup_nopars ENTRY "r4-r7"
++lookup_nopars KernelEntry "r4-r7"
+         BL      open_message_file               ; Open file if necessary
+         EXIT    VS
+ 
+@@ -95,7 +96,7 @@
+ ; Out:  r0 -> Translated error block or another error (token no found etc.)
+ ;       All other registers preserved, V always set, other flags undefined
+ 
+-copy_error_one ENTRY "r2-r7"
++copy_error_one KernelEntry "r2-r7"
+         MOV     r4, r1                          ; Move input %0
+ 
+         CMP     wp, #0
+@@ -141,7 +142,7 @@
+ 
+ ; OSS Open the messages file if it is closed, using workspace.
+ 
+-open_message_file ENTRY "r0-r2"
++open_message_file KernelEntry "r0-r2"
+         LDR     r1 , message_file_open
+         TEQ     r1, #0                          ; Check the open flag
+         EXIT    NE                              ; Return - it is open
+@@ -164,7 +165,7 @@
+ 
+ ; OSS Close the messages file if it is open, using workspace.
+ 
+-close_message_file ENTRY "r0"
++close_message_file KernelEntry "r0"
+         LDR     r0, message_file_open           ; Check open flag
+         TEQ     r0, #0
+         ADRNE   r0, message_file_block
+--- a/src/RAMFSFiler/s/RAMFSFiler
++++ b/src/RAMFSFiler/s/RAMFSFiler
+@@ -1,3 +1,4 @@
++; Modified 2026 ArcLibre: explicit ARM2 assembly and include contracts.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -51,6 +52,8 @@
+ ;;                      (so that "RAMFS Filer" appears in title rather than "Banner").
+ ;;----------------------------------------------------------------------------
+ 
++        AREA |RAMFSFiler$$Code|, CODE, READONLY
++        KEEP
+ Module_BaseAddr
+ 
+         GET     Hdr:ListOpts
+@@ -191,8 +194,7 @@
+ ; ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; Module header
+ ; ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-
+-        LEADR   Module_LoadAddr
++; LEADR omitted: explicit relocatable code area.
+ 
+  ASSERT (.=Module_BaseAddr)
+ 
+@@ -251,7 +253,7 @@
+ ; ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; Had *command to enter RAMFSFiler, so start up via module handler
+ 
+-Desktop_RAMFSFiler_Code ENTRY
++Desktop_RAMFSFiler_Code KernelEntry
+ 
+         LDR     r12, [r12]
+         CMP     r12, #0
+@@ -304,7 +306,7 @@
+ 
+ ; *** Drops through here - StartedFiler is the only one left ***
+ 
+-RAMFSFiler_Service_StartedFiler ENTRY
++RAMFSFiler_Service_StartedFiler KernelEntry
+ 
+         LDR     r14, [r12]              ; cancel 'don't start' flag
+         CMP     r14, #0
+@@ -337,7 +339,7 @@
+         MOVNE   R1,#0
+         MOVS    pc,lr
+ 
+-RAMFSFiler_Service_StartFiler ENTRY "r2,r3,r6"
++RAMFSFiler_Service_StartFiler KernelEntry "r2,r3,r6"
+ 
+         LDR     r2, [r12]
+         CMP     r2, #0
+@@ -369,7 +371,7 @@
+ 
+ 
+ 
+-RAMFSFiler_Service_Reset ENTRY "r0-r6"
++RAMFSFiler_Service_Reset KernelEntry "r0-r6"
+ 
+         LDR     r2, [r12]               ; cancel 'don't start' flag
+         CMP     r2, #0
+@@ -384,7 +386,7 @@
+         EXITS                           ; Sorry, but no can do errors here
+ 
+ 
+-RAMFSFiler_Service_MessageFileClosed ENTRY "r0"
++RAMFSFiler_Service_MessageFileClosed KernelEntry "r0"
+ 
+         LDR     r12, [r12]              ; are we active?
+         CMP     r12, #0
+@@ -400,7 +402,7 @@
+ 
+ 
+ RAMFSFiler_Die ROUT                     ; Module die entry - free worspace
+-RAMFSFiler_Service_FilerDying ENTRY "r0-r6"
++RAMFSFiler_Service_FilerDying KernelEntry "r0-r6"
+ 
+         LDR     wp, [r12]
+         BL      freeworkspace
+@@ -590,7 +592,7 @@
+ ; has gone away or comer back or both. Thus we try to open the new one,
+ ; re-make the menu tree, change our task name, and re-read the icon text.
+ 
+-event_poll_word_non_zero ENTRY
++event_poll_word_non_zero KernelEntry
+ 
+  [ debug
+         DLINE   "Poll word went non-zero"
+@@ -660,7 +662,7 @@
+ 
+ ; Out   all regs may be corrupted - going back to PollWimp
+ 
+-event_mouse_click ENTRY
++event_mouse_click KernelEntry
+ 
+         LDMIA   r1, {r0-r4}             ; set mousex, mousey, buttonstate
+         ADR     r14, mousedata          ; windowhandle, iconhandle
+@@ -741,7 +743,7 @@
+ ; A menu is created with the title above the x,y values you feed it, with the
+ ; top left hand corner being at the x,y position
+ 
+-CreateMenu ENTRY "r2, r3"
++CreateMenu KernelEntry "r2, r3"
+ 
+ ; OSS If file is invalid, then try to get it. This will usually result in
+ ; us getting the same error again.
+@@ -768,7 +770,7 @@
+ 
+ ; Out   all regs may be corrupted - going back to PollWimp
+ 
+-event_menu_select ENTRY
++event_menu_select KernelEntry
+         MOV     r2, r1
+         SUB     sp, sp, #b_size
+         MOV     r1, sp
+@@ -786,7 +788,7 @@
+ ; In     r1 = menu handle
+ ;        r2 -> list of selections
+ 
+-DecodeMenu ENTRY
++DecodeMenu KernelEntry
+ 
+  [ debug
+  DREG r1, "menu_select: menu handle ",cc
+@@ -879,7 +881,7 @@
+ ; Out   EQ ==> ramfs exists, NE ==> doesn't
+ ;       all regs preserved
+ 
+-testramfs ENTRY   "r0-r2"
++testramfs KernelEntry   "r0-r2"
+         BL      readfs
+         MOV     r3, r0                  ; r3 = original fs
+         MOV     r2, #0
+@@ -892,13 +894,13 @@
+         BL      writefs                 ; re-write original fs
+         EXIT
+ 
+-readfs  ENTRY   "r1-r2"
++readfs  KernelEntry   "r1-r2"
+         MOV     r0, #0
+         MOV     r1, #0
+         SWI     XOS_Args
+         EXITS                           ; r0 = current fs
+ 
+-writefs ENTRY   "r0-r2"
++writefs KernelEntry   "r0-r2"
+         MOV     r0, #&8F                ; try filing system r2
+         MOV     r1, #18
+         SWI     XOS_Byte
+@@ -910,7 +912,7 @@
+ 
+ ;                          r6  r7  r8  r9
+ 
+-AllocateIcon ENTRY "r1-r4, x0, y0, x1, y1, r10"
++AllocateIcon KernelEntry "r1-r4, x0, y0, x1, y1, r10"
+ 
+ ; OSS Size can depend on text, so do the lookup now before we run into
+ ; register use problems.
+@@ -986,7 +988,7 @@
+ 
+ ; Out   all regs may be corrupted - going back to PollWimp
+ 
+-event_user_message ENTRY
++event_user_message KernelEntry
+ 
+         LDR     r0, [r1, #message_action]
+ 
+@@ -1053,7 +1055,7 @@
+ 
+ ; Out:  r1 = What buttons pressed
+ 
+-ReportError ENTRY "r2-r5"
++ReportError KernelEntry "r2-r5"
+         MOV     r4, r0                          ; Save error
+         MOV     r5, r1                          ; Save flags
+ 
+@@ -1072,7 +1074,7 @@
+ 
+ ; ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-        GET     s.MsgCode
++        GET     s/MsgCode
+ 
+  [ debug
+         InsertDebugRoutines
+--- a/src/Free/s/ADFS
++++ b/src/Free/s/ADFS
+@@ -1,3 +1,4 @@
++; Modified 2026 ArcLibre: ARM2 assembly, canonical SWIs and A440 provider profile.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -186,4 +187,4 @@
+ 
+         Pull   "r0-r9,PC"
+ 
+-        LNK     s.RAMFS
++        LNK     s/RAMFS
+--- a/src/Free/s/Free
++++ b/src/Free/s/Free
+@@ -1,3 +1,4 @@
++; Modified 2026 ArcLibre: explicit ARM2 assembly and include contracts.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -49,7 +50,14 @@
+ ;; Wish list
+ ;;-----------------------------------------------------------------------------
+ 
++        AREA |Free$$Code|, CODE, READONLY
++        KEEP
+ Module_BaseAddr
++        GBLL    ArcLibre_ExternalFreeProviders
++ArcLibre_ExternalFreeProviders SETL {FALSE}
++; NetFS is in the delivered ROM, so its provider is (NetFiler's Free uses it).
++        GBLL    ArcLibre_NetFSFreeProvider
++ArcLibre_NetFSFreeProvider SETL {TRUE}
+ 
+         GET     Hdr:ListOpts
+         GET     Hdr:Macros
+@@ -74,8 +82,10 @@
+         GET     Hdr:ColourTran
+         GET     Hdr:Hourglass
+         GET     Hdr:ADFS
+-        GET     Hdr:RamFS
++        GET     Hdr:RAMFS
++      [ ArcLibre_ExternalFreeProviders
+         GET     Hdr:SCSIFS
++      ]
+         GET     Hdr:Econet
+         GET     Hdr:UpCall
+         GET     Hdr:HostFS
+@@ -183,5 +193,5 @@
+ icon_Used       *       1
+ icon_UsedBar    *       4
+ ; ----------------------------------------------------------------------------------------------------------------------
+-        LNK     s.ModHead
++        LNK     s/ModHead
+ 
+--- a/src/Free/s/Messages
++++ b/src/Free/s/Messages
+@@ -1,3 +1,4 @@
++; Modified 2026 ArcLibre: ARM2 assembly, canonical SWIs and A440 provider profile.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -52,4 +53,4 @@
+         DCB     "TASK"
+ 
+ ; ----------------------------------------------------------------------------------------------------------------------
+-        LNK     s.ADFS
++        LNK     s/ADFS
+--- a/src/Free/s/ModHead
++++ b/src/Free/s/ModHead
+@@ -1,3 +1,4 @@
++; Modified 2026 ArcLibre: explicit ARM2 assembly and include contracts.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -13,10 +14,10 @@
+ ; limitations under the License.
+ ;
+ ; > s.ModHead
+-        LEADR   Module_LoadAddr
++; LEADR omitted: explicit relocatable code area.
+ 
+         ASSERT  (.=Module_BaseAddr)
+-MySWIBase       *       Module_SWISystemBase + FreeSWI * Module_SWIChunkSize
++MySWIBase       *       FreeSWI_Base
+ 
+         DCD     Start          - Module_BaseAddr
+         DCD     Init           - Module_BaseAddr
+@@ -251,6 +252,7 @@
+         ADRL    r0,RamFS_entry        ; RamFS
+         MOV     r1,#23
+         BL      AddEntry
++      [ ArcLibre_ExternalFreeProviders
+         ADRL    r0,SCSIFS_entry       ; SCSI
+         MOV     r1,#26
+         BL      AddEntry
+@@ -260,6 +262,13 @@
+         ADRL    r0,NFS_entry          ; NFS
+         MOV     r1,#33
+         BL      AddEntry
++      |
++      [ ArcLibre_NetFSFreeProvider
++        ADRL    r0,NETFS_entry        ; Econet
++        MOV     r1,#5
++        BL      AddEntry
++      ]
++      ]
+ 
+ ; initialise Free$Path if not already done
+ 
+@@ -582,4 +591,4 @@
+ 
+         ALIGN
+ 
+-        LNK     s.StartLoop
++        LNK     s/StartLoop
+--- a/src/Free/s/NETFS
++++ b/src/Free/s/NETFS
+@@ -1,3 +1,4 @@
++; Modified 2026 ArcLibre: ARM2 assembly, canonical SWIs and A440 provider profile.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -187,4 +188,8 @@
+         CMPSTR  r3,r6
+         Pull    "PC"
+ 
+-        LNK     s.NFS
++      [ ArcLibre_ExternalFreeProviders
++        LNK     s/NFS
++      |
++        LNK     s/SWIS
++      ]
+--- a/src/Free/s/NFS
++++ b/src/Free/s/NFS
+@@ -1,3 +1,4 @@
++; Modified 2026 ArcLibre: ARM2 assembly, canonical SWIs and A440 provider profile.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -112,4 +113,4 @@
+ 
+         Pull   "r0-r9,PC"
+ 
+-        LNK    s.SWIs
++        LNK    s/SWIS
+--- a/src/Free/s/RAMFS
++++ b/src/Free/s/RAMFS
+@@ -1,3 +1,4 @@
++; Modified 2026 ArcLibre: ARM2 assembly, canonical SWIs and A440 provider profile.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -101,4 +102,12 @@
+ 
+         Pull   "PC"
+ 
+-        LNK     s.SCSI
++      [ ArcLibre_ExternalFreeProviders
++        LNK     s/SCSI
++      |
++      [ ArcLibre_NetFSFreeProvider
++        LNK     s/NETFS
++      |
++        LNK     s/SWIS
++      ]
++      ]
+--- a/src/Free/s/SCSI
++++ b/src/Free/s/SCSI
+@@ -1,3 +1,4 @@
++; Modified 2026 ArcLibre: ARM2 assembly, canonical SWIs and A440 provider profile.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -194,4 +195,4 @@
+         Pull   "r0-r9,PC"
+ 
+ 
+-        LNK     s.NETFS
++        LNK     s/NETFS
+--- a/src/Free/s/SWIS
++++ b/src/Free/s/SWIS
+@@ -1,3 +1,4 @@
++; Modified 2026 ArcLibre: ARM2 assembly, canonical SWIs and A440 provider profile.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -19,6 +20,7 @@
+ 
+         MVN     R14,#I_bit
+         TSTP    R14,PC                          ; re-enable interrupts
++        MOV     r0,r0          ; ARM2 PSR settling slot
+ ;
+         LDR     r12,[R12]                       ; wsptr --> workspace
+ 
+@@ -80,6 +82,6 @@
+      STRVS      r0,[SP]
+      Pull       "r0-r2,PC"
+ 
+-     LNK        s.Tail
++     LNK        s/Tail
+ 
+ 
+--- a/src/Free/s/StartLoop
++++ b/src/Free/s/StartLoop
+@@ -1,3 +1,4 @@
++; Modified 2026 ArcLibre: ARM2 assembly, canonical SWIs and A440 provider profile.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -935,4 +936,4 @@
+         STRVS   r0,[sp]
+         Pull    "r0-r6,PC"
+ 
+-        LNK     s.Messages
++        LNK     s/Messages

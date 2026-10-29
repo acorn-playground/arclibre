@@ -1,0 +1,50 @@
+{
+  "status": "SOURCE_AND_ASSEMBLY_CLOSURE_PASS",
+  "runtime_status": "NOT_INTEGRATED; software FPEmulator tested separately by make fpe-test; rendering providers still required",
+  "modules": [
+    {
+      "component": "Wimp",
+      "status": "ASSEMBLED_REQUIRES_FPEMULATOR",
+      "bytes": 81544,
+      "sha256": "96fbe0880c0dcbf8ad2e61c6dd6e23e72cb2e04e0a6f585742aa7cfd01f87a5c",
+      "identical_aof_sha256": "cb6f7a47d3b76f84862381ade8fca2649a063a81bf008655ef5ce748547a2983",
+      "unresolved_symbols": 0,
+      "relocations": 0,
+      "integer_arm2_instructions": 17672,
+      "fpa_instructions": 21,
+      "embedded_assets": 4,
+      "runtime_tested": false
+    },
+    {
+      "component": "FontManager",
+      "status": "STATIC_ARM2_PASS",
+      "bytes": 60084,
+      "sha256": "e69268f15b0f8e8d27448ba1064a3fb773e4fd692d23364cf28900cf3d23b163",
+      "identical_aof_sha256": "57e40221a011644bb060fcb28fdd62f0a74662a9b4ab35c566c9b719a37e2281",
+      "unresolved_symbols": 0,
+      "relocations": 0,
+      "integer_arm2_instructions": 13868,
+      "fpa_instructions": 0,
+      "embedded_assets": 0,
+      "runtime_tested": false
+    },
+    {
+      "component": "ROMFonts",
+      "status": "STATIC_ARM2_PASS",
+      "bytes": 250000,
+      "sha256": "909493b93e4b4250feeb352d049298d5d09371cbbd5d40ab5b9ddf00ad464fd6",
+      "identical_aof_sha256": "bc1f76c77b0b152dacbdfd96450c4dd0ae405435c2c2ac18658ab7121da4429e",
+      "unresolved_symbols": 0,
+      "relocations": 0,
+      "integer_arm2_instructions": 46,
+      "fpa_instructions": 0,
+      "embedded_assets": 29,
+      "runtime_tested": false
+    }
+  ],
+  "assets": 39,
+  "asset_bytes": 592677,
+  "external_resource_pack_sha256": "8cbe396a81c67e25df526734b77a8c3e1b485a3620ea11c9fff7a6ce721ad23c",
+  "source_inputs_verified": 166,
+  "boot_rom_modified": false
+}

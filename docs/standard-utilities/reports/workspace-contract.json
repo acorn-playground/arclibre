@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "ScrBlank": {
+    "private_rma_bytes": 92,
+    "fields": {
+      "timer": 0,
+      "TimeOn": 4,
+      "TimeOff": 8,
+      "NormOnTime": 12,
+      "Blanked": 20,
+      "VecStat": 24,
+      "NextService": 32
+    }
+  },
+  "StringLib": {
+    "private_rma_bytes": 1940,
+    "copied_source_offset": 632,
+    "copied_bytes": 1904,
+    "instance_bytes": 832,
+    "instance_pointer_table": 1912,
+    "copied_integer_instructions": 444,
+    "voice_offsets": {
+      "Voice1": 0,
+      "Voice2": 120,
+      "Voice3": 240,
+      "Voice4": 360
+    }
+  },
+  "contract": "Original declared module workspaces and RAM code image, allocated through OS_Module; no fabricated kernel fixed workspace. Runtime copies of all instruction words match assembled originals."
+}

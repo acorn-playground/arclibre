@@ -1,0 +1,11 @@
+--- a/src/Switcher/s/Switcher
++++ b/src/Switcher/s/Switcher
+@@ -196,7 +196,7 @@
+ standalone      SETL    {FALSE}
+ 
+                 GBLL    readareas       ; find sizes of real dynamic areas using OS_ReadDynamicArea
+-readareas       SETL    {TRUE}
++readareas       SETL    {FALSE}          ; ArcLibre: original MEMC physical-page accounting
+ 
+                 GBLL    DynamicAreas    ; Can cope with app-dynamic areas
+ DynamicAreas    SETL    {TRUE}

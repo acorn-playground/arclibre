@@ -1,0 +1,134 @@
+{
+  "status": "PASS",
+  "runs": [
+    {
+      "run": 1,
+      "key_events": 236,
+      "characters": 105,
+      "runtime_handler_calls": {
+        "SetUpKeyStructureAndHandlerIfUs": 3,
+        "ProcessKShift": 8,
+        "ProcessKCtrl": 14,
+        "ProcessK1Pad": 4,
+        "ProcessKAlt": 2
+      },
+      "contract": {
+        "workspace": 25173332,
+        "international_workspace": 25173300,
+        "old_handler": 58861924,
+        "keyboard": 1,
+        "alphabet": 101,
+        "osbyte_variables": 2298,
+        "header_words": [
+          33824720,
+          101,
+          33823548,
+          33824060,
+          33824404,
+          33824468,
+          33822276,
+          33825600,
+          33825608,
+          33825619,
+          33825636
+        ]
+      },
+      "territory_selection_succeeds": true,
+      "newer_services_unclaimed": [
+        7,
+        8,
+        255
+      ]
+    },
+    {
+      "run": 2,
+      "key_events": 236,
+      "characters": 105,
+      "runtime_handler_calls": {
+        "SetUpKeyStructureAndHandlerIfUs": 3,
+        "ProcessKShift": 8,
+        "ProcessKCtrl": 14,
+        "ProcessK1Pad": 4,
+        "ProcessKAlt": 2
+      },
+      "contract": {
+        "workspace": 25173332,
+        "international_workspace": 25173300,
+        "old_handler": 58861924,
+        "keyboard": 1,
+        "alphabet": 101,
+        "osbyte_variables": 2298,
+        "header_words": [
+          33824720,
+          101,
+          33823548,
+          33824060,
+          33824404,
+          33824468,
+          33822276,
+          33825600,
+          33825608,
+          33825619,
+          33825636
+        ]
+      },
+      "territory_selection_succeeds": true,
+      "newer_services_unclaimed": [
+        7,
+        8,
+        255
+      ]
+    },
+    {
+      "run": 3,
+      "key_events": 236,
+      "characters": 105,
+      "runtime_handler_calls": {
+        "SetUpKeyStructureAndHandlerIfUs": 3,
+        "ProcessKShift": 8,
+        "ProcessKCtrl": 14,
+        "ProcessK1Pad": 4,
+        "ProcessKAlt": 2
+      },
+      "contract": {
+        "workspace": 25173332,
+        "international_workspace": 25173300,
+        "old_handler": 58861924,
+        "keyboard": 1,
+        "alphabet": 101,
+        "osbyte_variables": 2298,
+        "header_words": [
+          33824720,
+          101,
+          33823548,
+          33824060,
+          33824404,
+          33824468,
+          33822276,
+          33825600,
+          33825608,
+          33825619,
+          33825636
+        ]
+      },
+      "territory_selection_succeeds": true,
+      "newer_services_unclaimed": [
+        7,
+        8,
+        255
+      ]
+    }
+  ],
+  "identical_cold_repeats": true,
+  "original_a1_tables": {
+    "KeyTran1": {
+      "bytes": 404,
+      "sha256": "8728e261067d2187c0f116d8a27a3895c105685af8bf369d00914e6b77a79120"
+    },
+    "TopBitSetTable1": {
+      "bytes": 464,
+      "sha256": "fba2ae5409ee5a8f5f6b486af0791d1db5e640f60e174d54cc5687bb887f5b4d"
+    }
+  },
+  "no_injected_keyboard_success": true
+}

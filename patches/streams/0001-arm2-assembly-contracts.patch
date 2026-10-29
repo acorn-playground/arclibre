@@ -1,0 +1,1300 @@
+--- a/src/DeviceFS/s/DeviceFS
++++ b/src/DeviceFS/s/DeviceFS
+@@ -1,4 +1,6 @@
++        AREA |DeviceFS$$Code|, CODE, READONLY
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: ARM2/AsAsm contracts; see patches/streams.
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -154,8 +156,8 @@
+                 GET     hdr:ResourceFS
+ 
+                 GET     Version
+-                GET     s.Errors
+-                GET     s.Macros
++                GET     s/Errors
++                GET     s/Macros
+ 
+  [ :LNOT: :DEF: standalonemessages
+                 GBLL    standalonemessages
+@@ -310,7 +312,7 @@
+                 & help -module_start                            ; help string offset
+                 & 0
+ 
+-                & Module_SWISystemBase + DeviceFSSWI * Module_SWIChunkSize
++                & DeviceFSSWI_Base
+                 & swidespatch -module_start
+                 & switable -module_start
+                 & 0
+@@ -370,7 +372,7 @@
+ ; is, then we reset the workspace as required.
+ ;
+ 
+-init            ENTRY
++init            KernelEntry
+                 LDR     r2, [wp]
+                 TEQ     r2, #0                                  ; do we need to claim any workspace?
+                 BNE     %10
+@@ -417,7 +419,7 @@
+ ; any extra workspace and removing the filing system reference.
+ ;
+ 
+-final           ENTRY
++final           KernelEntry
+                 LDR     wp, [wp]                                ; -> workspace
+ 
+                 LDR     r0, Flags
+@@ -515,7 +517,7 @@
+  [ standalonemessages
+                 GBLS    ApplicationName
+ ApplicationName SETS    "DeviceFS"
+-conditionalgetbodge SETS "GET s.ResFiles"
++conditionalgetbodge SETS "GET s/ResFiles"
+ resourcefsfiles
+  |
+ conditionalgetbodge SETS ""
+@@ -584,7 +586,7 @@
+ ; is granted, infact the callback is removed (via OS_RemoveCallBack).
+ ;
+ 
+-StartCallBack   ENTRY   "r0,r1"
++StartCallBack   KernelEntry   "r0,r1"
+                 ADR     r0, callback                            ; -> callback routine
+                 MOV     r1, wp
+                 SWI     XOS_AddCallBack
+@@ -597,7 +599,7 @@
+ ; this routine is called as the callback utility.
+ ;
+ 
+-callback        ENTRY   "r0,r1"
++callback        KernelEntry   "r0,r1"
+                 LDR     r0, Flags
+                 BIC     r0, r0, #f_CallBackPending
+                 STR     r0, Flags                               ; clear the callback bit
+@@ -653,7 +655,7 @@
+ ; remove all currently associated devices and then return.
+ ;
+ 
+-Register        ENTRY   "r0-pr"
++Register        KernelEntry   "r0-pr"
+                 MOV     pr, #0                                  ; no parent record yet
+ 
+                 Debug   register, "global flags word",r0
+@@ -749,7 +751,7 @@
+ ; have been removed, this should close all file objects.
+ ;
+ 
+-Deregister      ENTRY   "r0-dr"
++Deregister      KernelEntry   "r0-dr"
+                 MOV     pr, r0                                  ; pr -> parent record (we hope!)
+ 
+                 LDR     r0, [pr, #parent_ValidationWord]
+@@ -841,7 +843,7 @@
+ ; the list of devices specified to be registered - eh?!
+ ;
+ 
+-RegisterObj     ENTRY   "r0-pr"
++RegisterObj     KernelEntry   "r0-pr"
+                 MOV     pr, r0                                  ; r0 -> parent record
+ 
+                 LDR     r0, [pr, #parent_ValidationWord]
+@@ -907,7 +909,7 @@
+ ; required system variables are defined.
+ ;
+ 
+-registerdev     ENTRY   "r0-r7, fr, dr"
++registerdev     KernelEntry   "r0-r7, fr, dr"
+ 
+                 LDR     r2, [r1, #dr_DeviceNameOffset]
+                 ADD     r2, r2, r1                              ; -> device name
+@@ -1146,7 +1148,7 @@
+ ; unset all associated system variables and tidy up memory as required.
+ ;
+ 
+-DeregisterObj   ENTRY   "r0-pr"
++DeregisterObj   KernelEntry   "r0-pr"
+ 
+                 MOV     pr, r0                                  ; setup parent record
+ 
+@@ -1204,7 +1206,7 @@
+ ; used currently.
+ ;
+ 
+-deregisterdev   ENTRY   "r0, r2-r5, pr"
++deregisterdev   KernelEntry   "r0, r2-r5, pr"
+ 
+                 Debug   deregister, "device to be deregister", r1
+                 Debug   deregister, "parent is", pr
+@@ -1428,7 +1430,7 @@
+ ; device.
+ ;
+ 
+-Threshold       ENTRY   "r0-r3"
++Threshold       KernelEntry   "r0-r3"
+                 LDR     r0, [r1, #file_BufferHandle]
+                 CMP     r0, #-1                                 ; is the object buffered?
+                 ADREQL  r0, ErrorBlock_DeviceFS_MustBeBuffered
+@@ -1462,7 +1464,7 @@
+ ; file handle and then issue and event to the actual device.
+ ;
+ 
+-SetupThreshold  ENTRY   "r0-r3"
++SetupThreshold  KernelEntry   "r0-r3"
+                 LDR     r3, Flags
+                 TST     r3, #f_UpCallV                          ; do I currently own the UpCallV?
+                 EXITS   NE                                      ; yes, so don't claim again
+@@ -1490,7 +1492,7 @@
+ ; devicefs.
+ ;
+ 
+-RemoveThreshold ENTRY   "r0-r3"
++RemoveThreshold KernelEntry   "r0-r3"
+                 LDR     r3, Flags
+                 TST     r3, #f_UpCallV                          ; do I currently have an claim on UpCallV
+                 EXITS   EQ                                      ; and then return
+@@ -1571,7 +1573,7 @@
+ ; away.
+ ;
+ 
+-ReceivedChar    ENTRY   "r0-r3, fr, r9"
++ReceivedChar    KernelEntry   "r0-r3, fr, r9"
+ 
+                 MOV     fr, r1                                  ; -> file record
+ 
+@@ -1641,7 +1643,7 @@
+ ; is buffered, if not then it will attempt to read the transmit.
+ ;
+ 
+-TransmitChar    ENTRY   "r1-r3, fr, r9"
++TransmitChar    KernelEntry   "r1-r3, fr, r9"
+ 
+                 MOVS    fr, r1                                  ; -> file record
+                 MOVEQ   r0, #-1
+@@ -1706,7 +1708,7 @@
+ ; case-insensitive ASCII order.
+ ;
+ 
+-InsertDeviceIntoList ENTRY "r0-r3"
++InsertDeviceIntoList KernelEntry "r0-r3"
+ 
+                 Debug   sorting, "about to sort devices"
+ 
+@@ -1780,7 +1782,7 @@
+ ;       Nzcv if r1 < r2
+ ;
+ 
+-CompareStrings ENTRY "r0-r3"
++CompareStrings KernelEntry "r0-r3"
+ 10
+         CMP     r1, r0          ; if reached end of comparison
+         EXIT    EQ              ; then say they're equal
+@@ -1805,7 +1807,7 @@
+ 
+ ; Attempt to open the messages file.
+ 
+-OpenMessages    ENTRY   "r0-r3"
++OpenMessages    KernelEntry   "r0-r3"
+ 
+                 LDR     r3, Flags
+                 TST     r3, #f_WeHaveMessages                   ; do we have an open messages block?
+@@ -1823,7 +1825,7 @@
+ 
+ ; Attempt to close the messages file.
+ 
+-CloseMessages   ENTRY   "r0"
++CloseMessages   KernelEntry   "r0"
+                 LDR     r0, Flags
+                 TST     r0, #f_WeHaveMessages                   ; do we have any messages?
+                 EXITS   EQ                                      ; and return if not!
+@@ -1839,7 +1841,7 @@
+ ; Generate an error based on the error token given.  Does not assume that
+ ; the messages file is open.  Will attempt to open it, then look it up.
+ 
+-MakeErrorWithFS_name ENTRY "r1-r7"
++MakeErrorWithFS_name KernelEntry "r1-r7"
+                 ADRL    r4, fs_name
+                 B       MakeErrorEntry
+ 
+@@ -1876,8 +1878,8 @@
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-                GET     s.FSystem
+-                GET     s.Special
++                GET     s/FSystem
++                GET     s/Special
+ 
+ 
+               [ debug                                           ; if a debugging version, then include debugging code
+--- a/src/DeviceFS/s/FSystem
++++ b/src/DeviceFS/s/FSystem
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: ARM2/AsAsm contracts; see patches/streams.
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -32,7 +33,7 @@
+ ; perform an escape check, set r0 -> error block if escape is pressed.
+ ;
+ 
+-checkescape     ENTRY
++checkescape     KernelEntry
+  [ Use0PageForESC
+                 MOV     lr, #0
+                 LDRB    lr, [lr, #ESC_Status]
+@@ -64,7 +65,7 @@
+ ; errors are reported and no global states are setup.
+ ;
+ 
+-StartFSystem    ENTRY   "r0-r3"
++StartFSystem    KernelEntry   "r0-r3"
+                 MOV     r0, #FSControl_AddFS
+                 ADRL    r1, module_start                        ; -> base of module
+                 LDR     r2, =fs_control -module_start           ;  = offset of block from module base
+@@ -108,7 +109,7 @@
+ ; removes it and returns no errors if it went wrong.
+ ;
+ 
+-RemoveFSystem   ENTRY   "r0-r1"
++RemoveFSystem   KernelEntry   "r0-r1"
+                 MOV     r0, #FSControl_RemoveFS
+                 ADRL    r1, fs_name                             ; -> fs name to be removed
+                 SWI     XOS_FSControl
+@@ -133,7 +134,7 @@
+ ; structure has changed.
+ ;
+ 
+-IssueUpCall     ENTRY   "r0-r9"
++IssueUpCall     KernelEntry   "r0-r9"
+                 MOV     r9, r0                                  ;  = reason code
+                 LDR     r8, fs_infoword                         ;  = fsystem information word
+                 MOV     r6, #0                                  ;  = no special fields
+@@ -516,7 +517,7 @@
+ ; wake up code, this is called when some data is inserted into a dormant TX buffer.
+ ; after calling device, r0 = 0 if the device wishes to remain dormant, otherwise preserved
+ 
+-wakeup          ENTRY   "r0-r3"
++wakeup          KernelEntry   "r0-r3"
+                 LDR     r2, [r8, #file_InternalHandle]          ; if device being opened or closed
+                 TEQ     r2, #0
+                 EXITS   EQ                                      ; then ignore
+@@ -534,7 +535,7 @@
+ 
+ ; detach code, this is called when someone tries to deregister the buffer, or link it some other device
+ 
+-detach          ENTRY   "r0-r2"
++detach          KernelEntry   "r0-r2"
+                 MOV     r1, #Service_DeviceFSCloseRequest
+                 LDR     r2, [r8, #file_FSwitchHandle]           ; get file handle
+                 SWI     XOS_ServiceCall
+@@ -556,7 +557,7 @@
+ ; out:  EQ => succeeded in closing enough
+ ;       NE => failed to close enough
+ 
+-RequestCloseInputs ENTRY "r0-r3,r5"
++RequestCloseInputs KernelEntry "r0-r3,r5"
+ 
+         Debug   open, "RequestCloseInputs called"
+ 
+@@ -618,7 +619,7 @@
+ ; or extracting a character from the buffer.
+ ;
+ 
+-fs_get          ENTRY   "r0-r2, fr,pr"
++fs_get          KernelEntry   "r0-r2, fr,pr"
+ 
+                 MOV     fr, r1                                  ; -> file record
+                 LDR     pr, [fr, #file_Parent]
+@@ -737,7 +738,7 @@
+ ; piece of data and then waking the device up.
+ ;
+ 
+-fs_put          ENTRY   "r0-r2, fr, r9"
++fs_put          KernelEntry   "r0-r2, fr, r9"
+ 
+                 MOV     fr, r1                                  ; -> file record
+ 
+@@ -840,13 +841,13 @@
+ ; on entry contains the internal handle passed to and from fileswitch to the filing
+ ; system.
+ 
+-checkeof        ENTRY   "r2"                                    ; internal routine,
++checkeof        KernelEntry   "r2"                                    ; internal routine,
+                 BL      args_eof
+                 CMPVC   r2, #1                                  ; exits CS for EOF, else CC
+                 EXIT
+ 
+ 
+-args_eof        ENTRY   "r0,r1,r3-r6, fr"
++args_eof        KernelEntry   "r0,r1,r3-r6, fr"
+ 
+                 Debug   eof, "args_eof called"
+ 
+@@ -908,7 +909,7 @@
+ ; quick exit from these operations.
+ ;
+ 
+-args_flush      ENTRY   "r1-r3"
++args_flush      KernelEntry   "r1-r3"
+ 
+                 LDR     r0, [r1, #file_Flags]
+                 TST     r0, #ff_FileForTX                       ; is the file an output object
+@@ -943,7 +944,7 @@
+ ; unlinking the device from the buffer and then closing down the device.
+ ;
+ 
+-fs_close        ENTRY   "dr, pr"
++fs_close        KernelEntry   "dr, pr"
+ 
+                 Debug   close,"Closing file"
+ 
+@@ -952,7 +953,7 @@
+                 EXIT
+ 
+ 
+-removefileblock ENTRY   "r0-r5, dr, pr"                         ; attempt to zap record at 'FR'
++removefileblock KernelEntry   "r0-r5, dr, pr"                         ; attempt to zap record at 'FR'
+ 
+                 Debug   close,"removing file block"
+ 
+@@ -1169,7 +1170,7 @@
+ ;       r4 = index of next item to read (-1 if you were at end and didn't return any this call ie r3=0)
+ 
+ 
+-file_enumdir    ENTRY   "r0-r2, r5-r7, dr, pr"
++file_enumdir    KernelEntry   "r0-r2, r5-r7, dr, pr"
+ 
+                 TEQ     r3, #0                                  ; if asking for none
+                 EXITS   EQ                                      ; then return straight away
+@@ -1361,7 +1362,7 @@
+ ; in:   R1 -> wildcarded pathname
+ ; out:  R1 -> pathname, with "$." removed
+ 
+-skipdollar      ENTRY
++skipdollar      KernelEntry
+                 LDRB    lr, [r1]
+                 CMP     lr, #"$"
+                 EXIT    NE
+@@ -1399,7 +1400,7 @@
+ 
+ ; read a largish lump from the device.
+ 
+-gbpb_get        ENTRY   "r0-r3, fr, r9, pr"
++gbpb_get        KernelEntry   "r0-r3, fr, r9, pr"
+ 
+                 MOV     fr, r1                                  ; -> file record
+                 LDR     pr, [fr, #file_Parent]
+@@ -1478,7 +1479,7 @@
+ 
+ ; Give a huge lump of data to the device.
+ 
+-gbpb_put        ENTRY   "r0-r3, fr, r9"
++gbpb_put        KernelEntry   "r0-r3, fr, r9"
+ 
+                 MOV     fr, r1
+ 
+@@ -1530,7 +1531,7 @@
+ 
+  [ FastBufferMan
+ 
+-purgeoutputbuffer ENTRY "r0"
++purgeoutputbuffer KernelEntry "r0"
+ ; in:   r1 = buffer managers private buffer id
+ ; out:  all registers preserved
+                 MOV     r0, #BufferReason_PurgeBuffer
+@@ -1539,7 +1540,7 @@
+ 
+  |
+ 
+-purgeoutputbuffer ENTRY "r0-r2,r9"
++purgeoutputbuffer KernelEntry "r0-r2,r9"
+ ; in:   r1 = buffer handle
+ ; out:  all registers preserved
+                 MOV     r9, #CNPV
+@@ -1583,7 +1584,7 @@
+ ; specified is a sub-path of a device (eg $.Parallel.Fred), return object
+ ; type object_subdevice.
+ 
+-findobject      ENTRY   "r1,r6,r7"
++findobject      KernelEntry   "r1,r6,r7"
+ 
+                 BL      skipdollar
+ 
+@@ -1676,7 +1677,7 @@
+ ; contents.
+ ;
+ 
+-HandleSpecial   ENTRY   "r0-r6"
++HandleSpecial   KernelEntry   "r0-r6"
+ 
+                 BL      DecodeSpecial
+                 BVS     %90                                     ; finished decoding because it went really wrong!
+--- a/src/SystemDevs/s/MsgCode
++++ b/src/SystemDevs/s/MsgCode
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: ARM2/AsAsm contracts; see patches/streams.
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -24,7 +25,7 @@
+ ; Out:  r0 -> Translated error block or another error (token no found etc.)
+ ;       All other registers preserved, V always set, other flags undefined
+ 
+-copy_error_one ENTRY "r2-r7"
++copy_error_one KernelEntry "r2-r7"
+         BL      open_message_file               ; Ensure file is open
+         EXIT    VS                              ; Return the error
+ 
+@@ -47,7 +48,7 @@
+ 
+ ; OSS Open the messages file if it is closed.
+ 
+-open_message_file ENTRY "r0-r2"
++open_message_file KernelEntry "r0-r2"
+         LDR     r1 , message_file_open
+         CMP     r1, #0                          ; Check the open flag (and V:=0)
+         EXIT    NE                              ; Return - it is open
+--- a/src/SystemDevs/s/SystemDevs
++++ b/src/SystemDevs/s/SystemDevs
+@@ -1,4 +1,6 @@
++        AREA |SystemDevs$$Code|, CODE, READONLY
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: ARM2/AsAsm contracts; see patches/streams.
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -82,7 +84,7 @@
+         GET     Hdr:Proc
+         GET     Hdr:FSNumbers
+         GET     Hdr:HighFSI
+-        GET     Hdr:LowFSi
++        GET     Hdr:LowFSI
+         GET     Hdr:NewErrors
+ ;        GET     Hdr:Debug
+ ;        GET     Hdr:HostDebug
+@@ -94,7 +96,6 @@
+ 
+         GET     Version
+ 
+-        LEADR   Module_LoadAddr
+ 
+                 GBLL    debug
+                 GBLL    export_serial           ; =true for exported serial:
+@@ -179,7 +180,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; r0-r6 trashable
+ 
+-SystemDevices_Init ENTRY
++SystemDevices_Init KernelEntry
+ 
+         LDR     r2, [r12]               ; Coming from hard reset ?
+         TEQ     r2, #0
+@@ -248,7 +249,7 @@
+                 Pull    "r0-r3,pc",,^
+ 30
+  ]
+-        ENTRY   "r0"
++        KernelEntry   "r0"
+         LDR     wp, [r12]
+         BL      AddDevices
+         EXIT
+@@ -256,7 +257,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; In    r0 trashable
+ 
+-AddDevices ENTRY "r1-r3"
++AddDevices KernelEntry "r1-r3"
+ 
+         MOV     r0, #FSControl_AddFS
+         ADR     r1, Module_BaseAddr
+@@ -410,7 +411,7 @@
+ ; Let Module handler take care of removing our workspace on fatal death
+ ; Or shunting it around on Tidy - none of it is absolute
+ 
+-SystemDevices_Die ENTRY "r0-r1"
++SystemDevices_Die KernelEntry "r0-r1"
+         LDR     wp, [r12]
+ 
+         ADR     r0, CloseNullFiles
+@@ -464,7 +465,7 @@
+ ; In    r0 -> string to OS_CLI
+ ;       r1 -> fs name
+ 
+-CloseAndRemoveDevice ENTRY
++CloseAndRemoveDevice KernelEntry
+ 
+         SWI     XOS_CLI
+         MOV     r0, #FSControl_RemoveFS
+@@ -552,7 +553,7 @@
+ 
+ ; In    r0 = op, r1 -> name, r2 = load, r3 = exec, r4 = start, r5 = end
+ 
+-null_File ENTRY
++null_File KernelEntry
+ 
+         addr    r6, NullOptString       ; Filename to return for monitor msg
+ 
+@@ -564,7 +565,7 @@
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-null_Func ENTRY
++null_Func KernelEntry
+ 
+         BL      CommonFunc
+ 
+@@ -619,7 +620,7 @@
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-null_Args ENTRY
++null_Args KernelEntry
+ 
+         BL      CommonArgs_Write
+         B       null_ArgsFunc
+@@ -633,7 +634,7 @@
+ 
+ ; In    r0 = op, r1 -> name, r2 = load, r3 = exec, r4 = start, r5 = end
+ 
+-vdu_File ENTRY
++vdu_File KernelEntry
+ 
+         addr    r6, VduOptString        ; Filename to return for monitor msg
+ 
+@@ -675,7 +676,7 @@
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-vdu_Func ENTRY
++vdu_Func KernelEntry
+ 
+         BL      CommonFunc
+ 
+@@ -694,7 +695,7 @@
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-rawvdu_Func ENTRY
++rawvdu_Func KernelEntry
+ 
+         BL      CommonFunc
+ 
+@@ -742,7 +743,7 @@
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-vdu_Put ENTRY
++vdu_Put KernelEntry
+ 
+         BL      EnableJustVdu
+         BLVC    vdu_wrch
+@@ -750,7 +751,7 @@
+         EXIT                            ; V from wrch
+ 
+ 
+-rawvdu_Put ENTRY
++rawvdu_Put KernelEntry
+ 
+         BL      EnableJustVdu
+         SWIVC   XOS_WriteC
+@@ -759,14 +760,14 @@
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-vdu_Args ENTRY
++vdu_Args KernelEntry
+ 
+         BL      CommonArgs_Write
+         B       vdu_ArgsFunc
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-rawvdu_Args ENTRY
++rawvdu_Args KernelEntry
+ 
+         BL      CommonArgs_Write
+         B       rawvdu_ArgsFunc
+@@ -774,7 +775,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; Filter + interpret the vdu: stream (much like Panos vdu:)
+ 
+-vdu_wrch ENTRY
++vdu_wrch KernelEntry
+ 
+         TEQ     r0, #LF                 ; Have to bodge pairs of these
+         TEQNE   r0, #CR
+@@ -817,7 +818,7 @@
+ unprinthex      * 2_00000001
+ unprintdot      * 2_00000001
+ 
+-PrintCharInGSFormat ENTRY "r1, listopt"
++PrintCharInGSFormat KernelEntry "r1, listopt"
+ 
+         LDRB    listopt, GSFormat
+         AND     r0, r0, #&FF    ; Just in case
+@@ -900,7 +901,7 @@
+ 
+ ; Number gets printed RJ in a field of 4 if possible, or more as necessary
+ 
+-PrintR0Decimal ENTRY "r0-r3"
++PrintR0Decimal KernelEntry "r0-r3"
+ 
+         SUB     sp, sp, #16
+         MOV     r3, r1                  ; Save flag
+@@ -929,7 +930,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; In    r0 = byte to print
+ 
+-HexR0Byte ENTRY "r0"
++HexR0Byte KernelEntry "r0"
+ 
+         SUB     sp, sp, #12
+         MOV     r1, sp
+@@ -949,7 +950,7 @@
+ 
+ ; In    r0 = op, r1 -> name, r2 = load, r3 = exec, r4 = start, r5 = end
+ 
+-kbd_File ENTRY
++kbd_File KernelEntry
+ 
+         BL      CommonFile              ; Can't do Load/Save/Create
+         B       kbd_ArgsFuncFile        ; so no monitor filename needed
+@@ -986,7 +987,7 @@
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-kbd_Get ENTRY "r1-r4"
++kbd_Get KernelEntry "r1-r4"
+ 
+         LDR     r14, KbdIndex           ; Is there a valid buffer ?
+         CMP     r14, #-1
+@@ -1025,7 +1026,7 @@
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-SAckEscape ENTRY "r1"
++SAckEscape KernelEntry "r1"
+ 
+         MOV     r0, #&7E
+         SWI     XOS_Byte
+@@ -1038,7 +1039,7 @@
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-kbd_Args ENTRY
++kbd_Args KernelEntry
+ 
+         CMP     r0, #fsargs_EOFCheck
+         BNE     %FT10
+@@ -1060,7 +1061,7 @@
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-kbd_Func ENTRY
++kbd_Func KernelEntry
+ 
+         BL      CommonFunc
+ 
+@@ -1088,7 +1089,7 @@
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-rawkbd_File ENTRY
++rawkbd_File KernelEntry
+ 
+         BL      CommonFile              ; Can't do Load/Save/Create
+         B       rawkbd_ArgsFuncFile     ; so no monitor filename needed
+@@ -1114,7 +1115,7 @@
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-rawkbd_Get ENTRY
++rawkbd_Get KernelEntry
+ 
+         BL      EnableJustKbdRead
+         EXIT    VS
+@@ -1124,11 +1125,12 @@
+ 90      MOV     r1, psr
+         BL      SelectRdchSrc
+         TEQVCP  r1, #0                  ; V from before / OSByte
+-        EXIT
+-
+-; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-
+-rawkbd_Args ENTRY
++        MOV     r0,r0                   ; ARM2 PSR settling slot
++        EXIT
++
++; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++
++rawkbd_Args KernelEntry
+ 
+         CMP     r0, #fsargs_EOFCheck    ; Not EOF. Ever
+         MOVEQ   r2, #0
+@@ -1138,7 +1140,7 @@
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-rawkbd_Func ENTRY
++rawkbd_Func KernelEntry
+ 
+         BL      CommonFunc
+ 
+@@ -1175,7 +1177,7 @@
+ ;
+ ; In    r0 = op, r1 -> name, r2 = load, r3 = exec, r4 = start, r5 = end, r6=sp
+ 
+-printer_File ENTRY ; lr only
++printer_File KernelEntry ; lr only
+ 
+         MOV     r7, r6
+         addr    r6, PrinterOptString    ; Filename to return for monitor msg
+@@ -1234,7 +1236,7 @@
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-printer_Func ENTRY
++printer_Func KernelEntry
+ 
+         BL      CommonFunc
+ 
+@@ -1255,7 +1257,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; 0 -> OPENIN, 1 -> OPENOUT, 2 -> OPENUP
+ 
+-printer_Open ENTRY ; lr only
++printer_Open KernelEntry ; lr only
+ 
+         CMP     r0, #fsopen_ReadOnly
+         BEQ     NaffPrinterOp
+@@ -1299,7 +1301,7 @@
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-printer_Close ENTRY
++printer_Close KernelEntry
+ 
+         ANDS    r14, r1, #&FF00         ; special file object?
+         BNE     printer_CloseFile
+@@ -1318,7 +1320,7 @@
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-printer_Put ENTRY
++printer_Put KernelEntry
+ 
+         ANDS    r1, r1, #&FF00          ; file specified?
+         BNE     printer_PutToObject
+@@ -1338,7 +1340,7 @@
+ ; in:  r0 = reason (only 2 allowed!)   r1 = file handle, r2 -> start address, r3 = number of bytes
+ ;
+ 
+-printer_GBPB ENTRY
++printer_GBPB KernelEntry
+ 
+         TEQ     r0, #2                  ; only write with no pointer supported!
+         BNE     NaffPrinterOp
+@@ -1351,14 +1353,14 @@
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-printer_Args ENTRY
++printer_Args KernelEntry
+ 
+         BL      CommonArgs_Write
+         B       printer_ArgsFunc
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-EndPrinterJob ENTRY "r0-r2"
++EndPrinterJob KernelEntry "r0-r2"
+ 
+  [ debug
+  DLINE "EndPrinterJob"
+@@ -1380,7 +1382,7 @@
+ ;       NB NOT stored in PrinterType cos this may hold the old FX5 value to restore
+ ;       if we've got a slow stream open at the time
+ 
+-SussSpecialPrinter ENTRY "r0,r2-r4, r6"
++SussSpecialPrinter KernelEntry "r0,r2-r4, r6"
+ 
+  [ debug
+  DSTRING r7,"SussSpecialPrinter: r7 "
+@@ -1522,7 +1524,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; Input source setups. Should preserve flags + r0 unless error
+ 
+-SelectRdchSrc ENTRY "r0-r2"
++SelectRdchSrc KernelEntry "r0-r2"
+ 
+         LDRB    r1, RdchSrc
+         TEQ     r1, #0
+@@ -1599,7 +1601,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; In:   r0 = op, r1 -> name, r2 = load, r3 = exec, r4 = start, r5 = end
+ 
+-serial_File ENTRY
++serial_File KernelEntry
+ 
+         addr    r6, SerialOptString     ; Filename to return for monitor msg
+ 
+@@ -1621,7 +1623,7 @@
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-serial_Func ENTRY
++serial_Func KernelEntry
+ 
+         BL      CommonFunc
+ 
+@@ -1644,7 +1646,7 @@
+ 
+ ; Side effect is to enable rs423 input
+ 
+-serial_Open ENTRY
++serial_Open KernelEntry
+ 
+ ; All open modes are valid on the serial stream
+ 
+@@ -1671,7 +1673,7 @@
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-serial_Get ENTRY
++serial_Get KernelEntry
+ 
+ 10      MOV     r0, #4                  ; Get byte from rs423
+         SWI     XOS_SerialOp
+@@ -1682,7 +1684,7 @@
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-serial_Put ENTRY
++serial_Put KernelEntry
+ 
+         MOV     r1, r0
+         MOV     r0, #3                  ; Send byte to rs423, waking Tx process
+@@ -1693,7 +1695,7 @@
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-serial_Args ENTRY
++serial_Args KernelEntry
+ 
+         CMP     r0, #fsargs_EOFCheck    ; Not EOF. Ever
+         MOVEQ   r2, #0
+@@ -1705,7 +1707,7 @@
+ 
+   ]
+ 
+-        GET     s.MsgCode
++        GET     s/MsgCode
+ 
+  [ debug
+         InsertDebugRoutines
+@@ -1715,7 +1717,7 @@
+  [ standalonemessages
+                 GBLS    ApplicationName
+ ApplicationName SETS    "SystemDevs"
+-conditionalgetbodge SETS "GET s.ResFiles"
++conditionalgetbodge SETS "GET s/ResFiles"
+ resourcefsfiles
+  |
+ conditionalgetbodge SETS ""
+--- a/src/PipeFS/s/PipeFS
++++ b/src/PipeFS/s/PipeFS
+@@ -1,4 +1,6 @@
++        AREA |PipeFS$$Code|, CODE, READONLY
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: ARM2/AsAsm contracts; see patches/streams.
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -45,7 +47,7 @@
+         GET     Hdr:Proc
+         GET     Hdr:FSNumbers
+         GET     Hdr:HighFSI
+-        GET     Hdr:LowFSi
++        GET     Hdr:LowFSI
+         GET     Hdr:NewErrors
+         GET     Hdr:Variables
+         GET     Hdr:Wimp
+@@ -54,7 +56,7 @@
+ 
+         GET     Version
+ 
+-        GET     Hdr:NDRDebug
++        GET     Hdr:NdrDebug
+ 
+         GBLL    debug
+         GBLL    debugup
+@@ -73,7 +75,6 @@
+         GBLL    justreturnextent
+ justreturnextent        SETL    Version = 6     ; removed in version 0.07
+ 
+-        LEADR   Module_LoadAddr
+ 
+ TAB     *       9
+ LF      *       10
+@@ -224,6 +225,7 @@
+         SWINE   XOS_Find
+         MOVVC   R0, R4
+         TEQVCP  R3, #0
++        MOV     r0,r0                   ; ARM2 PSR settling slot
+ 
+ 70      MOV     R4, R0
+         MOV     R3, PC
+@@ -232,6 +234,7 @@
+         SWI     XOS_Find
+         MOVVC   R0, R4
+         TEQVCP  R3, #0
++        MOV     r0,r0                   ; ARM2 PSR settling slot
+ 
+ 80      MOV     R4, R0
+         MOV     R3, PC
+@@ -240,6 +243,7 @@
+         SWI     XOS_Find
+         MOVVC   R0, R4
+         TEQVCP  R3, #0
++        MOV     r0,r0                   ; ARM2 PSR settling slot
+ 90
+         Pull    "R1-R6,PC"
+ 
+@@ -266,7 +270,7 @@
+ ;       PipeFS_Init - Initialisation entry
+ ;
+ 
+-PipeFS_Init ENTRY
++PipeFS_Init KernelEntry
+ 
+         LDR     R2, [R12]               ; have we got workspace yet ?
+         TEQ     R2, #0
+@@ -293,7 +297,7 @@
+ 
+ ; Declare PipeFS: to FileSwitch (called on Init and Service_FSRedeclare)
+ 
+-PipeFS_Declare ENTRY "R1-R3"
++PipeFS_Declare KernelEntry "R1-R3"
+ 
+         MOV     R0, #FSControl_AddFS    ; add this filing system
+         ADR     R1, Module_BaseAddr
+@@ -310,7 +314,7 @@
+ ;
+ ; Deallocate link blocks, issue FSControl_RemoveFS
+ 
+-PipeFS_Die ENTRY
++PipeFS_Die KernelEntry
+ 
+         LDR     R12, [R12]              ; R12 -> workspace
+         TEQ     R12, #0
+@@ -345,7 +349,7 @@
+ ;       This causes all directories to be re-scanned!
+ ;       It may be hard to work out which directories are being created / deleted
+ 
+-modifyingfiles ENTRY "R1"
++modifyingfiles KernelEntry "R1"
+ 
+         ADR     R1, null                ; R1 -> filename ("") - R2-R5 corrupt
+         BL      modifyingfile
+@@ -361,7 +365,7 @@
+ ;       R1 -> filename being modified
+ ; Out   UpCall_ModifyingFile called for [R1..]
+ 
+-modifyingfile ENTRY "R0-R10"
++modifyingfile KernelEntry "R0-R10"
+ 
+         LDR     R8, fsinfoword          ; R8 = fs info word
+         MOV     R9, R0                  ; R9 = reason code
+@@ -382,7 +386,7 @@
+ ; out:  R0-R6, R12 corrupted
+ ;
+ 
+-PipeFS_Code ENTRY
++PipeFS_Code KernelEntry
+         MOV     R0, #FSControl_SelectFS
+         addr    R1, StringROM           ; ADR or ADRL as appropriate
+         SWI     XOS_FSControl           ; select filing system
+@@ -407,7 +411,7 @@
+ 
+         LDR     R12, [R12]
+ 
+-svc_fsredeclare ENTRY   "R0-R3"
++svc_fsredeclare KernelEntry   "R0-R3"
+ 
+         BL      PipeFS_Declare                   ; else redeclare myself
+ 
+@@ -421,7 +425,7 @@
+ ;       R1-R? parameters
+ ;
+ 
+-PipeFS_OSFile ENTRY "R1,R7,R9"
++PipeFS_OSFile KernelEntry "R1,R7,R9"
+ 
+         CMP     R0, #fsfile_Load        ; can only load if file closed
+         BEQ     %FT10
+@@ -519,6 +523,7 @@
+         BL      PipeFS_Close
+         MOVVC   r0, r5
+         TEQVCP  r6, #0
++        MOV     r0,r0                   ; ARM2 PSR settling slot
+ 90
+         Pull    "r2-r5"
+ 
+@@ -573,6 +578,7 @@
+         BL      PipeFS_Close
+         MOVVC   r0, r5
+         TEQVCP  r6, #0
++        MOV     r0,r0                   ; ARM2 PSR settling slot
+ 95
+         Pull    "r2-r5"
+         ADDVC   r6, r7, #PipeFile_Name  ; for *OPT 1,1
+@@ -699,7 +705,7 @@
+ 
+       [ :LNOT: justreturnextent         ; don't bother with this stuff if doing it the simple way!
+ 
+-blockifwriting ENTRY "r1"
++blockifwriting KernelEntry "r1"
+ 
+         LDR     r14, [r1, #PipeFile_lenblocked]!
+         TEQ     r14, #1                 ; 1 => unblocked, 0 => blocked
+@@ -724,7 +730,7 @@
+ ; in:   R0 = reason code
+ ;
+ 
+-PipeFS_FSFunc ENTRY
++PipeFS_FSFunc KernelEntry
+ 
+         Debug   fs,"FSFunc",R0
+ 
+@@ -762,7 +768,7 @@
+ NotSupportedError
+         STMDB   sp!, {lr}
+         ADR     r0, ErrorBlock_PipeFS_NotSupported
+-        ADR     r1, StringROM
++        ADRL    r1, StringROM
+         BL      CopyError
+         LDMIA   sp!, {lr}
+         ORRS    pc, lr, #V_bit
+@@ -905,7 +911,7 @@
+ ;       R2 = buffer size for FileSwitch (0 if unbuffered)
+ ;       R3,R4 irrelevant if no buffering
+ 
+-PipeFS_Open ENTRY "R3-R6"
++PipeFS_Open KernelEntry "R3-R6"
+ 
+         CMP     R0, #fsopen_ReadOnly
+         BEQ     openforreading
+@@ -1005,7 +1011,7 @@
+                 ASSERT  notread > write_attribute
+                 ASSERT  notread > read_attribute
+ 
+-createpipe ENTRY "r2-r5"
++createpipe KernelEntry "r2-r5"
+ 
+         BL      skipdollar                      ; don't store the "dollar"
+ 
+@@ -1083,6 +1089,7 @@
+         SWI     XOS_Module                      ; error caused because no room for buffer
+         MOVVC   r0, r4
+         TEQVCP  r5, #0
++        MOV     r0,r0                   ; ARM2 PSR settling slot
+ 
+         EXIT
+         LTORG
+@@ -1098,7 +1105,7 @@
+ ;       point been open for reading (this allows the file to be read later)
+ ;
+ 
+-PipeFS_Close ENTRY "R0-R2"
++PipeFS_Close KernelEntry "R0-R2"
+ 
+         TST     R1, #pipehandle_read
+         MOVEQ   R0, #PipeFile_writeblocked
+@@ -1142,7 +1149,7 @@
+ ;       R0 = offset of sleep word within header
+ ; out:  any sleepers notified; error if sleeper objects
+ 
+-sleepnomore ENTRY "R0,R1"
++sleepnomore KernelEntry "R0,R1"
+ 
+         BIC     R1, R1, #pipehandle_bits
+         ADD     R1, R1, R0
+@@ -1157,7 +1164,7 @@
+ ; in:   R1 -> file header
+ ; out:  file deleted, and UpCall_ModifyingFile called
+ 
+-deletepipe ENTRY "R0-R3"
++deletepipe KernelEntry "R0-R3"
+ 
+         BL      checkexists                     ; check R1 -> a valid file header
+         MOVVC   R3, R0                          ; R2, R3 -> current/previous links
+@@ -1184,6 +1191,7 @@
+         SWI     XOS_Module                      ; free header block
+         MOVVC   R0, R1
+         TEQVCP  R3, #0
++        MOV     r0,r0                   ; ARM2 PSR settling slot
+ 99
+         EXITS   VC
+         STRVS   R0, [sp]
+@@ -1194,7 +1202,7 @@
+ ;       r0 -> "Channel" error if the file no longer exists
+ ;       r2 -> current link
+ 
+-checkexists ENTRY "r1"
++checkexists KernelEntry "r1"
+ 
+         ADR     R0, PipeFSFileData - link_next
+ 01      LDR     R2, [R0, #link_next]
+@@ -1224,7 +1232,7 @@
+ ;     should be called to let the other end write some data.
+ ;
+ 
+-PipeFS_GetByte ENTRY "R1,R4"
++PipeFS_GetByte KernelEntry "R1,R4"
+ 
+         BIC     R1, R1, #pipehandle_bits        ; ignore bits 0..1
+ 
+@@ -1274,10 +1282,12 @@
+         SWI     XOS_ReadEscapeState
+         BCC     get_loop
+ 
+-        ADRCS   r0, ErrorBlock_Escape
+-        MOVCS   r1, #0
+-        BLCS    CopyError
+-        EXIT    VS
++        ; BCC above has already excluded the no-Escape path. CopyError
++        ; always returns an error; make the terminal return explicit.
++        ADR     r0, ErrorBlock_Escape
++        MOV     r1, #0
++        BL      CopyError
++        EXIT
+ 
+         MakeInternatErrorBlock PipeFS_NoBlocking,,M00
+         MakeInternatErrorBlock Escape
+@@ -1287,7 +1297,7 @@
+ ; in:   R1 -> file header
+ ; out:  modifyingfile called with appropriate filename
+ 
+-modifyingpipe ENTRY "R0,R1"
++modifyingpipe KernelEntry "R0,R1"
+ 
+         LDR     R0, =upfsopen_Update    ; cause dir recache
+         ADD     R1, R1, #PipeFile_Name
+@@ -1306,7 +1316,7 @@
+ ;     other end read some data.
+ ;
+ 
+-PipeFS_PutByte ENTRY "R0-R5"
++PipeFS_PutByte KernelEntry "R0-R5"
+ 
+         BIC     R1, R1, #pipehandle_bits        ; ignore bits 0..1
+ 
+@@ -1378,7 +1388,7 @@
+ ; Out:  R2 = extent actually ensured (always the same - pretend we can do it)
+ ;       Error if not enough room in RMA
+ 
+-try_ensuresize ENTRY "r0-r4"
++try_ensuresize KernelEntry "r0-r4"
+ 
+         MOV     r0, #UpCall_Sleep
+         ADD     r1, r1, #PipeFile_lenblocked
+@@ -1403,7 +1413,7 @@
+ ; Out:  R2 = extent actually ensured (in fact always the same)
+ ;       Error if not enough room in RMA
+ 
+-ensuresize ENTRY "r0,r2-r6"
++ensuresize KernelEntry "r0,r2-r6"
+ 
+         CMP     r2, #&100                       ; min buffer size = &100 bytes
+         MOVLT   r2, #&100
+@@ -1573,7 +1583,7 @@
+         Pull    "r1,pc"
+ 
+ args_eofcheck
+-        ENTRY   "r2-r4"
++        KernelEntry   "r2-r4"
+ 
+         BIC     r4, r1, #pipehandle_bits
+ 
+@@ -1606,7 +1616,7 @@
+ ;       R6 -> actual filename
+ ;
+ 
+-FindFile ENTRY
++FindFile KernelEntry
+ 
+         BL      FindFileOrDirectory
+         TEQ     R0, #object_directory
+@@ -1615,7 +1625,7 @@
+         MOVEQ   R1, #0                          ; no file header if object_nothing
+         EXIT
+ 
+-FindFileOrDirectory ENTRY
++FindFileOrDirectory KernelEntry
+ 
+         BL      skipdollar                      ; remove "$." from wildcard
+ 
+@@ -1677,7 +1687,7 @@
+ stk_R2  *       2 * 4           ; stack positions for return
+ stk_R4  *       3 * 4
+ 
+-FindDirEntry ENTRY "R0,R1,R2,R4,R9-R11"
++FindDirEntry KernelEntry "R0,R1,R2,R4,R9-R11"
+ 
+         MOV     R0, R1                          ; R0 -> file name
+ 
+@@ -1752,7 +1762,7 @@
+ ;       LE if R10 <= R11
+ ; NB:   Comparisons are case-insensitive (both strings forced to be upper case)
+ 
+-compare_R10_R11 ENTRY "R1,R2"
++compare_R10_R11 KernelEntry "R1,R2"
+ 
+         RSBS    R14, R10, #1
+         RSBLES  R14, R11, #1
+@@ -1782,13 +1792,13 @@
+ ; in:   R1 -> wildcarded pathname
+ ; out:  R1 -> pathname, with "$.", "@.", "%." or "\." removed
+ 
+-skipdollar ENTRY
++skipdollar KernelEntry
+ 
+         LDRB    R14, [R1]
+         CMP     R14, #"$"
+         CMPNE   R14, #"@"
+         CMPNE   R14, #"%"
+-        CMPNE   R14, #"\"
++        CMPNE   R14, #92
+         EXIT    NE
+ 
+         LDRB    R14, [R1, #1]
+@@ -1811,7 +1821,7 @@
+ ; NB:   also matches names whose leading pathnames match the wildcard spec.
+ ;
+ 
+-WildMatch ENTRY "R0-R3"
++WildMatch KernelEntry "R0-R3"
+ 
+         MOV    R11,#0        ; this is the wild backtrack pointer
+         MOV    R3,#0         ; and this is the name backtrack ptr.
+@@ -1868,7 +1878,7 @@
+ 
+ ; *****************************************************************************
+ 
+-CopyError ENTRY r1-r7
++CopyError KernelEntry r1-r7
+         BL      open_messagefile
+         EXIT    VS
+         ADR     R1, MessageFile_Block
+@@ -1884,7 +1894,7 @@
+         DCB     "Resources:$.Resources.PipeFS.Messages", 0
+         ALIGN
+ 
+-open_messagefile ENTRY r0-r3
++open_messagefile KernelEntry r0-r3
+         LDR     r0, MessageFile_Open
+         CMP     r0, #0
+         EXIT    NE

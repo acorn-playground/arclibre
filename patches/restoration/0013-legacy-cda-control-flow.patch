@@ -1,0 +1,13 @@
+--- a/Kernel/s/ChangeDyn
++++ b/Kernel/s/ChangeDyn
+@@ -320,8 +320,9 @@
+ 
+         MOVNE   r11, #ChangeDyn_FreeAndApl              ; else make src indicator reflect that we need both
+         MOVNE   r5, r2                                  ; but save amount we are taking from freepool
++ ]
++        ; Both allocation models must skip the out-of-line heap restore helper.
+         B       %FT10
+- ]
+ 
+  [ (:LNOT: NewStyle_SysHeap) :LOR: (:LNOT: NewStyle_RMA)
+ testrestoreheapend

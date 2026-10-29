@@ -1,0 +1,353 @@
+[
+  {
+    "component": "Sound0",
+    "path": "Doc/DOCN16",
+    "revision": "9bd59f38c9b7caff055eff8ff308cce832e52b47",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Sound/Sound0.git",
+    "upstream_sha256": "3cc4bb36709541ddae8a265c08f199f60a6349a08ccdda7483c9b15a75a73341",
+    "sha256": "3cc4bb36709541ddae8a265c08f199f60a6349a08ccdda7483c9b15a75a73341",
+    "bytes": 23831
+  },
+  {
+    "component": "Sound0",
+    "path": "Help",
+    "revision": "9bd59f38c9b7caff055eff8ff308cce832e52b47",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Sound/Sound0.git",
+    "upstream_sha256": "45622b93a145c0ff85d45aae182f10339362ee522231b8a020c2184b10dccad6",
+    "sha256": "45622b93a145c0ff85d45aae182f10339362ee522231b8a020c2184b10dccad6",
+    "bytes": 277
+  },
+  {
+    "component": "Sound0",
+    "path": "HelpSrc",
+    "revision": "9bd59f38c9b7caff055eff8ff308cce832e52b47",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Sound/Sound0.git",
+    "upstream_sha256": "fd54cc0238d37aaaa61fca5ed91b821e8a56a613e14e841482f341140ab0b435",
+    "sha256": "fd54cc0238d37aaaa61fca5ed91b821e8a56a613e14e841482f341140ab0b435",
+    "bytes": 1347
+  },
+  {
+    "component": "Sound0",
+    "path": "LICENSE",
+    "revision": "9bd59f38c9b7caff055eff8ff308cce832e52b47",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Sound/Sound0.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358
+  },
+  {
+    "component": "Sound0",
+    "path": "Makefile",
+    "revision": "9bd59f38c9b7caff055eff8ff308cce832e52b47",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Sound/Sound0.git",
+    "upstream_sha256": "6bca11a0232f714960cc77bb697c3ac21844cfde9ee4aad8853511c98b1d2f7c",
+    "sha256": "6bca11a0232f714960cc77bb697c3ac21844cfde9ee4aad8853511c98b1d2f7c",
+    "bytes": 1947
+  },
+  {
+    "component": "Sound0",
+    "path": "Resources/UK/Messages",
+    "revision": "9bd59f38c9b7caff055eff8ff308cce832e52b47",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Sound/Sound0.git",
+    "upstream_sha256": "d1fc6e073ded6d37ab917fc9c506d78bde006099a99c9f6175b065d8623a1f64",
+    "sha256": "d1fc6e073ded6d37ab917fc9c506d78bde006099a99c9f6175b065d8623a1f64",
+    "bytes": 682
+  },
+  {
+    "component": "Sound0",
+    "path": "Syntax",
+    "revision": "9bd59f38c9b7caff055eff8ff308cce832e52b47",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Sound/Sound0.git",
+    "upstream_sha256": "9d94ae645f6e99dfeeb122333c8603664ab331e0461a825441873fcf1d356118",
+    "sha256": "9d94ae645f6e99dfeeb122333c8603664ab331e0461a825441873fcf1d356118",
+    "bytes": 147
+  },
+  {
+    "component": "Sound0",
+    "path": "Version",
+    "revision": "9bd59f38c9b7caff055eff8ff308cce832e52b47",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Sound/Sound0.git",
+    "upstream_sha256": "a5a01c20f75f548cfedec1af3cdd6907fe16fa2d3eb899c99963f20de3ccfba2",
+    "sha256": "a5a01c20f75f548cfedec1af3cdd6907fe16fa2d3eb899c99963f20de3ccfba2",
+    "bytes": 211
+  },
+  {
+    "component": "Sound0",
+    "path": "hdr/Sound",
+    "revision": "9bd59f38c9b7caff055eff8ff308cce832e52b47",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Sound/Sound0.git",
+    "upstream_sha256": "7e3908921bb0ce83dc846f39cc4e27e06f808ffeceee329f17333158e138fc9f",
+    "sha256": "7e3908921bb0ce83dc846f39cc4e27e06f808ffeceee329f17333158e138fc9f",
+    "bytes": 5791
+  },
+  {
+    "component": "Sound0",
+    "path": "s/Sound0",
+    "revision": "9bd59f38c9b7caff055eff8ff308cce832e52b47",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Sound/Sound0.git",
+    "upstream_sha256": "0c30d34a53e235e2784ba19dc6585a46651316d8b43a448dd35adf959f603023",
+    "sha256": "04a5376d5178daf201582931783c460d1fe694cb1fc85a20a24a935e9ce8278b",
+    "bytes": 141372
+  },
+  {
+    "component": "Sound1",
+    "path": "Doc/NewSWIs",
+    "revision": "8b1dec5daa1229b3da2440b7e1fa686f5163c1bc",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Sound/Sound1.git",
+    "upstream_sha256": "7d51f35d8252f3c2eab111315fbe1d4c62afa0e7b099af970bee1706e083bf71",
+    "sha256": "7d51f35d8252f3c2eab111315fbe1d4c62afa0e7b099af970bee1706e083bf71",
+    "bytes": 1372
+  },
+  {
+    "component": "Sound1",
+    "path": "Help",
+    "revision": "8b1dec5daa1229b3da2440b7e1fa686f5163c1bc",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Sound/Sound1.git",
+    "upstream_sha256": "4bbd2de29c98fe70780bee38e7377207fae7da723b42a747cac363c4e973dafc",
+    "sha256": "4bbd2de29c98fe70780bee38e7377207fae7da723b42a747cac363c4e973dafc",
+    "bytes": 708
+  },
+  {
+    "component": "Sound1",
+    "path": "HelpSrc",
+    "revision": "8b1dec5daa1229b3da2440b7e1fa686f5163c1bc",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Sound/Sound1.git",
+    "upstream_sha256": "b285292f55c7b34e31f635f9cc33b0944e7998edf65af7621e6143634b85b7a1",
+    "sha256": "b285292f55c7b34e31f635f9cc33b0944e7998edf65af7621e6143634b85b7a1",
+    "bytes": 2204
+  },
+  {
+    "component": "Sound1",
+    "path": "LICENSE",
+    "revision": "8b1dec5daa1229b3da2440b7e1fa686f5163c1bc",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Sound/Sound1.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358
+  },
+  {
+    "component": "Sound1",
+    "path": "Makefile",
+    "revision": "8b1dec5daa1229b3da2440b7e1fa686f5163c1bc",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Sound/Sound1.git",
+    "upstream_sha256": "82bbb8aba40ff17e62313eeba3443f6773c100adbb5f499703d30ad3dd4c6952",
+    "sha256": "82bbb8aba40ff17e62313eeba3443f6773c100adbb5f499703d30ad3dd4c6952",
+    "bytes": 1820
+  },
+  {
+    "component": "Sound1",
+    "path": "Resources/UK/Messages",
+    "revision": "8b1dec5daa1229b3da2440b7e1fa686f5163c1bc",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Sound/Sound1.git",
+    "upstream_sha256": "e677418827bf33780fd3ba5aeb4b3e6baf29494cbd44de0479d9ff8424e4d145",
+    "sha256": "e677418827bf33780fd3ba5aeb4b3e6baf29494cbd44de0479d9ff8424e4d145",
+    "bytes": 1191
+  },
+  {
+    "component": "Sound1",
+    "path": "Syntax",
+    "revision": "8b1dec5daa1229b3da2440b7e1fa686f5163c1bc",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Sound/Sound1.git",
+    "upstream_sha256": "cb557072c0d2cd864e411f7cf37aef0e8d3351dc802e32a83ba8b72967567d1b",
+    "sha256": "cb557072c0d2cd864e411f7cf37aef0e8d3351dc802e32a83ba8b72967567d1b",
+    "bytes": 253
+  },
+  {
+    "component": "Sound1",
+    "path": "Version",
+    "revision": "8b1dec5daa1229b3da2440b7e1fa686f5163c1bc",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Sound/Sound1.git",
+    "upstream_sha256": "4664c4baf6a92df02b9d6f241c82e8be12c6ba1bce5693ffb82d20ba7b95cba4",
+    "sha256": "4664c4baf6a92df02b9d6f241c82e8be12c6ba1bce5693ffb82d20ba7b95cba4",
+    "bytes": 211
+  },
+  {
+    "component": "Sound1",
+    "path": "s/Sound1",
+    "revision": "8b1dec5daa1229b3da2440b7e1fa686f5163c1bc",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Sound/Sound1.git",
+    "upstream_sha256": "defc64a3cd6e91302a2a172d8584a5a97a7d16921aa7939cbd1a1a8393da822e",
+    "sha256": "dd27fbddf5bc45afc823f809cfeffdb6bd76312d74f7713e3a6ede1495dabb8c",
+    "bytes": 61188
+  },
+  {
+    "component": "Sound2",
+    "path": "Help",
+    "revision": "92732881e2d81578cbdf837064a8e8d23f331279",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Sound/Sound2.git",
+    "upstream_sha256": "957934a8eaa84bdbdc72cebad293bfc0a36e649cca472cc54c1f6080a343e2c6",
+    "sha256": "957934a8eaa84bdbdc72cebad293bfc0a36e649cca472cc54c1f6080a343e2c6",
+    "bytes": 214
+  },
+  {
+    "component": "Sound2",
+    "path": "HelpSrc",
+    "revision": "92732881e2d81578cbdf837064a8e8d23f331279",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Sound/Sound2.git",
+    "upstream_sha256": "829e0960d5c76b36e6655d8b75f91319234ff3ecf17efb0fdc88823fe59bf760",
+    "sha256": "829e0960d5c76b36e6655d8b75f91319234ff3ecf17efb0fdc88823fe59bf760",
+    "bytes": 715
+  },
+  {
+    "component": "Sound2",
+    "path": "LICENSE",
+    "revision": "92732881e2d81578cbdf837064a8e8d23f331279",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Sound/Sound2.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358
+  },
+  {
+    "component": "Sound2",
+    "path": "Makefile",
+    "revision": "92732881e2d81578cbdf837064a8e8d23f331279",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Sound/Sound2.git",
+    "upstream_sha256": "8702e0561a726bbccb5011693c9b492df629dd52124911e2d4951b2823dc63dd",
+    "sha256": "8702e0561a726bbccb5011693c9b492df629dd52124911e2d4951b2823dc63dd",
+    "bytes": 1785
+  },
+  {
+    "component": "Sound2",
+    "path": "Resources/UK/Messages",
+    "revision": "92732881e2d81578cbdf837064a8e8d23f331279",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Sound/Sound2.git",
+    "upstream_sha256": "3b6e1943cdbdda0edcfb1ca01e9e70fe9ec60778c7bd362dc96c2a0825576593",
+    "sha256": "3b6e1943cdbdda0edcfb1ca01e9e70fe9ec60778c7bd362dc96c2a0825576593",
+    "bytes": 374
+  },
+  {
+    "component": "Sound2",
+    "path": "Syntax",
+    "revision": "92732881e2d81578cbdf837064a8e8d23f331279",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Sound/Sound2.git",
+    "upstream_sha256": "e28bc22d99b80bbb2890421c8651100cade27b2b33c724779e31d08f8bf37980",
+    "sha256": "e28bc22d99b80bbb2890421c8651100cade27b2b33c724779e31d08f8bf37980",
+    "bytes": 112
+  },
+  {
+    "component": "Sound2",
+    "path": "Version",
+    "revision": "92732881e2d81578cbdf837064a8e8d23f331279",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Sound/Sound2.git",
+    "upstream_sha256": "5acc330f9dc73487f3f6c9a25d9f9e12c04ce4fc6e98c4142868350aa96e47a2",
+    "sha256": "5acc330f9dc73487f3f6c9a25d9f9e12c04ce4fc6e98c4142868350aa96e47a2",
+    "bytes": 211
+  },
+  {
+    "component": "Sound2",
+    "path": "s/Sound2",
+    "revision": "92732881e2d81578cbdf837064a8e8d23f331279",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Sound/Sound2.git",
+    "upstream_sha256": "18e12a538cb4ffa6374132a0ab49688a69aaae8c7d867424bd4c00bdbdc2f3bc",
+    "sha256": "b9b89d0a8859e0a670d8a0576863578961a9b5427a186482a5d9c9e204e0f06c",
+    "bytes": 31195
+  },
+  {
+    "component": "WaveSynth",
+    "path": "LICENSE",
+    "revision": "143b33d865036d6f9bc27136697a0b4252b1495c",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Sound/Voices/WaveSynth.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358
+  },
+  {
+    "component": "WaveSynth",
+    "path": "Makefile",
+    "revision": "143b33d865036d6f9bc27136697a0b4252b1495c",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Sound/Voices/WaveSynth.git",
+    "upstream_sha256": "7ec385edc539d3ed722194e68548d021cb11d4bd70aae5b6b537d7a616f88875",
+    "sha256": "7ec385edc539d3ed722194e68548d021cb11d4bd70aae5b6b537d7a616f88875",
+    "bytes": 1713
+  },
+  {
+    "component": "WaveSynth",
+    "path": "Resources/UK/Messages",
+    "revision": "143b33d865036d6f9bc27136697a0b4252b1495c",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Sound/Voices/WaveSynth.git",
+    "upstream_sha256": "203bf06517aceb2d6a7a50b621d55569428edafd717228fa22cc95d74970b0e4",
+    "sha256": "203bf06517aceb2d6a7a50b621d55569428edafd717228fa22cc95d74970b0e4",
+    "bytes": 107
+  },
+  {
+    "component": "WaveSynth",
+    "path": "Version",
+    "revision": "143b33d865036d6f9bc27136697a0b4252b1495c",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Sound/Voices/WaveSynth.git",
+    "upstream_sha256": "dcae8aa9124f5ecbfc46294a7dc6f85e43fe51c8fdb6e779faf58847736f7ddb",
+    "sha256": "dcae8aa9124f5ecbfc46294a7dc6f85e43fe51c8fdb6e779faf58847736f7ddb",
+    "bytes": 214
+  },
+  {
+    "component": "WaveSynth",
+    "path": "s/MsgCode",
+    "revision": "143b33d865036d6f9bc27136697a0b4252b1495c",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Sound/Voices/WaveSynth.git",
+    "upstream_sha256": "e0ec748206d01a52407a5fc81ed7f966b73cde86e83cf7b4c657ee9857439d35",
+    "sha256": "ffd89bb4d96293f550bd9bcfdfa8eb05a48d8f7c9a302a385867846b7a694e99",
+    "bytes": 5328
+  },
+  {
+    "component": "WaveSynth",
+    "path": "s/WaveSynth",
+    "revision": "143b33d865036d6f9bc27136697a0b4252b1495c",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Sound/Voices/WaveSynth.git",
+    "upstream_sha256": "dfcf3275f0834748198a16e3a90dee5551d4e80a22f9bdbf345734583dea1384",
+    "sha256": "01ceb956e972148f094b8c8beda88644060d771b0086ab5d28091108a39045de",
+    "bytes": 24714
+  },
+  {
+    "component": "Percussion",
+    "path": "LICENSE",
+    "revision": "4df094f1ea6c1ab6d347bc587796b7f8a647f326",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Sound/Voices/Percussion.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358
+  },
+  {
+    "component": "Percussion",
+    "path": "Makefile",
+    "revision": "4df094f1ea6c1ab6d347bc587796b7f8a647f326",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Sound/Voices/Percussion.git",
+    "upstream_sha256": "6d5a1eb929f180038bb01085addc8d079672aa829438337d8437536dcc4a0be9",
+    "sha256": "6d5a1eb929f180038bb01085addc8d079672aa829438337d8437536dcc4a0be9",
+    "bytes": 1682
+  },
+  {
+    "component": "Percussion",
+    "path": "Resources/UK/Messages",
+    "revision": "4df094f1ea6c1ab6d347bc587796b7f8a647f326",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Sound/Voices/Percussion.git",
+    "upstream_sha256": "aba584e7b3e3adb49cea7c14deeba649aabf22939e7302d65b1f499714da6114",
+    "sha256": "aba584e7b3e3adb49cea7c14deeba649aabf22939e7302d65b1f499714da6114",
+    "bytes": 92
+  },
+  {
+    "component": "Percussion",
+    "path": "Version",
+    "revision": "4df094f1ea6c1ab6d347bc587796b7f8a647f326",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Sound/Voices/Percussion.git",
+    "upstream_sha256": "194c6dff13b9e5bd1c6c881bf6fdaebd083bdb366fb32e1a0172729e787e4aa6",
+    "sha256": "194c6dff13b9e5bd1c6c881bf6fdaebd083bdb366fb32e1a0172729e787e4aa6",
+    "bytes": 215
+  },
+  {
+    "component": "Percussion",
+    "path": "s/MsgCode",
+    "revision": "4df094f1ea6c1ab6d347bc587796b7f8a647f326",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Sound/Voices/Percussion.git",
+    "upstream_sha256": "25fb952c40bdac51ff9aaeb7550731c5ec48b979a58edb15c209fafe992f0ec3",
+    "sha256": "37795e5085340836cce12e90793908ddb0ed92791de8c5a192d9ad0d00e8d902",
+    "bytes": 2829
+  },
+  {
+    "component": "Percussion",
+    "path": "s/Percussion",
+    "revision": "4df094f1ea6c1ab6d347bc587796b7f8a647f326",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Sound/Voices/Percussion.git",
+    "upstream_sha256": "6f6dfb19536c42f7048f805fbc5eace2e48fb86d00feb770501adad6c60d119f",
+    "sha256": "63f35295a18ecaf179f0b74f0a9561d95eb9edac1448af4a22848e3b4534d16d",
+    "bytes": 37460
+  }
+]

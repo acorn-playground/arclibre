@@ -1,0 +1,61 @@
+diff --git a/src/Kernel/s/GetAll b/src/Kernel/s/GetAll
+index 2b49966..6363295 100644
+--- a/src/Kernel/s/GetAll
++++ b/src/Kernel/s/GetAll
+@@ -152,7 +152,24 @@ VersionNo       SETS  "$VString ($Date)"
+ SystemName      SETS  "RISC OS" ; ", p.k.a. Arthur a.k.a. Richard III"
+ 
+                 GBLS  MosTitle
++                GBLS  SysHelpName       ; kernel's *Help Modules entry
++                GBLS  SysHelpVersion
++                GBLS  UtilHelpVersion   ; UtilityModule's, read by RMEnsure
++ [ :DEF: ArcLibreDelivered
++; Modified 2026: the delivered ROM names itself ArcLibre in *FX 0 and module help.
++; UtilityModule keeps 3.11's version for RMEnsure UtilityModule checks, and *FX 0
++; keeps a "RISC OS 3" title for tools that identify ROMs by it (e.g. MacArch).
++; The version and date are predefined by tools/build.py from manifests/release.json.
++MosTitle        SETS  "ArcLibre $ArcLibreVersion ($ArcLibreDate), compatible with RISC OS 3.11"
++SysHelpName     SETS  "ArcLibre"
++SysHelpVersion  SETS  "$ArcLibreHelpVersion ($ArcLibreDate)"
++UtilHelpVersion SETS  "3.11 ($ArcLibreDate) ArcLibre $ArcLibreVersion"
++ |
+ MosTitle        SETS  "$SystemName $VersionNo"
++SysHelpName     SETS  "$SystemName"
++SysHelpVersion  SETS  "$VersionNo"
++UtilHelpVersion SETS  "$VersionNo"
++ ]
+ 
+                 GBLL  AddTubeBashers
+ AddTubeBashers  SETL  {FALSE}
+diff --git a/src/Kernel/s/SysComms b/src/Kernel/s/SysComms
+index 1c51d8f..fb85fd2 100644
+--- a/src/Kernel/s/SysComms
++++ b/src/Kernel/s/SysComms
+@@ -47,11 +47,11 @@ Module_BaseAddr SETA SysCommsModule
+  ]
+ 
+ SysTitle
+-        = "$SystemName", 9
+-   [ :LEN: "$SystemName" < 8
++        = "$SysHelpName", 9
++   [ :LEN: "$SysHelpName" < 8
+         =  9
+    ]
+-        =  "$VersionNo", 0
++        =  "$SysHelpVersion", 0
+ 
+ SCHCTab ; Alphabetically ordered so it's easier to find stuff
+ 
+diff --git a/src/Kernel/s/Utility b/src/Kernel/s/Utility
+index 6c14048..9a473b8 100644
+--- a/src/Kernel/s/Utility
++++ b/src/Kernel/s/Utility
+@@ -140,7 +140,7 @@ Util_Die   ROUT
+ 
+ UtilModTitle =  "UtilityModule", 0
+ 
+-UtilHelpStr  =  "MOS Utilities", 9, "$VersionNo", 0
++UtilHelpStr  =  "MOS Utilities", 9, "$UtilHelpVersion", 0
+ 
+ UtilHelpTab
+            Command   Break,       0,  0, International_Help   ; just help

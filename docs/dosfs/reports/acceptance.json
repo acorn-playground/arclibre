@@ -1,0 +1,110 @@
+{
+  "status": "PASS",
+  "rom_sha256": "f7375c27546fda22c4dade9cdcb50215fc9d8b281a5bf304d9fff5f5fbdd0cef",
+  "module_sha256": "6dc485d83503d3bc26ebd0b2a1f1ff81c5e4700feb653d341e5a5c987406ecad",
+  "module_disc_sha256": "cc74f90dd44ded82377e2beb6223d21a0836bfaeb85a5fb0a3612db3c010dbeb",
+  "pc_disc_sha256": "b4009eae338f8cc2e1992d1595cb57f6353adfa4e5e1d35810199d87eae130a2",
+  "identical_repetitions": true,
+  "guest_code_injection": false,
+  "emulator_unchanged": true,
+  "independent_fat_parser": "tests/fat12_fixture.py",
+  "observations": {
+    "module_base": "1821494",
+    "after_rmkill": "Disc not understood - has it been formatted?",
+    "format": {
+      "output": [
+        "Formatting track 1",
+        "SWI &44781 not known",
+        "*"
+      ],
+      "blocked": true,
+      "disc_unchanged": true
+    },
+    "copyboot": {
+      "code_from_source": true,
+      "bpb_kept": true,
+      "message_after_copy": true
+    },
+    "cat": [
+      "HELLO/TXT    WR/     OLD/TXT      WR/",
+      "*_"
+    ],
+    "info": {
+      "SUBDIR": [
+        "Directory",
+        "0  bytes"
+      ],
+      "DATA/BIN": [
+        "DOS",
+        "5 Kbytes"
+      ],
+      "EMPTY/DAT": [
+        "DOS",
+        "0  bytes"
+      ],
+      "GREET/TXT": [
+        "Text",
+        "35  bytes"
+      ],
+      "README/TXT": [
+        "Text",
+        "2184  bytes"
+      ],
+      "WRITTEN/DAT": [
+        "Data",
+        "3001  bytes"
+      ],
+      "ZERO/DAT": [
+        "Data",
+        "0  bytes"
+      ],
+      "LONGFILE/TXT": [
+        "Data",
+        "1  byte"
+      ],
+      "NEWDIR": [
+        "Directory",
+        "0  bytes"
+      ]
+    },
+    "discformat": [
+      "512",
+      "9",
+      "2",
+      "1",
+      "1",
+      "160"
+    ],
+    "written": {
+      "free": 693,
+      "files": {
+        "SUBDIR/NESTED.TXT": 1500,
+        "DATA.BIN": 5000,
+        "EMPTY.DAT": 0,
+        "GREET.TXT": 35,
+        "README.TXT": 2184,
+        "WRITTEN.DAT": 3001,
+        "ZERO.DAT": 0,
+        "LONGFILE.TXT": 1,
+        "NEWDIR/INNER.TXT": 2184
+      }
+    },
+    "layout_sha256": "81fa3103fad6147da834158b3b129c21b7ab1962ac3d416307c8b1370b378e1d",
+    "laid_sha256": "20f6cd23a051451ad58c145136f7b60ab3ea44e79fb21550e87a6763f0e7f226",
+    "boot_check": "PASS",
+    "help_lines": 8
+  },
+  "negative_control": {
+    "help": "No help found.",
+    "cat": "Disc not understood - has it been formatted?",
+    "layout": "SWI name not known",
+    "pc_disc_unchanged": true,
+    "layout_file_empty": true
+  },
+  "limits": [
+    "*Format fails before writing a track on this ROM: FileCore 3.60 EnsureFSLock calls FSLock_Status (SWI &44781), and FSLock is not in the ROM. The same happens for ADFS formats.",
+    "Formatting was therefore exercised as DOSFS_DiscFormat plus the *Format structure stage (whole-disc OS_Find + DOSFS_LayoutStructure); track writing was not.",
+    "MacArch presents the PC disc as an HFE track image; its Write Track model assumes the image geometry (1024-byte sectors for HFE), so faithful 512-byte formatting is not available in this emulator."
+  ],
+  "cold_boots": 3
+}

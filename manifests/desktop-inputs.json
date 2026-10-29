@@ -1,0 +1,1338 @@
+[
+  {
+    "component": "Colours",
+    "path": "LICENSE",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358,
+    "modified": false
+  },
+  {
+    "component": "Colours",
+    "path": "MakeNew",
+    "upstream_sha256": "67b6aa6cd582b19739855b1630885d01c60a2b5e7162a2c4e4671ba71b2dbc91",
+    "sha256": "67b6aa6cd582b19739855b1630885d01c60a2b5e7162a2c4e4671ba71b2dbc91",
+    "bytes": 115,
+    "modified": false
+  },
+  {
+    "component": "Colours",
+    "path": "MakeOld",
+    "upstream_sha256": "d05065d18f03b757ffbcfc4dc1130206bf56a70e62cc15e48a86ab17d0b15f30",
+    "sha256": "d05065d18f03b757ffbcfc4dc1130206bf56a70e62cc15e48a86ab17d0b15f30",
+    "bytes": 296,
+    "modified": false
+  },
+  {
+    "component": "Colours",
+    "path": "Makefile",
+    "upstream_sha256": "e64311bf6c6f6826a6f94a69b0a5f01ce81c7a89a23473516a837049a2a4130e",
+    "sha256": "e64311bf6c6f6826a6f94a69b0a5f01ce81c7a89a23473516a837049a2a4130e",
+    "bytes": 2536,
+    "modified": false
+  },
+  {
+    "component": "Colours",
+    "path": "Matrices,ffb",
+    "upstream_sha256": "99fe5219a3d202efefe3445f935a99c64ea322d32e1445b58c585a4516a2b6ec",
+    "sha256": "99fe5219a3d202efefe3445f935a99c64ea322d32e1445b58c585a4516a2b6ec",
+    "bytes": 3870,
+    "modified": false
+  },
+  {
+    "component": "Colours",
+    "path": "Palettes/.gitignore",
+    "upstream_sha256": "240a3e0d37d2e86b614063f5347eb02d4f99ca6c254de6b82871ff8d95532a7d",
+    "sha256": "240a3e0d37d2e86b614063f5347eb02d4f99ca6c254de6b82871ff8d95532a7d",
+    "bytes": 14,
+    "modified": false
+  },
+  {
+    "component": "Colours",
+    "path": "Palettes/4desktop,ffd",
+    "upstream_sha256": "e0539adecd32d5dce82dd6a7bffb6053e4168aded2ffc5d619430c263890d5bf",
+    "sha256": "e0539adecd32d5dce82dd6a7bffb6053e4168aded2ffc5d619430c263890d5bf",
+    "bytes": 64,
+    "modified": false
+  },
+  {
+    "component": "Colours",
+    "path": "Palettes/4greys,ffd",
+    "upstream_sha256": "e209221ea6e246ef5978a9fd35e35a04e3534e4d3392fe700c917220c67706d3",
+    "sha256": "e209221ea6e246ef5978a9fd35e35a04e3534e4d3392fe700c917220c67706d3",
+    "bytes": 64,
+    "modified": false
+  },
+  {
+    "component": "Colours",
+    "path": "Palettes/8desktop,ffd",
+    "upstream_sha256": "04feb5a67e5351cdf312d286209123f0f619cec16cb39a65eb0dcb4b1422bc10",
+    "sha256": "04feb5a67e5351cdf312d286209123f0f619cec16cb39a65eb0dcb4b1422bc10",
+    "bytes": 1024,
+    "modified": false
+  },
+  {
+    "component": "Colours",
+    "path": "Palettes/8greys,ffd",
+    "upstream_sha256": "cc279bfa1d9597a6c6db36eb0915afb5175964a04c20d76061bdedcc992973ff",
+    "sha256": "cc279bfa1d9597a6c6db36eb0915afb5175964a04c20d76061bdedcc992973ff",
+    "bytes": 1024,
+    "modified": false
+  },
+  {
+    "component": "Colours",
+    "path": "Resources/UK/Messages",
+    "upstream_sha256": "832207f4beae431228108cc58f542e165ba0d43ba682a3941d56f0e97ca9487f",
+    "sha256": "832207f4beae431228108cc58f542e165ba0d43ba682a3941d56f0e97ca9487f",
+    "bytes": 472,
+    "modified": false
+  },
+  {
+    "component": "Colours",
+    "path": "Tables/.gitignore",
+    "upstream_sha256": "240a3e0d37d2e86b614063f5347eb02d4f99ca6c254de6b82871ff8d95532a7d",
+    "sha256": "240a3e0d37d2e86b614063f5347eb02d4f99ca6c254de6b82871ff8d95532a7d",
+    "bytes": 14,
+    "modified": false
+  },
+  {
+    "component": "Colours",
+    "path": "Tables/4desktop,ffd",
+    "upstream_sha256": "01eb4fa1f7ef998e1b76c052dee7efa7094cbf8ec33cabf478adeb9cb0c24851",
+    "sha256": "01eb4fa1f7ef998e1b76c052dee7efa7094cbf8ec33cabf478adeb9cb0c24851",
+    "bytes": 32768,
+    "modified": false
+  },
+  {
+    "component": "Colours",
+    "path": "Tables/4greys,fca",
+    "upstream_sha256": "6d8ea1ae2af37a34e751678067ac01b7d76b67d54744f95552d65ed3b776d188",
+    "sha256": "6d8ea1ae2af37a34e751678067ac01b7d76b67d54744f95552d65ed3b776d188",
+    "bytes": 4156,
+    "modified": false
+  },
+  {
+    "component": "Colours",
+    "path": "Tables/8desktop,ffd",
+    "upstream_sha256": "4a424a8319d4de4f1dd36e8ae50ba5125524bcee2fc2e7f0e7775e8ba327bd46",
+    "sha256": "4a424a8319d4de4f1dd36e8ae50ba5125524bcee2fc2e7f0e7775e8ba327bd46",
+    "bytes": 32768,
+    "modified": false
+  },
+  {
+    "component": "Colours",
+    "path": "Tables/8greys,fca",
+    "upstream_sha256": "281535f5c888a7bdd890dece232e8f8e256ded9d166a2661fd7de51806db2800",
+    "sha256": "281535f5c888a7bdd890dece232e8f8e256ded9d166a2661fd7de51806db2800",
+    "bytes": 10737,
+    "modified": false
+  },
+  {
+    "component": "Colours",
+    "path": "Version",
+    "upstream_sha256": "9763e4a4b812e43842259eecd75de39e8d06a52ac0c190c648e931e70e60d974",
+    "sha256": "9763e4a4b812e43842259eecd75de39e8d06a52ac0c190c648e931e70e60d974",
+    "bytes": 170,
+    "modified": false
+  },
+  {
+    "component": "Colours",
+    "path": "hdr/ColourTran",
+    "upstream_sha256": "45a808a19080e7f0a3c8ba683c7a62339d3fa2f5d0ff95617b5ae6988f74e005",
+    "sha256": "45a808a19080e7f0a3c8ba683c7a62339d3fa2f5d0ff95617b5ae6988f74e005",
+    "bytes": 4242,
+    "modified": false
+  },
+  {
+    "component": "Colours",
+    "path": "s/Cache",
+    "upstream_sha256": "15dc356c3ecc1a34d40a302adb237cbdf45c6462ec46eb0e318079ce02ae6c72",
+    "sha256": "15dc356c3ecc1a34d40a302adb237cbdf45c6462ec46eb0e318079ce02ae6c72",
+    "bytes": 2491,
+    "modified": false
+  },
+  {
+    "component": "Colours",
+    "path": "s/Calibrate",
+    "upstream_sha256": "3fa30d5eece2f3c1fd83970f621796c1a94993535014f322189e510dd4688bc1",
+    "sha256": "3fa30d5eece2f3c1fd83970f621796c1a94993535014f322189e510dd4688bc1",
+    "bytes": 17080,
+    "modified": false
+  },
+  {
+    "component": "Colours",
+    "path": "s/Commons",
+    "upstream_sha256": "11340ce3f4132313017f9924a943c2eeff7ff668abaa816da229fa5c233e87d8",
+    "sha256": "11340ce3f4132313017f9924a943c2eeff7ff668abaa816da229fa5c233e87d8",
+    "bytes": 45412,
+    "modified": false
+  },
+  {
+    "component": "Colours",
+    "path": "s/DevicePal",
+    "upstream_sha256": "ea13eba053386b7371160aaa5fa511e55d0e73c9673693928baa68f2c3f668b2",
+    "sha256": "ea13eba053386b7371160aaa5fa511e55d0e73c9673693928baa68f2c3f668b2",
+    "bytes": 5730,
+    "modified": false
+  },
+  {
+    "component": "Colours",
+    "path": "s/DevicePal2",
+    "upstream_sha256": "4e2420b799d4f028c865dc27a48c6fe454f4dfc33fad4ae3b20592f8bd8ded84",
+    "sha256": "4e2420b799d4f028c865dc27a48c6fe454f4dfc33fad4ae3b20592f8bd8ded84",
+    "bytes": 8933,
+    "modified": false
+  },
+  {
+    "component": "Colours",
+    "path": "s/Dither",
+    "upstream_sha256": "e636d88375dfa3b8e4d723dbe5b49cc41643e10eaaba167f898f537a3361f7f5",
+    "sha256": "e636d88375dfa3b8e4d723dbe5b49cc41643e10eaaba167f898f537a3361f7f5",
+    "bytes": 31206,
+    "modified": false
+  },
+  {
+    "component": "Colours",
+    "path": "s/Enhanced",
+    "upstream_sha256": "1e67a1543e8696b34bffbb8912e964a9e1c46f5a196831d0e37fa54671168c34",
+    "sha256": "0d946e97d18c2f9f6bbc481e44fc25e77917ab236d3725d80a5355fbfcc278c3",
+    "bytes": 6554,
+    "modified": true
+  },
+  {
+    "component": "Colours",
+    "path": "s/FileCal",
+    "upstream_sha256": "a426f75c44a3f3a2072a7fa1f65be103b96dc9bb2f9b31bcb47081a3cd150a09",
+    "sha256": "0a1546d6c47e683dbe3f2c8722e9d6449121fd4da07a31b5f525d662c695da59",
+    "bytes": 11916,
+    "modified": true
+  },
+  {
+    "component": "Colours",
+    "path": "s/FontColour",
+    "upstream_sha256": "d8275118f5eeba1b9784825fa48bfa6633c916eca7624eb6cbe2bb42a021a438",
+    "sha256": "e90fe5a165ca9017b0e29dd84e4846c7fa3b3b8a4349a24f5087c82a78bcca37",
+    "bytes": 22496,
+    "modified": true
+  },
+  {
+    "component": "Colours",
+    "path": "s/Header",
+    "upstream_sha256": "df1e83dbb23106033cbc80fa768f29a0d5648bee2975d2fb6624ad6acedfb400",
+    "sha256": "be3f704b45d2ba252c0552db4b59abe5ae855672029b581aae4d96f8655c5f92",
+    "bytes": 45421,
+    "modified": true
+  },
+  {
+    "component": "Colours",
+    "path": "s/MainSWIs",
+    "upstream_sha256": "83f9ef6ff6121acf304118b418e5707611efb57899c3e785915bab65c3567376",
+    "sha256": "ec6d8c8dbe9821ff9e4a885dd72bc8f32d08621634409f95ce140f41296228d5",
+    "bytes": 50008,
+    "modified": true
+  },
+  {
+    "component": "Colours",
+    "path": "s/MsgCode",
+    "upstream_sha256": "851a5cbaa173023b62a206a6a843910e716e9cdf53d911f51adb2b5b52dd7879",
+    "sha256": "851a5cbaa173023b62a206a6a843910e716e9cdf53d911f51adb2b5b52dd7879",
+    "bytes": 2482,
+    "modified": false
+  },
+  {
+    "component": "Colours",
+    "path": "s/NewModels",
+    "upstream_sha256": "a49cd777f12c608bc09ad948272b316231808d61738117199f2748c4be684392",
+    "sha256": "a49cd777f12c608bc09ad948272b316231808d61738117199f2748c4be684392",
+    "bytes": 14625,
+    "modified": false
+  },
+  {
+    "component": "Colours",
+    "path": "s/Palettes",
+    "upstream_sha256": "989c70daa7180cc4bd4e3755207dcaedc379638d470ec26ca6520624a3d1a8f6",
+    "sha256": "989c70daa7180cc4bd4e3755207dcaedc379638d470ec26ca6520624a3d1a8f6",
+    "bytes": 33233,
+    "modified": false
+  },
+  {
+    "component": "Colours",
+    "path": "s/Tables32K",
+    "upstream_sha256": "a38b163305e0ce0411019975b2345f8c9b7a54decde37aec1e11375bb60fb7a1",
+    "sha256": "a38b163305e0ce0411019975b2345f8c9b7a54decde37aec1e11375bb60fb7a1",
+    "bytes": 30707,
+    "modified": false
+  },
+  {
+    "component": "DrawMod",
+    "path": "LICENSE",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358,
+    "modified": false
+  },
+  {
+    "component": "DrawMod",
+    "path": "Makefile",
+    "upstream_sha256": "985823d656897022b2282ede61b68700b835e1e0585a399ff0d542d44bd40d5e",
+    "sha256": "985823d656897022b2282ede61b68700b835e1e0585a399ff0d542d44bd40d5e",
+    "bytes": 1866,
+    "modified": false
+  },
+  {
+    "component": "DrawMod",
+    "path": "Resources/UK/Messages",
+    "upstream_sha256": "0d1d9f474be23c0c59357620e2a979303b1c8355ea88ce31245160e329bca590",
+    "sha256": "0d1d9f474be23c0c59357620e2a979303b1c8355ea88ce31245160e329bca590",
+    "bytes": 440,
+    "modified": false
+  },
+  {
+    "component": "DrawMod",
+    "path": "Version",
+    "upstream_sha256": "5c4ff96cb721cae30de13dc459fc32e1697a1ea41f08e100bb47664940108f77",
+    "sha256": "5c4ff96cb721cae30de13dc459fc32e1697a1ea41f08e100bb47664940108f77",
+    "bytes": 1761,
+    "modified": false
+  },
+  {
+    "component": "DrawMod",
+    "path": "hdr/Draw",
+    "upstream_sha256": "11501df1b890cba39c0b54105083f2b0866918a158db300efd0ed87ce9a601ee",
+    "sha256": "11501df1b890cba39c0b54105083f2b0866918a158db300efd0ed87ce9a601ee",
+    "bytes": 3616,
+    "modified": false
+  },
+  {
+    "component": "DrawMod",
+    "path": "s/DrArith",
+    "upstream_sha256": "a1cac618f5aa7998dd100813798b4240ab6b553380a97b2b531981d416e16ff4",
+    "sha256": "a1cac618f5aa7998dd100813798b4240ab6b553380a97b2b531981d416e16ff4",
+    "bytes": 12264,
+    "modified": false
+  },
+  {
+    "component": "DrawMod",
+    "path": "s/DrInter",
+    "upstream_sha256": "9619cf974d1ba475b947f198530fe75b5155d5f4f099092f8a43676f2b04222c",
+    "sha256": "d0332739aac8d7e2485038ffbbdf118952f7865680be1de8d84d1b602c8dbe72",
+    "bytes": 1763,
+    "modified": true
+  },
+  {
+    "component": "DrawMod",
+    "path": "s/DrOutput",
+    "upstream_sha256": "0f54017145bfbcd93fa3d6732a3967b470f29850ff1719b47d0a3042c8ed8ca7",
+    "sha256": "228a166b7c6d2249f633a23a6f29139bd4fe64fb74566a35abe96aa0c1abcc3f",
+    "bytes": 76490,
+    "modified": true
+  },
+  {
+    "component": "DrawMod",
+    "path": "s/DrProcess",
+    "upstream_sha256": "8a9810f478c21a71c2a32fea0279ecbf37c57406bd2787fbf67686480a322189",
+    "sha256": "8a9810f478c21a71c2a32fea0279ecbf37c57406bd2787fbf67686480a322189",
+    "bytes": 47755,
+    "modified": false
+  },
+  {
+    "component": "DrawMod",
+    "path": "s/DrQFill",
+    "upstream_sha256": "6c16da6a4cafe813514561388531a988615ceeff094f0504e1aab4130bc019f8",
+    "sha256": "6c16da6a4cafe813514561388531a988615ceeff094f0504e1aab4130bc019f8",
+    "bytes": 27249,
+    "modified": false
+  },
+  {
+    "component": "DrawMod",
+    "path": "s/Draw",
+    "upstream_sha256": "5153f1d25a4f31edcfd233e30abbdb5add9b8cc805e778471a6c2e0ee450cb56",
+    "sha256": "914879ac3a74d29b0256b3cf92af7b911c8fa2e58293bbbbaaf5d423ec5d45ee",
+    "bytes": 45900,
+    "modified": true
+  },
+  {
+    "component": "FPASC",
+    "path": "LICENSE",
+    "upstream_sha256": "02fd60c8b5af6755120b80be5378bbea4d5684fcb97e7784d74e1a8995205fbb",
+    "sha256": "02fd60c8b5af6755120b80be5378bbea4d5684fcb97e7784d74e1a8995205fbb",
+    "bytes": 13076,
+    "modified": false
+  },
+  {
+    "component": "FPASC",
+    "path": "riscos/Makefile",
+    "upstream_sha256": "762fc2fe3a5c0ac7271aa44ab07c757c5a07c372519984b6719a89bfa02d6bcc",
+    "sha256": "762fc2fe3a5c0ac7271aa44ab07c757c5a07c372519984b6719a89bfa02d6bcc",
+    "bytes": 2390,
+    "modified": false
+  },
+  {
+    "component": "FPASC",
+    "path": "riscos/hdr/FPEmulator",
+    "upstream_sha256": "ca19e559018ec968cc0a7bbcf95a38582e7ac02a6d5c05b05b79dd57493017fe",
+    "sha256": "4eccf1e3312625c82d3ccab9a8ed0a08f331d6dac5eec26a6d5df99d4199f34c",
+    "bytes": 925,
+    "modified": true
+  },
+  {
+    "component": "FPASC",
+    "path": "riscos/s/fpe400",
+    "upstream_sha256": "9f6c5fbf901f09837130a5ec67767a058c45e9a91f5a1c0535afa86b36b46979",
+    "sha256": "9f6c5fbf901f09837130a5ec67767a058c45e9a91f5a1c0535afa86b36b46979",
+    "bytes": 1713,
+    "modified": false
+  },
+  {
+    "component": "FPASC",
+    "path": "riscos/s/fpemedusa",
+    "upstream_sha256": "3ede3576732ce3fc18a68e8814a82a42b85ef523415c37421dadeac070629cc9",
+    "sha256": "3ede3576732ce3fc18a68e8814a82a42b85ef523415c37421dadeac070629cc9",
+    "bytes": 1712,
+    "modified": false
+  },
+  {
+    "component": "FPASC",
+    "path": "vensrc/riscos/FPEMacros",
+    "upstream_sha256": "6c3e8ad30fbbf5ae9a2e15e5322b9b942de11fa02df2e51f7f041170bc3ef2dd",
+    "sha256": "6c3e8ad30fbbf5ae9a2e15e5322b9b942de11fa02df2e51f7f041170bc3ef2dd",
+    "bytes": 1357,
+    "modified": false
+  },
+  {
+    "component": "FPASC",
+    "path": "vensrc/riscos/Version",
+    "upstream_sha256": "b51b4a53348c879ff6a41d81a8fc7529991d076868836ab9e125107c7766768d",
+    "sha256": "b51b4a53348c879ff6a41d81a8fc7529991d076868836ab9e125107c7766768d",
+    "bytes": 1130,
+    "modified": false
+  },
+  {
+    "component": "FPASC",
+    "path": "vensrc/riscos/ctxtws",
+    "upstream_sha256": "39f3f61283ed8dc3ff8ed3530ea7190e3958ac1a48bb430710c7f459d318c13c",
+    "sha256": "39f3f61283ed8dc3ff8ed3530ea7190e3958ac1a48bb430710c7f459d318c13c",
+    "bytes": 310,
+    "modified": false
+  },
+  {
+    "component": "FPASC",
+    "path": "vensrc/riscos/end",
+    "upstream_sha256": "911bd370f5fec3167748a826696dd3ec8c3a4f0dcaef08d7b108053d7fe1f940",
+    "sha256": "911bd370f5fec3167748a826696dd3ec8c3a4f0dcaef08d7b108053d7fe1f940",
+    "bytes": 13845,
+    "modified": false
+  },
+  {
+    "component": "FPASC",
+    "path": "vensrc/riscos/globalws",
+    "upstream_sha256": "3622671382926c7efecd1c919d96994c6dae1dbb5e5cb86a4af8d9c9164d1967",
+    "sha256": "3622671382926c7efecd1c919d96994c6dae1dbb5e5cb86a4af8d9c9164d1967",
+    "bytes": 882,
+    "modified": false
+  },
+  {
+    "component": "FPASC",
+    "path": "vensrc/riscos/options",
+    "upstream_sha256": "9c6ae96eba24e85524959cdedd66835288f76f143df64fa48ba3a15fe52fdd24",
+    "sha256": "9c6ae96eba24e85524959cdedd66835288f76f143df64fa48ba3a15fe52fdd24",
+    "bytes": 3713,
+    "modified": false
+  },
+  {
+    "component": "FPASC",
+    "path": "vensrc/riscos/start",
+    "upstream_sha256": "804a2edcbc1287ca19ad7b05848a8b7b4e6bcb8919416c72fd2304356c4f6781",
+    "sha256": "804a2edcbc1287ca19ad7b05848a8b7b4e6bcb8919416c72fd2304356c4f6781",
+    "bytes": 8801,
+    "modified": false
+  },
+  {
+    "component": "FontManager",
+    "path": "LICENSE",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358,
+    "modified": false
+  },
+  {
+    "component": "FontManager",
+    "path": "Makefile",
+    "upstream_sha256": "cfa110749122e14cac9321bf37b91a9507d206bb8768f71a6cd4924bf34ca61e",
+    "sha256": "cfa110749122e14cac9321bf37b91a9507d206bb8768f71a6cd4924bf34ca61e",
+    "bytes": 1800,
+    "modified": false
+  },
+  {
+    "component": "FontManager",
+    "path": "Resources/UK/Messages",
+    "upstream_sha256": "e5ef894121b200c0760b1ff07ccdf963f9f5b67075e0804a875f3a02320eb021",
+    "sha256": "e5ef894121b200c0760b1ff07ccdf963f9f5b67075e0804a875f3a02320eb021",
+    "bytes": 4138,
+    "modified": false
+  },
+  {
+    "component": "FontManager",
+    "path": "Version",
+    "upstream_sha256": "cd12a254eb78de863e60bab2a4ad7301a369987028057666de362abc6e62a0d0",
+    "sha256": "cd12a254eb78de863e60bab2a4ad7301a369987028057666de362abc6e62a0d0",
+    "bytes": 242,
+    "modified": false
+  },
+  {
+    "component": "FontManager",
+    "path": "hdr/Font",
+    "upstream_sha256": "5a120b206641757b0c4e5abff7a9b9545b31b11b7fb7a41ed33defab1ab04079",
+    "sha256": "5a120b206641757b0c4e5abff7a9b9545b31b11b7fb7a41ed33defab1ab04079",
+    "bytes": 4369,
+    "modified": false
+  },
+  {
+    "component": "FontManager",
+    "path": "s/Encoding",
+    "upstream_sha256": "30d078a81bf2b3772b45358019f09a24841bd8005775b7a7aeb977549e275ea5",
+    "sha256": "733a3e1c39363e7a214cfe2ec7b2a83707a69c5c6a6fcd40cfc13e9c0648059e",
+    "bytes": 36404,
+    "modified": true
+  },
+  {
+    "component": "FontManager",
+    "path": "s/Errors",
+    "upstream_sha256": "2b7af5d2d7514480f99a968c9e29a9d84405044d32fbdb01eb9f208eb32dc519",
+    "sha256": "2b7af5d2d7514480f99a968c9e29a9d84405044d32fbdb01eb9f208eb32dc519",
+    "bytes": 4532,
+    "modified": false
+  },
+  {
+    "component": "FontManager",
+    "path": "s/Font_Arith",
+    "upstream_sha256": "f99607df6bc4212d0416fdcea172f62159ebe947479437f323826d2d78b75952",
+    "sha256": "6682016c497b2473f2b392816e5f54e3ce22430990ee3b212191f265b04a98aa",
+    "bytes": 33497,
+    "modified": true
+  },
+  {
+    "component": "FontManager",
+    "path": "s/Font_BasFP",
+    "upstream_sha256": "aab9d6a7086ccf0cf5122b96642d754da18c6d9422d54f7c7e346df1c55a8c2a",
+    "sha256": "aab9d6a7086ccf0cf5122b96642d754da18c6d9422d54f7c7e346df1c55a8c2a",
+    "bytes": 13111,
+    "modified": false
+  },
+  {
+    "component": "FontManager",
+    "path": "s/Fonts",
+    "upstream_sha256": "1000cd45d4a9d2b80dfa6a676423b3ddf5a1a08fbebdc12ee00a654fc9fc4472",
+    "sha256": "4c2f7083c67153538e81fb6be3f692f8e622d1faad76f8d528113242ad90dba0",
+    "bytes": 1958,
+    "modified": true
+  },
+  {
+    "component": "FontManager",
+    "path": "s/Fonts01",
+    "upstream_sha256": "0fe6bd23cdb7270cb2ab801e30e2039106f1d1af6cf9a9bd14ed6478ae18d096",
+    "sha256": "c7da265fcfa91b56df28dd222e8955bd779d0b70f2d6eb12f1e032d4b66c31bb",
+    "bytes": 283033,
+    "modified": true
+  },
+  {
+    "component": "FontManager",
+    "path": "s/Fonts02",
+    "upstream_sha256": "275f87fcba33580dcd052943f26f8482834657470ee5ec83f505a3383dbf7dc1",
+    "sha256": "fb05a433630946cac545c8a6ddf68d9f77811321baccfd55dc26b4036b209efa",
+    "bytes": 214446,
+    "modified": true
+  },
+  {
+    "component": "FontManager",
+    "path": "s/Fonts03",
+    "upstream_sha256": "eb1260288cf5e05211136d6cb8a32eb7a82f8389b6bd35c8a975ecd938c095c0",
+    "sha256": "b27d6dc42a7cb5c785390ccf53bbfab338498de6391ba06e8be08822c119494b",
+    "bytes": 119597,
+    "modified": true
+  },
+  {
+    "component": "FontManager",
+    "path": "s/Fonts04",
+    "upstream_sha256": "44e8a82b32e81f392f83e2d34d13595cef1a9f07a35ec803a7e510c9031b44c4",
+    "sha256": "ccca10b25deb1827fb08f4026effbd7d5e7231dda07ffcb1ba6c3183d233f415",
+    "bytes": 188139,
+    "modified": true
+  },
+  {
+    "component": "FontManager",
+    "path": "s/FontsM",
+    "upstream_sha256": "0696b912f48cea22ba9054f7148f583217569d4fb8f4618ae79db59cc8146706",
+    "sha256": "b4c40d17c06470eef86ec3c360fe27eaca73a8e815cdf4fdcc436b6faa12f3a8",
+    "bytes": 20035,
+    "modified": true
+  },
+  {
+    "component": "FontManager",
+    "path": "s/Funcache",
+    "upstream_sha256": "cde0ec59d27dbb244c8a3ed022fb32e67762250f624956242c8489c27c2cd447",
+    "sha256": "c5ed709b8453af0d4ff38abd66a8f3b03eeefe16005f75deece4fe967cac4966",
+    "bytes": 51055,
+    "modified": true
+  },
+  {
+    "component": "FontManager",
+    "path": "s/ListFonts",
+    "upstream_sha256": "6ad285f6bbafe711c3d579227b51d1422bf6f6214a11527c296af6bd424c0794",
+    "sha256": "b80a03391ba18b7c3f45e9f25781644404fbbb702539103642c299114927f239",
+    "bytes": 87567,
+    "modified": true
+  },
+  {
+    "component": "HostFS",
+    "path": "LICENSE",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358,
+    "modified": false
+  },
+  {
+    "component": "HostFS",
+    "path": "Makefile",
+    "upstream_sha256": "f038e7628c5904650fd9319c367c74bc26c9a68a5c6a25fd2f77fd6234633760",
+    "sha256": "f038e7628c5904650fd9319c367c74bc26c9a68a5c6a25fd2f77fd6234633760",
+    "bytes": 1866,
+    "modified": false
+  },
+  {
+    "component": "HostFS",
+    "path": "hdr/HostDebug",
+    "upstream_sha256": "88eb9bbff70f437034dddccf045780a43cd41bdce354bed1fcb5dfe3fdae4d44",
+    "sha256": "88eb9bbff70f437034dddccf045780a43cd41bdce354bed1fcb5dfe3fdae4d44",
+    "bytes": 2758,
+    "modified": false
+  },
+  {
+    "component": "HostFS",
+    "path": "hdr/HostFS",
+    "upstream_sha256": "573d6f4e25048ee5049af56da0c6f116c091455f73fd67021fc60679bc5128ef",
+    "sha256": "573d6f4e25048ee5049af56da0c6f116c091455f73fd67021fc60679bc5128ef",
+    "bytes": 1119,
+    "modified": false
+  },
+  {
+    "component": "Hourglass",
+    "path": "LICENSE",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358,
+    "modified": false
+  },
+  {
+    "component": "Hourglass",
+    "path": "Makefile",
+    "upstream_sha256": "6c2ca832b742876c7c4808fa782c090de4d84a79c44431378bcd935553056fa2",
+    "sha256": "6c2ca832b742876c7c4808fa782c090de4d84a79c44431378bcd935553056fa2",
+    "bytes": 2034,
+    "modified": false
+  },
+  {
+    "component": "Hourglass",
+    "path": "NewOS",
+    "upstream_sha256": "c3b9c4e3db5967323d08bee728c3645e0083f3f9e7576dee6de4261dc31d01e4",
+    "sha256": "c3b9c4e3db5967323d08bee728c3645e0083f3f9e7576dee6de4261dc31d01e4",
+    "bytes": 118,
+    "modified": false
+  },
+  {
+    "component": "Hourglass",
+    "path": "OldOS",
+    "upstream_sha256": "992621746ed22504921f8f41ee4105d720b12044f6c64d203d82274136be508d",
+    "sha256": "992621746ed22504921f8f41ee4105d720b12044f6c64d203d82274136be508d",
+    "bytes": 117,
+    "modified": false
+  },
+  {
+    "component": "Hourglass",
+    "path": "Time+Date",
+    "upstream_sha256": "df09b0c0f8c98389743bfbae7a73fb15d4f0639fc87989643bef3b3a0337395f",
+    "sha256": "df09b0c0f8c98389743bfbae7a73fb15d4f0639fc87989643bef3b3a0337395f",
+    "bytes": 265,
+    "modified": false
+  },
+  {
+    "component": "Hourglass",
+    "path": "hdr/Hourglass",
+    "upstream_sha256": "f14d3203ca4873808bbddd7fcb2ca175d8c31bbdcfcb4fb0d30eca886f6af4c3",
+    "sha256": "f14d3203ca4873808bbddd7fcb2ca175d8c31bbdcfcb4fb0d30eca886f6af4c3",
+    "bytes": 1405,
+    "modified": false
+  },
+  {
+    "component": "Hourglass",
+    "path": "s/Module",
+    "upstream_sha256": "fe23ac6c0c38fc8f28797739761340443b9b7caa1bad0d801553d961725d04e2",
+    "sha256": "c51f6c74ce2bd63ce193e41ef766148174005768c9fd6b953d4615510ad67815",
+    "bytes": 29457,
+    "modified": true
+  },
+  {
+    "component": "PDriver",
+    "path": "LICENSE",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358,
+    "modified": false
+  },
+  {
+    "component": "PDriver",
+    "path": "Makefile",
+    "upstream_sha256": "c1256bcaa4551b75375da6b69debf3af23723728f88a4f9169c32cb5a3d32db3",
+    "sha256": "c1256bcaa4551b75375da6b69debf3af23723728f88a4f9169c32cb5a3d32db3",
+    "bytes": 2374,
+    "modified": false
+  },
+  {
+    "component": "PDriver",
+    "path": "hdr/PDriver",
+    "upstream_sha256": "ed8b93a3b920af907e0bde7d16690b00048bd039aed13524dc0f01cdd02253c3",
+    "sha256": "ed8b93a3b920af907e0bde7d16690b00048bd039aed13524dc0f01cdd02253c3",
+    "bytes": 6335,
+    "modified": false
+  },
+  {
+    "component": "ROMFonts",
+    "path": "Fonts/Corpus/Bold/IntMetric0,ff6",
+    "upstream_sha256": "ab16fcdda7b7d60320f9215a95d70d2db2aea4651f094d30e36b14adc9bb584c",
+    "sha256": "ab16fcdda7b7d60320f9215a95d70d2db2aea4651f094d30e36b14adc9bb584c",
+    "bytes": 90,
+    "modified": false
+  },
+  {
+    "component": "ROMFonts",
+    "path": "Fonts/Corpus/Bold/Oblique/IntMetric0,ff6",
+    "upstream_sha256": "c2b402b1760475c1f890bb7a9544f735862b2dcf468a1d912c78ea097475ff24",
+    "sha256": "c2b402b1760475c1f890bb7a9544f735862b2dcf468a1d912c78ea097475ff24",
+    "bytes": 90,
+    "modified": false
+  },
+  {
+    "component": "ROMFonts",
+    "path": "Fonts/Corpus/Bold/Oblique/Outlines0",
+    "upstream_sha256": "86d57ef27f9e65a38600e1054216241cecb558706e07b68bb41aaeb8ab5be1ef",
+    "sha256": "86d57ef27f9e65a38600e1054216241cecb558706e07b68bb41aaeb8ab5be1ef",
+    "bytes": 38,
+    "modified": false
+  },
+  {
+    "component": "ROMFonts",
+    "path": "Fonts/Corpus/Bold/Outlines0,ff6",
+    "upstream_sha256": "caa524375708513947a32cc8a2c311aea9ba82a7fb645459cd5f79ddb9fbd89a",
+    "sha256": "caa524375708513947a32cc8a2c311aea9ba82a7fb645459cd5f79ddb9fbd89a",
+    "bytes": 30740,
+    "modified": false
+  },
+  {
+    "component": "ROMFonts",
+    "path": "Fonts/Corpus/Medium/IntMetric0,ff6",
+    "upstream_sha256": "8710de77e676104e4b7c6dd8a92c36c492775e15fd710de8bef933050335d8d8",
+    "sha256": "8710de77e676104e4b7c6dd8a92c36c492775e15fd710de8bef933050335d8d8",
+    "bytes": 90,
+    "modified": false
+  },
+  {
+    "component": "ROMFonts",
+    "path": "Fonts/Corpus/Medium/Oblique/IntMetric0,ff6",
+    "upstream_sha256": "e1521f0a8e329a23a7b5cd176d8b8467f14d66e5da37a393cfa88127eed81bb6",
+    "sha256": "e1521f0a8e329a23a7b5cd176d8b8467f14d66e5da37a393cfa88127eed81bb6",
+    "bytes": 90,
+    "modified": false
+  },
+  {
+    "component": "ROMFonts",
+    "path": "Fonts/Corpus/Medium/Oblique/Outlines0",
+    "upstream_sha256": "dae04417f3db8abeceb01a88eaa8e3f1e7d0df13fcbaf064e48329ea9b013786",
+    "sha256": "dae04417f3db8abeceb01a88eaa8e3f1e7d0df13fcbaf064e48329ea9b013786",
+    "bytes": 40,
+    "modified": false
+  },
+  {
+    "component": "ROMFonts",
+    "path": "Fonts/Corpus/Medium/Outlines0,ff6",
+    "upstream_sha256": "40b71cacb00346123cbbb83a0627cc89515e6b382ad9992d7d38925fd02a5a35",
+    "sha256": "40b71cacb00346123cbbb83a0627cc89515e6b382ad9992d7d38925fd02a5a35",
+    "bytes": 30328,
+    "modified": false
+  },
+  {
+    "component": "ROMFonts",
+    "path": "Fonts/Encodings/.Base0",
+    "upstream_sha256": "3821d45d4cb8a08e2994255ddb7282c16e505748049ef8b37769ab26e7e1541d",
+    "sha256": "3821d45d4cb8a08e2994255ddb7282c16e505748049ef8b37769ab26e7e1541d",
+    "bytes": 3556,
+    "modified": false
+  },
+  {
+    "component": "ROMFonts",
+    "path": "Fonts/Encodings/Latin1",
+    "upstream_sha256": "cf890cb1dbc0ddd87b2b32ecead07d084045a24029f646d10112e767eda18096",
+    "sha256": "cf890cb1dbc0ddd87b2b32ecead07d084045a24029f646d10112e767eda18096",
+    "bytes": 2292,
+    "modified": false
+  },
+  {
+    "component": "ROMFonts",
+    "path": "Fonts/Encodings/Latin2",
+    "upstream_sha256": "fd2a2fa6153dffe1d5ed7ebf3e8aa3cccae0d1d1dda08f2c13ec81cbbc3f8e80",
+    "sha256": "fd2a2fa6153dffe1d5ed7ebf3e8aa3cccae0d1d1dda08f2c13ec81cbbc3f8e80",
+    "bytes": 2251,
+    "modified": false
+  },
+  {
+    "component": "ROMFonts",
+    "path": "Fonts/Encodings/Latin3",
+    "upstream_sha256": "17710d8da07f55dbad106120de1de0583537b27933241c4add8e0b5b0ad6385f",
+    "sha256": "17710d8da07f55dbad106120de1de0583537b27933241c4add8e0b5b0ad6385f",
+    "bytes": 2316,
+    "modified": false
+  },
+  {
+    "component": "ROMFonts",
+    "path": "Fonts/Encodings/Latin4",
+    "upstream_sha256": "de6ebcf8d8ce2bd5041bc587a60332d30fe9f780c113f1ffd728b180d4cbe827",
+    "sha256": "de6ebcf8d8ce2bd5041bc587a60332d30fe9f780c113f1ffd728b180d4cbe827",
+    "bytes": 2216,
+    "modified": false
+  },
+  {
+    "component": "ROMFonts",
+    "path": "Fonts/Homerton/Bold/IntMetric0,ff6",
+    "upstream_sha256": "c8bd6bb61be2f55ccfcf2e3cfe59c0d7bfae76d79c36e1b2a04256e5ef6097b4",
+    "sha256": "c8bd6bb61be2f55ccfcf2e3cfe59c0d7bfae76d79c36e1b2a04256e5ef6097b4",
+    "bytes": 898,
+    "modified": false
+  },
+  {
+    "component": "ROMFonts",
+    "path": "Fonts/Homerton/Bold/Oblique/IntMetric0,ff6",
+    "upstream_sha256": "2783bd1f10db615bc3f2735818a0e0a9d4db0aabe9c452f5686d0c423cb55e61",
+    "sha256": "2783bd1f10db615bc3f2735818a0e0a9d4db0aabe9c452f5686d0c423cb55e61",
+    "bytes": 892,
+    "modified": false
+  },
+  {
+    "component": "ROMFonts",
+    "path": "Fonts/Homerton/Bold/Oblique/Outlines0",
+    "upstream_sha256": "370099f912493b847bee275fda981ae9a9dc6248179e149a1615bd4ab85dca63",
+    "sha256": "370099f912493b847bee275fda981ae9a9dc6248179e149a1615bd4ab85dca63",
+    "bytes": 40,
+    "modified": false
+  },
+  {
+    "component": "ROMFonts",
+    "path": "Fonts/Homerton/Bold/Outlines0,ff6",
+    "upstream_sha256": "483681055f4cecf3e9198d42477830d894087d85ede63a23ea710395145ba0c6",
+    "sha256": "483681055f4cecf3e9198d42477830d894087d85ede63a23ea710395145ba0c6",
+    "bytes": 19924,
+    "modified": false
+  },
+  {
+    "component": "ROMFonts",
+    "path": "Fonts/Homerton/Medium/IntMetric0,ff6",
+    "upstream_sha256": "c2327990d8766609df5c00a526ae37371842a42aece2a289deafc30433485fae",
+    "sha256": "c2327990d8766609df5c00a526ae37371842a42aece2a289deafc30433485fae",
+    "bytes": 920,
+    "modified": false
+  },
+  {
+    "component": "ROMFonts",
+    "path": "Fonts/Homerton/Medium/Oblique/IntMetric0,ff6",
+    "upstream_sha256": "b35ded77f15cdc015d808e317a436f9505c94f95c8909cee42557417337626d4",
+    "sha256": "b35ded77f15cdc015d808e317a436f9505c94f95c8909cee42557417337626d4",
+    "bytes": 897,
+    "modified": false
+  },
+  {
+    "component": "ROMFonts",
+    "path": "Fonts/Homerton/Medium/Oblique/Outlines0",
+    "upstream_sha256": "8b148cc1357e4f4302cc1c923ca626e49c682fedd90cfc804fb0f44416aa28b5",
+    "sha256": "8b148cc1357e4f4302cc1c923ca626e49c682fedd90cfc804fb0f44416aa28b5",
+    "bytes": 42,
+    "modified": false
+  },
+  {
+    "component": "ROMFonts",
+    "path": "Fonts/Homerton/Medium/Outlines0,ff6",
+    "upstream_sha256": "2051d81ae180aec90f8a5cd6cb635b2ba83eac3b2da258a40b088bc3f81e838f",
+    "sha256": "2051d81ae180aec90f8a5cd6cb635b2ba83eac3b2da258a40b088bc3f81e838f",
+    "bytes": 21760,
+    "modified": false
+  },
+  {
+    "component": "ROMFonts",
+    "path": "Fonts/Trinity/Bold/IntMetric0,ff6",
+    "upstream_sha256": "900c9128a3a3299f1380d875fcb3fdd8d94cad739285febf1a53dc9efc62fab5",
+    "sha256": "900c9128a3a3299f1380d875fcb3fdd8d94cad739285febf1a53dc9efc62fab5",
+    "bytes": 975,
+    "modified": false
+  },
+  {
+    "component": "ROMFonts",
+    "path": "Fonts/Trinity/Bold/Italic/IntMetric0,ff6",
+    "upstream_sha256": "9bf19f6e85523375175666d29feace421a9bff73b1c01aefe35e275eac5edcb3",
+    "sha256": "9bf19f6e85523375175666d29feace421a9bff73b1c01aefe35e275eac5edcb3",
+    "bytes": 927,
+    "modified": false
+  },
+  {
+    "component": "ROMFonts",
+    "path": "Fonts/Trinity/Bold/Italic/Outlines0,ff6",
+    "upstream_sha256": "5d883be25600c47943295a107f8c00ca63b49d4fe631cf01bbfb994f009e4390",
+    "sha256": "5d883be25600c47943295a107f8c00ca63b49d4fe631cf01bbfb994f009e4390",
+    "bytes": 31504,
+    "modified": false
+  },
+  {
+    "component": "ROMFonts",
+    "path": "Fonts/Trinity/Bold/Outlines0,ff6",
+    "upstream_sha256": "e3c0b12236ddde488a0c1ba3c79d8a44d451ce2c4daabc36706d15af8eb87f4a",
+    "sha256": "e3c0b12236ddde488a0c1ba3c79d8a44d451ce2c4daabc36706d15af8eb87f4a",
+    "bytes": 30996,
+    "modified": false
+  },
+  {
+    "component": "ROMFonts",
+    "path": "Fonts/Trinity/Medium/IntMetric0,ff6",
+    "upstream_sha256": "cd6c1004db2672ea92e50cb8154b82a19745f6337ef788096eb0809f4d3bc945",
+    "sha256": "cd6c1004db2672ea92e50cb8154b82a19745f6337ef788096eb0809f4d3bc945",
+    "bytes": 950,
+    "modified": false
+  },
+  {
+    "component": "ROMFonts",
+    "path": "Fonts/Trinity/Medium/Italic/IntMetric0,ff6",
+    "upstream_sha256": "113a5016632a55d6b248ea6dab5e0104f28c0fc233e7b2fc975dcacc28dac11f",
+    "sha256": "113a5016632a55d6b248ea6dab5e0104f28c0fc233e7b2fc975dcacc28dac11f",
+    "bytes": 969,
+    "modified": false
+  },
+  {
+    "component": "ROMFonts",
+    "path": "Fonts/Trinity/Medium/Italic/Outlines0,ff6",
+    "upstream_sha256": "b85e942e7fa49a0bdd1dbcb74d9e17895206f36657afa3b8091ba0bfdfd1a22d",
+    "sha256": "b85e942e7fa49a0bdd1dbcb74d9e17895206f36657afa3b8091ba0bfdfd1a22d",
+    "bytes": 32572,
+    "modified": false
+  },
+  {
+    "component": "ROMFonts",
+    "path": "Fonts/Trinity/Medium/Outlines0,ff6",
+    "upstream_sha256": "4bb084a14d22496cebecd7d0f6aec2175c25221872181b8e1c41e85f18e5ec42",
+    "sha256": "4bb084a14d22496cebecd7d0f6aec2175c25221872181b8e1c41e85f18e5ec42",
+    "bytes": 29512,
+    "modified": false
+  },
+  {
+    "component": "ROMFonts",
+    "path": "LICENSE",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358,
+    "modified": false
+  },
+  {
+    "component": "ROMFonts",
+    "path": "Makefile",
+    "upstream_sha256": "b2c743c8a7f8268313f0f957a8e1cd60cd0abf3f537d9fbd2ed14bff29ef696a",
+    "sha256": "b2c743c8a7f8268313f0f957a8e1cd60cd0abf3f537d9fbd2ed14bff29ef696a",
+    "bytes": 1505,
+    "modified": false
+  },
+  {
+    "component": "ROMFonts",
+    "path": "Version",
+    "upstream_sha256": "a1930ef499ad8bfef57c952c0c5c7418e92e0155d8fce0477802715bf471fb73",
+    "sha256": "a1930ef499ad8bfef57c952c0c5c7418e92e0155d8fce0477802715bf471fb73",
+    "bytes": 169,
+    "modified": false
+  },
+  {
+    "component": "ROMFonts",
+    "path": "s/ROMFonts",
+    "upstream_sha256": "c957efcc6a52521dc0803498e728fe9a201d5f412b3c11d31417b758a3b2f2bd",
+    "sha256": "1d222307dce90bb0d7bde1bf2c0b3958e8b2f8b7f4907be6c3968cfd24537b0b",
+    "bytes": 8283,
+    "modified": true
+  },
+  {
+    "component": "Super",
+    "path": "GenMatrix1,ffb",
+    "upstream_sha256": "9e30b81cd049fc656f348ee29913730226fbc67994b0bec2f43bfe4aed8d0327",
+    "sha256": "9e30b81cd049fc656f348ee29913730226fbc67994b0bec2f43bfe4aed8d0327",
+    "bytes": 1304,
+    "modified": false
+  },
+  {
+    "component": "Super",
+    "path": "GenMatrix2,ffb",
+    "upstream_sha256": "e04e38013950c9afc337a68bf003b9e768256b6a84c57d01a8bc950640df8b20",
+    "sha256": "e04e38013950c9afc337a68bf003b9e768256b6a84c57d01a8bc950640df8b20",
+    "bytes": 1918,
+    "modified": false
+  },
+  {
+    "component": "Super",
+    "path": "LICENSE",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358,
+    "modified": false
+  },
+  {
+    "component": "Super",
+    "path": "Makefile",
+    "upstream_sha256": "c03c3ce3bd1c73b1fa48739271d82e2581df892a051e7910039345d4a6d756b5",
+    "sha256": "c03c3ce3bd1c73b1fa48739271d82e2581df892a051e7910039345d4a6d756b5",
+    "bytes": 1758,
+    "modified": false
+  },
+  {
+    "component": "Super",
+    "path": "Version",
+    "upstream_sha256": "8d440d0c3772aea96a700ac3a780cd685541d495026a485b2d5ffae4fcfa116c",
+    "sha256": "8d440d0c3772aea96a700ac3a780cd685541d495026a485b2d5ffae4fcfa116c",
+    "bytes": 231,
+    "modified": false
+  },
+  {
+    "component": "Super",
+    "path": "hdr/Super",
+    "upstream_sha256": "c4fa8a0362324abcc3a6df5dfdbe1b37a95721005cbe6a0cae0817087a354cbf",
+    "sha256": "c4fa8a0362324abcc3a6df5dfdbe1b37a95721005cbe6a0cae0817087a354cbf",
+    "bytes": 1205,
+    "modified": false
+  },
+  {
+    "component": "Super",
+    "path": "s/Super",
+    "upstream_sha256": "2b06ac163667573ab6d0ec807f3eb3e7ac1a5eae9c10e46dc0a8e35969eaeb6f",
+    "sha256": "a636fc717981aa5f5600a7781ad7e3683a3af7b9a4c92d0416f2ba767e9e213a",
+    "bytes": 21884,
+    "modified": true
+  },
+  {
+    "component": "Switcher",
+    "path": "LICENSE",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358,
+    "modified": false
+  },
+  {
+    "component": "Switcher",
+    "path": "Makefile",
+    "upstream_sha256": "4d08f30f2fadede414b221b29b3021a09d780a028c096cb843df76bafddb85a7",
+    "sha256": "4d08f30f2fadede414b221b29b3021a09d780a028c096cb843df76bafddb85a7",
+    "bytes": 2010,
+    "modified": false
+  },
+  {
+    "component": "Switcher",
+    "path": "hdr/Switcher",
+    "upstream_sha256": "94660eb7c5849b68704ec9193bc704fc15f34ef4e5d608aa6d9323f58f80bbd4",
+    "sha256": "94660eb7c5849b68704ec9193bc704fc15f34ef4e5d608aa6d9323f58f80bbd4",
+    "bytes": 1677,
+    "modified": false
+  },
+  {
+    "component": "Wimp",
+    "path": "LICENSE",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358,
+    "modified": false
+  },
+  {
+    "component": "Wimp",
+    "path": "Makefile",
+    "upstream_sha256": "fff9845d3b830e3bcc484342cb6c031d183ab0947205e8d4a3d6d17a818824c0",
+    "sha256": "fff9845d3b830e3bcc484342cb6c031d183ab0947205e8d4a3d6d17a818824c0",
+    "bytes": 2358,
+    "modified": false
+  },
+  {
+    "component": "Wimp",
+    "path": "Resources/!WIMPSym/WIMPSymbol/Encoding",
+    "upstream_sha256": "140c8fbcfad7bda8196b686e4dd38f92b32ecd9bd0f035fd4da9b40aae565e78",
+    "sha256": "140c8fbcfad7bda8196b686e4dd38f92b32ecd9bd0f035fd4da9b40aae565e78",
+    "bytes": 2315,
+    "modified": false
+  },
+  {
+    "component": "Wimp",
+    "path": "Resources/!WIMPSym/WIMPSymbol/IntMetrics,ff6",
+    "upstream_sha256": "5f75eedadecd7f3884b2276c3e24e9e9f2273d1fdc5334be398af0a62d17b54b",
+    "sha256": "5f75eedadecd7f3884b2276c3e24e9e9f2273d1fdc5334be398af0a62d17b54b",
+    "bytes": 392,
+    "modified": false
+  },
+  {
+    "component": "Wimp",
+    "path": "Resources/!WIMPSym/WIMPSymbol/Outlines,ff6",
+    "upstream_sha256": "3d3e2d8b17740a04b16d21cbd8835f5b279c218928752d95714431466c3c079c",
+    "sha256": "3d3e2d8b17740a04b16d21cbd8835f5b279c218928752d95714431466c3c079c",
+    "bytes": 1436,
+    "modified": false
+  },
+  {
+    "component": "Wimp",
+    "path": "Resources/!WIMPSym/WIMPSymbol/f240x120,ff6",
+    "upstream_sha256": "e559190854e1d48521e874232c3f47b055bc4398fde13e55b7b603273a31c528",
+    "sha256": "e559190854e1d48521e874232c3f47b055bc4398fde13e55b7b603273a31c528",
+    "bytes": 308,
+    "modified": false
+  },
+  {
+    "component": "Wimp",
+    "path": "Resources/UK/Messages",
+    "upstream_sha256": "56db78cda51af78a3c1bd99a324d52511266188db420475792b808acf15a4ffc",
+    "sha256": "56db78cda51af78a3c1bd99a324d52511266188db420475792b808acf15a4ffc",
+    "bytes": 6248,
+    "modified": false
+  },
+  {
+    "component": "Wimp",
+    "path": "Resources/UK/Sprites,ff9",
+    "upstream_sha256": "71e677fd4e8a2ef5ccbe15391e5bca45f227c7ebf2885eeb367cbbfce8d878ff",
+    "sha256": "71e677fd4e8a2ef5ccbe15391e5bca45f227c7ebf2885eeb367cbbfce8d878ff",
+    "bytes": 76088,
+    "modified": false
+  },
+  {
+    "component": "Wimp",
+    "path": "Resources/UK/Sprites22,ff9",
+    "upstream_sha256": "ae8f95a3a47786d454613c97675b62f5666d39890524004f7630fb64e9417bfd",
+    "sha256": "ae8f95a3a47786d454613c97675b62f5666d39890524004f7630fb64e9417bfd",
+    "bytes": 218968,
+    "modified": false
+  },
+  {
+    "component": "Wimp",
+    "path": "Resources/UK/Template3D,fec",
+    "upstream_sha256": "a08ce4b82892d5a3d483fe988faa53541b41ca6a12908b295ae9b4040b452a4f",
+    "sha256": "a08ce4b82892d5a3d483fe988faa53541b41ca6a12908b295ae9b4040b452a4f",
+    "bytes": 937,
+    "modified": false
+  },
+  {
+    "component": "Wimp",
+    "path": "Resources/UK/Tools3d,ff9",
+    "upstream_sha256": "28a576cb033553174edfd290144fb9503c3d66a2468c268e79e3e4446ec79b55",
+    "sha256": "28a576cb033553174edfd290144fb9503c3d66a2468c268e79e3e4446ec79b55",
+    "bytes": 33932,
+    "modified": false
+  },
+  {
+    "component": "Wimp",
+    "path": "Version",
+    "upstream_sha256": "f96ab448fd5b776466af8640c393e434f9c31d3c49646a4a5cd739b789d6e7e5",
+    "sha256": "f96ab448fd5b776466af8640c393e434f9c31d3c49646a4a5cd739b789d6e7e5",
+    "bytes": 173,
+    "modified": false
+  },
+  {
+    "component": "Wimp",
+    "path": "hdr/WIMPMacros",
+    "upstream_sha256": "a5596833bda68ce55dbda25cc1a60123d33a71e228dca603d797604a29fab308",
+    "sha256": "a5596833bda68ce55dbda25cc1a60123d33a71e228dca603d797604a29fab308",
+    "bytes": 5507,
+    "modified": false
+  },
+  {
+    "component": "Wimp",
+    "path": "hdr/Wimp",
+    "upstream_sha256": "684a770db1684452304eb124bfba0f4ed2c4d74e831e558c15c5696c4034cbf1",
+    "sha256": "684a770db1684452304eb124bfba0f4ed2c4d74e831e558c15c5696c4034cbf1",
+    "bytes": 10141,
+    "modified": false
+  },
+  {
+    "component": "Wimp",
+    "path": "hdr/WimpSpace",
+    "upstream_sha256": "49e42c49db57cf8fa957f417680b142f0d6053e671364b6c9356db6528880abc",
+    "sha256": "49e42c49db57cf8fa957f417680b142f0d6053e671364b6c9356db6528880abc",
+    "bytes": 13134,
+    "modified": false
+  },
+  {
+    "component": "Wimp",
+    "path": "s/!Palette",
+    "upstream_sha256": "c11ed73a0966d08e357c08138567f05449c4119dc44e43d6b2711737110e432e",
+    "sha256": "42b198367c1b8dff9fe35c4e617189a4acc5da1fc6c71d9986546f3f536ef00f",
+    "bytes": 1034,
+    "modified": true
+  },
+  {
+    "component": "Wimp",
+    "path": "s/Iconbar",
+    "upstream_sha256": "b0e79ab2b0a659bcb1387a0bcfdaf9b8f2a17824464bd87ad59af5b81a33adc3",
+    "sha256": "e77f25d3eeafee28d5b0e1727873ac4ad772e517587a53ccaccfda024bffe789",
+    "bytes": 23649,
+    "modified": true
+  },
+  {
+    "component": "Wimp",
+    "path": "s/Memory",
+    "upstream_sha256": "ec7c47868e82229f57b84c25358847b916a58c13448d274a287748d323ad6ff6",
+    "sha256": "bb9177d6692e3318c3d6c7457be780d92de42a0eaa3853a87352462ca4c32870",
+    "bytes": 10433,
+    "modified": true
+  },
+  {
+    "component": "Wimp",
+    "path": "s/NewSWIs",
+    "upstream_sha256": "a217032890ddb26d002dbd8c5ea1ed2b78c7d895299308dd2e77ae1f8ff81ad3",
+    "sha256": "a217032890ddb26d002dbd8c5ea1ed2b78c7d895299308dd2e77ae1f8ff81ad3",
+    "bytes": 7965,
+    "modified": false
+  },
+  {
+    "component": "Wimp",
+    "path": "s/Notes",
+    "upstream_sha256": "5cb2e70903670ac5d0b9db099e12417f1f7e0cc7e82c9640a4953d555e36bea0",
+    "sha256": "5cb2e70903670ac5d0b9db099e12417f1f7e0cc7e82c9640a4953d555e36bea0",
+    "bytes": 69769,
+    "modified": false
+  },
+  {
+    "component": "Wimp",
+    "path": "s/Options",
+    "upstream_sha256": "0c3a911bc7786f17a815096c7bc350b1102c684b8605d01b059b353a7fd8d7c7",
+    "sha256": "b99ca9219a122f62a07cd3caad2c34850622d75d89fd399ec88eb7d94a5eb6c5",
+    "bytes": 11359,
+    "modified": true
+  },
+  {
+    "component": "Wimp",
+    "path": "s/ProgErrs",
+    "upstream_sha256": "88397d6967bf35361521ad0a5e3b52d868d4761e68e047ac3c58eb028a74cb2f",
+    "sha256": "88397d6967bf35361521ad0a5e3b52d868d4761e68e047ac3c58eb028a74cb2f",
+    "bytes": 11552,
+    "modified": false
+  },
+  {
+    "component": "Wimp",
+    "path": "s/RosMod",
+    "upstream_sha256": "30ce8d864a75531113753fd63c335ff23b9f705f51aacb9a45c456a9e60570a0",
+    "sha256": "61f2600bf5c97712e48d9b4cd99312c46f72e1a677cc784bd289286fac61be77",
+    "bytes": 6003,
+    "modified": true
+  },
+  {
+    "component": "Wimp",
+    "path": "s/Tiling",
+    "upstream_sha256": "39b0d831d70f771f99869408ec7031aa3eebecceb7460e11707ea487064e7020",
+    "sha256": "3a98c21a4acc301cb8975e989cf96523ba06ca20dca0c508cee01e47711c7219",
+    "bytes": 10396,
+    "modified": true
+  },
+  {
+    "component": "Wimp",
+    "path": "s/Watchdog",
+    "upstream_sha256": "f1e1b58a2710d0a1c736ecb2cf073d9f79132e49c4e7fd6e765dcf452a6a1413",
+    "sha256": "c913b19709b2ffa038e3d3080260b2da46d73854c92cc61e6523099dfbd129c4",
+    "bytes": 9334,
+    "modified": true
+  },
+  {
+    "component": "Wimp",
+    "path": "s/Wimp",
+    "upstream_sha256": "93d8afa765d7afda62dc6380f47e06689d045688b231187277da80f9b06a1933",
+    "sha256": "b43c2865d416b91e2939eb4adbb215cd3e155d880f74ee1c95d8402bbc9cdf93",
+    "bytes": 2353,
+    "modified": true
+  },
+  {
+    "component": "Wimp",
+    "path": "s/Wimp01",
+    "upstream_sha256": "8d79fda4439f2b01f4ec0af3646e0d809a1bc312d1153e3541b60631673581c5",
+    "sha256": "82bcfbf0e6007826c11a6a65b2a3ccde2a668441fb53e6bdce6c1b1d637facd8",
+    "bytes": 160077,
+    "modified": true
+  },
+  {
+    "component": "Wimp",
+    "path": "s/Wimp02",
+    "upstream_sha256": "6cd505f7e746fcd4cd27b8d91a0e9a7c42051494f8c3d8e397f743fe406f17bb",
+    "sha256": "e2e0a179c4f3fa9243763bcbd5564f95d3bd5a86237b7d0b7cc183997c739c02",
+    "bytes": 169770,
+    "modified": true
+  },
+  {
+    "component": "Wimp",
+    "path": "s/Wimp03",
+    "upstream_sha256": "2414c6f5ecef244bb1f9f4553ebcc78cc37cf8e5096af0c0ae83bba16ef1f1fb",
+    "sha256": "6df22a8da96ad77cb52e35a2230a52ebc25915f125a93196b1dcb695469389af",
+    "bytes": 94503,
+    "modified": true
+  },
+  {
+    "component": "Wimp",
+    "path": "s/Wimp04",
+    "upstream_sha256": "787a57d1984766e8fffedd82112cdb8ec9ac9e87e6b2b641687181818bc3fdbb",
+    "sha256": "36b5f2415737dd4c70418625a34d8049353fc7a392d0cfbf7b9ed24527e2bccd",
+    "bytes": 155648,
+    "modified": true
+  },
+  {
+    "component": "Wimp",
+    "path": "s/Wimp05",
+    "upstream_sha256": "4d4465f37dc7c008cf1c9f52965f79f0debd1ec3baecf5eefdc1e0847f2d42a2",
+    "sha256": "a984f6d1f9aae13d8fa01a50128129630e8494fe81be12981e2c6d36768d237a",
+    "bytes": 141869,
+    "modified": true
+  },
+  {
+    "component": "Wimp",
+    "path": "s/Wimp06",
+    "upstream_sha256": "ebf9d0c20f516ba863b9f3cea9d691e656511ea2dd0956682e76f3d4f6ae8598",
+    "sha256": "0f632d6f168fdaaf3b87f4a721c19ba867b3f46ec3b0d3cef05981fa81cb06a2",
+    "bytes": 23821,
+    "modified": true
+  },
+  {
+    "component": "Wimp",
+    "path": "s/Wimp07",
+    "upstream_sha256": "d5bfd6e0ca6f59d783410eda7e4a4724d180c4df44aa5e02f5da048ea5a7e48f",
+    "sha256": "3e91536ff11bf9e0662248fd5caf6a39ef3c5ecd0e0d55a862969d3a5afd5306",
+    "bytes": 78232,
+    "modified": true
+  },
+  {
+    "component": "Wimp",
+    "path": "s/Wimp08",
+    "upstream_sha256": "becb03ec69881f2437b77bb69106db63fa8090bddb877c61dbd66873234b70c5",
+    "sha256": "b5551117ffb730c3bd3af52017b4d52bb9485c441657f031581f1e41650a020d",
+    "bytes": 80442,
+    "modified": true
+  },
+  {
+    "component": "Wimp",
+    "path": "s/Wimp09",
+    "upstream_sha256": "db5f599bc17fc1483bd3bb3148fee77f77e6f589c8609bb58a6fc73391a189c3",
+    "sha256": "93c1e659be99bc22fe15dc5a92d8a3e1303d995225605a573746c3b194e76852",
+    "bytes": 28480,
+    "modified": true
+  },
+  {
+    "component": "Wimp",
+    "path": "s/Wimp10",
+    "upstream_sha256": "d1bcc97960d0fdc9396f738d02d81ec7563a5fae6c2dd5de3dd7cdc4af873a43",
+    "sha256": "38a7257495b83787289620de46a347cc0164a7fa73066ddd831775ddc31443b1",
+    "bytes": 82639,
+    "modified": true
+  },
+  {
+    "component": "Wimp",
+    "path": "Resources/UK/Tools,ff9",
+    "upstream_sha256": "4fbc3cef8a39a407187776b7d6b329c435a1d2e3bdb00335e7635522256f24d3",
+    "sha256": "4fbc3cef8a39a407187776b7d6b329c435a1d2e3bdb00335e7635522256f24d3",
+    "bytes": 11500,
+    "modified": false
+  }
+]

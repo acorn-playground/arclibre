@@ -1,0 +1,244 @@
+{
+  "status": "PASS",
+  "cold_runs": 3,
+  "all_checkpoint_registers_hardware_and_exported_state_identical": true,
+  "checks": [
+    {
+      "run": 1,
+      "stage": "fixed-mappings",
+      "cam_descriptors_checked": 8192,
+      "fixed_pages_checked": 24,
+      "copies": [],
+      "memc_cam_writes": 131
+    },
+    {
+      "run": 1,
+      "stage": "vectors-installed",
+      "cam_descriptors_checked": 8192,
+      "fixed_pages_checked": 24,
+      "copies": [
+        {
+          "destination": "DefaultIRQ1V",
+          "source": "DefaultIRQ1Vcode",
+          "bytes": 752,
+          "sha256": "9c7fc4d78b12d438e497db5e3236b85382f5e0a37fcf042e7a65d4d6d622aed1"
+        },
+        {
+          "destination": "SWIDespatch",
+          "source": "SVCDespatcher",
+          "bytes": 116,
+          "sha256": "096baa865dce55672513e3104fac2a180a48bf26d3ebc5a536da361a0f24bae9"
+        },
+        {
+          "destination": "ProcVec_Start",
+          "source": "DefaultProcVecs",
+          "bytes": 44,
+          "sha256": "f9bb04b5407e506f56b85f95b01b8b927af81a524c14b82dec099cbf9c6e660d"
+        },
+        {
+          "destination": "BranchToSWIExit",
+          "source": "DirtyBranch",
+          "bytes": 4,
+          "sha256": "4eb0295870237335cd7777bb2c3fefcd943035bb2c48fcde9044d54c18d04bda"
+        }
+      ],
+      "memc_cam_writes": 256
+    },
+    {
+      "run": 1,
+      "stage": "pre-module",
+      "cam_descriptors_checked": 8192,
+      "fixed_pages_checked": 24,
+      "copies": [
+        {
+          "destination": "DefaultIRQ1V",
+          "source": "DefaultIRQ1Vcode",
+          "bytes": 752,
+          "sha256": "9c7fc4d78b12d438e497db5e3236b85382f5e0a37fcf042e7a65d4d6d622aed1"
+        },
+        {
+          "destination": "SWIDespatch",
+          "source": "SVCDespatcher",
+          "bytes": 116,
+          "sha256": "096baa865dce55672513e3104fac2a180a48bf26d3ebc5a536da361a0f24bae9"
+        },
+        {
+          "destination": "ProcVec_Start",
+          "source": "DefaultProcVecs",
+          "bytes": 44,
+          "sha256": "f9bb04b5407e506f56b85f95b01b8b927af81a524c14b82dec099cbf9c6e660d"
+        },
+        {
+          "destination": "BranchToSWIExit",
+          "source": "DirtyBranch",
+          "bytes": 4,
+          "sha256": "4eb0295870237335cd7777bb2c3fefcd943035bb2c48fcde9044d54c18d04bda"
+        }
+      ],
+      "memc_cam_writes": 256
+    },
+    {
+      "run": 2,
+      "stage": "fixed-mappings",
+      "cam_descriptors_checked": 8192,
+      "fixed_pages_checked": 24,
+      "copies": [],
+      "memc_cam_writes": 131
+    },
+    {
+      "run": 2,
+      "stage": "vectors-installed",
+      "cam_descriptors_checked": 8192,
+      "fixed_pages_checked": 24,
+      "copies": [
+        {
+          "destination": "DefaultIRQ1V",
+          "source": "DefaultIRQ1Vcode",
+          "bytes": 752,
+          "sha256": "9c7fc4d78b12d438e497db5e3236b85382f5e0a37fcf042e7a65d4d6d622aed1"
+        },
+        {
+          "destination": "SWIDespatch",
+          "source": "SVCDespatcher",
+          "bytes": 116,
+          "sha256": "096baa865dce55672513e3104fac2a180a48bf26d3ebc5a536da361a0f24bae9"
+        },
+        {
+          "destination": "ProcVec_Start",
+          "source": "DefaultProcVecs",
+          "bytes": 44,
+          "sha256": "f9bb04b5407e506f56b85f95b01b8b927af81a524c14b82dec099cbf9c6e660d"
+        },
+        {
+          "destination": "BranchToSWIExit",
+          "source": "DirtyBranch",
+          "bytes": 4,
+          "sha256": "4eb0295870237335cd7777bb2c3fefcd943035bb2c48fcde9044d54c18d04bda"
+        }
+      ],
+      "memc_cam_writes": 256
+    },
+    {
+      "run": 2,
+      "stage": "pre-module",
+      "cam_descriptors_checked": 8192,
+      "fixed_pages_checked": 24,
+      "copies": [
+        {
+          "destination": "DefaultIRQ1V",
+          "source": "DefaultIRQ1Vcode",
+          "bytes": 752,
+          "sha256": "9c7fc4d78b12d438e497db5e3236b85382f5e0a37fcf042e7a65d4d6d622aed1"
+        },
+        {
+          "destination": "SWIDespatch",
+          "source": "SVCDespatcher",
+          "bytes": 116,
+          "sha256": "096baa865dce55672513e3104fac2a180a48bf26d3ebc5a536da361a0f24bae9"
+        },
+        {
+          "destination": "ProcVec_Start",
+          "source": "DefaultProcVecs",
+          "bytes": 44,
+          "sha256": "f9bb04b5407e506f56b85f95b01b8b927af81a524c14b82dec099cbf9c6e660d"
+        },
+        {
+          "destination": "BranchToSWIExit",
+          "source": "DirtyBranch",
+          "bytes": 4,
+          "sha256": "4eb0295870237335cd7777bb2c3fefcd943035bb2c48fcde9044d54c18d04bda"
+        }
+      ],
+      "memc_cam_writes": 256
+    },
+    {
+      "run": 3,
+      "stage": "fixed-mappings",
+      "cam_descriptors_checked": 8192,
+      "fixed_pages_checked": 24,
+      "copies": [],
+      "memc_cam_writes": 131
+    },
+    {
+      "run": 3,
+      "stage": "vectors-installed",
+      "cam_descriptors_checked": 8192,
+      "fixed_pages_checked": 24,
+      "copies": [
+        {
+          "destination": "DefaultIRQ1V",
+          "source": "DefaultIRQ1Vcode",
+          "bytes": 752,
+          "sha256": "9c7fc4d78b12d438e497db5e3236b85382f5e0a37fcf042e7a65d4d6d622aed1"
+        },
+        {
+          "destination": "SWIDespatch",
+          "source": "SVCDespatcher",
+          "bytes": 116,
+          "sha256": "096baa865dce55672513e3104fac2a180a48bf26d3ebc5a536da361a0f24bae9"
+        },
+        {
+          "destination": "ProcVec_Start",
+          "source": "DefaultProcVecs",
+          "bytes": 44,
+          "sha256": "f9bb04b5407e506f56b85f95b01b8b927af81a524c14b82dec099cbf9c6e660d"
+        },
+        {
+          "destination": "BranchToSWIExit",
+          "source": "DirtyBranch",
+          "bytes": 4,
+          "sha256": "4eb0295870237335cd7777bb2c3fefcd943035bb2c48fcde9044d54c18d04bda"
+        }
+      ],
+      "memc_cam_writes": 256
+    },
+    {
+      "run": 3,
+      "stage": "pre-module",
+      "cam_descriptors_checked": 8192,
+      "fixed_pages_checked": 24,
+      "copies": [
+        {
+          "destination": "DefaultIRQ1V",
+          "source": "DefaultIRQ1Vcode",
+          "bytes": 752,
+          "sha256": "9c7fc4d78b12d438e497db5e3236b85382f5e0a37fcf042e7a65d4d6d622aed1"
+        },
+        {
+          "destination": "SWIDespatch",
+          "source": "SVCDespatcher",
+          "bytes": 116,
+          "sha256": "096baa865dce55672513e3104fac2a180a48bf26d3ebc5a536da361a0f24bae9"
+        },
+        {
+          "destination": "ProcVec_Start",
+          "source": "DefaultProcVecs",
+          "bytes": 44,
+          "sha256": "f9bb04b5407e506f56b85f95b01b8b927af81a524c14b82dec099cbf9c6e660d"
+        },
+        {
+          "destination": "BranchToSWIExit",
+          "source": "DirtyBranch",
+          "bytes": 4,
+          "sha256": "4eb0295870237335cd7777bb2c3fefcd943035bb2c48fcde9044d54c18d04bda"
+        }
+      ],
+      "memc_cam_writes": 256
+    }
+  ],
+  "final_instructions": 15369356,
+  "final_ticks": 183081369,
+  "exception_counts": [
+    2,
+    0,
+    164,
+    0,
+    0,
+    0,
+    52,
+    0
+  ],
+  "hardware_writes": 1916550,
+  "log_overflow": false,
+  "scope": "Reset through entry to ModuleInit only; module initialisation has not executed."
+}

@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "cold_runs": 3,
+  "identical_results": true,
+  "rom_sha256": "bf5ca56ebd6f7fd7dc4149360d97f76f009abed8879693470421998d59f11791",
+  "module_sha256": "be6a5904849685002e9e862fe859cdf5369eaf55d0b9590546b949d5ff1cb665",
+  "module_bytes": 26700,
+  "integer_arm2_instructions": 5584,
+  "classified_fpa_instructions": 396,
+  "wimp_fpa_sites_covered": 21,
+  "tests_per_run": 12,
+  "error_paths_per_run": 3,
+  "context_bytes": 136,
+  "baseline_rom_modified": false,
+  "emulator_modified": false,
+  "scope": "Isolated runtime FPEmulator with exact Wimp FPA encodings; not Wimp initialization or full floating-point/RISC OS 3.11 conformance"
+}

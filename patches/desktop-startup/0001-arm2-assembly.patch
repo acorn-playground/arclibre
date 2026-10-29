@@ -1,0 +1,1797 @@
+--- a/src/Desktop/s/Desktop
++++ b/src/Desktop/s/Desktop
+@@ -47,6 +47,7 @@
+ ; 26-Jul-93  JRoach      If OS_GBPB on Resources:$.Apps gives trouble then stop pumping
+ ;                        ROM apps rather than giving an error
+ 
++        AREA Desktop,CODE,READONLY
+ Module_BaseAddr
+ 
+         GET     Hdr:ListOpts
+@@ -92,7 +93,6 @@
+ hostvdu SETL    true
+ 
+ 
+-        LEADR   Module_LoadAddr
+ 
+ TAB     *       9
+ LF      *       10
+@@ -205,7 +205,7 @@
+ ;       Desktop_Code - Start up the desktop
+ ;
+ 
+-Desktop_Code ENTRY
++Desktop_Code KernelEntry
+         MOV     R2, R0                  ; R2 --> parameter list
+         ADR     R0, execcommand         ; cancel exec file (if any)
+         SWI     XOS_CLI
+@@ -261,7 +261,7 @@
+ ; In r1->token
+ ; Out r1->string (error maybe)
+ ;
+-MsgLookup Entry "r0,r2-r7"
++MsgLookup KernelEntry "r0,r2-r7"
+         ADR     r0, MessageBlock
+         MOV     r2, #0
+         MOV     r4, #0
+@@ -608,7 +608,7 @@
+ ;
+ ; PumpModuleApps
+ ;
+-StartPumpModuleApps Entry
++StartPumpModuleApps KernelEntry
+         ADR     r0, PumpOneModuleApp
+         STR     r0, NextPump
+         B       %FT01
+@@ -650,7 +650,7 @@
+ ; enumerate "Resources:$.Apps", and call *Filer_Boot for all these
+ ; NB: must be done after the modules are started (Filer in particular)
+ ;
+-StartPumpBootROMApps Entry
++StartPumpBootROMApps KernelEntry
+ 
+         ; Copy "Filer_Boot Resources:$.Apps." into Buffer
+ 
+@@ -729,7 +729,7 @@
+ ; now start up the ROM-based applications,
+ ; if the relevant bits in DeskbootCMOS are set.
+ ;
+-StartPumpStartROMApps Entry
++StartPumpStartROMApps KernelEntry
+         LDR     r14, nactive            ; don't start unless this was first task
+         TEQ     r14, #0
+         BNE     %FT50
+@@ -817,7 +817,7 @@
+ ; if null, this causes a screen redraw
+ ; it can also indicate a *Obey file, containing *WimpTask commands
+ ;
+-StartPumpDesktopCommands Entry
++StartPumpDesktopCommands KernelEntry
+ 
+         ADRL    r0, keydef
+         ADR     r1, commandtail
+@@ -910,6 +910,7 @@
+         MOV     r0, #0                  ; close file
+         SWI     XOS_Find                ; errors blow up again
+         TEQP    r5, #0
++        NOP     ; ARM2 processor-state settling
+         MOVVS   r0, r4
+         EXIT    VS
+ 
+@@ -936,7 +937,7 @@
+ Welcome_Area    #       4
+ Welcome_WSSize  * :INDEX: @
+ 
+-DisplayWelcomeScreen Entry ,Welcome_WSSize
++DisplayWelcomeScreen KernelEntry ,Welcome_WSSize
+ 
+         MOV     r0,#-1
+         MOV     r1,#11
+--- a/src/Filer/s/ActionStrt
++++ b/src/Filer/s/ActionStrt
+@@ -34,7 +34,7 @@
+ ActionWindowModuleName  DCB "Filer_Action",0
+         ALIGN
+ 
+-StartActionWindow ENTRY "r1-r6"
++StartActionWindow KernelEntry "r1-r6"
+       [ version >= 113
+ 
+         ; Check the memory is enough to do the operation
+@@ -65,7 +65,7 @@
+         SWI     XWimp_StartTask
+         EXIT
+ 
+-ExtractCMOSOptions ENTRY "r3"
++ExtractCMOSOptions KernelEntry "r3"
+         BL      ReadCMOSBits
+         MOV     r2, #0
+         TST     r3, #confirm_cmos_bit
+@@ -78,7 +78,7 @@
+         ORRNE   r2, r2, #Action_OptionNewer
+         EXIT
+ 
+-SendSelectedFiles ENTRY "r1-r5"
++SendSelectedFiles KernelEntry "r1-r5"
+ 10      CMP     r5, #Nowt
+         EXIT    EQ
+         LDR     r1, sel_leafname
+--- a/src/Filer/s/CMOSUtils
++++ b/src/Filer/s/CMOSUtils
+@@ -16,7 +16,7 @@
+ ; In    r2 = new options
+ ;       r3 = bit mask to write under
+ 
+-WriteCMOSBits ENTRY "r0-r3"
++WriteCMOSBits KernelEntry "r0-r3"
+ 
+  [ debugmenu
+  DREG r2,"setting bits ",cc,Byte
+@@ -41,7 +41,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; Out   r3 = current CMOS state
+ 
+-ReadCMOSBits ENTRY "r0-r2"
++ReadCMOSBits KernelEntry "r0-r2"
+ 
+         MOV     r0, #161                ; Read current state
+         MOV     r1, #DesktopCMOS
+--- a/src/Filer/s/CacheDir
++++ b/src/Filer/s/CacheDir
+@@ -58,7 +58,7 @@
+ ;       d_nchildren
+ ;
+ 
+-CacheDir ENTRY "r1-r6, r8-r11"
++CacheDir KernelEntry "r1-r6, r8-r11"
+ 
+  [ debugrecache
+  DSTRING r1, "CacheDir "
+--- a/src/Filer/s/Clicks
++++ b/src/Filer/s/Clicks
+@@ -27,7 +27,7 @@
+ 
+ ; Out   all regs may be corrupted - going back to PollWimp
+ 
+-event_mouse_click ENTRY
++event_mouse_click KernelEntry
+ 
+         LDMIA   r1, {r0-r4}             ; set absmousex, absmousey, buttonstate
+         ADR     r14, mousedata          ;     windowhandle, iconhandle
+--- a/src/Filer/s/Close
++++ b/src/Filer/s/Close
+@@ -22,7 +22,7 @@
+ 
+ ; Out   all regs may be corrupted - going back to PollWimp
+ 
+-event_close_window ENTRY "r1"
++event_close_window KernelEntry "r1"
+ 
+         ADR     r1, mousedata           ; Need buttonstate for close
+         SWI     XWimp_GetPointerInfo    ; Won't error
+@@ -36,7 +36,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; In    r0 = handle of window to close
+ 
+-close_window_r0 ENTRY "r0, r1"
++close_window_r0 KernelEntry "r0, r1"
+ 
+         MOV     r14, #button_left       ; fake buttonstate
+         STR     r14, buttonstate
+@@ -49,7 +49,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; In    r0 = handle of window to close
+ 
+-close_window_common ENTRY "r0, r1"
++close_window_common KernelEntry "r0, r1"
+ 
+  [ debug
+  DREG r0, "close_window: window ",,Integer
+--- a/src/Filer/s/Commands
++++ b/src/Filer/s/Commands
+@@ -25,7 +25,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; Had *command to enter Filer, so start up via module handler
+ 
+-Desktop_Filer_Code ENTRY
++Desktop_Filer_Code KernelEntry
+  [ version >= 113
+         LDR     wp, [r12]
+         LDR     r14, mytaskhandle
+@@ -51,7 +51,7 @@
+ ;       NE otherwise and
+ ;       r1 contains value
+ 
+-readargs_getint ENTRY   "r0,r2,r4,r5"
++readargs_getint KernelEntry   "r0,r2,r4,r5"
+ 
+         ; Check for parameter present
+         LDR     r1, [r2, r4]
+@@ -117,7 +117,7 @@
+ fopendir_st     #       4
+ fopendir_sd     #       4
+ 
+-Filer_OpenDir_Code ENTRY "r9"
++Filer_OpenDir_Code KernelEntry "r9"
+ 
+         MOV     r9, #drr_open
+ 
+@@ -387,7 +387,7 @@
+ ; Out
+ ;  request queued with reason code filled in
+ ;
+-Queue_Request_To_Self ENTRY
++Queue_Request_To_Self KernelEntry
+ 
+         ; Fill in reason code
+         STRB    r9, [r3, #dirreq_reason]
+@@ -422,7 +422,7 @@
+ ;  VSet and error possible
+ ;  queued request has 'don't canonicalise on reception' flag set
+ ;
+-Queue_CloseDir_Request_To_Self ENTRY "r0-r5,r9"
++Queue_CloseDir_Request_To_Self KernelEntry "r0-r5,r9"
+ 
+         TST     r2, #1
+         BNE     %FT10
+--- a/src/Filer/s/DecodeMenu
++++ b/src/Filer/s/DecodeMenu
+@@ -18,7 +18,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; In    r1 -> wimp_eventstr in userdata
+ 
+-DecodeMenu ENTRY
++DecodeMenu KernelEntry
+ 
+         MOV     r14, #1                 ; Allow menu to be reopened if EXTend
+         STRB    r14, menu_reopen        ; was used to select menu item
+--- a/src/Filer/s/DelViews
++++ b/src/Filer/s/DelViews
+@@ -18,7 +18,7 @@
+ ; Out   dirviewer freed
+ ;       r0 and flags preserved if no error
+ 
+-DeleteDirBlock ENTRY "r0-r2, r4, r11"
++DeleteDirBlock KernelEntry "r0-r2, r4, r11"
+ 
+  [ debug
+  DREG r0, "DeleteDirBlock: window handle ",,Integer
+@@ -69,7 +69,7 @@
+ ; Out   dirviewer freed, window deleted (implicit close done by WindowManager)
+ ;       r0 and flags preserved if no error
+ 
+-DeleteDir ENTRY "r0"
++DeleteDir KernelEntry "r0"
+ 
+         BL      DeleteDirBlock
+ 
+@@ -87,7 +87,7 @@
+ 
+ ; Out   r0 and flags preserved if no error
+ 
+-DeleteWindow ENTRY "r0, r1"
++DeleteWindow KernelEntry "r0, r1"
+ 
+         LDR     r14, sel_whandle        ; Destroying selection handle ?
+         TEQ     r14, r0
+@@ -120,7 +120,7 @@
+ 
+ ; Out   windows relating to this and any subdirectories are closed
+ 
+-DeleteSubDirs ENTRY "r1-r5, r7", 4
++DeleteSubDirs KernelEntry "r1-r5, r7", 4
+ 
+  [ debugclosedir
+         DSTRING r1,"delete sub dirs of ",cc
+--- a/src/Filer/s/DragEnd
++++ b/src/Filer/s/DragEnd
+@@ -30,7 +30,7 @@
+ ; Out   all regs may be corrupted - going back to PollWimp
+ ;       userdata corrupted
+ 
+-event_user_dragbox ENTRY
++event_user_dragbox KernelEntry
+  [ DragASprite
+         SWI     DragASprite_Stop
+  ]
+@@ -250,7 +250,7 @@
+  ]
+ 
+  [ debugtask
+-        DREG    r13,"Entry R13 "
++        DREG    r13,"KernelEntry R13 "
+  ]
+ 
+         LDR     r4, sel_dir             ; We overwrote this by doing FindDir
+@@ -275,7 +275,7 @@
+         LDR     r0,[r1,#12]
+         STR     r0,[r1,#ms_data+12]     ; Copy bounding box.
+       [ debugtask
+-        DREG    r13,"r13 on entry to GetItemBoxSize"
++        DREG    r13,"r13 on KernelEntry to GetItemBoxSize"
+       ]
+         BL      GetItemBoxSize
+       [ debugtask
+@@ -786,7 +786,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; In    r1 -> string to append to
+ 
+-AppendConfirmAndVerbose ENTRY "r1, r3"
++AppendConfirmAndVerbose KernelEntry "r1, r3"
+ 
+         BL      strlen
+         ADD     r1, r1, r3
+@@ -813,7 +813,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; In    r1 -> string to append to
+ 
+-AppendConfirmVerboseAndForce ENTRY "r1, r3"
++AppendConfirmVerboseAndForce KernelEntry "r1, r3"
+ 
+         BL      AppendConfirmAndVerbose
+ 
+@@ -836,7 +836,7 @@
+ ; Appends LN or ~L~N
+ ; In    r1 -> string to append to
+ 
+-AppendConfirmVerboseForceAndNewer ENTRY "r1, r3"
++AppendConfirmVerboseForceAndNewer KernelEntry "r1, r3"
+ 
+         BL      AppendConfirmAndVerbose
+ 
+@@ -859,7 +859,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; Close the dirviewer that an action (double-click, drag) was initiated from
+ 
+-CloseInitiatingDir ENTRY "r0, r4"
++CloseInitiatingDir KernelEntry "r0, r4"
+ 
+         LDR     r4, dirtoclose
+         TEQ     r4, #Nowt
+@@ -889,7 +889,7 @@
+ 
+         MakeErrorBlock  Filer_NoRecursion
+ 
+-is_copy_recursive ENTRY "r1-r7"
++is_copy_recursive KernelEntry "r1-r7"
+         ; Check dest dir starts same as source dir
+         LDR     r1, sel_dirname
+         BL      strlen_excludingspaces
+--- a/src/Filer/s/Errors
++++ b/src/Filer/s/Errors
+@@ -20,7 +20,7 @@
+ 
+ ; Out   r1 = button clicked, VClear always
+ 
+-ReportError ENTRY "r0, r2"
++ReportError KernelEntry "r0, r2"
+ 
+         LDRB    r14, hourglassstate
+         TEQ     r14, #1
+@@ -43,7 +43,7 @@
+         EXIT
+ 
+         [ {FALSE}
+-GetTaskName     ENTRY "r0,r1,r3"        ; returns r2->task title
++GetTaskName     KernelEntry "r0,r1,r3"        ; returns r2->task title
+         LDR     r0, msgtrans_blockptr
+         TEQ     r0, #0
+         ADREQL  r2, Filer_TitleString
+@@ -55,7 +55,7 @@
+         ADRVSL  r2, Filer_TitleString
+         EXITS
+         |
+-GetTaskName     Entry "R0"
++GetTaskName     KernelEntry "R0"
+         LDR     R0,mytaskhandle
+         SWI     XTaskManager_TaskNameFromHandle
+         MOVVC   R2,R0
+@@ -68,7 +68,7 @@
+ 
+ ; Out   VClear always
+ 
+-LocalReportError ENTRY "r1"
++LocalReportError KernelEntry "r1"
+ 
+         MOV     r1, #ok_button
+         BL      ReportError
+--- a/src/Filer/s/FileType
++++ b/src/Filer/s/FileType
+@@ -21,7 +21,7 @@
+ ;          = &3000      -> undated
+ ;       flags preserved
+ 
+-FindFileType ENTRY
++FindFileType KernelEntry
+ 
+         LDRB    r14, [r5, #df_type]
+         CMP     r14, #dft_dir           ; EQ,CS if so
+@@ -60,7 +60,7 @@
+ ;          = -1         -> bad dirname (shouldn't ever happen)
+ ;       flags preserved
+ 
+-FindFileType_FromInfo ENTRY "r1"
++FindFileType_FromInfo KernelEntry "r1"
+ 
+         CMP     r0, #object_file
+         BNE     %FT10
+--- a/src/Filer/s/FreeLists
++++ b/src/Filer/s/FreeLists
+@@ -17,7 +17,7 @@
+ ; FreeLists
+ ; =========
+ 
+-FreeLists ENTRY "r0-r3"
++FreeLists KernelEntry "r0-r3"
+ 
+ 05      LDR     r2, DirRequestList      ; Reload from head each time
+         CMP     r2, #Nowt
+@@ -67,7 +67,7 @@
+         STR     r14, ApplicList
+ 
+  [ debug
+- DREG r2,"Freeing application entry ",cc
++ DREG r2,"Freeing application KernelEntry ",cc
+  DREG r14,", next^ "
+  ]
+         BL      SFreeArea               ; deallocate application block
+--- a/src/Filer/s/Gets
++++ b/src/Filer/s/Gets
+@@ -12,6 +12,7 @@
+ ; See the License for the specific language governing permissions and
+ ; limitations under the License.
+ ;
++        AREA Filer,CODE,READONLY
+ Module_BaseAddr
+ 
+         GET     Hdr:ListOpts
+--- a/src/Filer/s/GoFiler
++++ b/src/Filer/s/GoFiler
+@@ -509,7 +509,7 @@
+  ]
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-discard_savedisplaybuffer ENTRY "r2"
++discard_savedisplaybuffer KernelEntry "r2"
+ 
+         LDR     r2, displaysave_bufferp
+         BL      SFreeArea
+@@ -524,7 +524,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; Things done most every poll loop
+ 
+-DiscardTempString ENTRY "r2"
++DiscardTempString KernelEntry "r2"
+ 
+         LDR     r2, TempString          ; Never go out without discarding temp
+         CMP     r2, #Nowt               ; VClear
+--- a/src/Filer/s/IconUtils
++++ b/src/Filer/s/IconUtils
+@@ -18,7 +18,7 @@
+ ;       r2 = icon handle
+ ;       EQ/NE -> is_inverted or 0
+ 
+-EncodeAccess ENTRY "r4,r5"
++EncodeAccess KernelEntry "r4,r5"
+         MOVEQ   r4, #0                          ; EOR value
+         MOVNE   r4, #is_inverted
+         MOV     r5, #is_inverted                ; BIC value
+@@ -31,7 +31,7 @@
+ ;       r4 = EOR value
+ ;       r5 = BIC value
+ 
+-SetIconState    ENTRY "r1"
++SetIconState    KernelEntry "r1"
+         Push    "r2,r4,r5"
+         Push    "r3"
+         MOV     r1, sp
+@@ -52,7 +52,7 @@
+ ;  ]
+ ; ]
+ 
+-GetIconState ENTRY "r3", 4*2 + i_size
++GetIconState KernelEntry "r3", 4*2 + i_size
+ 
+         STR     r3, [sp, #0]
+         STR     r2, [sp, #4]
+--- a/src/Filer/s/MenuCreate
++++ b/src/Filer/s/MenuCreate
+@@ -137,7 +137,7 @@
+ 
+ ; Copy menu structures into ram, relocating as we go
+ 
+-CopyMenus ENTRY "r0-r11"
++CopyMenus KernelEntry "r0-r11"
+ 
+  [ debugmenu
+         DLINE   "CopyMenus"
+@@ -280,7 +280,7 @@
+ ;               r4 -> (first) selected dirviewer block
+ ;               r5 -> (first) selected fileinfo block
+ ;
+-InitForMenuCreation     ENTRY
++InitForMenuCreation     KernelEntry
+ 
+  [ debugmenu
+         DREG    r4,"InitForMenuCreation, dirviewer="
+@@ -343,7 +343,7 @@
+ ;
+ ; Encodes sel_filetype into ms_writeable_filetype
+ 
+-EncodeSelectionFileType ENTRY   "r0-r3"
++EncodeSelectionFileType KernelEntry   "r0-r3"
+ 
+  [ debugmenu
+         DLINE   "EncodeSelectionFileType"
+@@ -394,7 +394,7 @@
+ hex_digits              DCB     "0123456789abcdef"
+                         ALIGN
+ 
+-RecodeAndRecreateMenu ENTRY "r1-r7"
++RecodeAndRecreateMenu KernelEntry "r1-r7"
+ 
+  [ debugmenu
+         DREG    r4,"RecodeAndRecreateMenu, dirviewer="
+--- a/src/Filer/s/MenuIn
++++ b/src/Filer/s/MenuIn
+@@ -21,7 +21,7 @@
+ 
+ ; Out   all regs may be corrupted - going back to PollWimp
+ 
+-event_menu_select ENTRY
++event_menu_select KernelEntry
+ 
+         ADR     r1, mousedata           ; Need buttonstate for menu select
+         SWI     XWimp_GetPointerInfo    ; Won't error
+@@ -47,7 +47,7 @@
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-RecreateMenu ENTRY "r4"
++RecreateMenu KernelEntry "r4"
+ 
+  [ version >= 116
+  |
+@@ -70,7 +70,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; Out   V accumulated, r0 preserved if we're not causing error
+ 
+-NobbleMenuTree ENTRY "r0, r1"
++NobbleMenuTree KernelEntry "r0, r1"
+ 
+         MOV     r1, #-1
+         SWI     XWimp_CreateMenu
+@@ -85,9 +85,9 @@
+ ; Out   V accumulated, r0 preserved if we're not causing error
+ 
+  [ Fix003
+-NobbleMenuSelection ENTRY "r0, r2"
++NobbleMenuSelection KernelEntry "r0, r2"
+  |
+-NobbleMenuSelection ENTRY "r0"
++NobbleMenuSelection KernelEntry "r0"
+  ]
+ 
+         LDRB    r14, menu_causedselection
+--- a/src/Filer/s/MenuUtils
++++ b/src/Filer/s/MenuUtils
+@@ -21,7 +21,7 @@
+ 
+ ; In    r1 -> menu
+ 
+-EncodeMenu ENTRY "r0, r1"
++EncodeMenu KernelEntry "r0, r1"
+ 
+         ADD     r1, r1, #m_headersize   ; skip menu header
+ 
+@@ -47,7 +47,7 @@
+ 
+ ; Out   item marked as ticked, flags preserved
+ 
+-TickMenu ENTRY "r1, r2"
++TickMenu KernelEntry "r1, r2"
+ 
+         ADD     r1, r1, #m_headersize + mi_itemflags ; skip menu header
+                                         ; and item fields before itemflags
+@@ -64,7 +64,7 @@
+ 
+ ; Out   item marked as shaded, flags preserved
+ 
+-ShadeMenu ENTRY "r1, r2"
++ShadeMenu KernelEntry "r1, r2"
+ 
+         ADD     r1, r1, #m_headersize + mi_iconflags ; skip menu header
+                                         ; and fields before iconflags
+@@ -81,7 +81,7 @@
+ 
+ ; Out   All items in menu shaded
+ 
+-ShadeWholeMenu ENTRY "r2,r3"
++ShadeWholeMenu KernelEntry "r2,r3"
+         ADD     r3, r1, #m_headersize + mi_itemflags
+         MOV     r2, #0
+ 10      ; Start of loop through menu
+--- a/src/Filer/s/MiscEvents
++++ b/src/Filer/s/MiscEvents
+@@ -19,7 +19,7 @@
+ ; Now it sends any messages queued to be sent whilst out of the desktop.
+ ;
+ 
+-SendDirRequestsToMyself ENTRY "r10"
++SendDirRequestsToMyself KernelEntry "r10"
+ 
+         SUB     sp, sp, #256
+ 
+@@ -163,7 +163,7 @@
+ ; Out - much corruption and menu window deleted if it was created
+ ;        and closed.
+ ;
+-delete_closed_menu_window       ENTRY   ,u_windowstate
++delete_closed_menu_window       KernelEntry   ,u_windowstate
+         ; Do we think it created
+         LDR     r0, h_menuwindow_loc
+         TEQ     r0, #0
+@@ -210,7 +210,7 @@
+ ;       [r1, #20] = index of caret into string
+ ;       [r1, #24] = key pressed
+ ; Out   much corruption
+-event_key_pressed ENTRY
++event_key_pressed KernelEntry
+ 
+         ; Check if in window we're interested in
+         LDR     r3, [r1, #0]
+@@ -244,7 +244,7 @@
+ 
+         [ version >= 153
+ 
+-event_null_reason ENTRY
++event_null_reason KernelEntry
+ 
+         [       debugsched
+         DLINE   "Entered nullevent",cc
+@@ -443,7 +443,7 @@
+         |
+ ; Old version if pre-153
+ 
+-event_null_reason ENTRY
++event_null_reason KernelEntry
+ 
+         ; Zero the poll word to catch upcalls during the recache
+         LDR     r10, poll_word
+@@ -528,7 +528,7 @@
+ ; ======================
+ 
+ ; In    nothing
+-event_pollword_nonzero ENTRY
++event_pollword_nonzero KernelEntry
+ 
+         ; This exists to force a cycle around the poll loop
+         ; when the poll word becomes non-zero. This enables
+--- a/src/Filer/s/MiscUtils
++++ b/src/Filer/s/MiscUtils
+@@ -18,7 +18,7 @@
+ ;       r3 -> end of this core
+ ;       r5 -> name of relevant entry
+ 
+-load_template ENTRY , 16                ; 16 bytes of stack for name
++load_template KernelEntry , 16                ; 16 bytes of stack for name
+         MOV     lr, sp
+         Push    "r1, r2"
+         MOV     r1, lr
+@@ -52,7 +52,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; Called at startup and on mode change
+ 
+-SetForThisMode ENTRY "r0-r4"
++SetForThisMode KernelEntry "r0-r4"
+ 
+         MOV     r0, #VduExt_XEigFactor
+         MOV     r1, #VduExt_YEigFactor
+@@ -85,7 +85,7 @@
+ ; Out:  r0 -> message looked up (or token if lookup failed)
+ ;
+ messagetrans_lookup
+-        ENTRY   "r0-r3"
++        KernelEntry   "r0-r3"
+         MOV     r1, r0
+         ADR     r0, messagetrans_struct
+         MOV     r2, #0
+--- a/src/Filer/s/ModHdr
++++ b/src/Filer/s/ModHdr
+@@ -16,7 +16,6 @@
+ ;                          Filer module header
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-        LEADR   Module_LoadAddr
+ 
+  ASSERT (.=Module_BaseAddr)
+ 
+--- a/src/Filer/s/ModStuff
++++ b/src/Filer/s/ModStuff
+@@ -46,7 +46,7 @@
+         MOVNE   pc, lr
+ 
+ 
+-Filer_Service_StartedWimp ENTRY
++Filer_Service_StartedWimp KernelEntry
+         LDR     r14, [r12]
+         LDR     r14, mytaskhandle
+         CMP     r14, #0
+@@ -55,7 +55,7 @@
+         EXIT                            ; Keep workspace around for poking in
+ 
+ 
+-Filer_Service_Reset ENTRY "r0-r6"
++Filer_Service_Reset KernelEntry "r0-r6"
+         LDR     r12, [r12]
+         LDR     r14, mytaskhandle
+         CMP     r14, #0
+@@ -65,7 +65,7 @@
+         STR     r14, mytaskhandle
+         EXITS
+ 
+-Filer_Service_StartWimp ENTRY
++Filer_Service_StartWimp KernelEntry
+         LDR     r12, [r12]
+         LDR     r14, mytaskhandle
+         TEQ     r14, #0
+@@ -77,7 +77,7 @@
+ 
+         LTORG
+ 
+-Filer_Service_MessageFileClosed ENTRY
++Filer_Service_MessageFileClosed KernelEntry
+         LDR     r12, [r12]
+         LDR     r14, mytaskhandle
+         TEQ     r14, #0
+@@ -89,14 +89,14 @@
+         EXIT
+ 
+       [ includeresources
+-Filer_Service_ResourceFSStarting ENTRY "r0"
++Filer_Service_ResourceFSStarting KernelEntry "r0"
+         ADRL    r0, ResourceFSFiles
+         MOV     lr, pc
+         MOV     pc, r2
+         EXIT
+       ]
+ 
+-Filer_Service_DiscDismounted ENTRY "r0-r2"
++Filer_Service_DiscDismounted KernelEntry "r0-r2"
+ 
+         LDR     r12, [r12]
+         LDR     r14, mytaskhandle
+@@ -109,7 +109,7 @@
+ 
+         EXITS
+ 
+-Filer_Service_TerritoryStarted ENTRY "r0"
++Filer_Service_TerritoryStarted KernelEntry "r0"
+ 
+         LDR     r12, [r12]
+         MOV     r0, #-1
+@@ -123,7 +123,7 @@
+ ; Initialise the Filer to have a bit of workspace
+ ;
+ 
+-Filer_Init ENTRY
++Filer_Init KernelEntry
+ 
+         ; If the private word is non_zero something is wrong
+         LDR     r0, [r12]
+@@ -215,7 +215,7 @@
+ 
+ ; Don't distinguish between soft/hard kills, as WindowManager can't cope either
+ 
+-Filer_Die ENTRY
++Filer_Die KernelEntry
+ 
+         LDR     wp, [r12]
+         BL      FreeWorkspace
+--- a/src/Filer/s/MsgsIn
++++ b/src/Filer/s/MsgsIn
+@@ -26,7 +26,7 @@
+ ; Out   all regs may be corrupted - going back to PollWimp
+ 
+  [ version >= 113
+-event_user_message      ENTRY
++event_user_message      KernelEntry
+ 
+       [ version >= 134
+         Push    "r0-r2"
+@@ -94,7 +94,7 @@
+         B       message_fontchanged_code
+         DCD     -1
+  |
+-event_user_message ENTRY
++event_user_message KernelEntry
+ 
+         LDR     r0, [r1, #ms_action]
+   [ debugtask
+@@ -327,7 +327,7 @@
+         EXIT
+  ]
+ 
+-OpenDir_Root    ENTRY
++OpenDir_Root    KernelEntry
+         ; Do a normal open dir with default everythings but viewmode.
+         ; r1 -> path name
+         MOV     r2, r1
+@@ -351,7 +351,7 @@
+         STR     r4, initwindowy
+         EXIT
+ 
+-OpenDir_At      ENTRY
++OpenDir_At      KernelEntry
+         ; r1 -> path name
+         ; r3 = x0, r4 = y0, r5 = width, r6 = height
+         ; r8 = viewmode
+@@ -806,7 +806,7 @@
+ 
+ ; Out   all regs may be corrupted - going back to PollWimp
+ 
+-event_user_message_acknowledge ENTRY
++event_user_message_acknowledge KernelEntry
+ 
+         LDR     r0, [r1, #ms_action]
+  [ debugtask
+--- a/src/Filer/s/OSCliInBox
++++ b/src/Filer/s/OSCliInBox
+@@ -18,7 +18,7 @@
+ 
+ ; Out   VClear always: errors don't creep out of here
+ 
+-DoOSCLIInBoxLookup ENTRY "r0"
++DoOSCLIInBoxLookup KernelEntry "r0"
+ 
+         MOV     r0, r1
+         BL      messagetrans_lookup
+--- a/src/Filer/s/Open
++++ b/src/Filer/s/Open
+@@ -29,7 +29,7 @@
+ 
+ ; Out   regs preserved as we are called from other places as well as from Poll
+ 
+-event_open_window ENTRY "r1-r11"
++event_open_window KernelEntry "r1-r11"
+ 
+         LDR     r0, [r1, #u_handle]     ; r0 = window handle to open
+  [ debugredraw
+--- a/src/Filer/s/OpenDir
++++ b/src/Filer/s/OpenDir
+@@ -27,7 +27,7 @@
+ ;
+ ; Performs same function as OpenDir, but wraps at screen edges
+ 
+-WrappingOpenDir ENTRY   "r1-r2,r5-r11"
++WrappingOpenDir KernelEntry   "r1-r2,r5-r11"
+ 
+         ; Open the directory with default size and displaymode
+         MOV     r5, #0          ; Open with default size
+@@ -106,7 +106,7 @@
+ ;
+   ]
+ 
+-OpenDir ENTRY "r0-r6,r8-r11"
++OpenDir KernelEntry "r0-r6,r8-r11"
+ 
+  [ debug
+  DSTRING r1, "OpenDir ",cc
+@@ -287,7 +287,7 @@
+ ;       r5,r6 = (width, height) : (0, h) means use default
+  ]
+ 
+-MakeDirWindow ENTRY "r0-r11"
++MakeDirWindow KernelEntry "r0-r11"
+ 
+  [ centralwrap
+         MOV     r14, #db_fpr_invalid    ; First time round
+@@ -355,7 +355,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; In    r4 -> dirviewer to make tiny
+ 
+-MakeTinyDir ENTRY "r1-r11"
++MakeTinyDir KernelEntry "r1-r11"
+ 
+ ; Create icon on icon bar from our template icon 0
+ 
+--- a/src/Filer/s/PathMunge
++++ b/src/Filer/s/PathMunge
+@@ -17,7 +17,7 @@
+ 
+ ; Out   r2 -> leafname
+ 
+-FindLeafname ENTRY "r3"
++FindLeafname KernelEntry "r3"
+ 
+         MOV     r2, r1                  ; paranoia, but it won't fall over!
+         MOV     r3, r1
+@@ -40,7 +40,7 @@
+ ; Out   NE: r1 -> dirname after stripping a leafname
+ ;       EQ: no leafname stripped
+ 
+-ExtractDirprefix ENTRY "r3"
++ExtractDirprefix KernelEntry "r3"
+ 
+         BL      strlen
+         BL      TryLeafStrip
+@@ -56,7 +56,7 @@
+ ; Out   NE: r3 = new span (+r1 -> where to bonk name)
+ ;       EQ: no leafname strippable, r3 unchanged
+ 
+-TryLeafStrip ENTRY "r1, r3"
++TryLeafStrip KernelEntry "r1, r3"
+ 
+  [ debug
+  DSTRING r1, "Try to strip leaf from ",cc
+--- a/src/Filer/s/RMAlloc
++++ b/src/Filer/s/RMAlloc
+@@ -26,7 +26,7 @@
+ ; Out   VC: block freed
+ ;       VS: fail
+ 
+-SFreeArea ENTRY "r0"
++SFreeArea KernelEntry "r0"
+ 
+  [ debugalloc
+  DREG r2,"SFreeArea "
+@@ -54,7 +54,7 @@
+ ; Out   VC: block freed and new one obtained; pointer to block updated
+ ;       VS: fail
+ 
+-SNewArea ENTRY "r0, r2"
++SNewArea KernelEntry "r0, r2"
+ 
+  [ debugalloc
+  DREG r3,"SNewArea "
+@@ -86,7 +86,7 @@
+ ; Out   VC: ok, r1 -> copied string
+ ;       VS: fail
+ 
+-SGetString ENTRY "r0, r2, r3"
++SGetString KernelEntry "r0, r2, r3"
+ 
+         BL      strlen
+         ADD     r3, r3, #1              ; +1 for terminator
+--- a/src/Filer/s/Recache
++++ b/src/Filer/s/Recache
+@@ -18,7 +18,7 @@
+ 
+ ; Out   r4 -> new dirviewer block, linked into ViewerList
+ 
+-RecacheDir ENTRY "r0-r3, r5-r11"
++RecacheDir KernelEntry "r0-r3, r5-r11"
+ 
+ ; Set up state needed to read same dir back
+ 
+--- a/src/Filer/s/Redraw
++++ b/src/Filer/s/Redraw
+@@ -26,7 +26,7 @@
+ ;  the 'Ok' button in it, which means give up redrawing window. Set a flag in
+ ;  dirviewer to say it's dead.
+ 
+-event_redraw_window ENTRY
++event_redraw_window KernelEntry
+ 
+  [ debugredraw
+  LDR r14,[r1, #r_handle]
+@@ -137,7 +137,7 @@
+ ;        r5 -> fileinfo block
+ ;        filebox()() set up
+ 
+-RedrawFile ENTRY "r1-r5, x0, y0, x1, y1"
++RedrawFile KernelEntry "r1-r5, x0, y0, x1, y1"
+ 
+  [ debugredraw
+  DREG r4, "RedrawFile: dir ",cc
+@@ -885,7 +885,7 @@
+ ;       GT: block intersects graphics window
+ ;       LE: no intersection
+ 
+-checkboxcoords ENTRY "cx0, cy0, cx1, cy1"
++checkboxcoords KernelEntry "cx0, cy0, cx1, cy1"
+ 
+         LDMIA   r0, {x0, y0, x1, y1}    ; our box
+  [ debugbox
+@@ -931,7 +931,7 @@
+ 
+ ; Out   filebox()() corrupt
+ 
+-UpdateFile ENTRY "r1-r5"
++UpdateFile KernelEntry "r1-r5"
+ 
+ 
+         BL      GetFileBox
+@@ -1122,7 +1122,7 @@
+ fui_topgap      * 4
+ 
+ 
+-GetItemBoxSize ENTRY
++GetItemBoxSize KernelEntry
+ 
+         LDRB    r14, [r4, #d_viewmode]  ; what view mode are we in?
+         AND     r14, r14, #db_displaymode
+@@ -1186,7 +1186,7 @@
+ 
+ ; NB. Do NOT call this with an empty dirviewer!
+ 
+-GetFileBox ENTRY "r1-r11"
++GetFileBox KernelEntry "r1-r11"
+ 
+         LDR     r10, [r4, #d_nfiles]
+         SUB     r10, r10, r3            ; r10 := index of file (0..n-1)
+@@ -1326,7 +1326,7 @@
+ ;       r0 -> leafname
+ ; Out   r2 -> sprite name
+ 
+-FiletypeToSpritename ENTRY "r0,r1"
++FiletypeToSpritename KernelEntry "r0,r1"
+ 
+         ; Is it a dir
+         TEQ     r2, #filetype_directory
+@@ -1372,7 +1372,7 @@
+ 
+ ; This shouldn't happen unless it needs to
+ 
+-        ENTRY   "r0, r1, r4"
++        KernelEntry   "r0, r1, r4"
+  [ debugrecache
+  DLINE  "RedrawBecauseModified"
+  ]
+--- a/src/Filer/s/RedrawOld
++++ b/src/Filer/s/RedrawOld
+@@ -26,7 +26,7 @@
+ ;  the 'Ok' button in it, which means give up redrawing window. Set a flag in
+ ;  dirviewer to say it's dead.
+ 
+-event_redraw_window ENTRY
++event_redraw_window KernelEntry
+ 
+  [ debugredraw
+  LDR r14,[r1, #r_handle]
+@@ -137,7 +137,7 @@
+ ;        r5 -> fileinfo block
+ ;        filebox()() set up
+ 
+-RedrawFile ENTRY "r1-r5, x0, y0, x1, y1"
++RedrawFile KernelEntry "r1-r5, x0, y0, x1, y1"
+ 
+  [ debugredraw
+  DREG r4, "RedrawFile: dir ",cc
+@@ -928,7 +928,7 @@
+ ;       GT: block intersects graphics window
+ ;       LE: no intersection
+ 
+-checkboxcoords ENTRY "cx0, cy0, cx1, cy1"
++checkboxcoords KernelEntry "cx0, cy0, cx1, cy1"
+ 
+         LDMIA   r0, {x0, y0, x1, y1}    ; our box
+  [ debugbox
+@@ -974,7 +974,7 @@
+ 
+ ; Out   filebox()() corrupt
+ 
+-UpdateFile ENTRY "r1-r5"
++UpdateFile KernelEntry "r1-r5"
+ 
+ 
+         BL      GetFileBox
+@@ -1138,7 +1138,7 @@
+ fui_topgap      * 4
+ 
+ 
+-GetItemBoxSize ENTRY
++GetItemBoxSize KernelEntry
+ 
+         LDRB    r14, [r4, #d_viewmode]  ; what view mode are we in?
+         AND     r14, r14, #db_displaymode
+@@ -1202,7 +1202,7 @@
+ 
+ ; NB. Do NOT call this with an empty dirviewer!
+ 
+-GetFileBox ENTRY "r1-r11"
++GetFileBox KernelEntry "r1-r11"
+ 
+         LDR     r10, [r4, #d_nfiles]
+         SUB     r10, r10, r3            ; r10 := index of file (0..n-1)
+@@ -1342,7 +1342,7 @@
+ ;       r0 -> leafname
+ ; Out   r2 -> sprite name
+ 
+-FiletypeToSpritename ENTRY "r0,r1"
++FiletypeToSpritename KernelEntry "r0,r1"
+ 
+         ; Is it a dir
+         TEQ     r2, #filetype_directory
+@@ -1388,7 +1388,7 @@
+ 
+ ; This shouldn't happen unless it needs to
+ 
+-        ENTRY   "r0, r1, r4"
++        KernelEntry   "r0, r1, r4"
+  [ debugrecache
+  DLINE  "RedrawBecauseModified"
+  ]
+--- a/src/Filer/s/SaveDisply
++++ b/src/Filer/s/SaveDisply
+@@ -29,7 +29,7 @@
+ ;       LO indicates not full
+ ;       bytes transfered to estination buffer
+ 
+-transfer_bytes ENTRY "r1,r3"
++transfer_bytes KernelEntry "r1,r3"
+ 10      ; Exit if destination full
+         CMP     r10, r11
+         EXIT    HS
+@@ -68,9 +68,9 @@
+ ;       exit as per transfer_bytes
+ ;
+  [ version >= 155
+-transfer_number ENTRY "r1,r2,r3,r4", 18
++transfer_number KernelEntry "r1,r2,r3,r4", 18
+  |
+-transfer_number ENTRY "r1,r2,r3,r4", 16
++transfer_number KernelEntry "r1,r2,r3,r4", 16
+  ]
+         MOV     r1, sp
+         MOV     r2, #16
+@@ -106,7 +106,7 @@
+ ; Out   exit as per transfer_bytes
+ ;
+ a_space DCB     " "
+-transfer_a_space ENTRY "r1,r3"
++transfer_a_space KernelEntry "r1,r3"
+         ADR     r1, a_space
+         MOV     r3, #1
+         BL      transfer_bytes
+@@ -127,7 +127,7 @@
+ ;             has finished.
+ ;       r0 will be corrupted, and if VS then r0 -> error.
+ 
+-savedisplay_fillbuffer ENTRY "r1-r9,r11", 36
++savedisplay_fillbuffer KernelEntry "r1-r9,r11", 36
+      ; Initialise
+         ; Go down the viewer list, stopping on viewer first_viewerno.
+         ; Viewers are numbered 0 upwards.
+@@ -274,7 +274,7 @@
+ ; Out   r0 corrupted
+ ;       Dir viewers sorted by stacking order, bottom first
+ ;
+-sortviewers_bystacking ENTRY "r1-r4", u_windowstate
++sortviewers_bystacking KernelEntry "r1-r4", u_windowstate
+         ; Zero out the sort links
+         LDR     r2, ViewerList
+         MOV     r1, #0
+@@ -352,7 +352,7 @@
+ ; In    Nothing
+ ; Out   Status all set up for a displaysave from the start
+ 
+-savedisplay_init ENTRY "r0,r3"
++savedisplay_init KernelEntry "r0,r3"
+         MOV     r0, #0
+         STR     r0, next_nullcount
+         STR     r0, first_viewerno
+@@ -380,7 +380,7 @@
+ ;
+ ; In    r1 -> file name
+ 
+-savedisplay_intofile ENTRY "r1,r2,r10,r11"
++savedisplay_intofile KernelEntry "r1,r2,r10,r11"
+ 
+         ; Open the file for output
+         MOV     r0, #2_10000111 ; OPENOUT
+@@ -435,7 +435,7 @@
+ ; savedisplay_intofilehandle
+ ;
+ ; In    r1 = file handle
+-savedisplay_intofilehandle ENTRY "r1-r4,r9-r11"
++savedisplay_intofilehandle KernelEntry "r1-r4,r9-r11"
+         ; Init for transfering bytes of filer_opendir commands
+         BL      savedisplay_init
+         EXIT    VS
+@@ -473,7 +473,7 @@
+ ; In r1 = file handle
+ ; Out r0 corrupted and file written
+ ;
+-saveapps_intofilehandle ENTRY "r1-r6"
++saveapps_intofilehandle KernelEntry "r1-r6"
+         LDR     r5, ApplicList
+         MOV     r6, r1
+         MOV     r0, #OSGBPB_WriteAtPTR
+--- a/src/Filer/s/SelStuff
++++ b/src/Filer/s/SelStuff
+@@ -20,7 +20,7 @@
+ ; For each object in the new directory, look it up in the old directory
+ ; and copy across its selection state
+ 
+-CopySelectionStateAcross ENTRY "r1, r3, r5, r6"
++CopySelectionStateAcross KernelEntry "r1, r3, r5, r6"
+ 
+         LDR     r3, [r7, #d_nfiles]     ; r3 = no of files to do
+         CMP     r3, #0
+@@ -47,7 +47,7 @@
+ 
+ ; Loop over files in old dirviewer, see if any match
+ 
+-CopySelectionStateForFile ENTRY "r2, r3, r6, r8"
++CopySelectionStateForFile KernelEntry "r2, r3, r6, r8"
+ 
+         LDR     r3, [r4, #d_nfiles]     ; r3 = no of files to do
+         CMP     r3, #0
+@@ -97,7 +97,7 @@
+ ;           r4 -> selected dirviewer block
+ ;           r5 -> selected fileinfo block
+ 
+-GetSelection ENTRY
++GetSelection KernelEntry
+ 
+         LDR     r3, sel_filenumber
+         LDR     r4, sel_dir
+--- a/src/Filer/s/SelStuff0
++++ b/src/Filer/s/SelStuff0
+@@ -17,7 +17,7 @@
+ 
+ ; Out   r1 -> dirnamebuffer containing command+dirname+leafname
+ 
+-PutSelNamesInBuffer ENTRY "r3"
++PutSelNamesInBuffer KernelEntry "r3"
+ 
+         ADR     r1, dirnamebuffer
+         BL      strcpy                  ; Including spaces
+--- a/src/Filer/s/SelUtils
++++ b/src/Filer/s/SelUtils
+@@ -19,7 +19,7 @@
+ 
+ ; Out   filebox()() corrupt
+ 
+-ClearAllSelections ENTRY "r3-r5"
++ClearAllSelections KernelEntry "r3-r5"
+ 
+  [ debugsel
+  DREG r2, "Clearing all selections except in dirviewer "
+@@ -83,7 +83,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; In    r4,r5 valid
+ 
+-ClearSelectedItem ENTRY "r1, r3"
++ClearSelectedItem KernelEntry "r1, r3"
+ 
+         LDRB    r14, [r5, #df_state]
+         TST     r14, #dfs_selected
+@@ -110,7 +110,7 @@
+ ; Out   EQ: found, r4 -> dirviewer block
+ ;       NE: not found, r4 = Nowt
+ 
+-FindDir ENTRY
++FindDir KernelEntry
+ 
+         LDR     r4, ViewerList
+ 
+@@ -135,7 +135,7 @@
+ ; Out   EQ: found, r4 -> dirviewer block
+ ;       NE: not found
+ 
+-FindIconBarDir ENTRY
++FindIconBarDir KernelEntry
+ 
+         LDR     r4, ViewerList
+ 
+@@ -166,9 +166,9 @@
+ ;             r5 = Nowt
+ 
+  [ version >= 114
+-FindFile ENTRY  "x0, y0, x1, y1"
++FindFile KernelEntry  "x0, y0, x1, y1"
+  |
+-FindFile ENTRY  "x0, y0, x1, y1, r10, r11"
++FindFile KernelEntry  "x0, y0, x1, y1, r10, r11"
+  ]
+ 
+         LDR     r3, [r4, #d_nfiles]
+@@ -255,7 +255,7 @@
+ dvr_smsprite_gap        * 6     ; Gap to left end of left justification end stop and also
+                                 ; Gap from from left end to 1st char of string
+ dvr_lgsprite_width      * 68
+-HitsFile ENTRY "r0-r5"
++HitsFile KernelEntry "r0-r5"
+         BL      GetFileBox
+         LDRB    r0, [r4, #d_viewmode]
+         AND     r0, r0, #db_displaymode
+--- a/src/Filer/s/SendAck
++++ b/src/Filer/s/SendAck
+@@ -18,7 +18,7 @@
+ ; In    r0 = message action
+ ;       r1 -> block (size already filled in)
+ 
+-SendAck ENTRY "r2"
++SendAck KernelEntry "r2"
+ 
+         STR     r0, [r1, #ms_action]
+ 
+--- a/src/Filer/s/SendMsg
++++ b/src/Filer/s/SendMsg
+@@ -23,7 +23,7 @@
+ ;       r4 = who to send it to (task handle, window handle or 0)
+ ;       r5 = icon handle (only needed if r4 = window handle)
+ 
+-SendDataOpenMessage     ENTRY   "r0,r7"
++SendDataOpenMessage     KernelEntry   "r0,r7"
+         MOV     r0, #Message_DataOpen
+         MOV     r7, #0
+         BL      SendMessageCommon
+@@ -41,7 +41,7 @@
+ ;       r4 = who to send it to (task handle, window handle or 0)
+ ;       r5 = icon handle (only needed if r4 = window handle)
+ 
+-SendMessage     ENTRY   "r7"
++SendMessage     KernelEntry   "r7"
+         MOV     r7, #-1
+         BL      SendMessageCommon
+         EXIT
+@@ -68,7 +68,7 @@
+         MakeErrorBlock  Filer_BadPath
+  ]
+ 
+-SendMessageCommon ENTRY "r1-r9"
++SendMessageCommon KernelEntry "r1-r9"
+ 
+  [ disallow_longpaths
+         BL      strlen_excludingspaces
+--- a/src/Filer/s/SortDir
++++ b/src/Filer/s/SortDir
+@@ -21,7 +21,7 @@
+ 
+ ; Out   items re-ordered (blocks only - names are ref by ptrs)
+ 
+-SortDir ENTRY   "r1-r11"
++SortDir KernelEntry   "r1-r11"
+ 
+  [ debug
+  DREG r1, "Sorting dirviewer "
+@@ -83,7 +83,7 @@
+ ; Out   LT,GE from CMP between first and second objects
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-sort_name ENTRY "r0-r3"
++sort_name KernelEntry "r0-r3"
+ 
+         LDR     r2, [r1, #df_fileptr]
+         ADD     r2, r12, r2, LSR #16    ; r2 -> name(r1)
+@@ -138,7 +138,7 @@
+         MEND
+ 
+ 
+-sort_type ENTRY
++sort_type KernelEntry
+ 
+         LType   r2, r0, r14
+         LType   r3, r1, r14
+@@ -168,7 +168,7 @@
+         MEND
+ 
+ 
+-sort_size ENTRY
++sort_size KernelEntry
+ 
+         LSize   r2, r0, r14
+         LSize   r3, r1, r14
+@@ -197,7 +197,7 @@
+         MEND
+ 
+ 
+-sort_date ENTRY "r4, r5"
++sort_date KernelEntry "r4, r5"
+ 
+         LDate   r4, r0, r14             ; Get high bytes
+         LDate   r5, r1, r14
+@@ -208,6 +208,7 @@
+         MOVNE   r14, #Z_bit
+         SBCS    r2, r5, r4
+         TEQEQP  r14, pc
++        NOP     ; ARM2 processor-state settling
+         BLEQ    sort_name               ; NB. don't corrupt r0,r1 if going
+         EXIT                            ; to do sort_name !
+         END
+--- a/src/Filer/s/SprUtils
++++ b/src/Filer/s/SprUtils
+@@ -16,7 +16,7 @@
+ ; Out   VC: sprite exists
+ ;       VS: sprite does not exist
+ 
+-ExistsSprite ENTRY "r0-r7"
++ExistsSprite KernelEntry "r0-r7"
+ 
+  [ debugredraw
+  DSTRING r2,"lookup sprite "
+@@ -64,7 +64,7 @@
+ 
+ ; Out   r0 corrupt
+ 
+-SpriteOp ENTRY "r1"
++SpriteOp KernelEntry "r1"
+ 
+  [ debugredraw :LAND: False
+  DREG r0, "SpriteOp: rc ",cc,Word
+--- a/src/Filer/s/StrUtils
++++ b/src/Filer/s/StrUtils
+@@ -25,7 +25,7 @@
+ 
+ ; Out   r3 = number of chars (can be used as size for Heap)
+ 
+-strlen ENTRY "r0"
++strlen KernelEntry "r0"
+ 
+         MOV     r3, #0
+ 10      LDRB    r0, [r1, r3]
+@@ -46,7 +46,7 @@
+ 
+ ; Out   r3 = number of chars (can be used as size for Heap)
+ 
+-strlen_excludingspaces ENTRY "r0"
++strlen_excludingspaces KernelEntry "r0"
+ 
+         MOV     r3, #0
+ 
+@@ -69,7 +69,7 @@
+ 
+ ; Out   new string in r1 = "r1" :CC: "r2" :CC: 0
+ 
+-strcat ENTRY "r1-r3"
++strcat KernelEntry "r1-r3"
+ 
+         MOV     r3, #space-1
+ 
+@@ -155,7 +155,7 @@
+ ;
+ ; Out string nul terminated at 1st char le space or eq delete
+ ;
+-nul_terminate ENTRY "r1"
++nul_terminate KernelEntry "r1"
+ 10
+         LDRB    r14, [r1], #1
+         CMP     r14, #delete
+@@ -173,7 +173,7 @@
+ ;       r3 = max size of string to copy ( <= r3+1 bytes filled )
+ ; Out   Regs preserved and string copied.
+ 
+-strncpy ENTRY   "r1-r3"
++strncpy KernelEntry   "r1-r3"
+         ; Initialise for the main loop
+         CMP     r3, #0
+         B       %FT20
+@@ -202,7 +202,7 @@
+ 
+ ; Out   r1 -> terminating null
+ 
+-strcpy_advance ENTRY "r2"
++strcpy_advance KernelEntry "r2"
+ 
+ 10      LDRB    r14, [r2], #1           ; Copy from *r2++
+         CMP     r14, #delete            ; Order, you git!
+@@ -226,7 +226,7 @@
+ 
+ ; Out   EQ/NE as appropriate
+ 
+-strcmp ENTRY "r1, r2, r4-r7"
++strcmp KernelEntry "r1, r2, r4-r7"
+ 
+         MOV     r6, #space-1
+ 
+@@ -281,7 +281,7 @@
+ 
+ ; Out   EQ/NE as appropriate: if EQ,CC -> span matched, but dest not finished
+ 
+-strncmp ENTRY "r1-r7"
++strncmp KernelEntry "r1-r7"
+ 
+         MOV     r6, #space-1
+ 
+--- a/src/Filer/s/SussApplic
++++ b/src/Filer/s/SussApplic
+@@ -51,7 +51,7 @@
+ ; Out
+ ; Regs preserved, applic added memory permitting (no error if failed)
+ 
+-AddApplicToApplicList ENTRY "r0,r1,r2,r3,r8,r9"
++AddApplicToApplicList KernelEntry "r0,r1,r2,r3,r8,r9"
+ 
+ ; Add !Applic to applic list now its been successfully booted
+         MOV     r8, r0                  ; store the was booted flag somewhere handy
+@@ -130,12 +130,12 @@
+ 60      ; Failed to allocate an application block
+         EXITS
+ 
+-SussPlingApplic ENTRY "r0"
++SussPlingApplic KernelEntry "r0"
+         BL      SussPlingApplic_ReturnError
+         BLVS    LocalReportError
+         EXITS
+ 
+-SussPlingApplic_ReturnError ENTRY "r0-r8"
++SussPlingApplic_ReturnError KernelEntry "r0-r8"
+ 
+         LDRB    r14, [r5, #df_type]
+         CMP     r14, #dft_dir
+@@ -330,7 +330,7 @@
+ ;
+ ; Out   Applic sussed, regs preserved, userdata used
+ ;
+-SussPlingApplic_GivenName       ENTRY "r0-r5"
++SussPlingApplic_GivenName       KernelEntry "r0-r5"
+         MOV     r0, #OSFile_ReadNoPath
+         SWI     XOS_File
+         STRVS   r0, [sp, #0*4]
+--- a/src/Filer/s/UpCall
++++ b/src/Filer/s/UpCall
+@@ -25,7 +25,7 @@
+ ; In    r8 = filesystem/bits
+ ;       r9 = operation (see Hdr.UpCall/FileSwitch.LowLevel)
+ 
+-        ENTRY   "r0-r8"
++        KernelEntry   "r0-r8"
+         AND     r8, r8, #&FF            ; file system being modified
+ 
+  [ debugupcall
+@@ -45,7 +45,7 @@
+ ; UpCallNeedsPathname
+ ; ===================
+ 
+-UpCallNeedsPathname	ENTRY		; assumes UpCallHandler has saved regs
++UpCallNeedsPathname	KernelEntry		; assumes UpCallHandler has saved regs
+ 
+ ; This upcall does not supply a name and special field; we must
+ ; figure them out for ourselves.
+@@ -119,7 +119,7 @@
+ ; dirviewers etc. We are always sure what the filesystem is as FileSwitch tells
+ ; us. There are far too many holes to plug to get full consistency.
+ 
+-UpCallMainPart	ENTRY			; Assumes UpCallHandler has saved regs
++UpCallMainPart	KernelEntry			; Assumes UpCallHandler has saved regs
+ 
+ ; In    r1 -> filename (parsed for badness by FileSwitch)
+ ;       r6 = special field^ or 0
+@@ -193,7 +193,7 @@
+ PlingRunImage   DCB     "!RunImage", 0
+         ALIGN
+ 
+-UpCall_MightBeRunImageInApp ENTRY "r0-r3, r5"
++UpCall_MightBeRunImageInApp KernelEntry "r0-r3, r5"
+ 
+         ; Find the !RunImage
+         BL      strlen
+@@ -237,7 +237,7 @@
+ ; Out   EQ: nothing matched
+ ;       NE: something matched
+ 
+-UpCall_ModifyObject ENTRY "r1, r2, r4, r10"
++UpCall_ModifyObject KernelEntry "r1, r2, r4, r10"
+ 
+  [ debugupcall
+  DLINE "modifying objects matching ",cc
+@@ -344,7 +344,7 @@
+ ; In    r1 -> name
+ ;       r3 = span
+ 
+-dspan ENTRY "r0, r1"
++dspan KernelEntry "r0, r1"
+ 
+         SWI     XHostFS_HostVdu
+         SWI     XOS_WriteI+"'"
+@@ -365,7 +365,7 @@
+ 
+ ; In    r8 = filesystem
+ 
+-UpCall_Paranoia ENTRY "r4"
++UpCall_Paranoia KernelEntry "r4"
+ 
+ 
+  [ debugupcall
+@@ -423,7 +423,7 @@
+ ; Out:
+ ;       EQ No ancestor found
+ ;       NE Ancestor found
+-Ancestor_Exists ENTRY "r1-r6"
++Ancestor_Exists KernelEntry "r1-r6"
+ 
+         ; r5->stripname; r6->special field (null string for no special field)
+         MOV     r3, r1
+@@ -485,7 +485,7 @@
+ ;     dirty all
+  ]
+ 
+-UpCall_DeleteObject ENTRY "r3, r5"
++UpCall_DeleteObject KernelEntry "r3, r5"
+ 
+         BL      strlen
+         BL      TryLeafStrip            ; Dirty the parent of this object
+--- a/src/Filer/s/WinUtils
++++ b/src/Filer/s/WinUtils
+@@ -18,7 +18,7 @@
+ ; Out   window opened at front
+ ;       much register corruption
+ 
+-front ENTRY
++front KernelEntry
+ 
+  [ debug
+  DREG r0, "front: window handle ",,Integer
+@@ -42,7 +42,7 @@
+ ; Out   window redrawn at current position in window stack
+ ;       much register corruption
+ 
+-ForceReopen ENTRY
++ForceReopen KernelEntry
+ 
+  [ centralwrap
+         MOV     r14, #db_fpr_invalid    ; Ensure it gets fully redrawn/resized
+@@ -70,7 +70,7 @@
+ 
+ ; Out   r3, r4 = abs. coords of top left of window, NOT work area
+ 
+-GetWindowCoords ENTRY "r0, r1"
++GetWindowCoords KernelEntry "r0, r1"
+ 
+  [ debug
+  DREG r0,"GetWindowCoords ",,Integer
+@@ -94,9 +94,9 @@
+ ; Out   x0, y1 = origin (top/left) of work area
+ 
+  [ version >= 114
+-GetWorkAreaCoords ENTRY "r0, r1, y0, x1, scx, scy", 36
++GetWorkAreaCoords KernelEntry "r0, r1, y0, x1, scx, scy", 36
+  |
+-GetWorkAreaCoords ENTRY "r0, r1, y0, x1, scx, scy"
++GetWorkAreaCoords KernelEntry "r0, r1, y0, x1, scx, scy"
+  ]
+ 
+  [ debug
+--- a/src/Filer/s/WkspEtc
++++ b/src/Filer/s/WkspEtc
+@@ -497,7 +497,7 @@
+ ind_infobox_ptr         #       4
+ infobox_ptr             #       4
+ 
+- [ :LNOT actionwind
++ [ :LNOT: actionwind
+ ind_daccesswindow_ptr   #       4
+ daccesswindow_ptr       #       4
+   [ debug
+--- a/src/Switcher/s/Switcher
++++ b/src/Switcher/s/Switcher
+@@ -201,6 +201,7 @@
+                 GBLL    DynamicAreas    ; Can cope with app-dynamic areas
+ DynamicAreas    SETL    {TRUE}
+ 
++        AREA Switcher,CODE,READONLY
+ Module_BaseAddr
+ 
+         GET     Hdr:ListOpts
+@@ -526,11 +527,10 @@
+ ;; Module header
+ ;;----------------------------------------------------------------------------
+ 
+-        LEADR   Module_LoadAddr
+ 
+         ASSERT  (.=Module_BaseAddr)
+ 
+-MySWIBase       *       Module_SWISystemBase + SwitcherSWI * Module_SWIChunkSize
++MySWIBase       *       SwitcherSWI_Base
+ 
+         DCD     Start          - Module_BaseAddr
+         DCD     Init           - Module_BaseAddr
+@@ -730,6 +730,7 @@
+         Push    "LR"
+ 
+         TEQP    PC,#SVC_mode            ; Ensure that IRQs are re-enabled
++        NOP     ; ARM2 processor-state settling
+         LDR     wsptr,[R12]
+         CMP     wsptr,#0                ; is the switcher active?
+         MyError NotRunning,LE
+@@ -1026,7 +1027,7 @@
+ 
+ ; OSS This routine needs stack. R8 holds the accumuating indirect data size.
+ 
+-getworkspace ENTRY "r0-r8"
++getworkspace KernelEntry "r0-r8"
+         LDR     r2, [r12]               ; do we have any workspace?
+         CMP     r2, #0
+         MOVNE   r12, r2
+@@ -1755,7 +1756,7 @@
+ ;         error if template entry not known
+ ;
+ 
+-loadtemplate ENTRY "r4"
++loadtemplate KernelEntry "r4"
+         MOV     r4,#-1
+         BL      int_loadtemplate
+         EXIT
+@@ -3590,7 +3591,7 @@
+ ; Out   r0 corrupt if VC, else r0 -> error block if VS
+ ;       r3 = size of string excluding terminator
+ 
+-lookup_nopars ENTRY "r4-r7"
++lookup_nopars KernelEntry "r4-r7"
+ 
+         BL      allocatemessagedata     ; r0 -> file desc
+         MOVVC   r4, #0
+@@ -3657,7 +3658,7 @@
+ ; In    [messagedata] -> message file desc (0 => not yet opened)
+ ; Out   r0 = [messagedata] -> message file desc (opened if not already open)
+ 
+-allocatemessagedata ENTRY "r1-r3"
++allocatemessagedata KernelEntry "r1-r3"
+ 
+         LDR     r0, messagedata
+         CMP     r0, #0
+@@ -3687,7 +3688,7 @@
+ ; In    [messagedata] -> message file desc, or = 0 if not loaded
+ ; Out   [messagedata] = 0, OS_Module (Free) called if required, error preserved
+ 
+-deallocatemessagedata ENTRY "r0,r2"
++deallocatemessagedata KernelEntry "r0,r2"
+ 
+         LDR     r2, messagedata
+         MOVS    r0, r2
+@@ -4296,7 +4297,7 @@
+ ; Setup a CallAfter to call the routine, which inturn issues a CallBack
+ ; and finally the text will get changed.
+ 
+-setuptochange ENTRY ""
++setuptochange KernelEntry ""
+ 
+         LDR     R0,=100                 ; call ~1 second from now!
+         ADR     R1,gettext_callafter
+@@ -4309,7 +4310,7 @@
+ 
+ ; Remove to change - remove possible CallAfter and CallBack routines.
+ 
+-removetochange ENTRY "R0-R1"
++removetochange KernelEntry "R0-R1"
+ 
+         ADR     R0,gettext_callafter
+         MOV     R1,WsPtr
+@@ -4337,7 +4338,7 @@
+ ; is -1 then we simply use the default string, otherwise we assume its
+ ; the pointer to a meaningful message.
+ 
+-gettext ENTRY   "R0-R5"
++gettext KernelEntry   "R0-R5"
+ 
+         MOV     R0,#0
+         STRB    R0,changetext           ; don't change text again (until next time non-zero)
+@@ -4986,7 +4987,7 @@
+ ; Out   R2 = size of result, put in [mb_taskname..]
+ ;       VC => R0 corrupt, VS => R0 -> error block
+ 
+-make_mb_taskname ENTRY "r1,r3-r7"
++make_mb_taskname KernelEntry "r1,r3-r7"
+ 
+         MOV     r1, r0                  ; r1 -> token
+         BL      allocatemessagedata
+@@ -5146,7 +5147,7 @@
+ 
+ ; Lose the font currently claimed for the dialogue box.
+ 
+-losefont ENTRY "R0"
++losefont KernelEntry "R0"
+         LDR     R0,info_font
+         CMP     R0,#0                   ; font currently claimed?
+         SWINE   XFont_LoseFont          ; yes, so release it
+@@ -5706,7 +5707,7 @@
+ 
+ ;.............................................................................
+ 
+-CopyMenus ENTRY "r1-r7"
++CopyMenus KernelEntry "r1-r7"
+ 
+         ADR     r1, mb_newtask                          ; set up writeable field
+         MOV     r2, #0
+@@ -5925,7 +5926,7 @@
+         InsertNDRDebugRoutines
+       ]
+ 
+-MyXWimp_Poll ENTRY "R0-R3"
++MyXWimp_Poll KernelEntry "R0-R3"
+         LDR     R14,dragBar
+         CMP     R14,#0
+         BLE     %FT05

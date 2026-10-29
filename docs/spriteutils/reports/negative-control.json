@@ -1,0 +1,12 @@
+{
+  "status": "EXPECTED_FAILURE",
+  "rom_sha256": "175cd8a2d1726c4371119eefcdaa73921b5259d044992afaceb2b26cb77a6301",
+  "errors": [
+    {
+      "component": "Wimp",
+      "error": "File 'SLOAD' not found",
+      "number": 214
+    }
+  ],
+  "scope": "Original unmodified disc-1 double-click before SpriteUtils restoration"
+}

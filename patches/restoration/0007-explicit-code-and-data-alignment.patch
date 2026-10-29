@@ -1,0 +1,73 @@
+--- a/Kernel/s/Arthur3
++++ b/Kernel/s/Arthur3
+@@ -1799,6 +1799,8 @@
+ 
+ ; status bits :
+ 
++; Modified 2026: align before defining the entry label.
++        ALIGN
+ 20
+         ADD     r0, r2, #1              ; got to do *status on a NoParm or Special
+ 21
+--- a/Kernel/s/KbdResA1
++++ b/Kernel/s/KbdResA1
+@@ -66,6 +66,8 @@
+ 
+ ; On ARM600, this routine must work in IRQ32 mode
+ 
++; Modified 2026: align before defining the entry label.
++        ALIGN
+ IRQ_Test_CTRL_or_R_Pressed ROUT
+  [ CPU_Type = "ARM600"
+         BIC     pc, pc, #&FC000000      ; take us out of the shadow ROM area
+--- a/Kernel/s/MoreComms
++++ b/Kernel/s/MoreComms
+@@ -187,6 +187,7 @@
+       [ International
+         BL      GSWriteS_Translated
+         =       "ROMMTitle:No. Position|IModule Name|I|IVersion|IStatus|M|J",0
++        ALIGN ; Modified 2026: inline string return rounds PC up to a word boundary.
+         EXIT    VS
+       |
+         ADRL    r0, romm_helpstr
+--- a/Kernel/s/MoreSWIs
++++ b/Kernel/s/MoreSWIs
+@@ -930,6 +930,7 @@
+ 
+ confirm_yn      DCB "YesNo:yn",0        ; Token to lookup message for Yes/No
+ ptr_confirm     DCB "ptr_confirm",0     ; Wimp's confirm pointer sprite shape
++        ALIGN ; Modified 2026: word table alignment must precede its label.
+ confirm_scale   DCD 1,1,1,1             ; Scaling factor for sprite op
+ Confirm_Code ROUT
+         TEQP    pc, #SVC_mode           ; enable IRQs
+--- a/Kernel/s/PMF/osinit
++++ b/Kernel/s/PMF/osinit
+@@ -25,6 +25,8 @@
+ 
+ ; *****************************************************************************
+ 
++; Modified 2026: align before defining the entry label.
++        ALIGN
+ ExecuteInit ROUT
+         Push    R14
+ 
+--- a/Kernel/s/Utility
++++ b/Kernel/s/Utility
+@@ -192,6 +192,8 @@
+ PowerOn_Code         * Module_BaseAddr
+ PowerOn_Syntax       * Module_BaseAddr
+ 
++; Modified 2026: align before defining the entry label.
++        ALIGN
+ RMFaster_Code
+            Push "lr"
+            MOV R1, R0
+@@ -545,6 +547,8 @@
+         =       "Macro", 0
+       ]
+ 
++; Modified 2026: align before defining the entry label.
++        ALIGN
+ Set_Code ROUT
+         MOV    R4, #VarType_String
+ 01

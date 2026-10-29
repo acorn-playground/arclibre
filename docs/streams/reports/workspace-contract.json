@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "kernel_sha256": "71b0c301ed58f7f60d84899ca80acdef3d6cb9c9f6d82182f441e66676c35c80",
+  "addresses": {
+    "ESC_Status": 260
+  }
+}

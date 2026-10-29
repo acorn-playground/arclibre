@@ -1,0 +1,213 @@
+--- a/src/RISC_OSLib/clib/h/math
++++ b/src/RISC_OSLib/clib/h/math
+@@ -1,3 +1,4 @@
++/* Modified 2026 by ArcLibre: GCC APCS-26 ABI compatibility. */
+ /* Copyright 1996 Acorn Computers Ltd
+  *
+  * Licensed under the Apache License, Version 2.0 (the "License");
+@@ -56,8 +57,10 @@
+    /* a domain error occurs if both args are zero, and -HUGE_VAL returned. */
+    /* Returns: the arc tangent of y/x, in the range -Pi to Pi. */
+ 
++#ifndef __GNUC__ /* Norcroft intrinsic names; GCC calls the real library API. */
+ extern double __d_atan(double);
+ #define atan(x) __d_atan(x)
++#endif
+ 
+ extern double cos(double /*x*/);
+    /* computes the cosine of x (measured in radians). A large magnitude */
+@@ -68,10 +71,12 @@
+    /* argument may yield a result with little or no significance */
+    /* Returns: the sine value. */
+ 
++#ifndef __GNUC__ /* Norcroft intrinsic names; GCC calls the real library API. */
+ extern double __d_sin(double);
+ extern double __d_cos(double);
+ #define sin(x) __d_sin(x)
+ #define cos(x) __d_cos(x)
++#endif
+ 
+ extern double tan(double /*x*/);
+    /* computes the tangent of x (measured in radians). A large magnitude */
+@@ -156,8 +161,10 @@
+    /*          less than the magnitude of y. If y is zero, a domain error */
+    /*          occurs and -HUGE_VAL is returned. */
+ 
++#ifndef __GNUC__ /* Norcroft intrinsic names; GCC calls the real library API. */
+ extern double __d_abs(double);
+ #define fabs(x) __d_abs(x)
++#endif
+ 
+ #ifdef __cplusplus
+ }
+--- a/src/RISC_OSLib/clib/h/stdarg
++++ b/src/RISC_OSLib/clib/h/stdarg
+@@ -1,3 +1,4 @@
++/* Modified 2026 by ArcLibre: GCC APCS-26 ABI compatibility. */
+ /* Copyright 1996 Acorn Computers Ltd
+  *
+  * Licensed under the Apache License, Version 2.0 (the "License");
+@@ -34,7 +35,11 @@
+ 
+ /* N.B. <stdio.h> is required to declare vfprintf() without defining      */
+ /* va_list.  Clearly the type __va_list there must keep in step.          */
++#ifdef __GNUC__
++typedef __builtin_va_list va_list[1]; /* One pointer, passed by reference. */
++#else
+ typedef char *va_list[1];       /* see <stdio.h> */
++#endif
+    /*
+     * an array type suitable for holding information needed by the macro va_arg
+     * and the function va_end. The called function shall declare a variable
+@@ -44,6 +49,13 @@
+     * is passed as an argument it gets passed by reference.
+     */
+ 
++#ifdef __GNUC__
++/* Preserve the public Norcroft array-of-one va_list interface. GCC must spill
++ * register arguments itself; taking &parmN does not implement va_start. */
++#define va_start(ap,parmN) __builtin_va_start(*(ap),parmN)
++#define va_arg(ap,type) __builtin_va_arg(*(ap),type)
++#define va_end(ap) __builtin_va_end(*(ap))
++#else
+ /* Note that ___type is a syntactic item a bit like the type qualifiers   */
+ /* 'static', 'register', 'const' etc except that it has no effect! Its    */
+ /* purpose is to indicate when a type is being introduced and thus        */
+@@ -117,6 +129,7 @@
+     * a -ve address to ensure address trap.
+     */
+ 
++#endif /* __GNUC__ */
+ #endif
+ 
+ /* end of stdarg.h */
+--- a/src/RISC_OSLib/clib/h/stddef
++++ b/src/RISC_OSLib/clib/h/stddef
+@@ -1,3 +1,4 @@
++/* Modified 2026 by ArcLibre: GCC APCS-26 ABI compatibility. */
+ /* Copyright 1996 Acorn Computers Ltd
+  *
+  * Licensed under the Apache License, Version 2.0 (the "License");
+@@ -58,6 +59,10 @@
+    /* null pointer constant. */
+ #endif
+ 
++#ifdef __GNUC__
++#define ___type /* Norcroft syntactic qualifier; no semantic effect. */
++#endif
++
+ #define offsetof(type, member) \
+     ((size_t)((char *)&(((___type type *)0)->member) - (char *)0))
+    /*
+--- a/src/RISC_OSLib/clib/h/stdio
++++ b/src/RISC_OSLib/clib/h/stdio
+@@ -1,3 +1,4 @@
++/* Modified 2026 by ArcLibre: GCC APCS-26 ABI compatibility. */
+ /* Copyright 1996 Acorn Computers Ltd
+  *
+  * Licensed under the Apache License, Version 2.0 (the "License");
+@@ -41,7 +42,11 @@
+ #endif
+ 
+ /* ANSI forbids va_list to be defined here */
++#ifdef __GNUC__
++typedef __builtin_va_list __va_list[1]; /* Keep the public by-reference ABI. */
++#else
+ typedef char *__va_list[1];       /* keep in step with <stdarg.h> */
++#endif
+ 
+ #ifndef NULL
+ #  define NULL 0                /* see <stddef.h> */
+--- a/src/RISC_OSLib/clib/s/cl_spare
++++ b/src/RISC_OSLib/clib/s/cl_spare
+@@ -1,3 +1,4 @@
++; Modified 2026 by ArcLibre: GCC APCS-26/AsAsm ABI and ARM2 restoration.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -25,7 +26,12 @@
+ 
+         EXPORT  |CLib_data_end|
+ 
++ [ :DEF:ArcLibre_CLibPrivateBytes
++        ASSERT ArcLibre_CLibPrivateBytes <= 490*4
++        %       490*4 - ArcLibre_CLibPrivateBytes
++ |
+         %       97*4
++ ]
+ |CLib_data_end|
+ 
+         END
+--- a/src/RISC_OSLib/kernel/s/k_body
++++ b/src/RISC_OSLib/kernel/s/k_body
+@@ -1,3 +1,4 @@
++; Modified 2026 by ArcLibre: GCC APCS-26/AsAsm ABI and ARM2 restoration.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -1371,6 +1372,7 @@
+         TST     r14, #PSRSVCMode
+         SWINE   EnterSVC
+         TEQP    pc, #PSRIBit+PSRSVCMode  ; interrupts off, for atomic read and update
++        NOOP                          ; ARM2 processor-state settling
+         LDRB    a1, [a3, #O_escapeSeen]
+         STRB    a2, [a3, #O_escapeSeen]
+         MOVS    pc, a4
+@@ -1558,6 +1560,7 @@
+ 
+ Event_NoStackForHandler
+         TEQP    pc, #PSRIBit+PSRSVCMode ; we want the testing for an escape and
++        NOOP                          ; ARM2 processor-state settling
+         MOV     r1, #1                  ; allowing callbacks to be indivisible
+         LDRB    r0, [v6, #O_hadEscape]  ; (otherwise an escape may be lost).
+         STRB    r1, [v6, #O_callbackInactive]
+@@ -1729,13 +1732,13 @@
+         ; were saved in this frame.
+         MOV     ip, #1
+         ADD     v2, a4, #frame_prevfp
+-        MOV     v3, #v6
++        MOV     v3, #9                  ; v6 register number, not register operand
+         ADD     v4, a1, #uwb_r4-r4*4
+ 01      TST     v1, ip, ASL v3
+         LDRNE   r14, [v2, #-4]!
+         STRNE   r14, [v4, v3, ASL #2]
+         SUB     v3, v3, #1
+-        CMP     v3, #v1
++        CMP     v3, #4                  ; v1 register number
+         BGE     %B01
+ 
+         ; now look for floating point stores immediately after the savemask
+--- a/src/RISC_OSLib/rlib/c/wimp
++++ b/src/RISC_OSLib/rlib/c/wimp
+@@ -1,3 +1,4 @@
++/* Modified 2026 by ArcLibre: GCC APCS-26 ABI compatibility. */
+ /* Copyright 1996 Acorn Computers Ltd
+  *
+  * Licensed under the Apache License, Version 2.0 (the "License");
+@@ -28,7 +29,7 @@
+ #include <stdarg.h>
+ 
+ #include "os.h"
+-#include "trace .h"
++#include "trace.h"
+ #ifndef __wimp_h
+ #define __WIMP_COMPILE
+ #include "wimp.h"
+--- a/src/RISC_OSLib/rlib/s/rl_spare
++++ b/src/RISC_OSLib/rlib/s/rl_spare
+@@ -1,3 +1,4 @@
++; Modified 2026 by ArcLibre: GCC APCS-26/AsAsm ABI and ARM2 restoration.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -53,6 +54,10 @@
+         %       247*4
+  ]
+ 
++ [ :DEF:ArcLibre_RLibPrivateBytes
++        ASSERT ArcLibre_RLibPrivateBytes <= 607*4
++        %       607*4 - ArcLibre_RLibPrivateBytes
++ ]
+ |RLib_data_end|
+ 
+         END

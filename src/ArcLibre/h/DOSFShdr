@@ -1,0 +1,46 @@
+/* SPDX-License-Identifier: Apache-2.0 */
+/* ArcLibre: C interface of the DOSFS module header.
+ *
+ * DOSFS 0.62's cmhg/DOSFShdr describes its module header and veneers; the
+ * original build generated this header and the veneers with Acorn's CMHG.
+ * ArcLibre implements that described contract by hand in
+ * src/ArcLibre/s/DOSFSHdr (no CMHG or CMunge output is used). This file
+ * declares the same C entry points, SWI numbers and command numbers.
+ */
+#ifndef __DOSFShdr_h
+#define __DOSFShdr_h
+
+#include "kernel.h"
+
+/* swi-chunk-base-number: 0x44B00; swi-decoding-table: DOSFS DiscFormat
+ * LayoutStructure */
+#define DOSFS_00                 0x044B00
+#ifndef DOSFS_DiscFormat
+#define DOSFS_DiscFormat         0x044B00
+#endif
+#ifndef DOSFS_LayoutStructure
+#define DOSFS_LayoutStructure    0x044B01
+#endif
+
+/* command-keyword-table: fs_commands; entries in table order */
+#define CMD_DOSMap               0
+#define CMD_CopyBoot             1
+
+/* initialisation-code: called after library initialisation, with the
+ * command tail, podule base/instance and the module's private word pointer.
+ * DOSFS defines it as returning int (always 0); the veneer treats any
+ * non-zero result as an error block pointer. */
+extern int init_fs(char *cmd_tail, int podule_base, void *pw);
+
+/* service-call-handler: only the services in the filter list reach C.
+ * r points at the caller's R0-R9; setting r->r[1] to 0 claims. */
+extern void fs_service(int service_number, _kernel_swi_regs *r, void *pw);
+
+/* swi-handler-code: swi_no is the offset within the chunk. */
+extern _kernel_oserror *fs_swi(int swi_no, _kernel_swi_regs *r, void *pw);
+
+/* command-keyword-table handler: argv is the command tail, argc the number
+ * of parameters, cmd_no the command's index in the table. */
+extern _kernel_oserror *fs_commands(char *argv, int argc, int cmd_no, void *pw);
+
+#endif

@@ -1,0 +1,929 @@
+[
+  {
+    "component": "Draw",
+    "path": "LICENSE",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358
+  },
+  {
+    "component": "Draw",
+    "path": "Makefile",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "f5aae81c642aa79bab8b949a8e671d0c883dce9e9714efbe941977393bc6c2af",
+    "sha256": "f5aae81c642aa79bab8b949a8e671d0c883dce9e9714efbe941977393bc6c2af",
+    "bytes": 8939
+  },
+  {
+    "component": "Draw",
+    "path": "Resources/!Boot,feb",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "b9c90bbc41bd3ce054c231fc6165b45d0971863e27bd41d2e5a94d7e4a474270",
+    "sha256": "b9c90bbc41bd3ce054c231fc6165b45d0971863e27bd41d2e5a94d7e4a474270",
+    "bytes": 162
+  },
+  {
+    "component": "Draw",
+    "path": "Resources/!Sprites,ff9",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "9cdc79a1756271a639db0958990bc12c294eaece5c9df51d8f9b550ef78f98f5",
+    "sha256": "9cdc79a1756271a639db0958990bc12c294eaece5c9df51d8f9b550ef78f98f5",
+    "bytes": 548
+  },
+  {
+    "component": "Draw",
+    "path": "Resources/ROM/!Boot,feb",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "169e46891975e129cd6e6cef96a5e7c136e07279de2f50b9262b6a551862640a",
+    "sha256": "169e46891975e129cd6e6cef96a5e7c136e07279de2f50b9262b6a551862640a",
+    "bytes": 130
+  },
+  {
+    "component": "Draw",
+    "path": "Resources/ROM/!Run,feb",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "47a7a737d96eb452d08aacccac45a8b1852a794a19c2521d834aa5f1b204ab90",
+    "sha256": "47a7a737d96eb452d08aacccac45a8b1852a794a19c2521d834aa5f1b204ab90",
+    "bytes": 218
+  },
+  {
+    "component": "Draw",
+    "path": "Resources/Sprites,ff9",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "ecd85bc66b6c78068920eed9323991f7568171e5dc11669444ee99f5d838ca81",
+    "sha256": "ecd85bc66b6c78068920eed9323991f7568171e5dc11669444ee99f5d838ca81",
+    "bytes": 5432
+  },
+  {
+    "component": "Draw",
+    "path": "Resources/UK/!Help",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "3e0cdc8a47fc06edf8d796480b00709144e968ed782638b9a664f729dc261fd3",
+    "sha256": "3e0cdc8a47fc06edf8d796480b00709144e968ed782638b9a664f729dc261fd3",
+    "bytes": 157
+  },
+  {
+    "component": "Draw",
+    "path": "Resources/UK/!Run,feb",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "a106d93f0c25d8c843e726765ad73527d1e165364557f3c26351b5fe22e52062",
+    "sha256": "a106d93f0c25d8c843e726765ad73527d1e165364557f3c26351b5fe22e52062",
+    "bytes": 422
+  },
+  {
+    "component": "Draw",
+    "path": "Resources/UK/Messages",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "5b91194b7f97bf0a9031869e5dfcb7e428219c1a9ba792c5cfe9d24b328f63a9",
+    "sha256": "5b91194b7f97bf0a9031869e5dfcb7e428219c1a9ba792c5cfe9d24b328f63a9",
+    "bytes": 19554
+  },
+  {
+    "component": "Draw",
+    "path": "Resources/UK/Templates,fec",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "bc428edadcc6ba4ffb7d8f0d3572962a8127448b696de84cb9749faf00957c76",
+    "sha256": "bc428edadcc6ba4ffb7d8f0d3572962a8127448b696de84cb9749faf00957c76",
+    "bytes": 6137
+  },
+  {
+    "component": "Draw",
+    "path": "asm/ResFiles",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "5edfa9bf5fe608cd9def0ecf7074aa70d8a26591b1477f1c6fcea69c432cb627",
+    "sha256": "549f7b135eb41681f1b4676295e25fc0786a8f630eb2cf12d62c2134f4053a18",
+    "bytes": 500
+  },
+  {
+    "component": "Draw",
+    "path": "asm/jpeg",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "b958ad3f122157f47fd8db8743cf467a0886becee49554886caf8cab617f31b5",
+    "sha256": "280df410d4e59b8544e3baa4be2822bc263044e8d6195c3f1e2b8bea6066064a",
+    "bytes": 2063
+  },
+  {
+    "component": "Draw",
+    "path": "awk/AppName",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "0d84d3cfebc1460a700b9d076a2a60f5cd84b9f3e5f1f03b64f558698f9cd136",
+    "sha256": "0d84d3cfebc1460a700b9d076a2a60f5cd84b9f3e5f1f03b64f558698f9cd136",
+    "bytes": 816
+  },
+  {
+    "component": "Draw",
+    "path": "c/Draw",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "0e2371e25dedd10ca45ece5d91753781cbcb81c252cb298fb62c1ef6a05e4536",
+    "sha256": "3886b37eb246128239c4d5980102fce600e81e64b3ed43c230bbc836650878ef",
+    "bytes": 105346
+  },
+  {
+    "component": "Draw",
+    "path": "c/DrawAction",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "9a1c09dd495bcadae5e54259428292bec1458d239c1b24ee7ad4fa85f6f16747",
+    "sha256": "9a1c09dd495bcadae5e54259428292bec1458d239c1b24ee7ad4fa85f6f16747",
+    "bytes": 14658
+  },
+  {
+    "component": "Draw",
+    "path": "c/DrawCheck",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "5fea012e0038d1f9c0c1392da55c564a6e347577f9c1d6c6b83903e85680740a",
+    "sha256": "5fea012e0038d1f9c0c1392da55c564a6e347577f9c1d6c6b83903e85680740a",
+    "bytes": 22524
+  },
+  {
+    "component": "Draw",
+    "path": "c/DrawDXF",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "bc8f9280bd30ad1aba2031f1dd96f3c1f95d6070d10a9947c65d8536d8b50d5a",
+    "sha256": "bc8f9280bd30ad1aba2031f1dd96f3c1f95d6070d10a9947c65d8536d8b50d5a",
+    "bytes": 91295
+  },
+  {
+    "component": "Draw",
+    "path": "c/DrawDispl",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "4f60b2eac10fc1f36fe590788a13374fc117f8819a6a3295f94e23a9123e3723",
+    "sha256": "4f60b2eac10fc1f36fe590788a13374fc117f8819a6a3295f94e23a9123e3723",
+    "bytes": 103925
+  },
+  {
+    "component": "Draw",
+    "path": "c/DrawEdit",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "7cf981a71e50cfc64f2e782f13954f7e282381a2c4e6d4774f20fd9554647edd",
+    "sha256": "7cf981a71e50cfc64f2e782f13954f7e282381a2c4e6d4774f20fd9554647edd",
+    "bytes": 50466
+  },
+  {
+    "component": "Draw",
+    "path": "c/DrawEnter",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "0c9171bfe0c81509b5a85f16c8c1950addcc4f1ffcc1cb8ed9ab3548ab2b3462",
+    "sha256": "0c9171bfe0c81509b5a85f16c8c1950addcc4f1ffcc1cb8ed9ab3548ab2b3462",
+    "bytes": 49055
+  },
+  {
+    "component": "Draw",
+    "path": "c/DrawFileIO",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "2e9a57c9ef8decc44bca55243adb67806042c6eea3618b95dcef1a648ee9dbae",
+    "sha256": "2e9a57c9ef8decc44bca55243adb67806042c6eea3618b95dcef1a648ee9dbae",
+    "bytes": 75589
+  },
+  {
+    "component": "Draw",
+    "path": "c/DrawGrid",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "2474f3c691fd9781a5793c4aeb5820a0c74542efb018e275dca1050dc296de15",
+    "sha256": "2474f3c691fd9781a5793c4aeb5820a0c74542efb018e275dca1050dc296de15",
+    "bytes": 12971
+  },
+  {
+    "component": "Draw",
+    "path": "c/DrawHelp",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "4b98a0fe94531911d32be0ff0149ff7a6af563f4b1e07584778e5cb0d047e3b8",
+    "sha256": "4b98a0fe94531911d32be0ff0149ff7a6af563f4b1e07584778e5cb0d047e3b8",
+    "bytes": 4090
+  },
+  {
+    "component": "Draw",
+    "path": "c/DrawMenu",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "760a04f36b524397301632ab558b49d2731700f32a606ff365c6dfb3ec249732",
+    "sha256": "8c419bbcc70426207d5894ca784f04e060a82fc5ca4b009cb08b9366c04ce9c3",
+    "bytes": 103864
+  },
+  {
+    "component": "Draw",
+    "path": "c/DrawObject",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "3567a8a6c53bc0e94b49224df7e2f372386b3d868b705ac3627615db6aeec87c",
+    "sha256": "3567a8a6c53bc0e94b49224df7e2f372386b3d868b705ac3627615db6aeec87c",
+    "bytes": 68658
+  },
+  {
+    "component": "Draw",
+    "path": "c/DrawPrint",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "ce21464dd5df8ca86fef58154ef17375028479f01cc7037e73d03645dd521074",
+    "sha256": "ce21464dd5df8ca86fef58154ef17375028479f01cc7037e73d03645dd521074",
+    "bytes": 21067
+  },
+  {
+    "component": "Draw",
+    "path": "c/DrawScan",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "076a9fd855f02d0ce3a50ca6b847696cb7c404b8e3d0d04f377d0caa6a8388ac",
+    "sha256": "076a9fd855f02d0ce3a50ca6b847696cb7c404b8e3d0d04f377d0caa6a8388ac",
+    "bytes": 7665
+  },
+  {
+    "component": "Draw",
+    "path": "c/DrawSelect",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "c8cf24cf090dfde48decd4a75e4cd2d8e179f5baf48f1e21efb004f009fbda01",
+    "sha256": "c8cf24cf090dfde48decd4a75e4cd2d8e179f5baf48f1e21efb004f009fbda01",
+    "bytes": 97609
+  },
+  {
+    "component": "Draw",
+    "path": "c/DrawTextC",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "c8bd3ac27a44b89baa6b5f4becf389d7ec54fe0b69dc4bbb8293b44cd26282f1",
+    "sha256": "c8bd3ac27a44b89baa6b5f4becf389d7ec54fe0b69dc4bbb8293b44cd26282f1",
+    "bytes": 79448
+  },
+  {
+    "component": "Draw",
+    "path": "c/DrawTrans",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "d844b747cf8f135af706da290b0b406aeafb58356cd8f015f84f71a7c35105e0",
+    "sha256": "d844b747cf8f135af706da290b0b406aeafb58356cd8f015f84f71a7c35105e0",
+    "bytes": 47094
+  },
+  {
+    "component": "Draw",
+    "path": "c/DrawUndo",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "d590ee517a4af8c96f9fb77e89dd19383e6ded9d3681af6df705b36ddebba00a",
+    "sha256": "d590ee517a4af8c96f9fb77e89dd19383e6ded9d3681af6df705b36ddebba00a",
+    "bytes": 42393
+  },
+  {
+    "component": "Draw",
+    "path": "c/bezierarc",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "e2d6e247bd52add095249a8dc41e812012977f711906e1cd2aaa2382de5cc968",
+    "sha256": "e2d6e247bd52add095249a8dc41e812012977f711906e1cd2aaa2382de5cc968",
+    "bytes": 12739
+  },
+  {
+    "component": "Draw",
+    "path": "c/flex",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "d1c36a3e5abd68f5aca933eced1f5575eca10e7b76e9ea95d4710ba337db3730",
+    "sha256": "d1c36a3e5abd68f5aca933eced1f5575eca10e7b76e9ea95d4710ba337db3730",
+    "bytes": 18233
+  },
+  {
+    "component": "Draw",
+    "path": "c/ftrace",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "b008cc90ba46d2aee6a5f746878429fc073c96bd1b3830b6958978c3d1185a05",
+    "sha256": "b008cc90ba46d2aee6a5f746878429fc073c96bd1b3830b6958978c3d1185a05",
+    "bytes": 12369
+  },
+  {
+    "component": "Draw",
+    "path": "c/guard",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "0e308049eead6e65566df50db472712ff0f7115952f66f6e0302275d522f53bf",
+    "sha256": "0e308049eead6e65566df50db472712ff0f7115952f66f6e0302275d522f53bf",
+    "bytes": 9208
+  },
+  {
+    "component": "Draw",
+    "path": "h/Draw",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "eb2c830a8aeef3f8d5db5537ee843cf4da4d77b981b7de4455a304b211b9be5b",
+    "sha256": "eb2c830a8aeef3f8d5db5537ee843cf4da4d77b981b7de4455a304b211b9be5b",
+    "bytes": 43180
+  },
+  {
+    "component": "Draw",
+    "path": "h/DrawAction",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "248acb1fa18c189a9ffe6178a16f01e55b46413764d3b15dfadfc6338dee7b55",
+    "sha256": "248acb1fa18c189a9ffe6178a16f01e55b46413764d3b15dfadfc6338dee7b55",
+    "bytes": 2318
+  },
+  {
+    "component": "Draw",
+    "path": "h/DrawCheck",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "d9e3ae37ed76502949ad341c5fb4443f481c8248f0be4cf173f786cdb8bef55a",
+    "sha256": "d9e3ae37ed76502949ad341c5fb4443f481c8248f0be4cf173f786cdb8bef55a",
+    "bytes": 1072
+  },
+  {
+    "component": "Draw",
+    "path": "h/DrawDXF",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "541486da9229282a85cb1f84a2f0b5b6241c9fcb94a359e823a575ab48a404c4",
+    "sha256": "541486da9229282a85cb1f84a2f0b5b6241c9fcb94a359e823a575ab48a404c4",
+    "bytes": 1007
+  },
+  {
+    "component": "Draw",
+    "path": "h/DrawDispl",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "e4c54829de40d2d93bdefd5d6f2bade70fe875201d98471b9c69b154d46c24b1",
+    "sha256": "e4c54829de40d2d93bdefd5d6f2bade70fe875201d98471b9c69b154d46c24b1",
+    "bytes": 3564
+  },
+  {
+    "component": "Draw",
+    "path": "h/DrawEdit",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "62547900d7957f00fe1f4601791949a9ba4f29c24002645eda453e48e66c71b4",
+    "sha256": "62547900d7957f00fe1f4601791949a9ba4f29c24002645eda453e48e66c71b4",
+    "bytes": 2435
+  },
+  {
+    "component": "Draw",
+    "path": "h/DrawEnter",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "e31ad351afc3d1de908591613eaef15032bf42f86b4727ec52211f0d3c16deb7",
+    "sha256": "e31ad351afc3d1de908591613eaef15032bf42f86b4727ec52211f0d3c16deb7",
+    "bytes": 2622
+  },
+  {
+    "component": "Draw",
+    "path": "h/DrawFileIO",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "9c1dcc1403a667af35ba1f9d65b11611a63087812d220025ec65b8b510ddb2fc",
+    "sha256": "9c1dcc1403a667af35ba1f9d65b11611a63087812d220025ec65b8b510ddb2fc",
+    "bytes": 3353
+  },
+  {
+    "component": "Draw",
+    "path": "h/DrawGrid",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "9b8c371386e612ccdc5b9f17ac28588f9c9c57440468f62396e1ecb07a3c17a5",
+    "sha256": "9b8c371386e612ccdc5b9f17ac28588f9c9c57440468f62396e1ecb07a3c17a5",
+    "bytes": 1031
+  },
+  {
+    "component": "Draw",
+    "path": "h/DrawHelp",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "a39bbcf91373ff8be12c8596cf0225729de7c488ba7e4795a24b65bb8a8261d2",
+    "sha256": "a39bbcf91373ff8be12c8596cf0225729de7c488ba7e4795a24b65bb8a8261d2",
+    "bytes": 1022
+  },
+  {
+    "component": "Draw",
+    "path": "h/DrawMenu",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "c543f430fa6105e3ba365b71f81d98c8030cfbde6e46beddd98fd2a7c4c60a9f",
+    "sha256": "c543f430fa6105e3ba365b71f81d98c8030cfbde6e46beddd98fd2a7c4c60a9f",
+    "bytes": 1737
+  },
+  {
+    "component": "Draw",
+    "path": "h/DrawMenuD",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "9333bb6c047f4b85cb37505c9c84a2712cd71c49f1909e38c89185ce309fc90d",
+    "sha256": "9333bb6c047f4b85cb37505c9c84a2712cd71c49f1909e38c89185ce309fc90d",
+    "bytes": 5017
+  },
+  {
+    "component": "Draw",
+    "path": "h/DrawObject",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "642725dfbe24d68805b39e3e437c4757fd01ac1a357b514285eb2842c1d7d8f5",
+    "sha256": "642725dfbe24d68805b39e3e437c4757fd01ac1a357b514285eb2842c1d7d8f5",
+    "bytes": 5340
+  },
+  {
+    "component": "Draw",
+    "path": "h/DrawPrint",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "93c202f1d8d430582c6e5397b1dfd1930875eadd4e1f5f842c0b2d574d885f8a",
+    "sha256": "93c202f1d8d430582c6e5397b1dfd1930875eadd4e1f5f842c0b2d574d885f8a",
+    "bytes": 1488
+  },
+  {
+    "component": "Draw",
+    "path": "h/DrawScan",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "419bbd60c8c352176969325fa3f6738fe1f5b3a7f21cd151df3158457fb6f221",
+    "sha256": "419bbd60c8c352176969325fa3f6738fe1f5b3a7f21cd151df3158457fb6f221",
+    "bytes": 2638
+  },
+  {
+    "component": "Draw",
+    "path": "h/DrawSelect",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "7cd7df45d6c922b1f5272730b4b5aafd2b299260f88bf9ee83ed156198b51c0b",
+    "sha256": "7cd7df45d6c922b1f5272730b4b5aafd2b299260f88bf9ee83ed156198b51c0b",
+    "bytes": 4687
+  },
+  {
+    "component": "Draw",
+    "path": "h/DrawTextC",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "034a86cf738915f392e7ee1ef355ec5f8f04d2d6ac2e3fedee5dc6ff5b91dcf7",
+    "sha256": "034a86cf738915f392e7ee1ef355ec5f8f04d2d6ac2e3fedee5dc6ff5b91dcf7",
+    "bytes": 2101
+  },
+  {
+    "component": "Draw",
+    "path": "h/DrawTrans",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "ff3ffc259e13bffd1d1db99df6c6806135ff72f200269118c9bc7603dba6a9f9",
+    "sha256": "ff3ffc259e13bffd1d1db99df6c6806135ff72f200269118c9bc7603dba6a9f9",
+    "bytes": 1998
+  },
+  {
+    "component": "Draw",
+    "path": "h/DrawUndo",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "3be34d3647339e8bd66b7b77cf406e1c5c09fb57a69189b628960d25292fa888",
+    "sha256": "3be34d3647339e8bd66b7b77cf406e1c5c09fb57a69189b628960d25292fa888",
+    "bytes": 7682
+  },
+  {
+    "component": "Draw",
+    "path": "h/bezierarc",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "2c9c9e8664212c1fe8fc703171609676d1e49b169052b7f3a3bf60a2393a442b",
+    "sha256": "2c9c9e8664212c1fe8fc703171609676d1e49b169052b7f3a3bf60a2393a442b",
+    "bytes": 2900
+  },
+  {
+    "component": "Draw",
+    "path": "h/ftrace",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "104726508eeee0ba8403b1d1edf49c44debea0b049ec0863175c158d3f5baf6d",
+    "sha256": "104726508eeee0ba8403b1d1edf49c44debea0b049ec0863175c158d3f5baf6d",
+    "bytes": 2902
+  },
+  {
+    "component": "Draw",
+    "path": "h/guard",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "72d71fe4898a10fe1769e91959e04330b6984dae691468ae817ea37eb23878d8",
+    "sha256": "72d71fe4898a10fe1769e91959e04330b6984dae691468ae817ea37eb23878d8",
+    "bytes": 1916
+  },
+  {
+    "component": "Draw",
+    "path": "h/jpeg",
+    "revision": "4a47260942c2263aad63fd26cebcbe332f386490",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Draw.git",
+    "upstream_sha256": "12d45084725175e7b97e3745f3a8543343a0c52f27cc1f1871a3591bf1d25863",
+    "sha256": "12d45084725175e7b97e3745f3a8543343a0c52f27cc1f1871a3591bf1d25863",
+    "bytes": 5272
+  },
+  {
+    "component": "Paint",
+    "path": "LICENSE",
+    "revision": "54e9d858ed04502897185b6396f063232a2f83b5",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Paint.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358
+  },
+  {
+    "component": "Paint",
+    "path": "Makefile",
+    "revision": "54e9d858ed04502897185b6396f063232a2f83b5",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Paint.git",
+    "upstream_sha256": "7dc88ec1660e96535d0a94bff22a7302453e0c547d175e45e1e0c47fd21a45ed",
+    "sha256": "7dc88ec1660e96535d0a94bff22a7302453e0c547d175e45e1e0c47fd21a45ed",
+    "bytes": 8050
+  },
+  {
+    "component": "Paint",
+    "path": "Resources/!Boot,feb",
+    "revision": "54e9d858ed04502897185b6396f063232a2f83b5",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Paint.git",
+    "upstream_sha256": "e547394411f07f929b394c258dfb24f4e1a7cc3cd43437fbf69c1d80b534f11e",
+    "sha256": "e547394411f07f929b394c258dfb24f4e1a7cc3cd43437fbf69c1d80b534f11e",
+    "bytes": 81
+  },
+  {
+    "component": "Paint",
+    "path": "Resources/!Sprites,ff9",
+    "revision": "54e9d858ed04502897185b6396f063232a2f83b5",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Paint.git",
+    "upstream_sha256": "425c024b680a86521fa1eb20650e597d35bb3f4973e2bc2d65c38d00addc2779",
+    "sha256": "425c024b680a86521fa1eb20650e597d35bb3f4973e2bc2d65c38d00addc2779",
+    "bytes": 996
+  },
+  {
+    "component": "Paint",
+    "path": "Resources/!Sprites22,ff9",
+    "revision": "54e9d858ed04502897185b6396f063232a2f83b5",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Paint.git",
+    "upstream_sha256": "82da311ff12438f44f5ced00107f4a05f217916979b51e67f1c85c67156f6147",
+    "sha256": "82da311ff12438f44f5ced00107f4a05f217916979b51e67f1c85c67156f6147",
+    "bytes": 1892
+  },
+  {
+    "component": "Paint",
+    "path": "Resources/ROM/!Run,feb",
+    "revision": "54e9d858ed04502897185b6396f063232a2f83b5",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Paint.git",
+    "upstream_sha256": "f7bde24d1bf18442ea9dcb7b08a9641f876a4a40c6807c4a521c0c5abf1a20b9",
+    "sha256": "f7bde24d1bf18442ea9dcb7b08a9641f876a4a40c6807c4a521c0c5abf1a20b9",
+    "bytes": 163
+  },
+  {
+    "component": "Paint",
+    "path": "Resources/UK/!Help",
+    "revision": "54e9d858ed04502897185b6396f063232a2f83b5",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Paint.git",
+    "upstream_sha256": "f26148926fc35a2192ae14f541f226afe5a68acc9a2ae5b8c7f580f8b25f2dbc",
+    "sha256": "f26148926fc35a2192ae14f541f226afe5a68acc9a2ae5b8c7f580f8b25f2dbc",
+    "bytes": 142
+  },
+  {
+    "component": "Paint",
+    "path": "Resources/UK/!Run,feb",
+    "revision": "54e9d858ed04502897185b6396f063232a2f83b5",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Paint.git",
+    "upstream_sha256": "97d35df08e39f3367c760d11d6d4349ce95115dce37bfe591e25dba7ecd9fd5d",
+    "sha256": "97d35df08e39f3367c760d11d6d4349ce95115dce37bfe591e25dba7ecd9fd5d",
+    "bytes": 449
+  },
+  {
+    "component": "Paint",
+    "path": "Resources/UK/Messages",
+    "revision": "54e9d858ed04502897185b6396f063232a2f83b5",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Paint.git",
+    "upstream_sha256": "56f67f288010f02870d82a7e2e95f1b571d47ce805d282c58e1c99d558487bc7",
+    "sha256": "56f67f288010f02870d82a7e2e95f1b571d47ce805d282c58e1c99d558487bc7",
+    "bytes": 11887
+  },
+  {
+    "component": "Paint",
+    "path": "Resources/UK/Sprites,ff9",
+    "revision": "54e9d858ed04502897185b6396f063232a2f83b5",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Paint.git",
+    "upstream_sha256": "421ec672e1222aed93ea30f5d6557075a94a5c25cbb4154f0bc1fe864cb25c9e",
+    "sha256": "421ec672e1222aed93ea30f5d6557075a94a5c25cbb4154f0bc1fe864cb25c9e",
+    "bytes": 11268
+  },
+  {
+    "component": "Paint",
+    "path": "Resources/UK/Sprites22,ff9",
+    "revision": "54e9d858ed04502897185b6396f063232a2f83b5",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Paint.git",
+    "upstream_sha256": "b2e0b78369d96d02805bf8338153c3a2b8888d37ff387c93286295f0e64133fb",
+    "sha256": "b2e0b78369d96d02805bf8338153c3a2b8888d37ff387c93286295f0e64133fb",
+    "bytes": 23276
+  },
+  {
+    "component": "Paint",
+    "path": "Resources/UK/Sprites2d,ff9",
+    "revision": "54e9d858ed04502897185b6396f063232a2f83b5",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Paint.git",
+    "upstream_sha256": "ee61fb281ed363faff9b070a86007f62059d833c91f178ed9dd2f1f27b0a3e6b",
+    "sha256": "ee61fb281ed363faff9b070a86007f62059d833c91f178ed9dd2f1f27b0a3e6b",
+    "bytes": 11268
+  },
+  {
+    "component": "Paint",
+    "path": "Resources/UK/Templat2d,fec",
+    "revision": "54e9d858ed04502897185b6396f063232a2f83b5",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Paint.git",
+    "upstream_sha256": "e53c08cd11bf5f3e0ee9b0dce4c4deb93f4bb66f3ef5630974a71988a3c0d3b6",
+    "sha256": "e53c08cd11bf5f3e0ee9b0dce4c4deb93f4bb66f3ef5630974a71988a3c0d3b6",
+    "bytes": 10586
+  },
+  {
+    "component": "Paint",
+    "path": "Resources/UK/Templates,fec",
+    "revision": "54e9d858ed04502897185b6396f063232a2f83b5",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Paint.git",
+    "upstream_sha256": "de4e6bd87e5f465b916d9307726e1b95614f80267ce064fe6bff2087f339dfdc",
+    "sha256": "de4e6bd87e5f465b916d9307726e1b95614f80267ce064fe6bff2087f339dfdc",
+    "bytes": 11322
+  },
+  {
+    "component": "Paint",
+    "path": "asm/ResFiles",
+    "revision": "54e9d858ed04502897185b6396f063232a2f83b5",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Paint.git",
+    "upstream_sha256": "b5c8c72e242e4f832d2014522f0e8ec523d776f7265355866954fb69a538e4cd",
+    "sha256": "b5c8c72e242e4f832d2014522f0e8ec523d776f7265355866954fb69a538e4cd",
+    "bytes": 192
+  },
+  {
+    "component": "Paint",
+    "path": "asm/jpeg",
+    "revision": "54e9d858ed04502897185b6396f063232a2f83b5",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Paint.git",
+    "upstream_sha256": "410cdf675f4f7fb99502a5d338873334ed32c8679aa4700b28153113eb081758",
+    "sha256": "39bae2bf1e99e30700bb04b404367dde5091ab224985cc5ebe4db379032e3b00",
+    "bytes": 5228
+  },
+  {
+    "component": "Paint",
+    "path": "asm/writepixel",
+    "revision": "54e9d858ed04502897185b6396f063232a2f83b5",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Paint.git",
+    "upstream_sha256": "31504bf827d664486b5891f6fd5769c5683e5b9582fcc44fd07edd5f1ff8a6b2",
+    "sha256": "bbf7f4d986dbe2ac7938e584dfc536cb60d3ab811b224ded383b3208c8e67e4e",
+    "bytes": 1375
+  },
+  {
+    "component": "Paint",
+    "path": "awk/AppName",
+    "revision": "54e9d858ed04502897185b6396f063232a2f83b5",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Paint.git",
+    "upstream_sha256": "fd3aa380b3bb2d96500b983fc0cef439375987ea07dc8fced2a92f2a0230901f",
+    "sha256": "fd3aa380b3bb2d96500b983fc0cef439375987ea07dc8fced2a92f2a0230901f",
+    "bytes": 770
+  },
+  {
+    "component": "Paint",
+    "path": "c/Colours",
+    "revision": "54e9d858ed04502897185b6396f063232a2f83b5",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Paint.git",
+    "upstream_sha256": "4dc46b2886cbbde98bfc72b510f14afd1a8246ec7d162f7189a598f897456892",
+    "sha256": "4dc46b2886cbbde98bfc72b510f14afd1a8246ec7d162f7189a598f897456892",
+    "bytes": 22026
+  },
+  {
+    "component": "Paint",
+    "path": "c/Main",
+    "revision": "54e9d858ed04502897185b6396f063232a2f83b5",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Paint.git",
+    "upstream_sha256": "457fadb20321fa30cf5ae18574ec679b9d6c45640a8304f79b4773c999c75a54",
+    "sha256": "168674359ddc7b0b4018cc41756adc8996fd20200169a8f12fd628832d0f4523",
+    "bytes": 93625
+  },
+  {
+    "component": "Paint",
+    "path": "c/Menus",
+    "revision": "54e9d858ed04502897185b6396f063232a2f83b5",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Paint.git",
+    "upstream_sha256": "294dea9846f3b6f2340f844e13ea025f3a6c275d5690b9970114b34882990bdc",
+    "sha256": "294dea9846f3b6f2340f844e13ea025f3a6c275d5690b9970114b34882990bdc",
+    "bytes": 85095
+  },
+  {
+    "component": "Paint",
+    "path": "c/PSprite",
+    "revision": "54e9d858ed04502897185b6396f063232a2f83b5",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Paint.git",
+    "upstream_sha256": "d597c670a9c9dfd134e91a0cdab41a075000fd60bfad1ffc06ee154b2fc3a40b",
+    "sha256": "d597c670a9c9dfd134e91a0cdab41a075000fd60bfad1ffc06ee154b2fc3a40b",
+    "bytes": 91368
+  },
+  {
+    "component": "Paint",
+    "path": "c/SprWindow",
+    "revision": "54e9d858ed04502897185b6396f063232a2f83b5",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Paint.git",
+    "upstream_sha256": "6e0e56dfd18f24da4859a867e762b364f4b8c4f95da21ee2915f02376824d92d",
+    "sha256": "6e0e56dfd18f24da4859a867e762b364f4b8c4f95da21ee2915f02376824d92d",
+    "bytes": 24572
+  },
+  {
+    "component": "Paint",
+    "path": "c/ToolWindow",
+    "revision": "54e9d858ed04502897185b6396f063232a2f83b5",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Paint.git",
+    "upstream_sha256": "c80346ecd5d071398ac7ee6f6947fabe5304a8ba3eb59a7980f303c33b53742f",
+    "sha256": "c80346ecd5d071398ac7ee6f6947fabe5304a8ba3eb59a7980f303c33b53742f",
+    "bytes": 20857
+  },
+  {
+    "component": "Paint",
+    "path": "c/Tools",
+    "revision": "54e9d858ed04502897185b6396f063232a2f83b5",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Paint.git",
+    "upstream_sha256": "c90d85eed7741df73995cfae269d99f47397304d6db364687edd7b68d363e3c7",
+    "sha256": "c90d85eed7741df73995cfae269d99f47397304d6db364687edd7b68d363e3c7",
+    "bytes": 88619
+  },
+  {
+    "component": "Paint",
+    "path": "c/ftrace",
+    "revision": "54e9d858ed04502897185b6396f063232a2f83b5",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Paint.git",
+    "upstream_sha256": "f584635b03fb3b5a28cf5d1f9c8e0f3ecd21d1ae7a5735b5d497adbfb0cd4c6c",
+    "sha256": "f584635b03fb3b5a28cf5d1f9c8e0f3ecd21d1ae7a5735b5d497adbfb0cd4c6c",
+    "bytes": 12359
+  },
+  {
+    "component": "Paint",
+    "path": "c/guard",
+    "revision": "54e9d858ed04502897185b6396f063232a2f83b5",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Paint.git",
+    "upstream_sha256": "6a110f6527106205608e205d9500d9e7748c64c55deced893452f21d0336f57a",
+    "sha256": "6a110f6527106205608e205d9500d9e7748c64c55deced893452f21d0336f57a",
+    "bytes": 8744
+  },
+  {
+    "component": "Paint",
+    "path": "c/m",
+    "revision": "54e9d858ed04502897185b6396f063232a2f83b5",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Paint.git",
+    "upstream_sha256": "59acd831ad94946e105a0e0dee48f3b9bce808e0c81732c7f5fd9d75ec701a2d",
+    "sha256": "59acd831ad94946e105a0e0dee48f3b9bce808e0c81732c7f5fd9d75ec701a2d",
+    "bytes": 7808
+  },
+  {
+    "component": "Paint",
+    "path": "h/Colours",
+    "revision": "54e9d858ed04502897185b6396f063232a2f83b5",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Paint.git",
+    "upstream_sha256": "4af6ef8892c4bde961bcaa36965341078b1b1d61de2eb45726a0078c7523ebac",
+    "sha256": "4af6ef8892c4bde961bcaa36965341078b1b1d61de2eb45726a0078c7523ebac",
+    "bytes": 1153
+  },
+  {
+    "component": "Paint",
+    "path": "h/MenuD",
+    "revision": "54e9d858ed04502897185b6396f063232a2f83b5",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Paint.git",
+    "upstream_sha256": "b6ad21b288da8a62a540317654b54edcc302d1fe6c7702e15c731c0cffd7558c",
+    "sha256": "b6ad21b288da8a62a540317654b54edcc302d1fe6c7702e15c731c0cffd7558c",
+    "bytes": 4927
+  },
+  {
+    "component": "Paint",
+    "path": "h/Menus",
+    "revision": "54e9d858ed04502897185b6396f063232a2f83b5",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Paint.git",
+    "upstream_sha256": "6c909fbebeab950a6cc1772dde5e9df966232ee8e3272200eb49b8a7685f6833",
+    "sha256": "6c909fbebeab950a6cc1772dde5e9df966232ee8e3272200eb49b8a7685f6833",
+    "bytes": 1886
+  },
+  {
+    "component": "Paint",
+    "path": "h/PSprite",
+    "revision": "54e9d858ed04502897185b6396f063232a2f83b5",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Paint.git",
+    "upstream_sha256": "60c66d04ad142584dcb99a8788fb7833b8ec904b95185f8bcbf0a8af0391a80e",
+    "sha256": "60c66d04ad142584dcb99a8788fb7833b8ec904b95185f8bcbf0a8af0391a80e",
+    "bytes": 3459
+  },
+  {
+    "component": "Paint",
+    "path": "h/Paint",
+    "revision": "54e9d858ed04502897185b6396f063232a2f83b5",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Paint.git",
+    "upstream_sha256": "ab97dd9329070808fc79fed8ae6898d45426caf71299d025072dbbaa6289552e",
+    "sha256": "ab97dd9329070808fc79fed8ae6898d45426caf71299d025072dbbaa6289552e",
+    "bytes": 7780
+  },
+  {
+    "component": "Paint",
+    "path": "h/SprWindow",
+    "revision": "54e9d858ed04502897185b6396f063232a2f83b5",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Paint.git",
+    "upstream_sha256": "cda5868a8d84ec49e8537f31e8d8648f1818c4e15471dcf92ba70e1370d61bcb",
+    "sha256": "cda5868a8d84ec49e8537f31e8d8648f1818c4e15471dcf92ba70e1370d61bcb",
+    "bytes": 1562
+  },
+  {
+    "component": "Paint",
+    "path": "h/ToolWindow",
+    "revision": "54e9d858ed04502897185b6396f063232a2f83b5",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Paint.git",
+    "upstream_sha256": "171a77be06ee37a0472f1cfba6c062bce0a205334832fb3d881b919317535ced",
+    "sha256": "171a77be06ee37a0472f1cfba6c062bce0a205334832fb3d881b919317535ced",
+    "bytes": 1323
+  },
+  {
+    "component": "Paint",
+    "path": "h/Tools",
+    "revision": "54e9d858ed04502897185b6396f063232a2f83b5",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Paint.git",
+    "upstream_sha256": "d46271cc431c21b94af482f32aa1946eda541c9a3fe5b1240faae8b30d49d274",
+    "sha256": "d46271cc431c21b94af482f32aa1946eda541c9a3fe5b1240faae8b30d49d274",
+    "bytes": 3083
+  },
+  {
+    "component": "Paint",
+    "path": "h/fixes",
+    "revision": "54e9d858ed04502897185b6396f063232a2f83b5",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Paint.git",
+    "upstream_sha256": "73fb9dfa6dc26e1530645eef8da21c03711e615dbdf4d350c9e53923a3dbbeda",
+    "sha256": "73fb9dfa6dc26e1530645eef8da21c03711e615dbdf4d350c9e53923a3dbbeda",
+    "bytes": 2587
+  },
+  {
+    "component": "Paint",
+    "path": "h/ftrace",
+    "revision": "54e9d858ed04502897185b6396f063232a2f83b5",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Paint.git",
+    "upstream_sha256": "104726508eeee0ba8403b1d1edf49c44debea0b049ec0863175c158d3f5baf6d",
+    "sha256": "104726508eeee0ba8403b1d1edf49c44debea0b049ec0863175c158d3f5baf6d",
+    "bytes": 2902
+  },
+  {
+    "component": "Paint",
+    "path": "h/guard",
+    "revision": "54e9d858ed04502897185b6396f063232a2f83b5",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Paint.git",
+    "upstream_sha256": "72d71fe4898a10fe1769e91959e04330b6984dae691468ae817ea37eb23878d8",
+    "sha256": "72d71fe4898a10fe1769e91959e04330b6984dae691468ae817ea37eb23878d8",
+    "bytes": 1916
+  },
+  {
+    "component": "Paint",
+    "path": "h/jpeg",
+    "revision": "54e9d858ed04502897185b6396f063232a2f83b5",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Paint.git",
+    "upstream_sha256": "2479caba205d4de2afe054551280f9be15a7bdd4c8dae8001c3e51f78d150600",
+    "sha256": "2479caba205d4de2afe054551280f9be15a7bdd4c8dae8001c3e51f78d150600",
+    "bytes": 8965
+  },
+  {
+    "component": "Paint",
+    "path": "h/m",
+    "revision": "54e9d858ed04502897185b6396f063232a2f83b5",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Paint.git",
+    "upstream_sha256": "02656436628f84fa904e6b297d2bb596edda82a321ecac237070918101bd6fa6",
+    "sha256": "02656436628f84fa904e6b297d2bb596edda82a321ecac237070918101bd6fa6",
+    "bytes": 2032
+  },
+  {
+    "component": "Paint",
+    "path": "h/main",
+    "revision": "54e9d858ed04502897185b6396f063232a2f83b5",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Paint.git",
+    "upstream_sha256": "b5a3cead71d81ab66fdac95bee08b4dfe376438ecd581ab3436ec865bc44e996",
+    "sha256": "b5a3cead71d81ab66fdac95bee08b4dfe376438ecd581ab3436ec865bc44e996",
+    "bytes": 7298
+  },
+  {
+    "component": "Paint",
+    "path": "h/types;0",
+    "revision": "54e9d858ed04502897185b6396f063232a2f83b5",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Paint.git",
+    "upstream_sha256": "a8ac2fa91b310178bf91e71767a3face48b2a27ab2a4b8d60c551ae1dcd752e9",
+    "sha256": "a8ac2fa91b310178bf91e71767a3face48b2a27ab2a4b8d60c551ae1dcd752e9",
+    "bytes": 4373
+  },
+  {
+    "component": "Paint",
+    "path": "h/writepixel",
+    "revision": "54e9d858ed04502897185b6396f063232a2f83b5",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Paint.git",
+    "upstream_sha256": "af494e074bdb0d699fdab3e994e69e8cce9444d17dcc876a53d0d9c8e32b3f97",
+    "sha256": "af494e074bdb0d699fdab3e994e69e8cce9444d17dcc876a53d0d9c8e32b3f97",
+    "bytes": 2074
+  }
+]

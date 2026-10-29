@@ -1,0 +1,10 @@
+; SPDX-License-Identifier: Apache-2.0
+; ArcLibre 2026: historical ShareD spellings for the published ShareFS SWIs.
+; The chunk is already supplied by the pinned public allocation header.
+; CreateShare and StopShare are offsets 0 and 1; see desktop-startup patch notes.
+; This declares the interface only. No sharing runtime is supplied.
+ShareD_CreateShare * ShareDSWI_Base
+ShareD_StopShare   * ShareDSWI_Base+1
+XShareD_CreateShare * Auto_Error_SWI_bit+ShareD_CreateShare
+XShareD_StopShare   * Auto_Error_SWI_bit+ShareD_StopShare
+        END

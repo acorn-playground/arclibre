@@ -1,0 +1,23 @@
+{
+  "status": "REPRODUCED_AND_FIXED_IN_BUILDER",
+  "problem": "Draw __FILE__ contained the absolute checkout path",
+  "original_rom_sha256": "f1e6a5d172047f278f9ea40780323d10aeed9da0f58e953113c47692be956232",
+  "relocated_rom_sha256": "5a0c01044ec243a3e4dfac32f264b72a17b5a196e4424bef5d4972c79f75019a",
+  "used_byte_difference": 40,
+  "fix": "Compile ROM C sources with paths relative to the repository working directory; no application source changes",
+  "verification": "A new clean exported-source rebuild is required after this correction",
+  "second_difference": {
+    "working_rom_sha256": "2a28f5171d1061ce8f4cbb39b83f2f908eb7e614b775bd5932668f7b117ddf22",
+    "exported_rom_sha256": "71cc567764c53647ef7668804768a2ce96eca5748c6ac3b9515b115dc154ddcb",
+    "differing_byte_offsets": [
+      1638740,
+      1638744,
+      1638745,
+      1638746,
+      1638747
+    ],
+    "cause": "Draw ResourceFS FLOAD/FEXEC inherited host mtime; unsuffixed asset also defaulted to Text",
+    "fix": "Explicit Sprite file type and zero datestamp; original sprite payload unchanged",
+    "patch": "patches/graphics-apps/0002-deterministic-sprite-catalogue.patch"
+  }
+}

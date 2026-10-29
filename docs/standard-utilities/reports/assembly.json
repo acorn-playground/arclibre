@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "modules": [
+    {
+      "component": "ScrBlank",
+      "status": "STATIC_ARM2_PASS",
+      "bytes": 2016,
+      "sha256": "fc207757258d3334dd7433abdc6ec34f81ac77ea49809a293c7ffebbb124182c",
+      "aof_sha256": "9fadbc2d81111fde1662e7be8c2b73ae00f0fe9fdf702649e0e483f6b31d804a",
+      "integer_instructions": 435,
+      "relocations": 0,
+      "unresolved_symbols": 0,
+      "swi_base": 274688
+    },
+    {
+      "component": "StringLib",
+      "status": "STATIC_ARM2_PASS",
+      "bytes": 2692,
+      "sha256": "c45252e2191c28b24eaf80f9efbcbd4fcda38524128cf89ecce7a2b7ecf3ed83",
+      "aof_sha256": "25deede4530d6a984e53856340e0a18a30fbfe76cdc782b6bf001f7a359d68fc",
+      "integer_instructions": 604,
+      "relocations": 0,
+      "unresolved_symbols": 0,
+      "swi_base": null
+    }
+  ],
+  "resources_sha256": "9883c4ee6d12ca6eabfaabbf391df042413b7a5292d2216e2993a18c38490297"
+}

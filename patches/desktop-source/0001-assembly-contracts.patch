@@ -1,0 +1,4606 @@
+--- a/src/FPASC/riscos/hdr/FPEmulator
++++ b/src/FPASC/riscos/hdr/FPEmulator
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -23,7 +24,7 @@
+ 
+ SWIClass  SETS  "FPEmulator"
+ 
+-        ^       Module_SWISystemBase + FPEmulatorSWI * Module_SWIChunkSize
++        ^       FPEmulatorSWI_Base
+ 
+         AddSWI  Version         ; &40480
+ 
+--- a/src/FontManager/s/Encoding
++++ b/src/FontManager/s/Encoding
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -347,7 +348,7 @@
+ ; Out   R2 -> start of identifier after this one, or error if none left
+ ;       [baseencoding] = base encoding number if encountered in a comment
+ 
+-findnextidentifier Entry "R0,R3"
++findnextidentifier KernelEntry "R0,R3"
+ 
+         Debug   enc2,"findnextidentifier: R2 =",R2
+ 
+@@ -373,7 +374,7 @@
+ ; Out   R2 -> start of next identifier, or error if none left
+ ;       [baseencoding] = base encoding number if encountered in a comment
+ 
+-findidentifier Entry "R0"
++findidentifier KernelEntry "R0"
+ 
+         Debug   enc2,"findidentifier: R2 =",R2
+ 
+@@ -401,7 +402,7 @@
+ ; In    R2 -> start of identifier
+ ; Out   R0 = hash value for identifier (0..HashIndexSize-1)
+ 
+-getidentifierhash Entry "R2,R3"
++getidentifierhash KernelEntry "R2,R3"
+ 
+         DebugS  enc2,"identifier =",R2
+ 
+@@ -438,7 +439,7 @@
+         TEQ     R0,#"%"
+         MOVNES  PC,LR
+ 
+-        Entry   "R1,R3"
++        KernelEntry   "R1,R3"
+ 
+         ADR     R1,str_riscos
+ 01      LDRB    R14,[R1],#1             ; see if we've matched the whole string yet
+@@ -487,7 +488,7 @@
+ ;       CS => character is alphanumeric
+ ;       CC => character is not alphanumeric
+ 
+-isalphanumeric Entry "R0,R1"
++isalphanumeric KernelEntry "R0,R1"
+ 
+         CMP     R0,#0                   ; EQ, CS => EOF
+         EXIT    EQ
+@@ -518,7 +519,7 @@
+ ;       R0 -> start of identifier #2
+ ; Out   EQ => identifiers match, NE => they don't
+ 
+-compareidentifiers Entry "R0,R2,R3,R5"
++compareidentifiers KernelEntry "R0,R2,R3,R5"
+ 
+         DebugS  enc2,"compareIDs: #1 =",R2
+         DebugS  enc2,"            #2 =",R0
+@@ -550,7 +551,7 @@
+ ;       R1 -> full filename of target encoding (in case error message required)
+ ; Out   R1 -> full filename of base encoding
+ 
+-getbaseencodingpath Entry "R2,R9", 32   ; use 32 bytes on the stack (automatically removed by EXIT)
++getbaseencodingpath KernelEntry "R2,R9", 32   ; use 32 bytes on the stack (automatically removed by EXIT)
+ 
+         LDR     R2,baseencoding
+         CMP     R2,#0
+@@ -580,7 +581,7 @@
+ ;
+ ; NB: Does not check for overflow - this can be done when scanning the prefixes
+ 
+-getencodingpath Entry ""
++getencodingpath KernelEntry ""
+ 
+         LDR     R0,[R2,#lff_prefixaddr]        ; R14 -> prefix block
+         ADD     R0,R0,#lfpr_prefix
+@@ -607,7 +608,7 @@
+ ; Out   R4 = length of encoding file
+ ;       Length returned as 0 if object does not exist, or is a directory
+ 
+-getencodingfilelength Entry "R2,R3,R5"
++getencodingfilelength KernelEntry "R2,R3,R5"
+ 
+         MOV     R0,#OSFile_ReadNoPath
+         SWI     XOS_File
+@@ -625,7 +626,7 @@
+ ;       R4 = length of buffer
+ ; Out   [R2..] = file contents, with a 0 stuck on the end as a terminator
+ 
+-loadencodingfile Entry "R1-R5"
++loadencodingfile KernelEntry "R1-R5"
+ 
+         Debug   enc,"Loading encoding file at addr,size",R2,R4
+ 
+@@ -681,7 +682,7 @@
+ ;       R2 -> identifier (if relevant) (denoted by %1)
+ ; Out   VS, R0 -> translated error block (in errorbuffer)
+ 
+-XError_with_encoding Entry "R0-R4,R9", 256       ; buffer on stack for encoding name
++XError_with_encoding KernelEntry "R0-R4,R9", 256       ; buffer on stack for encoding name
+ 
+ XError_with_encoding_altentry
+ 
+@@ -736,7 +737,7 @@
+ ;       3: in encoding string, if \E found
+ ;       4: encoding string itself (must be just the identifier)
+ 
+-get_name_from_id Entry "R0-R4"
++get_name_from_id KernelEntry "R0-R4"
+ 
+         DebugS  xx,"get_name_from_id: ",R1
+ 
+@@ -781,7 +782,7 @@
+         ADD     R0,R1,#1                ; skip number terminator
+         LDR     R1,[sp,#3*4]            ; R1 -> output buffer
+ 11      LDRB    R14,[R0],#1
+-        CMP     R14,#"\"
++        CMP     R14,#92
+         CMPNE   R14,#" "-1              ; space does not terminate names
+         MOVLE   R14,#0
+         STRB    R14,[R1],#1
+@@ -803,7 +804,7 @@
+ 
+ 03      LDR     R1,[sp,#3*4]            ; R1 -> output buffer
+ 31      LDRB    R14,[R0],#1
+-        CMP     R14,#"\"
++        CMP     R14,#92
+         CMPNE   R14,#" "                ; space terminates identifiers
+         MOVLE   R14,#0
+         STRB    R14,[R1],#1
+@@ -817,7 +818,7 @@
+         MOV     R14,#0
+ 41      STRB    R14,[R1,#-1]!           ; store identifier reversed (to correct for output)
+         LDRB    R14,[R0],#1
+-        CMP     R14,#"\"
++        CMP     R14,#92
+         CMPNE   R14,#" "
+         BGT     %BT41
+ 
+@@ -835,7 +836,7 @@
+ ; Out   R0 -> errorbuffer, containing translated error
+ ;       VS
+ 
+-MyGenerateError Entry "R1,R2"
++MyGenerateError KernelEntry "R1,R2"
+ 
+         MOV     R1,#0
+         MOV     R2,#0
+@@ -851,7 +852,7 @@
+ ; Out   R0 -> errorbuffer, containing translated error
+ ;       VS
+ 
+-MyGenerateError_2 Entry "R1-R7"
++MyGenerateError_2 KernelEntry "R1-R7"
+ 
+       [ debugxx
+         ADD     R14,R0,#4
+@@ -948,7 +949,7 @@
+ ;       preserves all flags except V (done by Lookup)
+ ;
+ 
+-FullLookupR0 ENTRY "r1,r2"
++FullLookupR0 KernelEntry "r1,r2"
+ 
+         MOV     r1, r0
+         ADR     r2, errorbuffer
+@@ -967,7 +968,7 @@
+ ;       preserves all flags except V (done by Lookup)
+ ;
+ 
+-LookupR0 ENTRY "R1-R7"
++LookupR0 KernelEntry "R1-R7"
+ 
+         DebugS  xx, "Lookup token ", r0
+ 
+@@ -983,7 +984,7 @@
+         EXIT
+ 
+ 
+-Lookup  ENTRY   "r8"
++Lookup  KernelEntry   "r8"
+ 
+         LDR     R0,messagefile
+         TEQ     R0,#0
+--- a/src/FontManager/s/Font_Arith
++++ b/src/FontManager/s/Font_Arith
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -48,7 +49,7 @@
+ ; In    [R6,#hdr_x/yres] = dots per inch
+ ; Out   [R6,#hdr_resXX/YY] = dots per inch << 9 / 72000 (fixed point at bit 16)
+ 
+-getresmatrix Entry "R0-R7"
++getresmatrix KernelEntry "R0-R7"
+ 
+         LDR     FACC,[R6,#hdr_xres]
+         BL      div72000
+@@ -70,7 +71,7 @@
+ ;       FGRD,FWACC,FWACCX,FWSIGN corrupted
+ ;       R6 (FWGRD) preserved
+ 
+-div72000 Entry "R6"
++div72000 KernelEntry "R6"
+ 
+         BL      IFLT                    ; FACC,FACCX,FSIGN := float(FACC)
+         MOVS    FWACC,FACC
+@@ -125,7 +126,7 @@
+ ;
+ ; NB: THIS ROUTINE MUST NOT MOVE THE CACHE
+ 
+-getnewrendermatrix Entry "R1-R3,R7"
++getnewrendermatrix KernelEntry "R1-R3,R7"
+ 
+         LDRB    R0,[R6,#hdr_masterfont]
+         BL      getfontheaderptr                ; R7 -> master font header
+@@ -200,7 +201,7 @@
+ ; In    R7 -> master font header
+ ; Out   GetPixels1Header called for master font
+ 
+-GetOutlinesHeader Entry "R6"
++GetOutlinesHeader KernelEntry "R6"
+ 
+         MOV     R6,R7                           ; R6 -> master font header
+         BL      GetPixels1Header
+@@ -224,7 +225,7 @@
+ 
+ ; NB: THIS ROUTINE MUST NOT MOVE THE CACHE
+ 
+-getrendermatrix Entry "R1,R2"
++getrendermatrix KernelEntry "R1,R2"
+ 
+         ADR     R14,tempmatrix_start-fmat_end   ; start again each time
+         STR     R14,tempmatrixrover
+@@ -307,7 +308,7 @@
+ ; Out   [x/yscale] = nominal width,height of font for threshold comparisons (pixels * 16 * 72)
+ ;       [swapxyposnsflag] = 1 => swap x/y posns (ie. font is more vertical than horizontal)
+ 
+-transformxyscale Entry "R0-R11"
++transformxyscale KernelEntry "R0-R11"
+ 
+         Debug   trn,"Munging x/yscale: originals are",#xscale,#yscale
+ 
+@@ -445,7 +446,7 @@
+ ; In    R0 = unsigned integer
+ ; Out   R0 = square root of input R0
+ 
+-squareroot Entry "R1-R6"
++squareroot KernelEntry "R1-R6"
+ 
+         TEQ     R0,#0
+         EXITS   EQ
+@@ -499,7 +500,7 @@
+ ;       R4 = ABS(R0)
+ ;       GT <=> R4 is too big to be multiplied up
+ 
+-getpixsize Entry ""
++getpixsize KernelEntry ""
+ 
+         Debuga  trn,"getpixsize: in",R3
+ 
+@@ -519,7 +520,7 @@
+ ; In    R1 -> fp matrix block
+ ; Out   [R1..] = [R1..] * 2 (achieved by adding 1 to the exponents)
+ 
+-matrix_double Entry "R2"
++matrix_double KernelEntry "R2"
+ 
+         MOV     R2,#fmat_YY+4                   ; don't do the offsets (we're pre-multiplying)
+ 
+@@ -537,7 +538,7 @@
+ ; In    R1 -> font matrix block, or 0
+ ; Out   R1 -> fp font matrix, or 0 if none
+ 
+-getfpfontmatrix Entry "R2"
++getfpfontmatrix KernelEntry "R2"
+ 
+         TEQ     R1,#0
+         EXITS   EQ
+@@ -559,7 +560,7 @@
+ ; In    [paintmatrix] -> paint matrix block, or 0
+ ; Out   R2 -> fp paint matrix, or 0 if none
+ 
+-getfppaintmatrix Entry "R1"
++getfppaintmatrix KernelEntry "R1"
+ 
+         LDR     R1,paintmatrix
+         MOVS    R2,R1
+@@ -580,7 +581,7 @@
+ ;       R2 -> destination matrix (floating point)
+ ; Out   [R2..] = floating point version of [R1..]
+ 
+-matrix_float Entry "R0-R10"
++matrix_float KernelEntry "R0-R10"
+ 
+         DebugM  matrix,"matrix_float: in  ",R1
+ 
+@@ -613,7 +614,7 @@
+ ;       R2 -> destination matrix (fixed point), with space for mat_coordshift
+ ; Out   [R2..] = fixed point version of [R1..]
+ 
+-matrix_fix Entry "R0-R11"
++matrix_fix KernelEntry "R0-R11"
+ 
+         DebugMF matrix,"matrix_fix: in  ",R1
+ 
+@@ -668,7 +669,7 @@
+ ;       [R6,#hdr_xysize] = point size of font * 16
+ ; Out   R1 -> floating point matrix equivalent of xysize/16
+ 
+-getxysizeover16 Entry "R0,R2-R7"
++getxysizeover16 KernelEntry "R0,R2-R7"
+ 
+         LDR     FACC,[R6,#hdr_xsize]
+         BL      IFLT                            ; FACC,FACCX,FSIGN = float(FACC)
+@@ -694,7 +695,7 @@
+ ;       [R6,#hdr_resXX/YY] = resolution matrix values
+ ; Out   R2 -> floating point matrix equivalent of [ resXX 0 0 resYY 0 0 ]
+ 
+-getresolutionmatrix Entry "R0-R1,R3-R7"
++getresolutionmatrix KernelEntry "R0-R1,R3-R7"
+ 
+         ADD     R14,R6,#hdr_resXX
+         LDMIA   R14,{FWACC,FWACCX}
+@@ -715,7 +716,7 @@
+ ;       [R7,#hdr_designsize] = design size
+ ; Out   R1 -> floating point matrix equivalent of [ 1000/designsize 0 0 1000/designsize 0 0 ]
+ 
+-getdesignmatrix Entry "R0,R2-R7"
++getdesignmatrix KernelEntry "R0,R2-R7"
+ 
+         LDR     FACC,[R7,#hdr_designsize]
+       [ debugbrk
+@@ -744,7 +745,7 @@
+ ;       FACC,FACCX = fmat_YY value
+ ; Out   R1 -> matrix [ XX 0 0 YY 0 0 ]
+ 
+-makematrix Entry "R8,R9"
++makematrix KernelEntry "R8,R9"
+ 
+         BL      getnewmatrix                    ; R8 -> spare matrix block
+ 
+@@ -780,7 +781,7 @@
+ ; Out   R1 -> temp buffer containing matrix(R1) * matrix(R2)
+ ;       VS => R0 -> error block (overflow)
+ 
+-matrix_multiply Entry "R0,R2-R11"
++matrix_multiply KernelEntry "R0,R2-R11"
+ 
+         DebugMF matrix,"matrix_mul: in1",R1
+         DebugMF matrix,"matrix_mul: in2",R2
+@@ -817,7 +818,7 @@
+ ; Out   [R8..]! = row(R10)*colX(R11), row(R10)*colY(R11)
+ ;       R0-R7 corrupt
+ 
+-rowtimescol_0_twice Entry "R11"
++rowtimescol_0_twice KernelEntry "R11"
+ 
+         BL      rowtimescol_0
+         ORRVC   FACCX,FACCX,FSIGN               ; compress result into 2 words
+@@ -838,7 +839,7 @@
+ ; Out   [R8..]! = row(R10)*colX(R11), row(R10)*colY(R11)
+ ;       R0-R7 corrupt
+ 
+-rowtimescol_1_twice Entry "R11"
++rowtimescol_1_twice KernelEntry "R11"
+ 
+         BL      rowtimescol_1
+         ORRVC   FACCX,FACCX,FSIGN               ; compress result into 2 words
+@@ -858,7 +859,7 @@
+ ; Out   FACC,FACCX,FSIGN = result of multiplying one row by one column
+ ;       R4-R7 corrupt
+ 
+-rowtimescol_1 Entry ""
++rowtimescol_1 KernelEntry ""
+ 
+         BL      rowtimescol_0           ; FACC,FACCX,FSIGN = Xr * cX + Yr * cY
+ 
+@@ -877,7 +878,7 @@
+ ; Out   FACC,FACCX,FSIGN = result of multiplying one row by one column
+ ;       R4-R7 corrupt
+ 
+-rowtimescol_0 Entry "R10,R11"
++rowtimescol_0 KernelEntry "R10,R11"
+ 
+         Debug   matrix,"row*col: in",R10,R11
+ 
+@@ -914,7 +915,7 @@
+ 
+ ; Out   R8 -> temporary matrix block, allocated from a cyclic buffer
+ 
+-getnewmatrix Entry ""
++getnewmatrix KernelEntry ""
+ 
+         LDR     R8,tempmatrixrover
+         ADD     R8,R8,#fmat_end
+@@ -958,7 +959,7 @@
+ ; Out   R4 = new x-coordinate
+ ;       R0,R5-R9 corrupted
+ 
+-scalexcoord Entry "R1"
++scalexcoord KernelEntry "R1"
+ 
+         LDMIA   R1,{R5-R9}              ; R5,R7,R9 are the relevant numbers
+ 
+@@ -986,7 +987,7 @@
+ ; Out   R5 = new y-coordinate
+ ;       R1,R6-R9 corrupted
+ 
+-scaleycoord Entry "R4"
++scaleycoord KernelEntry "R4"
+ 
+         LDMIB   R1,{R4,R6-R9}           ; R4,R7,R9 are the relevant numbers
+ 
+@@ -1013,7 +1014,7 @@
+ ;       R1 = fixed point matrix value to multiply by
+ ; Out   R0 = result (signed, 32-bit), ie. R0*R1 >> 16
+ 
+-mul_R0_R1 Entry "R1-R3"
++mul_R0_R1 KernelEntry "R1-R3"
+ 
+         TEQ     R0,#0
+         TEQNE   R1,#0
+--- a/src/FontManager/s/Fonts
++++ b/src/FontManager/s/Fonts
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -23,6 +24,7 @@
+ ; Load header files from Hdr:
+ ;
+ 
++        AREA ModuleCode, CODE, READONLY
+ origin
+ 
+         GET     hdr:ListOpts
+--- a/src/FontManager/s/Fonts01
++++ b/src/FontManager/s/Fonts01
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -1876,11 +1877,9 @@
+ ;; Module Header Tables
+ ;;----------------------------------------------------------------------------
+ 
+-        LEADR   Module_LoadAddr
+-
+         ASSERT  (.=origin)              ; check that no code precedes this
+ 
+-MySWIBase * Module_SWISystemBase + (FontSWI * Module_SWIChunkSize)
++MySWIBase * FontSWI_Base
+ 
+ Module_BaseAddr
+         DCD     0                       ; Start
+@@ -2286,7 +2285,7 @@
+ ; In    r0 -> parameters
+ ;       r1 = number of parameters (1)
+ 
+-LoadFontCache_Code Entry "r0-r4, r6, r12"
++LoadFontCache_Code KernelEntry "r0-r4, r6, r12"
+ 
+         LDR     r12, [r12]              ; r12 -> workspace
+ 
+@@ -2395,6 +2394,7 @@
+         SWI     XOS_Find
+         MOVVC   r0, r2
+         TEQVCP  r3, #0
++        MOV     R0,R0                   ; ARM2 PSR settling
+ 99
+         PullS   "$Proc_RegList"
+ 
+@@ -2411,7 +2411,7 @@
+ ; In    r0 -> parameter list (filename)
+ ;       r1 = number of parameters (1)
+ 
+-SaveFontCache_Code Entry "r0-r4, r12"
++SaveFontCache_Code KernelEntry "r0-r4, r12"
+ 
+         LDR     r12, [r12]                      ; r12 -> workspace
+ 
+@@ -2452,6 +2452,7 @@
+         SWI     XOS_Find
+         MOVVC   r0, r2
+         TEQVCP  r3, #0
++        MOV     R0,R0                   ; ARM2 PSR settling
+ 99
+         PullS   "$Proc_RegList"
+         LTORG
+@@ -2488,7 +2489,7 @@
+ pointtext       #       4
+ 
+ 
+-FontList_Code   Entry "R1-R12",:INDEX:@ ; get local workspace
++FontList_Code   KernelEntry "R1-R12",:INDEX:@ ; get local workspace
+ 
+         MOV     r11, sp                 ; r11->local workspace
+ 
+@@ -2735,7 +2736,7 @@
+ ; In:   r11->local stack from FontList_Code
+ 
+ writeheader
+-        ENTRY
++        KernelEntry
+ 
+         MOV     HPOS, #0
+ 
+@@ -2802,7 +2803,7 @@
+ ;       HPOS adjusted by length of text
+ 
+ lookupprint
+-        ENTRY   "r3"
++        KernelEntry   "r3"
+         BL      FullLookupR0
+         ADDVC   HPOS, HPOS, r3
+         SWIVC   XOS_Write0
+@@ -2839,7 +2840,7 @@
+ 
+ ; Print "ROM " before the data type name
+ 
+-printrom Entry ""
++printrom KernelEntry ""
+ 
+         ADD     HPOS,HPOS,#?romstr2-1
+         SWI     XOS_WriteS
+@@ -2854,7 +2855,7 @@
+ ;       R10 <> 0 => print out data on each block as it is found
+ ; Out   R0 = total size of all blocks in font
+ 
+-scanfonttree Entry "R6-R8,R11"
++scanfonttree KernelEntry "R6-R8,R11"
+ 
+         LDR     R14,wantedfont
+         LDR     R8,cacheindex
+@@ -3092,7 +3093,7 @@
+ ;       R8 -> chunk
+ ; Out   R0 = R0 + size of subblocks (NOT including size of chunk itself)
+ 
+-countchunk Entry "R7,R8"
++countchunk KernelEntry "R7,R8"
+ 
+         LDR     R14,[R8,#pix_flags]
+         TST     R14,#pp_splitchunk
+@@ -3120,7 +3121,7 @@
+ ; In    R0 -> string (0-terminated)
+ ; Out   HPOS += strlen(R0)
+ 
+-countR0 Entry "R0"
++countR0 KernelEntry "R0"
+ 
+ 01      LDRB    R14,[R0],#1
+         TEQ     R14,#0
+@@ -3135,7 +3136,7 @@
+ ;       R1 = field width
+ ; Out   prints R0 ASR #10, with "K",cr,lf following
+ 
+-printinK Entry ""
++printinK KernelEntry ""
+ 
+         CMP     R0,#1024
+         BCS     %FT02
+@@ -3165,7 +3166,7 @@
+ ; Out   print R0/16, using 1/4, 1/2 or 3/4 if nec., with '+' if inexact
+ ;       HPOS has been updated
+ 
+-printpointsize Entry "R0-R2"
++printpointsize KernelEntry "R0-R2"
+ 
+         MOV     R0,R0,LSR #4
+         MOV     R1,#0
+@@ -3196,7 +3197,7 @@
+ 
+ ; print spaces until HPOS >= R0
+ 
+-tabtoR0 Entry ""
++tabtoR0 KernelEntry ""
+ 
+ flst4   SWI     XOS_WriteI+" "          ; always print at least one " "
+         Pull    "PC",VS
+@@ -3213,7 +3214,7 @@
+ ;;         If no params, use <Font$Prefix>, else use command line
+ ;;----------------------------------------------------------------------------
+ 
+-FontCat_Code Entry "R0-R3"
++FontCat_Code KernelEntry "R0-R3"
+ 
+         LDR     wsptr,[R12]             ; get wsptr !!!
+ 
+@@ -3311,7 +3312,7 @@
+         MEND
+ 
+ 
+-Init    Entry   "R0-R3,R12"
++Init    KernelEntry   "R0-R3,R12"
+ 
+       [ debug_file
+         Debug_Open "<FontMgr$Trace>"
+@@ -3484,7 +3485,7 @@
+ 
+ ; initialise sundry data items (N.B. R12 --> workspace)
+ 
+-initcache Entry "R0-R3"
++initcache KernelEntry "R0-R3"
+ 
+         CheckCache_enable
+ 
+@@ -3589,7 +3590,7 @@
+ ; In    [fontcachesize]=0 => no cache, else there is one
+ ; Out   [cacheindex] = 0 if no cache, else -> index
+ 
+-initindex Entry "R0-R3"
++initindex KernelEntry "R0-R3"
+ 
+         LDR     R0,fontcache
+ 
+@@ -3665,7 +3666,7 @@
+ ;; private word is automatically relocated if RMtidy occurs
+ ;;-----------------------------------------------------------
+ 
+-Die     Entry   "R0-R3,R12"
++Die     KernelEntry   "R0-R3,R12"
+ 
+         LDR     wsptr,[R12]             ; R12 --> workspace
+         TEQ     R10,#0
+@@ -3718,7 +3719,7 @@
+ ; In    [cacheindex] -> font cache index
+ ; Out   Error "Font Manager in use" if any fonts are claimed
+ 
+-checkclaimed    Entry "r1,r2"
++checkclaimed    KernelEntry "r1,r2"
+ 
+         LDR     R1,cacheindex
+         CMP     R1,#0
+@@ -3751,7 +3752,7 @@
+         TEQNE   R1,#Service_ModeChange  ; Added by Chris: see below
+         MOVNES  PC,LR
+ 
+-        Entry   "R0-R2,R12"
++        KernelEntry   "R0-R2,R12"
+ 
+         LDR     wsptr,[R12]
+ 
+@@ -3787,7 +3788,7 @@
+ 
+ ;.....................................................................................
+ 
+-claimvectors    Entry "R1-R2"
++claimvectors    KernelEntry "R1-R2"
+ 
+         Claim   UKPLOTV,UKPLOTVentry    ; NB: only gets onto vectors once
+         Claim   UKVDU23V,UKVDU23Ventry
+@@ -3802,7 +3803,7 @@
+ ;;      if printing, call PDriver_FontSWI and exit to caller
+ ;;----------------------------------------------------------------------------
+ 
+-TryPrinterDriver Entry "R8"
++TryPrinterDriver KernelEntry "R8"
+ 
+         LDR     R14,printerflag
+         CMP     R14,#0                  ; CLRV
+@@ -3845,6 +3846,7 @@
+       ]
+ 
+         TEQP    PC,#SVC_mode            ; re-enable interrupts!!!
++        MOV     R0,R0                   ; ARM2 PSR settling
+ 
+ 
+       [ debugswis
+@@ -3938,7 +3940,7 @@
+         MySWI   Font_ApplyFields
+         MySWI   Font_LookupFont
+ 
+-        WHILE   MySWIBase+(.-FontSWItable)/4 < Font_ChangeArea
++        WHILE   MySWIBase+((.-FontSWItable)/4) < Font_ChangeArea
+         B       err_nosuchswi
+         WEND
+ 
+@@ -4063,7 +4065,7 @@
+ ; Entry:  R0 = font handle
+ ;         no error if font not known
+ 
+-SWIFont_LoseFont Entry "R1-R3,R6"
++SWIFont_LoseFont KernelEntry "R1-R3,R6"
+ 
+         CMP     R0,#maxf
+         TEQCS   R0,R0                   ; don't bother with handles > 255
+@@ -4146,7 +4148,7 @@
+ ;       endif
+ 
+ IntFont_ReadDefn ROUT
+-SWIFont_ReadDefn Entry "R0,R1,R9"
++SWIFont_ReadDefn KernelEntry "R0,R1,R9"
+ 
+         CMP     R0,#maxf                ; handles must be in range 1..255
+         TEQCS   R0,R0
+@@ -4261,7 +4263,7 @@
+ ;       R6 updated by length of string
+ ;       R0,R1,R2 corrupted
+ 
+-appendidandname Entry "R0"
++appendidandname KernelEntry "R0"
+ 
+         MOV     R2,#-1
+         BL      appendqualifieretc              ; append identifier
+@@ -4286,12 +4288,12 @@
+ ; Out   "\<letter><string> appended to [R6..] (if R6 >=&8000)
+ ;       R6 increased by length of string
+ 
+-appendqualifieretc Entry "R0-R2"
++appendqualifieretc KernelEntry "R0-R2"
+ 
+         SUB     sp,sp,#16
+         MOV     R1,sp
+ 
+-        MOV     R14,#"\"
++        MOV     R14,#92
+         STRB    R14,[R1],#1
+         STRB    R0,[R1],#1              ; "\<qualifier>"
+ 
+@@ -4319,7 +4321,7 @@
+ ; Out   [R6..] contains copy of string, if was >= &8000 on entry
+ ;       R6 updated by length of string (not terminated)
+ 
+-appendR1toR6 Entry ""
++appendR1toR6 KernelEntry ""
+ 
+         CMP     R6,#&8000               ; if R6 = size so far,
+         BLT     %30
+@@ -4346,7 +4348,7 @@
+ ; In    R0 = font handle
+ ; Out   R1,R2,R3,R4 = font bbox x0,y0,x1,y1 (OS units)
+ 
+-SWIFont_ReadInfo Entry "R0,R6-R12"
++SWIFont_ReadInfo KernelEntry "R0,R6-R12"
+ 
+         BL      setmodedata
+         BLVC    getfontheaderptr        ; R7 --> font header
+@@ -4382,7 +4384,7 @@
+ 
+ ; shift R1-R4 up to OS coords
+ 
+-scalepixtoOS    Entry ""
++scalepixtoOS    KernelEntry ""
+ 
+         LDR     R14,modedata_px
+         MOV     R1,R1,ASL R14                   ; convert to OS coords
+@@ -4476,7 +4478,7 @@
+ ;       R1-R4 = x0,y0,x1,y1 (design units)
+ ; Out   R1-R4 = x0,y0,x1,y1 (pixels) - rounded to nearest
+ 
+-scaleoutlinebbox Entry "R5"
++scaleoutlinebbox KernelEntry "R5"
+ 
+         LDR     R5,rendermatrix
+ 
+@@ -4531,7 +4533,7 @@
+         MOV$cc  $rd,$r4
+         MEND
+ 
+-transformbox Entry "R1-R9"
++transformbox KernelEntry "R1-R9"
+ 
+         MOV     R1,R5                   ; R1 -> transformation matrix (for transformpt)
+ 
+@@ -4823,7 +4825,7 @@
+ ;           unit matrix = [1<<16,0,0,1<<16,0,0]
+ ;       R7 = length of string (if R2 bit 7 set)
+ 
+-SWIFont_Paint Entry ""                  ; pushes caller's return address
++SWIFont_Paint KernelEntry ""                  ; pushes caller's return address
+ 
+         BL      TryPrinterDriver        ; may bomb out to PrinterDriver SWI
+ 
+@@ -4842,6 +4844,7 @@
+         MOV     R1,PC
+         SWI     XOS_RestoreCursors      ; do this even if error occurs
+         TEQVCP  R1,#0                   ; restore flags unless V set
++        MOV     R0,R0                   ; ARM2 PSR settling
+ 
+         STRVS   R0,[R13]                ; ensure we don't throw away the error pointer
+ 
+@@ -4856,7 +4859,7 @@
+ ;       R2 = flags (bit 4 determines units of R3,R4)
+ ;       R3,R4 = coords (units depend on R2 - see SWIFont_Paint)
+ 
+-SWIFont_Caret Entry ""                  ; saves caller's return address
++SWIFont_Caret KernelEntry ""                  ; saves caller's return address
+         BL      TryPrinterDriver        ; may bomb out to PrinterDriver SWI
+ 
+         Push    "R0-R11"
+@@ -4869,6 +4872,7 @@
+         MOV     R1,PC
+         SWI     XOS_RestoreCursors
+         TEQVCP  R1,#0                   ; restore V unless set already
++        MOV     R0,R0                   ; ARM2 PSR settling
+ 
+         PullS   "R0-R11"                ; return V flag, preserving others
+ 
+@@ -4879,7 +4883,7 @@
+ ; In    R1,R2 = x,y coords (in 1/72000")
+ ; Out   R1,R2 = x,y coords (in OS units)
+ 
+-SWIFont_ConverttoOS Entry "R3-R11"
++SWIFont_ConverttoOS KernelEntry "R3-R11"
+ 
+         BL      setmodedata
+ 
+@@ -4901,7 +4905,7 @@
+ ; In    R1,R2 = x,y coords (in OS units)
+ ; Out   R1,R2 = x,y coords (in 1/72000")
+ 
+-SWIFont_Converttopoints Entry "R3-R11"
++SWIFont_Converttopoints KernelEntry "R3-R11"
+ 
+         BL      setmodedata
+ 
+@@ -4926,7 +4930,7 @@
+ ; In    R0 = font handle
+ ; Out   current font set to whatever R0 was
+ 
+-SWIFont_SetFont Entry "R1-R12"
++SWIFont_SetFont KernelEntry "R1-R12"
+ 
+         CMP     R0,#maxf
+         TEQCS   R0,R0
+@@ -5247,7 +5251,7 @@
+ ;       VC => R0 corrupt
+ ;       VS => R0 -> error block
+ 
+-getoutlines_metricsbbox Entry "R5-R7"
++getoutlines_metricsbbox KernelEntry "R5-R7"
+ 
+         Debug   bb2,"getoutlines_metricsbbox: code, transformptr =",R1,#transformptr
+ 
+@@ -5322,7 +5326,7 @@
+ ;       (1) It was never calculated, eg. if the slave font has an exact bitmap match
+ ;       (2) Font_UnCacheFile was called on the outlines file (this causes the matrix to be invalidated too)
+ 
+-bboxmetrics_getmatrix Entry "R6,R7"
++bboxmetrics_getmatrix KernelEntry "R6,R7"
+ 
+         LDRB    R0,[R6,#hdr_masterfont]
+         BL      getfontheaderptr                ; R7 -> master font header
+@@ -5337,7 +5341,7 @@
+ ;       [bboxx0/y0/x1/y1] -> bbox arrays
+ ; Out   R1-R4 = transformed bbox
+ 
+-transformbbox Entry "R6,R7"
++transformbbox KernelEntry "R6,R7"
+ 
+         ADR     R14,bboxx0
+         LDMIA   R14,{R1,R2,R3,R4}
+@@ -5385,7 +5389,7 @@
+ ; Out   R1-R4 = x0,y0,x1,y1 in OS units (for the current mode)
+ ;       R0,pixelsptr,metricptr corrupted
+ 
+-getpixelsbbox   Entry ""
++getpixelsbbox   KernelEntry ""
+ 
+         Debug   bb2,"Charbbox: getpixelsbbox R1,R6,R7",R1,R6,R7
+ 
+@@ -5405,7 +5409,7 @@
+ ; Out   R1-R4 = x0,y0,x1,y1 in OS units (for the current mode)
+ ;       R0,pixelsptr,metricptr corrupted
+ 
+-getoutlinebbox  Entry ""
++getoutlinebbox  KernelEntry ""
+ 
+         Debug   bb2,"Charbbox: pixelsptr, code =",pixelsptr,R1
+ 
+@@ -5472,7 +5476,7 @@
+ ;       R3 = number of colours used for anti-aliasing
+ ;       this call does not affect the palette
+ 
+-SWIFont_SetFontColours Entry "R1-R12"
++SWIFont_SetFontColours KernelEntry "R1-R12"
+ 
+         Debug   rgb,"Font_SetFontColours",R0,R1,R2,R3
+ 
+@@ -5526,7 +5530,7 @@
+ ; In    R3 = proposed value of aliascolours
+ ; Out   error unless -14 <= R3 <= 14
+ 
+-checkaliascolours Entry ""
++checkaliascolours KernelEntry ""
+         ADD     R14,R3,#14              ; check that no. of colours is OK
+         CMP     R14,#28+1               ; between -14 and +14
+         EXITS   CC
+@@ -5554,7 +5558,7 @@
+ ;       In 256-colour modes, pseudo-palette entry R2 is set to the given values
+ ;       The current font colours are also set to R1,R2,R3
+ 
+-SWIFont_SetPalette Entry "R0-R5"
++SWIFont_SetPalette KernelEntry "R0-R5"
+ 
+         Debug   rgb,"Font_SetPalette",R1,R2,R3,R4,R5,R6
+ 
+@@ -5602,7 +5606,7 @@
+ ;             byte 0:  offset from 1st fcol to last (can be -ve)
+ ;             bytes 1-14:  thresholds
+ 
+-SWIFont_ReadThresholds Entry "R1-R3"
++SWIFont_ReadThresholds KernelEntry "R1-R3"
+ 
+         LDRB    R3,aliascolours
+         STRB    R3,[R1],#1
+@@ -5628,7 +5632,7 @@
+ ;             byte 0:  offset from 1st fcol to last (can be -ve)
+ ;             bytes 1-14:  thresholds
+ 
+-SWIFont_SetThresholds Entry "R0-R11"
++SWIFont_SetThresholds KernelEntry "R0-R11"
+ 
+         MOV     wrchbase,R1             ; wrchbase --> data
+         LDRB    aliascols,[wrchbase],#1
+@@ -5693,6 +5697,7 @@
+         MOVGT   R3,#0
+         MOVGT   R4,#0
+         TEQP    R5,#0                   ; restore flags
++        MOV     R0,R0                   ; ARM2 PSR settling
+ 
+         Debug   me,"Font_StringBBox returns",R1,R2,R3,R4
+ 
+@@ -5709,7 +5714,7 @@
+ ;                              else they in the bottom <bpp> bits of each byte
+ ;       where <bpp> denotes the number of bits per pixel in the current output mode
+ 
+-SWIFont_ReadColourTable Entry "R1-R5"
++SWIFont_ReadColourTable KernelEntry "R1-R5"
+ 
+         BL      setmodedata
+         BLVC    setoutputdata
+@@ -5775,7 +5780,7 @@
+         B       MyGenerateError
+         MakeErrorBlock  FontReserved
+ 
+-SWIFont_MakeBitmap Entry "R0-R11"
++SWIFont_MakeBitmap KernelEntry "R0-R11"
+ 
+         Debug   th,"Font_MakeBitmap: R1,R2,R3,R4,R5,R6 =",R1,R2,R3,R4,R5,R6
+ 
+@@ -6025,6 +6030,7 @@
+         SWI     XOS_Find
+         MOVVC   R0,R3
+         TEQVCP  R4,#0
++        MOV     R0,R0                   ; ARM2 PSR settling
+ 
+ mkb_stackframe
+         ADD     sp,sp,#256              ; lose local stack frame
+@@ -6043,6 +6049,7 @@
+         BLCS    SWIFont_LoseFont
+         MOVVC   R0,R3
+         TEQVCP  R4,#0
++        MOV     R0,R0                   ; ARM2 PSR settling
+ 
+ mkb_exit
+       [ switchclever
+@@ -6074,7 +6081,7 @@
+ ;
+ ; Can't call makepathname to do this since encoding might start with "b","f" or "x"
+ 
+-createencodingsubdir Entry "R1-R7"
++createencodingsubdir KernelEntry "R1-R7"
+ 
+         ADD     R7,R6,#hdr_encoding
+         LDMIA   R7,{R3-R5}
+@@ -6113,7 +6120,7 @@
+ 
+ ; Copy ctrl-char terminated string from [R0] to [R1], updating both
+ 
+-copy_r0r1 Entry ""
++copy_r0r1 KernelEntry ""
+ 
+ 01      LDRB    R14,[R0],#1
+         CMP     R14,#32
+@@ -6144,7 +6151,7 @@
+ ; On the first call, the old metrics data is removed from the cache,
+ ; while the second call causes GetMetricsHeader to be called.
+ 
+-SWIFont_UnCacheFile Entry "R0,R1,R2,R4,R6,R7,R8,R11"
++SWIFont_UnCacheFile KernelEntry "R0,R1,R2,R4,R6,R7,R8,R11"
+ 
+         DebugS  unc,"Font_UnCacheFile ",R1
+ 
+@@ -6213,7 +6220,7 @@
+ ;       R6 relocated if necessary
+ ;       R8 preserved (ie. not relocated) - assumed to point to cache index
+ 
+-uncache_fontdata Entry "R1,R7"
++uncache_fontdata KernelEntry "R1,R7"
+ 
+         BL      claimfont               ; increment reference count (error if not present)
+ 
+@@ -6279,7 +6286,7 @@
+ ;       R6 relocated if necessary
+ ;       R8 preserved (ie. not relocated) - assumed to point to cache index
+ 
+-tryuncache Entry "R1-R4,R8"           ; R8 -> cache index (not relocated)
++tryuncache KernelEntry "R1-R4,R8"           ; R8 -> cache index (not relocated)
+ 
+         TEQ     R7,#0
+         MOVEQ   R14,#"I"                ; R7=0 => IntMetrics
+@@ -6333,7 +6340,7 @@
+ ; Out   EQ => names match (case insensitive)
+ ;       NE => names don't match
+ 
+-matchname Entry "R1-R4"
++matchname KernelEntry "R1-R4"
+ 
+ 01      LDRB    R14,[R1],#1             ; skip leading spaces
+         TEQ     R14,#" "
+@@ -6365,7 +6372,7 @@
+ ;
+ ; This routine is called from Font_UnCacheFile to flush out the relevant data
+ 
+-deletechunks_R7 Entry "R4-R5,R7-R9"
++deletechunks_R7 KernelEntry "R4-R5,R7-R9"
+ 
+         SUBS    R14,R7,R6
+         Debug   unc,"deletechunks_R7: fonthdr,offset",R6,R14
+@@ -6425,7 +6432,7 @@
+ ;       transform leafnames set to 1,1
+ ;       transform render matrix invalidated
+ 
+-uncachetransforms Entry "R5,R7-R9"
++uncachetransforms KernelEntry "R5,R7-R9"
+ 
+         Debug   unc,"uncachetransforms: font header =",R6
+ 
+@@ -6451,7 +6458,7 @@
+ ;       leafname bytes set to leaf_scanfontdir
+ ;       rendermatrix marked invalid (will be recomputed in ScanFontDir)
+ 
+-deletetransformchunks Entry "R8,R9"
++deletetransformchunks KernelEntry "R8,R9"
+ 
+         MOV     R14,#leaf_scanfontdir
+         STRB    R14,[R5,#trn4_leafname]
+@@ -6479,7 +6486,7 @@
+ ; Out   thresholds, font cache updated to reflect the new settings
+ ;       Values are NOT stored in CMOS RAM (use *Configure FontMax1..5)
+ 
+-SWIFont_SetFontMax Entry "R6-R10"
++SWIFont_SetFontMax KernelEntry "R6-R10"
+ 
+         STR     R0,maxcache
+ 
+@@ -6516,7 +6523,7 @@
+ 
+ ; resetfontmax - call GetNewPixelsHeader for all fonts
+ 
+-resetfontmax Entry "R0-R2,R4-R9"
++resetfontmax KernelEntry "R0-R2,R4-R9"
+ 
+         LDR     R8,cacheindex
+         TEQ     R8,#0
+@@ -6582,7 +6589,7 @@
+ ;       R6 -> font header block (FONT MUST BE CLAIMED)
+ ; Out   GetNewPixelsHeader_R7 called for 1-bpp and 4-bpp
+ 
+-try_newpixelsheaders Entry "R0,R7"
++try_newpixelsheaders KernelEntry "R0,R7"
+ 
+       [ newthresholds
+         Debug setth,"Set thresholds from try_newpixelsheaders... R6 =",R6
+@@ -6608,7 +6615,7 @@
+ 
+       [ newthresholds
+ 
+-setthresholds Entry "R2-R3"
++setthresholds KernelEntry "R2-R3"
+ 
+         ASSERT  threshold1 +4 = threshold2
+         ASSERT  threshold2 +4 = threshold3
+@@ -6673,7 +6680,7 @@
+ ; This routine may return errors
+ ; These are ignored by resetfontmax, but reported by Font_MakeBitmap.
+ 
+-GetNewPixelsHeader_R7 Entry "R2,R8,R9"
++GetNewPixelsHeader_R7 KernelEntry "R2,R8,R9"
+ 
+         Debug   th,"GetNewPixelsHeader: R6,R7, transform =",R6,R7,R5
+ 
+@@ -6752,6 +6759,7 @@
+ 04
+         Pull    "R0,LR"
+         TEQP    LR,#0                   ; restore error state
++        MOV     R0,R0                   ; ARM2 PSR settling
+ 
+         EXIT
+ 
+@@ -6765,7 +6773,7 @@
+ ;       R2 = bytes remaining in buffer
+ ; Error "Buffer overflow" if buffer too small
+ 
+-SWIFont_ReadFontPrefix Entry "R0-R1,R6-R8"
++SWIFont_ReadFontPrefix KernelEntry "R0-R1,R6-R8"
+ 
+         BL      getfontheaderptr
+         MOVVC   R6,R7                   ; R6 -> font header
+@@ -6791,7 +6799,7 @@
+ ;       R2 = bytes remaining in buffer
+ ; Error "Buffer overflow" if buffer too small
+ 
+-copytobuffer_skipspaces Entry ""
++copytobuffer_skipspaces KernelEntry ""
+ 
+ 01      LDRB    R14,[R0],#1
+         TEQ     R14,#" "
+@@ -6848,7 +6856,7 @@
+ 
+ swf_settable    *       swf_justcount :OR: swf_scaffold :OR: swf_nobitmaps   ; can't do skeleton or sprites!
+ 
+-SWIFont_SwitchOutputToBuffer Entry "R3-R4"
++SWIFont_SwitchOutputToBuffer KernelEntry "R3-R4"
+ 
+         CMP     R1,#0                           ; settable bits depend on R1
+         MOVLE   R14,#0
+@@ -7114,7 +7122,7 @@
+ ;       metricsptr -> metrics block
+ ;       pixelsptr = 0
+ 
+-readfontmetrics_setparams Entry ""
++readfontmetrics_setparams KernelEntry ""
+ 
+         BL      getfontheaderptr        ; R7 -> font header block
+         EXIT    VS
+@@ -7215,7 +7223,7 @@
+ scanco_bboxx1           #       4
+ scanco_bboxy1           #       4
+ 
+-SWIFont_ScanString Entry "R0-R11"
++SWIFont_ScanString KernelEntry "R0-R11"
+ 
+         LDR     R14,=scanstr_reserved
+         TST     R2,#scanstr_coordblk            ; can't return bbox if no coordblk
+@@ -7312,7 +7320,7 @@
+ 
+         ASSERT  setoutputclever         ; needs this to work!
+ 
+-SWIFont_SetColourTable Entry "R0-R4"
++SWIFont_SetColourTable KernelEntry "R0-R4"
+ 
+         BL      setmodedata             ; setup the mode data required
+         BVS     %FT99
+@@ -7463,7 +7471,7 @@
+ ;       R2 = bytes remaining in buffer
+ ; Error "Buffer overflow" if buffer too small
+ 
+-SWIFont_ReadEncodingFilename Entry "R0-R2,R6-R9"
++SWIFont_ReadEncodingFilename KernelEntry "R0-R2,R6-R9"
+ 
+         LDRB    R8,currentfont
+         STRB    R0,currentfont          ; for error handling in findblockfromID_noqual
+@@ -7508,7 +7516,7 @@
+ ;       R2 preserved => field was present, else R2=0 => not present
+ ;       Note that in the general case the "F" field is space-terminated, while all others are ctrl-char terminated
+ 
+-SWIFont_FindField Entry ""
++SWIFont_FindField KernelEntry ""
+ 
+         BL      findfield
+         MOVNE   R2,#0                   ; R2=0 => field not found
+@@ -7529,7 +7537,7 @@
+ ; pass 1: copy fields in [R0] from [R1] if present, else [R0]
+ ; pass 2: copy fields in [R1] from [R1] if not present in [R0]
+ 
+-SWIFont_ApplyFields Entry "R1,R2,R4"
++SWIFont_ApplyFields KernelEntry "R1,R2,R4"
+ 
+         MOV     R7,R0
+ 
+@@ -7574,12 +7582,12 @@
+ ;       R1 -> matching field in test string
+ ;       R4 = highest value of terminator (31 => ctrl-char terminated, 32 => space or ctrl-char terminated)
+ 
+-findmatchingfield Entry "R2,R3"
++findmatchingfield KernelEntry "R2,R3"
+ 
+         MOV     R3,R1                           ; remember start of test string
+ 
+         LDRB    R14,[R0]
+-        TEQ     R14,#"\"
++        TEQ     R14,#92
+         LDREQB  R2,[R0,#1]
+         MOVEQ   R4,#31                          ; terminate on ctrl-char if qualifier present
+         MOVNE   R4,#32                          ; terminate on space otherwise
+@@ -7595,7 +7603,7 @@
+         LDRB    R14,[R1]                        ; R14 = first character in this field
+         SUBHI   R1,R1,#2                        ; move back to identifier start
+ 
+-        CMP     R14,#"\"
++        CMP     R14,#92
+         CMPNE   R14,R4                          ; if field was null,
+         ADDLE   R4,R4,#&10000                   ; make ALL characters terminators (ie. generate a null string)
+ 
+@@ -7611,7 +7619,7 @@
+ ; Out   R2 -> rest of buffer, or is still 0
+ ;       R3 = buffer size remaining, or buffer size so far
+ 
+-copyfield Entry "R0,R5"
++copyfield KernelEntry "R0,R5"
+ 
+         MOV     R5,#0                   ; initially we can copy a "\"
+ 
+@@ -7624,7 +7632,7 @@
+         CMP     R14,R5                  ; terminate on \ or <=R4
+         CMPNE   R14,R4
+         ADDGT   R3,R3,#1
+-        MOVGT   R5,#"\"                 ; now we can terminate on \
++        MOVGT   R5,#92                 ; now we can terminate on \
+         BGT     %BT01
+ 
+         EXITS
+@@ -7637,7 +7645,7 @@
+         EXITS   LE
+         SUBS    R3,R3,#1
+         STRGTB  R14,[R2],#1             ; note GT => must be room for one more (the terminator)
+-        MOVGT   R5,#"\"                 ; now we can terminate on \
++        MOVGT   R5,#92                 ; now we can terminate on \
+         BGT     %BT02
+ 
+         BL      xerr_buffoverflow
+@@ -7649,10 +7657,10 @@
+ ; In    R0 -> field in string
+ ; Out   R0 -> next field in string
+ 
+-skipfield Entry "R4,R5"
++skipfield KernelEntry "R4,R5"
+ 
+         LDRB    R14,[R0]
+-        TEQ     R14,#"\"
++        TEQ     R14,#92
+         MOVEQ   R4,#31                  ; terminate on ctrl-char if qualifier present
+         MOVNE   R4,#32                  ; terminate on space otherwise
+ 
+@@ -7661,7 +7669,7 @@
+ 01      LDRB    R14,[R0],#1
+         CMP     R14,R5                  ; terminate on \ or <=R4
+         CMPNE   R14,R4
+-        MOVGT   R5,#"\"                 ; now we can terminate on \
++        MOVGT   R5,#92                 ; now we can terminate on \
+         BGT     %BT01
+ 
+         SUB     R0,R0,#1                ; R0 -> terminating character
+@@ -7675,7 +7683,7 @@
+ ;       actually, there's a bug: if R1 > current size, then R1 must be altered to currentsize - | R1-currentsize |
+ ; Out   R2 = minimum font cache size
+ 
+-SWIFont_ChangeArea Entry "R0-R1,R3-R11"
++SWIFont_ChangeArea KernelEntry "R0-R1,R3-R11"
+ 
+         Debug   dy,"Font_ChangeArea: change size to",r1
+ 
+--- a/src/FontManager/s/Fonts02
++++ b/src/FontManager/s/Fonts02
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -117,7 +118,7 @@
+ fx3code *       &EC
+ fx3bit  *       &20
+ 
+-setfx3  Entry ""
++setfx3  KernelEntry ""
+ 
+         STRB    R0,wrchvflag
+         STR     R1,wrchblkptr
+@@ -139,7 +140,7 @@
+ 
+ ;.............................................................................
+ 
+-clrfx3  Entry "R0-R2"
++clrfx3  KernelEntry "R0-R2"
+ 
+         MOV     R0,#fx3code
+         MOV     R1,#0
+@@ -377,6 +378,7 @@
+         SWI     XOS_RestoreCursors
+         Pull    "R14"
+         TEQVCP  R14,#0
++        MOV     R0,R0                   ; ARM2 PSR settling
+ 
+ wrchexit
+         CLRPSR  C_bit,R14               ; don't send to printer !!!
+@@ -544,7 +546,7 @@
+ 
+         MEND
+ 
+-getstepvalues Entry "R0-R2"
++getstepvalues KernelEntry "R0-R2"
+ 
+         ADD     R1,R3,#1                        ; R1 = divisor
+ 
+@@ -580,7 +582,7 @@
+         MOVGT   $rd, #&FF
+         MEND
+ 
+-getRGBfromR3R4R5 Entry ""
++getRGBfromR3R4R5 KernelEntry ""
+ 
+         GetGun  R14,R3
+         MOV     R0,R14,LSL #8
+@@ -598,7 +600,7 @@
+ ; In    R0 = RGB value to convert
+ ; Out   R0 = colour number << (32-bpp)
+ 
+-getoutputfromRGB Entry "R1-R2"
++getoutputfromRGB KernelEntry "R1-R2"
+ 
+         MOV     R2,R0                           ; in case error trashes R0
+ 
+@@ -656,7 +658,7 @@
+ ;       R9 -> threshold table to use (depends on total number of colours)
+ ; Out   [R2..] updated in appropriate positions (with reference to thresholds)
+ 
+-storeoutput Entry "R1-R3,R9"
++storeoutput KernelEntry "R1-R3,R9"
+ 
+         LDRB    R3,[R9,R1]!             ; R3 = index of last colour to store + 1
+         CMP     R3,#16
+@@ -684,7 +686,7 @@
+ ;       VC => R0 corrupt
+ ;       VS => R0 ->error block
+ 
+-setrealpalette Entry "R1-R4,R9"
++setrealpalette KernelEntry "R1-R4,R9"
+ 
+       [ usesetpalette
+         ORR     R4,R1,#16 << 24         ; R4 bits 24..31 <> 0 => set a single entry
+@@ -746,7 +748,7 @@
+ ;;    - set font/colour actually uses them
+ ;;----------------------------------------------------------------------------
+ 
+-settransfer Entry "R1,aliascols,wrchbase"
++settransfer KernelEntry "R1,aliascols,wrchbase"
+ 
+         Debug   rgb,"settransfer: aliascols =",aliascols
+ 
+@@ -901,7 +903,7 @@
+ ;;
+ ;;----------------------------------------------------------------------------
+ 
+-trysetoutputdata Entry ""
++trysetoutputdata KernelEntry ""
+ 
+         LDRB    R14,setoutputdataflag
+         TEQ     R14,#setout_invalid
+@@ -1063,7 +1065,7 @@
+ ;       [outputdata..] set up by setoutputdata (256) or Font_SetColourTable
+ ; Out   [aliascolours] = SGN(aliascolours) * (no_of_colours_in_table - 1)
+ 
+-correctaliascolours Entry "R0-R10"
++correctaliascolours KernelEntry "R0-R10"
+ 
+         MOV     R0,#0
+         ADR     R1,outputdata
+@@ -1119,7 +1121,7 @@
+ ; Out   [x/yspaceadd] = appropriate extra offset on each space
+ ;       [x/yletteradd] = 0 (no inter-letter spacing)
+ 
+-calcjustify Entry "R6-R7"
++calcjustify KernelEntry "R6-R7"
+ 
+         Debug   co :LOR: debugjust,"calcjustify: justifyx,y =",#justifyx,#justifyy
+ 
+@@ -1173,7 +1175,7 @@
+ ;       R4 = divisor
+ ; Out   R5 = result (R2/R4) (0 if division by zero)
+ 
+-getratio Entry "R2-R4"
++getratio KernelEntry "R2-R4"
+ 
+         MOV     R5,#0
+         MOV     R0,R2
+@@ -1197,7 +1199,7 @@
+ ;;         (ie. values as at nearest character)
+ ;;----------------------------------------------------------------------------
+ 
+-findcaret Entry "R6-R7"
++findcaret KernelEntry "R6-R7"
+ 
+         MOV     R6,R4                           ; set up parameters to scanstring
+         MOV     R7,R5
+@@ -1600,7 +1602,7 @@
+ ; Out   R2,R3 updated
+ ;       metricsptr may have been relocated
+ 
+-addwidth Entry "R1,R4,R5"
++addwidth KernelEntry "R1,R4,R5"
+ 
+         Debug   scanstring,"Arrived in addwidth",R0,R2,R3
+ 
+@@ -1654,7 +1656,7 @@
+ ;       [currbbox] updated if [plottype] :AND: scanstr_rtnbbox
+ ;       metricsptr may be set up / relocated
+ 
+-getcharwidth Entry "R4,R5"
++getcharwidth KernelEntry "R4,R5"
+ 
+         Debug   scanstring,"getcharwdith called for",R0
+ 
+@@ -1706,7 +1708,7 @@
+ ;       R2,R3 = untransformed character width
+ ; Out   R2,R3 = transformed character width (origin translation ignored)
+ 
+-transformwidth Entry "R1"
++transformwidth KernelEntry "R1"
+ 
+         LDR     R1,metricsmatrix
+ 
+@@ -1735,7 +1737,7 @@
+ ; Out   currbboxx0/y0/x1/y1 = updated bounding box
+ ;       metricsptr may have been relocated
+ 
+-computebbox Entry "R0-R8"
++computebbox KernelEntry "R0-R8"
+ 
+         Debug   me,"computebbox: bboxx0,y0,x1,y1,matrix =",#bboxx0,#bboxy0,#bboxx1,#bboxy1,#metricsmatrix
+ 
+@@ -1863,7 +1865,7 @@
+ skiptable       DCB     0,0,0,0,0,0,0,0,0,4,0,4,0,0,0,0,0,2,4,8,0,0,0,0,0,3,0,0,0,0,0,0
+                 ASSERT  .-skiptable = 32
+ 
+-getgluewidth Entry "R0-R8"
++getgluewidth KernelEntry "R0-R8"
+ 
+         ADR     R14,xletteradd
+         LDMIA   R14,{R5,R6}
+@@ -2052,7 +2054,7 @@
+ kblk_code       #       4                       ; character code of right-hand letter of pair
+ kblk_size       #       0
+ 
+-CacheKerns Entry "R0-R6,R11"
++CacheKerns KernelEntry "R0-R6,R11"
+ 
+         BL      grabblock_init                  ; start using scratch space and expand into RMA if required
+ 
+@@ -2476,7 +2478,7 @@
+ 
+ ; Initialise global stuff for grabblock
+ 
+-grabblock_init Entry ""
++grabblock_init KernelEntry ""
+ 
+         Debug   me,"grabblock_init"
+ 
+@@ -2496,7 +2498,7 @@
+ ; In    R3 = size of block required (word-aligned)
+ ; Out   R2 -> block claimed (in ScratchSpace or RMA)
+ 
+-grabblock_claim Entry "R0,R3"
++grabblock_claim KernelEntry "R0,R3"
+ 
+         LDR     R2,grabb_current
+         LDR     R0,grabb_limit
+@@ -2537,7 +2539,7 @@
+ ; In    [grabb_head] -> linked list of blocks claimed from RMA
+ ; Out   blocks freed, error state preserved
+ 
+-grabblock_close Entry "R0-R2"
++grabblock_close KernelEntry "R0-R2"
+ 
+         Debug   me,"grabblock_close"
+ 
+@@ -2563,7 +2565,7 @@
+ ; Out   [currbboxx0/y0/x1/y1] updated
+ ;       R1-R4 = bbox of char with current position added in
+ 
+-computebbox_update Entry "R7-R10"
++computebbox_update KernelEntry "R7-R10"
+ 
+         Debug   bb2,"computebbox_update: x,y, x0,y0,x1,y1 =",R5,R6,R7,R8,R9,R10
+ 
+@@ -2611,7 +2613,7 @@
+ ; Out   R3 = x/y coordinate (1/72000")
+ ;------------------------------------------------------------------------------
+ 
+-scalexco Entry ""
++scalexco KernelEntry ""
+ 
+         LDR     R14,xscalefactor
+         MUL     R3,xcoord,R14
+@@ -2620,7 +2622,7 @@
+ 
+         EXIT
+ 
+-scaleyco Entry ""
++scaleyco KernelEntry ""
+ 
+         LDR     R14,yscalefactor
+         MUL     R3,ycoord,R14
+@@ -2846,7 +2848,7 @@
+ ; Entry:  [rubx0,y0,x1,y1] = rubout box coordinates
+ ; Exit:   [[changedbox]+4..] updated
+ 
+-changedrubout Entry "x0,y0,x1,y1"
++changedrubout KernelEntry "x0,y0,x1,y1"
+ 
+         ADR     R14,rubx0
+         LDMIA   R14,{x0,y0,x1,y1}
+@@ -2896,7 +2898,7 @@
+ ; In    R6 -> new paint matrix
+ ; Out   R6 = [paintmatrix] = original R6 or 0 if it was the unit matrix
+ 
+-setpaintmatrix Entry "R0-R5"
++setpaintmatrix KernelEntry "R0-R5"
+ 
+         Debug   matrix,"setpaintmatrix: R6 =",R6
+ 
+@@ -3064,7 +3066,7 @@
+ ;       [R0,#0,4,8] = bg,fg,max offset
+ ;       [R0,#aliascolours] = &80 => absolute colours are out-of-date
+ 
+-getrgb_fromstring Entry "R0-R3"
++getrgb_fromstring KernelEntry "R0-R3"
+ 
+         LDRB    R0,[R1],#1              ; R1 = background RGB (later)
+         LDRB    R14,[R1],#1
+@@ -3315,7 +3317,7 @@
+ ;           and copied into [switch_lastfore/back]
+ ;       R1 = [switch_buffer] = updated buffer pointer / counter
+ 
+-makerectangleobject Entry "R2-R7"
++makerectangleobject KernelEntry "R2-R7"
+ 
+         LDR     R14,[R2]                ; if this exists already,
+         TEQ     R14,#0
+@@ -3380,7 +3382,7 @@
+ ;       R1-R4 = new coordinates
+ ; Out   object data updated
+ 
+-setrectanglesize Entry "R1-R4"
++setrectanglesize KernelEntry "R1-R4"
+ 
+         LDR     R14,switch_flags        ; this test is for the rubout stuff
+         TST     R14,#swf_justcount
+@@ -3505,7 +3507,7 @@
+ 
+ ;.............................................................................
+ 
+-ulrow   Entry   "R1"
++ulrow   KernelEntry   "R1"
+ 
+         ADR     R14,outputdata
+         LDR     R0,[R14,R0,ASL #2]      ; get data relevant to this colour
+@@ -3522,7 +3524,7 @@
+         PullEnv                         ; drop through
+ 
+ 
+-ulrow2  Entry   "R1,R2,ulcount,outptr,outcount"
++ulrow2  KernelEntry   "R1,R2,ulcount,outptr,outcount"
+ 
+         LDR     R14,grafy0
+         CMP     ycoord,R14
+@@ -3562,7 +3564,7 @@
+ ;         ycoord = top pixel coord              (unclipped)
+ ;         [ul_midheight] = height of middle section of underline (ex. top&bot)
+ 
+-changedunderline Entry "x0,y0,x1,y1"
++changedunderline KernelEntry "x0,y0,x1,y1"
+ 
+         ASSERT  x0=ycoord
+         ASSERT  y0=xcoord
+@@ -3584,7 +3586,7 @@
+ ; amg: explicitly clear V on both returns, since it was causing a spurious error
+ ; to be raised
+ 
+-changebox Entry "gx0,gy0,gx1,gy1"
++changebox KernelEntry "gx0,gy0,gx1,gy1"
+ 
+         ADR     R14,grafx0
+         LDMIA   R14,{gx0,gy0,gx1,gy1}
+@@ -3635,7 +3637,7 @@
+ ;       GE => rubout
+ ;       LT => no rubout
+ 
+-calcrubout Entry "R0-R2,x0,y0,x1,y1"
++calcrubout KernelEntry "R0-R2,x0,y0,x1,y1"
+ 
+         TST     R2,#paint_rubout
+         BEQ     %FT01
+@@ -3734,7 +3736,7 @@
+ ; Out   R0 = remainder in range 0..3
+ ;       R2 = coord (pixels)
+ 
+-dividex Entry ""
++dividex KernelEntry ""
+ 
+         LDR     R1,xscalefactor         ; divisor
+         LDR     R2,modedata_px
+@@ -3746,7 +3748,7 @@
+ 
+         EXIT
+ 
+-dividey Entry ""
++dividey KernelEntry ""
+ 
+         LDR     R1,yscalefactor         ; divisor
+         LDR     R2,modedata_py
+@@ -4034,7 +4036,7 @@
+ lp7     Pixel   28
+         B       indatalp
+ 
+-nextpixelrow Entry ""
++nextpixelrow KernelEntry ""
+ 
+         TEQ     outdata,#&80000000
+         BLNE    putdata1                        ; output remaining word
+@@ -4552,7 +4554,7 @@
+ ; Entry:  xcoord,ycoord,xsize,rowcount = character box
+ ; Exit:   [[changedbox]+4..] updated
+ 
+-changedchar Entry "x0,y0,x1,y1"
++changedchar KernelEntry "x0,y0,x1,y1"
+ 
+         ASSERT  x0=ycoord
+         ASSERT  y0=xcoord
+@@ -5300,6 +5302,7 @@
+         ]
+         MOVVC   R0,R3                   ; report 'proper' error if gcol/tint OK
+         TEQVCP  R4,#0
++        MOV     R0,R0                   ; ARM2 PSR settling
+ 
+ 99      STRVS   R0,[sp]
+         Pull    "R0-R11"
+@@ -5528,7 +5531,7 @@
+ ; Out   RGB colours marked invalid
+ ;       Error returned from setoutputdata if RGB colours invalid and output is currently switched to a buffer
+ 
+-invalidateRGB Entry ""
++invalidateRGB KernelEntry ""
+ 
+         MOV     R14,#invalid_flag       ; RGB colours invalid
+         STR     R14,currentRGB_a        ; (must be derived from absolute colours)
+@@ -5543,7 +5546,7 @@
+ ;       R1 = gcol fg colour
+ ;       R2 = tint fg colour
+ 
+-setgcoltint Entry ""
++setgcoltint KernelEntry ""
+ 
+         SWI     XOS_WriteI+18
+         SWI     XOS_WriteC              ; R0 = gcol fg action
+@@ -5583,7 +5586,7 @@
+ cb2_m   *       2_00111100
+ cb2_b   *       2_11100111
+ 
+-paintcaret Entry ""
++paintcaret KernelEntry ""
+ 
+         LDR     R14,modedata_py
+         MOV     R1,R1,ASR R14                   ; divide down to pixels
+@@ -5649,7 +5652,7 @@
+ 
+ ;...............................................................................
+ 
+-smallcaret Entry ""
++smallcaret KernelEntry ""
+ 
+ carlp   SUBS    rowcnt,rowcnt,#1
+         LDRGEB  indata,carbits_small
+@@ -5660,7 +5663,7 @@
+ 
+ ;...............................................................................
+ 
+-bigcaret Entry ""
++bigcaret KernelEntry ""
+ 
+         LDRB    indata,carbits_big
+         BL      caretcross
+@@ -5676,7 +5679,7 @@
+ 
+ ;...............................................................................
+ 
+-midcaret Entry ""
++midcaret KernelEntry ""
+ 
+         LDRB    indata,carbits_middle
+         BL      caretcross
+@@ -5692,7 +5695,7 @@
+ 
+ ;...............................................................................
+ 
+-caretcross Entry "indata,rowcnt"
++caretcross KernelEntry "indata,rowcnt"
+ 
+         LDRB    rowcnt,carbits_cross
+         ASSERT  indata < rowcnt
+@@ -5715,7 +5718,7 @@
+ ;       [grafx0/y0/x1/y1] = clip window (pixels, inclusive)
+ ; Out   data EOR-ed onto screen
+ 
+-caretrow Entry ""
++caretrow KernelEntry ""
+ 
+         Debug   cr,"Caret data:",indata
+ 
+@@ -5770,7 +5773,7 @@
+ ; Exit : outptr,outcount,pixelsperword are set up
+ ;----------------------------------------------------------------------------
+ 
+-getaddr Entry   "xcoord,ycoord,hshift,vmul"
++getaddr KernelEntry   "xcoord,ycoord,hshift,vmul"
+ 
+         LDR     hshift,modedata_h
+         LDR     vmul,linelen
+@@ -5800,7 +5803,7 @@
+ ; Out   outmask = mask extended to the right (high order) bits
+ ;-----------------------------------------------------------------------
+ 
+-extendmask Entry "bpp,outcount"
++extendmask KernelEntry "bpp,outcount"
+ 
+         LDRB    bpp,bitsperpixel
+         LDR     outmask,outputmask
+@@ -6019,7 +6022,7 @@
+ ;;
+ ;;----------------------------------------------------------------------------
+ 
+-trysetrubout Entry ""
++trysetrubout KernelEntry ""
+ 
+         LDRB    R14,setruboutflag               ; setruboutflag <> 0 => done already
+         TEQ     R14,#0
+@@ -6149,7 +6152,7 @@
+ ; Out   R0 -> current rubout rectangle object (or 0 if none)
+ ;       R1-R4 = rubout box coords (1/256th OS unit)
+ 
+-getswitchruboutbox Entry ""
++getswitchruboutbox KernelEntry ""
+ 
+         ADR     R14,rubx0
+         LDMIA   R14,{R1-R4}
+@@ -6183,7 +6186,7 @@
+ ; Out   R1 = [switch_lastrubx1] (old version)
+ ;       R3 = [switch_lastrubx1] = current x-coord (1/256th OS unit)
+ 
+-getswitchxcoords Entry "R0,R2"
++getswitchxcoords KernelEntry "R0,R2"
+ 
+         LDR     R0,xco72
+         MOV     R0,R0,LSL #8
+@@ -6266,7 +6269,7 @@
+ ;       [switch_rubout] and possibly [switch_underline] are updated
+ ;       (If underline is active, it must go in front of the rubout box)
+ 
+-makeruboutrectangle Entry "R1-R5"
++makeruboutrectangle KernelEntry "R1-R5"
+ 
+         MOV     R14,#0
+         STR     R14,switch_rubout       ; start new rectangle
+@@ -6308,7 +6311,7 @@
+ ;       [startrubmask] = mask (bit set => fill)
+ ;       [oldrubdata] = [rubdata] (colour change accomplished)
+ 
+-getrubaddr Entry "outmask,pixelsperword,outcount,outptr"
++getrubaddr KernelEntry "outmask,pixelsperword,outcount,outptr"
+ 
+         LDR     R14,rubdata                     ; from setoutputdata
+         STR     R14,oldrubdata
+@@ -6337,7 +6340,7 @@
+ 
+       [ debugxx
+ 
+-debugpaintparams Entry "R0-R11"
++debugpaintparams KernelEntry "R0-R11"
+ 
+         Debug   xx,"Font_Paint: font,string,flags,x,y =",R0,R1,R2,R3,R4
+         Debug   xx,"            coordblk,matrix,length=",R5,R6,R7
+@@ -6428,21 +6431,21 @@
+         Debuga  xx,",",R3,R4,R5,R6,R7,R8
+         B       %BT30
+ 
+-dbg_comma Entry "R0"
++dbg_comma KernelEntry "R0"
+ 
+         MOV     R0,#","
+         BL      Neil_WriteC
+ 
+         EXITS
+ 
+-dbg_quote Entry "R0"
++dbg_quote KernelEntry "R0"
+ 
+         MOV     R0,#""""
+         BL      Neil_WriteC
+ 
+         EXITS
+ 
+-dbg_number Entry "R0-R2",12
++dbg_number KernelEntry "R0-R2",12
+ 
+         MOV     R1,sp
+         MOV     R2,#12
+@@ -6452,7 +6455,7 @@
+ 
+         EXITS
+ 
+-dbg_hexnumber Entry "R0-R2",12
++dbg_hexnumber KernelEntry "R0-R2",12
+ 
+         MOV     R0,#"&"
+         BL      Neil_WriteC
+--- a/src/FontManager/s/Fonts03
++++ b/src/FontManager/s/Fonts03
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -33,7 +34,7 @@
+ 
+ terminator      *       32 + 1          ; space itself counts as a terminator
+ 
+-SWIFont_FindFont Entry ""
++SWIFont_FindFont KernelEntry ""
+ 
+ ; DebugS cpm,"Font_FindFont: ",R1
+ ; Debug  cpm,"               x,y point size * 16 =",R2,R3
+@@ -266,7 +267,7 @@
+ ; In    [cacheindex] -> index, or 0 if no index present
+ ; Out   R8 = [cacheindex] -> index, cache extended if necessary
+ 
+-makeindex Entry "R0,R6,R7"
++makeindex KernelEntry "R0,R6,R7"
+ 
+         LDR     R8,cacheindex
+         CMP     R8,#0
+@@ -294,7 +295,7 @@
+ ;       master font reclaimed if it wasn't linked in already
+ ; Called from Font_FindFont, Font_UnCacheFile and resetfontmax
+ 
+-claimfont       Entry "R1-R5,R7-R11"
++claimfont       KernelEntry "R1-R5,R7-R11"
+ 
+         ASSERT  (hdr_name :AND: 3) = 0
+         ASSERT  (hdr_nameend-hdr_name) = 40     ; 10 registers required
+@@ -321,7 +322,7 @@
+ ;       R6 -> font header
+ ; Out   Font block marked 'accessed' (useful cos not marked accessed when chars accessed)
+ 
+-claimfont2      Entry "R7"
++claimfont2      KernelEntry "R7"
+ 
+         LDRB    R14,[R6,#hdr_masterflag]
+         TEQ     R14,#msf_normal         ; slave font?
+@@ -347,7 +348,7 @@
+ ; Out   If [R7,#hdr_usage] = 1, then this and all subblocks are marked 'claimed'
+ ;       All flags and registers preserved
+ 
+-markfontclaimed_R7 Entry "R4-R11"
++markfontclaimed_R7 KernelEntry "R4-R11"
+ 
+         LDR     R14,[R7,#hdr_usage]
+         TEQ     R14,#1
+@@ -409,7 +410,7 @@
+ ; Out   If [R6,#hdr_usage] = 0, then this and all subblocks are marked 'released'
+ ;       All flags and registers preserved
+ 
+-markfontreleased_R6 Entry "R4-R11"
++markfontreleased_R6 KernelEntry "R4-R11"
+ 
+         LDR     R14,[R6,#hdr_usage]
+         TEQ     R14,#0
+@@ -490,7 +491,7 @@
+ ; Out   [R6,#hdr_masterfont] = handle of appropriate master font
+ ;       master font claimed, and GetPixelsHeader called on it for 1 and 4-bpp
+ 
+-findmaster Entry "R0,R2-R5"
++findmaster KernelEntry "R0,R2-R5"
+ 
+       [ {FALSE}
+         LDRB    R4,[R6,#hdr1_leafname]  ; save slave font's leafname values
+@@ -547,7 +548,7 @@
+ 
+ ; see if font (R0) is unused - if so, Z is set on exit
+ 
+-testunused Entry "R8"
++testunused KernelEntry "R8"
+ 
+         LDR     R8,cacheindex
+         TEQ     R8,#0
+@@ -555,6 +556,7 @@
+         TEQNE   R8,#0
+         MOV     R14,#Z_bit
+         TEQP    R14,PC                          ; reverse sense of Z flag
++        MOV     R0,R0                   ; ARM2 PSR settling
+         LDREQ   R8,[R8,#hdr_usage]
+         TEQEQ   R8,#0
+ 
+@@ -565,7 +567,7 @@
+ ; In    R1 -> string as passed to Font_FindFont
+ ; Out   [encbuffer] = lower-cased version of encoding id, or 0,0,0 if not present
+ 
+-getencodingid Entry "R0-R5,R9"
++getencodingid KernelEntry "R0-R5,R9"
+ 
+         DebugS  enc,"getencodingid: ",R1
+ 
+@@ -597,7 +599,7 @@
+ 04      ADR     R2,encbuffer
+         MOV     R5,#12
+ 01      LDRB    R3,[R1],#1              ; R3 = next byte from font string
+-        CMP     R3,#"\"
++        CMP     R3,#92
+         CMPNE   R3,#32
+         SUBLE   R1,R1,#1                ; LE => terminator: step back one,
+         MOVLE   R3,#0                   ; so we can pad with zeros
+@@ -646,7 +648,7 @@
+ msf_ramscaled   #       1               ; FindFont called with 26,handle
+ msf_master      #       1               ; FindFont called with R2 = -1
+ 
+-DefineFont Entry "R0"                   ; save font handle for later
++DefineFont KernelEntry "R0"                   ; save font handle for later
+ 
+         BL      deletefont              ; clear out any existing data - VDU 23,26,<font> etc.
+         BVS     %FT100
+@@ -930,7 +932,7 @@
+ ;       R14 = usage count of font (if V clear)
+ ; Error "Invalid font handle" if font does not exist, or not claimed
+ 
+-getfontheaderptr Entry ""
++getfontheaderptr KernelEntry ""
+ 
+         CMP     R0,#maxf
+         TEQCS   R0,R0
+@@ -966,7 +968,7 @@
+ ;       OutlinesFName = "IntMetrics" or "Intmetrics<n>"
+ ;       No cacheing allowed in this routine (called from openmetrics)
+ 
+-setleafnames_R6 Entry "R1,R2"
++setleafnames_R6 KernelEntry "R1,R2"
+ 
+         LDR     R0,[R6,#hdr_encoding]
+         TEQ     R0,#0
+@@ -1029,7 +1031,7 @@
+ ;;
+ ;;----------------------------------------------------------------------------
+ 
+-MakePathName Entry "R1-R5,R8,R9"
++MakePathName KernelEntry "R1-R5,R8,R9"
+ 
+         Debug   path,"MakePathName: R1 -> ",R1
+ 
+@@ -1076,7 +1078,7 @@
+ 
+       [ newlistfonts
+ 
+-makefontname Entry "R3,R6,R8"
++makefontname KernelEntry "R3,R6,R8"
+ 
+         ADD     R6,R6,#hdr_name
+         MOV     R8,#hdr_nameend-hdr_name-1
+@@ -1147,7 +1149,7 @@
+ ; Out   NE, [tempmatrix+mat_marker] = MAT_MARKER => no matrix read
+ ;       EQ => matrix read, [tempmatrix..] = matrix
+ 
+-parsematrix_temp Entry "R0-R5"
++parsematrix_temp KernelEntry "R0-R5"
+ 
+         DebugS  matrix,"parsematrix_temp:",R1
+ 
+@@ -1170,8 +1172,8 @@
+         CMP     R14,#" "
+         BEQ     %BT02
+ 
+-        MOVCC   R14,#"\"
+-        TEQ     R14,#"\"                        ; can be terminated by ctrl-char or \ (error otherwise)
++        MOVCC   R14,#92
++        TEQ     R14,#92                        ; can be terminated by ctrl-char or \ (error otherwise)
+         EXIT    EQ                              ; EQ => matrix was read
+ 
+ pm_error
+@@ -1193,7 +1195,7 @@
+ ; Out   CC => no number, CS => R2 = value
+ ;       R1 updated
+ 
+-readinteger Entry "R3"
++readinteger KernelEntry "R3"
+ 
+ 01      LDRB    R3,[R1],#1              ; skip leading spaces
+         CMP     R3,#" "
+@@ -1224,7 +1226,7 @@
+ ;       [R6,#hdr_fontmatrix] = 0 or offset into pathname block of matrix
+ ;       R6,R8 relocated
+ 
+-makepathblock Entry "R1-R4"
++makepathblock KernelEntry "R1-R4"
+ 
+         PushP   "Saving font header for makepathblock",R6
+ 
+@@ -1277,7 +1279,7 @@
+ ;       R3 -> <fontname> (in [fontfilename])
+ ; Error "Font not found", if no matches found
+ 
+-getpathnamefromID Entry ""
++getpathnamefromID KernelEntry ""
+ 
+         Debug   path,"getpathnamefromID: R1 -> ",R1
+ 
+@@ -1321,7 +1323,7 @@
+ ;       R0 corrupt
+ ; Error "Font/encoding not found", if no matches found
+ 
+-findblockfromID Entry ""
++findblockfromID KernelEntry ""
+ 
+         DebugS  path,"findblockfromid: R1 -> ",R1
+ 
+@@ -1342,7 +1344,7 @@
+ ;       R0 corrupt
+ ; Error "Font/encoding not found", if no matches found
+ 
+-findblockfromID_noqual Entry ""
++findblockfromID_noqual KernelEntry ""
+ 
+         DebugS  path,"findblockfromid_noqual: R1 -> ",R1
+ 
+@@ -1399,7 +1401,7 @@
+ ; Out   EQ => strings match (case insensitive)
+ ;       LT => [R0] is earlier alphabetically
+ 
+-comparefontid_gotfield Entry "R0,R1,R2,R6,R7"
++comparefontid_gotfield KernelEntry "R0,R1,R2,R6,R7"
+ 
+         DebugS  path,"comparefontid: target =",R0
+         DebugS  path,"            candidate =",R1
+@@ -1408,7 +1410,7 @@
+ 
+ 01      LDRB    R6,[R0],#1
+         LDRB    R7,[R1],#1
+-        CMP     R7,#"\"                 ; stop on "\", " " or control char
++        CMP     R7,#92                 ; stop on "\", " " or control char
+         CMPNE   R7,#" "
+         MOVLE   R7,#0
+         TEQ     R6,#cr                  ; cheat - font blocks contain cr-terminated font names
+@@ -1446,10 +1448,10 @@
+ ; Out   EQ => R1 -> field required
+ ;       NE => R1 preserved (field not found)
+ 
+-findfield Entry "R1,R3"
++findfield KernelEntry "R1,R3"
+ 
+         LDRB    R14,[R1]                ; if string doesn't start with "\"
+-        TEQ     R14,#"\"                ; assume it's just an identifier
++        TEQ     R14,#92                ; assume it's just an identifier
+         BEQ     %FT01
+ 
+         TEQ     R2,#"F"                 ; default is font identifier field
+@@ -1467,7 +1469,7 @@
+         EXIT    EQ
+ 
+ 03      LDRB    R14,[R1],#1             ; skip to next "\" or terminator
+-        CMP     R14,#"\"
++        CMP     R14,#92
+         BEQ     %BT02                   ; continue if this was a "\"
+ 
+         CMP     R14,R3                  ; 0..R3 count as a terminator
+@@ -1481,9 +1483,9 @@
+ ; In    R2 = character code of field id
+ ; Out   R0 -> error block "\<field> field not found"
+ 
+-findfield_error Entry "R1,R2"
+-
+-        MOV     R1,#"\"
++findfield_error KernelEntry "R1,R2"
++
++        MOV     R1,#92
+         ORR     R1,R1,R2,LSL #8
+         Push    "R1"
+         ADR     R0,ErrorBlock_FontFieldNotFound
+@@ -1524,7 +1526,7 @@
+         ADREQ   R0,ErrorBlock_FontNotFound
+         ADRNE   R0,ErrorBlock_FontEncodingNotFound
+ 
+-XError_with_fontname Entry "R1-R3,R9", 256      ; buffer on stack to contain font name
++XError_with_fontname KernelEntry "R1-R3,R9", 256      ; buffer on stack to contain font name
+ 
+         MOV     R2,#0                           ; normally R2 is unused (otherwise it's the previous error message)
+ 
+@@ -1565,7 +1567,7 @@
+ ;
+ ; !!!! THE CACHE IS NOT ALLOWED TO MOVE INSIDE THIS ROUTINE !!!!
+ 
+-openmetrics Entry "R2,R7"
++openmetrics KernelEntry "R2,R7"
+ 
+         BL      setleafnames_R6         ; needed for metrics, as name not stored in font header
+         EXIT    VS
+@@ -1666,7 +1668,7 @@
+ ; In    R6 -> font header block, with valid font name
+ ; Out   VS, R0 -> error block "Font data for '<fontname>' not found"
+ 
+-err_fontdatanotfound Entry "R1"
++err_fontdatanotfound KernelEntry "R1"
+ 
+         ADR     R0,ErrorBlock_FontDataNotFound2 ; return error if no data found (including font name)
+         ADD     R1,R6,#hdr_name
+@@ -1683,7 +1685,7 @@
+ ; Out   if filing system too stingy, file closed
+ 
+ closemetrics    ROUT                    ; these are actually the same!
+-closepixels     Entry "R2,R7"
++closepixels     KernelEntry "R2,R7"
+ 
+         Push    "R0,PC"                 ; remember error state
+         MOV     R0,#OSArgs_ReadInfo
+@@ -1693,6 +1695,7 @@
+         Debug   cc,"Close inquiry: OS_Args ReadInfo =",R0,R1,R2, R6
+         Pull    "R0,LR"                 ; restore error state
+         TEQP    LR,#0
++        MOV     R0,R0                   ; ARM2 PSR settling
+ 
+         TST     R2,#&FF00               ; bits 8..15 = no of open files
+         MOVNE   R14,#0                  ;              (0 ==> unrestricted)
+@@ -1706,7 +1709,7 @@
+ ; In    R6 --> font header
+ ; Out   metrics and pixels files closed (if open), handles = 0
+ 
+-tidyfiles Entry "R0,R1"
++tidyfiles KernelEntry "R0,R1"
+ 
+         LDRB    R1,[R6,#hdr_metricshandle]
+         Debug   cc,"Tidyfiles: fonthdr,metricshandle =",R6,R1
+@@ -1791,7 +1794,7 @@
+ ;;
+ ;;----------------------------------------------------------------------------
+ 
+-ScanFontDir Entry "R0,R2-R8"
++ScanFontDir KernelEntry "R0,R2-R8"
+ 
+ ; if master font, 1-bpp stuff is outlines, 4-bpp is x90y45
+ 
+@@ -2079,7 +2082,7 @@
+ ; Out   Error => something really nasty has happened
+ ;       If font data not found, the leafname is just set to leaf_none
+ 
+-GetPixelsHeader_checknasty Entry "R1"
++GetPixelsHeader_checknasty KernelEntry "R1"
+ 
+         LDRB    R14,[R7]
+         TEQ     R14,#leaf_scanfontdir
+@@ -2104,7 +2107,7 @@
+ ;       [x/yscale] = size of this font (pixel size * 72 * 16)
+ ; Out   [R6,#hdr_skelthresh] bits sk_1/4onoff set up appropriately
+ 
+-setskelthresh Entry "R1-R4"
++setskelthresh KernelEntry "R1-R4"
+ 
+         MOV     R14,#72*16
+         LDRB    R2,[R7,#hdr_skelthresh]
+@@ -2149,7 +2152,7 @@
+ ;            bit 1 set => perform vertical subpixel scaling
+ ;       Z unset => subpixel scaling required
+ 
+-getsubpixelflags_r3 Entry "R2"
++getsubpixelflags_r3 KernelEntry "R2"
+ 
+         MOV     R3,#leaf_outlines_00
+ 
+@@ -2202,7 +2205,7 @@
+ ;       R0,R7 corrupted
+ ;       index entry of best match read into font header
+ 
+-trybest_x90y45 Entry "R2-R5"
++trybest_x90y45 KernelEntry "R2-R5"
+ 
+         ADR     R7,pixelsfname          ; try for 'x90y45'
+         BL      constructname           ; R1 -> full filename
+@@ -2251,7 +2254,7 @@
+ ; b9999x9999 and f9999x9999 files are taken from <fontdir>.<encoding>.<leafname>
+ ; all other files are taken from <fontdir>.<leafname>
+ 
+-constructname Entry "R0,R2-R7"
++constructname KernelEntry "R0,R2-R7"
+ 
+ 01      LDRB    R0,[R6,#hdr_masterfont] ; always use master pathname (if any)
+         TEQ     R0,#0
+@@ -2331,7 +2334,7 @@
+ ;       R7 -> leafname (word-aligned)
+ ; Out   R1 -> full filename of file in Outlines subdirectory (pathname2)
+ 
+-constructname2 Entry "R0,R2-R7"
++constructname2 KernelEntry "R0,R2-R7"
+ 
+         LDMIA   R7,{R3-R5}              ; R3-R5 = characters of leafname
+ 
+@@ -2365,7 +2368,7 @@
+ ; Out   R1 -> full filename
+ ;       Z set => file exists, otherwise it doesn't
+ 
+-testfile Entry "R0,R2-R5"
++testfile KernelEntry "R0,R2-R5"
+ 
+         DebugS  cc," - testing leaf ",R7
+         BL      constructname
+@@ -2386,7 +2389,7 @@
+ ; Out   R7 -> filename contructed in [R1...]
+ ; Error "Buffer overflow" if filename longer than 10 characters
+ 
+-convertfilename Entry "R1-R4"
++convertfilename KernelEntry "R1-R4"
+ 
+         MOV     R7,R1
+         STRB    R0,[R1],#1
+@@ -2420,7 +2423,7 @@
+ ;       R2 = space remaining
+ ;       R3 corrupted, R4 preserved, V set if buffer overflow
+ 
+-convertcardinal_R3R4 Entry "R0"
++convertcardinal_R3R4 KernelEntry "R0"
+ 
+         DivRem  R0,R3,R4,R14            ; R4 preserved
+         SWI     XOS_ConvertCardinal4    ; R1,R2 updated
+@@ -2518,7 +2521,7 @@
+         ASSERT  pp_4yposns = 2
+ 
+ 
+-GetPixelsHeader_R7 Entry "R1-R5,R7-R9"
++GetPixelsHeader_R7 KernelEntry "R1-R5,R7-R9"
+ 
+         SUB     R14,R7,R6
+         TEQ     R14,#hdr1_leafname
+@@ -2890,7 +2893,7 @@
+ ;       R6 -> font header block
+ ; Out   [R6,#x/yscale] computed from [R2,#fnew_x/ysize/res]
+ 
+-getnewxyscale Entry "R1,R3"
++getnewxyscale KernelEntry "R1,R3"
+ 
+         ASSERT  (fnew_xsize:AND:3) = 2
+         ASSERT  fnew_xsize+2 = fnew_xres
+@@ -3007,7 +3010,7 @@
+ ;
+ ; NB: this operation is only meaningful on slave fonts
+ 
+-getxyscale Entry "R1,R2"
++getxyscale KernelEntry "R1,R2"
+ 
+       [ debugbrk
+         LDRB    R14,[R6,#hdr_masterflag]
+@@ -3052,7 +3055,7 @@
+ ;        [R6,#hdr_PixOffset]    ) reflect the settings for this font
+ ;        [R6,#hdr_PixSize]      )
+ 
+-findbest Entry "R2-R8"
++findbest KernelEntry "R2-R8"
+ 
+         Debug   th,"findbest: file handle =",R1
+ 
+@@ -3132,7 +3135,7 @@
+ 
+ exactmatch * &10000000
+ 
+-calcvalue Entry "R1"
++calcvalue KernelEntry "R1"
+ 
+         LDR     R0,xfactor
+         LDR     R1,xscale
+@@ -3154,7 +3157,7 @@
+ 
+       [ Version >= 279
+ 
+-defaultres Entry "R0-R2"
++defaultres KernelEntry "R0-R2"
+ 
+         TEQ     R4,#0
+         BNE     nodefx
+@@ -3177,7 +3180,7 @@
+ 
+       |
+ 
+-defaultres Entry ""
++defaultres KernelEntry ""
+ 
+         TEQ     R4,#0
+         BNE     nodefx
+@@ -3254,7 +3257,7 @@
+ ; Out   "Illegal font file" error if any bytes untransferred (ie. file is too small)
+ ;       VC => R3=0, R4 updated
+ 
+-xos_gbpb Entry "R2"
++xos_gbpb KernelEntry "R2"
+ 
+         Debug   cc,"XOS_GBPB:",R0,R1,R2,R3,R4
+ 
+@@ -3296,7 +3299,7 @@
+         DCD     1000000000
+ npowers *       .-powersof10
+ 
+-decexpand Entry "R0-R4,suppflg,power10"
++decexpand KernelEntry "R0-R4,suppflg,power10"
+ 
+         ADR     power10,powersof10
+         MOV     R2,#npowers-4
+@@ -3338,7 +3341,7 @@
+ find_openout    *       &80
+ find_openup     *       &C0
+ 
+-openfile Entry "R0"
++openfile KernelEntry "R0"
+ 
+         DebugS  th,"openfile: ",R1
+ 
+@@ -3356,7 +3359,7 @@
+ ;;        if V set on entry, then remember error state
+ ;;----------------------------------------------------------------------------
+ 
+-closefile Entry "R0,R1"
++closefile KernelEntry "R0,R1"
+ 
+         BVC     justclose
+         TST     R0,#&80000000           ; is this an immediate constant?
+@@ -3410,7 +3413,7 @@
+ fontlookup_IsMonochrome         * 1:SHL:8
+ fontlookup_IsNonZeroFill        * 1:SHL:9
+ 
+-SWIFont_LookupFont Entry "R0-R1,R8-R9"
++SWIFont_LookupFont KernelEntry "R0-R1,R8-R9"
+ 
+         Debug   lookup,"Font_LookupFont: handle, flags =",R0,R2
+ 
+--- a/src/FontManager/s/Fonts04
++++ b/src/FontManager/s/Fonts04
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -355,7 +356,7 @@
+ ;;      R8 relocated if necessary
+ ;;----------------------------------------------------------------------------
+ 
+-RemapMetrics Entry "R1-R4,R9-R11"
++RemapMetrics KernelEntry "R1-R4,R9-R11"
+ 
+         PushP   "RemapMetrics: old metrics",R6
+ 
+@@ -519,7 +520,7 @@
+         ASSERT  cacheptr = R7
+         ASSERT  metricsptr = R10
+ 
+-ScaleMetrics Entry "R1-R5,R8,R9,metricsptr"
++ScaleMetrics KernelEntry "R1-R5,R8,R9,metricsptr"
+ 
+         ASSERT  (met_nchars :AND: 3) = 0
+         ASSERT  met_nchars+1 = met_version
+@@ -674,7 +675,7 @@
+ ; Out   [metricsptr],#4 = scaled value
+ ;       cacheptr += 2
+ 
+-scalexmetric Entry "R1,R2,R3,R4"
++scalexmetric KernelEntry "R1,R2,R3,R4"
+ 
+         LDR     R3,xscale
+         LDR     R4,xfactor
+@@ -719,7 +720,7 @@
+ ; Out   metrics scaled from [cacheptr..] to [metricsptr..]
+ ;       metricsptr, cacheptr updated
+ 
+-scalexymetrics Entry "R1,R2"
++scalexymetrics KernelEntry "R1,R2"
+ 
+         LDR     R1,xscale
+         LDR     R2,xfactor
+@@ -748,7 +749,7 @@
+         ASSERT  cacheptr = R7
+         ASSERT  metricsptr = R10
+ 
+-scalexorymetrics Entry "R3-R6,cacheptr"
++scalexorymetrics KernelEntry "R3-R6,cacheptr"
+ 
+         STR     R1,scalemets1                   ; scale up by this
+         STR     R2,scalemets2                   ; scale down by this
+@@ -901,7 +902,7 @@
+ ;       [aliascolours] = 0 => monochrome, else anti-aliased
+ ; Out   R7 = hdr1_leafname or hdr4_leafname as appropriate
+ 
+-ensureheaders_untransformed Entry ""
++ensureheaders_untransformed KernelEntry ""
+ 
+         LDRB    R14,aliascolours
+         TEQ     R14,#0
+@@ -939,7 +940,7 @@
+ ;       [aliascolours] = 0 => monochrome, else anti-aliased
+ ; Out   R7 = hdr1_leafname or hdr4_leafname as appropriate
+ 
+-ensureheaders_transformed Entry "R8"
++ensureheaders_transformed KernelEntry "R8"
+ 
+         LDR     R8,transformptr
+ 
+@@ -980,7 +981,7 @@
+ ; Out   NE => inptr -> character header (0 => none)
+ ;       EQ => character is not yet cached (loop back within SetPixelsPtr)
+ 
+-getcharfromindex Entry "R0,R1"
++getcharfromindex KernelEntry "R0,R1"
+ 
+         MOVS    inptr,pixelsptr
+         BEQ     %FT01
+@@ -1045,7 +1046,7 @@
+ ; NB: The most recently used transform block MUST be pulled to the head of the list
+ ;     This is because deleteblock can only delete blocks which have no children
+ 
+-GetTransform Entry ""
++GetTransform KernelEntry ""
+ 
+         Debug   trn,"GetTransform: font header, paintmatrix =",R6,#paintmatrix
+ 
+@@ -1214,7 +1215,7 @@
+         ASSERT  pixelsptr  = R9
+         ASSERT  metricsptr = R10
+ 
+-setpixelsptr Entry ""
++setpixelsptr KernelEntry ""
+ 
+      ;; CheckCache "setpixelsptr entry"
+ 
+@@ -1340,7 +1341,7 @@
+         ASSERT  pixelsptr  = R9
+         ASSERT  metricsptr = R10
+ 
+-CachePixels Entry "R0-R4,cacheptr"
++CachePixels KernelEntry "R0-R4,cacheptr"
+ 
+         CheckCache "CachePixels entry"
+ 
+@@ -1435,7 +1436,7 @@
+ ;     x90y45         => load old-style 4-bpp bitmap data directly (no scaling)
+ ;     Outlines       => load outline data directly
+ 
+-CacheChunk Entry "R0-R4,cacheptr"
++CacheChunk KernelEntry "R0-R4,cacheptr"
+ 
+         TEQ     R4,#"f"                 ; load from file directly
+         TEQNE   R4,#"b"
+@@ -1657,7 +1658,7 @@
+ ;       cacheptr --> index
+ ; Out   R3 = offset in file of 1st defined char
+ 
+-findoffset Entry "R2,cacheptr"
++findoffset KernelEntry "R2,cacheptr"
+ 
+         ADD     cacheptr,cacheptr,R0,LSL #5+1   ; cacheptr --> start of chunk
+         MOV     R2,#256
+@@ -1694,7 +1695,7 @@
+         MOVLT   R4,R5                   ; R4 -> start of next char
+         MOVLTS  PC,LR
+ 
+-        Entry   ""
++        KernelEntry   ""
+ 
+         MOV     R14,#0                  ; put in char flags (4-bpp)
+         STRB    R14,[pixelsptr],#1
+@@ -1891,7 +1892,7 @@
+ ;       x/y factor, x/y scale = relative sizes of old/new fonts
+ ; Out   R6 = size of block required
+ 
+-computesize Entry "R1-R5,cacheptr"
++computesize KernelEntry "R1-R5,cacheptr"
+ 
+         LDR     R14,scaleoffset
+         SUB     cacheptr,cacheptr,R14   ; cacheptr+offset -> char
+@@ -1949,7 +1950,7 @@
+ ; Set up scale factors from font header, and bodge to avoid overflow
+ ; Entry:  R6 --> font header
+ 
+-setup_xsysxfyf Entry "R0,R1,R7"
++setup_xsysxfyf KernelEntry "R0,R1,R7"
+ 
+         LDR     R14,[R6,#hdr_xscale]    ; set up scaling parameters
+         STR     R14,xscale
+@@ -2010,7 +2011,7 @@
+ 
+         ASSERT  counter = R6
+ 
+-checkchar Entry "R1,R2,counter"
++checkchar KernelEntry "R1,R2,counter"
+ 
+         LDR     R2,charlistptr
+         TEQ     R2,#0
+@@ -2030,6 +2031,7 @@
+ 
+ 99      MOV     R14,#Z_bit
+         TEQP    R14,PC                          ; reverse sense of Z flag
++        MOV     R0,R0                   ; ARM2 PSR settling
+ 
+         EXIT
+ 
+@@ -2044,7 +2046,7 @@
+ ;;         No uncacheing can take place!
+ ;;----------------------------------------------------------------------------
+ 
+-ScalePixels Entry "R0-R11"
++ScalePixels KernelEntry "R0-R11"
+ 
+         PushP   "Scaling pixels ...",R6
+ 
+@@ -2108,7 +2110,7 @@
+ fcolbit         *       &80000000
+ frowbit         *       &40000000
+ 
+-ScaleChar Entry "pixelboxptr,counter,pixelsptr,cacheptr"
++ScaleChar KernelEntry "pixelboxptr,counter,pixelsptr,cacheptr"
+ 
+         LDR     R14,scaleoffset
+         SUB     R0,R0,R14
+@@ -2336,7 +2338,7 @@
+ ; Exit:   [R6,#hdr4_boxx0..] = x0,y0,x1,y1 for output font
+ ;-----------------------------------------------------------------------------
+ 
+-computebox Entry "R1-R4,R6"
++computebox KernelEntry "R1-R4,R6"
+ 
+         ADD     R6,R6,#hdr4_boxx0
+ 
+@@ -2361,7 +2363,7 @@
+ sp_boxx1        #       4
+ sp_boxy1        #       4
+ 
+-computeboxR1R4 Entry "R1-R4"
++computeboxR1R4 KernelEntry "R1-R4"
+ 
+         LDR     R1,xfactor                      ; scaling-down factor
+         LDR     R2,xscale                       ; scaling-up factor
+@@ -2448,13 +2450,14 @@
+ ; Exit :  R0 = remainder
+ ;         R2 = answer
+ 
+-divide  Entry "R3"
++divide  KernelEntry "R3"
+ 
+         CMP     R0,#0
+         MVNLT   R0,R0                   ; cope with signed number
+         MOV     R3,PC                   ; NB: rounds downwards, not to 0
+         DivRem  R2,R0,R1,R14
+         TEQP    R3,#0
++        MOV     R0,R0                   ; ARM2 PSR settling
+         MVNLT   R2,R2
+ 
+         EXITS                           ; must preserve flags
+@@ -2623,7 +2626,7 @@
+         STREQ   R7,mapping2
+         BEQ     cacheoutlines                   ; simple case
+ 
+-        Entry   "R1-R4"
++        KernelEntry   "R1-R4"
+ 
+         MOV     R3,R0                           ; R3 = external character code
+ 
+@@ -2695,7 +2698,7 @@
+ ; NB:   This chunk and any that it depends on are loaded and locked.
+ ;       Keep them locked while allocating memory, then call unlockoutlines.
+ 
+-cacheoutlines Entry "R0"
++cacheoutlines KernelEntry "R0"
+ 
+         BL      getoutlinesinfo         ; set up rendermatrix etc.
+         LDRVCB  R0,currentchunk
+@@ -2714,7 +2717,7 @@
+ ;       [outlinefont] = handle of master font
+ ;       [rendermatrix] -> transformation from outlines to pixels
+ 
+-getoutlinesinfo Entry "R0,R2"
++getoutlinesinfo KernelEntry "R0,R2"
+ 
+         LDR     R14,transformptr
+         TEQ     R14,#0
+@@ -2763,7 +2766,7 @@
+ ; NB:   This chunk and any that it depends on are loaded and locked.
+ ;       Keep them locked while allocating memory, then call unlockoutlines.
+ 
+-loadoutlinechunk Entry "R0,R2,R3"
++loadoutlinechunk KernelEntry "R0,R2,R3"
+ 
+         Debug   cc,"loadoutlinechunk: R7,R0 =",R7,R0
+ 
+@@ -2808,7 +2811,7 @@
+ ; Out   If block is in cache memory, it is made into the newest.
+ ;       [ agelist: block put at tail of list | [R6,#std_age] updated ]
+ 
+-markaccessed    Entry "R0"
++markaccessed    KernelEntry "R0"
+ 
+         LDR     R14,fontcache
+         CMP     R6,R14
+@@ -2825,7 +2828,7 @@
+ ; Out   [R8] = R6
+ ;       [R6,#std_anchor] = R8 if R6 inside cache
+ 
+-makelink Entry ""
++makelink KernelEntry ""
+ 
+         STR     R6, [R8]
+ 
+@@ -2846,7 +2849,7 @@
+ ;       R7 may be relocated
+ ;       outline chunk is locked (if any)
+ 
+-setoutlineptr Entry "R0"
++setoutlineptr KernelEntry "R0"
+ 
+         Debug   cc,"setoutlineptr: R7,R0 =",R7,R0
+ 
+@@ -2896,7 +2899,7 @@
+ ; In    R7 -> master font header
+ ; Out   all outline blocks, plus scaffold and mapping2 unlocked
+ 
+-unlockoutlines  Entry "R1,R6-R8"
++unlockoutlines  KernelEntry "R1,R6-R8"
+ 
+         LDR     R1,mapping2
+         TEQ     R1,#0
+@@ -2942,7 +2945,7 @@
+ ; If R0=character code, this character is definitely not already cached
+ ; If R0=PIX_ALLCHARS, there is definitely no previous chunk
+ 
+-cachebitmaps Entry "R0-R4,R7,R9,R11"
++cachebitmaps KernelEntry "R0-R4,R7,R9,R11"
+ 
+         Debug   cc,"cachebitmaps: slave font, R0 =",R6,R0
+ 
+@@ -3223,6 +3226,7 @@
+ 
+         Pull    "R0,LR"
+         TEQP    LR,#0                   ; assume no error from deleteblock
++        MOV     R0,R0                   ; ARM2 PSR settling
+ 
+ 99
+         PullP   "unstacking font header block",R7
+@@ -3237,6 +3241,7 @@
+ 
+         Pull    "R0,LR"
+         TEQP    LR,#0
++        MOV     R0,R0                   ; ARM2 PSR settling
+ 
+         STRVS   R0,[sp]
+ 
+@@ -3247,7 +3252,7 @@
+ ; In    R1 -> block (may or may not be inside cache)
+ ; Out   block locked if in cache, left alone otherwise
+ 
+-lockblock Entry ""
++lockblock KernelEntry ""
+ 
+         LDR     R14,fontcache
+         CMP     R1,R14
+@@ -3264,7 +3269,7 @@
+ ; In    R1 -> block (may or may not be inside cache)
+ ; Out   block unlocked if in cache, left alone otherwise
+ 
+-unlockblock Entry ""
++unlockblock KernelEntry ""
+         LDR     R14,fontcache
+         CMP     R1,R14
+         LDRCS   R14,fontcacheend
+@@ -3287,7 +3292,7 @@
+ ;       [percentadd] = subpixel chunk number (0..15 depending on flags)
+ ; Out   R2 updated, pixel characters generated
+ 
+-convertchunk    Entry "R1,R3-R5,R11"
++convertchunk    KernelEntry "R1,R3-R5,R11"
+ 
+         Debug   cc,"convertchunk: R0,R3,R6,R2,R7,R9 =",R0,R3,R6,R2,R7,R9
+ 
+@@ -3479,7 +3484,7 @@
+ ; Out   scaffolding computed, Draw module used to draw character
+ ;       (or if output switched to buffer, draw path constructed)
+ 
+-drawchar Entry "R1-R6,R8,R9"
++drawchar KernelEntry "R1-R6,R8,R9"
+ 
+         MOV     R14,#0                  ; offset = (0,0) for main char
+         STR     R14,xcomponent
+@@ -3570,7 +3575,7 @@
+ ;       R8 -> chunk index
+ ;       [x/ycomponent] = x/y origin
+ 
+-drawcomposite Entry "R3"
++drawcomposite KernelEntry "R3"
+ 
+         Debug   cm,"drawcomposite: matrix,code,index =",R2,R4,R8
+ 
+@@ -3612,7 +3617,7 @@
+ ;       R3 -> byte after the outline definition
+ ;       R0,R1,R2,R4,R5 corrupted
+ 
+-drawcomponent Entry "R6"
++drawcomponent KernelEntry "R6"
+ 
+         LDRB    R14,charflags           ; no local data present in a composite character
+         TST     R14,#chf_composite1:OR:chf_composite2
+@@ -3803,7 +3808,7 @@
+ ; Out   R1 updated, [R1] updated if (R3 :AND: swf_justcount) = 0
+ ;       R4 updated
+ 
+-put_word Entry ""
++put_word KernelEntry ""
+ 
+         TST     R3,#swf_justcount       ; if just counting,
+         ADDNE   R1,R1,#4                ; R4 is not defined
+@@ -3826,7 +3831,7 @@
+ ;       R1 updated, [R1] updated if (R3 :AND: swf_justcount) = 0
+ ;       R4 updated
+ 
+-put_coords Entry "R5"
++put_coords KernelEntry "R5"
+ 
+         LDR     R5,[R0],#4
+         BL      put_word
+@@ -3857,7 +3862,7 @@
+ ;       [sprite_height] = sprite height (pixels)
+ ;       [scratchblock] -> scratch block for Draw module
+ 
+-outputtosprite  Entry "R4-R5,R7,R9-R11"
++outputtosprite  KernelEntry "R4-R5,R7,R9-R11"
+ 
+         ASSERT  (PIX_ALLCHARS :AND: &1F)=0
+         CheckCache "before outputing to sprite"
+@@ -4090,7 +4095,7 @@
+ ; Out   R6 -> index of outline chunk
+ ;       R0 = offset from index start to character header (0 if none)
+ 
+-outputt_remap Entry ""
++outputt_remap KernelEntry ""
+ 
+         TEQ     R10,#0
+         BNE     %FT01
+@@ -4150,7 +4155,7 @@
+ ; Out   [charflags] = char flags, except for chf_1bpp (preserved in charflags)
+ ;       R3 --> char outline
+ 
+-getcharheader Entry ""
++getcharheader KernelEntry ""
+ 
+         LDRB    R14,charflags           ; preserve chf_1bpp bit in charflags
+         TST     R14,#chf_1bpp
+@@ -4182,7 +4187,7 @@
+ ;       R1 --> next free byte in output path
+ ;       R3 --> byte after input char path terminator
+ 
+-convertcharpath Entry "R2-R11"
++convertcharpath KernelEntry "R2-R11"
+ 
+ ; compute scaffold offsets
+ 
+@@ -4445,7 +4450,7 @@
+ ;       R4 = pre-offset due to linked line
+ ;       R11 corrupted
+ 
+-computelink Entry "R3,R4,R10"
++computelink KernelEntry "R3,R4,R10"
+ 
+         EOR     R4,R3,R4,LSR #12        ; R4 = link (0..15)
+         BIC     R4,R4,#8                ; get bit 3 from R3
+@@ -4497,6 +4502,7 @@
+         MOV     R0,PC
+         DivRem  R4,R14,R3, R10          ; R4 = (o1-o2)(x-x2)/(x1-x2)
+         TEQP    R0,#0
++        MOV     R0,R0                   ; ARM2 PSR settling
+         ADDPL   R10,R11,R4
+         SUBMI   R10,R11,R4
+ 01
+@@ -4515,7 +4521,7 @@
+ ;       [R5,R3,LSL #2] = scaffold offset (R10)
+ ;       [R5,-R3,LSL #2] = original scaffold coord (R10)
+ 
+-computescaffold Entry ""
++computescaffold KernelEntry ""
+ 
+         ORR     R2,R2,R9,LSL R3         ; this line done (we hope!)
+ 
+@@ -4552,7 +4558,7 @@
+ ;       [rendermatrix] -> matrix to transform by
+ ; Out   R10 = offset to add to points linked to this (- initial offset)
+ 
+-computescaffoldx Entry "R1-R6"
++computescaffoldx KernelEntry "R1-R6"
+ 
+         Debug   scf2,"computescaffoldx: R10,R11 = ",R10,R11
+ 
+@@ -4664,7 +4670,7 @@
+ ;       [rendermatrix] -> matrix to transform by
+ ; Out   R10 = offset to add to points linked to this (- initial offset)
+ 
+-computescaffoldy Entry "R1-R6"
++computescaffoldy KernelEntry "R1-R6"
+ 
+         Debug   scf2,"computescaffoldy: R10,R11 =",R10,R11
+ 
+@@ -4779,7 +4785,7 @@
+ ;       [x/ycomponent] = offset to add to coords before processing
+ ; Out   format converted, coords multiplied by [rendermatrix]
+ 
+-convert_xy Entry "R2,R4,R6"
++convert_xy KernelEntry "R2,R4,R6"
+ 
+         MOV     R4,R1                   ; R4 -> output path
+         MOV     R6,R3                   ; R6 -> input path
+@@ -4857,7 +4863,7 @@
+ ; Out   R2,R3 = coordinate (sign-extended)
+ ;       R6 updated
+ 
+-getcoordpair Entry ""
++getcoordpair KernelEntry ""
+ 
+         LDRB    R14,charflags
+         TST     R14,#chf_12bit
+@@ -5322,7 +5328,7 @@
+ ; In    relocSP = top of relocation stack
+ ; Out   spaces printed to debug output depending on depth of stack
+ 
+-debugstk_spaces Entry "R0,R1"
++debugstk_spaces KernelEntry "R0,R1"
+ 
+         LDR     R1,relocSP
+         B       dbstksp_altentry
+@@ -5330,7 +5336,7 @@
+ ; In    R1 = top of relocation stack
+ ; Out   spaces printed to debug output depending on depth of stack
+ 
+-debugstk_spaces_R1 Entry "R0,R1"
++debugstk_spaces_R1 KernelEntry "R0,R1"
+ 
+ dbstksp_altentry
+         ADRL    R14,relocextra+4
+@@ -5346,7 +5352,7 @@
+ 
+       [ debugbrk
+ 
+-checkrelocfull  Entry
++checkrelocfull  KernelEntry
+ 
+         LDR     R14,relocSP
+         SUB     R14,R14,R12
+@@ -5361,7 +5367,7 @@
+ 
+ ; In    R1 -> matrix to display contents of
+ 
+-debug_matrix Entry "R1-R6"
++debug_matrix KernelEntry "R1-R6"
+ 
+         TEQ     R1,#0
+         BNE     %FT01
+@@ -5375,7 +5381,7 @@
+ ; In    R1 -> matrix to display
+ ;       R2 = number of spaces to print to align text
+ 
+-debug_fpmatrix Entry "R0-R8"
++debug_fpmatrix KernelEntry "R0-R8"
+ 
+         TEQ     R1,#0
+         BNE     %FT02
+--- a/src/FontManager/s/FontsM
++++ b/src/FontManager/s/FontsM
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -106,7 +107,7 @@
+ 
+         MACRO
+ $l      PEntry  $which, $regs
+-$l      Entry   "$regs"
++$l      KernelEntry   "$regs"
+         ProfIn  $which
+         MEND
+ 
+@@ -265,7 +266,7 @@
+ 
+         MACRO
+         MySWI   $swiname
+-        ASSERT  MySWIBase+(.-FontSWItable)/4 = $swiname
++        ASSERT  MySWIBase+((.-FontSWItable)/4) = $swiname
+         B       SWI$swiname
+         MEND
+ 
+--- a/src/FontManager/s/Funcache
++++ b/src/FontManager/s/Funcache
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -112,7 +113,7 @@
+ ; Exit:  font cache extended
+ ;        "Font cache full" returned if it can't be done
+ 
+-extendcache Entry "R1,R7"
++extendcache KernelEntry "R1,R7"
+ 
+         LoadCacheFree R1
+         ADD     R1,R1,R6                ; new end of font cache
+@@ -332,7 +333,7 @@
+ ; In    R6 -> block which is about to be deleted
+ ; Out   ageunclaimed block moved to just before this block
+ 
+-moveunclaimedhead Entry "R7-R9"
++moveunclaimedhead KernelEntry "R7-R9"
+ 
+         LDR     R7,ageunclaimed_p       ; delete from previous position
+         RemLink R7,R8,R9
+@@ -346,10 +347,10 @@
+ ;; In   R0 = handle of font to delete (1..255)
+ ;;----------------------------------------------------------------------------
+ 
+-deletefont_R6R8 Entry "R0-R5,R6-R8"
++deletefont_R6R8 KernelEntry "R0-R5,R6-R8"
+         B       delfont_altentry
+ 
+-deletefont      Entry "R0-R5,R6-R8"
++deletefont      KernelEntry "R0-R5,R6-R8"
+ 
+         Debug   del,"Delete Font:",R0
+ 
+@@ -406,7 +407,7 @@
+ ;       R6, R8 relocated if necessary
+ ;       R0 and flags preserved (including error state)
+ 
+-deletechunk Entry "R9"
++deletechunk KernelEntry "R9"
+ 
+       [ debugdel
+         LDR     R14,[R8]
+@@ -446,7 +447,7 @@
+ ; Out   [R8] = PIX_UNCACHED, character block deleted
+ ;       R6, R8 relocated if necessary
+ 
+-deletechar Entry ""
++deletechar KernelEntry ""
+ 
+         BL      deleteblock
+         MOV     R14,#PIX_UNCACHED
+@@ -461,7 +462,7 @@
+ ; Out   [R8] = 0, transform blocks deleted
+ ;       R6, R8 relocated if necessary
+ 
+-deletetransforms Entry "R1"
++deletetransforms KernelEntry "R1"
+ 
+         MOV     R1,#0
+ 
+@@ -486,7 +487,7 @@
+ ;       R6, R8 relocated if necessary
+ ;       R0 and flags preserved (including error state)
+ 
+-deletetransform Entry "R9"
++deletetransform KernelEntry "R9"
+ 
+       [ debugdel
+         LDR     R14,[R8]
+@@ -1039,7 +1040,7 @@
+ ;       R0 = R0 + 4 (for next time)
+ ;       All map blocks in the chain are relocated
+ 
+-reloc_mapblocks Entry "R0,R6-R8"
++reloc_mapblocks KernelEntry "R0,R6-R8"
+ 
+ 01
+         RelocA  R1,R6,R7,R10,R11, R0,R14        ; R1,[R7] := relocated form of R6, anchor = R0
+@@ -1061,7 +1062,7 @@
+ ;       R0 = R0 + 4 (for next time)
+ ;       All transform blocks in the chain, and any chunks within them, are relocated
+ 
+-reloc_transforms Entry "R0,R6-R8"
++reloc_transforms KernelEntry "R0,R6-R8"
+ 
+ 01
+         RelocA  R1,R6,R7,R10,R11, R0,R14        ; R1,[R7] := relocated form of R6, anchor = R0
+@@ -1096,7 +1097,7 @@
+ ; Out   R1,[R7] = relocated form of R6
+ ;       if this is a split chunk, any characters within it are relocated
+ 
+-reloc_chunk Entry "R0,R6-R8"
++reloc_chunk KernelEntry "R0,R6-R8"
+ 
+         RelocA  R1,R6,R7,R10,R11, R0,R14   ; R1,[R7] := relocated form of R6
+ 
+@@ -1135,7 +1136,7 @@
+ 
+ dbg_flagbit     *       1 :SHL: 31
+ 
+-checkbacklinks Entry "R6-R9"
++checkbacklinks KernelEntry "R6-R9"
+ 
+         LDR     R6,cacheindex
+         LDR     R7,[R6,#cache_free]
+@@ -1211,7 +1212,7 @@
+ total_count     DCD     0               ; it's OK - only for debugging!
+ total_size      DCD     0
+ 
+-checkblock Entry "R0,R1,R9,R11"
++checkblock KernelEntry "R0,R1,R9,R11"
+ 
+         LDR     R9,fontcache
+         LDR     R11,fontcacheend
+@@ -1474,7 +1475,7 @@
+ ;       R8 -> link pointer
+ ; Out   VS => R1 -> error message
+ 
+-checkmapblock Entry "R2-R8"
++checkmapblock KernelEntry "R2-R8"
+ 
+ 01
+         CheckBlock R6,R8
+@@ -1501,7 +1502,7 @@
+ ;       R8 -> link pointer
+ ; Out   VS => R1 -> error message
+ 
+-checktransform Entry "R2-R8"
++checktransform KernelEntry "R2-R8"
+ 
+ 01
+         CheckBlock R6,R8
+@@ -1562,7 +1563,7 @@
+ ; In    R6 -> split chunk block
+ ; Out   VS => R1 -> error message, R3,R4,R6,R7,R8 corrupted
+ 
+-checkchunk Entry "R2-R8"
++checkchunk KernelEntry "R2-R8"
+ 
+         MOV     R3,R6                   ; R3 = parent block pointer
+         LDR     R4,ageheadblock_p       ; R4 = end of list marker
+--- a/src/FontManager/s/ListFonts
++++ b/src/FontManager/s/ListFonts
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -45,7 +46,7 @@
+ ;       R1 = number of parameters
+ ; Out   Font$Path altered so that this prefix is on the front
+ 
+-FontInstall_Code Entry "R0,R1,R12"
++FontInstall_Code KernelEntry "R0,R1,R12"
+ 
+         LDR     R12,[R12]
+ 
+@@ -67,7 +68,7 @@
+ 
+ ; In    R0 -> prefix element to remove from font$path
+ 
+-FontRemove_Code Entry "R0,R1,R12"
++FontRemove_Code KernelEntry "R0,R1,R12"
+ 
+         LDR     R12,[R12]
+ 
+@@ -83,7 +84,7 @@
+ ;       R1 = number of parameters
+ ; Out   Font$Path altered so that this prefix is on the front
+ 
+-FontLibrary_Code Entry "R0,R1,R12"
++FontLibrary_Code KernelEntry "R0,R1,R12"
+ 
+         LDR     R12,[R12]
+ 
+@@ -124,7 +125,7 @@
+ ;       Duplicate and null elements are eliminated (1st occurrence takes priority)
+ ;       R0 corrupt
+ 
+-addtofontpath Entry "R1-R3"
++addtofontpath KernelEntry "R1-R3"
+ 
+         BL      addelement              ; R1 -> start, R2 -> end, R3 -> path stuff
+         BLVC    setfontpath
+@@ -137,7 +138,7 @@
+ ; Out   Font$Path (macro) set to <old unexpanded value minus [R0]>
+ ;       R0 corrupt
+ 
+-removefromfontpath Entry "R1-R3"
++removefromfontpath KernelEntry "R1-R3"
+ 
+         BL      addelement              ; R1 -> start, R2 -> end, R3 -> path stuff
+         MOVVC   R1,R3                   ; R1 -> section after new stuff
+@@ -153,7 +154,7 @@
+ ;       R3 -> where <old font$path> was added
+ ;       R0 corrupt
+ 
+-addelement Entry "R4"
++addelement KernelEntry "R4"
+ 
+ ; first append the existing value (unexpanded) of Font$Path to the new element(s)
+ 
+@@ -262,7 +263,7 @@
+ ;       R2 -> terminator of font$path string
+ ; Out   Font$Path (macro) set to string
+ 
+-setfontpath Entry "R2-R4"
++setfontpath KernelEntry "R2-R4"
+ 
+         ADR     R0,str_fontpath                 ; R0 -> variable name
+         SUB     R2,R2,R1                        ; R2 = length of string
+@@ -281,7 +282,7 @@
+ ;       [lf_prefixhead] -> list of prefix blocks
+ ; Out   scan bit of relevant prefix blocks is unset
+ 
+-rescanprefix Entry "R0-R2"
++rescanprefix KernelEntry "R0-R2"
+ 
+         DebugS  path2,"rescanprefix ",R0
+ 
+@@ -312,7 +313,7 @@
+ ; Out   R0 -> one after terminator of string
+ ;       EQ => strings match, NE => they don't
+ 
+-strcmp_nocase_comma Entry "R1,R6,R7"
++strcmp_nocase_comma KernelEntry "R1,R6,R7"
+ 
+         DebugS  path2,"strcmp_nocase_comma: ",R0
+         DebugS  path2,"                   : ",R1
+@@ -347,7 +348,7 @@
+ ; Out   [R1..] = ",<prefix>,<prefix>" etc
+ ;       R2 = space remaining after 0-terminator
+ 
+-getfontpath Entry "R3,R4"
++getfontpath KernelEntry "R3,R4"
+ 
+         LDR     R3,lf_prefixhead                ; now append the existing elements
+         B       %FT06
+@@ -445,7 +446,7 @@
+ 
+ lfincrement      *      1 :SHL: (32-lfbitshift)
+ 
+-SWIFont_ListFonts Entry "R0-R12"
++SWIFont_ListFonts KernelEntry "R0-R12"
+ 
+       [ debugpath
+         Debuga  path, "Font_ListFonts: R1,R2,R3,R4,R5,R6 =",R1,R2,R3,R4,R5
+@@ -562,6 +563,7 @@
+         STR     R2,[sp,#2*4]
+ 
+         TEQP    R3,#0                   ; restore flags
++        MOV     R0,R0                   ; ARM2 PSR settling
+         PullS   "$Proc_RegList"
+         LTORG
+ 
+@@ -722,7 +724,7 @@
+ ;       [listfonts_head] -> list of font/encoding blocks
+ ; Out   R7 -> first font/encoding block in list of the appropriate type
+ 
+-getfirstfont Entry "R2"
++getfirstfont KernelEntry "R2"
+ 
+         TST     R2,#lfbit_encodings
+         MOVEQ   R2,#lfff_encoding
+@@ -749,7 +751,7 @@
+ ; In    R7 -> font/encoding block
+ ; Out   R7 -> next font/encoding block in list which has a different identifier
+ 
+-getnextnewfont Entry "R0-R2"
++getnextnewfont KernelEntry "R0-R2"
+ 
+         LDR     R2,[R7,#lff_flags]      ; look for another with the same type
+         AND     R2,R2,#lfff_encoding
+@@ -790,7 +792,7 @@
+ ;       R8,R9 updated
+ ;       Error if R1,R4<>0 and R8>R3 or R9>R5
+ 
+-lfmenu_newmenu Entry "R0,R6"            ; NB: same Proc_RegList as lfmenu_newitem
++lfmenu_newmenu KernelEntry "R0,R6"            ; NB: same Proc_RegList as lfmenu_newitem
+ 
+         Debug   path2,"New menu: menu (size), data (size) =",R1,R8,R4,R9
+         Debuga  path,"Menu title =",R6
+@@ -917,7 +919,7 @@
+ 
+         ASSERT  Proc_RegList = "R0,R6"
+ 
+-lfmenu_newitem Entry "R0,R6"            ; NB: same Proc_RegList as lfmenu_newmenu
++lfmenu_newitem KernelEntry "R0,R6"            ; NB: same Proc_RegList as lfmenu_newmenu
+ 
+         Debuga  path,"New item: addr,data,strlen+1",R1,R4,R6
+         DebugS  path,", string =",R0
+@@ -1017,7 +1019,7 @@
+ ; In    R1 -> next menu item, or 0 => just counting
+ ; Out   previous item marked as last if R1<>0
+ 
+-lfmenu_lastitem Entry
++lfmenu_lastitem KernelEntry
+ 
+         TEQ     R1,#0
+         LDRNE   R14,[R1,#mi_itemflags - mi_size]
+@@ -1031,7 +1033,7 @@
+ ; In    R0 -> string
+ ; Out   R6 = length of string including terminator
+ 
+-count_R0 Entry ""
++count_R0 KernelEntry ""
+ 
+         MOV     R6,R0
+ 
+@@ -1050,7 +1052,7 @@
+ ; Out   R6 = length of [R0..] up to and including the first "." or terminator
+ ;       EQ => strings match up to the first dot (each contains one), or they match up to the terminator
+ 
+-strcmp_dot Entry "R7,R10"
++strcmp_dot KernelEntry "R7,R10"
+ 
+         MOV     R14,R0
+ 
+@@ -1082,7 +1084,7 @@
+ ; Out   EQ => strings match (case insensitive)
+ ;       LT => [R0] is earlier alphabetically
+ 
+-strcmp_nocase Entry "R0,R1"
++strcmp_nocase KernelEntry "R0,R1"
+ 
+         BL      strcmp_nocase_advance
+ 
+@@ -1094,7 +1096,7 @@
+ ; Out   EQ => strings match (case insensitive)
+ ;       LT => [R0] is earlier alphabetically
+ 
+-strcmp_nocase_advance Entry "R6,R7"
++strcmp_nocase_advance KernelEntry "R6,R7"
+ 
+ 01      LDRB    R6,[R0],#1
+         LDRB    R7,[R1],#1
+@@ -1182,6 +1184,7 @@
+         SWINE   XOS_ServiceCall
+         Pull    "R1,LR"
+         TEQP    LR,#0
++        MOV     R0,R0                   ; ARM2 PSR settling
+ 
+         PExit
+ 
+@@ -1194,7 +1197,7 @@
+ fontpathname    DCB     "<Font$Path>",0
+                 ALIGN
+ 
+-decodefontpath Entry "R1,R3-R7"
++decodefontpath KernelEntry "R1,R3-R7"
+ 
+         ASSERT  ?lf_fontname >= 256 :LAND: ?wrchblk >= 256
+ 
+@@ -1340,7 +1343,7 @@
+ ; In    [lf_prefixhead] -> linked list of prefix blocks
+ ; Out   [lf_prefixhead] = 0, blocks freed
+ 
+-deleteprefixblocks Entry "R1"
++deleteprefixblocks KernelEntry "R1"
+ 
+         wsaddr  R1,lf_prefixhead
+         BL      deletelinkedblocks
+@@ -1352,7 +1355,7 @@
+ ; In    R1 -> head of linked list of prefix blocks
+ ; Out   [R1]=0, blocks freed
+ 
+-deletelinkedblocks Entry "R0-R2"
++deletelinkedblocks KernelEntry "R0-R2"
+ 
+         Debug   path2,"deletelinkedblocks: head =",R1
+ 
+@@ -1379,7 +1382,7 @@
+ ;       [listfonts_head] -> linked list of font blocks
+ ; Out   font blocks which reference R3 are deleted
+ 
+-deleteprefixrefs Entry "R0,R2,R4-R5"
++deleteprefixrefs KernelEntry "R0,R2,R4-R5"
+ 
+         Debug   path2,"deleteprefixrefs: prefix at",R3
+ 
+@@ -1413,7 +1416,7 @@
+ ;       [listfonts_head] -> linked list of font blocks
+ ; Out   font blocks which reference R3 are altered to reference R2
+ 
+-updateprefixrefs Entry "R4"
++updateprefixrefs KernelEntry "R4"
+ 
+         Debug   path2,"updateprefixrefs: old,new",R3,R2
+ 
+@@ -1439,7 +1442,7 @@
+ ;       new font blocks created, and all font blocks resorted
+ ;       R4 = R4 + number of prefixes rescanned
+ 
+-listfonts_recache Entry "R1-R3"
++listfonts_recache KernelEntry "R1-R3"
+ 
+         LDR     R3,lf_prefixhead
+         TEQ     R3,#0
+@@ -1469,7 +1472,7 @@
+ ; Out   [R3,#lfpr_flags] set => block has been scanned
+ ;       New font blocks created as discovered
+ 
+-listfonts_scanprefix Entry "R1-R9"
++listfonts_scanprefix KernelEntry "R1-R9"
+ 
+       [ debugpath
+         Debuga  path,"Scan prefix block at",R3
+@@ -1513,6 +1516,7 @@
+         SWI     XMessageTrans_CloseFile ; close message file regardless of error state
+         MOVVC   R0, R2
+         TEQVCP  R3, #0
++        MOV     R0,R0                   ; ARM2 PSR settling
+ 
+         B       %FT99                   ; re-sorts font blocks and sets scanned bit
+ 
+@@ -1664,7 +1668,7 @@
+ ;       GT => R1 is a leading substring of R2, followed by decimal digits
+ ;       LT => no match
+ 
+-strcmp_trailingdigits Entry "R0-R3"
++strcmp_trailingdigits KernelEntry "R0-R3"
+ 
+       [ debugpath2
+         DebugS  path2,"Test string :",R0
+@@ -1727,7 +1731,7 @@
+         SUB     sp,sp,#scan_size
+         MOV     R7,sp
+ 
+-        Entry   "R0,R1"
++        KernelEntry   "R0,R1"
+ 
+ 01      LDRB    R14,[R0],#1
+         STRB    R14,[R1],#1
+@@ -1770,7 +1774,7 @@
+ ; Out   R0 = type of next object in directory (0 => directory finished)
+ ;       R1 -> object name (if R0 <> 0)
+ 
+-scandir_next Entry "R2-R10"
++scandir_next KernelEntry "R2-R10"
+ 
+ 03      LDR     R2,[R7,#scan_namecount]
+         SUBS    R2,R2,#1
+@@ -1835,7 +1839,7 @@
+ ;       [R8,#2*4] -> prefix block address
+ ; Out   makefontcatblock called with parameters derived from those given
+ 
+-scandir_addblock Entry "R1-R5"
++scandir_addblock KernelEntry "R1-R5"
+ 
+ ; Bug fix by Chris Murray:
+ ;
+@@ -1860,7 +1864,7 @@
+ ;       [territory] = territory number
+ ; Out   R0 -> message file descriptor of "<prefix>Message<territory>"
+ 
+-openmessagefile Entry "r1,r2", 256      ; frame size = 256 bytes
++openmessagefile KernelEntry "r1,r2", 256      ; frame size = 256 bytes
+ 
+         MOV     r1, sp
+         BL      copy_r0r1               ; r1 -> character after end of prefix
+@@ -1888,7 +1892,7 @@
+ ; Out   [R1..] = leafname<n>, where <n> is the decimal representation of R2
+ ;       If the total length would be > 10, trailing characters from the leafname are suppressed
+ 
+-copy_r0r1_suffixR2 Entry "R0-R3", 12    ; buffer on stack for number buffer
++copy_r0r1_suffixR2 KernelEntry "R0-R3", 12    ; buffer on stack for number buffer
+ 
+         CMP     R2,#0                   ; R2 < 0 => no suffix
+         BLT     %FT10
+@@ -1927,7 +1931,7 @@
+ ;       R0 = R9 = message file descriptor
+ ; Out   set of font/encoding blocks created
+ 
+-enumerate_msgs Entry "R1-R8"
++enumerate_msgs KernelEntry "R1-R8"
+ 
+         MOV     R8, R2                  ; R8 = original flags
+         MOV     R4, #0                  ; R4 = place marker (0 for first call)
+@@ -2003,7 +2007,7 @@
+ ; Out   R2 -> new font block, linked into chain
+ ;       R0 corrupt
+ 
+-makefontcatblock Entry "R3-R9"
++makefontcatblock KernelEntry "R3-R9"
+ 
+         MOV     R8,R0                   ; R8 = flags to put into block (NOT NEEDED!?)
+ 
+@@ -2080,7 +2084,7 @@
+ ;       R3 -> output buffer
+ ; Out   [R3..] = string plus terminator (0), R3 updated
+ 
+-copyR4R5toR3 Entry "R4,R5"
++copyR4R5toR3 KernelEntry "R4,R5"
+ 
+ 11      LDRB    R14,[R4],#1
+         STRB    R14,[R3],#1
+@@ -2096,7 +2100,7 @@
+ ; In    [listfonts_head] -> font blocks, unordered
+ ; Out   [listfonts_head] -> font blocks, ordered alphabetically and by font prefix
+ 
+-sortfontblocks Entry "R0-R4,R8"
++sortfontblocks KernelEntry "R0-R4,R8"
+ 
+ 01      MOV     R8,#0                   ; flag => swaps have occurred
+ 
+@@ -2169,7 +2173,7 @@
+ dcd_encoding    *       1 :SHL: 0
+ dcd_reserved    *       -1 :SHL: 1
+ 
+-SWIFont_DecodeMenu Entry "R0-R9"
++SWIFont_DecodeMenu KernelEntry "R0-R9"
+ 
+         Debug   path,"Font_DecodeMenu",R0,R1,R2,R3,R4
+ 
+@@ -2299,7 +2303,7 @@
+ ;       R2 -> remainder of menu selection list
+ ;       LT => no item selected
+ 
+-getmenuitem Entry "R6"
++getmenuitem KernelEntry "R6"
+ 
+         LDR     R14,[R2]
+ 
+@@ -2339,7 +2343,7 @@
+ ;       [territory_alphabet..] = "<territory alphabet identifier>"
+ ;
+ 
+-readterritory Entry "R0-R2"
++readterritory KernelEntry "R0-R2"
+ 
+         BL      closemessagefile        ; sets [messagefile] to 0
+ 
+@@ -2399,10 +2403,10 @@
+ 
+ str_Latin1      DCB     "Latin1", 0
+ 
+-str_field_id    DCB     "\F", 0         ; font identifier
+-str_field_nm    DCB     "\f", 0         ; font name
+-str_field_encid DCB     "\E", 0         ; encoding identifier
+-str_field_encnm DCB     "\e", 0         ; encoding name
++str_field_id    DCB     "\\F", 0         ; font identifier
++str_field_nm    DCB     "\\f", 0         ; font name
++str_field_encid DCB     "\\E", 0         ; encoding identifier
++str_field_encnm DCB     "\\e", 0         ; encoding name
+ str_space       DCB     " "             ; separator after territory number
+                 ALIGN
+ 
+@@ -2417,7 +2421,7 @@
+ ; Out   [messagefile] = 0, message file closed if was open
+ ;       errors are ignored (otherwise you can get into horrible loops)
+ 
+-closemessagefile Entry "R0"
++closemessagefile KernelEntry "R0"
+ 
+         LDR     R0,messagefile
+         TEQ     R0,#0
+@@ -2433,7 +2437,7 @@
+ ;       VS
+ ; Out   VC => error was "SWI not known"
+ 
+-check_nosuchswi Entry "R1"
++check_nosuchswi KernelEntry "R1"
+ 
+         LDR     R1,[R0]
+         LDR     R14,=ErrorNumber_NoSuchSWI
+@@ -2451,7 +2455,7 @@
+ ; Out   If R3<>0, [R3..] = "\F<ident>\f<t> <name>" (or \E and \e)
+ ;       R6 = extra buffer space required
+ 
+-output_R7_toR3R6 Entry ""
++output_R7_toR3R6 KernelEntry ""
+ 
+         LDR     R14,[R7,#lff_flags]     ; get correct prefix (\F or \E)
+         TST     R14,#lfff_encoding
+@@ -2500,9 +2504,9 @@
+ ;       R0 -> terminator of source string
+ 
+       [ fix2
+-output_R0_toR3R6 Entry "R0,R5"          ; preserve R0 (for Font_DecodeMenu)
++output_R0_toR3R6 KernelEntry "R0,R5"          ; preserve R0 (for Font_DecodeMenu)
+       |
+-output_R0_toR3R6 Entry "R5"
++output_R0_toR3R6 KernelEntry "R5"
+       ]
+         DebugS  path2,"output_R0: ",R0
+ 
+--- a/src/ROMFonts/s/ROMFonts
++++ b/src/ROMFonts/s/ROMFonts
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -40,6 +41,7 @@
+ ; 19-Jul-93     0.15    (ECN) Fixed slant of German quote characters in Corpus.Medium
+ ;
+ 
++        AREA ModuleCode, CODE, READONLY
+ Module_BaseAddr
+ 
+         GET     Hdr:ListOpts
+@@ -64,9 +66,6 @@
+ debugxx SETL    true :LAND: debug
+ hostvdu SETL    true
+ 
+-        LEADR   Module_LoadAddr
+-
+-
+ ; **************** Module code starts here **********************
+ 
+         ASSERT  (.-Module_BaseAddr) = 0
+@@ -94,7 +93,7 @@
+ 
+ stk_buffsize    *       256
+ 
+-ROMFonts_Init ENTRY
++ROMFonts_Init KernelEntry
+ 
+         ADR     R0, ROMFonts
+         SWI     XResourceFS_RegisterFiles   ; ignore errors (starts on Service_ResourceFSStarting)
+@@ -153,7 +152,7 @@
+ ;       ROMFonts_Die - Die entry
+ ;
+ 
+-ROMFonts_Die ENTRY
++ROMFonts_Die KernelEntry
+ 
+         ADR     R0, ROMFonts
+         SWI     XResourceFS_DeregisterFiles
+@@ -186,7 +185,7 @@
+ ;       R3 = workspace pointer for module
+ ; Out   R2 called with R0 -> files, R3 -> workspace
+ 
+-svc_desktopstarting ENTRY "R0-R3"
++svc_desktopstarting KernelEntry "R0-R3"
+ 
+         ADR     R0, ROMFonts
+         MOV     LR, PC                          ; get return address
+@@ -212,7 +211,7 @@
+         MyDesk  Fonts.Corpus.Medium.Oblique.Outlines0
+         MyDesk  Fonts.Corpus.Medium.Outlines0
+ 
+-        MyDesk  Fonts.Encodings./Base0
++        ResourceFile Fonts/Encodings/.Base0, Fonts.Encodings./Base0
+         MyDesk  Fonts.Encodings.Latin1
+         MyDesk  Fonts.Encodings.Latin2
+         MyDesk  Fonts.Encodings.Latin3
+--- a/src/Wimp/s/Iconbar
++++ b/src/Wimp/s/Iconbar
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -288,6 +289,7 @@
+         BL      int_close_template
+         Pull    "R0,R14"
+         TEQP    R14,#0                  ; Restore V flag
++        MOV     R0,R0                   ; ARM2 PSR settling
+ 99
+         ADD     sp,sp,#12               ; lose copy of name
+         Pull    "R1-R6,userblk,PC"
+@@ -306,7 +308,7 @@
+ ; Out   handle -> window data of iconbar (ie. absolute handle)
+ 
+             ASSERT  handle = R10        ; we want to return this
+-openiconbar ENTRY   "R1-R9,R11"
++openiconbar KernelEntry   "R1-R9,R11"
+ 
+         LDR     R0,iconbarhandle
+         SUBS    handle,R0,#0
+--- a/src/Wimp/s/Memory
++++ b/src/Wimp/s/Memory
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -23,7 +24,7 @@
+         DCB     "WIMP memory debugging",0
+         ALIGN
+ 
+-XROS_Module ENTRY
++XROS_Module KernelEntry
+         TEQ     R0,#6
+         TEQNE   R0,#7
+         TEQNE   R0,#13
+@@ -264,7 +265,7 @@
+ 
+         |
+ 
+-XROS_Module ENTRY
++XROS_Module KernelEntry
+         TEQ     R0,#6
+         TEQNE   R0,#7
+         TEQNE   R0,#13
+--- a/src/Wimp/s/Options
++++ b/src/Wimp/s/Options
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -12,9 +13,6 @@
+ ; See the License for the specific language governing permissions and
+ ; limitations under the License.
+ ;
+-
+-
+-                LEADR   Module_LoadAddr
+ 
+                 GBLL    true
+                 GBLL    false
+--- a/src/Wimp/s/RosMod
++++ b/src/Wimp/s/RosMod
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -19,7 +20,7 @@
+ 
+         [ DebugMemory
+ 
+-XROS_Module ENTRY
++XROS_Module KernelEntry
+         TEQ     R0,#6
+         TEQNE   R0,#7
+         TEQNE   R0,#13
+@@ -192,7 +193,7 @@
+ 
+         |
+ 
+-XROS_Module ENTRY
++XROS_Module KernelEntry
+         TEQ     R0,#6
+         TEQNE   R0,#7
+         TEQNE   R0,#13
+--- a/src/Wimp/s/Tiling
++++ b/src/Wimp/s/Tiling
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -225,7 +226,7 @@
+ 
+ ;; Routine to stash tile_1 from wimp area
+ ;; returns R2-> tile_1 or VS
+-findwimptilesprite  ENTRY "R0-R1"
++findwimptilesprite  KernelEntry "R0-R1"
+ ; is tiling disabled by CMOS ?
+         MOV     R0,#161
+         MOV     R1,#&8c
+@@ -360,7 +361,7 @@
+ 
+         Pull    "R1-R7,PC",,^
+ 
+-get_new_pixtable ENTRY  "R0-R6"
++get_new_pixtable KernelEntry  "R0-R6"
+ 
+         BIC     R7,R7,#&80000000        ; now an address again
+ 
+--- a/src/Wimp/s/Watchdog
++++ b/src/Wimp/s/Watchdog
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -20,7 +21,7 @@
+ 
+         [ WatchdogTimer
+ 
+-BreakWatchdogHandler    ENTRY   "R0"
++BreakWatchdogHandler    KernelEntry   "R0"
+ 
+        |
+ 
+@@ -102,6 +103,7 @@
+         DCB     0
+ 
+ 
++        ALIGN
+ watchdogcallback
+ 
+ 
+@@ -279,7 +281,7 @@
+         DCB     "Window Manager",0
+         ALIGN
+ 
+-printjobrunning ENTRY R0
++printjobrunning KernelEntry R0
+         LDR     R14,taskhandle
+         TEQ     R0,R14                  ; killing current task ?
+         EXITS   NE
+--- a/src/Wimp/s/Wimp
++++ b/src/Wimp/s/Wimp
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -19,6 +20,7 @@
+ ;; Author:   Neil Raine
+ ;;-----------------------------------------------------------------------------
+ 
++        AREA ModuleCode, CODE, READONLY
+ Module_BaseAddr
+ 
+         GET     Hdr:ListOpts
+--- a/src/Wimp/s/Wimp01
++++ b/src/Wimp/s/Wimp01
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -240,7 +241,7 @@
+ 
+         MACRO
+ $lab    MySWI   $swiname
+-        ASSERT  MySWIBase+(.-jptable)/4 = $swiname
++        ASSERT  MySWIBase+((.-jptable)/4) = $swiname
+         GBLA    xflg_$swicnt
+       [ (("$lab":CC:" "):LEFT:1)="x"
+ xflg_$swicnt    SETA    0         ; task doesn't have to be initialised
+@@ -315,7 +316,7 @@
+ 
+         ASSERT  (.=Module_BaseAddr)
+ 
+-MySWIBase       *       Module_SWISystemBase + WimpSWI * Module_SWIChunkSize
++MySWIBase       *       WimpSWI_Base
+ 
+         DCD     Start          - Module_BaseAddr
+         DCD     Init           - Module_BaseAddr
+@@ -553,6 +554,7 @@
+ ;............................................................................
+ 
+ 
++        ALIGN
+ WimpWriteDir_Code
+         Push    "LR"
+ 
+@@ -1489,6 +1491,7 @@
+ 
+ fontinstall = "%FontInstall", 0
+ 
++        ALIGN
+ declareresourcefsfiles
+         Push    "R0,LR"
+ 
+@@ -3520,6 +3523,7 @@
+       ]
+         MVN     R14,#I_bit
+         TSTP    R14,PC                          ; re-enable interrupts
++        MOV     R0,R0                   ; ARM2 PSR settling
+ ;
+         LDR     wsptr,[R12]                     ; wsptr --> workspace
+         LDR     R14,longjumpSP
+@@ -3603,6 +3607,7 @@
+ ExitWimp_restored_font_colours
+         Pull    "R0-R3,LR"
+         TEQP    PC, LR
++        MOV     R0,R0                   ; ARM2 PSR settling
+         ]
+ 
+         Pull    "PC",VC,^        ; exit immediately
+--- a/src/Wimp/s/Wimp02
++++ b/src/Wimp/s/Wimp02
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -546,7 +547,7 @@
+ ; Ticker routine called every second if its a portable, install a callback
+ ; handler and then exit.
+ 
+-CallEveryHandler ENTRY "R0"
++CallEveryHandler KernelEntry "R0"
+ 
+         MOV     R0,PC
+         TEQP    PC,#SVC_mode            ; back to SVC mode IRQs on
+@@ -570,7 +571,7 @@
+ 
+       [ Version >= 317 :LAND: mousecache
+ 
+-MouseCallEveryHandler ENTRY ""
++MouseCallEveryHandler KernelEntry ""
+ 
+         MOV     R0,#-1                  ; flag as needing to re-read mouse posn
+         STRB    R0,recacheposn
+@@ -583,7 +584,7 @@
+ ; CallBack routine used to update the idle speeds ready for speed control.
+ ; 321nk updated to use PowerUtils 'more inteligent' algorithms.
+ 
+-callback ENTRY "R0-R3"
++callback KernelEntry "R0-R3"
+ 
+         LDR     r3, IdlePerSec
+         MOV     r1, #0                  ; read and then reset, even if not active
+@@ -842,7 +843,7 @@
+         ADD     R1,sp,#ms_yourref               ; R5 set up earlier!
+         STMIA   R1!,{R2-R5}
+         LDRB    R14,[R0]
+-        TEQ     R14,#"\"
++        TEQ     R14,#92
+         ADDEQ   R0,R0,#1
+         BL      copy0                   ; copy from [R0] to [R1]
+ ;
+@@ -2692,6 +2693,7 @@
+         MOV     R1,#Service_WimpPalette ; inform palette utility
+         SWI     XOS_ServiceCall
+         TEQP    R2,#0                   ; restore error state
++        MOV     R0,R0                   ; ARM2 PSR settling
+ ;
+         Pull    "R1-R5,R10,PC"
+ 
+@@ -3783,6 +3785,7 @@
+ ;
+         LDR     R14,borderlinked
+         TEQP    R14,#0                          ; restore status
++        MOV     R0,R0                   ; ARM2 PSR settling
+         ADDEQ   R14,handle,#w_x0
+         ADDNE   R14,handle,#w_wax0
+         LDMIA   R14,{x0,y0,x1,y1}
+@@ -3804,6 +3807,7 @@
+ ;
+         LDR     R14,borderlinked
+         TEQP    R14,#0                  ; exit if border linked
++        MOV     R0,R0                   ; ARM2 PSR settling
+         BEQ     openfinished
+ ;
+ ; border unlinked, but in same place (ie. scrolling)
+@@ -3811,6 +3815,7 @@
+ ;
+         LDR     R14,isborderok          ; always redraw border if it toggled
+         TEQP    R14,#0                  ; set flags
++        MOV     R0,R0                   ; ARM2 PSR settling
+ ;
+         MOVEQ   R0,#invalidrects        ; mark border bits valid again
+         MOVEQ   R1,#borderrects
+--- a/src/Wimp/s/Wimp03
++++ b/src/Wimp/s/Wimp03
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -218,7 +219,7 @@
+ ;; once done issue a svc_RegisterFilters.
+ ;;-----------------------------------------------------------------------------
+ 
+-defaultfilters ENTRY "R0-R2"
++defaultfilters KernelEntry "R0-R2"
+ 
+         ADR     R0,filtertable          ; -> list of default owners
+         ADRL    R1,prefilter            ; -> list of vectors to install
+@@ -1906,7 +1907,7 @@
+ 
+       [ Version >= 311
+ 
+-DeletePollTask  ENTRY "R0,R1"
++DeletePollTask  KernelEntry "R0,R1"
+         ADR     R0,PollTasks            ; Get -> start of polltask list
+         LDR     R1,PollTaskPtr          ; Get -> first free slot
+ 01
+@@ -1939,7 +1940,7 @@
+ 
+       [ Version >= 311
+ 
+-scanpollwords   ENTRY "R1-R4"
++scanpollwords   KernelEntry "R1-R4"
+         ADR     R1,PollTasks            ; Get -> start of polltask list
+         LDR     R2,PollTaskPtr          ; Get -> first free slot
+ 01
+--- a/src/Wimp/s/Wimp04
++++ b/src/Wimp/s/Wimp04
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -1140,7 +1141,7 @@
+         MOVGE   R2,#WimpValidation_Display
+         BLGE    findcommand
+         LDREQB  R4,[R3],#1
+-        TEQEQ   R4,#"\"
++        TEQEQ   R4,#92
+         LDREQB  R4,[R3]
+         Pull    "R2"
+ 
+@@ -1185,6 +1186,7 @@
+ 01
+         Pull    "R0,x0,y0,x1,y1,R14"
+         TEQP    R14,#0                  ; restore PSR
++        MOV     R0,R0                   ; ARM2 PSR settling
+ 
+         Pull    "R1-R4,PC"
+ 
+@@ -2199,7 +2201,7 @@
+         ASSERT  ?pixtable_params =4*6
+ 
+ cachespritedata
+-        ENTRY   "R1-R2,R5-R7"
++        KernelEntry   "R1-R2,R5-R7"
+ 
+         MOV     R2,#1
+         STRB    R2,preservett           ; entering critical period for pixtable
+@@ -2444,7 +2446,7 @@
+ area_Wimp       * 1
+ 
+ cachespriteaddress ROUT
+-        ENTRY   "R1,R3"
++        KernelEntry   "R1,R3"
+ 
+  [ debugsprite
+         LDR     LR,spritename
+@@ -2803,7 +2805,7 @@
+ 
+ calcinverse ROUT
+ 
+-        ENTRY   "R0-R7"
++        KernelEntry   "R0-R7"
+ 
+         ADR     R7,inversefunc          ; pointer to the transfer function
+         MOV     R6,R1
+@@ -2848,7 +2850,7 @@
+ ; out   R0 modified RGB value - all other registers preserved
+ ;------------------------------------------------------------------------------
+ 
+-inversefunc ENTRY "R1-R4"
++inversefunc KernelEntry "R1-R4"
+  [ True                                 ; New highlighting for RISC OS 3.08
+         MOV     R4,#&FF                 ; mask used to extract the various components of the word
+         BIC     R0,R0,R4                ; clear out the bottom bits
+@@ -4706,7 +4708,7 @@
+ 
+         BLGE    findcommand
+         LDREQB  R10, [R3], #1
+-        TEQEQ   R10, #"\"
++        TEQEQ   R10, #92
+         LDREQB  R10, [R3]
+ ; R10 = replacement character
+ 
+--- a/src/Wimp/s/Wimp05
++++ b/src/Wimp/s/Wimp05
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -1568,7 +1569,7 @@
+ findfield_nowrap   * 1:SHL:0
+ findfield_sameposn * 1:SHL:1
+ 
+-nextfield ENTRY "R0-R6"
++nextfield KernelEntry "R0-R6"
+ 
+         LDR     R3,[handle,#w_nicons]           ; maximum icon number
+         LDR     R0,[handle,#w_icons]
+@@ -2256,7 +2257,7 @@
+         TEQ     R4,#"~"
+         EOREQ   R8,R8,#1                ; toggle in/excluding state
+         BEQ     %BT01
+-        TEQ     R4,#"\"
++        TEQ     R4,#92
+         LDREQB  R4,[R3],#1              ; 'escaped' char
+ 
+         LDRB    R5,[R3],#1
+@@ -2270,7 +2271,7 @@
+         TEQNE   R5,#"-"
+         TEQNE   R5,#"~"
+         BEQ     errcheck                ; can't allow non-escaped separator
+-        TEQ     R5,#"\"
++        TEQ     R5,#92
+         LDREQB  R5,[R3],#1              ; 'escaped' char
+ 
+         CMP     R6,R4
+@@ -2316,7 +2317,7 @@
+         Pull    "PC",CC                 ; not found (Z unset)
+         TEQ     R14,#";"
+         BEQ     %BT01
+-        TEQ     R14,#"\"
++        TEQ     R14,#92
+         BNE     %BT02
+         LDRB    R14,[R3],#1             ; skip 'escape'd char
+         CMP     R14,#32
+@@ -2734,7 +2735,7 @@
+         MOV     x0,#0
+         MOV     x1,#24
+         LDR     R1,reversedmenu         ; Is it a reversed menu?
+-        CMP     R1,#"\"
++        CMP     R1,#92
+         LDREQ   x0,menuiconwidth        ; Put it where the arrow is
+         ADDEQ   x0,x0,#24               ; supposed to be.
+         ADDEQ   x1,x0,#24
+@@ -2782,7 +2783,7 @@
+ 
+         BNE     %FT01
+         LDR     x0,reversedmenu         ; Is it a reversed menu ?
+-        CMP     x0,#"\"
++        CMP     x0,#92
+         ORRNE   R1,R1,#if_numeric       ; If not all icons are numeric.
+         BNE     %FT01
+         TST     R1,#if_numeric
+@@ -2812,7 +2813,7 @@
+         MOV     x0,x1
+         ADD     x1,x0,#24               ; width of arrow icon
+         LDR     R1,reversedmenu         ; Is it a reversed menu?
+-        CMP     R1,#"\"
++        CMP     R1,#92
+         MOVEQ   x0,#0                   ; Put it where tick is supposed to be
+         MOVEQ   x1,#24
+         LDR     R1,menuarrowflags
+@@ -2823,7 +2824,7 @@
+         ORRGT   R2,R2,#&89              ; right-arrow
+         BICLE   R1,R1,#if_sprite        ; Isn't a sprite if no arrow.
+         LDR     R14,reversedmenu        ; Is it a reversed menu?
+-        CMP     R14,#"\"
++        CMP     R14,#92
+         EOREQ   R2,R2,#1                ; Make it a left arrow.
+ 
+         Debuga  menuparam,"Create arrow @",x0,y0,x1,y1
+@@ -2874,7 +2875,7 @@
+         TST     R14,#1
+         BNE     %FT05
+         LDR     R14,reversedmenu       ; is it in a reversed menu?
+-        CMP     R14,#"\"
++        CMP     R14,#92
+         LDR     R14,dx
+         ADDNE   cx0,cx0,R14
+         ADDNE   cx1,cx1,R14
+@@ -2945,6 +2946,7 @@
+         BLVS    int_delete_window
+         MOVVC   R0, R4
+         TEQVCP  R3, #0
++        MOV     R0,R0                   ; ARM2 PSR settling
+ 
+         Pull    "R1-R4,userblk,PC"
+ ;...........................................................................
+@@ -3166,7 +3168,7 @@
+ 
+         Pull    "R0-R9, PC",, ^
+ 
+-menu_checkforsprite ENTRY "R0-R6"
++menu_checkforsprite KernelEntry "R0-R6"
+ ; in R8 -> icon item , R2= width of text
+ ; out R2 updated for vertically centred sprites only
+ 
+@@ -3280,7 +3282,7 @@
+ 
+ ; out   R0,R1,R2,R3 can be disturbed!
+ 
+-createmenutitle ENTRY ""
++createmenutitle KernelEntry ""
+         Debug   menu,"CreateMenuTitle: flags=",R4
+ 
+  [ False
+@@ -3317,7 +3319,7 @@
+ 
+         STRGE   R14,[handle,#w_flags]   ; flag as being present if required
+ 
+-        TEQ     R0,#"\"                 ; is it a reversed menu?
++        TEQ     R0,#92                 ; is it a reversed menu?
+         ADDEQ   R1,R1,#1
+         B       %FT10                   ; and then we are finished.
+ 
+@@ -3338,7 +3340,7 @@
+ 
+         STRGE   R14,[handle,#w_flags]   ; no, so remove it!
+ 
+-        TEQ     R0,#"\"
++        TEQ     R0,#92
+         BICEQ   R1,R1,#&FF
+         ORREQ   R1,R1,#" "              ; if reversed then remove first character
+ 
+@@ -3352,7 +3354,7 @@
+ 
+         LDR     R0,[handle,#w_titleflags]
+         LDR     R14,reversedmenu
+-        TEQ     R14,#"\"
++        TEQ     R14,#92
+         ORRNE   R0,R0,#if_numeric
+         TST     R4, #mif_longtitle
+         ORRNE   R0,R0,#if_indirected     ; modify the title flags
+@@ -3847,12 +3849,12 @@
+  [ Version < 311
+         LDR     R2,[handle,#w_wax1]             ; start at right of this menu
+         LDR     R3,reversedmenu
+-        CMP     R3,#"\"
++        CMP     R3,#92
+         LDREQ   R2,[handle,#w_wax0]
+  |
+         LDR     R2,[handle,#w_wax0]             ; LH edge of window
+         LDR     R3,reversedmenu
+-        CMP     R3,#"\"
++        CMP     R3,#92
+         LDREQ   R2,[handle,#w_wax0]
+         LDRNE   R14,[handle,#w_icons]           ; If not reversed menu find RH edge of arrow
+         BEQ     %FT05
+--- a/src/Wimp/s/Wimp06
++++ b/src/Wimp/s/Wimp06
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -37,7 +38,7 @@
+ ;; out  R4 = offset to be used if RAM based
+ ;;-----------------------------------------------------------------------------
+ 
+-int_setptr ENTRY "R1"
++int_setptr KernelEntry "R1"
+ 
+         LDR     R1,filehandle           ; RAM based transfer?
+         CMP     R1,#-1
+@@ -62,7 +63,7 @@
+ ;;      R4 updated
+ ;;-----------------------------------------------------------------------------
+ 
+-int_bget ENTRY "R1-R2"
++int_bget KernelEntry "R1-R2"
+ 
+         LDR     R1,filehandle           ; get the handle
+         CMP     R1,#-1                  ; is it a RAM based object?
+@@ -100,7 +101,7 @@
+ ;; out  R2,R3,R4 updated
+ ;;-----------------------------------------------------------------------------
+ 
+-int_gbpb ENTRY "R1"
++int_gbpb KernelEntry "R1"
+ 
+         LDR     R1,filehandle           ; get the handle of the file
+         CMP     R1,#-1                  ; is it coming from memory rather than a file?
+--- a/src/Wimp/s/Wimp07
++++ b/src/Wimp/s/Wimp07
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -1059,6 +1060,7 @@
+ ;
+         Pull    "R0,R14"
+         TEQP    R14,#0                  ; restore flags, ready for exit
++        MOV     R0,R0                   ; ARM2 PSR settling
+ ;
+         B       ExitWimp_noswitch       ; pulls registers & exits to callback
+ 
+@@ -1151,6 +1153,7 @@
+         BL      getsender_R2            ; GE => R2 = task handle of sender
+         STRGE   R2,[sp,#4]              ; R2 = second word on stack
+         TEQP    R3,#0                   ; restore error state
++        MOV     R0,R0                   ; ARM2 PSR settling
+         B       ExitWimp
+ 
+ ;.............................................................................
+@@ -1623,6 +1626,7 @@
+ ; Out   [..errorstack] = (10 words) = stashed data
+ ;                        original SwitchOutputToSprite values, clip window etc.
+ 
++        ALIGN
+ starterrorbox
+         Push    "LR"
+ 
+@@ -1840,7 +1844,7 @@
+         CMP     R4,#0
+         BLE     %FT01
+         LDRB    R14,[R4]
+-        TEQ     R14,#"\"
++        TEQ     R14,#92
+         ADDEQ   R4,R4,#1
+ 01
+ ;
+@@ -1914,6 +1918,7 @@
+ contlabel       DCB     "Continue",0
+ 
+ 
++        ALIGN
+ oldappsprite
+         LDR     R14,[handle,#w_icons]
+         ADD     R14,R14,#i_size
+--- a/src/Wimp/s/Wimp08
++++ b/src/Wimp/s/Wimp08
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -1015,6 +1016,7 @@
+ ;
+         DCB     "FindPages"
+ 
++        ALIGN
+ findpages       ROUT
+         Push    "R1-R11,LR"
+ ;
+@@ -2210,6 +2212,7 @@
+ ;-----------------------------------------------------------------------------
+         DCB     "PagesSafe"
+ 
++        ALIGN
+ servicepagessafe
+         Push    "R0-r8,lr"
+ ;        SWI     &107                    ; beep when this happens
+@@ -2408,6 +2411,7 @@
+         Pull    "R0-R7,R10-R11,PC",NE,^
+ ;
+         TEQP    PC,#SVC_mode            ; enable interrupts (bug in MOS)
++        MOV     R0,R0                   ; ARM2 PSR settling
+ ;
+         LDR     R14,freepool            ; no messing about if no free pool
+         CMP     R14,#nullptr
+--- a/src/Wimp/s/Wimp09
++++ b/src/Wimp/s/Wimp09
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -36,7 +37,7 @@
+ 
+         ASSERT  list_size=list_at+4
+ 
+-makespritelist ENTRY   "R0-R4,R8-R9"
++makespritelist KernelEntry   "R0-R4,R8-R9"
+ 
+         LDRB    R3,addtoolstolist
+         TEQ     R3,#0                   ; should I add the tool sprites?
+@@ -209,7 +210,7 @@
+ ;       R1 -> sprite to compare against
+ ; out   NE/EQ GT/LT CS/CC
+ 
+-checknames ENTRY "R0-R4"
++checknames KernelEntry "R0-R4"
+         B       %FT05
+ 
+ checkspritenames ALTENTRY
+@@ -244,7 +245,7 @@
+ ;; out  [list_at] [list_size] = 0
+ ;;-----------------------------------------------------------------------------
+ 
+-freelist ENTRY  "R0-R2"
++freelist KernelEntry  "R0-R2"
+ 
+         Debug   sprite,"Calling to free sprite list",#list_at
+ ;
+@@ -270,7 +271,7 @@
+ ;; out  R2 -> sprite, VS/VC if found/not found
+ ;;-----------------------------------------------------------------------------
+ 
+-getspriteaddr ENTRY "R0-R1,R3-R5"
++getspriteaddr KernelEntry "R0-R1,R3-R5"
+ 
+         LDR     R0,spritename           ; get pointer to name to compare against
+ ;
+@@ -364,7 +365,7 @@
+ ;;      R1 = length of text found
+ ;;-----------------------------------------------------------------------------
+ QuickLookup
+-        ENTRY   "R2,R3"
++        KernelEntry   "R2,R3"
+         MOV     R1,R0
+         MOV     R2,#0
+         MOV     R3,#0
+@@ -384,7 +385,7 @@
+ ;;      R5-R7 assumed to be zero
+ ;;-----------------------------------------------------------------------------
+ 
+-LookupToken ENTRY "R1-R7"
++LookupToken KernelEntry "R1-R7"
+ 
+         MOV     R1,R0                   ; -> token to be used
+         B       %FA10
+@@ -492,7 +493,7 @@
+ ;       R4 = internal task handle to add messages to / assumed to be valid
+ ; out   -
+ 
+-addmessages ENTRY "R0-R7"
++addmessages KernelEntry "R0-R7"
+ 
+         Debug   msgsel,"add messages: list, task =",R3,R4
+ 
+@@ -640,7 +641,7 @@
+ ;       R4 = internal task handle
+ ; out   -
+ 
+-removemessages ENTRY "R1-R2,R4-R8"
++removemessages KernelEntry "R1-R2,R4-R8"
+ 
+         Debug   msgsel,"Selective remove task, list at =",R3,R4
+ 
+@@ -710,7 +711,7 @@
+ ;; out  -
+ ;;-----------------------------------------------------------------------------
+ 
+-removeallmessages ENTRY "R0,R2,R4-R5"
++removeallmessages KernelEntry "R0,R2,R4-R5"
+ 
+         Debug   msgsel,"remove all messages for task =",R5
+ 
+@@ -749,7 +750,7 @@
+ 
+ checkformessage
+ 
+-        ENTRY   "R0-R4"
++        KernelEntry   "R0-R4"
+ 
+         LDR     R0,[R3,#task_messages]
+         CMP     R0,#0                   ; are the messages enabled?
+--- a/src/Wimp/s/Wimp10
++++ b/src/Wimp/s/Wimp10
+@@ -1,3 +1,4 @@
++; Open Archimedes: modified for AsAsm/ARM2; see patches/desktop-source/0001-assembly-contracts.patch.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -29,7 +30,7 @@
+ ;;      [border_highlight] => border highlight colour
+ ;;-----------------------------------------------------------------------------
+ 
+-getborder ENTRY "R2,R4-R5"
++getborder KernelEntry "R2,R4-R5"
+ 
+         Debug   bo,"getborder: icon flags, vstring, caller ",R1,R3,R14
+ 
+@@ -85,7 +86,7 @@
+ ;;      x0-y0 => snapped to inside of bounding box
+ ;;-----------------------------------------------------------------------------
+ 
+-adjustforborder ENTRY "R1"
++adjustforborder KernelEntry "R1"
+ 
+         TST     R1,#if_border           ; does the icon have a border?
+         EXIT    EQ                      ; return if not
+@@ -126,7 +127,7 @@
+         ADR     R3,ct_out
+         B       plot_slab               ; draw 'slabbed out' region
+ 
+-plot_editable ENTRY
++plot_editable KernelEntry
+ 
+         BL      plot_slabin             ; first slab
+         ADR     R3,ct_grey
+@@ -148,7 +149,7 @@
+ 
+         EXITS
+ 
+-plot_ridge ENTRY
++plot_ridge KernelEntry
+ 
+         ADR     R3,ct_outshallow        ; ridge is made from two slabs, slab out and then in
+         BL      plot_slab
+@@ -157,7 +158,7 @@
+ 
+         EXITS
+ 
+-plot_channel ENTRY
++plot_channel KernelEntry
+ 
+         ADR     R3,ct_inshallow         ; channel made from two slabs, slab in, slab out
+         BL      plot_slab
+@@ -166,7 +167,7 @@
+ 
+         EXITS
+ 
+-plot_default ENTRY
++plot_default KernelEntry
+ 
+         BL      plot_slabin             ; slab in
+         ADR     R3,ct_cream
+@@ -176,7 +177,7 @@
+ 
+         EXITS
+ 
+-plot_action ENTRY
++plot_action KernelEntry
+ 
+         TST     R1,#is_inverted
+         BLEQ    plot_slabout            ; action buttons are simply slabbed out
+@@ -195,7 +196,7 @@
+ ;;      R0-R3 preserved
+ ;;-----------------------------------------------------------------------------
+ 
+-plot_slab ENTRY "R0-R3"
++plot_slab KernelEntry "R0-R3"
+ 
+         BL      snap_coords             ; ensure snapped to a nice boundary
+ 
+@@ -266,7 +267,7 @@
+ ;; out  -
+ ;;-----------------------------------------------------------------------------
+ 
+-render_bbox ENTRY "R3"
++render_bbox KernelEntry "R3"
+ 
+         MOV     R0,#4
+         MOV     R1,x0
+@@ -292,7 +293,7 @@
+ ;       R3 -> byte containing colour to be used
+ ; out   R3 -> next colour byte to be used
+ 
+-render_line ENTRY
++render_line KernelEntry
+ 
+         LDRB    R0,[R3],#1              ; get the line colour to be used
+         BL      int_setcolour           ; convert from the Wimp colour to suitable for screen
+@@ -420,7 +421,7 @@
+ ;;      ... lots of others redefined to make plotting work
+ ;;-----------------------------------------------------------------------------
+ 
+-maketoollist ENTRY "R1-R11"
++maketoollist KernelEntry "R1-R11"
+ 
+         Debug   tools,"Make tool list called =>",#tool_area,#tool_list,R14
+ 
+@@ -948,7 +949,7 @@
+ ;;      [tool_areaCB] = default for no sprite pool
+ ;;-----------------------------------------------------------------------------
+ 
+-freetoolarea ENTRY "R1-R4"
++freetoolarea KernelEntry "R1-R4"
+ 
+         Debug   tools,"Free tool areas =",#tool_list,#tool_area
+ ;
+@@ -983,7 +984,7 @@
+ ;; to it.
+ ;;-----------------------------------------------------------------------------
+ 
+-ToolSprites_Code ENTRY "R0"
++ToolSprites_Code KernelEntry "R0"
+ 
+         LDR     wsptr,[R12]
+ ;
+@@ -1002,7 +1003,7 @@
+ ; in    R0 -> filename to be opened / =0 for default
+ ; out   sprites loaded / link setup
+ 
+-int_toolsprites ENTRY "R1-R6"
++int_toolsprites KernelEntry "R1-R6"
+ 
+         MOVS    R1,R0                   ; if null then use default tools
+         ADREQ   R1,default_tools
+@@ -1082,6 +1083,7 @@
+         BL     XROS_Module              ; free up the temporary block
+         Pull    "R0,R14"
+         TEQP    R14,#0                  ; restore flags
++        MOV     R0,R0                   ; ARM2 PSR settling
+ 90
+         Push    "R0,PC"
+         MOV     R0,#0
+@@ -1089,6 +1091,7 @@
+         SWI     XOS_Find                ; attempt to close the file
+         Pull    "R0,R14"
+         TEQP    R14,#0                  ; restoring the flags word
++        MOV     R0,R0                   ; ARM2 PSR settling
+ ;
+         EXIT
+ 
+@@ -1126,7 +1129,7 @@
+ 
+ modifytool_clicked
+ 
+-        ENTRY   "R0,R1,x0-y1,cx0-cy1"
++        KernelEntry   "R0,R1,x0-y1,cx0-cy1"
+ 
+         LDR     R14,border_iconselected
+         TEQ     R14,R4
+@@ -1217,7 +1220,7 @@
+ ; the buttons have been released so check to see if we need to redraw any of
+ ; the window tools, ie. was the previously selected tool one of ours.
+ 
+-modifytool_release ENTRY "R4,handle"
++modifytool_release KernelEntry "R4,handle"
+ 
+         LDR     R4,border_iconselected
+         CMP     R4,#windowicon_back
+@@ -1242,7 +1245,7 @@
+ ;; out  -
+ ;;-----------------------------------------------------------------------------
+ 
+-invalidate_glyph ENTRY "R0-R9"
++invalidate_glyph KernelEntry "R0-R9"
+ 
+         Debug   tools2,"invalidate glyph called =",R4,handle
+ ;
+@@ -1337,7 +1340,7 @@
+ ;; out  EQ/NE if not plotted / plotted
+ ;;-----------------------------------------------------------------------------
+ 
+-plot_windowglyph ENTRY "R0-R9"
++plot_windowglyph KernelEntry "R0-R9"
+ 
+         Debug   tools2,"plot_windowglyph: type, x0,y0,x1,y1 =>",R2,x0,y0,x1,y1
+ ;
+@@ -1394,7 +1397,7 @@
+ ;; out  all preserved - including PSR
+ ;;-----------------------------------------------------------------------------
+ 
+-draw_spriteglyph ENTRY "R0-R7"
++draw_spriteglyph KernelEntry "R0-R7"
+ 
+         ADR     R0,clipx0
+         LDMIA   R0,{R0,R1,R3,r4}
+@@ -1428,7 +1431,7 @@
+ ;; out  -
+ ;;-----------------------------------------------------------------------------
+ 
+-dofunkytitlebar ENTRY "R0-R11"
++dofunkytitlebar KernelEntry "R0-R11"
+ 
+         Debug   tools2,"into 'dofunkytitlebar'",x0,y0,x1,y1
+ ;
+@@ -1614,7 +1617,7 @@
+ ;; Plot the vertical scroll bar
+ ;;-----------------------------------------------------------------------------
+ 
+-dofunkyvscroll ENTRY "R0-R11"
++dofunkyvscroll KernelEntry "R0-R11"
+ ;
+         Debug   tools2,"into 'dofunkyvscroll'",x0,y0,x1,y1
+         Debug   scroll,"dofunkyvscroll",x0,y0,x1,y1
+@@ -1810,7 +1813,7 @@
+ ;       LE = all rectangle clipped
+ ;       GT = rectangle ok to draw
+ 
+-set_vclip ENTRY "R0,R4,x0-y1,R11"
++set_vclip KernelEntry "R0,R4,x0-y1,R11"
+ 
+         Debug   scroll,"set_vclip: min, max",R4,R11
+ 
+@@ -1832,7 +1835,7 @@
+ ;; Plot the horizontal scroll bar
+ ;;------------------------------------------------------------------------------
+ 
+-dofunkyhscroll ENTRY "R0-R11"
++dofunkyhscroll KernelEntry "R0-R11"
+ ;
+         Debug   tools2,"into 'dofunkyhscroll'",x0,y0,x1,y1
+         Debug   scroll,"dofunkyhscroll",x0,y0,x1,y1
+@@ -2038,7 +2041,7 @@
+ ;       LE = all rectangle clipped
+ ;       GT = rectangle ok to draw
+ 
+-set_hclip ENTRY "R0,R3,x0-y1,R11"
++set_hclip KernelEntry "R0,R3,x0-y1,R11"
+ 
+         ADRL    R0,tool_scrollclip
+         LDMIA   R0,{x0-y1}              ; get the current bars clipping region
+@@ -2078,7 +2081,7 @@
+ fwidth  =       "Wimp$FontWidth", 0
+         ALIGN
+ 
+-FindFont ENTRY  "R0-R10"
++FindFont KernelEntry  "R0-R10"
+         TraceK  font, "FindFont"
+         TraceNL font
+ 
+@@ -2227,6 +2230,7 @@
+         DCB     "Resources:$.Fonts",0
+ 
+ 
++        ALIGN
+ FindFont_get_font_size TraceL font
+         ADRL    R0, fsize
+         MOV     R1, R6
+@@ -2382,7 +2386,7 @@
+ ;; Lose fonts, only performed if non-zero.
+ ;;-----------------------------------------------------------------------------
+ 
+-LoseFont ENTRY "R0"
++LoseFont KernelEntry "R0"
+         TraceK  font, "LoseFont"
+         TraceNL font
+ 
+@@ -2442,7 +2446,7 @@
+         ;write character
+         SWI     HostFS_WriteC
+         ;if it's a backslash, write it again
+-        CMP     R0, #"\"
++        CMP     R0, #92
+         SWIEQ   HostFS_WriteC
+         B       |trace_char: exit|
+ 
+@@ -2467,7 +2471,7 @@
+ ; R1 = character to trace
+ ; R2 -> representation table
+ 
+-        MOV     R0, #"\"
++        MOV     R0, #92
+         SWI     HostFS_WriteC
+ 
+         MOV     R0, #"x"

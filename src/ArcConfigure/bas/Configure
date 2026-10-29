@@ -1,0 +1,611 @@
+REM SPDX-License-Identifier: Apache-2.0
+REM Copyright 2026 ArcLibre contributors.
+REM
+REM Licensed under the Apache License, Version 2.0 (the "License");
+REM you may not use this file except in compliance with the License.
+REM You may obtain a copy of the License at
+REM
+REM     http://www.apache.org/licenses/LICENSE-2.0
+REM
+REM Unless required by applicable law or agreed to in writing, software
+REM distributed under the License is distributed on an "AS IS" BASIS,
+REM WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+REM See the License for the specific language governing permissions and
+REM limitations under the License.
+REM
+REM New ArcLibre configuration editor. Its windows follow the RISC OS 3 User
+REM Guide (3.10, Applications Guide ch.5) and measured 3.11 screenshots; it
+REM is not Acorn's unpublished implementation. CMOS RAM fields are those of
+REM the ROM's own kernel and modules; *Configure is used wherever one exists.
+ON ERROR PROCfatal
+DIM b% 1024,pool% 14000,menu% 112,vm% 460,nm% 212,info% 400,sm% 412,sb% 1000,sl% 400
+DIM w%(14),ck%(14,48),ct%(14,48),cv%(14,48),tb%(14,48),nic%(14)
+DIM lo%(58),hi%(58),ad%(58),sh%(58),mk%(58),xr%(58),cm$(58),un%(58),pv%(58)
+DIM bt%(7),bl$(7),am%(255),vn%(16),ni%(2),sn$(15)
+pp%=pool%:bl%=24:shade%=0:bv%=-1:task%=0:quit%=FALSE:drag%=0:ref%=0:mn%=0
+FOR k%=1 TO 58:READ lo%(k%),hi%(k%),ad%(k%),sh%(k%),mk%(k%),xr%(k%),cm$(k%):un%(k%)=1:NEXT
+FOR k%=0 TO 7:READ bt%(k%),bl$(k%):NEXT
+REPEAT:READ a%,m%:am%(a%)=m%:UNTIL a%=0
+SYS "OS_ReadMemMapInfo" TO pg%
+FOR k%=10 TO 16:un%(k%)=pg% DIV 1024:NEXT:un%(13)=4:un%(14)=4
+SYS "Wimp_Initialise",200,&4B534154,"Configure" TO ,task%
+b%!0=-1:b%!4=0:b%!8=0:b%!12=68:b%!16=68:b%!20=&301A:$(b%+24)="!configure"
+SYS "Wimp_CreateIcon",,b%
+PROCbuild
+SYS "OS_GetEnv" TO a$
+a%=INSTR(a$,"!RunImage"):IF a% THEN a$=MID$(a$,a%+10):IF a$>" " THEN PROCload(a$)
+ON ERROR PROCreport
+REPEAT
+ SYS "Wimp_Poll",1,b% TO r%
+ CASE r% OF
+  WHEN 1:SYS "Wimp_RedrawWindow",,b% TO a%:WHILE a%:SYS "Wimp_GetRectangle",,b% TO a%:ENDWHILE
+  WHEN 2:SYS "Wimp_OpenWindow",,b%
+  WHEN 3:SYS "Wimp_CloseWindow",,b%
+  WHEN 6:PROCclick
+  WHEN 7:PROCdropped
+  WHEN 8:PROCkey
+  WHEN 9:PROCmenusel
+  WHEN 17,18:PROCmessage
+ ENDCASE
+UNTIL quit%
+SYS "Wimp_CloseDown",task%,&4B534154
+END
+:
+REM Settings: low, high, CMOS byte, shift, mask, EOR, *Configure keyword.
+REM "=" marks a value held until the window's OK button.
+DATA 1,5,&C2,0,255,0,"",0,255,&DD,0,255,5,"WimpDragDelay"
+DATA 0,255,&DE,0,255,32,"WimpDragMove",0,255,&DF,0,255,10,"WimpDoubleClickDelay"
+DATA 0,255,&16,0,255,32,"WimpDoubleClickMove",0,1,&0C,0,255,0,""
+DATA 1,255,&0C,0,255,0,"Delay",0,255,&0D,0,255,0,"Repeat",0,2,&0B,3,7,0,""
+DATA 0,127,&8F,0,127,0,"ScreenSize",0,127,&91,0,127,0,"SystemSize"
+DATA 0,127,&92,0,127,0,"RMASize",0,255,&86,0,255,0,"FontSize"
+DATA 0,255,&C8,0,255,0,"FontMax",0,127,&93,0,127,0,"SpriteSize"
+DATA 0,127,&90,0,127,0,"RamFsSize",0,7,&94,4,7,0,"",1,16,&94,0,15,0,""
+DATA 0,1,&94,7,1,0,"",0,1,&10,1,1,0,"",0,1,&85,2,31,0,"",0,5,&85,2,31,0,"MonitorType"
+DATA 0,1,&C3,4,1,0,"",0,1,&0A,4,1,0,"",0,7,&BC,3,7,0,"",0,255,&C4,0,255,0,"WimpMode"
+DATA -4,3,&0A,5,7,0,"",0,255,&CA,0,255,12,"=",0,255,&CB,0,255,24,"="
+DATA 0,255,&CC,0,255,0,"=",0,255,&CD,0,255,0,"=",0,1,&1C,2,1,0,""
+DATA 0,1,&C5,0,1,0,"",0,1,&C5,1,1,0,"",0,1,&C5,2,1,0,"",0,1,&C5,3,1,0,""
+DATA 0,1,&C5,4,1,1,"",0,1,&C5,5,1,0,"",0,1,&C5,6,1,0,"",0,1,&C5,7,1,0,""
+DATA 0,1,&D7,0,1,0,"",0,1,&D7,1,1,0,"",0,1,&D7,2,1,0,"",0,1,&D7,3,1,0,""
+DATA 0,1,&D7,4,1,0,"",0,1,&D7,5,1,0,"",0,1,&D7,6,1,0,"",0,1,&D7,7,1,0,""
+DATA 0,4,&0F,5,7,0,"Print",0,1,&0F,1,1,1,"",0,255,&0E,0,255,0,"Ignore"
+DATA 0,4,&87,0,7,0,"=",0,2,&87,3,7,0,"=",0,2,&87,6,3,0,"=",1,16,&94,0,15,0,""
+REM Net: NetFS's "Arthurlib" boot flag and the broadcast loader's two bits.
+DATA 0,1,&11,1,1,0,"",0,1,&C3,6,1,1,"",0,1,&C3,7,1,0,""
+REM Screen blanking times (seconds), as the ROM's ScreenBlanker reads them.
+DATA 0,Off,30,30 Sec.,60,1 Min.,120,2 Min.,300,5 Min.,600,10 Min.,900,15 Min.,1800,30 Min.
+REM CMOS bytes (and bits) a saved configuration file records.
+DATA &0A,&F0,&0B,&38,&0C,&FF,&0D,&FF,&0E,&FF,&0F,&E2,&10,&02,&16,&FF,&1C,&04
+DATA &85,&7C,&86,&FF,&87,&FF,&8F,&7F,&90,&7F,&91,&7F,&92,&7F,&93,&7F,&94,&FF
+DATA &BC,&38,&C2,&FF,&C3,&10,&C4,&FF,&C5,&FF,&C8,&FF,&CA,&FF,&CB,&FF,&CC,&FF
+DATA &CD,&FF,&D7,&FF,&DD,&FF,&DE,&FF,&DF,&FF,0,0
+:
+DEF FNc(a%):SYS "OS_Byte",161,a% TO ,,a%:=a%
+DEF PROCc(a%,v%):SYS "OS_Byte",162,a%,v%:ENDPROC
+DEF FNraw(k%)=((FNc(ad%(k%))>>sh%(k%)) AND mk%(k%)) EOR xr%(k%)
+DEF PROCbit(k%,v%)
+LOCAL a%:a%=ad%(k%)
+PROCc(a%,(FNc(a%) AND NOT (mk%(k%)<<sh%(k%))) OR (((v% EOR xr%(k%)) AND mk%(k%))<<sh%(k%)))
+ENDPROC
+:
+DEF FNget(k%)
+LOCAL v%
+IF k%=55 THEN k%=18
+IF cm$(k%)="=" THEN =pv%(k%)
+v%=FNraw(k%)
+CASE k% OF
+ WHEN 1:IF v%>127 THEN v%-=256
+ WHEN 6:v%=-(v%>0)
+ WHEN 9:v%=-(v%=2)-2*(v%=1)
+ WHEN 18:v%+=1
+ WHEN 21:v%=-(v%=31)
+ WHEN 22:IF v%=31 THEN SYS "OS_ReadSysInfo",1 TO ,v%
+ WHEN 27:IF v%>3 THEN v%-=8
+ENDCASE
+=v%
+:
+REM Change a setting at once: the CMOS RAM and the running machine.
+DEF PROCput(k%,v%)
+LOCAL c$
+IF k%=55 THEN k%=18
+IF v%<lo%(k%) OR v%>hi%(k%) THEN ENDPROC
+c$=cm$(k%):IF c$="=" THEN pv%(k%)=v%:ENDPROC
+CASE k% OF
+ WHEN 1:PROCbit(1,v%):?b%=2:b%?1=v%:b%?2=v%:SYS "OS_Word",21,b%:c$="-"
+ WHEN 6:PROCbit(7,30*v%):SYS "OS_Byte",11,30*v%:c$="-"
+ WHEN 7:SYS "OS_Byte",11,v%
+ WHEN 8:SYS "OS_Byte",12,v%
+ WHEN 9:PROCbit(9,4>>v%):SYS "OS_Byte",202,-&80*(v%=2)-&10*(v%=1),&6F:SYS "OS_Byte",118:c$="-"
+ WHEN 17:PROCbit(17,v%):SYS "Sound_Volume",1+18*v%:VDU 7:c$="-"
+ WHEN 18:PROCbit(18,v%-1):SYS "Sound_AttachVoice",1,v%:VDU 7:c$="-"
+ WHEN 19:PROCbit(19,v%):SYS "Sound_Speaker",1+v%:VDU 7:c$="-"
+ WHEN 20:SYS "OS_Byte",212,&D0-&50*v%,0:VDU 7
+ WHEN 21:IF v% THEN c$="MonitorType Auto" ELSE c$="MonitorType "+STR$FNget(22)
+ WHEN 23:IF v% THEN c$="WimpMode Auto" ELSE c$="WimpMode "+STR$FNget(26)
+ WHEN 25:OSCLI "BlankTime "+STR$bt%(v%)
+ WHEN 27:PROCbit(27,v% AND 7):SYS "OS_Byte",144,v%,FNget(24):SYS "OS_Byte",135 TO ,,a%:SYS "Wimp_SetMode",a%:c$="-"
+ WHEN 50:IF v% THEN c$="Ignore "+STR$FNget(51) ELSE c$="NoIgnore"
+ENDCASE
+IF c$="" THEN PROCbit(k%,v%)
+IF c$>"-" THEN
+ IF INSTR(c$," ")=0 THEN c$+=" "+STR$(v%*un%(k%)):IF un%(k%)>1 THEN c$+="K"
+ OSCLI "Configure "+c$
+ENDIF
+ENDPROC
+:
+DEF FNtxt(k%,v%)
+CASE k% OF
+ WHEN 25:=bl$(v%)
+ WHEN 30,31:IF v%=0 THEN ="Off"
+ WHEN 55:SYS "Sound_InstallVoice",0,v% TO a%:IF a% THEN =FNz(a%) ELSE =""
+ENDCASE
+=STR$(v%*un%(k%))
+:
+DEF FNval(k%,s$)
+IF LEFT$(s$,1)>"9" THEN =0
+=VAL(s$) DIV un%(k%)
+:
+DEF FNz(p%)
+LOCAL s$
+WHILE ?p%>31:s$+=CHR$?p%:p%+=1:ENDWHILE
+=s$
+:
+DEF FNs(s$,n%)
+LOCAL p%:p%=pp%:$p%=s$:pp%+=n%
+=p%
+:
+DEF FNwi(h%)
+LOCAL i%
+FOR i%=0 TO 14:IF w%(i%)=h% THEN =i%
+NEXT
+=-1
+:
+REM Windows and icons are built here; positions are in screen pixels of
+REM the 3.11 desktop (two OS units each), measured from the work area.
+DEF PROCwin(n%,t$,ww%,hh%,f%)
+cw%=n%
+b%!0=640-ww%-(n%>0)*64:b%!4=512-hh%-(n%>0)*64:b%!8=b%!0+ww%*2:b%!12=b%!4+hh%*2
+b%!16=0:b%!20=0:b%!24=-1:b%!28=f%:b%!32=&01070207:b%!36=&000C0103
+b%!40=0:b%!44=-hh%*2:b%!48=ww%*2:b%!52=0
+b%!56=&13D:b%!60=0:b%!64=1:b%!68=0
+b%!72=FNs(t$,LEN t$+1):b%!76=-1:b%!80=LEN t$+1:b%!84=0
+SYS "Wimp_CreateWindow",,b% TO w%(n%)
+ENDPROC
+:
+DEF PROCi(x%,y%,ww%,hh%,f%,t$,v$,k%,t%,c%)
+LOCAL i%,n%
+n%=LEN t$+1:IF n%<bl% THEN n%=bl%
+b%!0=w%(cw%):b%!4=x%*2:b%!8=-(y%+hh%)*2:b%!12=(x%+ww%)*2:b%!16=-y%*2
+b%!20=f% OR &100 OR shade%:b%!24=FNs(t$,n%):b%!28=-1:b%!32=n%
+IF v$<>"" THEN b%!28=FNs(v$,LEN v$+1)
+SYS "Wimp_CreateIcon",,b% TO i%
+ck%(cw%,i%)=k%:ct%(cw%,i%)=t%:cv%(cw%,i%)=c%:tb%(cw%,i%)=b%!24
+nic%(cw%)=i%+1
+ENDPROC
+:
+DEF PROCl(x%,y%,ww%,t$,f%):PROCi(x%,y%,ww%,22,&17000011 OR f%,t$,"",0,0,0):ENDPROC
+DEF PROCo(x%,y%,t$,k%):PROCi(x%,y%,LEN t$*8+30,22,&17003013,t$,"Soptoff,opton",k%,1,0):ENDPROC
+DEF PROCr(x%,y%,t$,k%,v%):PROCi(x%,y%,LEN t$*8+30,22,&17003013,t$,"Sradiooff,radioon",k%,2,v%):ENDPROC
+DEF PROCa(x%,y%,s$,k%,t%):PROCi(x%,y%,22,22,&F700203F,"","S"+s$,k%,t%,0):ENDPROC
+DEF PROCb(x%,y%,ww%,t$,a%):PROCi(x%,y%,ww%,22,&C700303D,t$,"",0,6,a%):ENDPROC
+DEF PROCf(x%,y%,ww%,k%,f%)
+PROCa(x%,y%,"left",k%,3)
+PROCi(x%+24,y%,ww%,22,&0700003D OR f%,"","",k%,5,0)
+PROCa(x%+26+ww%,y%,"right",k%,4)
+ENDPROC
+DEF PROCg(x%,y%,ww%,hh%,t$)
+PROCi(x%,y%,ww%,hh%,&17000004,"","",0,0,0)
+PROCi(x%+8,y%-8,LEN t$*8+8,16,&17000031,t$,"",0,0,0)
+ENDPROC
+REM A disc drive count: one sprite per drive, with up and down arrows.
+DEF PROCdrives(x%,y%,n%,k%,s$)
+LOCAL i%
+FOR i%=0 TO n%-1:PROCi(x%+i%*56,y%,52,26,&1700001B,"","S"+s$,k%,7,i%):NEXT
+PROCa(236,y%-14,"up",k%,4):PROCa(236,y%+12,"down",k%,3)
+ENDPROC
+:
+DEF PROCbuild
+LOCAL i%,k%,x%,y%,n%
+PROCwin(0,"Configuration",312,212,&87000002)
+FOR i%=0 TO 11
+ READ x%,s$,t$:n%=LEN t$*8+16:IF n%<60 THEN n%=60
+ PROCi(x%-n%DIV2,12+(i%DIV4)*70,n%,52,&1700300B,t$,"S"+s$,0,9,i%+1)
+NEXT
+DATA 32,cfg_discs,Discs,109,cfg_floppies,Floppies,177,network,Net,255,!printers,Printer
+DATA 32,cfg_mouse,Mouse,103,cfg_keyboard,Keyboard,175,cfg_memory,Memory,256,cfg_sound,Sound
+DATA 31,cfg_screen,Screen,101,cfg_fonts,Fonts,173,cfg_windows,Windows,255,romapps,Applications
+REM Net is shaded, as on a 3.11 machine without a network: no NetFS.
+SYS "XOS_Module",18,"NetFS" TO ;f%
+IF f% AND 1 THEN b%!0=w%(0):b%!4=2:b%!8=&400000:b%!12=&400000:SYS "Wimp_SetIconState",,b%
+:
+PROCwin(1,"Hard disc drives",282,318,&87000002)
+PROCg(8,12,266,64,"ST506 hard discs"):PROCdrives(16,36,2,53,"harddisc")
+PROCg(8,92,266,104,"IDE hard discs"):PROCdrives(16,116,2,54,"harddisc")
+shade%=&400000:PROCl(16,164,120,"Spindown delay",0):PROCa(130,164,"left",0,0)
+PROCi(154,164,80,22,&0700003D,"Off","",0,0,0):PROCa(236,164,"right",0,0)
+PROCg(8,212,266,64,"SCSI hard discs")
+FOR i%=0 TO 3:PROCi(16+i%*56,236,52,26,&1700001B,"","Sharddisc",0,0,0):NEXT
+PROCa(236,222,"up",0,0):PROCa(236,248,"down",0,0):shade%=0
+PROCb(206,288,62,"OK",2)
+:
+PROCwin(2,"Floppy disc drives",284,116,&87000002)
+PROCg(8,12,266,64,"Floppy discs"):PROCdrives(16,36,4,52,"floppydisc")
+PROCb(208,86,62,"OK",1)
+:
+REM Net, as 3.11 shows it on an Econet station: changes act at once.
+PROCwin(3,"Net",346,258,&87000002)
+FOR i%=0 TO 2
+ READ t$,s$:y%=12+i%*38
+ PROCl(4,y%+2,107,t$,0):PROCi(113,y%-4,55,34,&1700000B,"","Scfg_"+s$,0,0,0)
+ IF i%=0 THEN
+  PROCi(173,y%,68,26,&17000039,"","",0,0,0)
+ ELSE
+  PROCi(173,y%,140,26,&0700F13D,"","a~ ",0,12,i%-1)
+  PROCi(317,y%+2,22,22,&F700303F,"","Sgright,pgright",0,13,i%-1)
+ ENDIF
+ REM The display or writable field: before the menu button (TRUE is -1).
+ ni%(i%)=nic%(3)-1+(i%>0)
+NEXT
+DATA This station,n_net,File server,n_fs,Print server,n_spool
+PROCo(20,124,"Use Arthurlib",56)
+PROCg(8,162,330,82,"Broadcast Loader")
+PROCo(20,184,"Enable",57):PROCo(20,210,"Colour hourglass when used",58)
+:
+PROCwin(4,"Printer",272,186,&87000002)
+PROCg(10,14,252,82,"Printer port")
+PROCr(20,30,"None",49,0):PROCr(132,30,"Parallel",49,1)
+PROCr(20,60,"Serial",49,2):PROCr(132,60,"Net",49,4)
+PROCo(10,110,"Ignore character code",50):PROCi(214,110,44,22,&0700F03D,"","",51,5,0)
+PROCl(0,138,272,"Use !Printers to configure",8):PROCl(0,158,272,"details of graphics printing",8)
+:
+PROCwin(5,"Mouse",344,183,&87000002)
+PROCg(8,12,328,56,"Mouse speed")
+PROCl(12,23,40,"slow",0):PROCl(196,23,40,"fast",0)
+FOR i%=1 TO 5:PROCi(28+i%*29,23,22,22,&1700301B,"","Sradiooff,radioon",1,2,i%):NEXT
+FOR i%=2 TO 5:READ t$:y%=i%*26+24:PROCl(0,y%,229,t$,&200):PROCf(238,y%,50,i%,&F000):NEXT
+DATA Drag delay,Drag start distance,Double click delay,Double click cancel distance
+:
+PROCwin(6,"Keyboard",364,199,&87000002)
+PROCg(7,12,349,105,"Auto repeat"):PROCo(14,31,"Enabled",6)
+PROCl(16,65,141,"Delay for",0):PROCf(157,65,42,7,&F000):PROCl(250,65,104,"centiseconds",0)
+PROCl(16,89,141,"then repeat every",0):PROCf(157,89,42,8,&F000):PROCl(250,89,104,"centiseconds",0)
+PROCg(7,138,349,51,"Caps lock")
+PROCr(20,158,"On",9,0):PROCr(78,158,"Off",9,1):PROCr(139,158,"Shift caps",9,2)
+:
+PROCwin(7,"Memory allocation",280,194,&87000002)
+FOR k%=10 TO 16:READ t$:y%=(k%-10)*26+8:PROCl(8,y%,150,t$,0):PROCf(160,y%,58,k%,&F000):PROCl(268,y%,12,"K",0):NEXT
+DATA Screen memory,System heap/stack,Module area,Font cache,Font cache limit,System sprites,Ram disc
+:
+PROCwin(8,"Sound",268,176,&87000002)
+PROCl(8,8,56,"Volume",0):PROCa(64,8,"left",17,3):PROCa(244,8,"right",17,4)
+PROCi(88,8,154,22,&80000035,"","",17,8,0)
+PROCl(8,36,56,"Voice",0):PROCi(64,36,178,22,&0700003D,"","",55,5,0):PROCa(244,36,"right",0,6)
+cv%(8,nic%(8)-1)=8
+PROCf(178,64,40,18,0)
+PROCo(8,96,"Loudspeaker enabled",19)
+PROCr(8,122,"Quiet beep",20,0):PROCr(8,148,"Loud beep",20,1)
+:
+PROCwin(9,"Screen",326,289,&87000002)
+PROCg(15,16,296,129,"Monitor type"):PROCo(23,33,"Automatic type detection",21)
+PROCr(25,63,"Normal",22,0):PROCr(25,89,"VGA",22,3):PROCr(25,115,"Super VGA",22,4)
+PROCr(148,63,"Multiscan",22,1):PROCr(148,89,"Hi-res mono",22,2):PROCr(148,115,"LCD",22,5)
+PROCo(15,154,"Automatic mode selection",23):PROCo(15,180,"Interlace",24)
+PROCl(15,206,160,"Blank delay",0):PROCf(178,206,85,25,0)
+PROCl(15,230,160,"Default screen mode",0):PROCf(178,230,85,26,&F000)
+PROCl(15,254,160,"Vertical adjust",0):PROCf(178,254,85,27,0)
+:
+PROCwin(10,"Fonts",302,240,&87000002)
+PROCg(8,10,286,48,"Use anti-aliasing for characters")
+PROCg(8,72,286,48,"Use cached bitmaps for characters")
+PROCg(8,134,286,70,"Use sub-pixel anti-aliasing")
+FOR k%=28 TO 31:READ t$,y%:PROCl(0,y%,154,t$,&200):PROCf(156,y%,36,k%,0):PROCl(244,y%,44,"point",0):NEXT
+DATA up to,28,up to,90,horizontally up to,152,vertically up to,178
+PROCb(120,212,62,"OK",3)
+:
+PROCwin(11,"Window manager",284,323,&87000002)
+PROCo(7,8,"Interactive file copying",32)
+PROCg(5,44,272,111,"Instant dragging")
+PROCo(14,66,"Move",33):PROCo(104,66,"Horizontal scroll",35)
+PROCo(14,92,"Resize",34):PROCo(104,92,"Vertical scroll",36)
+PROCb(174,122,42,"All",4):PROCb(227,122,44,"None",5)
+PROCg(6,174,272,81,"Allow windows off-screen")
+PROCo(14,195,"to bottom and right",38):PROCo(14,221,"to top and left",39)
+PROCo(8,268,"Beep when an error occurs",37):PROCo(8,294,"Open submenus automatically",40)
+:
+PROCwin(12,"Application auto-start",300,160,&87000002)
+REM ArcLibre ships !Alarm on disc: shade it unless it is in Resources:.
+SYS "XOS_File",17,"Resources:$.Apps.!Alarm" TO t%:al%=t%<>0
+FOR k%=41 TO 48
+ READ t$:x%=10-(k%>45)*150:y%=10+((k%-41)MOD5)*28
+ IF k%=41 AND NOT al% THEN shade%=&400000
+ PROCi(x%,y%,22,22,&1700301B,"","Soptoff,opton",k%,1,0)
+ PROCi(x%+26,y%,LEN t$*8+30,22,&1700301B-8,"!"+t$,"Ssm!"+t$,k%,11,0)
+ shade%=0
+NEXT
+DATA alarm,calc,chars,configure,draw,edit,help,paint
+FOR i%=0 TO 7:t$=FNz(tb%(12,i%*2+1)):$tb%(12,i%*2+1)="!"+CHR$(ASC MID$(t$,2) AND &DF)+MID$(t$,3):NEXT
+PROCb(166,128,44,"All",6):PROCb(224,128,48,"None",7)
+:
+PROCwin(13,"About this program",240,104,&84000012)
+$info%="Configure":$(info%+96)="Configuration editor"
+$(info%+192)="ArcLibre contributors":$(info%+288)="1.00 (27 Oct 2026)"
+FOR i%=0 TO 3
+ PROCi(4,6+i%*24,60,18,&17000211,MID$("Name   Purpose Author  Version ",i%*8+1,8),"",0,0,0)
+ b%!0=w%(13):b%!4=136:b%!8=-48-i%*48:b%!12=472:b%!16=b%!8+36:b%!20=&07000135
+ b%!24=info%+i%*96:b%!28=-1:b%!32=96:SYS "Wimp_CreateIcon",,b%
+NEXT
+:
+PROCwin(14,"Save as:",148,90,&84000012)
+PROCi(50,8,48,48,&1700601B,"","Sfile_ff2",0,10,0)
+b%!0=w%(14):b%!4=16:b%!8=-164:b%!12=216:b%!16=-124:b%!20=&0700F135
+$nm%="Configure":b%!24=nm%:b%!28=-1:b%!32=212:SYS "Wimp_CreateIcon",,b%
+PROCb(112,60,28,"OK",9)
+:
+$menu%="Configure":menu%!12=&00070207:menu%!16=160:menu%!20=44:menu%!24=0
+menu%!28=0:menu%!32=w%(13):menu%!36=&07000001:$(menu%+40)="Info"
+menu%!52=0:menu%!56=w%(14):menu%!60=&07000001:$(menu%+64)="Save"
+menu%!76=&80:menu%!80=-1:menu%!84=&07000001:$(menu%+88)="Quit"
+ENDPROC
+:
+REM Bring every icon of a window up to date with the machine's settings.
+DEF PROCrf(n%)
+LOCAL i%,k%,t%,v%,f%,m%,c%,s$
+FOR i%=0 TO nic%(n%)-1
+ k%=ck%(n%,i%):t%=ct%(n%,i%)
+ IF k% THEN
+  v%=FNget(k%):f%=0:m%=0:c%=FALSE
+  CASE t% OF
+   WHEN 1:m%=&200000:f%=-(v%<>0)*m%
+   WHEN 2:m%=&200000:f%=-(v%=cv%(n%,i%))*m%
+   WHEN 5:s$=FNtxt(k%,v%):IF s$<>FNz(tb%(n%,i%)) THEN $tb%(n%,i%)=s$:c%=TRUE
+   WHEN 7:m%=&800000:f%=-(cv%(n%,i%)>=v%)*m%
+   WHEN 8:IF v%<>bv% THEN bv%=v%:PROCbar(i%,v%)
+  ENDCASE
+  IF k%=22 THEN m%+=&400000:f%-=(FNget(21)<>0)*&400000
+  IF k%=58 THEN m%+=&400000:f%-=(FNget(57)=0)*&400000
+  REM Only changed icons are redrawn: group boxes underlie whole groups.
+  b%!0=w%(n%):b%!4=i%:SYS "Wimp_GetIconState",,b%
+  IF c% OR (b%!24 AND m%)<>f% THEN b%!8=f%:b%!12=m%:SYS "Wimp_SetIconState",,b%
+ ENDIF
+NEXT
+ENDPROC
+:
+REM The volume bar's length shows the configured volume, as in 3.11.
+DEF PROCbar(i%,v%)
+SYS "Wimp_ResizeIcon",w%(8),i%,176,-60,176+308*(v%+1)DIV8,-16
+SYS "Wimp_ForceRedraw",w%(8),176,-60,484,-16
+ENDPROC
+:
+DEF PROCopen(n%)
+LOCAL a%
+CASE n% OF
+ WHEN 1:pv%(53)=FNraw(53):pv%(54)=FNraw(54)
+ WHEN 2:pv%(52)=FNraw(52)
+ WHEN 10:FOR a%=28 TO 31:pv%(a%)=FNraw(a%):NEXT
+ENDCASE
+IF n%=3 THEN PROCnet
+PROCrf(n%)
+b%!0=w%(n%):SYS "Wimp_GetWindowState",,b%:b%!28=-1:SYS "Wimp_OpenWindow",,b%
+ENDPROC
+:
+DEF PROCclick
+LOCAL n%,i%,k%,t%,d%
+IF b%!12=-2 THEN
+ IF b%!8=2 THEN mn%=1:SYS "Wimp_CreateMenu",,menu%,b%!0-64,228 ELSE PROCopen(0)
+ ENDPROC
+ENDIF
+n%=FNwi(b%!12):i%=b%!16:IF n%<0 OR i%<0 THEN ENDPROC
+k%=ck%(n%,i%):t%=ct%(n%,i%):d%=1:IF b%!8 AND 1 THEN d%=-1
+IF t%=13 THEN
+ IF b%!8 AND 6 THEN PROCservers(cv%(n%,i%))
+ ENDPROC
+ENDIF
+IF b%!8=2 THEN
+ IF k%=55 THEN PROCvoices
+ ENDPROC
+ENDIF
+CASE t% OF
+ WHEN 1,11:PROCput(k%,1-(FNget(k%)<>0)*-1)
+ WHEN 2:PROCput(k%,cv%(n%,i%))
+ WHEN 3:PROCput(k%,FNget(k%)-d%)
+ WHEN 4:PROCput(k%,FNget(k%)+d%)
+ WHEN 6:PROCact(cv%(n%,i%))
+ WHEN 9:IF w%(cv%(n%,i%)) THEN PROCopen(cv%(n%,i%))
+ WHEN 10:IF b%!8 AND &50 THEN PROCdrag
+ENDCASE
+IF n%>0 AND n%<13 THEN PROCrf(n%)
+ENDPROC
+:
+DEF PROCact(a%)
+LOCAL k%
+CASE a% OF
+ WHEN 1:OSCLI "Configure Floppies "+STR$pv%(52):PROCclose(2)
+ WHEN 2:OSCLI "Configure HardDiscs "+STR$pv%(53):OSCLI "Configure IDEDiscs "+STR$pv%(54):PROCclose(1)
+ WHEN 3
+  FOR k%=28 TO 31:OSCLI "Configure FontMax"+STR$(k%-26)+" "+STR$pv%(k%):NEXT
+  SYS "Wimp_ForceRedraw",-1,0,0,4096,4096:PROCclose(10)
+ WHEN 4,5:PROCc(&C5,(FNc(&C5) AND &F0) OR -&F*(a%=4))
+ WHEN 6,7:PROCc(&D7,-(&FE-al%)*(a%=6))
+ WHEN 8:PROCvoices
+ WHEN 9:PROCsavename
+ENDCASE
+ENDPROC
+:
+DEF PROCclose(n%):b%!0=w%(n%):SYS "Wimp_CloseWindow",,b%:ENDPROC
+:
+REM The voice menu lists the installed voices; choosing one attaches it.
+DEF PROCvoices
+LOCAL i%,n%,a%,p%
+$vm%="Voice":vm%!12=&00070207:vm%!20=44:vm%!24=0
+FOR i%=1 TO 16
+ SYS "Sound_InstallVoice",0,i% TO a%
+ IF a% THEN
+  p%=vm%+28+n%*24:vn%(n%)=i%:n%+=1
+  !p%=-(i%=FNget(18)):p%!4=-1:p%!8=&07000101:p%!12=a%:p%!16=-1:p%!20=LEN FNz(a%)+1
+ ENDIF
+NEXT
+IF n%=0 THEN ENDPROC
+vm%!16=240:p%!0=p%!0 OR &80
+SYS "Wimp_GetPointerInfo",,b%
+mn%=2:SYS "Wimp_CreateMenu",,vm%,b%!0-64,b%!4
+ENDPROC
+:
+DEF PROCmenusel
+LOCAL a%
+a%=!b%
+IF mn%=1 AND a%=2 THEN quit%=TRUE
+IF mn%=2 AND a%>=0 THEN PROCput(18,vn%(a%)):PROCrf(8)
+IF mn%>=3 AND a%>=0 THEN PROCserver(mn%-3,sn$(a%))
+ENDPROC
+:
+DEF PROCkey
+LOCAL n%,i%
+n%=FNwi(b%!0):i%=b%!4
+IF b%!24=13 AND n%>0 AND n%<14 AND i%>=0 THEN
+ IF ct%(n%,i%)=5 THEN PROCput(ck%(n%,i%),FNval(ck%(n%,i%),FNz(tb%(n%,i%)))):PROCrf(n%):ENDPROC
+ IF ct%(n%,i%)=12 THEN PROCserver(cv%(n%,i%),FNz(tb%(n%,i%))):ENDPROC
+ENDIF
+IF b%!24=13 AND n%=14 THEN PROCsavename:ENDPROC
+SYS "Wimp_ProcessKey",b%!24
+ENDPROC
+:
+REM Net: the station, and each server as NetFS and NetPrint keep it in
+REM CMOS RAM: a station number, or (station 0) a name.
+DEF PROCnet
+LOCAL s%,n%,f%
+SYS "XEconet_ReadLocalStationAndNet" TO s%,n%;f%
+IF f% AND 1 THEN PROCtxt(ni%(0),"") ELSE PROCtxt(ni%(0),STR$n%+"."+STR$s%)
+PROCtxt(ni%(1),FNsrv(1,&9E,15)):PROCtxt(ni%(2),FNsrv(3,&99,5))
+ENDPROC
+:
+DEF FNsrv(a%,p%,l%)
+LOCAL s%,c%,s$,i%
+s%=FNc(a%):IF s% THEN =STR$FNc(a%+1)+"."+STR$s%
+c%=FNc(a%+1):IF c%<33 THEN =""
+s$=CHR$c%
+FOR i%=p% TO p%+l%-1:c%=FNc(i%):IF c%<33 THEN =s$
+ s$+=CHR$c%
+NEXT
+=s$
+:
+DEF PROCtxt(i%,t$)
+IF t$=FNz(tb%(3,i%)) THEN ENDPROC
+$tb%(3,i%)=t$:b%!0=w%(3):b%!4=i%:b%!8=0:b%!12=0:SYS "Wimp_SetIconState",,b%
+ENDPROC
+:
+REM Choose a server (number or name) with the module's own *Configure.
+DEF PROCserver(c%,s$)
+IF s$>"" THEN OSCLI "Configure "+MID$("FSPS",c%*2+1,2)+" "+s$
+PROCnet
+ENDPROC
+:
+REM The servers on the network, as a menu: file servers from NetFS's list,
+REM printer servers from NetPrint's (which listens for 5 seconds).
+DEF PROCservers(c%)
+LOCAL n%,r%,q%,f%,p%
+IF c%=0 THEN
+ SYS "XNetFS_UpdateFSList",0,0
+ REPEAT
+  SYS "XNetFS_EnumerateFSList",r%,sb%,50,1 TO r%,,,q%;f%
+  IF (f% AND 1)=0 AND q%>0 AND n%<16 THEN sn$(n%)=FNz(sb%+3):n%+=1
+ UNTIL (f% AND 1) OR q%=0 OR r%=-1
+ SYS "XNetFS_EnableCache"
+ELSE
+ SYS "XNetPrint_ListServers",1,sb%,1000,500 TO q%;f%
+ IF (f% AND 1)=0 THEN
+  p%=sb%:WHILE n%<q% AND n%<16:sn$(n%)=FNz(p%):p%+=LEN sn$(n%)+1:n%+=1:ENDWHILE
+ ENDIF
+ENDIF
+IF n%=0 THEN ENDPROC
+IF c%=0 THEN $sm%="File Servers" ELSE $sm%="Printers"
+sm%!12=&00070207:sm%!16=LEN $sm%*16:sm%!20=44:sm%!24=0
+q%=sl%
+FOR r%=0 TO n%-1
+ p%=sm%+28+r%*24:!p%=0:p%!4=-1:p%!8=&07000101
+ $q%=LEFT$(sn$(r%),23):p%!12=q%:p%!16=-1:p%!20=LEN $q%+1:q%+=24
+ IF LEN sn$(r%)*16+16>sm%!16 THEN sm%!16=LEN sn$(r%)*16+16
+NEXT
+!p%=&80
+SYS "Wimp_GetPointerInfo",,b%
+mn%=3+c%:SYS "Wimp_CreateMenu",,sm%,b%!0-64,b%!4
+ENDPROC
+:
+REM Saving: a file of CMOS RAM bytes, type &FF2 (Config).
+DEF PROCsavename
+IF INSTR($nm%,".")=0 THEN ERROR 1,"To save, drag the icon to a directory display"
+PROCsave(FNz(nm%)):SYS "Wimp_CreateMenu",,-1
+ENDPROC
+:
+DEF PROCsave(f$)
+LOCAL a%
+X%=OPENOUT f$
+FOR a%=1 TO 255:IF am%(a%) THEN BPUT#X%,a%:BPUT#X%,FNc(a%) AND am%(a%)
+NEXT
+CLOSE#X%:X%=0
+OSCLI "SetType "+f$+" FF2"
+ENDPROC
+:
+DEF PROCload(f$)
+LOCAL a%,v%,m%
+X%=OPENIN f$
+WHILE NOT EOF#X%
+ a%=BGET#X%:v%=BGET#X%:m%=am%(a%)
+ IF m% THEN PROCc(a%,(FNc(a%) AND NOT m%) OR (v% AND m%))
+ENDWHILE
+CLOSE#X%:X%=0
+FOR a%=1 TO 12:IF w%(a%) THEN PROCrf(a%)
+NEXT
+ENDPROC
+:
+DEF PROCdrag
+LOCAL x%,y%
+b%!0=w%(14):SYS "Wimp_GetWindowState",,b%
+x%=b%!4-b%!20:y%=b%!16-b%!24
+b%!0=0:b%!4=5:b%!8=x%+100:b%!12=y%-112:b%!16=x%+196:b%!20=y%-16
+b%!24=0:b%!28=0:b%!32=&7F000000:b%!36=&7F000000
+SYS "Wimp_DragBox",,b%:drag%=1
+ENDPROC
+:
+DEF PROCdropped
+LOCAL f$,i%
+IF drag%=0 THEN ENDPROC
+drag%=0:f$=FNz(nm%)
+REPEAT:i%=INSTR(f$,"."):IF i% THEN f$=MID$(f$,i%+1)
+UNTIL i%=0
+SYS "Wimp_GetPointerInfo",,b%
+b%!20=b%!12:b%!24=b%!16:b%!28=b%!0:b%!32=b%!4:b%!36=64:b%!40=&FF2
+$(b%+44)=f$:b%?(44+LEN f$)=0
+!b%=(48+LEN f$) AND NOT 3:b%!12=0:b%!16=1
+SYS "Wimp_SendMessage",17,b%,b%!20,b%!24
+ref%=b%!8
+ENDPROC
+:
+DEF PROCmessage
+CASE b%!16 OF
+ WHEN 0:quit%=TRUE
+ WHEN 2
+  IF b%!12=ref% AND ref% THEN
+   ref%=0:PROCsave(FNz(b%+44))
+   b%!12=b%!8:b%!16=3:SYS "Wimp_SendMessage",17,b%,b%!4
+   SYS "Wimp_CreateMenu",,-1
+  ENDIF
+ WHEN 3,5
+  IF b%!40=&FF2 AND (b%!16=5 OR b%!20=-2 OR b%!20=w%(0)) THEN
+   b%!12=b%!8:b%!16=4:SYS "Wimp_SendMessage",17,b%,b%!4
+   PROCload(FNz(b%+44))
+  ENDIF
+ENDCASE
+ENDPROC
+:
+DEF PROCreport
+IF X% THEN CLOSE#X%:X%=0
+!b%=ERR:$(b%+4)=REPORT$+" (at line "+STR$ERL+")"
+SYS "Wimp_ReportError",b%,1,"Configure"
+ENDPROC
+:
+DEF PROCfatal
+!b%=ERR:$(b%+4)=REPORT$
+SYS "Wimp_ReportError",b%,1,"Configure"
+SYS "Wimp_CloseDown",task%,&4B534154
+END

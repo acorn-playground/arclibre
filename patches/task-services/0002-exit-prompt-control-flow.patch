@@ -1,0 +1,15 @@
+--- a/src/TaskWindow/s/Taskman
++++ b/src/TaskWindow/s/Taskman
+@@ -2180,10 +2180,11 @@
+         TEQEQ   r0, #0
+         BNE     %f20              ; Don't bother with exec stuff if so
+ 
+-; exit handler drops through to prompt for another command
++; Exit handler continues at the next command, skipping the prompt strings.
+ 
+         MOV     r0, #0            ; no command yet - prompt for one
+         STR     r0, MyParameters
++        B       Code_NewCommand          ; never execute the following strings
+ 
+ ; ...............................................................................
+ 

@@ -1,0 +1,18 @@
+--- a/src/Sound0/s/Sound0
++++ b/src/Sound0/s/Sound0
+@@ -1,5 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
+-; Modified 2026 by ArcLibre: relocatable ARM2 build.
++; Modified 2026 by ArcLibre: relocatable ARM2 build and VIDC1 sound period fix.
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -1525,7 +1525,7 @@
+ 
+ ; now update the required VIDCSFR to be this value
+ 
+-        STRB    r1, [r10, #VIDCSFR_N]   ; record the value for prog'ing
++        STRB    r2, [r10, #VIDCSFR_N]   ; computed byte period, not divisor r1
+         MOV     r2, r2, LSL r0          ; compute inter-sample period for one channel
+ 
+  [ VarSndClock

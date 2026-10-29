@@ -1,0 +1,8 @@
+; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+        ORG 0 ; generated text output starts at zero
+; > adfs::TimSource.!Inter.IntHelpSrc
+
+        GBLL    Arthur120
+Arthur120 SETL  {FALSE}
+
+        LNK     IntHelpBod

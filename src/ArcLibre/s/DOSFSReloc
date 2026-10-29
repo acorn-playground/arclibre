@@ -1,0 +1,40 @@
+; SPDX-License-Identifier: Apache-2.0
+; ArcLibre: self-relocation code for the disc-loaded DOSFS module.
+;
+; tools/build_dosfs.py links the module with drlink -rmf, which places the
+; symbol __RelocCode at the end of the image; the module's initialisation and
+; the RAM C library stubs both BL there. The build appends this code at that
+; address in place of drlink's own routine, followed by the relocation table:
+; the image offsets of every absolute address word, ending with -1 (derived
+; by linking at two bases and cross-checked; see the build tool).
+;
+; Each listed word gets (load address - link address) added. The two words
+; below are listed too, so after one pass the difference is zero and later
+; calls return at once. Position independent; preserves r0-r12.
+
+        AREA    |DOSFS$$Reloc|, CODE, READONLY
+
+reloc_entry
+        STMFD   sp!, {r0-r4, lr}
+        ADR     r0, reloc_entry                 ; where this code is
+        LDR     r1, reloc_self                  ; where it was linked
+        SUBS    r1, r0, r1
+        LDMEQFD sp!, {r0-r4, pc}                ; already in place
+        LDR     r0, reloc_image
+        ADD     r0, r0, r1                      ; the image base now
+        ADR     r2, reloc_table
+reloc_next
+        LDR     r3, [r2], #4
+        CMN     r3, #1
+        LDMEQFD sp!, {r0-r4, pc}                ; end of the table
+        LDR     r4, [r0, r3]
+        ADD     r4, r4, r1
+        STR     r4, [r0, r3]
+        B       reloc_next
+reloc_self
+        DCD     0       ; set by the build: link address of reloc_entry
+reloc_image
+        DCD     0       ; set by the build: link address of the image
+reloc_table             ; the table is appended here
+
+        END

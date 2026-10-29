@@ -1,0 +1,272 @@
+; SPDX-License-Identifier: Apache-2.0
+; ArcLibre: module header and C entry veneers for the original DOSFS 0.62.
+;
+; DOSFS's cmhg/DOSFShdr describes its header; Acorn's CMHG generated this
+; code in the original build. ArcLibre implements the described contract by
+; hand (no CMHG or CMunge output):
+;
+;   title DOSFS, help "DOSFS 0.62", library initialisation through the RAM
+;   SharedCLibrary stubs (_clib_initialisemodule), initialisation init_fs,
+;   finalisation through _clib_finalisemodule (runs init_fs's atexit
+;   handler), service handler fs_service for 11 filtered services, SWI chunk
+;   &44B00 handled by fs_swi with the DOSFS DiscFormat LayoutStructure
+;   decoding table, *DOSMap and *CopyBoot handled by fs_commands with
+;   international help tokens, and the international help file
+;   Resources:$.Resources.DOSFS.Messages.
+;
+; Differences from a ROM CMHG module, both required to load from disc:
+;
+; * The module relocates itself. It is linked with drlink -rmf, which puts
+;   __RelocCode at the end of the image; tools/build_dosfs.py appends
+;   ArcLibre's s/DOSFSReloc there and a table of the image offsets of every
+;   absolute address word (derived by linking at two bases and cross-checked
+;   against the object relocations and drlink's own table). Initialisation
+;   calls it first; the RAM stubs call it again, a no-op. The original s/init guard
+;   that refuses RAM loading is not linked (that guard exists because the
+;   ROM stubs cannot run from RAM; this build uses the RAM stubs instead).
+; * The original Messages file lived in the ROM's ResourceFS. This module
+;   registers its embedded copy (the unmodified Resources/UK/Messages) after
+;   library initialisation, re-registers it on Service_ResourceFSStarting
+;   (handled here, not passed to C) and deregisters it on finalisation.
+;
+; With ArcLibreDOSFSROM defined (the 4 MB ROM) it is the original ROM form:
+; linked at its ROM address with the ROM C stubs (clib s/cl_stub_rm), whose
+; stub vectors are in RMA, so nothing relocates or patches the image.
+;
+; C calls follow DOSFS's own s/MFSmacros Ccall convention: in SVC mode the
+; stack limit is the 1 MB-aligned stack base plus 540. The two words at the
+; base hold the shared library's and this client's static-data relocation
+; offsets ([sl,#-540] and [sl,#-536]); the caller's values are restored
+; afterwards. _kernel_moduleentry stores our offsets at workspace+4 and +8.
+
+        GET     Hdr:ListOpts
+        GET     Hdr:Macros
+        GET     Hdr:System
+        GET     Hdr:ModHand
+        GET     Hdr:Services
+        GET     Hdr:ResourceFS
+
+  [ :LNOT: :DEF: ArcLibreDOSFSROM
+        IMPORT  |__RelocCode|
+  ]
+        IMPORT  |_clib_initialisemodule|
+        IMPORT  |_clib_finalisemodule|
+        IMPORT  |init_fs|
+        IMPORT  |fs_service|
+        IMPORT  |fs_swi|
+        IMPORT  |fs_commands|
+        IMPORT  |DOSFS_Resources|
+
+SL_LibOffsetBias        *       540     ; -SL_Lib_Offset (RISC_OSLib s/h_stack)
+DOSFS_SWIChunk          *       &44B00  ; swi-chunk-base-number
+
+        AREA    |!!!Module$$Header|, CODE, READONLY
+
+Module_BaseAddr
+        DCD     0                                       ; no start code
+        DCD     DOSFS_Init - Module_BaseAddr
+        DCD     DOSFS_Final - Module_BaseAddr
+        DCD     DOSFS_Service - Module_BaseAddr
+        DCD     DOSFS_Title - Module_BaseAddr
+        DCD     DOSFS_Help - Module_BaseAddr
+        DCD     DOSFS_Commands - Module_BaseAddr
+        DCD     DOSFS_SWIChunk
+        DCD     DOSFS_SWI - Module_BaseAddr
+        DCD     DOSFS_SWINames - Module_BaseAddr
+        DCD     0                                       ; no SWI decoding code
+        DCD     DOSFS_MessagesFile - Module_BaseAddr
+
+DOSFS_Title
+        DCB     "DOSFS", 0
+DOSFS_Help
+  [ :DEF: ArcLibreDOSFSROM
+        DCB     "DOSFS", 9, 9, "0.62 (28 Oct 2026) ArcLibre", 0
+  |
+        DCB     "DOSFS", 9, 9, "0.62 (27 Oct 2026) ArcLibre disc", 0
+  ]
+DOSFS_SWINames
+        DCB     "DOSFS", 0
+        DCB     "DiscFormat", 0
+        DCB     "LayoutStructure", 0
+        DCB     0
+DOSFS_MessagesFile
+        DCB     "Resources:$.Resources.DOSFS.Messages", 0
+        ALIGN
+
+; command-keyword-table: fs_commands. Information word: minimum parameters
+; (bits 0-7), GSTrans map (8-15), maximum parameters (16-23), flags; the
+; help and syntax offsets name tokens in the messages file.
+DOSFS_Commands
+        DCB     "DOSMap", 0
+        ALIGN
+        DCD     DOSFS_DOSMap - Module_BaseAddr
+        DCD     International_Help :OR: (2 :SHL: 16) :OR: (&FF :SHL: 8) :OR: 0
+        DCD     DOSFS_SDOSMAP - Module_BaseAddr
+        DCD     DOSFS_HDOSMAP - Module_BaseAddr
+        DCB     "CopyBoot", 0
+        ALIGN
+        DCD     DOSFS_CopyBoot - Module_BaseAddr
+        DCD     International_Help :OR: (2 :SHL: 16) :OR: (&FF :SHL: 8) :OR: 2
+        DCD     DOSFS_SDOSCPB - Module_BaseAddr
+        DCD     DOSFS_HDOSCPB - Module_BaseAddr
+        DCB     0
+DOSFS_HDOSMAP   DCB     "HDOSMAP", 0
+DOSFS_SDOSMAP   DCB     "SDOSMAP", 0
+DOSFS_HDOSCPB   DCB     "HDOSCPB", 0
+DOSFS_SDOSCPB   DCB     "SDOSCPB", 0
+        ALIGN
+
+; ---------------------------------------------------------------------------
+; call_c: call the C function at r8 with arguments r0-r3.
+; In:  r12 = private word pointer (its word addresses the C workspace)
+; Out: r0 = C result; r1-r3, r8, r12 and flags undefined; others preserved.
+call_c
+        STMFD   sp!, {r4, r5, sl, fp, lr}
+        MOV     sl, sp, LSR #20
+        MOV     sl, sl, LSL #20                 ; SVC stack base
+        LDMIA   sl, {r4, r5}                    ; caller's relocation words
+        LDR     ip, [r12]
+        LDMIB   ip, {fp, ip}                    ; library and client offsets
+        STMIA   sl, {fp, ip}
+        ADD     sl, sl, #SL_LibOffsetBias
+        MOV     fp, #0                          ; no frame
+        MOV     lr, pc
+        MOV     pc, r8
+        SUB     sl, sl, #SL_LibOffsetBias
+        STMIA   sl, {r4, r5}                    ; restore caller's words
+        LDMFD   sp!, {r4, r5, sl, fp, pc}       ; flags not restored
+
+; ---------------------------------------------------------------------------
+; Initialisation. In: r10 = command tail, r11 = podule base/instance,
+; r12 = private word pointer.
+DOSFS_Init
+        STMFD   sp!, {r7-r12, lr}
+  [ :LNOT: :DEF: ArcLibreDOSFSROM
+        BL      |__RelocCode|                   ; relocate before using any address word
+  ]
+        MOV     r0, #1                          ; statics live in RMA
+        LDR     r12, [sp, #20]
+        BL      |_clib_initialisemodule|        ; corrupts r0-r12
+        BVS     init_return
+        LDR     r12, [sp, #20]
+        LDR     r0, =|DOSFS_Resources|
+        SWI     XResourceFS_RegisterFiles
+        BVS     init_finalise
+        LDR     r0, [sp, #12]                   ; cmd_tail
+        LDR     r1, [sp, #16]                   ; podule_base
+        MOV     r2, r12                         ; pw
+        LDR     r8, =|init_fs|
+        BL      call_c
+        TEQ     r0, #0
+        BEQ     init_return_ok
+        LDR     r12, [sp, #20]
+        STMFD   sp!, {r0}
+        LDR     r0, =|DOSFS_Resources|
+        SWI     XResourceFS_DeregisterFiles
+        LDMFD   sp!, {r0}
+init_finalise
+        LDR     r12, [sp, #20]
+        STMFD   sp!, {r0}
+        MOV     r0, r12
+        LDR     r8, =|_clib_finalisemodule|
+        BL      call_c
+        LDMFD   sp!, {r0}
+init_return
+        LDMFD   sp!, {r7-r12, lr}
+        ORRS    pc, lr, #V_bit
+        MOV     r0, r0                          ; ARM2 status settling
+init_return_ok
+        LDMFD   sp!, {r7-r12, lr}
+        BICS    pc, lr, #V_bit
+        MOV     r0, r0                          ; ARM2 status settling
+
+; ---------------------------------------------------------------------------
+; Finalisation. _clib_finalisemodule runs the atexit handler (shutdown_fs),
+; frees the RMA workspace and clears the private word.
+DOSFS_Final
+        STMFD   sp!, {r4-r12, lr}
+        MOV     r0, r12
+        LDR     r8, =|_clib_finalisemodule|
+        BL      call_c
+        LDR     r0, =|DOSFS_Resources|
+        SWI     XResourceFS_DeregisterFiles     ; may already be gone
+        LDMFD   sp!, {r4-r12, lr}
+        BICS    pc, lr, #V_bit
+        MOV     r0, r0                          ; ARM2 status settling
+
+; ---------------------------------------------------------------------------
+; Service calls: the service-call-handler filter list from cmhg/DOSFShdr
+; reaches fs_service(service, regs, pw); everything else returns at once.
+DOSFS_Service
+        TEQ     r1, #Service_ResourceFSStarting
+        BEQ     service_resourcefs
+        TEQ     r1, #Service_Memory
+        TEQNE   r1, #Service_StartUpFS
+        TEQNE   r1, #Service_Reset
+        TEQNE   r1, #Service_FSRedeclare
+        TEQNE   r1, #Service_LookupFileType
+        TEQNE   r1, #Service_WimpSaveDesktop
+        TEQNE   r1, #Service_CloseFile
+        TEQNE   r1, #Service_IdentifyDisc
+        TEQNE   r1, #Service_EnumerateFormats
+        TEQNE   r1, #Service_IdentifyFormat
+        TEQNE   r1, #Service_DisplayFormatHelp
+        MOVNES  pc, lr
+        MOV     r0, r0                          ; ARM2 status settling
+        STMFD   sp!, {r0-r9, lr}                ; _kernel_swi_regs
+        MOV     r0, r1
+        MOV     r1, sp
+        MOV     r2, r12
+        LDR     r8, =|fs_service|
+        BL      call_c
+        LDMFD   sp!, {r0-r9, pc}^
+        MOV     r0, r0                          ; ARM2 status settling
+
+; ResourceFS was (re)started: add the messages through its routine at r2
+; (r3 is its workspace). The service is passed on.
+service_resourcefs
+        STMFD   sp!, {r0, lr}
+        LDR     r0, =|DOSFS_Resources|
+        MOV     lr, pc
+        MOV     pc, r2
+        LDMFD   sp!, {r0, pc}^
+        MOV     r0, r0                          ; ARM2 status settling
+
+; ---------------------------------------------------------------------------
+; SWIs: fs_swi(offset, regs, pw); a non-NULL result is an error block.
+DOSFS_SWI
+        STMFD   sp!, {r0-r9, lr}
+        MOV     r0, r11
+        MOV     r1, sp
+        MOV     r2, r12
+        LDR     r8, =|fs_swi|
+        BL      call_c
+        TEQ     r0, #0
+        STRNE   r0, [sp]
+        LDMFD   sp!, {r0-r9, lr}
+        BICEQS  pc, lr, #V_bit
+        MOV     r0, r0                          ; ARM2 status settling
+        ORRS    pc, lr, #V_bit
+        MOV     r0, r0                          ; ARM2 status settling
+
+; ---------------------------------------------------------------------------
+; Commands: fs_commands(tail, argc, command number, pw). R7-R11 preserved.
+DOSFS_DOSMap
+        MOV     r2, #0                          ; CMD_DOSMap
+        B       command_c
+DOSFS_CopyBoot
+        MOV     r2, #1                          ; CMD_CopyBoot
+command_c
+        STMFD   sp!, {r4-r12, lr}
+        MOV     r3, r12
+        LDR     r8, =|fs_commands|
+        BL      call_c
+        TEQ     r0, #0
+        LDMFD   sp!, {r4-r12, lr}
+        BICEQS  pc, lr, #V_bit
+        MOV     r0, r0                          ; ARM2 status settling
+        ORRS    pc, lr, #V_bit
+        MOV     r0, r0                          ; ARM2 status settling
+
+        LTORG
+        END

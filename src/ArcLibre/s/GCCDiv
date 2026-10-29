@@ -1,0 +1,37 @@
+; SPDX-License-Identifier: Apache-2.0
+; GCC's dividend/divisor ABI to the original library's divisor/dividend ABI.
+; The real _kernel_*div routines implement division and divide-by-zero errors.
+        AREA |C$$code|, CODE, READONLY
+        IMPORT |_kernel_sdiv|
+        IMPORT |_kernel_udiv|
+        EXPORT |__divsi3|
+        EXPORT |__udivsi3|
+        EXPORT |__modsi3|
+        EXPORT |__umodsi3|
+|__divsi3|
+        MOV ip,r0
+        MOV r0,r1
+        MOV r1,ip
+        B |_kernel_sdiv|
+|__udivsi3|
+        MOV ip,r0
+        MOV r0,r1
+        MOV r1,ip
+        B |_kernel_udiv|
+|__modsi3|
+        STMFD sp!,{lr}
+        MOV ip,r0
+        MOV r0,r1
+        MOV r1,ip
+        BL |_kernel_sdiv|
+        MOV r0,r1
+        LDMFD sp!,{pc}^
+|__umodsi3|
+        STMFD sp!,{lr}
+        MOV ip,r0
+        MOV r0,r1
+        MOV r1,ip
+        BL |_kernel_udiv|
+        MOV r0,r1
+        LDMFD sp!,{pc}^
+        END

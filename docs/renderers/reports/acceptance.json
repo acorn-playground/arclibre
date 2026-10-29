@@ -1,0 +1,60 @@
+{
+  "status": "PASS",
+  "cold_runs": 3,
+  "identical_results": true,
+  "rom_sha256": "bf5ca56ebd6f7fd7dc4149360d97f76f009abed8879693470421998d59f11791",
+  "modules": [
+    {
+      "component": "Colours",
+      "status": "STATIC_ARM2_PASS",
+      "bytes": 16376,
+      "sha256": "52296a453b64f326e88ff13bcd7ba2588adc768befd0d56f2d4920883337b51b",
+      "aof_sha256": "07c0176f07bb02df61b8738d985d5fb403f8c454e9571c8a15633ecf2830e88a",
+      "integer_instructions": 3644,
+      "relocations": 0,
+      "unresolved_symbols": 0,
+      "swi_base": 264000
+    },
+    {
+      "component": "DrawMod",
+      "status": "STATIC_ARM2_PASS",
+      "bytes": 10104,
+      "sha256": "ecc01224286a82aec6093257f3fe2ed7bc2161a6fe4e9bdb19a68204376bc139",
+      "aof_sha256": "7bb314056f787a104148f90e9f5ee5f2554e63cca51ed5afc418ac214c4ec7f0",
+      "integer_instructions": 2372,
+      "relocations": 0,
+      "unresolved_symbols": 0,
+      "swi_base": 263936
+    },
+    {
+      "component": "Hourglass",
+      "status": "STATIC_ARM2_PASS",
+      "bytes": 2148,
+      "sha256": "7fac03c7c82bfd5afc7a38d48a660afefb7453af51ed8a6928a52bfe9462b49a",
+      "aof_sha256": "5617a088e3d9cb6c342ddc6472e6820040fa5cc9fe1cd619447045e95c159162",
+      "integer_instructions": 368,
+      "relocations": 0,
+      "unresolved_symbols": 0,
+      "swi_base": 263872
+    },
+    {
+      "component": "Super",
+      "status": "STATIC_ARM2_PASS",
+      "bytes": 2320,
+      "sha256": "bebfbebfc17810fe639f1c2ace12a74b257664ff6d86a389e701fab5ce5c1981",
+      "aof_sha256": "10c924dcfcf6f6a0be93022248eb37ae3824a21165571379049d52b9d41cd52f",
+      "integer_instructions": 255,
+      "relocations": 0,
+      "unresolved_symbols": 0,
+      "swi_base": 265600
+    }
+  ],
+  "swi_calls_per_run": 61,
+  "draw_exact_pixels": 5000,
+  "supersample_cases_per_run": 8,
+  "supersample_reference": "independent 2D convolution",
+  "hourglass_ticker_and_percentage": true,
+  "baseline_rom_modified": false,
+  "emulator_modified": false,
+  "scope": "Selected provider APIs, framebuffer geometry and timer updates; not general rendering or RISC OS 3.11 conformance"
+}

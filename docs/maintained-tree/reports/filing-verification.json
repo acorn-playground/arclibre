@@ -1,0 +1,1379 @@
+{
+  "status": "PASS",
+  "rom_sha256": "bf5ca56ebd6f7fd7dc4149360d97f76f009abed8879693470421998d59f11791",
+  "identical_cold_runs": true,
+  "scenario_count": 42,
+  "client_arm2_instructions": 48,
+  "baseline_stale_media_reproduced": true,
+  "patched_media_change_without_dismount": true,
+  "runs": [
+    {
+      "cold_run": 1,
+      "scenarios": {
+        "DA": {
+          "calls": 118,
+          "fdc_commands": 145,
+          "fiqs": 122043,
+          "errors": [
+            {
+              "number": 222,
+              "message": "Handle is either illegal or has been closed"
+            },
+            {
+              "number": 222,
+              "message": "Handle is either illegal or has been closed"
+            },
+            {
+              "number": 222,
+              "message": "Handle is either illegal or has been closed"
+            },
+            {
+              "number": 222,
+              "message": "Handle is either illegal or has been closed"
+            },
+            {
+              "number": 222,
+              "message": "Handle is either illegal or has been closed"
+            },
+            {
+              "number": 222,
+              "message": "Handle is either illegal or has been closed"
+            },
+            {
+              "number": 222,
+              "message": "Handle is either illegal or has been closed"
+            },
+            {
+              "number": 214,
+              "message": "File 'ADFS::0.$.Absent' not found"
+            }
+          ],
+          "evidence_hashes": {
+            "final-SCHD.bin": "10e4b24a0ddcc413268caf8d2ae884386a4e9f65bb2718e566f551e5f0c79c63",
+            "load-Docs.Sibling.bin": "9586dd2e01bdf103e9bad59f87e3013a683cce42dd4f243447791d5d8e0abdaa",
+            "final-VIDC.bin": "90b13080abddd05991b2d02a3180c38eb9d2915530342d172fb2b56321b72378",
+            "result.json": "a137c81d2ad15bc8feeb17e8764198b91650811f93a87b887f585e3df01515c9",
+            "load-Zero.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "application-data.bin": "d6621dfe143b89fb5f4ee1e22c0b6c16cdd4285999502c8eb746e7de93974e8b",
+            "load-Docs.Deep.Leaf.bin": "3057bd31d5db826791cdc3e3368120bcd40021c921963c229fed37b338383fa0",
+            "load-RootText.bin": "34c6b2c0431217d77eb262b9bf664f323111a320bf1b478d783b6cc5afda4ae4",
+            "read-Hello.bin": "17bb9995cf7d2fc50bcb3a1a08e26f8fa4c3a67b1db99b8da8bf6dc6a75efdd4",
+            "final-HDC.bin": "7c7f15ed27de2f3a51d1da31356b27ea1be15370faa3caab96606e5390ebbd0e",
+            "final-KBD.bin": "099bb16aee7a1ea868b69fb7ca3d67b0acf4160808c7745eb64cd754ef3f1b03",
+            "load-Hello.bin": "17bb9995cf7d2fc50bcb3a1a08e26f8fa4c3a67b1db99b8da8bf6dc6a75efdd4",
+            "final-IOC.bin": "a6f6c6ae412dcf38b15b3a107da9c5aa94fb8c93b66d808b8f7564fe677efc01",
+            "load-CheckFile.bin": "573c07041b1a19065235f5427d25076fb2ae9b4999189f561bea0017155ef016",
+            "read-Docs.Fragment.bin": "d6621dfe143b89fb5f4ee1e22c0b6c16cdd4285999502c8eb746e7de93974e8b",
+            "fdc.log": "3c01e01ad4083ed2e387883ccc5076b1382cad4badd990b66a7baacc7be93f60",
+            "final-RTC.bin": "8922fc006f8931a844c609d9fe7d2f39f655a639fb678041ca7d0a50649d40c6",
+            "final-FDC.bin": "c7225cf6ab2dd8be6ccd6c7d9e044fe1261ecb6438a7dd6939ca71a7fb492dd2",
+            "read-RootText.bin": "34c6b2c0431217d77eb262b9bf664f323111a320bf1b478d783b6cc5afda4ae4",
+            "final-MACH.bin": "fa8459afcd959406292a974220d6f1f026092c390bb562e81fbdfc4f9abd7826",
+            "read-CheckFile.bin": "573c07041b1a19065235f5427d25076fb2ae9b4999189f561bea0017155ef016",
+            "swis.log": "b0cbc1d97b4f1d4f82bb85a8188cdb78449f5ab2024524609b24bb37a9e39b24",
+            "read-Docs.Deep.Leaf.bin": "3057bd31d5db826791cdc3e3368120bcd40021c921963c229fed37b338383fa0",
+            "final-CPU.bin": "7757bcf8e8026104646c0b90538c71c0f372cd70253e2fc76c109c135d85c0f6",
+            "load-Docs.Fragment.bin": "d6621dfe143b89fb5f4ee1e22c0b6c16cdd4285999502c8eb746e7de93974e8b",
+            "read-Docs.Sibling.bin": "9586dd2e01bdf103e9bad59f87e3013a683cce42dd4f243447791d5d8e0abdaa",
+            "read-Zero.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "final-MEMC.bin": "0bba9e742ad542b2dc6c84808ae7f8fcfb505c624171684bdec02f7adc8dda15"
+          }
+        },
+        "DA-bad-directory": {
+          "calls": 5,
+          "fdc_commands": 75,
+          "fiqs": 48329,
+          "errors": [
+            {
+              "number": 67752,
+              "message": "Broken directory"
+            }
+          ],
+          "evidence_hashes": {
+            "final-SCHD.bin": "df0d5ad50b33374ac4c4817767024d1557b22bbc17610bc5980f59ea3285f35f",
+            "final-VIDC.bin": "8fb918b38b472b8e3959f834b94db9827ee386d7119385f7730b59bb992be060",
+            "result.json": "6291a36c81a69c7da4e310d2cbba6133ff47422f44f7c8768471274f42ec3703",
+            "recovered.bin": "d6621dfe143b89fb5f4ee1e22c0b6c16cdd4285999502c8eb746e7de93974e8b",
+            "final-HDC.bin": "7c7f15ed27de2f3a51d1da31356b27ea1be15370faa3caab96606e5390ebbd0e",
+            "final-KBD.bin": "099bb16aee7a1ea868b69fb7ca3d67b0acf4160808c7745eb64cd754ef3f1b03",
+            "final-IOC.bin": "b414004884d8f8b0a6c75eec351f2949633e0188700db348b012e56fe3f518a2",
+            "fdc.log": "a762991f81f75c59af72e440d160fd36f3c04d302990c196bbb5c98ea3a5b6e4",
+            "final-RTC.bin": "8922fc006f8931a844c609d9fe7d2f39f655a639fb678041ca7d0a50649d40c6",
+            "final-FDC.bin": "e8fd7591132669a7ad1a0779e42964fe38fb68b9e9fe4c3591d57733e142cf23",
+            "final-MACH.bin": "b5839492e98b67237837284122e7ec1b3682e4cf27193ec1e5920238cc758581",
+            "swis.log": "2dbafa99d1bb34d5fe4b53f279dfcf2966752b89fa5fea5da6bb2b5f6554d932",
+            "final-CPU.bin": "5db47e47aaecd0bc404c541d986226618b8ca4e0acd855bf1ba9571c413c10fb",
+            "final-MEMC.bin": "386e4a768e65610c7977332386c9ada4ef0c823511a35496861d2ba818208a07"
+          }
+        },
+        "DA-data-crc": {
+          "calls": 5,
+          "fdc_commands": 96,
+          "fiqs": 59614,
+          "errors": [
+            {
+              "number": 134285511,
+              "message": "Disc error 08 at :0/00002400"
+            }
+          ],
+          "evidence_hashes": {
+            "final-SCHD.bin": "bec8db3c59e7d4cfcb03af78999bf57c6c3a35fc6c33134c084833bf6bca5e72",
+            "final-VIDC.bin": "d84c1886418315e17598893e66397fef55a101b92c54536287e07a35da464f79",
+            "result.json": "4c487ed87762e15b37fcbb5d57c5dc6a96378f4f9b39bcef9cece465e22d702d",
+            "recovered.bin": "d6621dfe143b89fb5f4ee1e22c0b6c16cdd4285999502c8eb746e7de93974e8b",
+            "final-HDC.bin": "7c7f15ed27de2f3a51d1da31356b27ea1be15370faa3caab96606e5390ebbd0e",
+            "final-KBD.bin": "099bb16aee7a1ea868b69fb7ca3d67b0acf4160808c7745eb64cd754ef3f1b03",
+            "final-IOC.bin": "12b32823ae3aec608aa7ed5de69eb1aad514ba545dac18aa13b6edbb9a934076",
+            "fdc.log": "f2f7275104a409feef8cb73bce43d3360babe5f9d5a006dec5ca59dd6c8f86f8",
+            "final-RTC.bin": "8922fc006f8931a844c609d9fe7d2f39f655a639fb678041ca7d0a50649d40c6",
+            "final-FDC.bin": "7039e64feb6de0ed49a44985524a9fe35cc068e12168a4d2060fbe6d1f20056c",
+            "final-MACH.bin": "904ab7e72d0d369d4229c719e561bd8bcb2bdcdebd0f68372f7ed41d395817b1",
+            "swis.log": "23a29ebf37d3cedc1cb3986de59620a9879232d59c47525a6e0df9c6cb65911c",
+            "final-CPU.bin": "9ef8673348e1878f31206dc1407e5437c819a4cf8e3a534b1ccf44041463d580",
+            "final-MEMC.bin": "9b4f35f451450807197e4babf33d39b4fd89e9e4b6692c0e71a8bd40c4e3ab4c"
+          }
+        },
+        "DA-id-crc": {
+          "calls": 5,
+          "fdc_commands": 96,
+          "fiqs": 50398,
+          "errors": [
+            {
+              "number": 402720967,
+              "message": "Disc error 18 at :0/00002400"
+            }
+          ],
+          "evidence_hashes": {
+            "final-SCHD.bin": "8bd853f5acb0f0aa1fa0f319514ef9b1b3201807404c4f3763cf200d93b2e9ca",
+            "final-VIDC.bin": "c9192b5b0a3e84ce12b904ce9b2ef7993ad75c66a505af52ceada7e2e7633238",
+            "result.json": "fd1f765c777767809889cd732f5c0f327e2771ebffd12d12ef58334d7f16db63",
+            "recovered.bin": "d6621dfe143b89fb5f4ee1e22c0b6c16cdd4285999502c8eb746e7de93974e8b",
+            "final-HDC.bin": "7c7f15ed27de2f3a51d1da31356b27ea1be15370faa3caab96606e5390ebbd0e",
+            "final-KBD.bin": "099bb16aee7a1ea868b69fb7ca3d67b0acf4160808c7745eb64cd754ef3f1b03",
+            "final-IOC.bin": "ef0ff94d71502c99158fe332f2423990aa23dacd4a83af6604050415cfd9c7d3",
+            "fdc.log": "b223179ce37eaa10908f2b27e723ef2d8203328bf6f1708a3fe5a87e17fc6db8",
+            "final-RTC.bin": "8922fc006f8931a844c609d9fe7d2f39f655a639fb678041ca7d0a50649d40c6",
+            "final-FDC.bin": "7039e64feb6de0ed49a44985524a9fe35cc068e12168a4d2060fbe6d1f20056c",
+            "final-MACH.bin": "ed47697216942054b44bc4cd0f7651e0bd635e984fd323883ceb1c7164de1eec",
+            "swis.log": "a0f9e7bb453da1918220aa051c67f06fe166ce45e994bb95da0c4d87e0fa46c9",
+            "final-CPU.bin": "6a79ff93d327b681133e42836ecc957956568db28bfe0f5e87bee1db72401e64",
+            "final-MEMC.bin": "608859d246ab9d3d3079351460544dad5374d97e4b6d586dcf7d3069411f53d9"
+          }
+        },
+        "DA-missing": {
+          "calls": 5,
+          "fdc_commands": 96,
+          "fiqs": 50398,
+          "errors": [
+            {
+              "number": 268503239,
+              "message": "Disc error 10 at :0/00002400"
+            }
+          ],
+          "evidence_hashes": {
+            "final-SCHD.bin": "8bd853f5acb0f0aa1fa0f319514ef9b1b3201807404c4f3763cf200d93b2e9ca",
+            "final-VIDC.bin": "c9192b5b0a3e84ce12b904ce9b2ef7993ad75c66a505af52ceada7e2e7633238",
+            "result.json": "53e24d99825cb7218731d0b6208b14710222df4bd9fb51d5425f36a7bc44b1b7",
+            "recovered.bin": "d6621dfe143b89fb5f4ee1e22c0b6c16cdd4285999502c8eb746e7de93974e8b",
+            "final-HDC.bin": "7c7f15ed27de2f3a51d1da31356b27ea1be15370faa3caab96606e5390ebbd0e",
+            "final-KBD.bin": "099bb16aee7a1ea868b69fb7ca3d67b0acf4160808c7745eb64cd754ef3f1b03",
+            "final-IOC.bin": "ef0ff94d71502c99158fe332f2423990aa23dacd4a83af6604050415cfd9c7d3",
+            "fdc.log": "93b9c9dd1b7bc3a6a419c91b2aee7af918711812b40febc7a12ba18de7d5e176",
+            "final-RTC.bin": "8922fc006f8931a844c609d9fe7d2f39f655a639fb678041ca7d0a50649d40c6",
+            "final-FDC.bin": "7039e64feb6de0ed49a44985524a9fe35cc068e12168a4d2060fbe6d1f20056c",
+            "final-MACH.bin": "ed47697216942054b44bc4cd0f7651e0bd635e984fd323883ceb1c7164de1eec",
+            "swis.log": "a0f9e7bb453da1918220aa051c67f06fe166ce45e994bb95da0c4d87e0fa46c9",
+            "final-CPU.bin": "6a79ff93d327b681133e42836ecc957956568db28bfe0f5e87bee1db72401e64",
+            "final-MEMC.bin": "8f079a5b3364577b411a95911602054d298b865f98571a7cbf0b39f89a8e6d39"
+          }
+        },
+        "EA": {
+          "calls": 118,
+          "fdc_commands": 158,
+          "fiqs": 130248,
+          "errors": [
+            {
+              "number": 222,
+              "message": "Handle is either illegal or has been closed"
+            },
+            {
+              "number": 222,
+              "message": "Handle is either illegal or has been closed"
+            },
+            {
+              "number": 222,
+              "message": "Handle is either illegal or has been closed"
+            },
+            {
+              "number": 222,
+              "message": "Handle is either illegal or has been closed"
+            },
+            {
+              "number": 222,
+              "message": "Handle is either illegal or has been closed"
+            },
+            {
+              "number": 222,
+              "message": "Handle is either illegal or has been closed"
+            },
+            {
+              "number": 222,
+              "message": "Handle is either illegal or has been closed"
+            },
+            {
+              "number": 214,
+              "message": "File 'ADFS::0.$.Absent' not found"
+            }
+          ],
+          "evidence_hashes": {
+            "final-SCHD.bin": "6d390a96e8afaad2ef2f0f38ef7bdad35aa5f554aafc4ff3e12d22cc73388c1e",
+            "load-Docs.Sibling.bin": "9586dd2e01bdf103e9bad59f87e3013a683cce42dd4f243447791d5d8e0abdaa",
+            "final-VIDC.bin": "8ad77e374bf8b2f390f254e871deea50bc627b9481014c34a22e4cc55fc34470",
+            "result.json": "7ed2f09e281293d22bd091b818badf281c5f77e40f7ed5dbe9cd0451b40d0128",
+            "load-Zero.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "application-data.bin": "d6621dfe143b89fb5f4ee1e22c0b6c16cdd4285999502c8eb746e7de93974e8b",
+            "load-Docs.Deep.Leaf.bin": "3057bd31d5db826791cdc3e3368120bcd40021c921963c229fed37b338383fa0",
+            "load-RootText.bin": "34c6b2c0431217d77eb262b9bf664f323111a320bf1b478d783b6cc5afda4ae4",
+            "read-Hello.bin": "17bb9995cf7d2fc50bcb3a1a08e26f8fa4c3a67b1db99b8da8bf6dc6a75efdd4",
+            "final-HDC.bin": "7c7f15ed27de2f3a51d1da31356b27ea1be15370faa3caab96606e5390ebbd0e",
+            "final-KBD.bin": "099bb16aee7a1ea868b69fb7ca3d67b0acf4160808c7745eb64cd754ef3f1b03",
+            "load-Hello.bin": "17bb9995cf7d2fc50bcb3a1a08e26f8fa4c3a67b1db99b8da8bf6dc6a75efdd4",
+            "final-IOC.bin": "8cdf0ffa52ea7e7b9bd27f86341d3110be242f670dc5d02f52d31d6731731958",
+            "load-CheckFile.bin": "573c07041b1a19065235f5427d25076fb2ae9b4999189f561bea0017155ef016",
+            "read-Docs.Fragment.bin": "d6621dfe143b89fb5f4ee1e22c0b6c16cdd4285999502c8eb746e7de93974e8b",
+            "fdc.log": "6fb769aef504eca8a74ff8fed867f7777c7272a8dd0a368ffab9a0f9f330c2d8",
+            "final-RTC.bin": "8922fc006f8931a844c609d9fe7d2f39f655a639fb678041ca7d0a50649d40c6",
+            "final-FDC.bin": "4c5dcd41da95fba1eae37c32ebc9d313fadf6a4deaf9854b5d497839a3006f84",
+            "read-RootText.bin": "34c6b2c0431217d77eb262b9bf664f323111a320bf1b478d783b6cc5afda4ae4",
+            "final-MACH.bin": "107add9d890f2f225a063e4aaa4b590fd7cc6ed3487fd21c360ab846a415dd53",
+            "read-CheckFile.bin": "573c07041b1a19065235f5427d25076fb2ae9b4999189f561bea0017155ef016",
+            "swis.log": "000ed76bbdcbc7204a09360d4e23ae7adf014b25794436d113ca61bfca8679ee",
+            "read-Docs.Deep.Leaf.bin": "3057bd31d5db826791cdc3e3368120bcd40021c921963c229fed37b338383fa0",
+            "final-CPU.bin": "585412376e62e8ec764e2e702f7fde32c715b6cf1bd5deec05401c18e103375e",
+            "load-Docs.Fragment.bin": "d6621dfe143b89fb5f4ee1e22c0b6c16cdd4285999502c8eb746e7de93974e8b",
+            "read-Docs.Sibling.bin": "9586dd2e01bdf103e9bad59f87e3013a683cce42dd4f243447791d5d8e0abdaa",
+            "read-Zero.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "final-MEMC.bin": "720c9dbd465868304fe942c899e5faed5979bcf8a4ae5ecb163703d83a9a2611"
+          }
+        },
+        "EA-bad-directory": {
+          "calls": 5,
+          "fdc_commands": 76,
+          "fiqs": 48330,
+          "errors": [
+            {
+              "number": 67752,
+              "message": "Broken directory"
+            }
+          ],
+          "evidence_hashes": {
+            "final-SCHD.bin": "64259eb29bce4d6ef96c3156e0427defdb03d58280cf85ba57ab5d47bb1b789e",
+            "final-VIDC.bin": "f313ee1f83590f2158c29d3f569eccbf633e56abb1805df6c1d8133232e25ee7",
+            "result.json": "f4f96d015556015503dfa4beff5551b92c019975b6e0d00dc456670a6069ac7e",
+            "recovered.bin": "d6621dfe143b89fb5f4ee1e22c0b6c16cdd4285999502c8eb746e7de93974e8b",
+            "final-HDC.bin": "7c7f15ed27de2f3a51d1da31356b27ea1be15370faa3caab96606e5390ebbd0e",
+            "final-KBD.bin": "099bb16aee7a1ea868b69fb7ca3d67b0acf4160808c7745eb64cd754ef3f1b03",
+            "final-IOC.bin": "6a611b6be887a4648c94f7b327911697cdedb9e4024b9a9ab98d8b685695d67e",
+            "fdc.log": "8b932a256640376bac7fcb89c503373becc9c716055b925ad29c0ca7363195ec",
+            "final-RTC.bin": "8922fc006f8931a844c609d9fe7d2f39f655a639fb678041ca7d0a50649d40c6",
+            "final-FDC.bin": "1b721bc9f7b681358eeaf471536acd1a33aa8f17f0dda4e6780bc50ff52249a8",
+            "final-MACH.bin": "1610c28831860a382fdbceebc12faa30ea67f252ee2ab5a2cabdc11d030f641b",
+            "swis.log": "fbd8a7deb2635cfaa5b77c20cd74b2911ac10c48227026d0f05bbaabf1d7f1be",
+            "final-CPU.bin": "64275eca93f55fbe0cf03f36752cce78a9b7fdc331db4fb7fc18d06ae11c7f9e",
+            "final-MEMC.bin": "18494cac6098f47b340d45fa766d3a41767cb3eca28c12412bcfc08fbcf0e0e2"
+          }
+        },
+        "EA-bad-maps": {
+          "calls": 5,
+          "fdc_commands": 76,
+          "fiqs": 48330,
+          "errors": [
+            {
+              "number": 214,
+              "message": "File 'ADFS::0.$.Docs.Fragment' not found"
+            }
+          ],
+          "evidence_hashes": {
+            "final-SCHD.bin": "581cda5ad702495cce3689e14fcf33d6002a37a00414e65c2a1b32eedf94f0c0",
+            "final-VIDC.bin": "9f85e4080ec57746d8d6976583d6412ff01a0d5366679b261039776a2e963ab1",
+            "result.json": "ac552cd219d4b4ed830cc0c76c70fea3ed41a4431661a73d475c2c22d6432faa",
+            "recovered.bin": "d6621dfe143b89fb5f4ee1e22c0b6c16cdd4285999502c8eb746e7de93974e8b",
+            "final-HDC.bin": "7c7f15ed27de2f3a51d1da31356b27ea1be15370faa3caab96606e5390ebbd0e",
+            "final-KBD.bin": "099bb16aee7a1ea868b69fb7ca3d67b0acf4160808c7745eb64cd754ef3f1b03",
+            "final-IOC.bin": "6a611b6be887a4648c94f7b327911697cdedb9e4024b9a9ab98d8b685695d67e",
+            "fdc.log": "c91b3358bbcb774d3feb51d8ccf172a3c591f205a5997f7d9004e5349d91823d",
+            "final-RTC.bin": "8922fc006f8931a844c609d9fe7d2f39f655a639fb678041ca7d0a50649d40c6",
+            "final-FDC.bin": "1b721bc9f7b681358eeaf471536acd1a33aa8f17f0dda4e6780bc50ff52249a8",
+            "final-MACH.bin": "4f1141bbf7c021e401db77986a8d74b3e432e6be94deee5c8aaacc13e050eccf",
+            "swis.log": "93af6d80e08514783156cb158594695966e2470d4fd27cde46a1149700987cf3",
+            "final-CPU.bin": "3ad84bc5781bdd7b0e34b3a01881218cc15aef9327cc5c8028e95c46e506de63",
+            "final-MEMC.bin": "8629ad1c658ad805376d53e7c6eead9013dd2ac6c843b1879c536706fcd9acfa"
+          }
+        },
+        "EA-data-crc": {
+          "calls": 5,
+          "fdc_commands": 102,
+          "fiqs": 60644,
+          "errors": [
+            {
+              "number": 134285511,
+              "message": "Disc error 08 at :0/00002800"
+            }
+          ],
+          "evidence_hashes": {
+            "final-SCHD.bin": "c12d32a8544c0b258e1f5a9dc2ae253dd8192c32c636c10b32a330d5434df765",
+            "final-VIDC.bin": "f34e1f13b2266861a1f412fff82e729ea5a5e230edcd8d8c3f9f4c21d5b7adb0",
+            "result.json": "caae83cf3416c550d0854c6f0899daa0c8502027868ed2522cb88ff7b7eaae1a",
+            "recovered.bin": "d6621dfe143b89fb5f4ee1e22c0b6c16cdd4285999502c8eb746e7de93974e8b",
+            "final-HDC.bin": "7c7f15ed27de2f3a51d1da31356b27ea1be15370faa3caab96606e5390ebbd0e",
+            "final-KBD.bin": "099bb16aee7a1ea868b69fb7ca3d67b0acf4160808c7745eb64cd754ef3f1b03",
+            "final-IOC.bin": "55f26645ce586167f2c85ea853e7ff5d5f13f1abf7b2b2467ab87b7c60862709",
+            "fdc.log": "eef2a6bf7015281f63ffade0a6af4d161d19a4afe9b20fbc66d251c355f11578",
+            "final-RTC.bin": "8922fc006f8931a844c609d9fe7d2f39f655a639fb678041ca7d0a50649d40c6",
+            "final-FDC.bin": "15f63e68f86133b6cb0737cb6ecdd673d20fde19b9f35bdea1c2dded0e6817ca",
+            "final-MACH.bin": "6bbc3da9a531b9417e14254f387a592e8f810338f5cfb0af731efae554c34cc0",
+            "swis.log": "812914cfd0db741b22a9048e2452b281b7c22ae78efb8efc6577182ed28d0fdf",
+            "final-CPU.bin": "7b18896e97da11fd85b5e426d0cf785180151631ae899cb8e106ee73f29ff1cc",
+            "final-MEMC.bin": "94a5967afee80a72bfd088d2a5970df659b463c6a6a0d63db2e49a7b3ddd1def"
+          }
+        },
+        "EA-first-map-bad": {
+          "calls": 5,
+          "fdc_commands": 122,
+          "fiqs": 90360,
+          "errors": [],
+          "evidence_hashes": {
+            "final-SCHD.bin": "f5b2dd5c392f11fea5f542f8b2bc1e5f67c2b8b1713d5ff60ecb337ffa547f04",
+            "final-VIDC.bin": "97da3d7b7d9d0c6ba7fc323b916f5095fe634e8f03ae84a5bbd5b325b84f0673",
+            "result.json": "3bc9e3451c25959dd028852d6e1a5d2ce583ce46b28e4c61313020979b856a75",
+            "recovered.bin": "d6621dfe143b89fb5f4ee1e22c0b6c16cdd4285999502c8eb746e7de93974e8b",
+            "final-HDC.bin": "7c7f15ed27de2f3a51d1da31356b27ea1be15370faa3caab96606e5390ebbd0e",
+            "final-KBD.bin": "099bb16aee7a1ea868b69fb7ca3d67b0acf4160808c7745eb64cd754ef3f1b03",
+            "final-IOC.bin": "1264080d29bbb9f80149903deb37b05672e645ab1f54e3d8cf6d39c1bbd0b3df",
+            "fdc.log": "615d570e53fdb289d2c095335044b4967f149989650450c31fc9b0d6d9a234af",
+            "final-RTC.bin": "8922fc006f8931a844c609d9fe7d2f39f655a639fb678041ca7d0a50649d40c6",
+            "final-FDC.bin": "6117302cb8437489b35c2564d2b94ebe5638a3c78f0a13c30b0512fa3f564ca2",
+            "final-MACH.bin": "30c0861bd66ed102a6bcf61070e5f244838304e3e0cc88aebaf2f4c37b6427ec",
+            "swis.log": "d07de2aadcf80ffe486c2a71bd27421ea95c9e0ba34c791d0c26c6cf642cd04d",
+            "final-CPU.bin": "2b4fda11bb5f4aff889df2210a426cc6fe3f7ff20afa41519fd894bad358bd9f",
+            "final-MEMC.bin": "1be2862e81361d5cc9ddf5c7e7dd0b0cd1ae9e08c1f4da95129cf15ccf0e08f1"
+          }
+        },
+        "EA-id-crc": {
+          "calls": 5,
+          "fdc_commands": 102,
+          "fiqs": 51428,
+          "errors": [
+            {
+              "number": 402720967,
+              "message": "Disc error 18 at :0/00002800"
+            }
+          ],
+          "evidence_hashes": {
+            "final-SCHD.bin": "da9307e5d04d4f9be7ae813a66e7edb305029d906be6befc261ace1ea5df5847",
+            "final-VIDC.bin": "b4f95ae644455edc6d4f282623ad772c83e2518d856003642473718f2f42bb93",
+            "result.json": "634d6aff591acb533c270823d24e2b544e96507c165aa3b43edc34bd05ea9420",
+            "recovered.bin": "d6621dfe143b89fb5f4ee1e22c0b6c16cdd4285999502c8eb746e7de93974e8b",
+            "final-HDC.bin": "7c7f15ed27de2f3a51d1da31356b27ea1be15370faa3caab96606e5390ebbd0e",
+            "final-KBD.bin": "099bb16aee7a1ea868b69fb7ca3d67b0acf4160808c7745eb64cd754ef3f1b03",
+            "final-IOC.bin": "883ee0dd2d12ac265964a8b96ae6abdc8609c244a8d4e2e206ab71bdc7dbf03f",
+            "fdc.log": "0dfe0a4627d2363954f7f6f58c234af4efa59013060eb588fda96a1477e4c8a1",
+            "final-RTC.bin": "8922fc006f8931a844c609d9fe7d2f39f655a639fb678041ca7d0a50649d40c6",
+            "final-FDC.bin": "15f63e68f86133b6cb0737cb6ecdd673d20fde19b9f35bdea1c2dded0e6817ca",
+            "final-MACH.bin": "e7f0a7e9889966833e137dda52b969c2de9353812498c710ba1c353b58ff8bf0",
+            "swis.log": "129aa9160fd11bee45238a3b22d7b11572e4605cafd174188c86afa8d7ae711d",
+            "final-CPU.bin": "f51bb07d43c30e1831d1b8fced1b0c1a2c0867859b94772bba3dd252b9857c8d",
+            "final-MEMC.bin": "d55d906df5f79fd12464adb7022a26278ce05bf5301ddac492976432807e9049"
+          }
+        },
+        "EA-missing": {
+          "calls": 5,
+          "fdc_commands": 102,
+          "fiqs": 51428,
+          "errors": [
+            {
+              "number": 268503239,
+              "message": "Disc error 10 at :0/00002800"
+            }
+          ],
+          "evidence_hashes": {
+            "final-SCHD.bin": "da9307e5d04d4f9be7ae813a66e7edb305029d906be6befc261ace1ea5df5847",
+            "final-VIDC.bin": "b4f95ae644455edc6d4f282623ad772c83e2518d856003642473718f2f42bb93",
+            "result.json": "103a16d157435593c024bd660aa6729b37b073f6a5543bcaa68a585f7d693006",
+            "recovered.bin": "d6621dfe143b89fb5f4ee1e22c0b6c16cdd4285999502c8eb746e7de93974e8b",
+            "final-HDC.bin": "7c7f15ed27de2f3a51d1da31356b27ea1be15370faa3caab96606e5390ebbd0e",
+            "final-KBD.bin": "099bb16aee7a1ea868b69fb7ca3d67b0acf4160808c7745eb64cd754ef3f1b03",
+            "final-IOC.bin": "883ee0dd2d12ac265964a8b96ae6abdc8609c244a8d4e2e206ab71bdc7dbf03f",
+            "fdc.log": "11a5d946b92009cba4327eb3b9fdb1e46745cf2d9fa4f7d845176c8d037e48e6",
+            "final-RTC.bin": "8922fc006f8931a844c609d9fe7d2f39f655a639fb678041ca7d0a50649d40c6",
+            "final-FDC.bin": "15f63e68f86133b6cb0737cb6ecdd673d20fde19b9f35bdea1c2dded0e6817ca",
+            "final-MACH.bin": "e7f0a7e9889966833e137dda52b969c2de9353812498c710ba1c353b58ff8bf0",
+            "swis.log": "129aa9160fd11bee45238a3b22d7b11572e4605cafd174188c86afa8d7ae711d",
+            "final-CPU.bin": "f51bb07d43c30e1831d1b8fced1b0c1a2c0867859b94772bba3dd252b9857c8d",
+            "final-MEMC.bin": "3e2ad2f76dc96cef251f723a91dff0291166fbd2af8bc09db0266ee809aceba3"
+          }
+        },
+        "empty-drive": {
+          "calls": 5,
+          "fdc_commands": 14,
+          "fiqs": 4151,
+          "errors": [
+            {
+              "number": 67795,
+              "message": "The disc drive is empty"
+            }
+          ],
+          "evidence_hashes": {
+            "final-SCHD.bin": "2c002c05eceb9ec3a9d512d8374e0f35587b825183e01f7056a72040651eb79d",
+            "final-VIDC.bin": "dd4af36393695be3281289a64aa021cd16ce723b266324823dfff47a07b31b8e",
+            "result.json": "0b5ae487e43be51bb40cdc22586c8e8e04865c3c01952cccca04db292381710c",
+            "final-HDC.bin": "7c7f15ed27de2f3a51d1da31356b27ea1be15370faa3caab96606e5390ebbd0e",
+            "final-KBD.bin": "099bb16aee7a1ea868b69fb7ca3d67b0acf4160808c7745eb64cd754ef3f1b03",
+            "final-IOC.bin": "3b7a12417b5e786ba8e05e880307b09e8ec4eb10cc86c7fd4306b0831e12f532",
+            "fdc.log": "2de84e6aefdc5c2cd2baddede40f1431d7840f352c49d8a6ed2e5270a7c2b601",
+            "final-RTC.bin": "8922fc006f8931a844c609d9fe7d2f39f655a639fb678041ca7d0a50649d40c6",
+            "final-FDC.bin": "0fd5ef924930fa54b8b4163e9c9b7823188b8c8b645fd77c37a76a0b97b2de31",
+            "final-MACH.bin": "d55e691a2eb063a56ef786230d4a0ec66b120da61fb2aeb75319389688f56621",
+            "swis.log": "3ac31c016f4b5c22254ff3ba1dd2fe7da662433055ebb6abea25bd19cda44438",
+            "final-CPU.bin": "c3ea7098d613e3e1ea61af2dbf546b680dab1856b833a247d27c4887a85c50e7",
+            "final-MEMC.bin": "c2dec79d66cb109af1d225b9e7f077afe115f036cc44bb8161db37156d4c7054"
+          }
+        },
+        "media-change": {
+          "calls": 4,
+          "fdc_commands": 26,
+          "fiqs": 8302,
+          "errors": [],
+          "evidence_hashes": {
+            "final-SCHD.bin": "c2eb739bb899dc86bcc83971828ddbf99e1a04fba6a1be773617c38721521345",
+            "final-VIDC.bin": "ff60abca70247ea24b5efcedf730ebdeeaa7eadff144396b38c95b81995d158f",
+            "disc-B-read.bin": "d7e2f4c3e72ed08b62854a038647d5eba2859368f1dd274aeace5bce61852d51",
+            "result.json": "92c504318889b4f9360122043f4902cbad4e189718f96e44a03f7bd64a6bd9df",
+            "final-HDC.bin": "7c7f15ed27de2f3a51d1da31356b27ea1be15370faa3caab96606e5390ebbd0e",
+            "final-KBD.bin": "099bb16aee7a1ea868b69fb7ca3d67b0acf4160808c7745eb64cd754ef3f1b03",
+            "final-IOC.bin": "2abc50fe4bb83f530c91f1f30065751696de6de272e65fc49fee6df416d41360",
+            "fdc.log": "d082fd7edb43b5be63c291d0ac96b3db8e86a9ce83a95e3ecdc9697ff76a50dc",
+            "final-RTC.bin": "8922fc006f8931a844c609d9fe7d2f39f655a639fb678041ca7d0a50649d40c6",
+            "final-FDC.bin": "37c75c30ee1050a534d68c454c197714b7e2e5d9053b3749af7e53a1f7b4325b",
+            "final-MACH.bin": "634975a7725fa86dd0a3cc9c421482b319bf5109fbc1ce1c0258268c8d0f9866",
+            "swis.log": "b7c74ca53a42ba8e13b18417bd93dc044971f83a726c8166abcc6826f4429acf",
+            "final-CPU.bin": "08ce0c6ef453adc35f048e5a367d20e6961837a703436a52e46bfdcdb6f0798e",
+            "final-MEMC.bin": "6d2c3af9d0529abd6f0a4f740db3774d39d903379457570183954897d3f3d018"
+          }
+        }
+      }
+    },
+    {
+      "cold_run": 2,
+      "scenarios": {
+        "DA": {
+          "calls": 118,
+          "fdc_commands": 145,
+          "fiqs": 122043,
+          "errors": [
+            {
+              "number": 222,
+              "message": "Handle is either illegal or has been closed"
+            },
+            {
+              "number": 222,
+              "message": "Handle is either illegal or has been closed"
+            },
+            {
+              "number": 222,
+              "message": "Handle is either illegal or has been closed"
+            },
+            {
+              "number": 222,
+              "message": "Handle is either illegal or has been closed"
+            },
+            {
+              "number": 222,
+              "message": "Handle is either illegal or has been closed"
+            },
+            {
+              "number": 222,
+              "message": "Handle is either illegal or has been closed"
+            },
+            {
+              "number": 222,
+              "message": "Handle is either illegal or has been closed"
+            },
+            {
+              "number": 214,
+              "message": "File 'ADFS::0.$.Absent' not found"
+            }
+          ],
+          "evidence_hashes": {
+            "final-SCHD.bin": "10e4b24a0ddcc413268caf8d2ae884386a4e9f65bb2718e566f551e5f0c79c63",
+            "load-Docs.Sibling.bin": "9586dd2e01bdf103e9bad59f87e3013a683cce42dd4f243447791d5d8e0abdaa",
+            "final-VIDC.bin": "90b13080abddd05991b2d02a3180c38eb9d2915530342d172fb2b56321b72378",
+            "result.json": "a137c81d2ad15bc8feeb17e8764198b91650811f93a87b887f585e3df01515c9",
+            "load-Zero.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "application-data.bin": "d6621dfe143b89fb5f4ee1e22c0b6c16cdd4285999502c8eb746e7de93974e8b",
+            "load-Docs.Deep.Leaf.bin": "3057bd31d5db826791cdc3e3368120bcd40021c921963c229fed37b338383fa0",
+            "load-RootText.bin": "34c6b2c0431217d77eb262b9bf664f323111a320bf1b478d783b6cc5afda4ae4",
+            "read-Hello.bin": "17bb9995cf7d2fc50bcb3a1a08e26f8fa4c3a67b1db99b8da8bf6dc6a75efdd4",
+            "final-HDC.bin": "7c7f15ed27de2f3a51d1da31356b27ea1be15370faa3caab96606e5390ebbd0e",
+            "final-KBD.bin": "099bb16aee7a1ea868b69fb7ca3d67b0acf4160808c7745eb64cd754ef3f1b03",
+            "load-Hello.bin": "17bb9995cf7d2fc50bcb3a1a08e26f8fa4c3a67b1db99b8da8bf6dc6a75efdd4",
+            "final-IOC.bin": "a6f6c6ae412dcf38b15b3a107da9c5aa94fb8c93b66d808b8f7564fe677efc01",
+            "load-CheckFile.bin": "573c07041b1a19065235f5427d25076fb2ae9b4999189f561bea0017155ef016",
+            "read-Docs.Fragment.bin": "d6621dfe143b89fb5f4ee1e22c0b6c16cdd4285999502c8eb746e7de93974e8b",
+            "fdc.log": "3c01e01ad4083ed2e387883ccc5076b1382cad4badd990b66a7baacc7be93f60",
+            "final-RTC.bin": "8922fc006f8931a844c609d9fe7d2f39f655a639fb678041ca7d0a50649d40c6",
+            "final-FDC.bin": "c7225cf6ab2dd8be6ccd6c7d9e044fe1261ecb6438a7dd6939ca71a7fb492dd2",
+            "read-RootText.bin": "34c6b2c0431217d77eb262b9bf664f323111a320bf1b478d783b6cc5afda4ae4",
+            "final-MACH.bin": "fa8459afcd959406292a974220d6f1f026092c390bb562e81fbdfc4f9abd7826",
+            "read-CheckFile.bin": "573c07041b1a19065235f5427d25076fb2ae9b4999189f561bea0017155ef016",
+            "swis.log": "b0cbc1d97b4f1d4f82bb85a8188cdb78449f5ab2024524609b24bb37a9e39b24",
+            "read-Docs.Deep.Leaf.bin": "3057bd31d5db826791cdc3e3368120bcd40021c921963c229fed37b338383fa0",
+            "final-CPU.bin": "7757bcf8e8026104646c0b90538c71c0f372cd70253e2fc76c109c135d85c0f6",
+            "load-Docs.Fragment.bin": "d6621dfe143b89fb5f4ee1e22c0b6c16cdd4285999502c8eb746e7de93974e8b",
+            "read-Docs.Sibling.bin": "9586dd2e01bdf103e9bad59f87e3013a683cce42dd4f243447791d5d8e0abdaa",
+            "read-Zero.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "final-MEMC.bin": "0bba9e742ad542b2dc6c84808ae7f8fcfb505c624171684bdec02f7adc8dda15"
+          }
+        },
+        "DA-bad-directory": {
+          "calls": 5,
+          "fdc_commands": 75,
+          "fiqs": 48329,
+          "errors": [
+            {
+              "number": 67752,
+              "message": "Broken directory"
+            }
+          ],
+          "evidence_hashes": {
+            "final-SCHD.bin": "df0d5ad50b33374ac4c4817767024d1557b22bbc17610bc5980f59ea3285f35f",
+            "final-VIDC.bin": "8fb918b38b472b8e3959f834b94db9827ee386d7119385f7730b59bb992be060",
+            "result.json": "6291a36c81a69c7da4e310d2cbba6133ff47422f44f7c8768471274f42ec3703",
+            "recovered.bin": "d6621dfe143b89fb5f4ee1e22c0b6c16cdd4285999502c8eb746e7de93974e8b",
+            "final-HDC.bin": "7c7f15ed27de2f3a51d1da31356b27ea1be15370faa3caab96606e5390ebbd0e",
+            "final-KBD.bin": "099bb16aee7a1ea868b69fb7ca3d67b0acf4160808c7745eb64cd754ef3f1b03",
+            "final-IOC.bin": "b414004884d8f8b0a6c75eec351f2949633e0188700db348b012e56fe3f518a2",
+            "fdc.log": "a762991f81f75c59af72e440d160fd36f3c04d302990c196bbb5c98ea3a5b6e4",
+            "final-RTC.bin": "8922fc006f8931a844c609d9fe7d2f39f655a639fb678041ca7d0a50649d40c6",
+            "final-FDC.bin": "e8fd7591132669a7ad1a0779e42964fe38fb68b9e9fe4c3591d57733e142cf23",
+            "final-MACH.bin": "b5839492e98b67237837284122e7ec1b3682e4cf27193ec1e5920238cc758581",
+            "swis.log": "2dbafa99d1bb34d5fe4b53f279dfcf2966752b89fa5fea5da6bb2b5f6554d932",
+            "final-CPU.bin": "5db47e47aaecd0bc404c541d986226618b8ca4e0acd855bf1ba9571c413c10fb",
+            "final-MEMC.bin": "386e4a768e65610c7977332386c9ada4ef0c823511a35496861d2ba818208a07"
+          }
+        },
+        "DA-data-crc": {
+          "calls": 5,
+          "fdc_commands": 96,
+          "fiqs": 59614,
+          "errors": [
+            {
+              "number": 134285511,
+              "message": "Disc error 08 at :0/00002400"
+            }
+          ],
+          "evidence_hashes": {
+            "final-SCHD.bin": "bec8db3c59e7d4cfcb03af78999bf57c6c3a35fc6c33134c084833bf6bca5e72",
+            "final-VIDC.bin": "d84c1886418315e17598893e66397fef55a101b92c54536287e07a35da464f79",
+            "result.json": "4c487ed87762e15b37fcbb5d57c5dc6a96378f4f9b39bcef9cece465e22d702d",
+            "recovered.bin": "d6621dfe143b89fb5f4ee1e22c0b6c16cdd4285999502c8eb746e7de93974e8b",
+            "final-HDC.bin": "7c7f15ed27de2f3a51d1da31356b27ea1be15370faa3caab96606e5390ebbd0e",
+            "final-KBD.bin": "099bb16aee7a1ea868b69fb7ca3d67b0acf4160808c7745eb64cd754ef3f1b03",
+            "final-IOC.bin": "12b32823ae3aec608aa7ed5de69eb1aad514ba545dac18aa13b6edbb9a934076",
+            "fdc.log": "f2f7275104a409feef8cb73bce43d3360babe5f9d5a006dec5ca59dd6c8f86f8",
+            "final-RTC.bin": "8922fc006f8931a844c609d9fe7d2f39f655a639fb678041ca7d0a50649d40c6",
+            "final-FDC.bin": "7039e64feb6de0ed49a44985524a9fe35cc068e12168a4d2060fbe6d1f20056c",
+            "final-MACH.bin": "904ab7e72d0d369d4229c719e561bd8bcb2bdcdebd0f68372f7ed41d395817b1",
+            "swis.log": "23a29ebf37d3cedc1cb3986de59620a9879232d59c47525a6e0df9c6cb65911c",
+            "final-CPU.bin": "9ef8673348e1878f31206dc1407e5437c819a4cf8e3a534b1ccf44041463d580",
+            "final-MEMC.bin": "9b4f35f451450807197e4babf33d39b4fd89e9e4b6692c0e71a8bd40c4e3ab4c"
+          }
+        },
+        "DA-id-crc": {
+          "calls": 5,
+          "fdc_commands": 96,
+          "fiqs": 50398,
+          "errors": [
+            {
+              "number": 402720967,
+              "message": "Disc error 18 at :0/00002400"
+            }
+          ],
+          "evidence_hashes": {
+            "final-SCHD.bin": "8bd853f5acb0f0aa1fa0f319514ef9b1b3201807404c4f3763cf200d93b2e9ca",
+            "final-VIDC.bin": "c9192b5b0a3e84ce12b904ce9b2ef7993ad75c66a505af52ceada7e2e7633238",
+            "result.json": "fd1f765c777767809889cd732f5c0f327e2771ebffd12d12ef58334d7f16db63",
+            "recovered.bin": "d6621dfe143b89fb5f4ee1e22c0b6c16cdd4285999502c8eb746e7de93974e8b",
+            "final-HDC.bin": "7c7f15ed27de2f3a51d1da31356b27ea1be15370faa3caab96606e5390ebbd0e",
+            "final-KBD.bin": "099bb16aee7a1ea868b69fb7ca3d67b0acf4160808c7745eb64cd754ef3f1b03",
+            "final-IOC.bin": "ef0ff94d71502c99158fe332f2423990aa23dacd4a83af6604050415cfd9c7d3",
+            "fdc.log": "b223179ce37eaa10908f2b27e723ef2d8203328bf6f1708a3fe5a87e17fc6db8",
+            "final-RTC.bin": "8922fc006f8931a844c609d9fe7d2f39f655a639fb678041ca7d0a50649d40c6",
+            "final-FDC.bin": "7039e64feb6de0ed49a44985524a9fe35cc068e12168a4d2060fbe6d1f20056c",
+            "final-MACH.bin": "ed47697216942054b44bc4cd0f7651e0bd635e984fd323883ceb1c7164de1eec",
+            "swis.log": "a0f9e7bb453da1918220aa051c67f06fe166ce45e994bb95da0c4d87e0fa46c9",
+            "final-CPU.bin": "6a79ff93d327b681133e42836ecc957956568db28bfe0f5e87bee1db72401e64",
+            "final-MEMC.bin": "608859d246ab9d3d3079351460544dad5374d97e4b6d586dcf7d3069411f53d9"
+          }
+        },
+        "DA-missing": {
+          "calls": 5,
+          "fdc_commands": 96,
+          "fiqs": 50398,
+          "errors": [
+            {
+              "number": 268503239,
+              "message": "Disc error 10 at :0/00002400"
+            }
+          ],
+          "evidence_hashes": {
+            "final-SCHD.bin": "8bd853f5acb0f0aa1fa0f319514ef9b1b3201807404c4f3763cf200d93b2e9ca",
+            "final-VIDC.bin": "c9192b5b0a3e84ce12b904ce9b2ef7993ad75c66a505af52ceada7e2e7633238",
+            "result.json": "53e24d99825cb7218731d0b6208b14710222df4bd9fb51d5425f36a7bc44b1b7",
+            "recovered.bin": "d6621dfe143b89fb5f4ee1e22c0b6c16cdd4285999502c8eb746e7de93974e8b",
+            "final-HDC.bin": "7c7f15ed27de2f3a51d1da31356b27ea1be15370faa3caab96606e5390ebbd0e",
+            "final-KBD.bin": "099bb16aee7a1ea868b69fb7ca3d67b0acf4160808c7745eb64cd754ef3f1b03",
+            "final-IOC.bin": "ef0ff94d71502c99158fe332f2423990aa23dacd4a83af6604050415cfd9c7d3",
+            "fdc.log": "93b9c9dd1b7bc3a6a419c91b2aee7af918711812b40febc7a12ba18de7d5e176",
+            "final-RTC.bin": "8922fc006f8931a844c609d9fe7d2f39f655a639fb678041ca7d0a50649d40c6",
+            "final-FDC.bin": "7039e64feb6de0ed49a44985524a9fe35cc068e12168a4d2060fbe6d1f20056c",
+            "final-MACH.bin": "ed47697216942054b44bc4cd0f7651e0bd635e984fd323883ceb1c7164de1eec",
+            "swis.log": "a0f9e7bb453da1918220aa051c67f06fe166ce45e994bb95da0c4d87e0fa46c9",
+            "final-CPU.bin": "6a79ff93d327b681133e42836ecc957956568db28bfe0f5e87bee1db72401e64",
+            "final-MEMC.bin": "8f079a5b3364577b411a95911602054d298b865f98571a7cbf0b39f89a8e6d39"
+          }
+        },
+        "EA": {
+          "calls": 118,
+          "fdc_commands": 158,
+          "fiqs": 130248,
+          "errors": [
+            {
+              "number": 222,
+              "message": "Handle is either illegal or has been closed"
+            },
+            {
+              "number": 222,
+              "message": "Handle is either illegal or has been closed"
+            },
+            {
+              "number": 222,
+              "message": "Handle is either illegal or has been closed"
+            },
+            {
+              "number": 222,
+              "message": "Handle is either illegal or has been closed"
+            },
+            {
+              "number": 222,
+              "message": "Handle is either illegal or has been closed"
+            },
+            {
+              "number": 222,
+              "message": "Handle is either illegal or has been closed"
+            },
+            {
+              "number": 222,
+              "message": "Handle is either illegal or has been closed"
+            },
+            {
+              "number": 214,
+              "message": "File 'ADFS::0.$.Absent' not found"
+            }
+          ],
+          "evidence_hashes": {
+            "final-SCHD.bin": "6d390a96e8afaad2ef2f0f38ef7bdad35aa5f554aafc4ff3e12d22cc73388c1e",
+            "load-Docs.Sibling.bin": "9586dd2e01bdf103e9bad59f87e3013a683cce42dd4f243447791d5d8e0abdaa",
+            "final-VIDC.bin": "8ad77e374bf8b2f390f254e871deea50bc627b9481014c34a22e4cc55fc34470",
+            "result.json": "7ed2f09e281293d22bd091b818badf281c5f77e40f7ed5dbe9cd0451b40d0128",
+            "load-Zero.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "application-data.bin": "d6621dfe143b89fb5f4ee1e22c0b6c16cdd4285999502c8eb746e7de93974e8b",
+            "load-Docs.Deep.Leaf.bin": "3057bd31d5db826791cdc3e3368120bcd40021c921963c229fed37b338383fa0",
+            "load-RootText.bin": "34c6b2c0431217d77eb262b9bf664f323111a320bf1b478d783b6cc5afda4ae4",
+            "read-Hello.bin": "17bb9995cf7d2fc50bcb3a1a08e26f8fa4c3a67b1db99b8da8bf6dc6a75efdd4",
+            "final-HDC.bin": "7c7f15ed27de2f3a51d1da31356b27ea1be15370faa3caab96606e5390ebbd0e",
+            "final-KBD.bin": "099bb16aee7a1ea868b69fb7ca3d67b0acf4160808c7745eb64cd754ef3f1b03",
+            "load-Hello.bin": "17bb9995cf7d2fc50bcb3a1a08e26f8fa4c3a67b1db99b8da8bf6dc6a75efdd4",
+            "final-IOC.bin": "8cdf0ffa52ea7e7b9bd27f86341d3110be242f670dc5d02f52d31d6731731958",
+            "load-CheckFile.bin": "573c07041b1a19065235f5427d25076fb2ae9b4999189f561bea0017155ef016",
+            "read-Docs.Fragment.bin": "d6621dfe143b89fb5f4ee1e22c0b6c16cdd4285999502c8eb746e7de93974e8b",
+            "fdc.log": "6fb769aef504eca8a74ff8fed867f7777c7272a8dd0a368ffab9a0f9f330c2d8",
+            "final-RTC.bin": "8922fc006f8931a844c609d9fe7d2f39f655a639fb678041ca7d0a50649d40c6",
+            "final-FDC.bin": "4c5dcd41da95fba1eae37c32ebc9d313fadf6a4deaf9854b5d497839a3006f84",
+            "read-RootText.bin": "34c6b2c0431217d77eb262b9bf664f323111a320bf1b478d783b6cc5afda4ae4",
+            "final-MACH.bin": "107add9d890f2f225a063e4aaa4b590fd7cc6ed3487fd21c360ab846a415dd53",
+            "read-CheckFile.bin": "573c07041b1a19065235f5427d25076fb2ae9b4999189f561bea0017155ef016",
+            "swis.log": "000ed76bbdcbc7204a09360d4e23ae7adf014b25794436d113ca61bfca8679ee",
+            "read-Docs.Deep.Leaf.bin": "3057bd31d5db826791cdc3e3368120bcd40021c921963c229fed37b338383fa0",
+            "final-CPU.bin": "585412376e62e8ec764e2e702f7fde32c715b6cf1bd5deec05401c18e103375e",
+            "load-Docs.Fragment.bin": "d6621dfe143b89fb5f4ee1e22c0b6c16cdd4285999502c8eb746e7de93974e8b",
+            "read-Docs.Sibling.bin": "9586dd2e01bdf103e9bad59f87e3013a683cce42dd4f243447791d5d8e0abdaa",
+            "read-Zero.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "final-MEMC.bin": "720c9dbd465868304fe942c899e5faed5979bcf8a4ae5ecb163703d83a9a2611"
+          }
+        },
+        "EA-bad-directory": {
+          "calls": 5,
+          "fdc_commands": 76,
+          "fiqs": 48330,
+          "errors": [
+            {
+              "number": 67752,
+              "message": "Broken directory"
+            }
+          ],
+          "evidence_hashes": {
+            "final-SCHD.bin": "64259eb29bce4d6ef96c3156e0427defdb03d58280cf85ba57ab5d47bb1b789e",
+            "final-VIDC.bin": "f313ee1f83590f2158c29d3f569eccbf633e56abb1805df6c1d8133232e25ee7",
+            "result.json": "f4f96d015556015503dfa4beff5551b92c019975b6e0d00dc456670a6069ac7e",
+            "recovered.bin": "d6621dfe143b89fb5f4ee1e22c0b6c16cdd4285999502c8eb746e7de93974e8b",
+            "final-HDC.bin": "7c7f15ed27de2f3a51d1da31356b27ea1be15370faa3caab96606e5390ebbd0e",
+            "final-KBD.bin": "099bb16aee7a1ea868b69fb7ca3d67b0acf4160808c7745eb64cd754ef3f1b03",
+            "final-IOC.bin": "6a611b6be887a4648c94f7b327911697cdedb9e4024b9a9ab98d8b685695d67e",
+            "fdc.log": "8b932a256640376bac7fcb89c503373becc9c716055b925ad29c0ca7363195ec",
+            "final-RTC.bin": "8922fc006f8931a844c609d9fe7d2f39f655a639fb678041ca7d0a50649d40c6",
+            "final-FDC.bin": "1b721bc9f7b681358eeaf471536acd1a33aa8f17f0dda4e6780bc50ff52249a8",
+            "final-MACH.bin": "1610c28831860a382fdbceebc12faa30ea67f252ee2ab5a2cabdc11d030f641b",
+            "swis.log": "fbd8a7deb2635cfaa5b77c20cd74b2911ac10c48227026d0f05bbaabf1d7f1be",
+            "final-CPU.bin": "64275eca93f55fbe0cf03f36752cce78a9b7fdc331db4fb7fc18d06ae11c7f9e",
+            "final-MEMC.bin": "18494cac6098f47b340d45fa766d3a41767cb3eca28c12412bcfc08fbcf0e0e2"
+          }
+        },
+        "EA-bad-maps": {
+          "calls": 5,
+          "fdc_commands": 76,
+          "fiqs": 48330,
+          "errors": [
+            {
+              "number": 214,
+              "message": "File 'ADFS::0.$.Docs.Fragment' not found"
+            }
+          ],
+          "evidence_hashes": {
+            "final-SCHD.bin": "581cda5ad702495cce3689e14fcf33d6002a37a00414e65c2a1b32eedf94f0c0",
+            "final-VIDC.bin": "9f85e4080ec57746d8d6976583d6412ff01a0d5366679b261039776a2e963ab1",
+            "result.json": "ac552cd219d4b4ed830cc0c76c70fea3ed41a4431661a73d475c2c22d6432faa",
+            "recovered.bin": "d6621dfe143b89fb5f4ee1e22c0b6c16cdd4285999502c8eb746e7de93974e8b",
+            "final-HDC.bin": "7c7f15ed27de2f3a51d1da31356b27ea1be15370faa3caab96606e5390ebbd0e",
+            "final-KBD.bin": "099bb16aee7a1ea868b69fb7ca3d67b0acf4160808c7745eb64cd754ef3f1b03",
+            "final-IOC.bin": "6a611b6be887a4648c94f7b327911697cdedb9e4024b9a9ab98d8b685695d67e",
+            "fdc.log": "c91b3358bbcb774d3feb51d8ccf172a3c591f205a5997f7d9004e5349d91823d",
+            "final-RTC.bin": "8922fc006f8931a844c609d9fe7d2f39f655a639fb678041ca7d0a50649d40c6",
+            "final-FDC.bin": "1b721bc9f7b681358eeaf471536acd1a33aa8f17f0dda4e6780bc50ff52249a8",
+            "final-MACH.bin": "4f1141bbf7c021e401db77986a8d74b3e432e6be94deee5c8aaacc13e050eccf",
+            "swis.log": "93af6d80e08514783156cb158594695966e2470d4fd27cde46a1149700987cf3",
+            "final-CPU.bin": "3ad84bc5781bdd7b0e34b3a01881218cc15aef9327cc5c8028e95c46e506de63",
+            "final-MEMC.bin": "8629ad1c658ad805376d53e7c6eead9013dd2ac6c843b1879c536706fcd9acfa"
+          }
+        },
+        "EA-data-crc": {
+          "calls": 5,
+          "fdc_commands": 102,
+          "fiqs": 60644,
+          "errors": [
+            {
+              "number": 134285511,
+              "message": "Disc error 08 at :0/00002800"
+            }
+          ],
+          "evidence_hashes": {
+            "final-SCHD.bin": "c12d32a8544c0b258e1f5a9dc2ae253dd8192c32c636c10b32a330d5434df765",
+            "final-VIDC.bin": "f34e1f13b2266861a1f412fff82e729ea5a5e230edcd8d8c3f9f4c21d5b7adb0",
+            "result.json": "caae83cf3416c550d0854c6f0899daa0c8502027868ed2522cb88ff7b7eaae1a",
+            "recovered.bin": "d6621dfe143b89fb5f4ee1e22c0b6c16cdd4285999502c8eb746e7de93974e8b",
+            "final-HDC.bin": "7c7f15ed27de2f3a51d1da31356b27ea1be15370faa3caab96606e5390ebbd0e",
+            "final-KBD.bin": "099bb16aee7a1ea868b69fb7ca3d67b0acf4160808c7745eb64cd754ef3f1b03",
+            "final-IOC.bin": "55f26645ce586167f2c85ea853e7ff5d5f13f1abf7b2b2467ab87b7c60862709",
+            "fdc.log": "eef2a6bf7015281f63ffade0a6af4d161d19a4afe9b20fbc66d251c355f11578",
+            "final-RTC.bin": "8922fc006f8931a844c609d9fe7d2f39f655a639fb678041ca7d0a50649d40c6",
+            "final-FDC.bin": "15f63e68f86133b6cb0737cb6ecdd673d20fde19b9f35bdea1c2dded0e6817ca",
+            "final-MACH.bin": "6bbc3da9a531b9417e14254f387a592e8f810338f5cfb0af731efae554c34cc0",
+            "swis.log": "812914cfd0db741b22a9048e2452b281b7c22ae78efb8efc6577182ed28d0fdf",
+            "final-CPU.bin": "7b18896e97da11fd85b5e426d0cf785180151631ae899cb8e106ee73f29ff1cc",
+            "final-MEMC.bin": "94a5967afee80a72bfd088d2a5970df659b463c6a6a0d63db2e49a7b3ddd1def"
+          }
+        },
+        "EA-first-map-bad": {
+          "calls": 5,
+          "fdc_commands": 122,
+          "fiqs": 90360,
+          "errors": [],
+          "evidence_hashes": {
+            "final-SCHD.bin": "f5b2dd5c392f11fea5f542f8b2bc1e5f67c2b8b1713d5ff60ecb337ffa547f04",
+            "final-VIDC.bin": "97da3d7b7d9d0c6ba7fc323b916f5095fe634e8f03ae84a5bbd5b325b84f0673",
+            "result.json": "3bc9e3451c25959dd028852d6e1a5d2ce583ce46b28e4c61313020979b856a75",
+            "recovered.bin": "d6621dfe143b89fb5f4ee1e22c0b6c16cdd4285999502c8eb746e7de93974e8b",
+            "final-HDC.bin": "7c7f15ed27de2f3a51d1da31356b27ea1be15370faa3caab96606e5390ebbd0e",
+            "final-KBD.bin": "099bb16aee7a1ea868b69fb7ca3d67b0acf4160808c7745eb64cd754ef3f1b03",
+            "final-IOC.bin": "1264080d29bbb9f80149903deb37b05672e645ab1f54e3d8cf6d39c1bbd0b3df",
+            "fdc.log": "615d570e53fdb289d2c095335044b4967f149989650450c31fc9b0d6d9a234af",
+            "final-RTC.bin": "8922fc006f8931a844c609d9fe7d2f39f655a639fb678041ca7d0a50649d40c6",
+            "final-FDC.bin": "6117302cb8437489b35c2564d2b94ebe5638a3c78f0a13c30b0512fa3f564ca2",
+            "final-MACH.bin": "30c0861bd66ed102a6bcf61070e5f244838304e3e0cc88aebaf2f4c37b6427ec",
+            "swis.log": "d07de2aadcf80ffe486c2a71bd27421ea95c9e0ba34c791d0c26c6cf642cd04d",
+            "final-CPU.bin": "2b4fda11bb5f4aff889df2210a426cc6fe3f7ff20afa41519fd894bad358bd9f",
+            "final-MEMC.bin": "1be2862e81361d5cc9ddf5c7e7dd0b0cd1ae9e08c1f4da95129cf15ccf0e08f1"
+          }
+        },
+        "EA-id-crc": {
+          "calls": 5,
+          "fdc_commands": 102,
+          "fiqs": 51428,
+          "errors": [
+            {
+              "number": 402720967,
+              "message": "Disc error 18 at :0/00002800"
+            }
+          ],
+          "evidence_hashes": {
+            "final-SCHD.bin": "da9307e5d04d4f9be7ae813a66e7edb305029d906be6befc261ace1ea5df5847",
+            "final-VIDC.bin": "b4f95ae644455edc6d4f282623ad772c83e2518d856003642473718f2f42bb93",
+            "result.json": "634d6aff591acb533c270823d24e2b544e96507c165aa3b43edc34bd05ea9420",
+            "recovered.bin": "d6621dfe143b89fb5f4ee1e22c0b6c16cdd4285999502c8eb746e7de93974e8b",
+            "final-HDC.bin": "7c7f15ed27de2f3a51d1da31356b27ea1be15370faa3caab96606e5390ebbd0e",
+            "final-KBD.bin": "099bb16aee7a1ea868b69fb7ca3d67b0acf4160808c7745eb64cd754ef3f1b03",
+            "final-IOC.bin": "883ee0dd2d12ac265964a8b96ae6abdc8609c244a8d4e2e206ab71bdc7dbf03f",
+            "fdc.log": "0dfe0a4627d2363954f7f6f58c234af4efa59013060eb588fda96a1477e4c8a1",
+            "final-RTC.bin": "8922fc006f8931a844c609d9fe7d2f39f655a639fb678041ca7d0a50649d40c6",
+            "final-FDC.bin": "15f63e68f86133b6cb0737cb6ecdd673d20fde19b9f35bdea1c2dded0e6817ca",
+            "final-MACH.bin": "e7f0a7e9889966833e137dda52b969c2de9353812498c710ba1c353b58ff8bf0",
+            "swis.log": "129aa9160fd11bee45238a3b22d7b11572e4605cafd174188c86afa8d7ae711d",
+            "final-CPU.bin": "f51bb07d43c30e1831d1b8fced1b0c1a2c0867859b94772bba3dd252b9857c8d",
+            "final-MEMC.bin": "d55d906df5f79fd12464adb7022a26278ce05bf5301ddac492976432807e9049"
+          }
+        },
+        "EA-missing": {
+          "calls": 5,
+          "fdc_commands": 102,
+          "fiqs": 51428,
+          "errors": [
+            {
+              "number": 268503239,
+              "message": "Disc error 10 at :0/00002800"
+            }
+          ],
+          "evidence_hashes": {
+            "final-SCHD.bin": "da9307e5d04d4f9be7ae813a66e7edb305029d906be6befc261ace1ea5df5847",
+            "final-VIDC.bin": "b4f95ae644455edc6d4f282623ad772c83e2518d856003642473718f2f42bb93",
+            "result.json": "103a16d157435593c024bd660aa6729b37b073f6a5543bcaa68a585f7d693006",
+            "recovered.bin": "d6621dfe143b89fb5f4ee1e22c0b6c16cdd4285999502c8eb746e7de93974e8b",
+            "final-HDC.bin": "7c7f15ed27de2f3a51d1da31356b27ea1be15370faa3caab96606e5390ebbd0e",
+            "final-KBD.bin": "099bb16aee7a1ea868b69fb7ca3d67b0acf4160808c7745eb64cd754ef3f1b03",
+            "final-IOC.bin": "883ee0dd2d12ac265964a8b96ae6abdc8609c244a8d4e2e206ab71bdc7dbf03f",
+            "fdc.log": "11a5d946b92009cba4327eb3b9fdb1e46745cf2d9fa4f7d845176c8d037e48e6",
+            "final-RTC.bin": "8922fc006f8931a844c609d9fe7d2f39f655a639fb678041ca7d0a50649d40c6",
+            "final-FDC.bin": "15f63e68f86133b6cb0737cb6ecdd673d20fde19b9f35bdea1c2dded0e6817ca",
+            "final-MACH.bin": "e7f0a7e9889966833e137dda52b969c2de9353812498c710ba1c353b58ff8bf0",
+            "swis.log": "129aa9160fd11bee45238a3b22d7b11572e4605cafd174188c86afa8d7ae711d",
+            "final-CPU.bin": "f51bb07d43c30e1831d1b8fced1b0c1a2c0867859b94772bba3dd252b9857c8d",
+            "final-MEMC.bin": "3e2ad2f76dc96cef251f723a91dff0291166fbd2af8bc09db0266ee809aceba3"
+          }
+        },
+        "empty-drive": {
+          "calls": 5,
+          "fdc_commands": 14,
+          "fiqs": 4151,
+          "errors": [
+            {
+              "number": 67795,
+              "message": "The disc drive is empty"
+            }
+          ],
+          "evidence_hashes": {
+            "final-SCHD.bin": "2c002c05eceb9ec3a9d512d8374e0f35587b825183e01f7056a72040651eb79d",
+            "final-VIDC.bin": "dd4af36393695be3281289a64aa021cd16ce723b266324823dfff47a07b31b8e",
+            "result.json": "0b5ae487e43be51bb40cdc22586c8e8e04865c3c01952cccca04db292381710c",
+            "final-HDC.bin": "7c7f15ed27de2f3a51d1da31356b27ea1be15370faa3caab96606e5390ebbd0e",
+            "final-KBD.bin": "099bb16aee7a1ea868b69fb7ca3d67b0acf4160808c7745eb64cd754ef3f1b03",
+            "final-IOC.bin": "3b7a12417b5e786ba8e05e880307b09e8ec4eb10cc86c7fd4306b0831e12f532",
+            "fdc.log": "2de84e6aefdc5c2cd2baddede40f1431d7840f352c49d8a6ed2e5270a7c2b601",
+            "final-RTC.bin": "8922fc006f8931a844c609d9fe7d2f39f655a639fb678041ca7d0a50649d40c6",
+            "final-FDC.bin": "0fd5ef924930fa54b8b4163e9c9b7823188b8c8b645fd77c37a76a0b97b2de31",
+            "final-MACH.bin": "d55e691a2eb063a56ef786230d4a0ec66b120da61fb2aeb75319389688f56621",
+            "swis.log": "3ac31c016f4b5c22254ff3ba1dd2fe7da662433055ebb6abea25bd19cda44438",
+            "final-CPU.bin": "c3ea7098d613e3e1ea61af2dbf546b680dab1856b833a247d27c4887a85c50e7",
+            "final-MEMC.bin": "c2dec79d66cb109af1d225b9e7f077afe115f036cc44bb8161db37156d4c7054"
+          }
+        },
+        "media-change": {
+          "calls": 4,
+          "fdc_commands": 26,
+          "fiqs": 8302,
+          "errors": [],
+          "evidence_hashes": {
+            "final-SCHD.bin": "c2eb739bb899dc86bcc83971828ddbf99e1a04fba6a1be773617c38721521345",
+            "final-VIDC.bin": "ff60abca70247ea24b5efcedf730ebdeeaa7eadff144396b38c95b81995d158f",
+            "disc-B-read.bin": "d7e2f4c3e72ed08b62854a038647d5eba2859368f1dd274aeace5bce61852d51",
+            "result.json": "92c504318889b4f9360122043f4902cbad4e189718f96e44a03f7bd64a6bd9df",
+            "final-HDC.bin": "7c7f15ed27de2f3a51d1da31356b27ea1be15370faa3caab96606e5390ebbd0e",
+            "final-KBD.bin": "099bb16aee7a1ea868b69fb7ca3d67b0acf4160808c7745eb64cd754ef3f1b03",
+            "final-IOC.bin": "2abc50fe4bb83f530c91f1f30065751696de6de272e65fc49fee6df416d41360",
+            "fdc.log": "d082fd7edb43b5be63c291d0ac96b3db8e86a9ce83a95e3ecdc9697ff76a50dc",
+            "final-RTC.bin": "8922fc006f8931a844c609d9fe7d2f39f655a639fb678041ca7d0a50649d40c6",
+            "final-FDC.bin": "37c75c30ee1050a534d68c454c197714b7e2e5d9053b3749af7e53a1f7b4325b",
+            "final-MACH.bin": "634975a7725fa86dd0a3cc9c421482b319bf5109fbc1ce1c0258268c8d0f9866",
+            "swis.log": "b7c74ca53a42ba8e13b18417bd93dc044971f83a726c8166abcc6826f4429acf",
+            "final-CPU.bin": "08ce0c6ef453adc35f048e5a367d20e6961837a703436a52e46bfdcdb6f0798e",
+            "final-MEMC.bin": "6d2c3af9d0529abd6f0a4f740db3774d39d903379457570183954897d3f3d018"
+          }
+        }
+      }
+    },
+    {
+      "cold_run": 3,
+      "scenarios": {
+        "DA": {
+          "calls": 118,
+          "fdc_commands": 145,
+          "fiqs": 122043,
+          "errors": [
+            {
+              "number": 222,
+              "message": "Handle is either illegal or has been closed"
+            },
+            {
+              "number": 222,
+              "message": "Handle is either illegal or has been closed"
+            },
+            {
+              "number": 222,
+              "message": "Handle is either illegal or has been closed"
+            },
+            {
+              "number": 222,
+              "message": "Handle is either illegal or has been closed"
+            },
+            {
+              "number": 222,
+              "message": "Handle is either illegal or has been closed"
+            },
+            {
+              "number": 222,
+              "message": "Handle is either illegal or has been closed"
+            },
+            {
+              "number": 222,
+              "message": "Handle is either illegal or has been closed"
+            },
+            {
+              "number": 214,
+              "message": "File 'ADFS::0.$.Absent' not found"
+            }
+          ],
+          "evidence_hashes": {
+            "final-SCHD.bin": "10e4b24a0ddcc413268caf8d2ae884386a4e9f65bb2718e566f551e5f0c79c63",
+            "load-Docs.Sibling.bin": "9586dd2e01bdf103e9bad59f87e3013a683cce42dd4f243447791d5d8e0abdaa",
+            "final-VIDC.bin": "90b13080abddd05991b2d02a3180c38eb9d2915530342d172fb2b56321b72378",
+            "result.json": "a137c81d2ad15bc8feeb17e8764198b91650811f93a87b887f585e3df01515c9",
+            "load-Zero.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "application-data.bin": "d6621dfe143b89fb5f4ee1e22c0b6c16cdd4285999502c8eb746e7de93974e8b",
+            "load-Docs.Deep.Leaf.bin": "3057bd31d5db826791cdc3e3368120bcd40021c921963c229fed37b338383fa0",
+            "load-RootText.bin": "34c6b2c0431217d77eb262b9bf664f323111a320bf1b478d783b6cc5afda4ae4",
+            "read-Hello.bin": "17bb9995cf7d2fc50bcb3a1a08e26f8fa4c3a67b1db99b8da8bf6dc6a75efdd4",
+            "final-HDC.bin": "7c7f15ed27de2f3a51d1da31356b27ea1be15370faa3caab96606e5390ebbd0e",
+            "final-KBD.bin": "099bb16aee7a1ea868b69fb7ca3d67b0acf4160808c7745eb64cd754ef3f1b03",
+            "load-Hello.bin": "17bb9995cf7d2fc50bcb3a1a08e26f8fa4c3a67b1db99b8da8bf6dc6a75efdd4",
+            "final-IOC.bin": "a6f6c6ae412dcf38b15b3a107da9c5aa94fb8c93b66d808b8f7564fe677efc01",
+            "load-CheckFile.bin": "573c07041b1a19065235f5427d25076fb2ae9b4999189f561bea0017155ef016",
+            "read-Docs.Fragment.bin": "d6621dfe143b89fb5f4ee1e22c0b6c16cdd4285999502c8eb746e7de93974e8b",
+            "fdc.log": "3c01e01ad4083ed2e387883ccc5076b1382cad4badd990b66a7baacc7be93f60",
+            "final-RTC.bin": "8922fc006f8931a844c609d9fe7d2f39f655a639fb678041ca7d0a50649d40c6",
+            "final-FDC.bin": "c7225cf6ab2dd8be6ccd6c7d9e044fe1261ecb6438a7dd6939ca71a7fb492dd2",
+            "read-RootText.bin": "34c6b2c0431217d77eb262b9bf664f323111a320bf1b478d783b6cc5afda4ae4",
+            "final-MACH.bin": "fa8459afcd959406292a974220d6f1f026092c390bb562e81fbdfc4f9abd7826",
+            "read-CheckFile.bin": "573c07041b1a19065235f5427d25076fb2ae9b4999189f561bea0017155ef016",
+            "swis.log": "b0cbc1d97b4f1d4f82bb85a8188cdb78449f5ab2024524609b24bb37a9e39b24",
+            "read-Docs.Deep.Leaf.bin": "3057bd31d5db826791cdc3e3368120bcd40021c921963c229fed37b338383fa0",
+            "final-CPU.bin": "7757bcf8e8026104646c0b90538c71c0f372cd70253e2fc76c109c135d85c0f6",
+            "load-Docs.Fragment.bin": "d6621dfe143b89fb5f4ee1e22c0b6c16cdd4285999502c8eb746e7de93974e8b",
+            "read-Docs.Sibling.bin": "9586dd2e01bdf103e9bad59f87e3013a683cce42dd4f243447791d5d8e0abdaa",
+            "read-Zero.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "final-MEMC.bin": "0bba9e742ad542b2dc6c84808ae7f8fcfb505c624171684bdec02f7adc8dda15"
+          }
+        },
+        "DA-bad-directory": {
+          "calls": 5,
+          "fdc_commands": 75,
+          "fiqs": 48329,
+          "errors": [
+            {
+              "number": 67752,
+              "message": "Broken directory"
+            }
+          ],
+          "evidence_hashes": {
+            "final-SCHD.bin": "df0d5ad50b33374ac4c4817767024d1557b22bbc17610bc5980f59ea3285f35f",
+            "final-VIDC.bin": "8fb918b38b472b8e3959f834b94db9827ee386d7119385f7730b59bb992be060",
+            "result.json": "6291a36c81a69c7da4e310d2cbba6133ff47422f44f7c8768471274f42ec3703",
+            "recovered.bin": "d6621dfe143b89fb5f4ee1e22c0b6c16cdd4285999502c8eb746e7de93974e8b",
+            "final-HDC.bin": "7c7f15ed27de2f3a51d1da31356b27ea1be15370faa3caab96606e5390ebbd0e",
+            "final-KBD.bin": "099bb16aee7a1ea868b69fb7ca3d67b0acf4160808c7745eb64cd754ef3f1b03",
+            "final-IOC.bin": "b414004884d8f8b0a6c75eec351f2949633e0188700db348b012e56fe3f518a2",
+            "fdc.log": "a762991f81f75c59af72e440d160fd36f3c04d302990c196bbb5c98ea3a5b6e4",
+            "final-RTC.bin": "8922fc006f8931a844c609d9fe7d2f39f655a639fb678041ca7d0a50649d40c6",
+            "final-FDC.bin": "e8fd7591132669a7ad1a0779e42964fe38fb68b9e9fe4c3591d57733e142cf23",
+            "final-MACH.bin": "b5839492e98b67237837284122e7ec1b3682e4cf27193ec1e5920238cc758581",
+            "swis.log": "2dbafa99d1bb34d5fe4b53f279dfcf2966752b89fa5fea5da6bb2b5f6554d932",
+            "final-CPU.bin": "5db47e47aaecd0bc404c541d986226618b8ca4e0acd855bf1ba9571c413c10fb",
+            "final-MEMC.bin": "386e4a768e65610c7977332386c9ada4ef0c823511a35496861d2ba818208a07"
+          }
+        },
+        "DA-data-crc": {
+          "calls": 5,
+          "fdc_commands": 96,
+          "fiqs": 59614,
+          "errors": [
+            {
+              "number": 134285511,
+              "message": "Disc error 08 at :0/00002400"
+            }
+          ],
+          "evidence_hashes": {
+            "final-SCHD.bin": "bec8db3c59e7d4cfcb03af78999bf57c6c3a35fc6c33134c084833bf6bca5e72",
+            "final-VIDC.bin": "d84c1886418315e17598893e66397fef55a101b92c54536287e07a35da464f79",
+            "result.json": "4c487ed87762e15b37fcbb5d57c5dc6a96378f4f9b39bcef9cece465e22d702d",
+            "recovered.bin": "d6621dfe143b89fb5f4ee1e22c0b6c16cdd4285999502c8eb746e7de93974e8b",
+            "final-HDC.bin": "7c7f15ed27de2f3a51d1da31356b27ea1be15370faa3caab96606e5390ebbd0e",
+            "final-KBD.bin": "099bb16aee7a1ea868b69fb7ca3d67b0acf4160808c7745eb64cd754ef3f1b03",
+            "final-IOC.bin": "12b32823ae3aec608aa7ed5de69eb1aad514ba545dac18aa13b6edbb9a934076",
+            "fdc.log": "f2f7275104a409feef8cb73bce43d3360babe5f9d5a006dec5ca59dd6c8f86f8",
+            "final-RTC.bin": "8922fc006f8931a844c609d9fe7d2f39f655a639fb678041ca7d0a50649d40c6",
+            "final-FDC.bin": "7039e64feb6de0ed49a44985524a9fe35cc068e12168a4d2060fbe6d1f20056c",
+            "final-MACH.bin": "904ab7e72d0d369d4229c719e561bd8bcb2bdcdebd0f68372f7ed41d395817b1",
+            "swis.log": "23a29ebf37d3cedc1cb3986de59620a9879232d59c47525a6e0df9c6cb65911c",
+            "final-CPU.bin": "9ef8673348e1878f31206dc1407e5437c819a4cf8e3a534b1ccf44041463d580",
+            "final-MEMC.bin": "9b4f35f451450807197e4babf33d39b4fd89e9e4b6692c0e71a8bd40c4e3ab4c"
+          }
+        },
+        "DA-id-crc": {
+          "calls": 5,
+          "fdc_commands": 96,
+          "fiqs": 50398,
+          "errors": [
+            {
+              "number": 402720967,
+              "message": "Disc error 18 at :0/00002400"
+            }
+          ],
+          "evidence_hashes": {
+            "final-SCHD.bin": "8bd853f5acb0f0aa1fa0f319514ef9b1b3201807404c4f3763cf200d93b2e9ca",
+            "final-VIDC.bin": "c9192b5b0a3e84ce12b904ce9b2ef7993ad75c66a505af52ceada7e2e7633238",
+            "result.json": "fd1f765c777767809889cd732f5c0f327e2771ebffd12d12ef58334d7f16db63",
+            "recovered.bin": "d6621dfe143b89fb5f4ee1e22c0b6c16cdd4285999502c8eb746e7de93974e8b",
+            "final-HDC.bin": "7c7f15ed27de2f3a51d1da31356b27ea1be15370faa3caab96606e5390ebbd0e",
+            "final-KBD.bin": "099bb16aee7a1ea868b69fb7ca3d67b0acf4160808c7745eb64cd754ef3f1b03",
+            "final-IOC.bin": "ef0ff94d71502c99158fe332f2423990aa23dacd4a83af6604050415cfd9c7d3",
+            "fdc.log": "b223179ce37eaa10908f2b27e723ef2d8203328bf6f1708a3fe5a87e17fc6db8",
+            "final-RTC.bin": "8922fc006f8931a844c609d9fe7d2f39f655a639fb678041ca7d0a50649d40c6",
+            "final-FDC.bin": "7039e64feb6de0ed49a44985524a9fe35cc068e12168a4d2060fbe6d1f20056c",
+            "final-MACH.bin": "ed47697216942054b44bc4cd0f7651e0bd635e984fd323883ceb1c7164de1eec",
+            "swis.log": "a0f9e7bb453da1918220aa051c67f06fe166ce45e994bb95da0c4d87e0fa46c9",
+            "final-CPU.bin": "6a79ff93d327b681133e42836ecc957956568db28bfe0f5e87bee1db72401e64",
+            "final-MEMC.bin": "608859d246ab9d3d3079351460544dad5374d97e4b6d586dcf7d3069411f53d9"
+          }
+        },
+        "DA-missing": {
+          "calls": 5,
+          "fdc_commands": 96,
+          "fiqs": 50398,
+          "errors": [
+            {
+              "number": 268503239,
+              "message": "Disc error 10 at :0/00002400"
+            }
+          ],
+          "evidence_hashes": {
+            "final-SCHD.bin": "8bd853f5acb0f0aa1fa0f319514ef9b1b3201807404c4f3763cf200d93b2e9ca",
+            "final-VIDC.bin": "c9192b5b0a3e84ce12b904ce9b2ef7993ad75c66a505af52ceada7e2e7633238",
+            "result.json": "53e24d99825cb7218731d0b6208b14710222df4bd9fb51d5425f36a7bc44b1b7",
+            "recovered.bin": "d6621dfe143b89fb5f4ee1e22c0b6c16cdd4285999502c8eb746e7de93974e8b",
+            "final-HDC.bin": "7c7f15ed27de2f3a51d1da31356b27ea1be15370faa3caab96606e5390ebbd0e",
+            "final-KBD.bin": "099bb16aee7a1ea868b69fb7ca3d67b0acf4160808c7745eb64cd754ef3f1b03",
+            "final-IOC.bin": "ef0ff94d71502c99158fe332f2423990aa23dacd4a83af6604050415cfd9c7d3",
+            "fdc.log": "93b9c9dd1b7bc3a6a419c91b2aee7af918711812b40febc7a12ba18de7d5e176",
+            "final-RTC.bin": "8922fc006f8931a844c609d9fe7d2f39f655a639fb678041ca7d0a50649d40c6",
+            "final-FDC.bin": "7039e64feb6de0ed49a44985524a9fe35cc068e12168a4d2060fbe6d1f20056c",
+            "final-MACH.bin": "ed47697216942054b44bc4cd0f7651e0bd635e984fd323883ceb1c7164de1eec",
+            "swis.log": "a0f9e7bb453da1918220aa051c67f06fe166ce45e994bb95da0c4d87e0fa46c9",
+            "final-CPU.bin": "6a79ff93d327b681133e42836ecc957956568db28bfe0f5e87bee1db72401e64",
+            "final-MEMC.bin": "8f079a5b3364577b411a95911602054d298b865f98571a7cbf0b39f89a8e6d39"
+          }
+        },
+        "EA": {
+          "calls": 118,
+          "fdc_commands": 158,
+          "fiqs": 130248,
+          "errors": [
+            {
+              "number": 222,
+              "message": "Handle is either illegal or has been closed"
+            },
+            {
+              "number": 222,
+              "message": "Handle is either illegal or has been closed"
+            },
+            {
+              "number": 222,
+              "message": "Handle is either illegal or has been closed"
+            },
+            {
+              "number": 222,
+              "message": "Handle is either illegal or has been closed"
+            },
+            {
+              "number": 222,
+              "message": "Handle is either illegal or has been closed"
+            },
+            {
+              "number": 222,
+              "message": "Handle is either illegal or has been closed"
+            },
+            {
+              "number": 222,
+              "message": "Handle is either illegal or has been closed"
+            },
+            {
+              "number": 214,
+              "message": "File 'ADFS::0.$.Absent' not found"
+            }
+          ],
+          "evidence_hashes": {
+            "final-SCHD.bin": "6d390a96e8afaad2ef2f0f38ef7bdad35aa5f554aafc4ff3e12d22cc73388c1e",
+            "load-Docs.Sibling.bin": "9586dd2e01bdf103e9bad59f87e3013a683cce42dd4f243447791d5d8e0abdaa",
+            "final-VIDC.bin": "8ad77e374bf8b2f390f254e871deea50bc627b9481014c34a22e4cc55fc34470",
+            "result.json": "7ed2f09e281293d22bd091b818badf281c5f77e40f7ed5dbe9cd0451b40d0128",
+            "load-Zero.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "application-data.bin": "d6621dfe143b89fb5f4ee1e22c0b6c16cdd4285999502c8eb746e7de93974e8b",
+            "load-Docs.Deep.Leaf.bin": "3057bd31d5db826791cdc3e3368120bcd40021c921963c229fed37b338383fa0",
+            "load-RootText.bin": "34c6b2c0431217d77eb262b9bf664f323111a320bf1b478d783b6cc5afda4ae4",
+            "read-Hello.bin": "17bb9995cf7d2fc50bcb3a1a08e26f8fa4c3a67b1db99b8da8bf6dc6a75efdd4",
+            "final-HDC.bin": "7c7f15ed27de2f3a51d1da31356b27ea1be15370faa3caab96606e5390ebbd0e",
+            "final-KBD.bin": "099bb16aee7a1ea868b69fb7ca3d67b0acf4160808c7745eb64cd754ef3f1b03",
+            "load-Hello.bin": "17bb9995cf7d2fc50bcb3a1a08e26f8fa4c3a67b1db99b8da8bf6dc6a75efdd4",
+            "final-IOC.bin": "8cdf0ffa52ea7e7b9bd27f86341d3110be242f670dc5d02f52d31d6731731958",
+            "load-CheckFile.bin": "573c07041b1a19065235f5427d25076fb2ae9b4999189f561bea0017155ef016",
+            "read-Docs.Fragment.bin": "d6621dfe143b89fb5f4ee1e22c0b6c16cdd4285999502c8eb746e7de93974e8b",
+            "fdc.log": "6fb769aef504eca8a74ff8fed867f7777c7272a8dd0a368ffab9a0f9f330c2d8",
+            "final-RTC.bin": "8922fc006f8931a844c609d9fe7d2f39f655a639fb678041ca7d0a50649d40c6",
+            "final-FDC.bin": "4c5dcd41da95fba1eae37c32ebc9d313fadf6a4deaf9854b5d497839a3006f84",
+            "read-RootText.bin": "34c6b2c0431217d77eb262b9bf664f323111a320bf1b478d783b6cc5afda4ae4",
+            "final-MACH.bin": "107add9d890f2f225a063e4aaa4b590fd7cc6ed3487fd21c360ab846a415dd53",
+            "read-CheckFile.bin": "573c07041b1a19065235f5427d25076fb2ae9b4999189f561bea0017155ef016",
+            "swis.log": "000ed76bbdcbc7204a09360d4e23ae7adf014b25794436d113ca61bfca8679ee",
+            "read-Docs.Deep.Leaf.bin": "3057bd31d5db826791cdc3e3368120bcd40021c921963c229fed37b338383fa0",
+            "final-CPU.bin": "585412376e62e8ec764e2e702f7fde32c715b6cf1bd5deec05401c18e103375e",
+            "load-Docs.Fragment.bin": "d6621dfe143b89fb5f4ee1e22c0b6c16cdd4285999502c8eb746e7de93974e8b",
+            "read-Docs.Sibling.bin": "9586dd2e01bdf103e9bad59f87e3013a683cce42dd4f243447791d5d8e0abdaa",
+            "read-Zero.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "final-MEMC.bin": "720c9dbd465868304fe942c899e5faed5979bcf8a4ae5ecb163703d83a9a2611"
+          }
+        },
+        "EA-bad-directory": {
+          "calls": 5,
+          "fdc_commands": 76,
+          "fiqs": 48330,
+          "errors": [
+            {
+              "number": 67752,
+              "message": "Broken directory"
+            }
+          ],
+          "evidence_hashes": {
+            "final-SCHD.bin": "64259eb29bce4d6ef96c3156e0427defdb03d58280cf85ba57ab5d47bb1b789e",
+            "final-VIDC.bin": "f313ee1f83590f2158c29d3f569eccbf633e56abb1805df6c1d8133232e25ee7",
+            "result.json": "f4f96d015556015503dfa4beff5551b92c019975b6e0d00dc456670a6069ac7e",
+            "recovered.bin": "d6621dfe143b89fb5f4ee1e22c0b6c16cdd4285999502c8eb746e7de93974e8b",
+            "final-HDC.bin": "7c7f15ed27de2f3a51d1da31356b27ea1be15370faa3caab96606e5390ebbd0e",
+            "final-KBD.bin": "099bb16aee7a1ea868b69fb7ca3d67b0acf4160808c7745eb64cd754ef3f1b03",
+            "final-IOC.bin": "6a611b6be887a4648c94f7b327911697cdedb9e4024b9a9ab98d8b685695d67e",
+            "fdc.log": "8b932a256640376bac7fcb89c503373becc9c716055b925ad29c0ca7363195ec",
+            "final-RTC.bin": "8922fc006f8931a844c609d9fe7d2f39f655a639fb678041ca7d0a50649d40c6",
+            "final-FDC.bin": "1b721bc9f7b681358eeaf471536acd1a33aa8f17f0dda4e6780bc50ff52249a8",
+            "final-MACH.bin": "1610c28831860a382fdbceebc12faa30ea67f252ee2ab5a2cabdc11d030f641b",
+            "swis.log": "fbd8a7deb2635cfaa5b77c20cd74b2911ac10c48227026d0f05bbaabf1d7f1be",
+            "final-CPU.bin": "64275eca93f55fbe0cf03f36752cce78a9b7fdc331db4fb7fc18d06ae11c7f9e",
+            "final-MEMC.bin": "18494cac6098f47b340d45fa766d3a41767cb3eca28c12412bcfc08fbcf0e0e2"
+          }
+        },
+        "EA-bad-maps": {
+          "calls": 5,
+          "fdc_commands": 76,
+          "fiqs": 48330,
+          "errors": [
+            {
+              "number": 214,
+              "message": "File 'ADFS::0.$.Docs.Fragment' not found"
+            }
+          ],
+          "evidence_hashes": {
+            "final-SCHD.bin": "581cda5ad702495cce3689e14fcf33d6002a37a00414e65c2a1b32eedf94f0c0",
+            "final-VIDC.bin": "9f85e4080ec57746d8d6976583d6412ff01a0d5366679b261039776a2e963ab1",
+            "result.json": "ac552cd219d4b4ed830cc0c76c70fea3ed41a4431661a73d475c2c22d6432faa",
+            "recovered.bin": "d6621dfe143b89fb5f4ee1e22c0b6c16cdd4285999502c8eb746e7de93974e8b",
+            "final-HDC.bin": "7c7f15ed27de2f3a51d1da31356b27ea1be15370faa3caab96606e5390ebbd0e",
+            "final-KBD.bin": "099bb16aee7a1ea868b69fb7ca3d67b0acf4160808c7745eb64cd754ef3f1b03",
+            "final-IOC.bin": "6a611b6be887a4648c94f7b327911697cdedb9e4024b9a9ab98d8b685695d67e",
+            "fdc.log": "c91b3358bbcb774d3feb51d8ccf172a3c591f205a5997f7d9004e5349d91823d",
+            "final-RTC.bin": "8922fc006f8931a844c609d9fe7d2f39f655a639fb678041ca7d0a50649d40c6",
+            "final-FDC.bin": "1b721bc9f7b681358eeaf471536acd1a33aa8f17f0dda4e6780bc50ff52249a8",
+            "final-MACH.bin": "4f1141bbf7c021e401db77986a8d74b3e432e6be94deee5c8aaacc13e050eccf",
+            "swis.log": "93af6d80e08514783156cb158594695966e2470d4fd27cde46a1149700987cf3",
+            "final-CPU.bin": "3ad84bc5781bdd7b0e34b3a01881218cc15aef9327cc5c8028e95c46e506de63",
+            "final-MEMC.bin": "8629ad1c658ad805376d53e7c6eead9013dd2ac6c843b1879c536706fcd9acfa"
+          }
+        },
+        "EA-data-crc": {
+          "calls": 5,
+          "fdc_commands": 102,
+          "fiqs": 60644,
+          "errors": [
+            {
+              "number": 134285511,
+              "message": "Disc error 08 at :0/00002800"
+            }
+          ],
+          "evidence_hashes": {
+            "final-SCHD.bin": "c12d32a8544c0b258e1f5a9dc2ae253dd8192c32c636c10b32a330d5434df765",
+            "final-VIDC.bin": "f34e1f13b2266861a1f412fff82e729ea5a5e230edcd8d8c3f9f4c21d5b7adb0",
+            "result.json": "caae83cf3416c550d0854c6f0899daa0c8502027868ed2522cb88ff7b7eaae1a",
+            "recovered.bin": "d6621dfe143b89fb5f4ee1e22c0b6c16cdd4285999502c8eb746e7de93974e8b",
+            "final-HDC.bin": "7c7f15ed27de2f3a51d1da31356b27ea1be15370faa3caab96606e5390ebbd0e",
+            "final-KBD.bin": "099bb16aee7a1ea868b69fb7ca3d67b0acf4160808c7745eb64cd754ef3f1b03",
+            "final-IOC.bin": "55f26645ce586167f2c85ea853e7ff5d5f13f1abf7b2b2467ab87b7c60862709",
+            "fdc.log": "eef2a6bf7015281f63ffade0a6af4d161d19a4afe9b20fbc66d251c355f11578",
+            "final-RTC.bin": "8922fc006f8931a844c609d9fe7d2f39f655a639fb678041ca7d0a50649d40c6",
+            "final-FDC.bin": "15f63e68f86133b6cb0737cb6ecdd673d20fde19b9f35bdea1c2dded0e6817ca",
+            "final-MACH.bin": "6bbc3da9a531b9417e14254f387a592e8f810338f5cfb0af731efae554c34cc0",
+            "swis.log": "812914cfd0db741b22a9048e2452b281b7c22ae78efb8efc6577182ed28d0fdf",
+            "final-CPU.bin": "7b18896e97da11fd85b5e426d0cf785180151631ae899cb8e106ee73f29ff1cc",
+            "final-MEMC.bin": "94a5967afee80a72bfd088d2a5970df659b463c6a6a0d63db2e49a7b3ddd1def"
+          }
+        },
+        "EA-first-map-bad": {
+          "calls": 5,
+          "fdc_commands": 122,
+          "fiqs": 90360,
+          "errors": [],
+          "evidence_hashes": {
+            "final-SCHD.bin": "f5b2dd5c392f11fea5f542f8b2bc1e5f67c2b8b1713d5ff60ecb337ffa547f04",
+            "final-VIDC.bin": "97da3d7b7d9d0c6ba7fc323b916f5095fe634e8f03ae84a5bbd5b325b84f0673",
+            "result.json": "3bc9e3451c25959dd028852d6e1a5d2ce583ce46b28e4c61313020979b856a75",
+            "recovered.bin": "d6621dfe143b89fb5f4ee1e22c0b6c16cdd4285999502c8eb746e7de93974e8b",
+            "final-HDC.bin": "7c7f15ed27de2f3a51d1da31356b27ea1be15370faa3caab96606e5390ebbd0e",
+            "final-KBD.bin": "099bb16aee7a1ea868b69fb7ca3d67b0acf4160808c7745eb64cd754ef3f1b03",
+            "final-IOC.bin": "1264080d29bbb9f80149903deb37b05672e645ab1f54e3d8cf6d39c1bbd0b3df",
+            "fdc.log": "615d570e53fdb289d2c095335044b4967f149989650450c31fc9b0d6d9a234af",
+            "final-RTC.bin": "8922fc006f8931a844c609d9fe7d2f39f655a639fb678041ca7d0a50649d40c6",
+            "final-FDC.bin": "6117302cb8437489b35c2564d2b94ebe5638a3c78f0a13c30b0512fa3f564ca2",
+            "final-MACH.bin": "30c0861bd66ed102a6bcf61070e5f244838304e3e0cc88aebaf2f4c37b6427ec",
+            "swis.log": "d07de2aadcf80ffe486c2a71bd27421ea95c9e0ba34c791d0c26c6cf642cd04d",
+            "final-CPU.bin": "2b4fda11bb5f4aff889df2210a426cc6fe3f7ff20afa41519fd894bad358bd9f",
+            "final-MEMC.bin": "1be2862e81361d5cc9ddf5c7e7dd0b0cd1ae9e08c1f4da95129cf15ccf0e08f1"
+          }
+        },
+        "EA-id-crc": {
+          "calls": 5,
+          "fdc_commands": 102,
+          "fiqs": 51428,
+          "errors": [
+            {
+              "number": 402720967,
+              "message": "Disc error 18 at :0/00002800"
+            }
+          ],
+          "evidence_hashes": {
+            "final-SCHD.bin": "da9307e5d04d4f9be7ae813a66e7edb305029d906be6befc261ace1ea5df5847",
+            "final-VIDC.bin": "b4f95ae644455edc6d4f282623ad772c83e2518d856003642473718f2f42bb93",
+            "result.json": "634d6aff591acb533c270823d24e2b544e96507c165aa3b43edc34bd05ea9420",
+            "recovered.bin": "d6621dfe143b89fb5f4ee1e22c0b6c16cdd4285999502c8eb746e7de93974e8b",
+            "final-HDC.bin": "7c7f15ed27de2f3a51d1da31356b27ea1be15370faa3caab96606e5390ebbd0e",
+            "final-KBD.bin": "099bb16aee7a1ea868b69fb7ca3d67b0acf4160808c7745eb64cd754ef3f1b03",
+            "final-IOC.bin": "883ee0dd2d12ac265964a8b96ae6abdc8609c244a8d4e2e206ab71bdc7dbf03f",
+            "fdc.log": "0dfe0a4627d2363954f7f6f58c234af4efa59013060eb588fda96a1477e4c8a1",
+            "final-RTC.bin": "8922fc006f8931a844c609d9fe7d2f39f655a639fb678041ca7d0a50649d40c6",
+            "final-FDC.bin": "15f63e68f86133b6cb0737cb6ecdd673d20fde19b9f35bdea1c2dded0e6817ca",
+            "final-MACH.bin": "e7f0a7e9889966833e137dda52b969c2de9353812498c710ba1c353b58ff8bf0",
+            "swis.log": "129aa9160fd11bee45238a3b22d7b11572e4605cafd174188c86afa8d7ae711d",
+            "final-CPU.bin": "f51bb07d43c30e1831d1b8fced1b0c1a2c0867859b94772bba3dd252b9857c8d",
+            "final-MEMC.bin": "d55d906df5f79fd12464adb7022a26278ce05bf5301ddac492976432807e9049"
+          }
+        },
+        "EA-missing": {
+          "calls": 5,
+          "fdc_commands": 102,
+          "fiqs": 51428,
+          "errors": [
+            {
+              "number": 268503239,
+              "message": "Disc error 10 at :0/00002800"
+            }
+          ],
+          "evidence_hashes": {
+            "final-SCHD.bin": "da9307e5d04d4f9be7ae813a66e7edb305029d906be6befc261ace1ea5df5847",
+            "final-VIDC.bin": "b4f95ae644455edc6d4f282623ad772c83e2518d856003642473718f2f42bb93",
+            "result.json": "103a16d157435593c024bd660aa6729b37b073f6a5543bcaa68a585f7d693006",
+            "recovered.bin": "d6621dfe143b89fb5f4ee1e22c0b6c16cdd4285999502c8eb746e7de93974e8b",
+            "final-HDC.bin": "7c7f15ed27de2f3a51d1da31356b27ea1be15370faa3caab96606e5390ebbd0e",
+            "final-KBD.bin": "099bb16aee7a1ea868b69fb7ca3d67b0acf4160808c7745eb64cd754ef3f1b03",
+            "final-IOC.bin": "883ee0dd2d12ac265964a8b96ae6abdc8609c244a8d4e2e206ab71bdc7dbf03f",
+            "fdc.log": "11a5d946b92009cba4327eb3b9fdb1e46745cf2d9fa4f7d845176c8d037e48e6",
+            "final-RTC.bin": "8922fc006f8931a844c609d9fe7d2f39f655a639fb678041ca7d0a50649d40c6",
+            "final-FDC.bin": "15f63e68f86133b6cb0737cb6ecdd673d20fde19b9f35bdea1c2dded0e6817ca",
+            "final-MACH.bin": "e7f0a7e9889966833e137dda52b969c2de9353812498c710ba1c353b58ff8bf0",
+            "swis.log": "129aa9160fd11bee45238a3b22d7b11572e4605cafd174188c86afa8d7ae711d",
+            "final-CPU.bin": "f51bb07d43c30e1831d1b8fced1b0c1a2c0867859b94772bba3dd252b9857c8d",
+            "final-MEMC.bin": "3e2ad2f76dc96cef251f723a91dff0291166fbd2af8bc09db0266ee809aceba3"
+          }
+        },
+        "empty-drive": {
+          "calls": 5,
+          "fdc_commands": 14,
+          "fiqs": 4151,
+          "errors": [
+            {
+              "number": 67795,
+              "message": "The disc drive is empty"
+            }
+          ],
+          "evidence_hashes": {
+            "final-SCHD.bin": "2c002c05eceb9ec3a9d512d8374e0f35587b825183e01f7056a72040651eb79d",
+            "final-VIDC.bin": "dd4af36393695be3281289a64aa021cd16ce723b266324823dfff47a07b31b8e",
+            "result.json": "0b5ae487e43be51bb40cdc22586c8e8e04865c3c01952cccca04db292381710c",
+            "final-HDC.bin": "7c7f15ed27de2f3a51d1da31356b27ea1be15370faa3caab96606e5390ebbd0e",
+            "final-KBD.bin": "099bb16aee7a1ea868b69fb7ca3d67b0acf4160808c7745eb64cd754ef3f1b03",
+            "final-IOC.bin": "3b7a12417b5e786ba8e05e880307b09e8ec4eb10cc86c7fd4306b0831e12f532",
+            "fdc.log": "2de84e6aefdc5c2cd2baddede40f1431d7840f352c49d8a6ed2e5270a7c2b601",
+            "final-RTC.bin": "8922fc006f8931a844c609d9fe7d2f39f655a639fb678041ca7d0a50649d40c6",
+            "final-FDC.bin": "0fd5ef924930fa54b8b4163e9c9b7823188b8c8b645fd77c37a76a0b97b2de31",
+            "final-MACH.bin": "d55e691a2eb063a56ef786230d4a0ec66b120da61fb2aeb75319389688f56621",
+            "swis.log": "3ac31c016f4b5c22254ff3ba1dd2fe7da662433055ebb6abea25bd19cda44438",
+            "final-CPU.bin": "c3ea7098d613e3e1ea61af2dbf546b680dab1856b833a247d27c4887a85c50e7",
+            "final-MEMC.bin": "c2dec79d66cb109af1d225b9e7f077afe115f036cc44bb8161db37156d4c7054"
+          }
+        },
+        "media-change": {
+          "calls": 4,
+          "fdc_commands": 26,
+          "fiqs": 8302,
+          "errors": [],
+          "evidence_hashes": {
+            "final-SCHD.bin": "c2eb739bb899dc86bcc83971828ddbf99e1a04fba6a1be773617c38721521345",
+            "final-VIDC.bin": "ff60abca70247ea24b5efcedf730ebdeeaa7eadff144396b38c95b81995d158f",
+            "disc-B-read.bin": "d7e2f4c3e72ed08b62854a038647d5eba2859368f1dd274aeace5bce61852d51",
+            "result.json": "92c504318889b4f9360122043f4902cbad4e189718f96e44a03f7bd64a6bd9df",
+            "final-HDC.bin": "7c7f15ed27de2f3a51d1da31356b27ea1be15370faa3caab96606e5390ebbd0e",
+            "final-KBD.bin": "099bb16aee7a1ea868b69fb7ca3d67b0acf4160808c7745eb64cd754ef3f1b03",
+            "final-IOC.bin": "2abc50fe4bb83f530c91f1f30065751696de6de272e65fc49fee6df416d41360",
+            "fdc.log": "d082fd7edb43b5be63c291d0ac96b3db8e86a9ce83a95e3ecdc9697ff76a50dc",
+            "final-RTC.bin": "8922fc006f8931a844c609d9fe7d2f39f655a639fb678041ca7d0a50649d40c6",
+            "final-FDC.bin": "37c75c30ee1050a534d68c454c197714b7e2e5d9053b3749af7e53a1f7b4325b",
+            "final-MACH.bin": "634975a7725fa86dd0a3cc9c421482b319bf5109fbc1ce1c0258268c8d0f9866",
+            "swis.log": "b7c74ca53a42ba8e13b18417bd93dc044971f83a726c8166abcc6826f4429acf",
+            "final-CPU.bin": "08ce0c6ef453adc35f048e5a367d20e6961837a703436a52e46bfdcdb6f0798e",
+            "final-MEMC.bin": "6d2c3af9d0529abd6f0a4f740db3774d39d903379457570183954897d3f3d018"
+          }
+        }
+      }
+    }
+  ]
+}

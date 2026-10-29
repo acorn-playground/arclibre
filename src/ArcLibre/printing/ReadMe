@@ -1,0 +1,40 @@
+ArcLibre Printing disc
+======================
+
+This disc holds !Printers, the original Acorn printer manager, with its
+three classes of printer, as in RISC OS 3.11: dot matrix, LaserJet and
+PostScript. The printer driver modules they use are in !Printers: PDriver,
+PDriverDP (dot matrix and LaserJet), PDriverPS (PostScript), PDumperSupport,
+PDumperDM (dot matrix) and PDumperLJ (LaserJet). In RISC OS 3.11 !Printers
+and the dot-matrix modules were in the ROM; ArcLibre ships them on this disc
+to keep room in the ROM.
+
+Printing
+--------
+
+Open this disc's directory viewer and double-click !Printers. Its icon
+appears on the icon bar. Drag a printer definition from the PrintDefs
+directory to that icon to install the printer: FX-80 (an Epson FX-80 dot
+matrix printer), LasJet-II (an HP LaserJet II) or LW (an Apple LaserWriter,
+a PostScript printer). Click Menu on the icon to configure it, choose where
+its output goes (the parallel or serial port, or a file) and make it the
+current printer. Applications such as Draw and Paint then print through it.
+
+Copy !Printers and PrintDefs to a hard disc or another floppy to keep
+them with your own applications.
+
+This !Printers has no AUN remote printing (its modules are not published).
+Nor does it have MakePSFont, the module that maps the desktop's outline
+fonts to a PostScript printer's own fonts and downloads them: text in
+outline fonts may not print correctly on a PostScript printer.
+
+Licences
+--------
+
+!Printers, the modules and the printer definitions are Copyright 1996 Acorn
+Computers Ltd and are distributed under the Apache License 2.0. !Printers'
+BASIC is built from its pinned sources with the C preprocessor and the
+ROM's own BASIC; the modules are assembled from their pinned sources. The
+sources and full notices are in the ArcLibre source archive (src/PDriver,
+src/PDModules, src/PDumperSpt, src/PDumpers, src/PrinterManager,
+src/PrintDefs, src/MakePSFont, LICENSING.md).

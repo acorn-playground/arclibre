@@ -1,0 +1,21 @@
+{
+  "status": "BOUNDED_PASS",
+  "rom_sha256": "bb9d384592b076b630c95ac174ca1985a97fe18dc70025985bae80f34a3063cf",
+  "control": "Existing MacArch MCP power_cycle, run_command, mouse, breakpoints, memory inspection and screenshot",
+  "application": "User-owned !Impress",
+  "source_disc_sha256": "056501f766d8beca198ac29ddaa2840913ee4688bbf1ec409701a2912bd089c7",
+  "source_disc_untouched_by_test": true,
+  "disposable_copy": "build/private-impression/impression.hdf",
+  "submenus_observed": [
+    "Document",
+    "Edit",
+    "Effect",
+    "Style",
+    "Frame",
+    "Misc"
+  ],
+  "cold_launches": 1,
+  "guest_memory_patches": false,
+  "emulator_modified": false,
+  "scope": "Main-menu traversal only; no general editing or printing claim"
+}

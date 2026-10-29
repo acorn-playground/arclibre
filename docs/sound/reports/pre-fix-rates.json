@@ -1,0 +1,146 @@
+[
+  {
+    "bytes" : 5225520,
+    "channels" : 1,
+    "marker" : "ARCLIBRE SOUND RATE START",
+    "period_us" : 48,
+    "reported_period_us" : 48,
+    "sfr" : 260,
+    "ticks" : 988653159
+  },
+  {
+    "bytes" : 5283856,
+    "channels" : 1,
+    "marker" : "ARCLIBRE SOUND RATE END",
+    "period_us" : 48,
+    "reported_period_us" : 48,
+    "sfr" : 260,
+    "ticks" : 997052916
+  },
+  {
+    "bytes" : 5300512,
+    "channels" : 2,
+    "marker" : "ARCLIBRE SOUND RATE START",
+    "period_us" : 48,
+    "reported_period_us" : 48,
+    "sfr" : 260,
+    "ticks" : 999452817
+  },
+  {
+    "bytes" : 5333856,
+    "channels" : 2,
+    "marker" : "ARCLIBRE SOUND RATE END",
+    "period_us" : 48,
+    "reported_period_us" : 48,
+    "sfr" : 260,
+    "ticks" : 1004252847
+  },
+  {
+    "bytes" : 5350512,
+    "channels" : 4,
+    "marker" : "ARCLIBRE SOUND RATE START",
+    "period_us" : 48,
+    "reported_period_us" : 48,
+    "sfr" : 260,
+    "ticks" : 1006652892
+  },
+  {
+    "bytes" : 5383856,
+    "channels" : 4,
+    "marker" : "ARCLIBRE SOUND RATE END",
+    "period_us" : 48,
+    "reported_period_us" : 48,
+    "sfr" : 260,
+    "ticks" : 1011453336
+  },
+  {
+    "bytes" : 5400512,
+    "channels" : 8,
+    "marker" : "ARCLIBRE SOUND RATE START",
+    "period_us" : 48,
+    "reported_period_us" : 48,
+    "sfr" : 260,
+    "ticks" : 1013852856
+  },
+  {
+    "bytes" : 5433856,
+    "channels" : 8,
+    "marker" : "ARCLIBRE SOUND RATE END",
+    "period_us" : 48,
+    "reported_period_us" : 48,
+    "sfr" : 260,
+    "ticks" : 1018652844
+  },
+  {
+    "bytes" : 5450512,
+    "channels" : 1,
+    "marker" : "ARCLIBRE SOUND RATE START",
+    "period_us" : 80,
+    "reported_period_us" : 80,
+    "sfr" : 260,
+    "ticks" : 1021052847
+  },
+  {
+    "bytes" : 5483856,
+    "channels" : 1,
+    "marker" : "ARCLIBRE SOUND RATE END",
+    "period_us" : 80,
+    "reported_period_us" : 80,
+    "sfr" : 260,
+    "ticks" : 1025852847
+  },
+  {
+    "bytes" : 5500512,
+    "channels" : 2,
+    "marker" : "ARCLIBRE SOUND RATE START",
+    "period_us" : 80,
+    "reported_period_us" : 80,
+    "sfr" : 260,
+    "ticks" : 1028252769
+  },
+  {
+    "bytes" : 5533856,
+    "channels" : 2,
+    "marker" : "ARCLIBRE SOUND RATE END",
+    "period_us" : 80,
+    "reported_period_us" : 80,
+    "sfr" : 260,
+    "ticks" : 1033052898
+  },
+  {
+    "bytes" : 5550528,
+    "channels" : 4,
+    "marker" : "ARCLIBRE SOUND RATE START",
+    "period_us" : 80,
+    "reported_period_us" : 80,
+    "sfr" : 260,
+    "ticks" : 1035453282
+  },
+  {
+    "bytes" : 5583856,
+    "channels" : 4,
+    "marker" : "ARCLIBRE SOUND RATE END",
+    "period_us" : 80,
+    "reported_period_us" : 80,
+    "sfr" : 260,
+    "ticks" : 1040252787
+  },
+  {
+    "bytes" : 5602176,
+    "channels" : 8,
+    "marker" : "ARCLIBRE SOUND RATE START",
+    "period_us" : 80,
+    "reported_period_us" : 80,
+    "sfr" : 260,
+    "ticks" : 1042892511
+  },
+  {
+    "bytes" : 5635520,
+    "channels" : 8,
+    "marker" : "ARCLIBRE SOUND RATE END",
+    "period_us" : 80,
+    "reported_period_us" : 80,
+    "sfr" : 260,
+    "ticks" : 1047692598
+  }
+]

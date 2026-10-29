@@ -1,0 +1,218 @@
+REM SPDX-License-Identifier: Apache-2.0
+REM Copyright 2026 ArcLibre contributors.
+REM
+REM Licensed under the Apache License, Version 2.0 (the "License");
+REM you may not use this file except in compliance with the License.
+REM You may obtain a copy of the License at
+REM
+REM     http://www.apache.org/licenses/LICENSE-2.0
+REM
+REM Unless required by applicable law or agreed to in writing, software
+REM distributed under the License is distributed on an "AS IS" BASIS,
+REM WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+REM See the License for the specific language governing permissions and
+REM limitations under the License.
+REM
+REM New ArcLibre desk calculator. Its window, keys and behaviour follow the
+REM RISC OS 3 User Guide (3.10, Applications Guide ch.6) and measured 3.11
+REM screenshots; it is not Acorn's unpublished implementation.
+ON ERROR PROCfatal
+DIM b% 1024,disp% 16,info% 400,menu% 120
+@%=&01000009
+task%=0:quit%=FALSE
+SYS "Wimp_Initialise",200,&4B534154,"Calculator" TO ,task%
+PROCiconbar
+PROCwindow
+PROCinfo
+PROCmenu
+PROCclear
+ON ERROR PROCreport
+REPEAT
+ SYS "Wimp_Poll",1,b% TO r%
+ CASE r% OF
+  WHEN 1:PROCredraw
+  WHEN 2:SYS "Wimp_OpenWindow",,b%
+  WHEN 3:SYS "Wimp_CloseWindow",,b%
+  WHEN 6:PROCclick
+  WHEN 8:PROCkey
+  WHEN 9:PROCselect
+  WHEN 17,18:IF b%!16=0 THEN quit%=TRUE
+ ENDCASE
+UNTIL quit%
+SYS "Wimp_CloseDown",task%,&4B534154
+END
+:
+DEF PROCiconbar
+b%!0=-1:b%!4=0:b%!8=0:b%!12=68:b%!16=68:b%!20=&301A
+$(b%+24)="!calc"
+SYS "Wimp_CreateIcon",,b% TO baricon%
+ENDPROC
+:
+REM The 3.11 window: 278x312 OS units, Back and Close only, white work area.
+DEF PROCwindow
+b%!0=400:b%!4=300:b%!8=678:b%!12=612:b%!16=0:b%!20=0:b%!24=-1
+b%!28=&87000002
+b%?32=7:b%?33=2:b%?34=7:b%?35=0:b%?36=3:b%?37=1:b%?38=12:b%?39=0
+b%!40=0:b%!44=-312:b%!48=278:b%!52=0
+b%!56=&3D:b%!60=0:b%!64=1:b%!68=0
+$(b%+72)="Calculator":b%!84=0
+SYS "Wimp_CreateWindow",,b% TO win%
+REM Display: right-justified black digits on white, no border.
+PROCicon(14,-56,180,-24,&07000331,disp%,13)
+REM C: red key, cream legend and border.
+PROCbutton(206,-58,262,-8,"C",&BC)
+FOR k%=0 TO 15
+ c%=k% MOD 4:r%=k% DIV 4
+ x%=12+c%*64:IF c%=3 THEN x%=206
+ y%=-118-r%*60
+ l$=MID$("789"+CHR$247+"456x123-0.=+",k%+1,1)
+ IF c%=3 OR k%=14 THEN col%=&C7 ELSE IF k%=13 THEN col%=&27 ELSE col%=&37
+ PROCbutton(x%,y%,x%+56,y%+50,l$,col%)
+NEXT
+ENDPROC
+:
+DEF PROCbutton(x0%,y0%,x1%,y1%,l$,col%)
+b%!0=win%:b%!4=x0%:b%!8=y0%:b%!12=x1%:b%!16=y1%
+b%!20=&303D OR ((col% AND &F)<<24) OR ((col%>>4)<<28)
+$(b%+24)=l$
+SYS "Wimp_CreateIcon",,b%
+ENDPROC
+:
+DEF PROCicon(x0%,y0%,x1%,y1%,f%,t%,n%)
+b%!0=win%:b%!4=x0%:b%!8=y0%:b%!12=x1%:b%!16=y1%:b%!20=f%
+b%!24=t%:b%!28=-1:b%!32=n%
+SYS "Wimp_CreateIcon",,b%
+ENDPROC
+:
+DEF PROCinfo
+LOCAL i%,y%
+$info%="Calc":$(info%+96)="Desk calculator"
+$(info%+192)="ArcLibre contributors":$(info%+288)="1.00 (27 Oct 2026)"
+b%!0=0:b%!4=0:b%!8=480:b%!12=208:b%!16=0:b%!20=0:b%!24=-1
+b%!28=&84000012
+b%?32=7:b%?33=2:b%?34=7:b%?35=1:b%?36=3:b%?37=1:b%?38=12:b%?39=0
+b%!40=0:b%!44=-208:b%!48=480:b%!52=0
+b%!56=&3D:b%!60=0:b%!64=1:b%!68=0
+$(b%+72)="About this program":b%!84=0
+SYS "Wimp_CreateWindow",,b% TO infowin%
+FOR i%=0 TO 3
+ y%=-48-i%*48
+ b%!0=infowin%:b%!4=8:b%!8=y%:b%!12=128:b%!16=y%+36:b%!20=&17000211
+ $(b%+24)=MID$("Name   Purpose Author  Version ",i%*8+1,8)
+ SYS "Wimp_CreateIcon",,b%
+ b%!0=infowin%:b%!4=136:b%!8=y%:b%!12=472:b%!16=y%+36:b%!20=&07000135
+ b%!24=info%+i%*96:b%!28=-1:b%!32=96
+ SYS "Wimp_CreateIcon",,b%
+NEXT
+ENDPROC
+:
+DEF PROCmenu
+$menu%="Calculator":menu%?12=7:menu%?13=2:menu%?14=7:menu%?15=0
+menu%!16=160:menu%!20=44:menu%!24=0
+menu%!28=0:menu%!32=infowin%:menu%!36=&07000001:$(menu%+40)="Info"
+menu%!52=&80:menu%!56=-1:menu%!60=&07000001:$(menu%+64)="Quit"
+ENDPROC
+:
+DEF PROCredraw
+LOCAL more%
+SYS "Wimp_RedrawWindow",,b% TO more%
+WHILE more%:SYS "Wimp_GetRectangle",,b% TO more%:ENDWHILE
+ENDPROC
+:
+DEF PROCclick
+IF b%!12=-2 THEN
+ IF b%!8=2 THEN SYS "Wimp_CreateMenu",,menu%,b%!0-64,184 ELSE PROCopen
+ ENDPROC
+ENDIF
+IF b%!12<>win% OR b%!16<1 THEN ENDPROC
+IF b%!16=1 THEN PROCpress("C") ELSE PROCpress(MID$("789/456*123-0.=+",b%!16-1,1))
+ENDPROC
+:
+DEF PROCopen
+b%!0=win%:SYS "Wimp_GetWindowState",,b%
+b%!28=-1:SYS "Wimp_OpenWindow",,b%
+REM An invisible caret gives the window the keyboard.
+SYS "Wimp_SetCaretPosition",win%,-1,0,0,1<<25,-1
+ENDPROC
+:
+REM Keypad keys produce the same codes: Enter is =, Delete is C.
+DEF PROCkey
+LOCAL k%:k%=b%!24
+CASE TRUE OF
+ WHEN k%>=48 AND k%<=57 OR k%=46 OR k%=43 OR k%=45 OR k%=42 OR k%=47:PROCpress(CHR$k%)
+ WHEN k%=13 OR k%=61:PROCpress("=")
+ WHEN k%=127 OR k%=8:PROCpress("C")
+ OTHERWISE:SYS "Wimp_ProcessKey",k%
+ENDCASE
+ENDPROC
+:
+DEF PROCselect
+LOCAL a%:a%=!b%
+IF a%=1 THEN quit%=TRUE
+ENDPROC
+:
+REM A simple four-function calculator with immediate execution.
+DEF PROCclear
+acc=0:cur$="0":op$="":new%=TRUE:err%=FALSE
+PROCshow("0")
+ENDPROC
+:
+DEF PROCpress(k$)
+IF k$="C" THEN PROCclear:ENDPROC
+IF err% THEN ENDPROC
+CASE k$ OF
+ WHEN "0","1","2","3","4","5","6","7","8","9"
+  IF new% THEN cur$="":new%=FALSE
+  IF cur$="0" THEN cur$=""
+  IF LEN(cur$)<9 THEN cur$+=k$
+  IF cur$="" THEN cur$="0"
+  PROCshow(cur$)
+ WHEN "."
+  IF new% THEN cur$="0":new%=FALSE
+  IF INSTR(cur$,".")=0 AND LEN(cur$)<9 THEN cur$+="."
+  PROCshow(cur$)
+ WHEN "+","-","*","/"
+  PROCequals:IF NOT err% THEN op$=k$
+ WHEN "="
+  PROCequals:op$=""
+ENDCASE
+ENDPROC
+:
+DEF PROCequals
+LOCAL v
+IF op$<>"" AND NOT new% THEN
+ v=VAL(cur$)
+ CASE op$ OF
+  WHEN "+":acc+=v
+  WHEN "-":acc-=v
+  WHEN "*":acc=acc*v
+  WHEN "/":IF v=0 THEN err%=TRUE ELSE acc=acc/v
+ ENDCASE
+ELSE
+ IF op$="" AND NOT new% THEN acc=VAL(cur$)
+ENDIF
+new%=TRUE
+IF ABS(acc)>=1E9 THEN err%=TRUE
+IF err% THEN PROCshow("Error") ELSE PROCshow(STR$(acc)):cur$=STR$(acc)
+ENDPROC
+:
+DEF PROCshow(s$)
+$disp%=s$
+SYS "Wimp_SetIconState",,FNstate
+ENDPROC
+:
+DEF FNstate
+b%!0=win%:b%!4=0:b%!8=0:b%!12=0
+=b%
+:
+DEF PROCreport
+LOCAL e%
+!b%=ERR:$(b%+4)=REPORT$+" (at line "+STR$ERL+")"
+SYS "Wimp_ReportError",b%,1,"Calculator"
+ENDPROC
+:
+DEF PROCfatal
+!b%=ERR:$(b%+4)=REPORT$
+SYS "Wimp_ReportError",b%,1,"Calculator"
+SYS "Wimp_CloseDown",task%,&4B534154
+END

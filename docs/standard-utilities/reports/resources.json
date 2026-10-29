@@ -1,0 +1,18 @@
+[
+  {
+    "component": "ScrBlank",
+    "path": "src/ScrBlank/Resources/UK/Messages",
+    "resource": "Resources.ScrBlanker.Messages",
+    "filetype": 4095,
+    "sha256": "34f10f64cf0aa80a4a46499f9faf1e8dcc7e6e17b8628462acec2c047a61d3e4",
+    "license_basis": "Pinned component Apache-2.0; no separate notice in selected messages/templates"
+  },
+  {
+    "component": "StringLib",
+    "path": "src/StringLib/Resources/UK/Messages",
+    "resource": "Resources.StringLib.Messages",
+    "filetype": 4095,
+    "sha256": "fee1fc0a121128e257aa81b8c53fd1bb888aa56399d9769c7705b7cc0f607384",
+    "license_basis": "Pinned component Apache-2.0; no separate notice in selected messages/templates"
+  }
+]

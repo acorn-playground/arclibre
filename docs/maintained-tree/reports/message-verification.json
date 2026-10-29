@@ -1,0 +1,54 @@
+{
+  "status": "PASS",
+  "runs": [
+    {
+      "run": 1,
+      "client_calls": 52,
+      "message_trans_calls": 50,
+      "byte_exact_resources": 12,
+      "expected_error_returns": 2
+    },
+    {
+      "run": 2,
+      "client_calls": 52,
+      "message_trans_calls": 50,
+      "byte_exact_resources": 12,
+      "expected_error_returns": 2
+    },
+    {
+      "run": 3,
+      "client_calls": 52,
+      "message_trans_calls": 50,
+      "byte_exact_resources": 12,
+      "expected_error_returns": 2
+    }
+  ],
+  "repeat_identical": true,
+  "public_workspace": {
+    "FileSwitch": "Public workspace matches the unchanged kernel; original FS offsets restored.",
+    "ResourceFS": "Public workspace matches the unchanged kernel; original FS offsets restored.",
+    "MsgTrans": "Public workspace matches the unchanged kernel; original FS offsets restored.",
+    "Messages": "Public workspace matches the unchanged kernel; original FS offsets restored.",
+    "TerritoryManager": "Public workspace matches the unchanged kernel; original FS offsets restored.",
+    "UK": "Public workspace matches the unchanged kernel; original FS offsets restored.",
+    "Inter": "Public workspace matches the unchanged kernel; original FS offsets restored.",
+    "IntKey": "Public workspace matches the unchanged kernel; original FS offsets restored.",
+    "FileCore": "Public workspace matches the unchanged kernel; original FS offsets restored.",
+    "ADFS": "Public workspace matches the unchanged kernel; original FS offsets restored."
+  },
+  "resources": {
+    "Resources.MsgTrans.Messages": 58921184,
+    "Resources.FileSwitch.Messages": 58921368,
+    "Resources.ResourceFS.Messages": 58931688,
+    "Resources.Kernel.Messages": 58931932,
+    "Resources.Global.Messages": 58948628,
+    "Resources.Kernel.Dictionary": 58950656,
+    "Resources.Help.Messages": 58953724,
+    "Resources.TerrMgr.Messages": 58957480,
+    "Resources.UK.Messages": 58958728,
+    "Resources.Internatio.Messages": 58959804,
+    "Resources.FileCore.Messages": 58961116,
+    "Resources.ADFS.Messages": 58966516
+  },
+  "rom_sha256": "bf5ca56ebd6f7fd7dc4149360d97f76f009abed8879693470421998d59f11791"
+}

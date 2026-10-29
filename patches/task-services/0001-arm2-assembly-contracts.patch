@@ -1,0 +1,271 @@
+--- a/src/TaskWindow/s/Taskman
++++ b/src/TaskWindow/s/Taskman
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: explicit ARM2 assembly/interface contracts; see patches/task-services.
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -148,7 +149,7 @@
+         GBLL    FixSpool
+ FixSpool        SETL    {TRUE}
+ 
+-        GET     "s.Messages"
++        GET     s.Messages
+ 
+         TTL     Task module version $Version
+         SUBT
+@@ -307,6 +308,7 @@
+ TaskWindow_SWIBase EQU &43380
+ ; *********************** Module code starts here *****************************
+ 
++        AREA |TaskWindow$$Code|, CODE, READONLY, PIC
+ Code_ModuleBase
+ 
+         DCD     Code_StartEntry   -Code_ModuleBase
+@@ -731,6 +733,7 @@
+         LDREQ   lr, MOS_GetEnv           ; continue with original SWI
+         LDR     r12, [sp, #8]
+         TEQP    r12, #0                 ; restore flags as on entry
++        MOV     r0,r0           ; explicit ARM2 PSR settling slot
+         STR     lr, [sp, #8]
+         Pull    "r12, lr, pc"           ; go to required place!
+         LTORG
+@@ -773,6 +776,7 @@
+         LDREQ   lr, MOS_WriteEnv        ; continue with original SWI
+         LDR     r12, [sp, #8]
+         TEQP    r12, #0                 ; restore flags as on entry
++        MOV     r0,r0           ; explicit ARM2 PSR settling slot
+         STR     lr, [sp, #8]
+         Pull    "r12, lr, pc"           ; go to required place!
+         LTORG
+@@ -1381,6 +1385,7 @@
+ 
+         Pull    "r0,r1,lr"
+         TEQP    lr, #0
++        MOV     r0,r0           ; explicit ARM2 PSR settling slot
+ 
+         Pull    "$Regs"                 ; restore user regs
+ 
+@@ -1436,7 +1441,7 @@
+         MOV     r9, r1          ; r9-r11 = parameters
+         MOV     r10,r2
+ 
+-      [ Version >= 26 :LAND Version < 28
++      [ Version >= 26 :LAND: Version < 28
+         BL      SetRedirectWrch
+         SWIVS   OS_GenerateError  ;; R12 must point to task workspace
+       ]
+@@ -2031,6 +2036,7 @@
+ 
+ ; ..............................................................................
+ 
++        ALIGN                   ; align before defining the code label
+ SendNewTaskMessage  ROUT
+ ;
+ ; Entry:- r12 -> task block
+@@ -3020,6 +3026,7 @@
+         ADRNE   r0, ErrorBlock_TaskWindow_Dying
+         BNE     CopyError
+         TEQP    pc, r14           ; Restore flags
++        MOV     r0,r0           ; explicit ARM2 PSR settling slot
+         Pull    r14               ; Get return address anyway
+         ADRNE   r0, ErrorBlock_Escape
+         BNE     CopyError
+@@ -3194,6 +3201,7 @@
+         ADRNE   r0, ErrorBlock_TaskWindow_Dying
+         BNE     CopyError
+         TEQP    pc, r14           ; Restore flags
++        MOV     r0,r0           ; explicit ARM2 PSR settling slot
+         Pull    r14               ; Get return address anyway
+         MOVNE   r0, #Esc
+         BIC     r14, r14, #V_bit  ; Clear for good return
+@@ -3392,6 +3400,7 @@
+         ADRNE   r0, ErrorBlock_TaskWindow_Dying
+         BNE     CopyError
+         TEQP    pc, r14           ; Restore flags
++        MOV     r0,r0           ; explicit ARM2 PSR settling slot
+ 
+         MOVNE   r2, #Esc
+ 40
+@@ -3668,6 +3677,7 @@
+          ]
+         SWI     OS_EnterOS
+         TEQP    r1, #0
++        MOV     r0,r0           ; explicit ARM2 PSR settling slot
+       ; NOP                     ; not required as it happens
+       |
+         [ DebugExit
+@@ -4242,6 +4252,7 @@
+         BL      ChangeRedirection
+         Pull    "r0,r1,lr"
+         TEQP    lr, #0
++        MOV     r0,r0           ; explicit ARM2 PSR settling slot
+         ]
+ 
+         [       DebugWimp
+@@ -4870,7 +4881,7 @@
+         Pull    "r0, pc"
+         ]
+ 
+-        GET     "s.Redirect"            ; for OS_ChangeRedirection
++        GET     s.Redirect            ; for OS_ChangeRedirection
+ 
+ ReadTaskKeyStates ROUT
+ ;
+--- a/src/Filter/s/FilterMgr
++++ b/src/Filter/s/FilterMgr
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: explicit ARM2 assembly/interface contracts; see patches/task-services.
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -31,6 +32,7 @@
+ ;; Wish list
+ ;;-----------------------------------------------------------------------------
+ 
++        AREA |Filter$$Code|, CODE, READONLY, PIC
+ Module_BaseAddr
+ 
+         GET     Hdr:ListOpts
+--- a/src/Filter/s/ModHead
++++ b/src/Filter/s/ModHead
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: explicit ARM2 assembly/interface contracts; see patches/task-services.
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -13,11 +14,11 @@
+ ; limitations under the License.
+ ;
+ ; > s.ModHead
+-        LEADR   Module_LoadAddr
++; Relocatable module area is declared before Module_BaseAddr.
+ 
+         ASSERT  (.=Module_BaseAddr)
+ 
+-MySWIBase       *       Module_SWISystemBase + FilterSWI * Module_SWIChunkSize
++MySWIBase       *       FilterSWI_Base
+ 
+         DCD     0                 ;Start - Module_BaseAddr
+         DCD     Init              - Module_BaseAddr
+@@ -175,7 +176,7 @@
+         BVS     %FT05
+ 
+         LDR     r0, [r3, #f_mask]
+-        ADR     r1, convert_buffer
++        ADD     r1,r12,#:INDEX:convert_buffer
+         MOV     r2, #10
+         SWI     XOS_ConvertHex8
+         SWIVC   XOS_Write0
+@@ -291,7 +292,7 @@
+ ;;-----------------------------------------------------------------------------
+ 
+ servicecallback
+-        ENTRY   "R0-R1"
++        Entry   "R0-R1"
+ 
+         MOV     R1,#0                   ; the callback has been granted, so flag as no longer pending
+         STR     R1,callbackpending
+@@ -358,9 +359,9 @@
+ svc_reset
+         Push    "R0-R2, LR"
+ 
+-        ADR     r2, pre_filters
++        ADD     r2,r12,#:INDEX:pre_filters
+         BL      free_list               ; Free list of pre filters
+-        ADR     r2, post_filters
++        ADD     r2,r12,#:INDEX:post_filters
+         BL      free_list               ; Free list of post filters
+ 
+         MOV     R0,#0                   ; Pre_filter
+@@ -384,9 +385,9 @@
+         CMP     r12, #0
+         Pull    "R0-R11,PC",EQ,^
+ 
+-        ADR     r2, pre_filters
++        ADD     r2,r12,#:INDEX:pre_filters
+         BL      free_list               ; Free list of pre filters
+-        ADR     r2, post_filters
++        ADD     r2,r12,#:INDEX:post_filters
+         BL      free_list               ; Free list of post filters
+ 
+         MOV     R0,#0                   ; Pre_filter
+--- a/src/Filter/s/MsgTrans
++++ b/src/Filter/s/MsgTrans
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: explicit ARM2 assembly/interface contracts; see patches/task-services.
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -22,9 +23,9 @@
+ ;       Open our messages file.
+ ;
+ MsgTrans_OpenFile
+-        ENTRY   "r1-r2"
++        Entry   "r1-r2"
+ 
+-        ADR     r0, message_block
++        ADD     r0,r12,#:INDEX:message_block
+         LDR     lr, flags
+         TST     lr, #f_messagesopen
+         EXIT    NE
+@@ -45,9 +46,9 @@
+ ;       Close our messages file.
+ ;
+ MsgTrans_CloseFile
+-        ENTRY   "r0,r1"
++        Entry   "r0,r1"
+ 
+-        ADR     r0, message_block
++        ADD     r0,r12,#:INDEX:message_block
+         LDR     r1, flags
+         TST     r1, #f_messagesopen
+         BICNE   r1, r1, #f_messagesopen
+@@ -66,7 +67,7 @@
+ ;       Lookup an error in our messages file.
+ ;
+ MsgTrans_ErrorLookup
+-        ENTRY   "r0-r2"
++        Entry   "r0-r2"
+ 
+         CLRV
+         BL      MsgTrans_OpenFile
+@@ -92,7 +93,7 @@
+ ;       Look up the given token in our messages file.
+ ;
+ MsgTrans_Lookup
+-        ENTRY   "r0"
++        Entry   "r0"
+ 
+         CLRV
+         BL      MsgTrans_OpenFile
+--- a/src/Filter/s/SWIS
++++ b/src/Filter/s/SWIS
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: explicit ARM2 assembly/interface contracts; see patches/task-services.
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -289,7 +290,7 @@
+         DebugS  register,"De-register pre-filter",R0,80
+         Debug   register,"Name, address, ws, task",R0,R1,R2,R3
+ 
+-        ADR     r4,pre_filters
++        ADD     r4,r12,#:INDEX:pre_filters
+         MOV     R3,R3,ASL #16
+         MOV     R3,R3,LSR #16   ; Task ID
+         BL      find_filter     ; Finds the filter in the list
+@@ -362,7 +363,7 @@
+         DebugS  register,"De-register post-filter",R0,80
+         Debug   register,"Name, address, ws, task",R0,R1,R2,R3
+ 
+-        ADR     r4,post_filters
++        ADD     r4,r12,#:INDEX:post_filters
+         MOV     R3,R3,ASL #16
+         MOV     R3,R3,LSR #16   ; Task ID
+         BL      find_filter     ; Finds the filter in the list

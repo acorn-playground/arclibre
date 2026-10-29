@@ -1,0 +1,886 @@
+--- a/src/Sound0/s/Sound0
++++ b/src/Sound0/s/Sound0
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: relocatable ARM2 build.
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -115,6 +116,7 @@
+ ; ********************  See SrcFiler log file for changes since version 1.41.
+ ;
+ 
++        AREA Sound0,CODE,READONLY
+         GET     Hdr:ListOpts
+         OPT     OptNoList
+         GET     Hdr:Macros
+@@ -129,6 +131,7 @@
+         GET     Hdr:FSNumbers
+         GET     Hdr:NewErrors
+         GET     Hdr:PublicWS
++        GET     Hdr:SoundWorkspace
+         GET     Hdr:Tokens
+         GET     Hdr:DevNos
+         GET     Hdr:Proc
+@@ -338,7 +341,7 @@
+         SUBT    Sound DMA Module Header
+         OPT     OptPage
+ 
+-        LEADR   Module_LoadAddr
++; Relocatable AOF AREA above replaces obsolete absolute LEADR.
+ 
+ Module_Base
+         DCD     0                    ; NOT AN APPLICATION
+@@ -348,7 +351,7 @@
+         DCD     Module_Name          - Module_Base
+         DCD     Help_String          - Module_Base
+         DCD     Module_Keywords      - Module_Base
+-        DCD     Module_SWISystemBase + Sound0SWI * Module_SWIChunkSize
++        DCD     Sound0SWI_Base
+         DCD     Sound_SWI_Code       - Module_Base
+         DCD     Module_SWIDecodeBase - Module_Base
+         DCD     0                    ; No decoding code.
+@@ -904,7 +907,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; In    r0-r6 trashable
+ 
+-Audio_Code ENTRY
++Audio_Code KernelEntry
+ 
+         BL      DecodeOnOrOff
+         SWI     XSound_Enable
+@@ -1027,7 +1030,7 @@
+ ;
+         LDR     r12, [r12]
+ 
+-        ENTRY   "r1-r3"
++        KernelEntry   "r1-r3"
+ 
+         CMP     r0, #1
+         BEQ     %FT10
+@@ -1140,7 +1143,7 @@
+ ;       OR
+ ;       NE => strings do not match
+ ;
+-        ENTRY   "r2"
++        KernelEntry   "r2"
+ 10
+         LDRB    r2, [r0], #1
+         LDRB    lr, [r1], #1
+@@ -1164,7 +1167,7 @@
+ ;       CC => control char found
+ ;       CS => printable char found
+ ;
+-        ENTRY
++        KernelEntry
+ 10
+         LDRB    lr, [r0], #1
+         CMP     lr, #" "
+@@ -1203,19 +1206,28 @@
+ 
+         LDR     r10, =SoundLevel0Base
+         TEQP    pc, #I_bit+SVC_mode     ; Disable IRQs, I think we expect this
++        NOP                     ; ARM2 processor-state settling
+         CMP     r11, #(EndOfJumpTable-JumpTable)/4
+         ADDCC   pc, pc, r11, LSL #2
+-        BICS    pc, lr, #V_bit          ; Reenable caller's IRQ state
++        B       SoundUnknownSWI
+ 
+ JumpTable
+         B       Sound0Config            ; configuration
+         B       Sound0Enable            ; enable control
+         B       Sound0Stereo            ; stereo positioning
+         B       Sound0Speaker           ; loudspeaker control
++ [ VIDC_Type = "VIDC20"
+         B       Sound0Mode              ; mode control/status (16-bit/mu-law etc)
+         B       Sound0LinearHandler     ; 16-bit sound generator interface
+         B       Sound0SampleRate        ; new sample rate control interface
++ ]
+ EndOfJumpTable
++
++SoundUnknownSWI
++        ADR     r0, ErrorBlock_NoSuchSWI
++        ORRS    pc, lr, #V_bit          ; Unsupported hardware interface: real error
++
++        MakeErrorBlock NoSuchSWI
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; In    r0  = no. of channels (rounded up to power of two)
+@@ -1234,7 +1246,7 @@
+ 
+ ; Out   Return old r0,r1,r2,r3,r4
+ 
+-Sound0Config ENTRY
++Sound0Config KernelEntry
+ 
+         Debug   swi,"Sound0Config",r0,r1,r2,r3,r4
+ 
+@@ -1469,7 +1481,7 @@
+ ;      r1 unchanged
+ ;      r2 unchanged
+ ;      r3 = unadjusted SFR for normal or oversampling as required
+-process_oversample ENTRY "r1,r2"
++process_oversample KernelEntry "r1,r2"
+         Debug   swi,"process_oversample, default off"
+         BIC     r0, r0, #DoOversample   ; clear out o/s active flag, assuming not possible
+         AND     lr, r0, #Lin16Bits      ; check that...
+@@ -1538,7 +1550,7 @@
+ 
+ ; Out   r0 = previous enable state
+ 
+-Sound0Enable ENTRY "r1"
++Sound0Enable KernelEntry "r1"
+ 
+         LDR     r11, [r10, #Semaphore]
+         TST     r11, #&80000000
+@@ -1722,7 +1734,7 @@
+ ;       r1 is stereo position allocated (-128 for none/invalid)
+ ;       -128 indicates invalid channel
+ 
+-Sound0Stereo ENTRY "r0, r2"
++Sound0Stereo KernelEntry "r0, r2"
+ 
+         SUB     r0, r0, #1              ; 1..8 -> 0..7
+         CMP     r0, #SoundPhysChannels
+@@ -1795,7 +1807,7 @@
+ ; For all rates <= 25kHz, if auto-oversampling is on, the output data stream
+ ; will be oversampled by 2x, by simple linear interpolation.
+ ;
+-Sound0Mode      ENTRY   "r2"
++Sound0Mode      KernelEntry   "r2"
+         LDRB    r2, [r10, #Flags]
+         AND     lr, r2, #Lin16Bits      ; if configured for mu-law, return 0 in r0 and r1
+         CMP     lr, #L16_mulaw
+@@ -1886,7 +1898,7 @@
+ ;  r1 = previous/current routine address
+ ;  r2 = previous/current value to pass to routine
+ ;
+-Sound0LinearHandler ENTRY "r3,r4,r5"
++Sound0LinearHandler KernelEntry "r3,r4,r5"
+         LDRB    r3, [r10, #Flags]
+         TST     r3, #Lin16Bits
+         MOVEQ   r1, #0
+@@ -2020,7 +2032,7 @@
+ 
+         ALIGN
+ 
+-Sound0SampleRate ENTRY "r3,r4"
++Sound0SampleRate KernelEntry "r3,r4"
+         LDRB    r3, [r10, #Flags]
+         AND     r3, r3, #Lin16Bits
+         CMP     r3, #L16_mulaw          ; if in old sound world (not 16-bit), return 0s always
+@@ -2122,7 +2134,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; In    r0-r6 trashable
+ 
+-Initialise_Module ENTRY "r7, r8, r10, r11"
++Initialise_Module KernelEntry "r7, r8, r10, r11"
+ 
+         LDR     r2, [r12]
+         TEQ     r2, #0
+@@ -2330,8 +2342,10 @@
+         STRB    r0, [r10, #VIDCSCR_C]   ; and record as current value
+  ]
+         TEQP    pc, #I_bit + SVC_mode   ; IRQ off please
++        NOP                     ; ARM2 processor-state settling
+         BL      Sound0Reenable          ; Turn on system
+         TEQP    pc, #SVC_mode           ; Reenable IRQs
++        NOP                     ; ARM2 processor-state settling
+ 
+         MOV     r0, #Service_SoundLevel0Alive
+         MOV     r1, #Service_Sound
+@@ -2355,7 +2369,7 @@
+         MOVNE   pc, lr
+  ]
+ 
+-        ENTRY   "r0-r4, r10, r11"
++        KernelEntry   "r0-r4, r10, r11"
+ 
+ ; Fix MED-02859 - only call InitResetCommon if it's a soft reset.
+ ; Otherwise we'll try to put ourselves on twice, and there's a window
+@@ -2374,6 +2388,7 @@
+         EXITS   VS                      ; Can't raise error from service
+ 
+         TEQP    pc, #I_bit + SVC_mode   ; IRQ off please
++        NOP                     ; ARM2 processor-state settling
+         BL      Sound0Reenable          ; Turn on system/keep it off
+  [ VarSndClock
+         BL      ModeChangeCode          ; recache VIDCMultiplier + VIDCSFR
+@@ -2382,7 +2397,7 @@
+ 
+  [ VarSndClock
+ ModeChangeCode
+-        ENTRY   "r0-r4, r10"
++        KernelEntry   "r0-r4, r10"
+         LDR     r10, =SoundLevel0Base
+         BL      SetupVIDCMultiplier
+         MOV     r0, #0                  ; issue a Sound_Configure SWI
+@@ -2450,7 +2465,7 @@
+ ; Out   VC: ok
+ ;       VS: r0 -> error block
+ 
+-InitResetCommon ENTRY
++InitResetCommon KernelEntry
+ 
+         LDR     r4, =SoundDMABuffers    ; Clear out entire DMA buffers
+         ADD     r14, r4, #SoundDMABufferSize * 2
+@@ -2486,7 +2501,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; In    r0-r6 trashable, r10 = fatality indication
+ 
+-Finalise_Module ENTRY "r10, r11"
++Finalise_Module KernelEntry "r10, r11"
+ 
+         LDR     r12, [r12]              ; Get wp for messagefile info
+         LDR     r0, [r12, #MessageFile_Open]
+@@ -2501,9 +2516,11 @@
+         SWI     XOS_ServiceCall         ; Can't stop me!
+ 
+         TEQP    pc, #I_bit + SVC_mode   ; IRQ off please
++        NOP                     ; ARM2 processor-state settling
+         MOV     r0, #1                  ; Turn off system - can't SWI anymore
+         BL      Sound0Enable
+         TEQP    pc, #SVC_mode           ; Reenable IRQs
++        NOP                     ; ARM2 processor-state settling
+ 
+ ; release the irq handler
+ 
+@@ -2532,7 +2549,7 @@
+ ; out:  r0-r2 corrupted
+ ;
+ 
+-SetupVIDCMultiplier ENTRY
++SetupVIDCMultiplier KernelEntry
+         ADR     r0, RVVTab              ; point at table
+         LDR     r2, =24000              ; default rate
+         Push    r2                      ; push on stack
+@@ -2562,7 +2579,7 @@
+ ; when computing period from frequency or vice versa.
+ ;
+ 
+-Divide  ENTRY
++Divide  KernelEntry
+         DivRem  r2, r0, r1, r14
+         EXIT
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+@@ -3208,6 +3225,7 @@
+   [ EnableIRQsIn16bit
+         Pull    lr                      ; Restore SVC_lr.
+         TEQP    pc, #IRQ_mode+I_bit     ; Back to IRQ mode, IRQs disabled.
++        NOP                     ; ARM2 processor-state settling
+         MOV     r0, #IOMD_Base
+         LDRB    lr, [r0, #IOMD_DMAMSK]
+         ORR     lr, lr, #IOMD_DMA_SD0
+@@ -3236,7 +3254,7 @@
+ ; having bits 31:24 zero and with 24:0 being compacted image data for
+ ; programming (8 x 3 bits, chan 0 in bits 2:0, 1 = MAX L, 7 =
+ ; MAX R).  r1-r13 preserved.
+-ConvImages ENTRY r1
++ConvImages KernelEntry r1
+         ADD     r1, r0, #7              ; start with channel 7
+         MOV     r0, #0                  ; initialise output in r0
+ 10      LDRB    lr, [r1], #-1           ; get one byte
+@@ -3257,7 +3275,7 @@
+ ; Given a compact stereo image position set in r0, program VIDC
+ ; with the values.  r0-r13 preserved.
+ 
+-ProgramImages ENTRY "r0-r3"
++ProgramImages KernelEntry "r0-r3"
+         MOV     r2, #SIR0               ; address channel 0 register
+         MOV     r1, #VIDC
+ 10      AND     r3, r0, #&7             ; get this channel
+@@ -3273,7 +3291,7 @@
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-CopyError ENTRY r1-r7
++CopyError KernelEntry r1-r7
+         BL      open_messagefile
+         EXIT    VS
+         ADD     R1, R12, #MessageFile_Block
+@@ -3289,7 +3307,7 @@
+         DCB     "Resources:$.Resources.SoundDMA.Messages", 0
+         ALIGN
+ 
+-open_messagefile ENTRY r0-r2
++open_messagefile KernelEntry r0-r2
+         LDR     r0, [r12, #MessageFile_Open]
+         CMP     r0, #0
+         EXIT    NE
+@@ -3308,7 +3326,7 @@
+ ;       Power management routines
+ ;
+ 
+-GetPower ENTRY "r1,r10,r11"
++GetPower KernelEntry "r1,r10,r11"
+         LDR     r10, =SoundLevel0Base
+         LDR     r11, [r10, #SoundRMA]
+ 
+@@ -3332,7 +3350,7 @@
+ 
+ ; and drop thru to...
+ 
+-SetPower ENTRY "r1,r10,r11"
++SetPower KernelEntry "r1,r10,r11"
+         LDR     r10, =SoundLevel0Base
+         LDR     r11, [r10, #SoundRMA]
+ 
+--- a/src/Sound1/s/Sound1
++++ b/src/Sound1/s/Sound1
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: relocatable ARM2 build.
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -68,6 +69,7 @@
+ ;       08-Feb-93  BC   Changed GETs to use Hdr: rather than &.Hdr.
+ ;
+ 
++        AREA Sound1,CODE,READONLY
+         GET     Hdr:ListOpts
+         OPT     OptNoList
+         GET     Hdr:Macros
+@@ -118,7 +120,7 @@
+         SUBT    Sound Channel Module Header
+         OPT     OptPage
+ 
+-        LEADR   Module_LoadAddr
++; Relocatable AOF AREA above replaces obsolete absolute LEADR.
+ 
+ Module_Base
+         DCD     0 ; NOT AN APPLICATION
+@@ -128,7 +130,7 @@
+         DCD     Module_Name          - Module_Base
+         DCD     Help_String          - Module_Base
+         DCD     Module_Keywords      - Module_Base
+-        DCD     Module_SWISystemBase + Sound1SWI * Module_SWIChunkSize
++        DCD     Sound1SWI_Base
+         DCD     Sound_SWI_Code       - Module_Base
+         DCD     Module_SWIDecodeBase - Module_Base
+         DCD     0
+@@ -215,7 +217,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; In    r0-r6 trashable
+ 
+-Volume_Code ENTRY
++Volume_Code KernelEntry
+ 
+         LDR     wp, [r12]
+         MOV     r1, r0
+@@ -418,7 +420,7 @@
+ 
+ ; Out   VSet and 0 for bad parameter error
+ 
+-SoundDefault_Code ENTRY "r0-r2"
++SoundDefault_Code KernelEntry "r0-r2"
+ 
+         LDR     wp, [r12]
+         CMP     r0, #0
+@@ -508,6 +510,7 @@
+ 
+         LDR     wp, [r12]
+         TEQP    pc, #I_bit + SVC_mode   ; Disable IRQ, we probably expect it
++        NOP                     ; ARM2 processor-state settling
+         CMP     r11, #(EndOfJumpTable-JumpTable)/4
+         ADDCC   pc, pc, r11, LSL #2
+         MOVS    pc, lr                  ; Reenable caller's IRQ state
+@@ -536,7 +539,7 @@
+ 
+ ; Out   r0 = old volume
+ 
+-SoundVol ENTRY
++SoundVol KernelEntry
+ 
+         LDR     r11, =SoundLevel1Base
+         LDRB    r10, [r11, #SoundLevel1MaxAmp]
+@@ -646,7 +649,7 @@
+ 
+ ;       r10, r11 trashable
+ 
+-InstallVoice ENTRY
++InstallVoice KernelEntry
+ 
+  [ debug
+  DREG r0, "InstallVoice: r0 = ",cc
+@@ -800,7 +803,7 @@
+ ;       r1 = voice number
+ ; Out:  Preserve everything (especially flags)
+ ;
+-CheckAttachments ENTRY "r0-r4,r10"
++CheckAttachments KernelEntry "r0-r4,r10"
+         MOV     r3, #SoundPhysChannels          ; start at last channel and work down to channel 1
+         MOV     r4, r1
+         LDR     r10, =SoundLevel1Base + SoundLevel1ChannelTable + SoundChannelVoiceIndexB - (1 :SHL: SoundChannelCBLSL)
+@@ -823,7 +826,7 @@
+ ; Out   r0 is String Pointer - name of Last Voice (or error message)
+ ;       r1 is voice number de-allocated (0 for fail)
+ 
+-RemoveVoice ENTRY "r2-r3"
++RemoveVoice KernelEntry "r2-r3"
+ 
+  [ debug
+  DREG r1, "RemoveVoice: r1 = ",,Integer
+@@ -867,7 +870,7 @@
+ ; In:   r1 = voice number
+ ; Out:  Preserve everything
+ ;
+-CheckRemovals   ENTRY "r0-r4,r10"
++CheckRemovals   KernelEntry "r0-r4,r10"
+         MOV     r3, #SoundPhysChannels          ; start at last channel and work down to channel 1
+         MOV     r4, r1
+         LDR     r10, =SoundLevel1Base + SoundLevel1ChannelTable + SoundChannelVoiceIndexB - (1 :SHL: SoundChannelCBLSL)
+@@ -892,7 +895,7 @@
+ ;       r1 is previous voice number allocated (0 for none/invalid)
+ ;             0 indicates voice already allocated
+ 
+-AttachVoice ENTRY "r2, r5"
++AttachVoice KernelEntry "r2, r5"
+ 
+         LDR     r11, =SoundLevel1Base + SoundLevel1VoiceTable
+         ADD     r10, r11, #(SoundLevel1ChannelTable+SoundChannelVoiceIndexB)-SoundLevel1VoiceTable
+@@ -969,7 +972,7 @@
+ 
+ ; Out   r0 preserved, or 0 for FAIL
+ 
+-AttachNamedVoice ENTRY "r1, r3-r5"
++AttachNamedVoice KernelEntry "r1, r3-r5"
+ 
+         CMP     r0, #0                  ; Ensure in 1..PhysChannels
+         CMPNE   r0, #SoundPhysChannels+1
+@@ -1039,7 +1042,7 @@
+ ; R0,R1 are copy of OSWORD params
+ ;       r10, r11 trashable
+ 
+-SoundPacked ENTRY "r0-r6"
++SoundPacked KernelEntry "r0-r6"
+ 
+         MOV     r3, r1, LSR #16 ; byte 7,8 to low R3
+         MOV     r2, r1, LSL #16
+@@ -1584,7 +1587,7 @@
+ 
+         LTORG
+ 
+-Initialise_Module ENTRY
++Initialise_Module KernelEntry
+ 
+         LDR     r5, =SoundLevel1Base    ; pointer to RAM SCCB page
+ 
+@@ -1700,7 +1703,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; In    r0-r6 trashable
+ 
+-Finalise_Module ENTRY
++Finalise_Module KernelEntry
+         LDR     r12, [r12]
+ 
+ ; OSS Free the array of local names (including the 0 excess entry)
+@@ -1738,7 +1741,7 @@
+         CMP     r1, #Service_Reset
+         MOVNE   pc, lr
+ 
+-        ENTRY   "r0-r2"                              ; Flush out all channels
++        KernelEntry   "r0-r2"                              ; Flush out all channels
+         MOV     r0, #SoundChannelForceFlush
+         MOV     r1, #SoundPhysChannels-1             ; channel counter
+         LDR     r2, =SoundLevel1Base + SoundLevel1ChannelTable + SoundChannelFlagsB
+@@ -1753,7 +1756,7 @@
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-lookup_r0 ENTRY r1-r7
++lookup_r0 KernelEntry r1-r7
+         BL      open_messagefile
+         EXIT    VS
+         MOV     r1, r0
+@@ -1769,7 +1772,7 @@
+         EXIT
+ 
+ message_writes
+-        ENTRY   r0-r7
++        KernelEntry   r0-r7
+         BIC     r0, lr, #&fc000003
+         MOV     r2, r0
+ 10      LDRB    r1, [r2], #1
+@@ -1799,7 +1802,7 @@
+         BCS     %B10
+         EXIT
+ 
+-CopyError ENTRY r1-r7
++CopyError KernelEntry r1-r7
+         BL      open_messagefile
+         EXIT    VS
+         ADR     R1, MessageFile_Block
+@@ -1815,7 +1818,7 @@
+         DCB     "Resources:$.Resources.SoundChann.Messages", 0
+         ALIGN
+ 
+-open_messagefile ENTRY r0-r2
++open_messagefile KernelEntry r0-r2
+         LDR     r0, MessageFile_Open
+         CMP     r0, #0
+         EXIT    NE
+--- a/src/Sound2/s/Sound2
++++ b/src/Sound2/s/Sound2
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: relocatable ARM2 build.
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -54,6 +55,7 @@
+ ;
+ 
+ 
++        AREA Sound2,CODE,READONLY
+         GET     Hdr:ListOpts
+         OPT     OptNoList
+         GET     Hdr:Macros
+@@ -101,7 +103,7 @@
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-        LEADR   Module_LoadAddr
++; Relocatable AOF AREA above replaces obsolete absolute LEADR.
+ 
+ Module_Base
+         &       0 ; NOT AN APPLICATION
+@@ -111,7 +113,7 @@
+         &       Module_Name          - Module_Base
+         &       Help_String          - Module_Base
+         &       Module_Keywords      - Module_Base
+-        &       Module_SWISystemBase + Sound2SWI * Module_SWIChunkSize
++        &       Sound2SWI_Base
+         &       SoundQ_SWI_Code      - Module_Base
+         &       Module_SWIDecodeBase - Module_Base
+         &       0
+@@ -167,7 +169,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; In    r0-r6 trashable
+ 
+-Tempo_Code ENTRY
++Tempo_Code KernelEntry
+         LDR     wp, [r12]
+ 
+         MOV     r1, r0
+@@ -300,6 +302,7 @@
+ 
+         LDR     wp, [r12]
+         TEQP    pc, #I_bit + SVC_mode   ; Disable IRQ, I think we expect it
++        NOP                     ; ARM2 processor-state settling
+         CMP     r11, #(EndOfJumpTable-JumpTable)/4
+         ADDCC   pc, pc, r11, LSL #2
+         MOVS    pc, lr                  ; Reenable caller's IRQ state
+@@ -340,8 +343,9 @@
+ ;       SoundQFullInit - Initialise queue, ignoring whether we're already
+ ;                        inside a QInit (called on module init, die, reset)
+ 
+-SoundQFullInit ENTRY
++SoundQFullInit KernelEntry
+         TEQP    PC, #SVC_mode + I_bit
++        NOP                     ; ARM2 processor-state settling
+         MOV     r0, #0
+         STR     r0, [wp, #TimeSlot]     ; indicate not already in QInit
+         BL      SoundQInit
+@@ -356,13 +360,14 @@
+ 
+ ; Out   r0 = 0 => successful operation (never fails)
+ 
+-SoundQInit ENTRY
++SoundQInit KernelEntry
+         LDR     r0, [wp, #TimeSlot]     ; save so we can spot reentrant QInits
+         MOV     r10, #-1
+         STR     r10, [wp, #TimeSlot]    ; Clear slot
+ 
+         TST     r14, #I_bit             ; If caller had IRQs on
+         TEQEQP  PC, #SVC_mode
++        NOP                     ; ARM2 processor-state settling
+ 
+         ADD     r11, wp, #TimeBucket
+         LDR     r14, =QWrap
+@@ -384,6 +389,7 @@
+         BLT     %BT20
+ 
+         TEQP    PC, #SVC_mode+I_bit     ; turn IRQs off again
++        NOP                     ; ARM2 processor-state settling
+         MOV     r10, #DefaultTempo
+         STR     r10, [wp, #QTempo]
+         CMP     r0, #0                  ; if not in the middle of a QInit ...
+@@ -434,6 +440,7 @@
+         MOV     r10, pc                 ; Ensure IRQ disabled
+         ORR     r10, r10, #I_bit
+         TEQP    r10, #0
++        NOP                     ; ARM2 processor-state settling
+ 
+ ; .............................................................................
+  ]
+@@ -503,6 +510,7 @@
+         MOV     r10, pc                 ; Ensure IRQ disabled
+         ORR     r10, r10, #I_bit
+         TEQP    r10, #0
++        NOP                     ; ARM2 processor-state settling
+         B       SoundQSchedule_SWI
+ 
+ ; .............................................................................
+@@ -520,7 +528,7 @@
+ 
+ ; This routine returns a queue full error if in the middle of a QInit
+ 
+-SoundQSchedule_SWI ENTRY "r4-r8"
++SoundQSchedule_SWI KernelEntry "r4-r8"
+         LDR     r4, [wp, #TimeSlot]     ; get slot pointer
+         CMP     r4, #0                  ; if -ve then the foreground is doing
+         BMI     %FT99                   ; a QInit, so exit with queuefull error
+@@ -651,7 +659,7 @@
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-SoundQRemove_SWI ENTRY
++SoundQRemove_SWI KernelEntry
+ 
+         TEQP    pc, #I_bit + IRQ_mode
+         NOP
+@@ -675,7 +683,7 @@
+ 
+ ; This call returns with r0=-1 if we are in the middle of a QInit
+ 
+-SoundQRemove ENTRY "r4-r8"
++SoundQRemove KernelEntry "r4-r8"
+ 
+         LDR     r4, [wp, #TimeSlot]     ; get slot pointer
+         CMP     r4, #0                  ; if -ve then in middle of QInit
+@@ -783,7 +791,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; Two ways into the same lump of code. SKS
+ 
+-SoundQDispatch_SWI ENTRY
++SoundQDispatch_SWI KernelEntry
+ 
+         TEQP    pc, #I_bit + IRQ_mode
+         NOP
+@@ -797,7 +805,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; Must preserve SVC r14 as we will call SWIs (or our clients could)
+ 
+-SoundQDispatch_IRQ ENTRY
++SoundQDispatch_IRQ KernelEntry
+ 
+         TEQP    pc, #I_bit + SVC_mode
+         NOP
+@@ -826,7 +834,7 @@
+ ; In    r0 is tempo dispatch period
+ ;       r12 is QWorkSpace
+ 
+-SoundQDispatch_Body ENTRY "r0-r4"
++SoundQDispatch_Body KernelEntry "r0-r4"
+ 
+         LDR     r0, [wp, #QTempo]
+         BIC     r0, r0, #&F0000000
+@@ -905,7 +913,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; In    r0-r6 trashable
+ 
+-Initialise_Module ENTRY "r10, r11"      ; Calls internal routine
++Initialise_Module KernelEntry "r10, r11"      ; Calls internal routine
+ 
+         LDR     r2, [r12]               ; check for reinitialisation
+         CMP     r2, #0
+@@ -951,7 +959,7 @@
+ ; if NON fatal, still must kill queue before move
+ ; (workspace full of valuable pointers which won't relocate)
+ 
+-Finalise_Module ENTRY "r10, r11"        ; Calls internal routine
++Finalise_Module KernelEntry "r10, r11"        ; Calls internal routine
+ 
+         LDR     wp, [r12]
+ 
+@@ -985,13 +993,13 @@
+ 
+         LDR     wp, [R12]
+ 
+-        ENTRY   "r0,r10,r11"            ; Reinitialise the queue on reset
++        KernelEntry   "r0,r10,r11"            ; Reinitialise the queue on reset
+         BL      SoundQFullInit
+         EXITS                           ; Can't raise error from service
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-CopyError ENTRY r1-r7
++CopyError KernelEntry r1-r7
+         BL      open_messagefile
+         EXIT    VS
+         ADR     R1, MessageFile_Block
+@@ -1007,7 +1015,7 @@
+         DCB     "Resources:$.Resources.SoundSched.Messages", 0
+         ALIGN
+ 
+-open_messagefile ENTRY r0-r3
++open_messagefile KernelEntry r0-r3
+         ADRL    r3, MessageFile_Open
+         LDR     r0, [r3]
+         CMP     r0, #0
+--- a/src/WaveSynth/s/MsgCode
++++ b/src/WaveSynth/s/MsgCode
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: explicit ARM2 state settling and AsAsm compatibility.
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -25,7 +26,7 @@
+ ;        R11 -> message file block
+ ; Exit:  R0 -> String or V set error return
+ 
+-lookup_zero_file_r11 ENTRY "r1-r7"
++lookup_zero_file_r11 KernelEntry "r1-r7"
+         MOV     r1, r0                          ; Token
+         MOVS    r0, r11                         ; File handle
+         EXITS   EQ                              ; No file so return zero
+@@ -56,7 +57,7 @@
+ ; Out:          r0 undefined, all other registers preserved, flags undefined
+ ; Error:        r0 -> error block, V set
+ 
+-gs_lookup_print_string_one_file_r11 ENTRY "r1-r7"
++gs_lookup_print_string_one_file_r11 KernelEntry "r1-r7"
+         TEQ     r11, #0
+         BNE     %FT10
+         SWI     XOS_Write0                      ; No file so print the token
+@@ -115,7 +116,7 @@
+ ; Open the message file, using the 16 byte block passed in R11.
+ ; Preserves all registers, if error then R0->error block, V set.
+ 
+-open_message_file_r11 ENTRY "r0-r2"
++open_message_file_r11 KernelEntry "r0-r2"
+         MOV     r0, r11                         ; Block passed for file
+         ADR     r1, message_filename
+         MOV     r2, #0
+@@ -128,7 +129,7 @@
+ ; Close the message file block passed in R11 (or ignore if 0).
+ ; Preserves all registers, if error then R0->error block, V set.
+ 
+-close_message_file_r11 ENTRY "r0"
++close_message_file_r11 KernelEntry "r0"
+         MOVS    r0, r11                         ; Message file block.
+         EXITS   EQ                              ; No file so return.
+ 
+--- a/src/WaveSynth/s/WaveSynth
++++ b/src/WaveSynth/s/WaveSynth
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: relocatable ARM2 build.
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -55,6 +56,7 @@
+ ;                       with no local name in initialisation parameters.
+ 
+ 
++        AREA WaveSynth,CODE,READONLY
+  GET Hdr:ListOpts
+  OPT OptNoList
+  GET Hdr:Macros
+@@ -74,7 +76,7 @@
+ 
+ ; Now we can start the module
+ 
+-   LEADR Module_LoadAddr    ; give output the right addresses
++; Relocatable AOF AREA above replaces obsolete absolute LEADR.
+ 
+ Module_Base                ; label for calculating offsets
+    &    0                                       ; not application
+@@ -102,7 +104,7 @@
+ 
+ ; the initialisation :
+ 
+-Initialise_Module ENTRY "r9-r11", 16    ; MessageTrans file block on stack
++Initialise_Module KernelEntry "r9-r11", 16    ; MessageTrans file block on stack
+    MOV     r11, sp                      ; held in r11
+ 
+    LDR     R2, [R12]     ; check for reinitialisation
+@@ -299,7 +301,7 @@
+         TEQ     r1, #Service_ResourceFSStarted
+         MOVNES  pc, r14
+ 
+-change_names ENTRY "r0-r3, r11", 16     ; MessageTrans file block on
++change_names KernelEntry "r0-r3, r11", 16     ; MessageTrans file block on
+         MOV     r11, sp                 ; stack held in r11.
+         BL      open_message_file_r11
+         EXITS   VS                      ; Give up if no file.
+--- a/src/Percussion/s/MsgCode
++++ b/src/Percussion/s/MsgCode
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: explicit ARM2 state settling and AsAsm compatibility.
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -25,7 +26,7 @@
+ ;        R11 -> message file block
+ ; Exit:  R0 -> String or V set error return
+ 
+-lookup_zero_file_r11 ENTRY "r1-r7"
++lookup_zero_file_r11 KernelEntry "r1-r7"
+         MOV     r1, r0                          ; Token
+         MOVS    r0, r11                         ; File handle
+         EXITS   EQ                              ; No file so return zero
+@@ -48,7 +49,7 @@
+ ; Open the message file, using the 16 byte block passed in R11.
+ ; Preserves all registers, if error then R0->error block, V set.
+ 
+-open_message_file_r11 ENTRY "r0-r2"
++open_message_file_r11 KernelEntry "r0-r2"
+         MOV     r0, r11                         ; Block passed for file
+         ADR     r1, message_filename
+         MOV     r2, #0
+@@ -61,7 +62,7 @@
+ ; Close the message file block passed in R11 (or ignore if 0).
+ ; Preserves all registers, if error then R0->error block, V set.
+ 
+-close_message_file_r11 ENTRY "r0"
++close_message_file_r11 KernelEntry "r0"
+         MOVS    r0, r11                         ; Message file block.
+         EXITS   EQ                              ; No file so return.
+ 
+--- a/src/Percussion/s/Percussion
++++ b/src/Percussion/s/Percussion
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: relocatable ARM2 build.
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -40,6 +41,7 @@
+ ; 1.08  28 Feb 92  OSS  Changed to register voices with local name.
+ ; 1.09  16 Mar 92  OSS  Now updates local names when Messages RAM loaded.
+ 
++        AREA Percussion,CODE,READONLY
+  GET Hdr:ListOpts
+  GET Hdr:Macros
+  GET Hdr:System
+@@ -55,7 +57,7 @@
+ 
+ ; Now we can start the module
+ 
+-   LEADR Module_LoadAddr    ; give output the right addresses
++; Relocatable AOF AREA above replaces obsolete absolute LEADR.
+ 
+ Module_Base                ; label for calculating offsets
+         &       0 ; not application
+@@ -77,7 +79,7 @@
+         ALIGN
+ 
+ ; the initialisation :
+-Initialise_Module ENTRY "r11",16        ; MessageTrans file block on stack
++Initialise_Module KernelEntry "r11",16        ; MessageTrans file block on stack
+         MOV     r11, sp                      ; held in r11
+         LDR     R3, WorkSpaceSize
+         LDR     R2, [R12]     ; check for reinitialisation
+@@ -203,7 +205,7 @@
+         TEQ     r1, #Service_ResourceFSStarted
+         MOVNES  pc, r14
+ 
+-change_names ENTRY "r0-r3, r11", 16     ; MessageTrans file block on
++change_names KernelEntry "r0-r3, r11", 16     ; MessageTrans file block on
+         MOV     r11, sp                 ; stack held in r11.
+         BL      open_message_file_r11
+         EXITS   VS                      ; Give up if no file.

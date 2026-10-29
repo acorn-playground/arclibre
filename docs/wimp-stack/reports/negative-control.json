@@ -1,0 +1,29 @@
+{
+  "status": "EXPECTED_FAILURE",
+  "instruction_offset": 10452,
+  "replaced": "LDR R3,[SP,#12]",
+  "replacement": "NOP",
+  "module_sha256": "540395f38c40aefb3adf9dff596389c9c374590fad1c0e67cadb41a6a70ae20f",
+  "failure": "caller message-interest list preserved",
+  "contract": {
+    "copied_list": [
+      156,
+      8,
+      0,
+      0
+    ],
+    "message_bytes": 4,
+    "message_pointer": 26021688,
+    "original_list": [
+      67,
+      82,
+      65,
+      79,
+      0,
+      0,
+      0,
+      0
+    ],
+    "task_block": 26021368
+  }
+}

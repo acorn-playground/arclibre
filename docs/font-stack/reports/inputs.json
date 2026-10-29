@@ -1,0 +1,75 @@
+{
+  "modules": [
+    {
+      "component": "Colours",
+      "status": "STATIC_ARM2_PASS",
+      "bytes": 16376,
+      "sha256": "52296a453b64f326e88ff13bcd7ba2588adc768befd0d56f2d4920883337b51b",
+      "aof_sha256": "07c0176f07bb02df61b8738d985d5fb403f8c454e9571c8a15633ecf2830e88a",
+      "integer_instructions": 3644,
+      "relocations": 0,
+      "unresolved_symbols": 0,
+      "swi_base": 264000
+    },
+    {
+      "component": "DrawMod",
+      "status": "STATIC_ARM2_PASS",
+      "bytes": 10104,
+      "sha256": "ecc01224286a82aec6093257f3fe2ed7bc2161a6fe4e9bdb19a68204376bc139",
+      "aof_sha256": "7bb314056f787a104148f90e9f5ee5f2554e63cca51ed5afc418ac214c4ec7f0",
+      "integer_instructions": 2372,
+      "relocations": 0,
+      "unresolved_symbols": 0,
+      "swi_base": 263936
+    },
+    {
+      "component": "Super",
+      "status": "STATIC_ARM2_PASS",
+      "bytes": 2320,
+      "sha256": "bebfbebfc17810fe639f1c2ace12a74b257664ff6d86a389e701fab5ce5c1981",
+      "aof_sha256": "10c924dcfcf6f6a0be93022248eb37ae3824a21165571379049d52b9d41cd52f",
+      "integer_instructions": 255,
+      "relocations": 0,
+      "unresolved_symbols": 0,
+      "swi_base": 265600
+    },
+    {
+      "component": "Hourglass",
+      "status": "STATIC_ARM2_PASS",
+      "bytes": 2148,
+      "sha256": "7fac03c7c82bfd5afc7a38d48a660afefb7453af51ed8a6928a52bfe9462b49a",
+      "aof_sha256": "5617a088e3d9cb6c342ddc6472e6820040fa5cc9fe1cd619447045e95c159162",
+      "integer_instructions": 368,
+      "relocations": 0,
+      "unresolved_symbols": 0,
+      "swi_base": 263872
+    },
+    {
+      "component": "FontManager",
+      "status": "STATIC_ARM2_PASS",
+      "bytes": 60084,
+      "sha256": "e69268f15b0f8e8d27448ba1064a3fb773e4fd692d23364cf28900cf3d23b163",
+      "identical_aof_sha256": "57e40221a011644bb060fcb28fdd62f0a74662a9b4ab35c566c9b719a37e2281",
+      "unresolved_symbols": 0,
+      "relocations": 0,
+      "integer_arm2_instructions": 13868,
+      "fpa_instructions": 0,
+      "embedded_assets": 0,
+      "runtime_tested": false
+    },
+    {
+      "component": "ROMFonts",
+      "status": "STATIC_ARM2_PASS",
+      "bytes": 250000,
+      "sha256": "909493b93e4b4250feeb352d049298d5d09371cbbd5d40ab5b9ddf00ad464fd6",
+      "identical_aof_sha256": "bc1f76c77b0b152dacbdfd96450c4dd0ae405435c2c2ac18658ab7121da4429e",
+      "unresolved_symbols": 0,
+      "relocations": 0,
+      "integer_arm2_instructions": 46,
+      "fpa_instructions": 0,
+      "embedded_assets": 29,
+      "runtime_tested": false
+    }
+  ],
+  "resources_sha256": "adf92cf94808ccf62c3ddcccc077dae8db3fa61ff759f3a139b49ac87df40543"
+}

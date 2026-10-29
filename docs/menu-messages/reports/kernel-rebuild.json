@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "baseline_rom_sha256": "bf5ca56ebd6f7fd7dc4149360d97f76f009abed8879693470421998d59f11791",
+  "baseline_kernel_sha256": "cd2c3eb18de6ffab8fabb59406efb50eafd6851c305a58e88e2cc554facfcc30",
+  "desktop_profile_kernel_sha256": "71b0c301ed58f7f60d84899ca80acdef3d6cb9c9f6d82182f441e66676c35c80",
+  "baseline_matches_pinned_manifest": true,
+  "desktop_kernel_unchanged": true,
+  "scope": "Fresh full kernel/module assembly after public Messages header correction; separate build roots, not retagged prior evidence"
+}

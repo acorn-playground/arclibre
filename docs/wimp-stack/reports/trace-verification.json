@@ -1,0 +1,39 @@
+{
+  "status": "PASS",
+  "scope": "Sampled instruction traces, not complete path coverage",
+  "undefined_vector_observations": 30,
+  "modules": {
+    "FPEmulator": {
+      "distinct_instructions": 236,
+      "classified_fpa_sites": 2
+    },
+    "Colours": {
+      "distinct_instructions": 111,
+      "classified_fpa_sites": 0
+    },
+    "DrawMod": {
+      "distinct_instructions": 13,
+      "classified_fpa_sites": 0
+    },
+    "Super": {
+      "distinct_instructions": 0,
+      "classified_fpa_sites": 0
+    },
+    "Hourglass": {
+      "distinct_instructions": 0,
+      "classified_fpa_sites": 0
+    },
+    "FontManager": {
+      "distinct_instructions": 0,
+      "classified_fpa_sites": 0
+    },
+    "ROMFonts": {
+      "distinct_instructions": 0,
+      "classified_fpa_sites": 0
+    },
+    "Wimp": {
+      "distinct_instructions": 1059,
+      "classified_fpa_sites": 5
+    }
+  }
+}

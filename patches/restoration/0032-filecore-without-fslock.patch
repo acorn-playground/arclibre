@@ -1,0 +1,36 @@
+diff --git a/src/FileCore/s/GenSWIs b/src/FileCore/s/GenSWIs
+index 3c711ca..3adc5aa 100644
+--- a/src/FileCore/s/GenSWIs
++++ b/src/FileCore/s/GenSWIs
+@@ -44,12 +44,31 @@ EnsureFSLock ROUT
+ ; here when a write operation - check lock status
+ 01
+         MOV     r2, r2, LSR #29         ; get drive number
++ [ :DEF: ArcLibreDelivered
++; ArcLibre 2026: CLRV is CMP pc,#0, so after the comparison it left C set and
++; floppy writes reached FSLock. Clear V first. RISC OS 3.11 had no FSLock: a
++; missing FSLock module (SWI not known) means no lock; other errors stand.
++        CLRV
++        CMP     r2, #4
++        Pull    "r1,r2,pc",LO           ; not hard disc - ignore
++
++        SWI     &44781+(1:SHL:17)       ; get the lock status
++        BVC     %FT02
++        LDR     lr, [r0]
++        SUB     lr, lr, #&1E0
++        TEQ     lr, #&6                 ; ErrorNumber_NoSuchSWI (&1E6)?
++        BNE     %FT04                   ; no: V is still set, return the error
++        CLRV
++        Pull    "r1,r2,pc"
++04
++ |
+         CMP	r2, #4
+ 	CLRV
+ 	Pull	"r1,r2,pc",LO		; not hard disc - ignore
+ 
+         SWI     &44781+(1:SHL:17)       ; get the lock status
+         BVC     %FT02
++ ]
+         ORR     R0, R0, #1<<30
+         Pull    "r1,r2,pc"              ; if error then return it
+ 02

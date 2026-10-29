@@ -1,0 +1,25 @@
+/* Copyright 1996 Acorn Computers Ltd
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+#ifdef Trace
+   #define Ftracef(s) PROCftracef(s)
+   #define Ftrace_Send(e,p,t) PROCftrace_send(e,p,t)
+   #define Ftrace_Receive(e,p) PROCftrace_receive(e,p)
+   #define Ftrace_Queu(q) PROCftrace_queu(q)
+#else
+   #define Ftracef(s)
+   #define Ftrace_Send(e,p,t)
+   #define Ftrace_Receive(e,p)
+   #define Ftrace_Queu(q)
+#endif

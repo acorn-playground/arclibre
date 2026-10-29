@@ -1,0 +1,11 @@
+# Public software FPEmulator source
+
+The complete runtime is from [FPASC commit 827b16098de462b3dadc6caadf62d30ed664c926](https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/FPASC/-/tree/827b16098de462b3dadc6caadf62d30ed664c926), the 2010 vendor import of ARM's BSD-licensed core 1.13. The matching RISC OS veneer and module version 4.28 are taken from that same tree. This is an explicit later component dependency, not a claim that the missing cleaned-3.60 core was recovered.
+
+The selected 31 files and original/modified hashes are in [fpemulator.json](../manifests/fpemulator.json). The upstream aggregate [LICENSE](../src/FPEmulator/LICENSE) contains the New BSD terms for ARM code and Apache-2.0 terms for other source. Each ARM core file retains its explicit Advanced RISC Machines Limited 1992–1997 copyright and BSD three-clause notice. The RISC OS veneer retains its Acorn attribution; some veneer files have no individual Apache boilerplate, so the recorded basis is the aggregate upstream distribution licence, not an invented per-file notice. The wrapper does carry an explicit Apache notice. The UK error message resource has no separate file-level notice and is supplied under the same component distribution terms.
+
+Binary redistribution must reproduce ARM's copyright, conditions and disclaimer in accompanying materials. Source redistribution must retain them. Neither ARM nor contributor names may endorse derived products without permission. Preserve the Apache terms/notices for the veneer and identify modifications. Source edits to BSD-covered files do not convert them into Apache-only code.
+
+The retained source wrapper selects its genuine `SoftOnly` option and existing `Arm600 = FALSE` path. Changes remove one obsolete, unused option assignment absent from core 1.13 and make ARM2 bank settling explicit at ten source sites. The [patch series](../patches/fpemulator/series) records these changes. No core binary, proprietary ROM code or ROM-extracted resource is used.
+
+`src/FPASC` remains the separate 3.60 header/veneer provenance record. It is not combined with the later core to manufacture a historical source set. General FPA numerical conformance and RISC OS 3.11 application compatibility require further tests; licensing permission and compatibility are separate questions.

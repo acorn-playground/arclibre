@@ -1,0 +1,22 @@
+--- a/src/Wimp/s/Wimp02
++++ b/src/Wimp/s/Wimp02
+@@ -13,6 +13,8 @@
+ ; See the License for the specific language governing permissions and
+ ; limitations under the License.
+ ;
++; Open Archimedes: preserve the caller message list after task allocation.
++; See patches/desktop-source/0003-wimp-message-list.patch.
+ ; > Sources.Wimp02
+ 
+ ;;-----------------------------------------------------------------------------
+@@ -81,6 +83,10 @@
+         Debug   task1,"task_priority =",R14
+         BLT     %FT01                   ; ignore the messages if not a valid task
+ 
++; Task allocation above uses R3 for task_datasize. Recover the caller's
++; saved list pointer before interpreting it as a message-interest list.
++restore_initial_message_list
++        LDR     R3,[sp,#3*4]
+         CMP     R3,#0                   ; is the handle valid?
+         STRLE   R3,[R2,#task_messages]
+         BLGT    addmessages             ; add messages as required

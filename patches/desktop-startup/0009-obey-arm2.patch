@@ -1,0 +1,24 @@
+--- a/src/Obey/s/Obey
++++ b/src/Obey/s/Obey
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: relocatable ARM2 AsAsm build.
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -48,6 +49,7 @@
+ ;;                      Fix BuffOflow tag to BufOFlo
+ ;;----------------------------------------------------------------------------
+ 
++        AREA Obey,CODE,READONLY
+ Module_BaseAddr
+ 
+                 GET     hdr:ListOpts
+@@ -960,6 +962,7 @@
+         Pull    "r0-r3,r7"
+         BLEQ    exit                    ; close file etc. if so
+         TEQP    r7,#0                   ; restore V bit
++        NOP                             ; ARM2 processor-state settling
+         Pull    "R7-R11,PC"             ; return to caller (I hope!)
+ 
+       [ internat

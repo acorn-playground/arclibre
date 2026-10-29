@@ -1,0 +1,18 @@
+--- a/PublicInterfaces/SWIs
++++ b/PublicInterfaces/SWIs
+@@ -29,9 +29,12 @@
+ 
+         ; Ensure that the Module_SWI<x>Base are right
+ 
+-Module_SWISystemBase		*	0
+-Module_SWIApplicationBase	*	0
+-Module_SWIUserBase		*	0
++; Modified 2026: retain the original ModHand legacy Module_SWISystemBase.
++; This allocation header uses full *_Base addresses, not legacy base arithmetic.
++; Modified 2026: retain the original ModHand legacy Module_SWIApplicationBase.
++; This allocation header uses full *_Base addresses, not legacy base arithmetic.
++; Modified 2026: retain the original ModHand legacy Module_SWIUserBase.
++; This allocation header uses full *_Base addresses, not legacy base arithmetic.
+ 
+         ; Operating System SWI Chunks
+ 

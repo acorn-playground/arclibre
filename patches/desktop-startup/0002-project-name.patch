@@ -1,0 +1,8 @@
+--- a/src/Desktop/Resources/UK/Messages
++++ b/src/Desktop/Resources/UK/Messages
+@@ -1,4 +1,4 @@
+-RO3:RISC OS 3
++RO3:ArcLibre
+ CopyRt:© Acorn Computers Ltd, 1995
+ Init:Initialising...
+ Pre:

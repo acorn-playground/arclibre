@@ -1,0 +1,96 @@
+{
+  "status": "PASS",
+  "modules": [
+    {
+      "component": "ADFS",
+      "bytes": 34596,
+      "instructions": 8116,
+      "direct_branches": 1207,
+      "psr_sequences": 96,
+      "relocations": 0,
+      "unresolved_symbols": 0
+    },
+    {
+      "component": "FileCore",
+      "bytes": 67788,
+      "instructions": 16278,
+      "direct_branches": 3936,
+      "psr_sequences": 40,
+      "relocations": 0,
+      "unresolved_symbols": 0
+    },
+    {
+      "component": "FileSwitch",
+      "bytes": 48832,
+      "instructions": 11146,
+      "direct_branches": 2673,
+      "psr_sequences": 60,
+      "relocations": 0,
+      "unresolved_symbols": 0
+    },
+    {
+      "component": "IntKey",
+      "bytes": 3948,
+      "instructions": 385,
+      "direct_branches": 48,
+      "psr_sequences": 8,
+      "relocations": 0,
+      "unresolved_symbols": 0
+    },
+    {
+      "component": "Inter",
+      "bytes": 13096,
+      "instructions": 331,
+      "direct_branches": 63,
+      "psr_sequences": 0,
+      "relocations": 0,
+      "unresolved_symbols": 0
+    },
+    {
+      "component": "Messages",
+      "bytes": 47904,
+      "instructions": 15,
+      "direct_branches": 0,
+      "psr_sequences": 0,
+      "relocations": 0,
+      "unresolved_symbols": 0
+    },
+    {
+      "component": "MsgTrans",
+      "bytes": 3592,
+      "instructions": 788,
+      "direct_branches": 156,
+      "psr_sequences": 2,
+      "relocations": 0,
+      "unresolved_symbols": 0
+    },
+    {
+      "component": "ResourceFS",
+      "bytes": 3144,
+      "instructions": 689,
+      "direct_branches": 105,
+      "psr_sequences": 2,
+      "relocations": 0,
+      "unresolved_symbols": 0
+    },
+    {
+      "component": "TerritoryManager",
+      "bytes": 6572,
+      "instructions": 874,
+      "direct_branches": 117,
+      "psr_sequences": 1,
+      "relocations": 0,
+      "unresolved_symbols": 0
+    },
+    {
+      "component": "UK",
+      "bytes": 6464,
+      "instructions": 942,
+      "direct_branches": 115,
+      "psr_sequences": 0,
+      "relocations": 0,
+      "unresolved_symbols": 0
+    }
+  ],
+  "errors": []
+}

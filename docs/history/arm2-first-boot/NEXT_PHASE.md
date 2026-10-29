@@ -1,0 +1,12 @@
+# Recommended next phase
+
+The first reset milestone has succeeded. Next establish a **small executable kernel regression suite on the now-booted original-machine configuration**, followed by a separately bounded minimal-runtime-module milestone. Keep the current ROM hash and checkpoint snapshots as the reference.
+
+1. Exercise genuine SWI and IRQ return state, deliberate undefined/prefetch/data/address exceptions, unclaimed/claimed FIQ and callbacks. Use test-owned executable fixtures and real handlers; check saved PC/PSR, banked registers, stack bounds, nested masking and user/privileged memory protection. Do not interpret installed vectors alone as proof of fault recovery.
+2. Validate application-slot and dynamic-area changes, heap operations and MEMC protection with small RAM-only tests. Measure IRQ/callback latency affected by the restoration's conservative settling instructions. Include a distinct software/keyboard Break test and, later, an ARM3 configuration without claiming it passed this ARM2 run.
+3. Inventory the **actual** dependencies reached after ModuleInit before selecting a minimal lawful module cohort. Its source expects the Podule manager after Utility; message/territory/filing-system and other providers must be evaluated from real calls and original contracts. The observed ColourTrans cache notification can be tolerated by the present kernel path, but actual colour-conversion functionality will require a genuine provider when called. Do not add blanket success stubs or continue arbitrarily through missing services.
+4. Set the next runtime stopping point before desktop launch, with complete payload provenance, exact module order/termination, deterministic reset tests and a record of unsupported calls. Retain the RISC OS **3.11** contract for SWIs, OS_Byte/OS_Word, modules, VDU/palette/font, memory and timing; the source's 3.60 version is not a substitute for that contract.
+
+The MCP server is sufficient for current checkpoints. If larger future tests require a convenient API improvement, a paginated/exportable diagnostic log with raw address/value records and device-state export would reduce reliance on the external harness. That is an optional usability improvement, **not an obstacle demonstrated by this milestone**. No emulator change is recommended to make this ROM boot.
+
+Desktop integration and general application/game compatibility testing remain outside the next narrowly scoped kernel/runtime milestone until its real services and exception contracts are established.

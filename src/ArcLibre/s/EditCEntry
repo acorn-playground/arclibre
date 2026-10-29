@@ -1,0 +1,11 @@
+; SPDX-License-Identifier: Apache-2.0
+; The original module wrapper and SharedCLibrary perform C startup.
+; Compile the Edit body with main=ArcLibre_EditMain so GCC does not
+; inject its alternative __gccmain constructor runtime into this C program.
+; Preserve the original library's weak main entry with a real tail call.
+        AREA |C$$code|, CODE, READONLY
+        IMPORT |ArcLibre_EditMain|
+        EXPORT |main|
+|main|
+        B |ArcLibre_EditMain|
+        END

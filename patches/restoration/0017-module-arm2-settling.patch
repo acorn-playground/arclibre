@@ -1,0 +1,180 @@
+--- a/FileSwitch/s/FSControl
++++ b/FileSwitch/s/FSControl
+@@ -342,6 +342,7 @@
+         LDR     sp, =SVCSTK             ; Flatten superstack, we don't return
+ 
+         TEQP    pc, #0                  ; USR mode, all ints on
++        MOV     r0, r0 ; ARM2 bank-select settling, preserves all registers and flags.
+         MOV     r12, #&80000000         ; Cause address extinction if used
+         MOV     r13, #&80000000         ; (keep 1.20 compat capable)
+         ADR     lr, ReturnFromAbsoluteCode
+@@ -398,6 +399,7 @@
+         LDR     r1, commandtailptr
+ 
+         TEQP    pc, #0                  ; USR mode, all ints on
++        MOV     r0, r0 ; ARM2 bank-select settling, preserves all registers and flags.
+         ADD     r5, r3, r5              ; r12 -> transient workspace. Not bank
+         SUB     wp, r5, #transient_code ; Must correct as r5 = info + code
+                                         ; and r2 = code^
+@@ -454,6 +456,7 @@
+ 
+         LDR     r2, TransientBlock
+         LDMIA   r2, {r6-r9, r13-r14}^   ; Writing to r13,r14_usr
++        MOV     r0, r0 ; ARM2 bank-select settling, preserves all registers and flags.
+ 
+         TST     r1, #V_bit              ; Did it report error ?
+         BLNE    CopyErrorExternal
+--- a/FileSwitch/s/FSUtils
++++ b/FileSwitch/s/FSUtils
+@@ -1190,6 +1190,7 @@
+         SWI     XOS_Find                ; Don't call internal routine as we
+         BLVS    CopyErrorExternal       ; may have globalerror set, and the
+         TEQVCP  r2, #0                  ; flushing code sets V if globalerror
++        MOV     r0, r0 ; ARM2 bank-select settling, preserves all registers and flags.
+         EXIT                            ; was set at all
+ 
+ ; .............................................................................
+@@ -1438,6 +1439,7 @@
+         MOVNE   r3, #Z_bit              ; lo words first
+         SBCS    r2, r2, r0              ; hi words next
+         TEQEQP  r3, pc
++        MOV     r0, r0 ; ARM2 bank-select settling, preserves all registers and flags.
+ 
+         BHI     %FT65                   ; [yes, do copy]
+ 
+--- a/FileSwitch/s/FSCommands
++++ b/FileSwitch/s/FSCommands
+@@ -201,6 +201,7 @@
+         SWI     XOS_Find
+         STRVS   r0, [sp]                ; May modify it though
+         TEQVCP  r2, #0                  ; V from op/Close
++        MOV     r0, r0 ; ARM2 bank-select settling, preserves all registers and flags.
+         EXIT
+ 
+ fsw_wildstar                            ; Used from all over
+@@ -398,6 +399,7 @@
+         MOVEQ   r8, #util_noattr
+         MOVEQ   r14, psr                ; Invert C as bit wrong way round
+         TEQEQP  r14, #C_bit             ; for backwrods compatabilly-T
++        MOV     r0, r0 ; ARM2 bank-select settling, preserves all registers and flags.
+         BEQ     %BT05
+ 
+         TEQ     r0, #"c"
+@@ -678,6 +680,7 @@
+         SWI     XOS_Byte
+         EXIT    VS
+         TEQP    R3, #0                  ; restore PSR state
++        MOV     r0, r0 ; ARM2 bank-select settling, preserves all registers and flags.
+         ORRNE   R2, R2, #FileSwitchTruncateNamesCMOSBit    ; EQ => off, so clear bit
+         BICEQ   R2, R2, #FileSwitchTruncateNamesCMOSBit    ; NE => on, so set bit
+         MOV     R0, #WriteCMOS
+--- a/FileSwitch/s/OSFind
++++ b/FileSwitch/s/OSFind
+@@ -505,6 +505,7 @@
+ 75      MOV     r0, psr                 ; Deallocate exit
+         BL      DeallocateStream
+         TEQVCP  r0, #0
++        MOV     r0, r0 ; ARM2 bank-select settling, preserves all registers and flags.
+         EXIT
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+--- a/FileSwitch/s/FSUtils3
++++ b/FileSwitch/s/FSUtils3
+@@ -1405,6 +1405,7 @@
+         MOVNE   r4, #Z_bit              ; lo words first
+         SBCS    r5, r0, r5              ; hi words next
+         TEQEQP  r4, pc
++        MOV     r0, r0 ; ARM2 bank-select settling, preserves all registers and flags.
+  [ debugutil
+  BLS %FT00
+  DLINE "source newer than end date"
+@@ -1416,6 +1417,7 @@
+         MOVNE   r2, #Z_bit              ; lo words first
+         SBCS    r3, r0, r3              ; hi words next
+         TEQEQP  r2, pc
++        MOV     r0, r0 ; ARM2 bank-select settling, preserves all registers and flags.
+  [ debugutil
+  BLO %FT00
+  DLINE "source date in range"
+--- a/FileSwitch/s/StreamBits
++++ b/FileSwitch/s/StreamBits
+@@ -589,6 +589,7 @@
+         CMP     r14, r0                 ; VClear. Swap EQ <-> NE
+         MOV     r14, #Z_bit
+         TEQP    r14, pc
++        MOV     r0, r0 ; ARM2 bank-select settling, preserves all registers and flags.
+  [ debugstream
+  BNE %FT11
+  DLINE " - buffer not found"
+--- a/FileSwitch/s/FileSwBody
++++ b/FileSwitch/s/FileSwBody
+@@ -606,6 +606,7 @@
+         MACRO
+ $label  InitialiseFrame
+ $label  TEQP    pc, #SVC_mode           ; Reenable interrupts
++        MOV     r0, r0 ; ARM2 bank-select settling, preserves all registers and flags.
+         MOV     fp, sp                  ; Point to dumped registers
+         SUB     sp, sp, #Proc_LocalStack ; Never zero for main entry frame
+  [ debugframe
+--- a/MsgTrans/s/MsgTrans
++++ b/MsgTrans/s/MsgTrans
+@@ -506,6 +506,7 @@
+         SWI     XOS_Find                                ; close file even if error
+         MOVVC   r0, r6
+         TEQVCP  r5, #0
++        MOV     r0, r0 ; ARM2 bank-select settling, preserves all registers and flags.
+ 
+         Debug   xx,"Result: r0, r2 =", r0, r2
+ 
+@@ -653,6 +654,7 @@
+ 
+         Pull    "r0,lr"
+         TEQP    pc, lr
++        MOV     r0, r0 ; ARM2 bank-select settling, preserves all registers and flags.
+ 
+         EXIT
+ 
+--- a/ResourceFS/s/ResourceFS
++++ b/ResourceFS/s/ResourceFS
+@@ -758,6 +758,7 @@
+         CMP     r8, r6
+         ADDHS   r6, r6, #1
+         TEQHSP  pc, r10
++        MOV     r0, r0 ; ARM2 bank-select settling, preserves all registers and flags.
+         LDR     r1, [r9, r6, ASL #2]
+         DebugS  quickindex,"Found:",r1
+         Debug   quickindex,"Final results:",r6,r8,r10
+--- a/SharedHeaders/CPU/Generic26
++++ b/SharedHeaders/CPU/Generic26
+@@ -214,6 +214,7 @@
+ $label  MOV     $register, #I_bit
+         TST     $register, PC           ; is I_bit set ?
+         TEQEQP  $register, PC           ; no, then set it (and $reg. = I_bit)
++        MOV     r0, r0 ; ARM2 bank-select settling, preserves all registers and flags.
+         MOVNE   $register, #0           ; yes, then leave alone (and R14=0)
+   ]
+         MEND
+@@ -229,6 +230,7 @@
+         MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+   |
+ $label  TEQP    $register, PC
++        MOV     r0, r0 ; ARM2 bank-select settling, preserves all registers and flags.
+   ]
+         MEND
+ 
+@@ -257,6 +259,7 @@
+ $label  MOV$cond   $regtmp, pc
+         ORR$cond   $regtmp, $regtmp, #($set) :OR: ($clr)
+         TEQ$cond.P $regtmp, #$clr
++        MOV     r0, r0 ; ARM2 bank-select settling, preserves all registers and flags.
+         MEND
+ 
+ ; **********************************************
+@@ -295,6 +298,7 @@
+ $label  TOGPSR  $bits, $regtmp, $cond
+ $label  MOV$cond   $regtmp, pc
+         TEQ$cond.P $regtmp, #$bits
++        MOV     r0, r0 ; ARM2 bank-select settling, preserves all registers and flags.
+         MEND
+ 
+         OPT     OldOpt

@@ -1,0 +1,392 @@
+{
+  "status": "PASS",
+  "rom_sha256": "94fb12c8fdde58bff239890de5f66f95bf6b4590f7a7cdb60d2812903a6a45a0",
+  "cold_boots_per_operation": 3,
+  "independent_machines": 15,
+  "identical_repeats": true,
+  "real_mouse_operations": [
+    "copy",
+    "shift-drag move",
+    "menu delete",
+    "write-protected copy and Abort"
+  ],
+  "file_bytes_metadata_directory_checksums_free_maps_verified": true,
+  "public_c_abi_client": true,
+  "emulator_unchanged": true,
+  "limitations": [
+    "Single-file old-map D-format operations; not recursive, cross-volume, full-disc or exhaustive filing coverage.",
+    "Bounded public C ABI checks, not the entire C-library interface."
+  ],
+  "scenarios": {
+    "copy": {
+      "status": "PASS",
+      "media": {
+        "status": "PASS",
+        "operation": "copy",
+        "sha256": "0d79c342581912b5cd5ee3e326fd6b3a0b465a5071fb2e2bd4ad607af889c57f",
+        "payload_sha256": "6e78e35f263eaf89e370878a18d66d64e3c3b3c8bdfe9e179cb9084003ecd43b",
+        "root": {
+          "CopyMe": {
+            "load": 4294967040,
+            "execute": 0,
+            "length": 32791,
+            "address": 20,
+            "attributes": 17
+          },
+          "Dest": {
+            "load": 4294967040,
+            "execute": 0,
+            "length": 2048,
+            "address": 12,
+            "attributes": 25
+          }
+        },
+        "destination": {
+          "CopyMe": {
+            "load": 4294967040,
+            "execute": 0,
+            "length": 32791,
+            "address": 152,
+            "attributes": 17
+          }
+        },
+        "free_bytes": 746496
+      },
+      "screens": {
+        "desktop.png": "09ccca655845212a73c2d4c8abe091a2c4f3fe5d3a2bc90b31a9753447096f3a",
+        "copy-drag.png": "67aa11b82cddffd7614656ae8247a5c3d468e33aec31f86124f863128417e0b2",
+        "copy-completed.png": "55021479cf73be6bcb1f1df77816087c818088dc3abbe583a4f6fe216a78cff9",
+        "copy-viewers.png": "7de035739be75037a0fb212dee894bc16eaf6034216045dea00858752b82b530",
+        "disc-open.png": "7a733e904320fe85f1cdcb6215fe79d2a8d7748381b0afe63e455e4971f7ab82",
+        "welcome.png": "6c97a87a5065defbaef154e3c9a4fc192d9a3a6f5b7390817532581147946421"
+      },
+      "trace": {
+        "status": "PASS",
+        "scope": "All undefined exceptions; sampled ROM instruction paths, not exhaustive branch coverage",
+        "generated_sprite_instructions": 95,
+        "classified_software_fpa_traps": 194,
+        "unclassified_undefined_exceptions": 0,
+        "modules": {
+          "FileSwitch": 1904,
+          "ResourceFS": 306,
+          "MsgTrans": 284,
+          "Messages": 6,
+          "TerritoryManager": 96,
+          "UK": 51,
+          "Inter": 15,
+          "IntKey": 11,
+          "Desktop": 23,
+          "FileCore": 113,
+          "ADFS": 31,
+          "FPEmulator": 326,
+          "Colours": 18,
+          "DrawMod": 9,
+          "Super": 0,
+          "Hourglass": 30,
+          "FontManager": 186,
+          "ROMFonts": 7,
+          "SprExtend": 85,
+          "Wimp": 1016,
+          "Filer": 62,
+          "Switcher": 23,
+          "Pinboard": 45,
+          "ADFSFiler": 16,
+          "ShellCLI": 6,
+          "Obey": 4,
+          "Buffers": 80,
+          "Sound0": 387,
+          "Sound1": 230,
+          "Sound2": 118,
+          "WaveSynth": 80,
+          "Percussion": 74,
+          "DragASprit": 11,
+          "FilerSWIs": 8,
+          "SharedCLib": 454,
+          "FilerAct": 17
+        }
+      }
+    },
+    "move": {
+      "status": "PASS",
+      "media": {
+        "status": "PASS",
+        "operation": "move",
+        "sha256": "17b4e00c23b65f261fb9d9c59096003064618912323c648affdd412c17c358ed",
+        "payload_sha256": "6e78e35f263eaf89e370878a18d66d64e3c3b3c8bdfe9e179cb9084003ecd43b",
+        "root": {
+          "Dest": {
+            "load": 4294967040,
+            "execute": 0,
+            "length": 2048,
+            "address": 12,
+            "attributes": 25
+          }
+        },
+        "destination": {
+          "CopyMe": {
+            "load": 4294967040,
+            "execute": 0,
+            "length": 32791,
+            "address": 20,
+            "attributes": 17
+          }
+        },
+        "free_bytes": 780288
+      },
+      "screens": {
+        "desktop.png": "09ccca655845212a73c2d4c8abe091a2c4f3fe5d3a2bc90b31a9753447096f3a",
+        "copy-drag.png": "67aa11b82cddffd7614656ae8247a5c3d468e33aec31f86124f863128417e0b2",
+        "copy-completed.png": "9201271d2190706d19bce25d9843a95b8e7a335d57235c0f2a6295cada42e99b",
+        "copy-viewers.png": "7de035739be75037a0fb212dee894bc16eaf6034216045dea00858752b82b530",
+        "disc-open.png": "7a733e904320fe85f1cdcb6215fe79d2a8d7748381b0afe63e455e4971f7ab82",
+        "welcome.png": "6c97a87a5065defbaef154e3c9a4fc192d9a3a6f5b7390817532581147946421"
+      },
+      "trace": {
+        "status": "PASS",
+        "scope": "All undefined exceptions; sampled ROM instruction paths, not exhaustive branch coverage",
+        "generated_sprite_instructions": 91,
+        "classified_software_fpa_traps": 130,
+        "unclassified_undefined_exceptions": 0,
+        "modules": {
+          "FileSwitch": 1904,
+          "ResourceFS": 306,
+          "MsgTrans": 284,
+          "Messages": 6,
+          "TerritoryManager": 96,
+          "UK": 51,
+          "Inter": 15,
+          "IntKey": 11,
+          "Desktop": 23,
+          "FileCore": 113,
+          "ADFS": 31,
+          "FPEmulator": 326,
+          "Colours": 18,
+          "DrawMod": 9,
+          "Super": 0,
+          "Hourglass": 30,
+          "FontManager": 186,
+          "ROMFonts": 7,
+          "SprExtend": 85,
+          "Wimp": 1016,
+          "Filer": 62,
+          "Switcher": 23,
+          "Pinboard": 45,
+          "ADFSFiler": 16,
+          "ShellCLI": 6,
+          "Obey": 4,
+          "Buffers": 80,
+          "Sound0": 387,
+          "Sound1": 230,
+          "Sound2": 118,
+          "WaveSynth": 80,
+          "Percussion": 74,
+          "DragASprit": 11,
+          "FilerSWIs": 8,
+          "SharedCLib": 454,
+          "FilerAct": 17
+        }
+      }
+    },
+    "delete": {
+      "status": "PASS",
+      "media": {
+        "status": "PASS",
+        "operation": "delete",
+        "sha256": "84b42a3941f54561c4c75af0e17c4f48b8a667c5d723d166b8c338aff1cbb70d",
+        "payload_sha256": "6e78e35f263eaf89e370878a18d66d64e3c3b3c8bdfe9e179cb9084003ecd43b",
+        "root": {
+          "Dest": {
+            "load": 4294967040,
+            "execute": 0,
+            "length": 2048,
+            "address": 12,
+            "attributes": 25
+          }
+        },
+        "destination": {},
+        "free_bytes": 814080
+      },
+      "screens": {
+        "desktop.png": "09ccca655845212a73c2d4c8abe091a2c4f3fe5d3a2bc90b31a9753447096f3a",
+        "file-menu.png": "bccaa6c84b9e8e007a6955a6d66c857ff82a8ba4ff1c3a0ce3f7d2af83526732",
+        "file-submenu.png": "66f409813dbbd862a25fe276016978fccf36888d5add26d308e41a5f7f6907c9",
+        "delete-completed.png": "62742e0e7ccea322c39b5efeb5768b39e51cb673246af66d0e86fe05a4000e41",
+        "disc-open.png": "7a733e904320fe85f1cdcb6215fe79d2a8d7748381b0afe63e455e4971f7ab82",
+        "welcome.png": "6c97a87a5065defbaef154e3c9a4fc192d9a3a6f5b7390817532581147946421"
+      },
+      "trace": {
+        "status": "PASS",
+        "scope": "All undefined exceptions; sampled ROM instruction paths, not exhaustive branch coverage",
+        "generated_sprite_instructions": 40,
+        "classified_software_fpa_traps": 119,
+        "unclassified_undefined_exceptions": 0,
+        "modules": {
+          "FileSwitch": 1904,
+          "ResourceFS": 306,
+          "MsgTrans": 284,
+          "Messages": 6,
+          "TerritoryManager": 96,
+          "UK": 51,
+          "Inter": 15,
+          "IntKey": 11,
+          "Desktop": 23,
+          "FileCore": 113,
+          "ADFS": 31,
+          "FPEmulator": 326,
+          "Colours": 18,
+          "DrawMod": 9,
+          "Super": 0,
+          "Hourglass": 30,
+          "FontManager": 186,
+          "ROMFonts": 7,
+          "SprExtend": 85,
+          "Wimp": 1020,
+          "Filer": 62,
+          "Switcher": 23,
+          "Pinboard": 45,
+          "ADFSFiler": 16,
+          "ShellCLI": 6,
+          "Obey": 4,
+          "Buffers": 80,
+          "Sound0": 387,
+          "Sound1": 230,
+          "Sound2": 118,
+          "WaveSynth": 80,
+          "Percussion": 74,
+          "DragASprit": 11,
+          "FilerSWIs": 8,
+          "SharedCLib": 454,
+          "FilerAct": 17
+        }
+      }
+    },
+    "protected": {
+      "status": "PASS",
+      "media": {
+        "status": "PASS",
+        "unchanged_sha256": "a71339f87515b25403bdb75e3cc8d77465818f505f5139eeccab2742e8ac4233",
+        "error": {
+          "text": "The disc is write protected. Move the write-protect tab and try again."
+        }
+      },
+      "screens": {
+        "desktop.png": "09ccca655845212a73c2d4c8abe091a2c4f3fe5d3a2bc90b31a9753447096f3a",
+        "copy-drag.png": "67aa11b82cddffd7614656ae8247a5c3d468e33aec31f86124f863128417e0b2",
+        "copy-completed.png": "39313f6e66665fcd7efd98953e86e02aaf6a28faa2395d1c68fd2776c0711bde",
+        "copy-viewers.png": "7de035739be75037a0fb212dee894bc16eaf6034216045dea00858752b82b530",
+        "protected-aborted.png": "9718df7f159ae500926c6fc9caf5b3cab860b140138ce2b966edbafc8c0d9984",
+        "write-protected.png": "39313f6e66665fcd7efd98953e86e02aaf6a28faa2395d1c68fd2776c0711bde",
+        "disc-open.png": "7a733e904320fe85f1cdcb6215fe79d2a8d7748381b0afe63e455e4971f7ab82",
+        "welcome.png": "6c97a87a5065defbaef154e3c9a4fc192d9a3a6f5b7390817532581147946421"
+      },
+      "trace": {
+        "status": "PASS",
+        "scope": "All undefined exceptions; sampled ROM instruction paths, not exhaustive branch coverage",
+        "generated_sprite_instructions": 91,
+        "classified_software_fpa_traps": 173,
+        "unclassified_undefined_exceptions": 0,
+        "modules": {
+          "FileSwitch": 1904,
+          "ResourceFS": 306,
+          "MsgTrans": 284,
+          "Messages": 6,
+          "TerritoryManager": 96,
+          "UK": 51,
+          "Inter": 15,
+          "IntKey": 11,
+          "Desktop": 23,
+          "FileCore": 113,
+          "ADFS": 31,
+          "FPEmulator": 326,
+          "Colours": 18,
+          "DrawMod": 9,
+          "Super": 0,
+          "Hourglass": 30,
+          "FontManager": 186,
+          "ROMFonts": 7,
+          "SprExtend": 85,
+          "Wimp": 1017,
+          "Filer": 62,
+          "Switcher": 23,
+          "Pinboard": 45,
+          "ADFSFiler": 16,
+          "ShellCLI": 6,
+          "Obey": 4,
+          "Buffers": 80,
+          "Sound0": 387,
+          "Sound1": 230,
+          "Sound2": 118,
+          "WaveSynth": 80,
+          "Percussion": 74,
+          "DragASprit": 11,
+          "FilerSWIs": 8,
+          "SharedCLib": 454,
+          "FilerAct": 17
+        }
+      }
+    },
+    "abi": {
+      "status": "PASS",
+      "media": {
+        "status": "PASS",
+        "public_client": {
+          "sha256": "2ea514aa9d50d51938bff8acc9dd935efbfd51c2a91473ba9e3080f5d5c2057b",
+          "program_sha256": "93ecbb07362e208aa1b0601f2c09b39f3643adc510fa589c3f4dafe1d614784c",
+          "source": "tests/fixtures/CAbiClient.c"
+        }
+      },
+      "screens": {
+        "application.png": "f39e31ab47f78e8cf69571929322e67a77969479c2e0adfb952d933889a4fbbe",
+        "desktop.png": "09ccca655845212a73c2d4c8abe091a2c4f3fe5d3a2bc90b31a9753447096f3a",
+        "disc-open.png": "575f20f9a2d546280a7d29f6834b97b78979056ab8682a34e92b00999e1c4946",
+        "returned.png": "c2319707a471ffe9455c12379cb40e36ed027e41376fe3f3a678c96aade04792",
+        "welcome.png": "6c97a87a5065defbaef154e3c9a4fc192d9a3a6f5b7390817532581147946421"
+      },
+      "trace": {
+        "status": "PASS",
+        "scope": "All undefined exceptions; sampled ROM instruction paths, not exhaustive branch coverage",
+        "generated_sprite_instructions": 40,
+        "classified_software_fpa_traps": 144,
+        "unclassified_undefined_exceptions": 0,
+        "modules": {
+          "FileSwitch": 2077,
+          "ResourceFS": 306,
+          "MsgTrans": 284,
+          "Messages": 6,
+          "TerritoryManager": 81,
+          "UK": 20,
+          "Inter": 15,
+          "IntKey": 11,
+          "Desktop": 23,
+          "FileCore": 1762,
+          "ADFS": 185,
+          "FPEmulator": 275,
+          "Colours": 18,
+          "DrawMod": 9,
+          "Super": 0,
+          "Hourglass": 30,
+          "FontManager": 186,
+          "ROMFonts": 7,
+          "SprExtend": 85,
+          "Wimp": 997,
+          "Filer": 61,
+          "Switcher": 42,
+          "Pinboard": 45,
+          "ADFSFiler": 16,
+          "ShellCLI": 6,
+          "Obey": 126,
+          "Buffers": 80,
+          "Sound0": 387,
+          "Sound1": 230,
+          "Sound2": 118,
+          "WaveSynth": 80,
+          "Percussion": 74,
+          "DragASprit": 11,
+          "FilerSWIs": 8,
+          "SharedCLib": 17,
+          "FilerAct": 16
+        }
+      }
+    }
+  }
+}

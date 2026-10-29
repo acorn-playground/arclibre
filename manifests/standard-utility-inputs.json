@@ -1,0 +1,119 @@
+[
+  {
+    "component": "ScrBlank",
+    "path": "Doc/ScrBlank",
+    "revision": "9d17f822bccc749fa9d345301eb95573fb90c444",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Video/Render/ScrBlank.git",
+    "upstream_sha256": "d0b0206f458a49529eddcec1fdd22e25776d48c35d9bd724a786ad843a028212",
+    "sha256": "d0b0206f458a49529eddcec1fdd22e25776d48c35d9bd724a786ad843a028212",
+    "bytes": 6139
+  },
+  {
+    "component": "ScrBlank",
+    "path": "LICENSE",
+    "revision": "9d17f822bccc749fa9d345301eb95573fb90c444",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Video/Render/ScrBlank.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358
+  },
+  {
+    "component": "ScrBlank",
+    "path": "Makefile",
+    "revision": "9d17f822bccc749fa9d345301eb95573fb90c444",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Video/Render/ScrBlank.git",
+    "upstream_sha256": "a258163099faa37b078d1eb6388d10ad35169a1bc7461f1d125ab1100dc35195",
+    "sha256": "a258163099faa37b078d1eb6388d10ad35169a1bc7461f1d125ab1100dc35195",
+    "bytes": 1839
+  },
+  {
+    "component": "ScrBlank",
+    "path": "Resources/UK/Messages",
+    "revision": "9d17f822bccc749fa9d345301eb95573fb90c444",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Video/Render/ScrBlank.git",
+    "upstream_sha256": "34f10f64cf0aa80a4a46499f9faf1e8dcc7e6e17b8628462acec2c047a61d3e4",
+    "sha256": "34f10f64cf0aa80a4a46499f9faf1e8dcc7e6e17b8628462acec2c047a61d3e4",
+    "bytes": 434
+  },
+  {
+    "component": "ScrBlank",
+    "path": "Version",
+    "revision": "9d17f822bccc749fa9d345301eb95573fb90c444",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Video/Render/ScrBlank.git",
+    "upstream_sha256": "d9cdf59c9736dda98362c394db325b8d78980f2dc0b3808be01bb2edd23825b4",
+    "sha256": "d9cdf59c9736dda98362c394db325b8d78980f2dc0b3808be01bb2edd23825b4",
+    "bytes": 169
+  },
+  {
+    "component": "ScrBlank",
+    "path": "hdr/ScrBlank",
+    "revision": "9d17f822bccc749fa9d345301eb95573fb90c444",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Video/Render/ScrBlank.git",
+    "upstream_sha256": "3addf69b2ef34f75062557e64d406af8dbdc3430fe9c1d440eef0b05554f908d",
+    "sha256": "3addf69b2ef34f75062557e64d406af8dbdc3430fe9c1d440eef0b05554f908d",
+    "bytes": 1465
+  },
+  {
+    "component": "ScrBlank",
+    "path": "s/ScrBlank",
+    "revision": "9d17f822bccc749fa9d345301eb95573fb90c444",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Video/Render/ScrBlank.git",
+    "upstream_sha256": "017514f36c32375e36b62a035cecf4f876285ced60dabb8be2357a2e695416bf",
+    "sha256": "111b6ea5bb23bbd84c9eb9a0d74a1e7dd34d8dd192a381265ba75cebcdaa0b6d",
+    "bytes": 26257
+  },
+  {
+    "component": "StringLib",
+    "path": "LICENSE",
+    "revision": "38468e6b620847a1eebe7f16a5648d51a0702200",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Sound/Voices/StringLib.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358
+  },
+  {
+    "component": "StringLib",
+    "path": "Makefile",
+    "revision": "38468e6b620847a1eebe7f16a5648d51a0702200",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Sound/Voices/StringLib.git",
+    "upstream_sha256": "fda773e0f89dd990ce16970e23910b74c98e52eb16cd59f3b65be06b281f778d",
+    "sha256": "fda773e0f89dd990ce16970e23910b74c98e52eb16cd59f3b65be06b281f778d",
+    "bytes": 1678
+  },
+  {
+    "component": "StringLib",
+    "path": "Resources/UK/Messages",
+    "revision": "38468e6b620847a1eebe7f16a5648d51a0702200",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Sound/Voices/StringLib.git",
+    "upstream_sha256": "fee1fc0a121128e257aa81b8c53fd1bb888aa56399d9769c7705b7cc0f607384",
+    "sha256": "fee1fc0a121128e257aa81b8c53fd1bb888aa56399d9769c7705b7cc0f607384",
+    "bytes": 84
+  },
+  {
+    "component": "StringLib",
+    "path": "Version",
+    "revision": "38468e6b620847a1eebe7f16a5648d51a0702200",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Sound/Voices/StringLib.git",
+    "upstream_sha256": "0b673b00fc3a8885bd0eb6d0b7708d8e8f58054623214b940b9c92ec2b2ba01b",
+    "sha256": "0b673b00fc3a8885bd0eb6d0b7708d8e8f58054623214b940b9c92ec2b2ba01b",
+    "bytes": 214
+  },
+  {
+    "component": "StringLib",
+    "path": "s/MsgCode",
+    "revision": "38468e6b620847a1eebe7f16a5648d51a0702200",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Sound/Voices/StringLib.git",
+    "upstream_sha256": "f896da623428ab570b1c928fd0224dea682e1e981930c8a71a652e4e88ac796a",
+    "sha256": "cf023f518af2eea9d50a06ffb67f30d87c43a37b520eb8698fe4de554f0703e2",
+    "bytes": 2810
+  },
+  {
+    "component": "StringLib",
+    "path": "s/StringLib",
+    "revision": "38468e6b620847a1eebe7f16a5648d51a0702200",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Sound/Voices/StringLib.git",
+    "upstream_sha256": "97b26e19fe7a12fbb35533c3801cbae53ee80f9b9b9d8776dc963b2bf5041749",
+    "sha256": "3fc1fc6d835fd4626c8c69ed0ed1daae48c4c3ffc1510e8c12d0962eeb97935a",
+    "bytes": 33191
+  }
+]

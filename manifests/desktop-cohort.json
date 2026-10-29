@@ -1,0 +1,134 @@
+[
+  {
+    "component": "Colours",
+    "revision": "873e823dc654dcd2deb964c69651e43db6221c77",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Video/Render/Colours.git",
+    "subject": "Import from cleaned 360 CD",
+    "role": "matching runtime source candidate; not built or joined",
+    "license": "Apache-2.0; retain file-level notices",
+    "upstream_file_count": 85,
+    "upstream_notice_paths": [
+      "LICENSE"
+    ]
+  },
+  {
+    "component": "DrawMod",
+    "revision": "733b687f97b89f37806086e1e4df358c7cf6a0a9",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Video/Render/DrawMod.git",
+    "subject": "Import from cleaned 360 CD",
+    "role": "matching runtime source candidate; not built or joined",
+    "license": "Apache-2.0; retain file-level notices",
+    "upstream_file_count": 16,
+    "upstream_notice_paths": [
+      "LICENSE"
+    ]
+  },
+  {
+    "component": "FPASC",
+    "revision": "f883cfd5964aa751a47012c0ea54626a26073e5d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/FPASC.git",
+    "subject": "Import from cleaned 360 CD",
+    "role": "matching public headers; runtime not joined; original ARM2/3 wrapper/veneer retained, core absent at this revision",
+    "license": "Apache-2.0; retain file-level notices",
+    "upstream_file_count": 18,
+    "upstream_notice_paths": [
+      "LICENSE"
+    ]
+  },
+  {
+    "component": "FontManager",
+    "revision": "f883f98662b95d16a03129835883f79a935910fd",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Video/Render/Fonts/FontManager.git",
+    "subject": "Import from cleaned 360 CD",
+    "role": "assembled candidate runtime; not joined into ROM",
+    "license": "Apache-2.0; retain file-level notices",
+    "upstream_file_count": 175,
+    "upstream_notice_paths": [
+      "LICENSE"
+    ]
+  },
+  {
+    "component": "HostFS",
+    "revision": "68871b3b53395a2b31e6641141dae0983b5b3982",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Programmer/HostFS.git",
+    "subject": "Import from cleaned 360 CD",
+    "role": "matching public headers; runtime not joined",
+    "license": "Apache-2.0; retain file-level notices",
+    "upstream_file_count": 28,
+    "upstream_notice_paths": [
+      "LICENSE"
+    ]
+  },
+  {
+    "component": "Hourglass",
+    "revision": "05fb084b53d85b555a0a87d9c61ec04079e90bf3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Video/Render/Hourglass.git",
+    "subject": "Import from cleaned 360 CD",
+    "role": "matching runtime source candidate; not built or joined",
+    "license": "Apache-2.0; retain file-level notices",
+    "upstream_file_count": 16,
+    "upstream_notice_paths": [
+      "LICENSE"
+    ]
+  },
+  {
+    "component": "PDriver",
+    "revision": "de4185f8a1dcdb7ce57ef9e6a7fbad8a4c8a2d71",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDriver.git",
+    "subject": "Import from cleaned 360 CD",
+    "role": "matching public headers; runtime not joined",
+    "license": "Apache-2.0; retain file-level notices",
+    "upstream_file_count": 17,
+    "upstream_notice_paths": [
+      "LICENSE"
+    ]
+  },
+  {
+    "component": "ROMFonts",
+    "revision": "2aa781763cc8ee15b140f88b9e1ccc3e00b082b5",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Video/Render/Fonts/ROMFonts.git",
+    "subject": "Import from cleaned 360 CD",
+    "role": "assembled candidate runtime; not joined into ROM",
+    "license": "Apache-2.0; retain file-level notices",
+    "upstream_file_count": 39,
+    "upstream_notice_paths": [
+      "LICENSE"
+    ]
+  },
+  {
+    "component": "Super",
+    "revision": "a929788bc868b1f0e4451b1a23fa7bdcf5f5234b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Video/Render/Super.git",
+    "subject": "Import from cleaned 360 CD",
+    "role": "matching runtime source candidate; not built or joined",
+    "license": "Apache-2.0; retain file-level notices",
+    "upstream_file_count": 11,
+    "upstream_notice_paths": [
+      "LICENSE"
+    ]
+  },
+  {
+    "component": "Switcher",
+    "revision": "36c0337f13d2446cc16f5d876f2944053f1eee91",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Switcher.git",
+    "subject": "Import from cleaned 360 CD",
+    "role": "matching public headers; runtime not joined",
+    "license": "Apache-2.0; retain file-level notices",
+    "upstream_file_count": 22,
+    "upstream_notice_paths": [
+      "LICENSE"
+    ]
+  },
+  {
+    "component": "Wimp",
+    "revision": "530acd4a18ffa97ce7a6b5b20fdef0a4db3ef647",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Wimp.git",
+    "subject": "Import from cleaned 360 CD",
+    "role": "assembled candidate runtime; not joined into ROM",
+    "license": "Apache-2.0; retain file-level notices",
+    "upstream_file_count": 168,
+    "upstream_notice_paths": [
+      "LICENSE"
+    ]
+  }
+]

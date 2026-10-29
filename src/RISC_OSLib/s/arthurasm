@@ -1,0 +1,132 @@
+; Copyright 1996 Acorn Computers Ltd
+;
+; Licensed under the Apache License, Version 2.0 (the "License");
+; you may not use this file except in compliance with the License.
+; You may obtain a copy of the License at
+;
+;     http://www.apache.org/licenses/LICENSE-2.0
+;
+; Unless required by applicable law or agreed to in writing, software
+; distributed under the License is distributed on an "AS IS" BASIS,
+; WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+; See the License for the specific language governing permissions and
+; limitations under the License.
+;
+; >s.ArthurAsm
+; Copyright (C) Acorn Computers Ltd., 1988
+
+SWI_OP        * &ef000000 ; SWIAL  op-code
+
+; in s.ArthurAsm ...
+;  art_get()
+;  art_vdu()
+;  art_vduw()
+;  art_mouse()
+;  art_swi()
+;  art_swix()
+
+        IMPORT |x$stack_overflow|
+
+        EXPORT $Pfx.get
+        EXPORT $Pfx.vdu
+        EXPORT $Pfx.vduw
+        EXPORT $Pfx.mouseX
+        EXPORT $Pfx.mouseY
+        EXPORT $Pfx.mouseB
+        EXPORT $Pfx.swi
+        EXPORT $Pfx.swix
+
+
+ AREA |C$$code|, CODE, READONLY
+
+|v$codesegment|
+
+$Pfx.get
+        SWI     ReadC
+        MOVS    PC,R14
+
+$Pfx.vduw
+        SWI     WriteC
+        MOV     R0,R0,LSR #8
+$Pfx.vdu
+        SWI     WriteC
+        MOVS    PC,R14
+
+$Pfx.mouseX
+        SWI     Mouse
+        MOVS    PC,R14
+
+$Pfx.mouseY
+        SWI     Mouse
+        MOV     R0,R1
+        MOVS    PC,r14
+
+$Pfx.mouseB
+        SWI     Mouse
+        MOV     R0,R2
+        MOVS    PC,R14
+
+; In : a1 contains pointer to return structure, a2 contains swi number, a3
+; points to arm register structure
+
+$Pfx.swi
+        MOV     ip, sp
+        STMFD   sp!, {v1-v6,fp,ip,lk,pc}
+        SUB     fp, ip, #4
+        CMP     sp, sl
+        BLCC    |x$stack_overflow|
+
+        BIC     a2, a2, #&ff000000      ; just in case swi number out of range!
+        ORR     a2, a2, #SWI_OP         ; make into swi operation
+        LDR     a4, return_inst         ; get a return instruction
+        STMDB   sp!, {a2,a4}            ; then put both on the stack
+
+        MOV     ip, a1                  ; save return pointer out of way
+        LDMIA   a3, {a1-v6}             ; get user's input registers
+
+        ADR     r14, return_hre         ; come back here
+        MOV     pc, sp                  ; after executing stacked instr.
+return_hre
+        ADD     sp, sp, #2*4            ; tidy stack
+
+        STMIA   ip, {a1-v6}             ; then return r0-r8 to user
+        MOV     a1, ip                  ; returning it's pointer
+
+        LDMEA   fp, {v1-v6,fp,sp,pc}^
+
+return_inst
+
+        MOV     pc, lk                  ; data really - for stack execution
+
+; In : a1 contains swi number, a2
+; points to arm register structure
+
+$Pfx.swix
+        MOV     ip, sp
+        STMFD   sp!, {v1-v6,fp,ip,lk,pc}
+        SUB     fp, ip, #4
+        CMP     sp, sl
+        BLCC    |x$stack_overflow|
+
+        BIC     a1, a1, #&ff000000      ; just in case swi number out of range!
+        ORR     a1, a1, #SWI_OP         ; make into swi operation
+        ORR     a1, a1, #X              ; make a swi of V-error type
+        LDR     a3, return_inst         ; get a return instruction
+        STMDB   sp!, {a1,a3}            ; then put both on the stack
+
+        MOV     ip, a2                  ; save return pointer out of way
+        LDMIA   a2, {a1-v6}             ; get user's input registers
+
+        ADR     r14, return_here        ; come back here
+        MOV     pc, sp                  ; after executing stacked instr.
+return_here
+        ADD     sp, sp, #2*4            ; tidy stack
+
+        STMIA   ip, {a1-v6}             ; then return r0-r8 to user
+        MOVVC   a1, #0                  ; returning 0 if no error,
+                                        ; pointer to error block if error
+
+        LDMEA   fp, {v1-v6,fp,sp,pc}^
+
+
+        END

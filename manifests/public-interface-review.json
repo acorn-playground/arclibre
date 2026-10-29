@@ -1,0 +1,2123 @@
+[
+  {
+    "name": "AlarmAndTimeCMOS",
+    "header": "CMOS",
+    "value": 220,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "BufferManagerSWI_Base",
+    "header": "SWIs",
+    "value": 272704,
+    "contract": "Full allocated SWI base or module prefix for the cohort AddSWI/AddSWIName macros; offsets and register ABI remain in the cohort module header.",
+    "decision": "Accept the recorded numeric allocation/name. Remove only the conflicting zero-valued legacy Module_SWI*Base aliases; retain ModHand class constants. Allocation does not establish 3.11 implementation parity."
+  },
+  {
+    "name": "BufferManagerSWI_Name",
+    "header": "SWIs",
+    "value": "Buffer",
+    "contract": "Full allocated SWI base or module prefix for the cohort AddSWI/AddSWIName macros; offsets and register ABI remain in the cohort module header.",
+    "decision": "Accept the recorded numeric allocation/name. Remove only the conflicting zero-valued legacy Module_SWI*Base aliases; retain ModHand class constants. Allocation does not establish 3.11 implementation parity."
+  },
+  {
+    "name": "CDROMFSCMOS",
+    "header": "CMOS",
+    "value": 138,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "CMOSResetBit",
+    "header": "CMOS",
+    "value": 4,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "CMOSxseed",
+    "header": "CMOS",
+    "value": 1,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "CheckSumCMOS",
+    "header": "CMOS",
+    "value": 239,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "ColourTransSWI_Base",
+    "header": "SWIs",
+    "value": 264000,
+    "contract": "Full allocated SWI base or module prefix for the cohort AddSWI/AddSWIName macros; offsets and register ABI remain in the cohort module header.",
+    "decision": "Accept the recorded numeric allocation/name. Remove only the conflicting zero-valued legacy Module_SWI*Base aliases; retain ModHand class constants. Allocation does not establish 3.11 implementation parity."
+  },
+  {
+    "name": "ColourTransSWI_Name",
+    "header": "SWIs",
+    "value": "ColourTrans",
+    "contract": "Full allocated SWI base or module prefix for the cohort AddSWI/AddSWIName macros; offsets and register ABI remain in the cohort module header.",
+    "decision": "Accept the recorded numeric allocation/name. Remove only the conflicting zero-valued legacy Module_SWI*Base aliases; retain ModHand class constants. Allocation does not establish 3.11 implementation parity."
+  },
+  {
+    "name": "CountryCMOS",
+    "header": "CMOS",
+    "value": 186,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "DBTBCMOS",
+    "header": "CMOS",
+    "value": 16,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "DesktopCMOS",
+    "header": "CMOS",
+    "value": 198,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "DesktopFeaturesCMOS",
+    "header": "CMOS",
+    "value": 140,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "DiscChanged_DevNo",
+    "header": "DevNos",
+    "value": 12,
+    "contract": "Device number consumed by the original IOC vector/priority registration table.",
+    "decision": "Accept the original IOC 0..15 numbering. It matches the selected table structure; no IOMD device table is imported. Hardware interrupt timing remains a boot-test obligation."
+  },
+  {
+    "name": "ErrorBase_TerritoryManager",
+    "header": "NewErrors",
+    "value": 400,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_AddressException",
+    "header": "NewErrors",
+    "value": 2147483651,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_AplWSpaceInUse",
+    "header": "NewErrors",
+    "value": 450,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_ArgRepeated",
+    "header": "NewErrors",
+    "value": 491,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_BadAddress",
+    "header": "NewErrors",
+    "value": 252,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_BadBase",
+    "header": "NewErrors",
+    "value": 362,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_BadBra",
+    "header": "NewErrors",
+    "value": 354,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_BadCommand",
+    "header": "NewErrors",
+    "value": 254,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_BadInt",
+    "header": "NewErrors",
+    "value": 358,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_BadKey",
+    "header": "NewErrors",
+    "value": 251,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_BadMODE",
+    "header": "NewErrors",
+    "value": 25,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_BadMacVal",
+    "header": "NewErrors",
+    "value": 288,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_BadNetwork",
+    "header": "NewErrors",
+    "value": 775,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_BadNoParms",
+    "header": "NewErrors",
+    "value": 220,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_BadNumb",
+    "header": "NewErrors",
+    "value": 363,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_BadParameters",
+    "header": "NewErrors",
+    "value": 490,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_BadParmString",
+    "header": "NewErrors",
+    "value": 253,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_BadPixelDepth",
+    "header": "NewErrors",
+    "value": 494,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_BadReadSysInfo",
+    "header": "NewErrors",
+    "value": 492,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_BadStation",
+    "header": "NewErrors",
+    "value": 774,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_BadString",
+    "header": "NewErrors",
+    "value": 253,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_BadTime",
+    "header": "NewErrors",
+    "value": 485,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_BadVarNam",
+    "header": "NewErrors",
+    "value": 289,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_BadVarType",
+    "header": "NewErrors",
+    "value": 290,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_BranchThrough0",
+    "header": "NewErrors",
+    "value": 2147483653,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_BuffOverflow",
+    "header": "NewErrors",
+    "value": 484,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_CantKill",
+    "header": "NewErrors",
+    "value": 259,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_ChDynamCAO",
+    "header": "NewErrors",
+    "value": 448,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_ChDynamNotAllMoved",
+    "header": "NewErrors",
+    "value": 449,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_ChunkNotRM",
+    "header": "NewErrors",
+    "value": 269,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_DataAbort",
+    "header": "NewErrors",
+    "value": 2147483650,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_DivZero",
+    "header": "NewErrors",
+    "value": 361,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_Escape",
+    "header": "NewErrors",
+    "value": 17,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_HeapFail_Alloc",
+    "header": "NewErrors",
+    "value": 388,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_IncarnationExists",
+    "header": "NewErrors",
+    "value": 267,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_IncarnationNotFound",
+    "header": "NewErrors",
+    "value": 268,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_InstructionAbort",
+    "header": "NewErrors",
+    "value": 2147483649,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_MHNoRoom",
+    "header": "NewErrors",
+    "value": 257,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_MissOpn",
+    "header": "NewErrors",
+    "value": 356,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_MissOpr",
+    "header": "NewErrors",
+    "value": 357,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_ModeNotAvailable",
+    "header": "NewErrors",
+    "value": 493,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_ModulePostfix",
+    "header": "NewErrors",
+    "value": 263,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_ModuleTooOld",
+    "header": "NewErrors",
+    "value": 271,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_NaffItm",
+    "header": "NewErrors",
+    "value": 360,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_NoMoreIncarnations",
+    "header": "NewErrors",
+    "value": 265,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_NoMoreModules",
+    "header": "NewErrors",
+    "value": 264,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_NoOscliSpecials",
+    "header": "NewErrors",
+    "value": 489,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_NoSuchSWI",
+    "header": "NewErrors",
+    "value": 486,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_NoSuchSWI1",
+    "header": "NewErrors",
+    "value": 486,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_NoSuchSWI2",
+    "header": "NewErrors",
+    "value": 486,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_NotMod",
+    "header": "NewErrors",
+    "value": 256,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_NumbTooBig",
+    "header": "NewErrors",
+    "value": 364,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_OscliLongLine",
+    "header": "NewErrors",
+    "value": 480,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_OscliTooHard",
+    "header": "NewErrors",
+    "value": 481,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_OutsideFile",
+    "header": "NewErrors",
+    "value": 183,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_PostfixNeeded",
+    "header": "NewErrors",
+    "value": 266,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_RAMFsUnchangeable",
+    "header": "NewErrors",
+    "value": 451,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_RCExc",
+    "header": "NewErrors",
+    "value": 482,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_RCNegative",
+    "header": "NewErrors",
+    "value": 482,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_RMNotFound",
+    "header": "NewErrors",
+    "value": 258,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_RMNotFoundInROM",
+    "header": "NewErrors",
+    "value": 262,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_RedirectFail",
+    "header": "NewErrors",
+    "value": 320,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_Sprite_DoesntExist",
+    "header": "NewErrors",
+    "value": 134,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_StkOFlo",
+    "header": "NewErrors",
+    "value": 355,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_StrOFlo",
+    "header": "NewErrors",
+    "value": 359,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_Syntax",
+    "header": "NewErrors",
+    "value": 220,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_SysHeapFull",
+    "header": "NewErrors",
+    "value": 483,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_TooManyParms",
+    "header": "NewErrors",
+    "value": 220,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_UndefinedInstruction",
+    "header": "NewErrors",
+    "value": 2147483648,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_VarCantFind",
+    "header": "NewErrors",
+    "value": 292,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_VarNoRoom",
+    "header": "NewErrors",
+    "value": 291,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorNumber_VarTooLong",
+    "header": "NewErrors",
+    "value": 293,
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_AddressException",
+    "header": "NewErrors",
+    "value": "AddressException:Address exception at &%0",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_AplWSpaceInUse",
+    "header": "NewErrors",
+    "value": "AplWSpaceInUse:Memory in use",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_ArgRepeated",
+    "header": "NewErrors",
+    "value": "ArgRepeated:Argument repeated",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_BadAddress",
+    "header": "NewErrors",
+    "value": "BadAddress:Bad address",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_BadBase",
+    "header": "NewErrors",
+    "value": "BadBase:Bad base",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_BadBra",
+    "header": "NewErrors",
+    "value": "BadBra:Mismatched brackets",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_BadCommand",
+    "header": "NewErrors",
+    "value": "BadCommand:Bad command",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_BadInt",
+    "header": "NewErrors",
+    "value": "BadInt:String is not convertible to integer",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_BadKey",
+    "header": "NewErrors",
+    "value": "BadKey:Bad key",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_BadMODE",
+    "header": "NewErrors",
+    "value": "BadMODE:Bad MODE",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_BadMacVal",
+    "header": "NewErrors",
+    "value": "BadMacVal:Bad macro value",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_BadNumb",
+    "header": "NewErrors",
+    "value": "BadNumb:Bad number",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_BadParameters",
+    "header": "NewErrors",
+    "value": "BadParameters:Bad parameters",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_BadParmString",
+    "header": "NewErrors",
+    "value": "BadParmString:Bad character in parameter expansion",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_BadPixelDepth",
+    "header": "NewErrors",
+    "value": "BadPixelDepth:Bad pixel depth",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_BadReadSysInfo",
+    "header": "NewErrors",
+    "value": "BadReadSysInfo:Unknown OS_ReadSysInfo call",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_BadString",
+    "header": "NewErrors",
+    "value": "BadString:Bad string",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_BadTime",
+    "header": "NewErrors",
+    "value": "BadTime:Invalid time interval",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_BadVarNam",
+    "header": "NewErrors",
+    "value": "BadVarNam:Bad variable name",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_BadVarType",
+    "header": "NewErrors",
+    "value": "BadVarType:Bad variable type",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_BranchThrough0",
+    "header": "NewErrors",
+    "value": "BranchThrough0:Branch through zero at &",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_BuffOverflow",
+    "header": "NewErrors",
+    "value": "BuffOverflow:Buffer overflow",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_CantKill",
+    "header": "NewErrors",
+    "value": "CantKill:Module is currently active",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_ChDynamCAO",
+    "header": "NewErrors",
+    "value": "ChDynamCAO:Can't, application running",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_ChDynamNotAllMoved",
+    "header": "NewErrors",
+    "value": "NotAllMoved:Unable to move memory",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_ChunkNotRM",
+    "header": "NewErrors",
+    "value": "ChunkNotRM:Podule chunk is not a relocatable module",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_DataAbort",
+    "header": "NewErrors",
+    "value": "DataAbort:Abort on data transfer at &%0",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_DivZero",
+    "header": "NewErrors",
+    "value": "DivZero:Division by zero",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_Escape",
+    "header": "NewErrors",
+    "value": "Escape:Escape",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_HeapFail_Alloc",
+    "header": "NewErrors",
+    "value": "HeapFailAlloc:Heap Full",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_IncarnationExists",
+    "header": "NewErrors",
+    "value": "IncarnationExists:Incarnation already exists",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_IncarnationNotFound",
+    "header": "NewErrors",
+    "value": "IncarnationNotFound:Incarnation not found",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_InstructionAbort",
+    "header": "NewErrors",
+    "value": "InstructionAbort:Abort on instruction fetch at &%0",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_MHNoRoom",
+    "header": "NewErrors",
+    "value": "MHNoRoom:No room in RMA",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_MissOpn",
+    "header": "NewErrors",
+    "value": "MissOpn:Missing operand",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_MissOpr",
+    "header": "NewErrors",
+    "value": "MissOpr:Missing operator",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_ModeNotAvailable",
+    "header": "NewErrors",
+    "value": "ModeNotAvailable:Screen mode not available",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_ModulePostfix",
+    "header": "NewErrors",
+    "value": "ModulePostfix:'%%' in module title",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_ModuleTooOld",
+    "header": "NewErrors",
+    "value": "ModuleTooOld:Module '%0' too old",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_NaffItm",
+    "header": "NewErrors",
+    "value": "NaffItm:Unknown operand",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_NoMoreIncarnations",
+    "header": "NewErrors",
+    "value": "NoMoreIncarnations:No more incarnations of that module",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_NoMoreModules",
+    "header": "NewErrors",
+    "value": "NoMoreModules:No more modules",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_NoOscliSpecials",
+    "header": "NewErrors",
+    "value": "NoOscliSpecials:Special field not allowed in filing system prefix to OS_CLI",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_NoSuchSWI",
+    "header": "NewErrors",
+    "value": "NoSuchSWI:SWI not known",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_NoSuchSWI1",
+    "header": "NewErrors",
+    "value": "NoSuchSWI1:SWI &%0 not known",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_NoSuchSWI2",
+    "header": "NewErrors",
+    "value": "NoSuchSWI2:SWI name not known",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_NotMod",
+    "header": "NewErrors",
+    "value": "NotMod:This is not a relocatable module",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_NumbTooBig",
+    "header": "NewErrors",
+    "value": "NumbTooBig:Number too big",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_OscliLongLine",
+    "header": "NewErrors",
+    "value": "OscliLongLine:Too long",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_OscliTooHard",
+    "header": "NewErrors",
+    "value": "OscliTooHard:Expansion too complex",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_OutsideFile",
+    "header": "NewErrors",
+    "value": "OutsideFile:Outside file",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_PostfixNeeded",
+    "header": "NewErrors",
+    "value": "PostfixNeeded:Postfix not specified",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_RAMFsUnchangeable",
+    "header": "NewErrors",
+    "value": "RAMFsUnchangeable:RAM filing system not empty",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_RCExc",
+    "header": "NewErrors",
+    "value": "RCExc:Return code limit exceeded",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_RCNegative",
+    "header": "NewErrors",
+    "value": "RCNegative:Negative return code",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_RMNotFound",
+    "header": "NewErrors",
+    "value": "RMNotFound:Module not found",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_RMNotFoundInROM",
+    "header": "NewErrors",
+    "value": "RMNotFoundInROM:Module is not in ROM",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_RedirectFail",
+    "header": "NewErrors",
+    "value": "RedirectFail:Redirection fails",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_Sprite_DoesntExist",
+    "header": "NewErrors",
+    "value": "SDoesntExist:Sprite doesn't exist",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_StkOFlo",
+    "header": "NewErrors",
+    "value": "StkOFlo:Expression stack overflow",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_StrOFlo",
+    "header": "NewErrors",
+    "value": "StrOFlo:String too long",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_SysHeapFull",
+    "header": "NewErrors",
+    "value": "SysHeapFull:System heap full",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_TooManyParms",
+    "header": "NewErrors",
+    "value": "TooManyParms:Too many parameters",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_UndefinedInstruction",
+    "header": "NewErrors",
+    "value": "UndefinedInstruction:Undefined instruction at &%0",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_VarCantFind",
+    "header": "NewErrors",
+    "value": "VarCantFind:Variable not found",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_VarNoRoom",
+    "header": "NewErrors",
+    "value": "VarNoRoom:No room for variable",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ErrorString_VarTooLong",
+    "header": "NewErrors",
+    "value": "VarTooLong:Variable value too long",
+    "contract": "Error number or token:fallback string used by the original MakeErrorBlock/translated-error caller; ErrorBase_TerritoryManager is a numeric range base.",
+    "decision": "Accept the recorded public error representation. Preserve real error paths and original message lookup; correction of BadFileName case and sharing ModeNotAvailable are explicit patches. Exact 3.11 wording is not certified."
+  },
+  {
+    "name": "ExtnUnplug1CMOS",
+    "header": "CMOS",
+    "value": 20,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "FIQDowngrade_DevNo",
+    "header": "DevNos",
+    "value": 7,
+    "contract": "Device number consumed by the original IOC vector/priority registration table.",
+    "decision": "Accept the original IOC 0..15 numbering. It matches the selected table structure; no IOMD device table is imported. Hardware interrupt timing remains a boot-test obligation."
+  },
+  {
+    "name": "FSLockCMOS",
+    "header": "CMOS",
+    "value": 233,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "FileLangCMOS",
+    "header": "CMOS",
+    "value": 5,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "FileSwitchCMOS",
+    "header": "CMOS",
+    "value": 28,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "FontCMOS",
+    "header": "CMOS",
+    "value": 134,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "FontMax2CMOS",
+    "header": "CMOS",
+    "value": 202,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "FontMax3CMOS",
+    "header": "CMOS",
+    "value": 203,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "FontSWI_Base",
+    "header": "SWIs",
+    "value": 262272,
+    "contract": "Full allocated SWI base or module prefix for the cohort AddSWI/AddSWIName macros; offsets and register ABI remain in the cohort module header.",
+    "decision": "Accept the recorded numeric allocation/name. Remove only the conflicting zero-valued legacy Module_SWI*Base aliases; retain ModHand class constants. Allocation does not establish 3.11 implementation parity."
+  },
+  {
+    "name": "FontSWI_Name",
+    "header": "SWIs",
+    "value": "Font",
+    "contract": "Full allocated SWI base or module prefix for the cohort AddSWI/AddSWIName macros; offsets and register ABI remain in the cohort module header.",
+    "decision": "Accept the recorded numeric allocation/name. Remove only the conflicting zero-valued legacy Module_SWI*Base aliases; retain ModHand class constants. Allocation does not establish 3.11 implementation parity."
+  },
+  {
+    "name": "FrugalCMOS",
+    "header": "CMOS",
+    "value": 6,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "Inter_CNoToANo",
+    "header": "Services",
+    "value": 4,
+    "contract": "Service number passed in r1, claim result, or International subreason; register payload remains defined by the recorded original call site.",
+    "decision": "Accept the recorded public allocation; retain the actual service broadcast and unclaimed-call path. Header recovery does not supply a service handler or imply a 3.11 provider exists."
+  },
+  {
+    "name": "Inter_Define",
+    "header": "Services",
+    "value": 5,
+    "contract": "Service number passed in r1, claim result, or International subreason; register payload remains defined by the recorded original call site.",
+    "decision": "Accept the recorded public allocation; retain the actual service broadcast and unclaimed-call path. Header recovery does not supply a service handler or imply a 3.11 provider exists."
+  },
+  {
+    "name": "Inter_Keyboard",
+    "header": "Services",
+    "value": 6,
+    "contract": "Service number passed in r1, claim result, or International subreason; register payload remains defined by the recorded original call site.",
+    "decision": "Accept the recorded public allocation; retain the actual service broadcast and unclaimed-call path. Header recovery does not supply a service handler or imply a 3.11 provider exists."
+  },
+  {
+    "name": "KeyDelCMOS",
+    "header": "CMOS",
+    "value": 12,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "KeyRepCMOS",
+    "header": "CMOS",
+    "value": 13,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "LanguageCMOS",
+    "header": "CMOS",
+    "value": 185,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "MODETVCMOS",
+    "header": "CMOS",
+    "value": 10,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "MessageTransSWI_Base",
+    "header": "SWIs",
+    "value": 267520,
+    "contract": "Full allocated SWI base or module prefix for the cohort AddSWI/AddSWIName macros; offsets and register ABI remain in the cohort module header.",
+    "decision": "Accept the recorded numeric allocation/name. Remove only the conflicting zero-valued legacy Module_SWI*Base aliases; retain ModHand class constants. Allocation does not establish 3.11 implementation parity."
+  },
+  {
+    "name": "MessageTransSWI_Name",
+    "header": "SWIs",
+    "value": "MessageTrans",
+    "contract": "Full allocated SWI base or module prefix for the cohort AddSWI/AddSWIName macros; offsets and register ABI remain in the cohort module header.",
+    "decision": "Accept the recorded numeric allocation/name. Remove only the conflicting zero-valued legacy Module_SWI*Base aliases; retain ModHand class constants. Allocation does not establish 3.11 implementation parity."
+  },
+  {
+    "name": "Mode2CMOS",
+    "header": "CMOS",
+    "value": 195,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "MonitorType0",
+    "header": "CMOS",
+    "value": 0,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "MonitorType1",
+    "header": "CMOS",
+    "value": 4,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "MonitorType2",
+    "header": "CMOS",
+    "value": 8,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "MonitorType3",
+    "header": "CMOS",
+    "value": 12,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "MonitorType4",
+    "header": "CMOS",
+    "value": 16,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "MonitorType5",
+    "header": "CMOS",
+    "value": 20,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "MonitorType6",
+    "header": "CMOS",
+    "value": 24,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "MonitorType7",
+    "header": "CMOS",
+    "value": 28,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "MonitorType8",
+    "header": "CMOS",
+    "value": 32,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "MonitorType9",
+    "header": "CMOS",
+    "value": 36,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "MonitorTypeAuto",
+    "header": "CMOS",
+    "value": 124,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "MonitorTypeBits",
+    "header": "CMOS",
+    "value": 124,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "MonitorTypeF",
+    "header": "CMOS",
+    "value": 60,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "MonitorTypeShift",
+    "header": "CMOS",
+    "value": 2,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "MosROMFrugalCMOS",
+    "header": "CMOS",
+    "value": 173,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "MouseCMOS",
+    "header": "CMOS",
+    "value": 29,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "MouseStepCMOS",
+    "header": "CMOS",
+    "value": 194,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "NetFSIDCMOS",
+    "header": "CMOS",
+    "value": 1,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "NetFilerCMOS",
+    "header": "CMOS",
+    "value": 17,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "NetPSIDCMOS",
+    "header": "CMOS",
+    "value": 3,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "NewADFSCMOS",
+    "header": "CMOS",
+    "value": 135,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "PFIQasIRQ_DevNo",
+    "header": "DevNos",
+    "value": 8,
+    "contract": "Device number consumed by the original IOC vector/priority registration table.",
+    "decision": "Accept the original IOC 0..15 numbering. It matches the selected table structure; no IOMD device table is imported. Hardware interrupt timing remains a boot-test obligation."
+  },
+  {
+    "name": "PSITCMOS",
+    "header": "CMOS",
+    "value": 15,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "PigCMOS",
+    "header": "CMOS",
+    "value": 14,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "PoduleFrugalCMOS",
+    "header": "CMOS",
+    "value": 177,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "PoduleSWI_Base",
+    "header": "SWIs",
+    "value": 262784,
+    "contract": "Full allocated SWI base or module prefix for the cohort AddSWI/AddSWIName macros; offsets and register ABI remain in the cohort module header.",
+    "decision": "Accept the recorded numeric allocation/name. Remove only the conflicting zero-valued legacy Module_SWI*Base aliases; retain ModHand class constants. Allocation does not establish 3.11 implementation parity."
+  },
+  {
+    "name": "PoduleSWI_Name",
+    "header": "SWIs",
+    "value": "Podule",
+    "contract": "Full allocated SWI base or module prefix for the cohort AddSWI/AddSWIName macros; offsets and register ABI remain in the cohort module header.",
+    "decision": "Accept the recorded numeric allocation/name. Remove only the conflicting zero-valued legacy Module_SWI*Base aliases; retain ModHand class constants. Allocation does not establish 3.11 implementation parity."
+  },
+  {
+    "name": "Podule_DevNo",
+    "header": "DevNos",
+    "value": 13,
+    "contract": "Device number consumed by the original IOC vector/priority registration table.",
+    "decision": "Accept the original IOC 0..15 numbering. It matches the selected table structure; no IOMD device table is imported. Hardware interrupt timing remains a boot-test obligation."
+  },
+  {
+    "name": "PortableSWI_Base",
+    "header": "SWIs",
+    "value": 274368,
+    "contract": "Full allocated SWI base or module prefix for the cohort AddSWI/AddSWIName macros; offsets and register ABI remain in the cohort module header.",
+    "decision": "Accept the recorded numeric allocation/name. Remove only the conflicting zero-valued legacy Module_SWI*Base aliases; retain ModHand class constants. Allocation does not establish 3.11 implementation parity."
+  },
+  {
+    "name": "PortableSWI_Name",
+    "header": "SWIs",
+    "value": "Portable",
+    "contract": "Full allocated SWI base or module prefix for the cohort AddSWI/AddSWIName macros; offsets and register ABI remain in the cohort module header.",
+    "decision": "Accept the recorded numeric allocation/name. Remove only the conflicting zero-valued legacy Module_SWI*Base aliases; retain ModHand class constants. Allocation does not establish 3.11 implementation parity."
+  },
+  {
+    "name": "PowerOn_DevNo",
+    "header": "DevNos",
+    "value": 4,
+    "contract": "Device number consumed by the original IOC vector/priority registration table.",
+    "decision": "Accept the original IOC 0..15 numbering. It matches the selected table structure; no IOMD device table is imported. Hardware interrupt timing remains a boot-test obligation."
+  },
+  {
+    "name": "PrinterAck_DevNo",
+    "header": "DevNos",
+    "value": 2,
+    "contract": "Device number consumed by the original IOC vector/priority registration table.",
+    "decision": "Accept the original IOC 0..15 numbering. It matches the selected table structure; no IOMD device table is imported. Hardware interrupt timing remains a boot-test obligation."
+  },
+  {
+    "name": "PrinterBufferCMOS",
+    "header": "CMOS",
+    "value": 25,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "PrinterBusy_DevNo",
+    "header": "DevNos",
+    "value": 0,
+    "contract": "Device number consumed by the original IOC vector/priority registration table.",
+    "decision": "Accept the original IOC 0..15 numbering. It matches the selected table structure; no IOMD device table is imported. Hardware interrupt timing remains a boot-test obligation."
+  },
+  {
+    "name": "ProtectionCMOS",
+    "header": "CMOS",
+    "value": 193,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "RAMDiscCMOS",
+    "header": "CMOS",
+    "value": 144,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "RISCOS_Kernel_0SWI_Base",
+    "header": "SWIs",
+    "value": 0,
+    "contract": "Full allocated SWI base or module prefix for the cohort AddSWI/AddSWIName macros; offsets and register ABI remain in the cohort module header.",
+    "decision": "Accept the recorded numeric allocation/name. Remove only the conflicting zero-valued legacy Module_SWI*Base aliases; retain ModHand class constants. Allocation does not establish 3.11 implementation parity."
+  },
+  {
+    "name": "RISCOS_Kernel_0SWI_Name",
+    "header": "SWIs",
+    "value": "OS",
+    "contract": "Full allocated SWI base or module prefix for the cohort AddSWI/AddSWIName macros; offsets and register ABI remain in the cohort module header.",
+    "decision": "Accept the recorded numeric allocation/name. Remove only the conflicting zero-valued legacy Module_SWI*Base aliases; retain ModHand class constants. Allocation does not establish 3.11 implementation parity."
+  },
+  {
+    "name": "RISCOS_Kernel_1SWI_Base",
+    "header": "SWIs",
+    "value": 64,
+    "contract": "Full allocated SWI base or module prefix for the cohort AddSWI/AddSWIName macros; offsets and register ABI remain in the cohort module header.",
+    "decision": "Accept the recorded numeric allocation/name. Remove only the conflicting zero-valued legacy Module_SWI*Base aliases; retain ModHand class constants. Allocation does not establish 3.11 implementation parity."
+  },
+  {
+    "name": "RISCOS_Kernel_1SWI_Name",
+    "header": "SWIs",
+    "value": "OS",
+    "contract": "Full allocated SWI base or module prefix for the cohort AddSWI/AddSWIName macros; offsets and register ABI remain in the cohort module header.",
+    "decision": "Accept the recorded numeric allocation/name. Remove only the conflicting zero-valued legacy Module_SWI*Base aliases; retain ModHand class constants. Allocation does not establish 3.11 implementation parity."
+  },
+  {
+    "name": "RISCOS_StringConversionSWI_Base",
+    "header": "SWIs",
+    "value": 192,
+    "contract": "Full allocated SWI base or module prefix for the cohort AddSWI/AddSWIName macros; offsets and register ABI remain in the cohort module header.",
+    "decision": "Accept the recorded numeric allocation/name. Remove only the conflicting zero-valued legacy Module_SWI*Base aliases; retain ModHand class constants. Allocation does not establish 3.11 implementation parity."
+  },
+  {
+    "name": "RISCOS_StringConversionSWI_Name",
+    "header": "SWIs",
+    "value": "OS",
+    "contract": "Full allocated SWI base or module prefix for the cohort AddSWI/AddSWIName macros; offsets and register ABI remain in the cohort module header.",
+    "decision": "Accept the recorded numeric allocation/name. Remove only the conflicting zero-valued legacy Module_SWI*Base aliases; retain ModHand class constants. Allocation does not establish 3.11 implementation parity."
+  },
+  {
+    "name": "RISCOS_WriteCharacter_0SWI_Base",
+    "header": "SWIs",
+    "value": 256,
+    "contract": "Full allocated SWI base or module prefix for the cohort AddSWI/AddSWIName macros; offsets and register ABI remain in the cohort module header.",
+    "decision": "Accept the recorded numeric allocation/name. Remove only the conflicting zero-valued legacy Module_SWI*Base aliases; retain ModHand class constants. Allocation does not establish 3.11 implementation parity."
+  },
+  {
+    "name": "RISCOS_WriteCharacter_0SWI_Name",
+    "header": "SWIs",
+    "value": "OS",
+    "contract": "Full allocated SWI base or module prefix for the cohort AddSWI/AddSWIName macros; offsets and register ABI remain in the cohort module header.",
+    "decision": "Accept the recorded numeric allocation/name. Remove only the conflicting zero-valued legacy Module_SWI*Base aliases; retain ModHand class constants. Allocation does not establish 3.11 implementation parity."
+  },
+  {
+    "name": "RMASizeCMOS",
+    "header": "CMOS",
+    "value": 146,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "ReadCMOS",
+    "header": "CMOS",
+    "value": 161,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "Ringing_DevNo",
+    "header": "DevNos",
+    "value": 1,
+    "contract": "Device number consumed by the original IOC vector/priority registration table.",
+    "decision": "Accept the original IOC 0..15 numbering. It matches the selected table structure; no IOMD device table is imported. Hardware interrupt timing remains a boot-test obligation."
+  },
+  {
+    "name": "ScreenSizeCMOS",
+    "header": "CMOS",
+    "value": 143,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "SerialRx_DevNo",
+    "header": "DevNos",
+    "value": 15,
+    "contract": "Device number consumed by the original IOC vector/priority registration table.",
+    "decision": "Accept the original IOC 0..15 numbering. It matches the selected table structure; no IOMD device table is imported. Hardware interrupt timing remains a boot-test obligation."
+  },
+  {
+    "name": "SerialTx_DevNo",
+    "header": "DevNos",
+    "value": 14,
+    "contract": "Device number consumed by the original IOC vector/priority registration table.",
+    "decision": "Accept the original IOC 0..15 numbering. It matches the selected table structure; no IOMD device table is imported. Hardware interrupt timing remains a boot-test obligation."
+  },
+  {
+    "name": "Serial_DevNo",
+    "header": "DevNos",
+    "value": 10,
+    "contract": "Device number consumed by the original IOC vector/priority registration table.",
+    "decision": "Accept the original IOC 0..15 numbering. It matches the selected table structure; no IOMD device table is imported. Hardware interrupt timing remains a boot-test obligation."
+  },
+  {
+    "name": "Service_BufferStarting",
+    "header": "Services",
+    "value": 111,
+    "contract": "Service number passed in r1, claim result, or International subreason; register payload remains defined by the recorded original call site.",
+    "decision": "Accept the recorded public allocation; retain the actual service broadcast and unclaimed-call path. Header recovery does not supply a service handler or imply a 3.11 provider exists."
+  },
+  {
+    "name": "Service_ClaimFIQ",
+    "header": "Services",
+    "value": 12,
+    "contract": "Service number passed in r1, claim result, or International subreason; register payload remains defined by the recorded original call site.",
+    "decision": "Accept the recorded public allocation; retain the actual service broadcast and unclaimed-call path. Header recovery does not supply a service handler or imply a 3.11 provider exists."
+  },
+  {
+    "name": "Service_ClaimFIQinBackground",
+    "header": "Services",
+    "value": 71,
+    "contract": "Service number passed in r1, claim result, or International subreason; register payload remains defined by the recorded original call site.",
+    "decision": "Accept the recorded public allocation; retain the actual service broadcast and unclaimed-call path. Header recovery does not supply a service handler or imply a 3.11 provider exists."
+  },
+  {
+    "name": "Service_DeviceFSCloseRequest",
+    "header": "Services",
+    "value": 129,
+    "contract": "Service number passed in r1, claim result, or International subreason; register payload remains defined by the recorded original call site.",
+    "decision": "Accept the recorded public allocation; retain the actual service broadcast and unclaimed-call path. Header recovery does not supply a service handler or imply a 3.11 provider exists."
+  },
+  {
+    "name": "Service_Error",
+    "header": "Services",
+    "value": 6,
+    "contract": "Service number passed in r1, claim result, or International subreason; register payload remains defined by the recorded original call site.",
+    "decision": "Accept the recorded public allocation; retain the actual service broadcast and unclaimed-call path. Header recovery does not supply a service handler or imply a 3.11 provider exists."
+  },
+  {
+    "name": "Service_Help",
+    "header": "Services",
+    "value": 9,
+    "contract": "Service number passed in r1, claim result, or International subreason; register payload remains defined by the recorded original call site.",
+    "decision": "Accept the recorded public allocation; retain the actual service broadcast and unclaimed-call path. Header recovery does not supply a service handler or imply a 3.11 provider exists."
+  },
+  {
+    "name": "Service_International",
+    "header": "Services",
+    "value": 67,
+    "contract": "Service number passed in r1, claim result, or International subreason; register payload remains defined by the recorded original call site.",
+    "decision": "Accept the recorded public allocation; retain the actual service broadcast and unclaimed-call path. Header recovery does not supply a service handler or imply a 3.11 provider exists."
+  },
+  {
+    "name": "Service_KeyHandler",
+    "header": "Services",
+    "value": 68,
+    "contract": "Service number passed in r1, claim result, or International subreason; register payload remains defined by the recorded original call site.",
+    "decision": "Accept the recorded public allocation; retain the actual service broadcast and unclaimed-call path. Header recovery does not supply a service handler or imply a 3.11 provider exists."
+  },
+  {
+    "name": "Service_Memory",
+    "header": "Services",
+    "value": 17,
+    "contract": "Service number passed in r1, claim result, or International subreason; register payload remains defined by the recorded original call site.",
+    "decision": "Accept the recorded public allocation; retain the actual service broadcast and unclaimed-call path. Header recovery does not supply a service handler or imply a 3.11 provider exists."
+  },
+  {
+    "name": "Service_MemoryMoved",
+    "header": "Services",
+    "value": 78,
+    "contract": "Service number passed in r1, claim result, or International subreason; register payload remains defined by the recorded original call site.",
+    "decision": "Accept the recorded public allocation; retain the actual service broadcast and unclaimed-call path. Header recovery does not supply a service handler or imply a 3.11 provider exists."
+  },
+  {
+    "name": "Service_ModeChange",
+    "header": "Services",
+    "value": 70,
+    "contract": "Service number passed in r1, claim result, or International subreason; register payload remains defined by the recorded original call site.",
+    "decision": "Accept the recorded public allocation; retain the actual service broadcast and unclaimed-call path. Header recovery does not supply a service handler or imply a 3.11 provider exists."
+  },
+  {
+    "name": "Service_ModeChanging",
+    "header": "Services",
+    "value": 137,
+    "contract": "Service number passed in r1, claim result, or International subreason; register payload remains defined by the recorded original call site.",
+    "decision": "Accept the recorded public allocation; retain the actual service broadcast and unclaimed-call path. Header recovery does not supply a service handler or imply a 3.11 provider exists."
+  },
+  {
+    "name": "Service_ModeExtension",
+    "header": "Services",
+    "value": 80,
+    "contract": "Service number passed in r1, claim result, or International subreason; register payload remains defined by the recorded original call site.",
+    "decision": "Accept the recorded public allocation; retain the actual service broadcast and unclaimed-call path. Header recovery does not supply a service handler or imply a 3.11 provider exists."
+  },
+  {
+    "name": "Service_ModeTranslation",
+    "header": "Services",
+    "value": 81,
+    "contract": "Service number passed in r1, claim result, or International subreason; register payload remains defined by the recorded original call site.",
+    "decision": "Accept the recorded public allocation; retain the actual service broadcast and unclaimed-call path. Header recovery does not supply a service handler or imply a 3.11 provider exists."
+  },
+  {
+    "name": "Service_MonitorLeadTranslation",
+    "header": "Services",
+    "value": 118,
+    "contract": "Service number passed in r1, claim result, or International subreason; register payload remains defined by the recorded original call site.",
+    "decision": "Accept the recorded public allocation; retain the actual service broadcast and unclaimed-call path. Header recovery does not supply a service handler or imply a 3.11 provider exists."
+  },
+  {
+    "name": "Service_NewApplication",
+    "header": "Services",
+    "value": 42,
+    "contract": "Service number passed in r1, claim result, or International subreason; register payload remains defined by the recorded original call site.",
+    "decision": "Accept the recorded public allocation; retain the actual service broadcast and unclaimed-call path. Header recovery does not supply a service handler or imply a 3.11 provider exists."
+  },
+  {
+    "name": "Service_PostInit",
+    "header": "Services",
+    "value": 115,
+    "contract": "Service number passed in r1, claim result, or International subreason; register payload remains defined by the recorded original call site.",
+    "decision": "Accept the recorded public allocation; retain the actual service broadcast and unclaimed-call path. Header recovery does not supply a service handler or imply a 3.11 provider exists."
+  },
+  {
+    "name": "Service_PreModeChange",
+    "header": "Services",
+    "value": 77,
+    "contract": "Service number passed in r1, claim result, or International subreason; register payload remains defined by the recorded original call site.",
+    "decision": "Accept the recorded public allocation; retain the actual service broadcast and unclaimed-call path. Header recovery does not supply a service handler or imply a 3.11 provider exists."
+  },
+  {
+    "name": "Service_PreReset",
+    "header": "Services",
+    "value": 69,
+    "contract": "Service number passed in r1, claim result, or International subreason; register payload remains defined by the recorded original call site.",
+    "decision": "Accept the recorded public allocation; retain the actual service broadcast and unclaimed-call path. Header recovery does not supply a service handler or imply a 3.11 provider exists."
+  },
+  {
+    "name": "Service_ReleaseFIQ",
+    "header": "Services",
+    "value": 11,
+    "contract": "Service number passed in r1, claim result, or International subreason; register payload remains defined by the recorded original call site.",
+    "decision": "Accept the recorded public allocation; retain the actual service broadcast and unclaimed-call path. Header recovery does not supply a service handler or imply a 3.11 provider exists."
+  },
+  {
+    "name": "Service_Reset",
+    "header": "Services",
+    "value": 39,
+    "contract": "Service number passed in r1, claim result, or International subreason; register payload remains defined by the recorded original call site.",
+    "decision": "Accept the recorded public allocation; retain the actual service broadcast and unclaimed-call path. Header recovery does not supply a service handler or imply a 3.11 provider exists."
+  },
+  {
+    "name": "Service_Serviced",
+    "header": "Services",
+    "value": 0,
+    "contract": "Service number passed in r1, claim result, or International subreason; register payload remains defined by the recorded original call site.",
+    "decision": "Accept the recorded public allocation; retain the actual service broadcast and unclaimed-call path. Header recovery does not supply a service handler or imply a 3.11 provider exists."
+  },
+  {
+    "name": "Service_SwitchingOutputToSprite",
+    "header": "Services",
+    "value": 114,
+    "contract": "Service number passed in r1, claim result, or International subreason; register payload remains defined by the recorded original call site.",
+    "decision": "Accept the recorded public allocation; retain the actual service broadcast and unclaimed-call path. Header recovery does not supply a service handler or imply a 3.11 provider exists."
+  },
+  {
+    "name": "Service_SyntaxError",
+    "header": "Services",
+    "value": 140,
+    "contract": "Service number passed in r1, claim result, or International subreason; register payload remains defined by the recorded original call site.",
+    "decision": "Accept the recorded public allocation; retain the actual service broadcast and unclaimed-call path. Header recovery does not supply a service handler or imply a 3.11 provider exists."
+  },
+  {
+    "name": "Service_UKByte",
+    "header": "Services",
+    "value": 7,
+    "contract": "Service number passed in r1, claim result, or International subreason; register payload remains defined by the recorded original call site.",
+    "decision": "Accept the recorded public allocation; retain the actual service broadcast and unclaimed-call path. Header recovery does not supply a service handler or imply a 3.11 provider exists."
+  },
+  {
+    "name": "Service_UKCommand",
+    "header": "Services",
+    "value": 4,
+    "contract": "Service number passed in r1, claim result, or International subreason; register payload remains defined by the recorded original call site.",
+    "decision": "Accept the recorded public allocation; retain the actual service broadcast and unclaimed-call path. Header recovery does not supply a service handler or imply a 3.11 provider exists."
+  },
+  {
+    "name": "Service_UKConfig",
+    "header": "Services",
+    "value": 40,
+    "contract": "Service number passed in r1, claim result, or International subreason; register payload remains defined by the recorded original call site.",
+    "decision": "Accept the recorded public allocation; retain the actual service broadcast and unclaimed-call path. Header recovery does not supply a service handler or imply a 3.11 provider exists."
+  },
+  {
+    "name": "Service_UKStatus",
+    "header": "Services",
+    "value": 41,
+    "contract": "Service number passed in r1, claim result, or International subreason; register payload remains defined by the recorded original call site.",
+    "decision": "Accept the recorded public allocation; retain the actual service broadcast and unclaimed-call path. Header recovery does not supply a service handler or imply a 3.11 provider exists."
+  },
+  {
+    "name": "Service_UKWord",
+    "header": "Services",
+    "value": 8,
+    "contract": "Service number passed in r1, claim result, or International subreason; register payload remains defined by the recorded original call site.",
+    "decision": "Accept the recorded public allocation; retain the actual service broadcast and unclaimed-call path. Header recovery does not supply a service handler or imply a 3.11 provider exists."
+  },
+  {
+    "name": "Service_ValidateAddress",
+    "header": "Services",
+    "value": 109,
+    "contract": "Service number passed in r1, claim result, or International subreason; register payload remains defined by the recorded original call site.",
+    "decision": "Accept the recorded public allocation; retain the actual service broadcast and unclaimed-call path. Header recovery does not supply a service handler or imply a 3.11 provider exists."
+  },
+  {
+    "name": "Sound0SWI_Base",
+    "header": "SWIs",
+    "value": 262464,
+    "contract": "Full allocated SWI base or module prefix for the cohort AddSWI/AddSWIName macros; offsets and register ABI remain in the cohort module header.",
+    "decision": "Accept the recorded numeric allocation/name. Remove only the conflicting zero-valued legacy Module_SWI*Base aliases; retain ModHand class constants. Allocation does not establish 3.11 implementation parity."
+  },
+  {
+    "name": "Sound0SWI_Name",
+    "header": "SWIs",
+    "value": "Sound",
+    "contract": "Full allocated SWI base or module prefix for the cohort AddSWI/AddSWIName macros; offsets and register ABI remain in the cohort module header.",
+    "decision": "Accept the recorded numeric allocation/name. Remove only the conflicting zero-valued legacy Module_SWI*Base aliases; retain ModHand class constants. Allocation does not establish 3.11 implementation parity."
+  },
+  {
+    "name": "Sound1SWI_Base",
+    "header": "SWIs",
+    "value": 262528,
+    "contract": "Full allocated SWI base or module prefix for the cohort AddSWI/AddSWIName macros; offsets and register ABI remain in the cohort module header.",
+    "decision": "Accept the recorded numeric allocation/name. Remove only the conflicting zero-valued legacy Module_SWI*Base aliases; retain ModHand class constants. Allocation does not establish 3.11 implementation parity."
+  },
+  {
+    "name": "Sound2SWI_Base",
+    "header": "SWIs",
+    "value": 262592,
+    "contract": "Full allocated SWI base or module prefix for the cohort AddSWI/AddSWIName macros; offsets and register ABI remain in the cohort module header.",
+    "decision": "Accept the recorded numeric allocation/name. Remove only the conflicting zero-valued legacy Module_SWI*Base aliases; retain ModHand class constants. Allocation does not establish 3.11 implementation parity."
+  },
+  {
+    "name": "SoundCMOS",
+    "header": "CMOS",
+    "value": 148,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "Sound_DevNo",
+    "header": "DevNos",
+    "value": 9,
+    "contract": "Device number consumed by the original IOC vector/priority registration table.",
+    "decision": "Accept the original IOC 0..15 numbering. It matches the selected table structure; no IOMD device table is imported. Hardware interrupt timing remains a boot-test obligation."
+  },
+  {
+    "name": "SpriteSizeCMOS",
+    "header": "CMOS",
+    "value": 147,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "StartCMOS",
+    "header": "CMOS",
+    "value": 11,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "Sync_Auto",
+    "header": "CMOS",
+    "value": 129,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "Sync_Separate",
+    "header": "CMOS",
+    "value": 0,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "SysHeapCMOS",
+    "header": "CMOS",
+    "value": 145,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "SystemSpeedCMOS",
+    "header": "CMOS",
+    "value": 195,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "TerritorySWI_Base",
+    "header": "SWIs",
+    "value": 274496,
+    "contract": "Full allocated SWI base or module prefix for the cohort AddSWI/AddSWIName macros; offsets and register ABI remain in the cohort module header.",
+    "decision": "Accept the recorded numeric allocation/name. Remove only the conflicting zero-valued legacy Module_SWI*Base aliases; retain ModHand class constants. Allocation does not establish 3.11 implementation parity."
+  },
+  {
+    "name": "TerritorySWI_Name",
+    "header": "SWIs",
+    "value": "Territory",
+    "contract": "Full allocated SWI base or module prefix for the cohort AddSWI/AddSWIName macros; offsets and register ABI remain in the cohort module header.",
+    "decision": "Accept the recorded numeric allocation/name. Remove only the conflicting zero-valued legacy Module_SWI*Base aliases; retain ModHand class constants. Allocation does not establish 3.11 implementation parity."
+  },
+  {
+    "name": "Timer0_DevNo",
+    "header": "DevNos",
+    "value": 5,
+    "contract": "Device number consumed by the original IOC vector/priority registration table.",
+    "decision": "Accept the original IOC 0..15 numbering. It matches the selected table structure; no IOMD device table is imported. Hardware interrupt timing remains a boot-test obligation."
+  },
+  {
+    "name": "Timer1_DevNo",
+    "header": "DevNos",
+    "value": 6,
+    "contract": "Device number consumed by the original IOC vector/priority registration table.",
+    "decision": "Accept the original IOC 0..15 numbering. It matches the selected table structure; no IOMD device table is imported. Hardware interrupt timing remains a boot-test obligation."
+  },
+  {
+    "name": "TutuCMOS",
+    "header": "CMOS",
+    "value": 132,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "Unplug10CMOS",
+    "header": "CMOS",
+    "value": 18,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "Unplug11CMOS",
+    "header": "CMOS",
+    "value": 19,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "Unplug12CMOS",
+    "header": "CMOS",
+    "value": 9,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "Unplug13CMOS",
+    "header": "CMOS",
+    "value": 130,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "Unplug14CMOS",
+    "header": "CMOS",
+    "value": 131,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "Unplug15CMOS",
+    "header": "CMOS",
+    "value": 141,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "Unplug16CMOS",
+    "header": "CMOS",
+    "value": 142,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "Unplug17CMOS",
+    "header": "CMOS",
+    "value": 231,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "Unplug7CMOS",
+    "header": "CMOS",
+    "value": 217,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "Unplug8CMOS",
+    "header": "CMOS",
+    "value": 218,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "Unplug9CMOS",
+    "header": "CMOS",
+    "value": 219,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "UpCall_Claimed",
+    "header": "UpCall",
+    "value": 0,
+    "contract": "UpCall_MovingMemory=0x101 request and UpCall_Claimed=0 return protocol in the existing memory-move path.",
+    "decision": "Accept the public memory-move protocol and preserve vector negotiation. This does not add ARM600 memory structures or substitute a successful stub."
+  },
+  {
+    "name": "UpCall_MovingMemory",
+    "header": "UpCall",
+    "value": 257,
+    "contract": "UpCall_MovingMemory=0x101 request and UpCall_Claimed=0 return protocol in the existing memory-move path.",
+    "decision": "Accept the public memory-move protocol and preserve vector negotiation. This does not add ARM600 memory structures or substitute a successful stub."
+  },
+  {
+    "name": "UserCMOS",
+    "header": "CMOS",
+    "value": 30,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "VSync_DevNo",
+    "header": "DevNos",
+    "value": 3,
+    "contract": "Device number consumed by the original IOC vector/priority registration table.",
+    "decision": "Accept the original IOC 0..15 numbering. It matches the selected table structure; no IOMD device table is imported. Hardware interrupt timing remains a boot-test obligation."
+  },
+  {
+    "name": "VduCMOS",
+    "header": "CMOS",
+    "value": 133,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "WimpFlagsCMOS",
+    "header": "CMOS",
+    "value": 197,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "WimpModeAutoBit",
+    "header": "CMOS",
+    "value": 16,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "WimpModeCMOS",
+    "header": "CMOS",
+    "value": 196,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "WimpSWI_Base",
+    "header": "SWIs",
+    "value": 262336,
+    "contract": "Full allocated SWI base or module prefix for the cohort AddSWI/AddSWIName macros; offsets and register ABI remain in the cohort module header.",
+    "decision": "Accept the recorded numeric allocation/name. Remove only the conflicting zero-valued legacy Module_SWI*Base aliases; retain ModHand class constants. Allocation does not establish 3.11 implementation parity."
+  },
+  {
+    "name": "WimpSWI_Name",
+    "header": "SWIs",
+    "value": "Wimp",
+    "contract": "Full allocated SWI base or module prefix for the cohort AddSWI/AddSWIName macros; offsets and register ABI remain in the cohort module header.",
+    "decision": "Accept the recorded numeric allocation/name. Remove only the conflicting zero-valued legacy Module_SWI*Base aliases; retain ModHand class constants. Allocation does not establish 3.11 implementation parity."
+  },
+  {
+    "name": "WinnieIRQ_DevNo",
+    "header": "DevNos",
+    "value": 11,
+    "contract": "Device number consumed by the original IOC vector/priority registration table.",
+    "decision": "Accept the original IOC 0..15 numbering. It matches the selected table structure; no IOMD device table is imported. Hardware interrupt timing remains a boot-test obligation."
+  },
+  {
+    "name": "WriteCMOS",
+    "header": "CMOS",
+    "value": 162,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "YearCMOS",
+    "header": "CMOS",
+    "value": 128,
+    "contract": "Byte offset, OS_Byte selector, mask or enumerated value used by the recorded CMOS/default-table caller.",
+    "decision": "Accept the recorded public byte/mask definition without adding workspace or I/O devices. All consumed numeric values fit a byte. Defaults and later monitor options require separate 3.11 behavioural comparison."
+  },
+  {
+    "name": "paletteV_1stFlashState",
+    "header": "PaletteV",
+    "value": 3,
+    "contract": "Reason code 0..6 passed to the existing PaletteV implementation; register arguments remain in the cohort caller/handler.",
+    "decision": "Accept these numeric reason codes; keep the real VIDC1a palette, flash and blanking implementations. Visual/timing equivalence with 3.11 remains untested."
+  },
+  {
+    "name": "paletteV_2ndFlashState",
+    "header": "PaletteV",
+    "value": 4,
+    "contract": "Reason code 0..6 passed to the existing PaletteV implementation; register arguments remain in the cohort caller/handler.",
+    "decision": "Accept these numeric reason codes; keep the real VIDC1a palette, flash and blanking implementations. Visual/timing equivalence with 3.11 remains untested."
+  },
+  {
+    "name": "paletteV_BlankScreen",
+    "header": "PaletteV",
+    "value": 6,
+    "contract": "Reason code 0..6 passed to the existing PaletteV implementation; register arguments remain in the cohort caller/handler.",
+    "decision": "Accept these numeric reason codes; keep the real VIDC1a palette, flash and blanking implementations. Visual/timing equivalence with 3.11 remains untested."
+  },
+  {
+    "name": "paletteV_Complete",
+    "header": "PaletteV",
+    "value": 0,
+    "contract": "Reason code 0..6 passed to the existing PaletteV implementation; register arguments remain in the cohort caller/handler.",
+    "decision": "Accept these numeric reason codes; keep the real VIDC1a palette, flash and blanking implementations. Visual/timing equivalence with 3.11 remains untested."
+  },
+  {
+    "name": "paletteV_Read",
+    "header": "PaletteV",
+    "value": 1,
+    "contract": "Reason code 0..6 passed to the existing PaletteV implementation; register arguments remain in the cohort caller/handler.",
+    "decision": "Accept these numeric reason codes; keep the real VIDC1a palette, flash and blanking implementations. Visual/timing equivalence with 3.11 remains untested."
+  },
+  {
+    "name": "paletteV_Set",
+    "header": "PaletteV",
+    "value": 2,
+    "contract": "Reason code 0..6 passed to the existing PaletteV implementation; register arguments remain in the cohort caller/handler.",
+    "decision": "Accept these numeric reason codes; keep the real VIDC1a palette, flash and blanking implementations. Visual/timing equivalence with 3.11 remains untested."
+  },
+  {
+    "name": "paletteV_SetDefaultPalette",
+    "header": "PaletteV",
+    "value": 5,
+    "contract": "Reason code 0..6 passed to the existing PaletteV implementation; register arguments remain in the cohort caller/handler.",
+    "decision": "Accept these numeric reason codes; keep the real VIDC1a palette, flash and blanking implementations. Visual/timing equivalence with 3.11 remains untested."
+  }
+]

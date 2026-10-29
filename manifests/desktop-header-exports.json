@@ -1,0 +1,9 @@
+{
+  "HostFS": "HostFS/hdr/HostFS",
+  "Hourglass": "Hourglass/hdr/Hourglass",
+  "Super": "Super/hdr/Super",
+  "PDriver": "PDriver/hdr/PDriver",
+  "Draw": "DrawMod/hdr/Draw",
+  "Switcher": "Switcher/hdr/Switcher",
+  "FPEmulator": "FPASC/riscos/hdr/FPEmulator"
+}

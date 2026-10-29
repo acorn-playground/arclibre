@@ -1,0 +1,114 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -3,6 +3,8 @@
+ 
+ AC_CONFIG_AUX_DIR([build-aux])
+ AC_CONFIG_HEADERS([config.h])
++dnl Modified 2026 for ArcLibre: classify blanks as the macOS hosts did.
++AH_BOTTOM([#include "hostctype.h"])
+ AC_CONFIG_SUBDIRS([elftoolchain decaof])
+ 
+ AC_CONFIG_MACRO_DIR([m4])
+--- a/hostctype.h
++++ b/hostctype.h
+@@ -0,0 +1,20 @@
++/* Modified 2026 for ArcLibre: host character classification.
++ *
++ * AsAsm adopts the user's locale (setlocale in main.c).  In the macOS UTF-8
++ * locales the restored sources were maintained under, isspace() is true for
++ * the Latin-1 no-break space, 0xA0; glibc's UTF-8 locales classify no byte
++ * above 0x7F.  Treat that byte as blank on every host, so a source line of
++ * no-break spaces (Kernel s.vdu.vdudecl) assembles as it does there.  Signed
++ * char arguments are unaffected, as on macOS.  No other class is changed.
++ */
++#ifndef ARCLIBRE_HOSTCTYPE_H
++#define ARCLIBRE_HOSTCTYPE_H
++#include <ctype.h>
++static inline int
++arclibre_isspace (int c)
++{
++  return c == 0xA0 || isspace (c);
++}
++#undef isspace
++#define isspace(c) arclibre_isspace (c)
++#endif
+--- a/src/os.c
++++ b/src/os.c
+@@ -132,6 +132,65 @@
+ #  include <sys/stat.h>
+ #  include <unistd.h>
+ 
++/* Modified 2026 for ArcLibre: RISC OS filenames are case-insensitive, as are
++   the macOS volumes the restored sources were maintained on.  When a name is
++   not found exactly, give each missing component its unique case-insensitive
++   match in its directory.  Exact names are always tried first; an ambiguous
++   or absent component fails.  lastToo false keeps the final component as
++   given, for the ,xyz filetype search below.  */
++#  include <dirent.h>
++#  include <strings.h>
++static bool
++ResolveCase (const char *fileName, bool lastToo, char *out, size_t outSize)
++{
++  size_t len = strlen (fileName);
++  if (len >= outSize)
++    return false;
++  memcpy (out, fileName, len + 1);
++  const char *lastSep = strrchr (out, '/');
++  size_t end = lastToo ? len : lastSep ? (size_t)(lastSep - out) : 0;
++  bool changed = false;
++  for (size_t start = out[0] == '/' ? 1 : 0; start < end; /* */)
++    {
++      size_t stop = start;
++      while (stop < len && out[stop] != '/')
++	++stop;
++      char saved = out[stop];
++      out[stop] = '\0';
++      struct stat cinfo;
++      if (stop != start && lstat (out, &cinfo) != 0)
++	{
++	  DIR *dirP;
++	  if (start == 0)
++	    dirP = opendir (".");
++	  else if (start == 1)
++	    dirP = opendir ("/");
++	  else
++	    {
++	      out[start - 1] = '\0';
++	      dirP = opendir (out);
++	      out[start - 1] = '/';
++	    }
++	  unsigned matches = 0;
++	  char match[NAME_MAX + 1];
++	  if (dirP != NULL)
++	    {
++	      const struct dirent *entryP;
++	      while ((entryP = readdir (dirP)) != NULL)
++		if (!strcasecmp (entryP->d_name, out + start) && matches++ == 0)
++		  memcpy (match, entryP->d_name, stop - start);
++	      closedir (dirP);
++	    }
++	  if (matches != 1)
++	    return false;
++	  memcpy (out + start, match, stop - start);
++	  changed = true;
++	}
++      out[stop] = saved;
++      start = stop + 1;
++    }
++  return changed;
++}
+ #endif
+ 
+ /**
+@@ -163,6 +222,11 @@
+ #else
+ 
+   struct stat sinfo;
++  char caseName[PATH_MAX];
++  if ((stat (fileName, &sinfo) != 0 || !S_ISREG (sinfo.st_mode))
++      && (ResolveCase (fileName, true, caseName, sizeof (caseName))
++	  || ResolveCase (fileName, false, caseName, sizeof (caseName))))
++    fileName = caseName;
+   if (stat (fileName, &sinfo) != 0 || !S_ISREG (sinfo.st_mode))
+     {
+       /* Given file does not exist.  Try with ,XYZ filetype extension.  */

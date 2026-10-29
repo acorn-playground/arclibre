@@ -1,0 +1,80 @@
+[
+  {
+    "component": "Kernel",
+    "revision": "3da129d209b2c78d19f6c28d9a8f15cd6f1c3bfc",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Kernel.git",
+    "subject": "Import from cleaned 360 CD"
+  },
+  {
+    "component": "HdrSrc",
+    "revision": "c9113ab79d9ca2ccc49a9b7518911132ca9ffa1b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Programmer/HdrSrc.git",
+    "subject": "Import from cleaned 360 CD"
+  },
+  {
+    "component": "Buffers",
+    "revision": "be2e051d01382492b65a1685d1f33e8ef4935444",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Buffers.git",
+    "subject": "Import from cleaned 360 CD"
+  },
+  {
+    "component": "Colours",
+    "revision": "873e823dc654dcd2deb964c69651e43db6221c77",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Video/Render/Colours.git",
+    "subject": "Import from cleaned 360 CD"
+  },
+  {
+    "component": "FileSwitch",
+    "revision": "93c7e2e094c314940237f6256e77edae2486419b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/FileSwitch.git",
+    "subject": "Import from cleaned 360 CD"
+  },
+  {
+    "component": "FontManager",
+    "revision": "f883f98662b95d16a03129835883f79a935910fd",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Video/Render/Fonts/FontManager.git",
+    "subject": "Import from cleaned 360 CD"
+  },
+  {
+    "component": "MsgTrans",
+    "revision": "2a006cd1d002bda2d7454764fe4b93f734f17598",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Internat/MsgTrans.git",
+    "subject": "Import from cleaned 360 CD"
+  },
+  {
+    "component": "Podule",
+    "revision": "b33cb3fa32376b243c94d3870b33697f30cd9a70",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Podule.git",
+    "subject": "Import from cleaned 360 CD"
+  },
+  {
+    "component": "Portable",
+    "revision": "e5f03547d739b9b5a5f58f719f769e7a9916fbf4",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Portable.git",
+    "subject": "Import from cleaned 360 CD"
+  },
+  {
+    "component": "Serial",
+    "revision": "4d0e504f000ea706a6d07c69e35d82380b02c797",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Serial.git",
+    "subject": "Import from cleaned 360 CD"
+  },
+  {
+    "component": "Sound0",
+    "revision": "9bd59f38c9b7caff055eff8ff308cce832e52b47",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Sound/Sound0.git",
+    "subject": "Import from cleaned 360 CD"
+  },
+  {
+    "component": "TerritoryManager",
+    "revision": "e2654fe5c068ae403d13cb09f03e5162895a736f",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Internat/Territory/TerritoryManager.git",
+    "subject": "Import from cleaned 360 CD"
+  },
+  {
+    "component": "Wimp",
+    "revision": "530acd4a18ffa97ce7a6b5b20fdef0a4db3ef647",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Wimp.git",
+    "subject": "Import from cleaned 360 CD"
+  }
+]

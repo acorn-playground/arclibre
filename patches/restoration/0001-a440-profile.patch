@@ -1,0 +1,37 @@
+--- a/HdrSrc/hdr/Machine/A440
++++ b/HdrSrc/hdr/Machine/A440
+@@ -64,5 +64,12 @@
+                 GBLS    Keyboard_Type
+ Keyboard_Type   SETS    "A1A500"
+ 
++; Modified 2026: explicit features of the original A440/1 board.
++        GBLL MorrisSupport
++MorrisSupport SETL {FALSE}
++        GBLL HasDallasID
++HasDallasID SETL {FALSE}
++        GBLL HasIOEB
++HasIOEB SETL {FALSE}
+         OPT     OldOpt
+         END
+--- a/Kernel/s/GetAll
++++ b/Kernel/s/GetAll
+@@ -179,7 +179,8 @@
+  [ MorrisSupport
+ IncludeTestSrc  SETL    {TRUE}
+  |
+-IncludeTestSrc  SETL    :LNOT: (MEMM_Type = "MEMC2") ; not on internal test versions
++; Modified 2026: original A440/1 hardware and existing non-POST reset path.
++IncludeTestSrc  SETL    {FALSE} ; not on internal test versions
+  ]
+ 
+                 GBLL    NormalSpeedROMS
+@@ -192,7 +193,8 @@
+ ;>>>could be replaced by NormalSpeedROMS
+ 
+                 GBLL    Select16BitSound
+-Select16BitSound SETL   {TRUE}
++; Modified 2026: original A440/1 hardware and existing non-POST reset path.
++Select16BitSound SETL   {FALSE}
+ 
+                 GBLL    Simulator               ; running on simulator?
+ Simulator       SETL    {FALSE}

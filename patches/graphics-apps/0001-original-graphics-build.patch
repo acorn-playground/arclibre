@@ -1,0 +1,181 @@
+--- a/src/Draw/asm/jpeg
++++ b/src/Draw/asm/jpeg
+@@ -64,6 +64,7 @@
+ 99      ADD     SP, SP, #8
+         LDMFD   SP!, {V1, V2, V3}
+         MOVS    PC, IP
++        MOV     R0, R0 ; ARM2 status settling
+ 
+ xjpeg_plot_scaled ROUT
+         MOV     IP, SP
+@@ -72,6 +73,7 @@
+         SWI     &69982
+         MOVVC   R, #0
+         LDMFD   SP!, {V1, V2, PC}^
++        MOV     R0, R0 ; ARM2 status settling
+ 
+ xjpeg_plot_file_scaled ROUT
+         MOV     IP, SP
+@@ -80,11 +82,13 @@
+         SWI     &69983
+         MOVVC   R, #0
+         LDMFD   SP!, {V1, PC}^
++        MOV     R0, R0 ; ARM2 status settling
+ 
+ xjpeg_plot_transformed ROUT
+         MOV     IP, LR
+         SWI     &69984
+         MOVVC   R, #0
+         MOVS    PC, IP
++        MOV     R0, R0 ; ARM2 status settling
+ 
+         END
+--- a/src/Draw/c/Draw
++++ b/src/Draw/c/Draw
+@@ -48,6 +48,11 @@
+ #include <math.h>
+ #include <signal.h>
+ #include <setjmp.h>
++/* ArcLibre: retain the original SCL ABI and GCC returns-twice semantics. */
++#ifdef __GNUC__
++extern int setjmp(jmp_buf) __asm__("ArcLibre_setjmp") __attribute__((returns_twice));
++extern void longjmp(jmp_buf, int) __asm__("ArcLibre_longjmp") __attribute__((noreturn));
++#endif
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+--- a/src/Draw/c/DrawMenu
++++ b/src/Draw/c/DrawMenu
+@@ -1970,9 +1970,10 @@
+ 
+ /* Definition of the standard grid sizes - must match the menu entries:
+    indexed by inch,cm, then menu subdivision */
+-static  double gridSpace [] []   = {{1, 1,  1,  1, -1},
++/* ArcLibre: spell out the five columns accepted implicitly by Norcroft. */
++static  double gridSpace [] [5]   = {{1, 1,  1,  1, -1},
+                                   {1, 1,  -1, 0, 0}};
+-static  int    gridDivide [] []  = {{4, 16, 5, 10, -1},
++static  int    gridDivide [] [5]  = {{4, 16, 5, 10, -1},
+                                   {2, 10, -1, 0, 0}};
+ static  int    grid_base [/*inch,cm*/] =
+           {s_Grid_Inch_userSpace, s_Grid_Cm_userSpace};
+--- a/src/Paint/asm/jpeg
++++ b/src/Paint/asm/jpeg
+@@ -74,6 +74,7 @@
+ 99      ADD     SP, SP, #8
+         LDMFD   SP!, {V1, V2, V3}
+         MOVS    PC, IP
++        MOV     R0, R0 ; ARM2 status settling
+ 
+ jpeginfo_dimensions ROUT
+         STMFD   SP!, {A3, A4, V1, V2, V3}
+@@ -96,6 +97,7 @@
+         ADD     SP, SP, #8
+         LDMFD   SP!, {V1, V2, V3}
+         MOVS    PC, LR
++        MOV     R0, R0 ; ARM2 status settling
+ 
+ xjpegfileinfo_dimensions ROUT
+         MOV     IP, LR
+@@ -123,6 +125,7 @@
+ 99      ADD     SP, SP, #12
+         LDMFD   SP!, {V1, V2, V3}
+         MOVS    PC, IP
++        MOV     R0, R0 ; ARM2 status settling
+ 
+ jpegfileinfo_dimensions ROUT
+         STMFD   SP!, {A2, A3, A4, V1, V2, V3}
+@@ -144,6 +147,7 @@
+         ADD     SP, SP, #12
+         LDMFD   SP!, {V1, V2, V3}
+         MOVS    PC, LR
++        MOV     R0, R0 ; ARM2 status settling
+ 
+ xjpeg_plot_scaled ROUT
+         MOV     IP, SP
+@@ -152,6 +156,7 @@
+         SWI     &69982
+         MOVVC   R, #0
+         LDMFD   SP!, {V1, V2, PC}^
++        MOV     R0, R0 ; ARM2 status settling
+ 
+ jpeg_plot_scaled ROUT
+         MOV     IP, SP
+@@ -159,6 +164,7 @@
+         LDMFD   IP, {R4, R5}
+         SWI     &49982
+         LDMFD   SP!, {V1, V2, PC}^
++        MOV     R0, R0 ; ARM2 status settling
+ 
+ xjpeg_plot_file_scaled ROUT
+         MOV     IP, SP
+@@ -167,6 +173,7 @@
+         SWI     &69983
+         MOVVC   R, #0
+         LDMFD   SP!, {V1, PC}^
++        MOV     R0, R0 ; ARM2 status settling
+ 
+ jpeg_plot_file_scaled ROUT
+         MOV     IP, SP
+@@ -174,25 +181,30 @@
+         LDMFD   IP, {R4}
+         SWI     &49983
+         LDMFD   SP!, {V1, PC}^
++        MOV     R0, R0 ; ARM2 status settling
+ 
+ xjpeg_plot_transformed ROUT
+         MOV     IP, LR
+         SWI     &69984
+         MOVVC   R, #0
+         MOVS    PC, IP
++        MOV     R0, R0 ; ARM2 status settling
+ 
+ jpeg_plot_transformed ROUT
+         SWI     &49984
+         MOVS    PC, LR
++        MOV     R0, R0 ; ARM2 status settling
+ 
+ xjpeg_plot_file_transformed ROUT
+         MOV     IP, LR
+         SWI     &69985
+         MOVVC   R, #0
+         MOVS    PC, IP
++        MOV     R0, R0 ; ARM2 status settling
+ 
+ jpeg_plot_file_transformed ROUT
+         SWI     &49985
+         MOVS    PC, LR
++        MOV     R0, R0 ; ARM2 status settling
+ 
+         END
+--- a/src/Paint/asm/writepixel
++++ b/src/Paint/asm/writepixel
+@@ -46,6 +46,7 @@
+         SWI     &2002E
+         MOVVC   R, #0
+         LDMFD   SP!, {V1, V2, V3, PC}^
++        MOV     R0, R0 ; ARM2 status settling
+ 
+ xosspriteop_write_pixel_mask ROUT
+         MOV     IP, SP
+@@ -55,5 +56,6 @@
+         SWI     &2002E
+         MOVVC   R, #0
+         LDMFD   SP!, {V1, V2, PC}^
++        MOV     R0, R0 ; ARM2 status settling
+ 
+         END
+--- a/src/Paint/c/Main
++++ b/src/Paint/c/Main
+@@ -66,6 +66,11 @@
+ #include <locale.h>
+ #include <signal.h>
+ #include <setjmp.h>
++/* ArcLibre: retain the original SCL ABI and GCC returns-twice semantics. */
++#ifdef __GNUC__
++extern int setjmp(jmp_buf) __asm__("ArcLibre_setjmp") __attribute__((returns_twice));
++extern void longjmp(jmp_buf, int) __asm__("ArcLibre_longjmp") __attribute__((noreturn));
++#endif
+ #include <stdarg.h>
+ #include <swis.h>
+ 

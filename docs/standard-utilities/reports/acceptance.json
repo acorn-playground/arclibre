@@ -1,0 +1,6394 @@
+{
+  "status": "PASS",
+  "rom_sha256": "1059cfb0b5b4b87ca1828a428a5cf8f0fa01c9b1f305ec6f1f395fbf813624ee",
+  "fixture_sha256": "b2a8e386d1ddb37c3b350ab40075632991bd74e7da8843bba6dd8cc32193c2c6",
+  "cold_boots": 3,
+  "identical_repetitions": true,
+  "kernel_and_emulator_unchanged": true,
+  "guest_code_injection": false,
+  "actual_vidc_and_frame_blanking": true,
+  "palette_restored_exactly": true,
+  "timer_wrch_and_flashing": true,
+  "real_mouse_and_keyboard_wake": true,
+  "screen_services_delivered": true,
+  "legacy_timeout_seconds_preserved": true,
+  "four_named_string_voices": true,
+  "four_voices_execute_original_ram_code": true,
+  "four_voices_non_silent_dma": true,
+  "missing_modules_negative_control": true,
+  "negative_rom_sha256": "7b4a3f2e8357704c5be655b0d8ccab03f6dc23f75feb9e55642cedfee06d7ed4",
+  "observations": {
+    "protocol": {
+      "application": "!UtilTest",
+      "errors": [],
+      "events": [
+        {
+          "pc": 58750488,
+          "psr": 1610612739,
+          "r0": 58750504,
+          "r1": 58750520,
+          "swi": 36,
+          "text": "Sys$Time"
+        },
+        {
+          "pc": 58750488,
+          "psr": 1610612739,
+          "r0": 58750536,
+          "r1": 58750552,
+          "swi": 36,
+          "text": "Sys$Year"
+        },
+        {
+          "pc": 58750488,
+          "psr": 1610612739,
+          "r0": 58750568,
+          "r1": 58750584,
+          "swi": 36,
+          "text": "Sys$Date"
+        },
+        {
+          "pc": 58750488,
+          "psr": 1610612739,
+          "r0": 58750600,
+          "r1": 58750620,
+          "swi": 36,
+          "text": "Sys$ReturnCode"
+        },
+        {
+          "pc": 58750488,
+          "psr": 1610612739,
+          "r0": 58750636,
+          "r1": 58750656,
+          "swi": 36,
+          "text": "Sys$RCLimit"
+        },
+        {
+          "pc": 58750488,
+          "psr": 1610612739,
+          "r0": 58750672,
+          "r1": 58750688,
+          "swi": 36,
+          "text": "Alias$."
+        },
+        {
+          "pc": 58750488,
+          "psr": 1610612739,
+          "r0": 58750693,
+          "r1": 58750716,
+          "swi": 36,
+          "text": "Sys$DateFormat"
+        },
+        {
+          "pc": 58874016,
+          "psr": 1073741827,
+          "r0": 58866924,
+          "r1": 58866933,
+          "swi": 36,
+          "text": "Run$Path"
+        },
+        {
+          "pc": 58874016,
+          "psr": 1073741827,
+          "r0": 58866937,
+          "r1": 58866947,
+          "swi": 36,
+          "text": "File$Path"
+        },
+        {
+          "pc": 58874016,
+          "psr": 1073741827,
+          "r0": 58866948,
+          "r1": 58866961,
+          "swi": 36,
+          "text": "Copy$Options"
+        },
+        {
+          "pc": 58874016,
+          "psr": 1073741827,
+          "r0": 58866994,
+          "r1": 58867007,
+          "swi": 36,
+          "text": "Wipe$Options"
+        },
+        {
+          "pc": 58874016,
+          "psr": 1073741827,
+          "r0": 58867017,
+          "r1": 58867031,
+          "swi": 36,
+          "text": "Count$Options"
+        },
+        {
+          "pc": 58874016,
+          "psr": 1073741827,
+          "r0": 58867039,
+          "r1": 58867058,
+          "swi": 36,
+          "text": "Alias$@RunType_FEA"
+        },
+        {
+          "pc": 58874016,
+          "psr": 1073741827,
+          "r0": 58867076,
+          "r1": 58867095,
+          "swi": 36,
+          "text": "Alias$@RunType_FEB"
+        },
+        {
+          "pc": 58874016,
+          "psr": 1073741827,
+          "r0": 58867104,
+          "r1": 58867123,
+          "swi": 36,
+          "text": "Alias$@RunType_FED"
+        },
+        {
+          "pc": 58874016,
+          "psr": 1073741827,
+          "r0": 58867139,
+          "r1": 58867158,
+          "swi": 36,
+          "text": "Alias$@RunType_FF7"
+        },
+        {
+          "pc": 58874016,
+          "psr": 1073741827,
+          "r0": 58867168,
+          "r1": 58867187,
+          "swi": 36,
+          "text": "Alias$@RunType_FF9"
+        },
+        {
+          "pc": 58874016,
+          "psr": 1073741827,
+          "r0": 58867202,
+          "r1": 58867221,
+          "swi": 36,
+          "text": "Alias$@RunType_FFA"
+        },
+        {
+          "pc": 58874016,
+          "psr": 1073741827,
+          "r0": 58867231,
+          "r1": 58867250,
+          "swi": 36,
+          "text": "Alias$@RunType_FFB"
+        },
+        {
+          "pc": 58874016,
+          "psr": 1073741827,
+          "r0": 58867271,
+          "r1": 58867290,
+          "swi": 36,
+          "text": "Alias$@RunType_FFE"
+        },
+        {
+          "pc": 58874016,
+          "psr": 1073741827,
+          "r0": 58867299,
+          "r1": 58867318,
+          "swi": 36,
+          "text": "Alias$@RunType_FFF"
+        },
+        {
+          "pc": 58874016,
+          "psr": 1073741827,
+          "r0": 58867327,
+          "r1": 58867347,
+          "swi": 36,
+          "text": "Alias$@LoadType_FF7"
+        },
+        {
+          "pc": 58874016,
+          "psr": 1073741827,
+          "r0": 58867357,
+          "r1": 58867377,
+          "swi": 36,
+          "text": "Alias$@LoadType_FF9"
+        },
+        {
+          "pc": 58874016,
+          "psr": 1073741827,
+          "r0": 58867387,
+          "r1": 58867407,
+          "swi": 36,
+          "text": "Alias$@LoadType_FFA"
+        },
+        {
+          "pc": 58874016,
+          "psr": 1073741827,
+          "r0": 58867418,
+          "r1": 58867438,
+          "swi": 36,
+          "text": "Alias$@LoadType_FFB"
+        },
+        {
+          "pc": 58874016,
+          "psr": 1073741827,
+          "r0": 58867459,
+          "r1": 58867473,
+          "swi": 36,
+          "text": "File$Type_AFF"
+        },
+        {
+          "pc": 58874016,
+          "psr": 1073741827,
+          "r0": 58867482,
+          "r1": 58867496,
+          "swi": 36,
+          "text": "File$Type_BBC"
+        },
+        {
+          "pc": 58874016,
+          "psr": 1073741827,
+          "r0": 58867504,
+          "r1": 58867518,
+          "swi": 36,
+          "text": "File$Type_FAE"
+        },
+        {
+          "pc": 58874016,
+          "psr": 1073741827,
+          "r0": 58867527,
+          "r1": 58867541,
+          "swi": 36,
+          "text": "File$Type_FEA"
+        },
+        {
+          "pc": 58874016,
+          "psr": 1073741827,
+          "r0": 58867549,
+          "r1": 58867563,
+          "swi": 36,
+          "text": "File$Type_FEB"
+        },
+        {
+          "pc": 58874016,
+          "psr": 1073741827,
+          "r0": 58867568,
+          "r1": 58867582,
+          "swi": 36,
+          "text": "File$Type_FEC"
+        },
+        {
+          "pc": 58874016,
+          "psr": 1073741827,
+          "r0": 58867591,
+          "r1": 58867605,
+          "swi": 36,
+          "text": "File$Type_FED"
+        },
+        {
+          "pc": 58874016,
+          "psr": 1073741827,
+          "r0": 58867613,
+          "r1": 58867627,
+          "swi": 36,
+          "text": "File$Type_FF2"
+        },
+        {
+          "pc": 58874016,
+          "psr": 1073741827,
+          "r0": 58867634,
+          "r1": 58867648,
+          "swi": 36,
+          "text": "File$Type_FF4"
+        },
+        {
+          "pc": 58874016,
+          "psr": 1073741827,
+          "r0": 58867657,
+          "r1": 58867671,
+          "swi": 36,
+          "text": "File$Type_FF5"
+        },
+        {
+          "pc": 58874016,
+          "psr": 1073741827,
+          "r0": 58867680,
+          "r1": 58867694,
+          "swi": 36,
+          "text": "File$Type_FF6"
+        },
+        {
+          "pc": 58874016,
+          "psr": 1073741827,
+          "r0": 58867699,
+          "r1": 58867713,
+          "swi": 36,
+          "text": "File$Type_FF7"
+        },
+        {
+          "pc": 58874016,
+          "psr": 1073741827,
+          "r0": 58867722,
+          "r1": 58867736,
+          "swi": 36,
+          "text": "File$Type_FF8"
+        },
+        {
+          "pc": 58874016,
+          "psr": 1073741827,
+          "r0": 58867745,
+          "r1": 58867759,
+          "swi": 36,
+          "text": "File$Type_FF9"
+        },
+        {
+          "pc": 58874016,
+          "psr": 1073741827,
+          "r0": 58867766,
+          "r1": 58867780,
+          "swi": 36,
+          "text": "File$Type_FFA"
+        },
+        {
+          "pc": 58874016,
+          "psr": 1073741827,
+          "r0": 58867787,
+          "r1": 58867801,
+          "swi": 36,
+          "text": "File$Type_FFB"
+        },
+        {
+          "pc": 58874016,
+          "psr": 1073741827,
+          "r0": 58867807,
+          "r1": 58867821,
+          "swi": 36,
+          "text": "File$Type_FFC"
+        },
+        {
+          "pc": 58874016,
+          "psr": 1073741827,
+          "r0": 58867829,
+          "r1": 58867843,
+          "swi": 36,
+          "text": "File$Type_FFD"
+        },
+        {
+          "pc": 58874016,
+          "psr": 1073741827,
+          "r0": 58867848,
+          "r1": 58867862,
+          "swi": 36,
+          "text": "File$Type_FFE"
+        },
+        {
+          "pc": 58874016,
+          "psr": 1073741827,
+          "r0": 58867870,
+          "r1": 58867884,
+          "swi": 36,
+          "text": "File$Type_FFF"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29373365,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29373365,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 59308576,
+          "psr": 1610612739,
+          "r0": 59308680,
+          "r1": 59308702,
+          "swi": 36,
+          "text": "TerritoryManager$Path"
+        },
+        {
+          "pc": 59314168,
+          "psr": 1610612739,
+          "r0": 59314500,
+          "r1": 59314508,
+          "swi": 36,
+          "text": "UK$Path"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29373765,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29374173,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29374581,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 59505024,
+          "psr": 1073741827,
+          "r0": 59505152,
+          "r1": 5740,
+          "swi": 5,
+          "text": "IF \"<Font$Path>\"=\"\" THEN SetMacro Font$Path <Font$Prefix>."
+        },
+        {
+          "pc": 58764472,
+          "psr": 1610612739,
+          "r0": 2204,
+          "r1": 59505211,
+          "swi": 5,
+          "text": " SetMacro Font$Path <Font$Prefix>."
+        },
+        {
+          "pc": 58756996,
+          "psr": 536870915,
+          "r0": 2214,
+          "r1": 2224,
+          "swi": 36,
+          "text": "Font$Path <Font$Prefix>."
+        },
+        {
+          "pc": 59505032,
+          "psr": 1073741827,
+          "r0": 59505211,
+          "r1": 5740,
+          "swi": 5,
+          "text": "Set File$Type_FCF Cache"
+        },
+        {
+          "pc": 58756996,
+          "psr": 536870915,
+          "r0": 59505215,
+          "r1": 59505229,
+          "swi": 36,
+          "text": "File$Type_FCF Cache"
+        },
+        {
+          "pc": 59505040,
+          "psr": 1073741827,
+          "r0": 59505235,
+          "r1": 5740,
+          "swi": 5,
+          "text": "Set Alias$@RunType_FCF LoadFontCache "
+        },
+        {
+          "pc": 58756996,
+          "psr": 536870915,
+          "r0": 59505239,
+          "r1": 59505258,
+          "swi": 36,
+          "text": "Alias$@RunType_FCF LoadFontCache "
+        },
+        {
+          "pc": 59505048,
+          "psr": 1073741827,
+          "r0": 59505273,
+          "r1": 5740,
+          "swi": 5,
+          "text": "Set Alias$@LoadType_FCF LoadFontCache "
+        },
+        {
+          "pc": 58756996,
+          "psr": 536870915,
+          "r0": 59505277,
+          "r1": 59505297,
+          "swi": 36,
+          "text": "Alias$@LoadType_FCF LoadFontCache "
+        },
+        {
+          "pc": 59561324,
+          "psr": 1610612739,
+          "r0": 59561394,
+          "r1": 29367843,
+          "swi": 5,
+          "text": "SetMacro Font$Path <Font$Prefix>.,Resources:$.Fonts."
+        },
+        {
+          "pc": 58756996,
+          "psr": 536870915,
+          "r0": 59561403,
+          "r1": 59561413,
+          "swi": 36,
+          "text": "Font$Path <Font$Prefix>.,Resources:$.Fonts."
+        },
+        {
+          "pc": 59561360,
+          "psr": 1610612739,
+          "r0": 59561462,
+          "r1": 29367843,
+          "swi": 5,
+          "text": "Set Font$Prefix \" \""
+        },
+        {
+          "pc": 58756996,
+          "psr": 536870915,
+          "r0": 59561466,
+          "r1": 59561478,
+          "swi": 36,
+          "text": "Font$Prefix \" \""
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29374581,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 59834292,
+          "psr": 1610612739,
+          "r0": 59834196,
+          "r1": 59834215,
+          "swi": 36,
+          "text": "WindowManager$Path"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29374585,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29375228,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 59834796,
+          "psr": 1073741827,
+          "r0": 59835104,
+          "r1": 59835368,
+          "swi": 36,
+          "text": "Wimp$State"
+        },
+        {
+          "pc": 59835040,
+          "psr": 3,
+          "r0": 59835004,
+          "r1": 59835368,
+          "swi": 5,
+          "text": "%FontInstall"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29375301,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29375573,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29375077,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29375397,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29375269,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29375301,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29375325,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29375333,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29375469,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29375269,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29375293,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29375301,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29375381,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29375381,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29375381,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29375381,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29375373,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29375461,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29375325,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29375389,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29375389,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29375381,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29375429,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29375301,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29375365,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29375445,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29375317,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29375349,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29375349,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29375357,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29375365,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29375357,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29375357,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29375365,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29375381,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29375381,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29375477,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29375077,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29375353,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29375452,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29375457,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29375524,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29375529,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29375404,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29375433,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29375308,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 59914784,
+          "psr": 1610612739,
+          "r0": 59914792,
+          "r1": 59914806,
+          "swi": 36,
+          "text": "Switcher$Path"
+        },
+        {
+          "pc": 59930020,
+          "psr": 1610612739,
+          "r0": 59930032,
+          "r1": 59930043,
+          "swi": 36,
+          "text": "Filer$Path"
+        },
+        {
+          "pc": 59957488,
+          "psr": 1610612739,
+          "r0": 59957496,
+          "r1": 59957510,
+          "swi": 36,
+          "text": "Pinboard$Path"
+        },
+        {
+          "pc": 59974272,
+          "psr": 1610612739,
+          "r0": 59974284,
+          "r1": 59974299,
+          "swi": 36,
+          "text": "ADFSFiler$Path"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29376197,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29376285,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29376589,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 60078680,
+          "psr": 1610612739,
+          "r0": 60078688,
+          "r1": 60078702,
+          "swi": 36,
+          "text": "ResFiler$Path"
+        },
+        {
+          "pc": 60085940,
+          "psr": 1610612739,
+          "r0": 60085952,
+          "r1": 60085971,
+          "swi": 36,
+          "text": "Alias$@RunType_FD7"
+        },
+        {
+          "pc": 60085940,
+          "psr": 1610612739,
+          "r0": 60086017,
+          "r1": 60086031,
+          "swi": 36,
+          "text": "File$Type_FD7"
+        },
+        {
+          "pc": 60085940,
+          "psr": 1610612739,
+          "r0": 60086040,
+          "r1": 60086059,
+          "swi": 36,
+          "text": "Alias$@RunType_FD6"
+        },
+        {
+          "pc": 60085940,
+          "psr": 1610612739,
+          "r0": 60086108,
+          "r1": 60086122,
+          "swi": 36,
+          "text": "File$Type_FD6"
+        },
+        {
+          "pc": 60095600,
+          "psr": 1610612739,
+          "r0": 60095438,
+          "r1": 29368320,
+          "swi": 5,
+          "text": "Set File$Type_FCC Device"
+        },
+        {
+          "pc": 58756996,
+          "psr": 536870915,
+          "r0": 60095442,
+          "r1": 60095456,
+          "swi": 36,
+          "text": "File$Type_FCC Device"
+        },
+        {
+          "pc": 60103308,
+          "psr": 1073741827,
+          "r0": 60103316,
+          "r1": 4,
+          "swi": 5,
+          "text": "Set PrinterType$0 null:"
+        },
+        {
+          "pc": 58756996,
+          "psr": 536870915,
+          "r0": 60103320,
+          "r1": 60103334,
+          "swi": 36,
+          "text": "PrinterType$0 null:"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29378173,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 60115780,
+          "psr": 1610612739,
+          "r0": 60115788,
+          "r1": 60115798,
+          "swi": 36,
+          "text": "Free$Path"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29378453,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 60124828,
+          "psr": 1610612739,
+          "r0": 60124628,
+          "r1": 60124668,
+          "swi": 36,
+          "text": "SharedCLibrary$Path"
+        },
+        {
+          "pc": 60124828,
+          "psr": 1610612739,
+          "r0": 60124648,
+          "r1": 60124696,
+          "swi": 36,
+          "text": "RISC_OSLibrary$Path"
+        },
+        {
+          "pc": 60308892,
+          "psr": 1610612739,
+          "r0": 60308904,
+          "r1": 60308918,
+          "swi": 36,
+          "text": "FilerAct$Path"
+        },
+        {
+          "pc": 58874016,
+          "psr": 3,
+          "r0": 58874942,
+          "r1": 29374073,
+          "swi": 36,
+          "text": "FileSwitch$CurrentFilingSystem"
+        },
+        {
+          "pc": 58874016,
+          "psr": 3,
+          "r0": 58874973,
+          "r1": 29374073,
+          "swi": 36,
+          "text": "FileSwitch$TemporaryFilingSystem"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377117,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29376981,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377037,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377117,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29376981,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377037,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377117,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29376981,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377057,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377132,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29379365,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377137,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377012,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377117,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29376981,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377037,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377117,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29376981,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377057,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377132,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377137,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29379316,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58778632,
+          "psr": 2147483651,
+          "r0": 2204,
+          "r1": 2205,
+          "swi": 2,
+          "text": "4"
+        },
+        {
+          "pc": 58900088,
+          "psr": 536870915,
+          "r0": 59408844,
+          "r1": 39,
+          "swi": 2,
+          "text": "Acorn ADFS"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377117,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29376981,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58874016,
+          "psr": 3,
+          "r0": 58874973,
+          "r1": 29374073,
+          "swi": 36,
+          "text": "FileSwitch$TemporaryFilingSystem"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377205,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 59338420,
+          "psr": 1073741824,
+          "r0": 59338920,
+          "r1": 0,
+          "swi": 5,
+          "text": "%Unset Desktop$File"
+        },
+        {
+          "pc": 58757056,
+          "psr": 1610612739,
+          "r0": 59338927,
+          "r1": 1,
+          "swi": 36,
+          "text": "Desktop$File"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377089,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29379316,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377169,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29379316,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377225,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377100,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377129,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377084,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29376977,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377140,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377205,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377205,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377205,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377205,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377205,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377213,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377225,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29380092,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377225,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29380116,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377225,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29380028,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377225,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29380028,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377225,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29380060,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377225,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29380028,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377225,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29380060,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377225,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29380028,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377225,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29380060,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377225,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29380028,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377225,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29380060,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 59872372,
+          "psr": 3,
+          "r0": 59872390,
+          "r1": 4,
+          "swi": 5,
+          "text": "Pointer"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377205,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377205,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377077,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377149,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377149,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377149,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377149,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377141,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377205,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29379333,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377205,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29379749,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377205,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377205,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29379333,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29379333,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377205,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29380133,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377205,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377205,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29379293,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377205,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29379293,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377205,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377205,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29380933,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29376972,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377135,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29376972,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377135,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 59339036,
+          "psr": 1610612736,
+          "r0": 59913136,
+          "r1": 0,
+          "swi": 262366,
+          "text": "Desktop_TaskManager"
+        },
+        {
+          "pc": 59889496,
+          "psr": 0,
+          "r0": 25229028,
+          "r1": 25229028,
+          "swi": 5,
+          "text": "Desktop_TaskManager"
+        },
+        {
+          "pc": 58874016,
+          "psr": 3,
+          "r0": 58874973,
+          "r1": 29374073,
+          "swi": 36,
+          "text": "FileSwitch$TemporaryFilingSystem"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377140,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377015,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377140,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377015,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 59839024,
+          "psr": 536870915,
+          "r0": 59890473,
+          "r1": 29368196,
+          "swi": 5,
+          "text": "Exec"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377140,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377015,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377036,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29379375,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377137,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377012,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377025,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29379380,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 59915956,
+          "psr": 1610612736,
+          "r0": 59916012,
+          "r1": 0,
+          "swi": 5,
+          "text": "%Unset SaveDesk$File"
+        },
+        {
+          "pc": 58757056,
+          "psr": 1610612739,
+          "r0": 59916019,
+          "r1": 1,
+          "swi": 36,
+          "text": "SaveDesk$File"
+        },
+        {
+          "pc": 59339036,
+          "psr": 1610612736,
+          "r0": 59927068,
+          "r1": 0,
+          "swi": 262366,
+          "text": "Desktop_Filer"
+        },
+        {
+          "pc": 59889496,
+          "psr": 0,
+          "r0": 25229028,
+          "r1": 25229028,
+          "swi": 5,
+          "text": "Desktop_Filer"
+        },
+        {
+          "pc": 58874016,
+          "psr": 3,
+          "r0": 58874973,
+          "r1": 29374073,
+          "swi": 36,
+          "text": "FileSwitch$TemporaryFilingSystem"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377049,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377220,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377049,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29379308,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377049,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377220,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377052,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377215,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 59839024,
+          "psr": 536870915,
+          "r0": 59890473,
+          "r1": 29368204,
+          "swi": 5,
+          "text": "Exec"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377049,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377220,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377049,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29379308,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377054,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377217,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 59929220,
+          "psr": 1610612736,
+          "r0": 59974388,
+          "r1": 0,
+          "swi": 262366,
+          "text": "Desktop_ADFSFiler"
+        },
+        {
+          "pc": 59889496,
+          "psr": 0,
+          "r0": 25229028,
+          "r1": 25229028,
+          "swi": 5,
+          "text": "Desktop_ADFSFiler"
+        },
+        {
+          "pc": 58874016,
+          "psr": 3,
+          "r0": 58874973,
+          "r1": 29374073,
+          "swi": 36,
+          "text": "FileSwitch$TemporaryFilingSystem"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377229,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377104,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 59839024,
+          "psr": 536870915,
+          "r0": 59890473,
+          "r1": 29368200,
+          "swi": 5,
+          "text": "Exec"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377229,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377104,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377125,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29379312,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 59929220,
+          "psr": 1610612736,
+          "r0": 60078264,
+          "r1": 0,
+          "swi": 262366,
+          "text": "Desktop_ResourceFiler"
+        },
+        {
+          "pc": 59889496,
+          "psr": 0,
+          "r0": 25229028,
+          "r1": 25229028,
+          "swi": 5,
+          "text": "Desktop_ResourceFiler"
+        },
+        {
+          "pc": 58874016,
+          "psr": 3,
+          "r0": 58874973,
+          "r1": 29374073,
+          "swi": 36,
+          "text": "FileSwitch$TemporaryFilingSystem"
+        },
+        {
+          "pc": 58874016,
+          "psr": 1073741827,
+          "r0": 58874942,
+          "r1": 0,
+          "swi": 36,
+          "text": "FileSwitch$CurrentFilingSystem"
+        },
+        {
+          "pc": 58874016,
+          "psr": 1073741827,
+          "r0": 58874973,
+          "r1": 0,
+          "swi": 36,
+          "text": "FileSwitch$TemporaryFilingSystem"
+        },
+        {
+          "pc": 58874016,
+          "psr": 3,
+          "r0": 58874942,
+          "r1": 29373257,
+          "swi": 36,
+          "text": "FileSwitch$CurrentFilingSystem"
+        },
+        {
+          "pc": 58874016,
+          "psr": 3,
+          "r0": 58874973,
+          "r1": 29373257,
+          "swi": 36,
+          "text": "FileSwitch$TemporaryFilingSystem"
+        },
+        {
+          "pc": 58874016,
+          "psr": 3,
+          "r0": 58874942,
+          "r1": 29374073,
+          "swi": 36,
+          "text": "FileSwitch$CurrentFilingSystem"
+        },
+        {
+          "pc": 58874016,
+          "psr": 3,
+          "r0": 58874973,
+          "r1": 29374073,
+          "swi": 36,
+          "text": "FileSwitch$TemporaryFilingSystem"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377140,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29379311,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 59839024,
+          "psr": 536870915,
+          "r0": 59890473,
+          "r1": 29368196,
+          "swi": 5,
+          "text": "Exec"
+        },
+        {
+          "pc": 58874016,
+          "psr": 1073741827,
+          "r0": 58874942,
+          "r1": 0,
+          "swi": 36,
+          "text": "FileSwitch$CurrentFilingSystem"
+        },
+        {
+          "pc": 58874016,
+          "psr": 1073741827,
+          "r0": 58874973,
+          "r1": 0,
+          "swi": 36,
+          "text": "FileSwitch$TemporaryFilingSystem"
+        },
+        {
+          "pc": 58874016,
+          "psr": 3,
+          "r0": 58874942,
+          "r1": 29373257,
+          "swi": 36,
+          "text": "FileSwitch$CurrentFilingSystem"
+        },
+        {
+          "pc": 58874016,
+          "psr": 3,
+          "r0": 58874973,
+          "r1": 29373257,
+          "swi": 36,
+          "text": "FileSwitch$TemporaryFilingSystem"
+        },
+        {
+          "pc": 58874016,
+          "psr": 3,
+          "r0": 58874942,
+          "r1": 29374073,
+          "swi": 36,
+          "text": "FileSwitch$CurrentFilingSystem"
+        },
+        {
+          "pc": 58874016,
+          "psr": 3,
+          "r0": 58874973,
+          "r1": 29374073,
+          "swi": 36,
+          "text": "FileSwitch$TemporaryFilingSystem"
+        },
+        {
+          "pc": 58874016,
+          "psr": 1073741827,
+          "r0": 58874942,
+          "r1": 0,
+          "swi": 36,
+          "text": "FileSwitch$CurrentFilingSystem"
+        },
+        {
+          "pc": 58874016,
+          "psr": 1073741827,
+          "r0": 58874973,
+          "r1": 0,
+          "swi": 36,
+          "text": "FileSwitch$TemporaryFilingSystem"
+        },
+        {
+          "pc": 58874016,
+          "psr": 3,
+          "r0": 58874942,
+          "r1": 29373257,
+          "swi": 36,
+          "text": "FileSwitch$CurrentFilingSystem"
+        },
+        {
+          "pc": 58874016,
+          "psr": 3,
+          "r0": 58874973,
+          "r1": 29373257,
+          "swi": 36,
+          "text": "FileSwitch$TemporaryFilingSystem"
+        },
+        {
+          "pc": 58874016,
+          "psr": 3,
+          "r0": 58874942,
+          "r1": 29374073,
+          "swi": 36,
+          "text": "FileSwitch$CurrentFilingSystem"
+        },
+        {
+          "pc": 58874016,
+          "psr": 3,
+          "r0": 58874973,
+          "r1": 29374073,
+          "swi": 36,
+          "text": "FileSwitch$TemporaryFilingSystem"
+        },
+        {
+          "pc": 59929220,
+          "psr": 1610612736,
+          "r0": 60112724,
+          "r1": 0,
+          "swi": 262366,
+          "text": "Desktop_RAMFSFiler"
+        },
+        {
+          "pc": 59889496,
+          "psr": 0,
+          "r0": 25229028,
+          "r1": 25229028,
+          "swi": 5,
+          "text": "Desktop_RAMFSFiler"
+        },
+        {
+          "pc": 58874016,
+          "psr": 3,
+          "r0": 58874973,
+          "r1": 29374073,
+          "swi": 36,
+          "text": "FileSwitch$TemporaryFilingSystem"
+        },
+        {
+          "pc": 58874016,
+          "psr": 1073741827,
+          "r0": 58874942,
+          "r1": 0,
+          "swi": 36,
+          "text": "FileSwitch$CurrentFilingSystem"
+        },
+        {
+          "pc": 58874016,
+          "psr": 1073741827,
+          "r0": 58874973,
+          "r1": 0,
+          "swi": 36,
+          "text": "FileSwitch$TemporaryFilingSystem"
+        },
+        {
+          "pc": 58874016,
+          "psr": 3,
+          "r0": 58874942,
+          "r1": 29374073,
+          "swi": 36,
+          "text": "FileSwitch$CurrentFilingSystem"
+        },
+        {
+          "pc": 58874016,
+          "psr": 3,
+          "r0": 58874973,
+          "r1": 29374073,
+          "swi": 36,
+          "text": "FileSwitch$TemporaryFilingSystem"
+        },
+        {
+          "pc": 58874016,
+          "psr": 3,
+          "r0": 58874973,
+          "r1": 29374073,
+          "swi": 36,
+          "text": "FileSwitch$TemporaryFilingSystem"
+        },
+        {
+          "pc": 59839024,
+          "psr": 3,
+          "r0": 59890473,
+          "r1": 58780968,
+          "swi": 5,
+          "text": "Exec"
+        },
+        {
+          "pc": 58874016,
+          "psr": 1073741827,
+          "r0": 58874942,
+          "r1": 0,
+          "swi": 36,
+          "text": "FileSwitch$CurrentFilingSystem"
+        },
+        {
+          "pc": 58874016,
+          "psr": 1073741827,
+          "r0": 58874973,
+          "r1": 0,
+          "swi": 36,
+          "text": "FileSwitch$TemporaryFilingSystem"
+        },
+        {
+          "pc": 58874016,
+          "psr": 3,
+          "r0": 58874942,
+          "r1": 29373257,
+          "swi": 36,
+          "text": "FileSwitch$CurrentFilingSystem"
+        },
+        {
+          "pc": 58874016,
+          "psr": 3,
+          "r0": 58874973,
+          "r1": 29373257,
+          "swi": 36,
+          "text": "FileSwitch$TemporaryFilingSystem"
+        },
+        {
+          "pc": 58874016,
+          "psr": 3,
+          "r0": 58874942,
+          "r1": 29374073,
+          "swi": 36,
+          "text": "FileSwitch$CurrentFilingSystem"
+        },
+        {
+          "pc": 58874016,
+          "psr": 3,
+          "r0": 58874973,
+          "r1": 29374073,
+          "swi": 36,
+          "text": "FileSwitch$TemporaryFilingSystem"
+        },
+        {
+          "pc": 59339036,
+          "psr": 1610612736,
+          "r0": 59957100,
+          "r1": 0,
+          "swi": 262366,
+          "text": "Desktop_Pinboard"
+        },
+        {
+          "pc": 59889496,
+          "psr": 0,
+          "r0": 25229028,
+          "r1": 25229028,
+          "swi": 5,
+          "text": "Desktop_Pinboard"
+        },
+        {
+          "pc": 58874016,
+          "psr": 3,
+          "r0": 58874973,
+          "r1": 29374073,
+          "swi": 36,
+          "text": "FileSwitch$TemporaryFilingSystem"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377052,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29379311,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 59839024,
+          "psr": 536870915,
+          "r0": 59890473,
+          "r1": 29368200,
+          "swi": 5,
+          "text": "Exec"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377052,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29379311,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377052,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29379343,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 59339036,
+          "psr": 1610612736,
+          "r0": 60080103,
+          "r1": 0,
+          "swi": 262366,
+          "text": "Desktop_ArcPalette"
+        },
+        {
+          "pc": 59889496,
+          "psr": 0,
+          "r0": 25229028,
+          "r1": 25229028,
+          "swi": 5,
+          "text": "Desktop_ArcPalette"
+        },
+        {
+          "pc": 58874016,
+          "psr": 3,
+          "r0": 58874973,
+          "r1": 29374073,
+          "swi": 36,
+          "text": "FileSwitch$TemporaryFilingSystem"
+        },
+        {
+          "pc": 59839024,
+          "psr": 536870915,
+          "r0": 59890473,
+          "r1": 29368204,
+          "swi": 5,
+          "text": "Exec"
+        },
+        {
+          "pc": 59339036,
+          "psr": 1610612736,
+          "r0": 60115192,
+          "r1": 0,
+          "swi": 262366,
+          "text": "Desktop_Free"
+        },
+        {
+          "pc": 59889496,
+          "psr": 0,
+          "r0": 25229028,
+          "r1": 25229028,
+          "swi": 5,
+          "text": "Desktop_Free"
+        },
+        {
+          "pc": 58874016,
+          "psr": 3,
+          "r0": 58874973,
+          "r1": 29374073,
+          "swi": 36,
+          "text": "FileSwitch$TemporaryFilingSystem"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377048,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29379307,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 59839024,
+          "psr": 536870915,
+          "r0": 59890473,
+          "r1": 29368204,
+          "swi": 5,
+          "text": "Exec"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377048,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29379307,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377048,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29379339,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377053,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 59339212,
+          "psr": 1610612736,
+          "r0": 25269300,
+          "r1": 59337798,
+          "swi": 5,
+          "text": "Filer_Boot Resources:$.Apps.!Draw"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377045,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377213,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 59947576,
+          "psr": 536870915,
+          "r0": 25282468,
+          "r1": 25282481,
+          "swi": 5,
+          "text": "WimpTask Run Resources:$.Apps.!Draw.!Boot"
+        },
+        {
+          "pc": 59832496,
+          "psr": 1610612739,
+          "r0": 25282477,
+          "r1": 2,
+          "swi": 262366,
+          "text": "Run Resources:$.Apps.!Draw.!Boot"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377213,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377213,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 59889496,
+          "psr": 0,
+          "r0": 25229028,
+          "r1": 25229028,
+          "swi": 5,
+          "text": "Run Resources:$.Apps.!Draw.!Boot"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29378909,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58891324,
+          "psr": 536870915,
+          "r0": 29379324,
+          "r1": 29377036,
+          "swi": 5,
+          "text": "@RunType_FEB Resources:$.Apps.!Draw.!Boot"
+        },
+        {
+          "pc": 58725372,
+          "psr": 2147483651,
+          "r0": 32513652,
+          "r1": 32513652,
+          "swi": 5,
+          "text": "Obey Resources:$.Apps.!Draw.!Boot "
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29379389,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 59993676,
+          "psr": 1610612739,
+          "r0": 29367604,
+          "r1": 32513679,
+          "swi": 5,
+          "text": "Set Obey$Dir    Resources:$.Apps.!Draw"
+        },
+        {
+          "pc": 58756996,
+          "psr": 536870915,
+          "r0": 29367608,
+          "r1": 29367620,
+          "swi": 36,
+          "text": "Obey$Dir    Resources:$.Apps.!Draw"
+        },
+        {
+          "pc": 59994016,
+          "psr": 1610612739,
+          "r0": 25297472,
+          "r1": 255,
+          "swi": 5,
+          "text": "Set Alias$@RunType_AFF /<Obey$Dir> "
+        },
+        {
+          "pc": 58756996,
+          "psr": 536870915,
+          "r0": 25297476,
+          "r1": 25297495,
+          "swi": 36,
+          "text": "Alias$@RunType_AFF /<Obey$Dir> "
+        },
+        {
+          "pc": 59994016,
+          "psr": 1610612739,
+          "r0": 25297472,
+          "r1": 255,
+          "swi": 5,
+          "text": "Set Alias$@PrintType_AFF /<Obey$Dir> -print "
+        },
+        {
+          "pc": 58756996,
+          "psr": 536870915,
+          "r0": 25297476,
+          "r1": 25297497,
+          "swi": 36,
+          "text": "Alias$@PrintType_AFF /<Obey$Dir> -print "
+        },
+        {
+          "pc": 59994016,
+          "psr": 1610612739,
+          "r0": 25297472,
+          "r1": 255,
+          "swi": 5,
+          "text": "Set File$Type_AFF DrawFile"
+        },
+        {
+          "pc": 58756996,
+          "psr": 536870915,
+          "r0": 25297476,
+          "r1": 25297490,
+          "swi": 36,
+          "text": "File$Type_AFF DrawFile"
+        },
+        {
+          "pc": 59994016,
+          "psr": 1610612739,
+          "r0": 25297472,
+          "r1": 255,
+          "swi": 5,
+          "text": "Set File$Type_DEA DXF"
+        },
+        {
+          "pc": 58756996,
+          "psr": 536870915,
+          "r0": 25297476,
+          "r1": 25297490,
+          "swi": 36,
+          "text": "File$Type_DEA DXF"
+        },
+        {
+          "pc": 58874016,
+          "psr": 3,
+          "r0": 58874973,
+          "r1": 29374073,
+          "swi": 36,
+          "text": "FileSwitch$TemporaryFilingSystem"
+        },
+        {
+          "pc": 59839024,
+          "psr": 3,
+          "r0": 59890473,
+          "r1": 58780968,
+          "swi": 5,
+          "text": "Exec"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29369645,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 59339212,
+          "psr": 1610612736,
+          "r0": 25269300,
+          "r1": 59337798,
+          "swi": 5,
+          "text": "Filer_Boot Resources:$.Apps.!Edit"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377133,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29378909,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 59947576,
+          "psr": 536870915,
+          "r0": 25282468,
+          "r1": 25282481,
+          "swi": 5,
+          "text": "WimpTask Run Resources:$.Apps.!Edit.!Boot"
+        },
+        {
+          "pc": 59832496,
+          "psr": 1610612739,
+          "r0": 25282477,
+          "r1": 2,
+          "swi": 262366,
+          "text": "Run Resources:$.Apps.!Edit.!Boot"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29378909,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29378909,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 59889496,
+          "psr": 0,
+          "r0": 25229028,
+          "r1": 25229028,
+          "swi": 5,
+          "text": "Run Resources:$.Apps.!Edit.!Boot"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29379301,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58891324,
+          "psr": 536870915,
+          "r0": 29379364,
+          "r1": 29377124,
+          "swi": 5,
+          "text": "@RunType_FEB Resources:$.Apps.!Edit.!Boot"
+        },
+        {
+          "pc": 58725372,
+          "psr": 2147483651,
+          "r0": 32513652,
+          "r1": 32513652,
+          "swi": 5,
+          "text": "Obey Resources:$.Apps.!Edit.!Boot "
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29379461,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 59993676,
+          "psr": 1610612739,
+          "r0": 29367604,
+          "r1": 32513679,
+          "swi": 5,
+          "text": "Set Obey$Dir    Resources:$.Apps.!Edit"
+        },
+        {
+          "pc": 58756996,
+          "psr": 536870915,
+          "r0": 29367608,
+          "r1": 29367620,
+          "swi": 36,
+          "text": "Obey$Dir    Resources:$.Apps.!Edit"
+        },
+        {
+          "pc": 59994016,
+          "psr": 1610612739,
+          "r0": 25297728,
+          "r1": 255,
+          "swi": 5,
+          "text": "%Set Edit$BootDir <Obey$Dir>"
+        },
+        {
+          "pc": 58756996,
+          "psr": 536870915,
+          "r0": 25297733,
+          "r1": 25297746,
+          "swi": 36,
+          "text": "Edit$BootDir <Obey$Dir>"
+        },
+        {
+          "pc": 59994016,
+          "psr": 1610612739,
+          "r0": 25297728,
+          "r1": 255,
+          "swi": 5,
+          "text": "%SetMacro Alias$@RunType_FFF %If \"<Wimp$State>\"=\"commands\" Then Type %*0 Else /<Edit$BootDir> %*0"
+        },
+        {
+          "pc": 58756996,
+          "psr": 536870915,
+          "r0": 25297738,
+          "r1": 25297757,
+          "swi": 36,
+          "text": "Alias$@RunType_FFF %If \"<Wimp$State>\"=\"commands\" Then Type %*0 Else /<Edit$BootDir> %*0"
+        },
+        {
+          "pc": 59994016,
+          "psr": 1610612739,
+          "r0": 25297728,
+          "r1": 255,
+          "swi": 5,
+          "text": "%If \"<TaskWindow$Server>\"=\"\" Then %Set TaskWindow$Server <Obey$Dir>"
+        },
+        {
+          "pc": 58764472,
+          "psr": 1610612739,
+          "r0": 2204,
+          "r1": 25297796,
+          "swi": 5,
+          "text": " %Set TaskWindow$Server <Obey$Dir>"
+        },
+        {
+          "pc": 58756996,
+          "psr": 536870915,
+          "r0": 2210,
+          "r1": 2228,
+          "swi": 36,
+          "text": "TaskWindow$Server <Obey$Dir>"
+        },
+        {
+          "pc": 58874016,
+          "psr": 3,
+          "r0": 58874973,
+          "r1": 29374073,
+          "swi": 36,
+          "text": "FileSwitch$TemporaryFilingSystem"
+        },
+        {
+          "pc": 59839024,
+          "psr": 3,
+          "r0": 59890473,
+          "r1": 58780968,
+          "swi": 5,
+          "text": "Exec"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29369357,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 59339212,
+          "psr": 1610612736,
+          "r0": 25269300,
+          "r1": 59337798,
+          "swi": 5,
+          "text": "Filer_Boot Resources:$.Apps.!Paint"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29369349,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377157,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 59947576,
+          "psr": 536870915,
+          "r0": 25282468,
+          "r1": 25282481,
+          "swi": 5,
+          "text": "WimpTask Run Resources:$.Apps.!Paint.!Boot"
+        },
+        {
+          "pc": 59832496,
+          "psr": 1610612739,
+          "r0": 25282477,
+          "r1": 2,
+          "swi": 262366,
+          "text": "Run Resources:$.Apps.!Paint.!Boot"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377213,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377213,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 59889496,
+          "psr": 0,
+          "r0": 25229028,
+          "r1": 25229028,
+          "swi": 5,
+          "text": "Run Resources:$.Apps.!Paint.!Boot"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377165,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58891324,
+          "psr": 536870915,
+          "r0": 29379292,
+          "r1": 29378908,
+          "swi": 5,
+          "text": "@RunType_FEB Resources:$.Apps.!Paint.!Boot"
+        },
+        {
+          "pc": 58725372,
+          "psr": 2147483651,
+          "r0": 32513652,
+          "r1": 32513652,
+          "swi": 5,
+          "text": "Obey Resources:$.Apps.!Paint.!Boot "
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29379853,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 59993676,
+          "psr": 1610612739,
+          "r0": 29367604,
+          "r1": 32513680,
+          "swi": 5,
+          "text": "Set Obey$Dir    Resources:$.Apps.!Paint"
+        },
+        {
+          "pc": 58756996,
+          "psr": 536870915,
+          "r0": 29367608,
+          "r1": 29367620,
+          "swi": 36,
+          "text": "Obey$Dir    Resources:$.Apps.!Paint"
+        },
+        {
+          "pc": 59994016,
+          "psr": 1610612739,
+          "r0": 25297728,
+          "r1": 255,
+          "swi": 5,
+          "text": "Set Alias$@RunType_FF9 /<Obey$Dir> "
+        },
+        {
+          "pc": 58756996,
+          "psr": 536870915,
+          "r0": 25297732,
+          "r1": 25297751,
+          "swi": 36,
+          "text": "Alias$@RunType_FF9 /<Obey$Dir> "
+        },
+        {
+          "pc": 59994016,
+          "psr": 1610612739,
+          "r0": 25297728,
+          "r1": 255,
+          "swi": 5,
+          "text": "Set Alias$@PrintType_FF9 /<Obey$Dir> -print "
+        },
+        {
+          "pc": 58756996,
+          "psr": 536870915,
+          "r0": 25297732,
+          "r1": 25297753,
+          "swi": 36,
+          "text": "Alias$@PrintType_FF9 /<Obey$Dir> -print "
+        },
+        {
+          "pc": 58874016,
+          "psr": 3,
+          "r0": 58874973,
+          "r1": 29374073,
+          "swi": 36,
+          "text": "FileSwitch$TemporaryFilingSystem"
+        },
+        {
+          "pc": 59839024,
+          "psr": 3,
+          "r0": 59890473,
+          "r1": 58780968,
+          "swi": 5,
+          "text": "Exec"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29369189,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 59339468,
+          "psr": 268435456,
+          "r0": 25268996,
+          "r1": 25268996,
+          "swi": 262366,
+          "text": ""
+        },
+        {
+          "pc": 59889496,
+          "psr": 0,
+          "r0": 25229028,
+          "r1": 25229028,
+          "swi": 5,
+          "text": ""
+        },
+        {
+          "pc": 58874016,
+          "psr": 3,
+          "r0": 58874973,
+          "r1": 29374073,
+          "swi": 36,
+          "text": "FileSwitch$TemporaryFilingSystem"
+        },
+        {
+          "pc": 59839024,
+          "psr": 3,
+          "r0": 59890473,
+          "r1": 58780968,
+          "swi": 5,
+          "text": "Exec"
+        },
+        {
+          "pc": 58874016,
+          "psr": 3,
+          "r0": 58874973,
+          "r1": 29374073,
+          "swi": 36,
+          "text": "FileSwitch$TemporaryFilingSystem"
+        },
+        {
+          "pc": 59839024,
+          "psr": 3,
+          "r0": 59890473,
+          "r1": 58780968,
+          "swi": 5,
+          "text": "Exec"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29369184,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 59975800,
+          "psr": 1610612736,
+          "r0": 25289492,
+          "r1": 25289525,
+          "swi": 5,
+          "text": "%Filer_OpenDir ADFS::ARCUTILITY.$"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29369184,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29369168,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29378904,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29379288,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29378904,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29379288,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 59937864,
+          "psr": 536870912,
+          "r0": 25282508,
+          "r1": 25282468,
+          "swi": 262366,
+          "text": "Run ADFS::ARCUTILITY.$.!UtilTest.!Run"
+        },
+        {
+          "pc": 59889496,
+          "psr": 0,
+          "r0": 25229028,
+          "r1": 25229028,
+          "swi": 5,
+          "text": "Run ADFS::ARCUTILITY.$.!UtilTest.!Run"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29379376,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58891324,
+          "psr": 536870915,
+          "r0": 29379716,
+          "r1": 29379780,
+          "swi": 5,
+          "text": "@RunType_FEB ADFS::ARCUTILITY.$.!UtilTest.!Run"
+        },
+        {
+          "pc": 58725372,
+          "psr": 2147483651,
+          "r0": 32513652,
+          "r1": 32513652,
+          "swi": 5,
+          "text": "Obey ADFS::ARCUTILITY.$.!UtilTest.!Run "
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29379328,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 59993676,
+          "psr": 1610612739,
+          "r0": 29367604,
+          "r1": 32513685,
+          "swi": 5,
+          "text": "Set Obey$Dir    ADFS::ARCUTILITY.$.!UtilTest"
+        },
+        {
+          "pc": 58756996,
+          "psr": 536870915,
+          "r0": 29367608,
+          "r1": 29367620,
+          "swi": 36,
+          "text": "Obey$Dir    ADFS::ARCUTILITY.$.!UtilTest"
+        },
+        {
+          "pc": 59994016,
+          "psr": 1610612739,
+          "r0": 25298208,
+          "r1": 255,
+          "swi": 5,
+          "text": "WimpSlot -min 128k -max 128k"
+        },
+        {
+          "pc": 59994016,
+          "psr": 1610612739,
+          "r0": 25298208,
+          "r1": 255,
+          "swi": 5,
+          "text": "Run <Obey$Dir>.!RunImage"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377112,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58874016,
+          "psr": 3,
+          "r0": 58874973,
+          "r1": 29374073,
+          "swi": 36,
+          "text": "FileSwitch$TemporaryFilingSystem"
+        },
+        {
+          "pc": 59839024,
+          "psr": 536870915,
+          "r0": 59890473,
+          "r1": 29368188,
+          "swi": 5,
+          "text": "Exec"
+        },
+        {
+          "pc": 43960,
+          "psr": 1610612736,
+          "r0": 35800,
+          "r1": 0,
+          "swi": 5,
+          "text": "BlankTime O 0"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377205,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 43976,
+          "psr": 1610612736,
+          "r0": 35848,
+          "r1": 0,
+          "swi": 2,
+          "text": "ARCLIBRE UTILITY SCREEN BEFORE"
+        },
+        {
+          "pc": 43976,
+          "psr": 1610612736,
+          "r0": 35884,
+          "r1": 0,
+          "swi": 2,
+          "text": "ARCLIBRE UTILITY SCREEN BLANK"
+        },
+        {
+          "pc": 43976,
+          "psr": 1610612736,
+          "r0": 35916,
+          "r1": 0,
+          "swi": 2,
+          "text": "ARCLIBRE UTILITY SCREEN RESTORED"
+        },
+        {
+          "pc": 43976,
+          "psr": 1610612736,
+          "r0": 35992,
+          "r1": 5,
+          "swi": 2,
+          "text": "ARCLIBRE UTILITY SCREEN TIMED"
+        },
+        {
+          "pc": 43960,
+          "psr": 1610612736,
+          "r0": 36024,
+          "r1": 0,
+          "swi": 5,
+          "text": "BlankTime W 0"
+        },
+        {
+          "pc": 43976,
+          "psr": 1610612736,
+          "r0": 36040,
+          "r1": 0,
+          "swi": 2,
+          "text": "ARCLIBRE UTILITY SCREEN WRCHBLANK"
+        },
+        {
+          "pc": 43976,
+          "psr": 1610612736,
+          "r0": 36076,
+          "r1": 0,
+          "swi": 2,
+          "text": "ARCLIBRE UTILITY SCREEN WRCHRESTORED"
+        },
+        {
+          "pc": 43960,
+          "psr": 1610612736,
+          "r0": 35800,
+          "r1": 0,
+          "swi": 5,
+          "text": "BlankTime O 0"
+        },
+        {
+          "pc": 43976,
+          "psr": 1610612736,
+          "r0": 36116,
+          "r1": 0,
+          "swi": 2,
+          "text": "ARCLIBRE UTILITY SCREEN MOUSEBLANK"
+        },
+        {
+          "pc": 43976,
+          "psr": 1610612736,
+          "r0": 36156,
+          "r1": 0,
+          "swi": 2,
+          "text": "ARCLIBRE UTILITY SCREEN MOUSERESTORED"
+        },
+        {
+          "pc": 43976,
+          "psr": 1610612736,
+          "r0": 36196,
+          "r1": 0,
+          "swi": 2,
+          "text": "ARCLIBRE UTILITY SCREEN KEYBLANK"
+        },
+        {
+          "pc": 43976,
+          "psr": 1610612736,
+          "r0": 36232,
+          "r1": 0,
+          "swi": 2,
+          "text": "ARCLIBRE UTILITY SCREEN KEYRESTORED"
+        },
+        {
+          "pc": 43976,
+          "psr": 1610612736,
+          "r0": 44112,
+          "r1": 0,
+          "swi": 2,
+          "text": "ARCLIBRE UTILITY FLASH 0"
+        },
+        {
+          "pc": 43976,
+          "psr": 1610612736,
+          "r0": 44112,
+          "r1": 0,
+          "swi": 2,
+          "text": "ARCLIBRE UTILITY FLASH 1"
+        },
+        {
+          "pc": 43976,
+          "psr": 1610612736,
+          "r0": 44112,
+          "r1": 0,
+          "swi": 2,
+          "text": "ARCLIBRE UTILITY FLASH 2"
+        },
+        {
+          "pc": 43976,
+          "psr": 1610612736,
+          "r0": 44112,
+          "r1": 0,
+          "swi": 2,
+          "text": "ARCLIBRE UTILITY FLASH 3"
+        },
+        {
+          "pc": 43976,
+          "psr": 1610612736,
+          "r0": 44112,
+          "r1": 0,
+          "swi": 2,
+          "text": "ARCLIBRE UTILITY FLASH 4"
+        },
+        {
+          "pc": 43976,
+          "psr": 1610612736,
+          "r0": 44112,
+          "r1": 0,
+          "swi": 2,
+          "text": "ARCLIBRE UTILITY FLASH 5"
+        },
+        {
+          "pc": 43976,
+          "psr": 1610612736,
+          "r0": 44112,
+          "r1": 0,
+          "swi": 2,
+          "text": "ARCLIBRE UTILITY FLASH 6"
+        },
+        {
+          "pc": 43976,
+          "psr": 1610612736,
+          "r0": 44112,
+          "r1": 0,
+          "swi": 2,
+          "text": "ARCLIBRE UTILITY FLASH 7"
+        },
+        {
+          "pc": 43976,
+          "psr": 1610612736,
+          "r0": 36300,
+          "r1": 0,
+          "swi": 2,
+          "text": "ARCLIBRE UTILITY SCREEN FINAL"
+        },
+        {
+          "pc": 43976,
+          "psr": 1610612736,
+          "r0": 36332,
+          "r1": 3785420812,
+          "swi": 2,
+          "text": "ARCLIBRE UTILITY VOICES READY"
+        },
+        {
+          "pc": 43976,
+          "psr": 1610612736,
+          "r0": 44112,
+          "r1": 0,
+          "swi": 2,
+          "text": "ARCLIBRE UTILITY VOICE 0 START"
+        },
+        {
+          "pc": 43976,
+          "psr": 1610612736,
+          "r0": 44112,
+          "r1": 0,
+          "swi": 2,
+          "text": "ARCLIBRE UTILITY VOICE 0 END"
+        },
+        {
+          "pc": 43976,
+          "psr": 1610612736,
+          "r0": 44112,
+          "r1": 0,
+          "swi": 2,
+          "text": "ARCLIBRE UTILITY VOICE 1 START"
+        },
+        {
+          "pc": 43976,
+          "psr": 1610612736,
+          "r0": 44112,
+          "r1": 0,
+          "swi": 2,
+          "text": "ARCLIBRE UTILITY VOICE 1 END"
+        },
+        {
+          "pc": 43976,
+          "psr": 1610612736,
+          "r0": 44112,
+          "r1": 0,
+          "swi": 2,
+          "text": "ARCLIBRE UTILITY VOICE 2 START"
+        },
+        {
+          "pc": 43976,
+          "psr": 1610612736,
+          "r0": 44112,
+          "r1": 0,
+          "swi": 2,
+          "text": "ARCLIBRE UTILITY VOICE 2 END"
+        },
+        {
+          "pc": 43976,
+          "psr": 1610612736,
+          "r0": 44112,
+          "r1": 0,
+          "swi": 2,
+          "text": "ARCLIBRE UTILITY VOICE 3 START"
+        },
+        {
+          "pc": 43976,
+          "psr": 1610612736,
+          "r0": 44112,
+          "r1": 0,
+          "swi": 2,
+          "text": "ARCLIBRE UTILITY VOICE 3 END"
+        },
+        {
+          "pc": 43976,
+          "psr": 1610612736,
+          "r0": 36460,
+          "r1": 3785420812,
+          "swi": 2,
+          "text": "ARCLIBRE UTILITY PASS"
+        },
+        {
+          "pc": 58874016,
+          "psr": 3,
+          "r0": 58874973,
+          "r1": 29374073,
+          "swi": 36,
+          "text": "FileSwitch$TemporaryFilingSystem"
+        },
+        {
+          "pc": 58874016,
+          "psr": 3,
+          "r0": 58874973,
+          "r1": 29374073,
+          "swi": 36,
+          "text": "FileSwitch$TemporaryFilingSystem"
+        },
+        {
+          "pc": 59839024,
+          "psr": 3,
+          "r0": 59890473,
+          "r1": 58780968,
+          "swi": 5,
+          "text": "Exec"
+        },
+        {
+          "pc": 59839104,
+          "psr": 1610612739,
+          "r0": 25228772,
+          "r1": 59839260,
+          "swi": 2,
+          "text": "Press SPACE or click mouse to continue"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29369185,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377140,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29369185,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29379772,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29369185,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377140,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29369185,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29379772,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 59872372,
+          "psr": 3,
+          "r0": 59872390,
+          "r1": 4,
+          "swi": 5,
+          "text": "Pointer"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29377205,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        },
+        {
+          "pc": 58882276,
+          "psr": 2147483651,
+          "r0": 58882148,
+          "r1": 29369173,
+          "swi": 36,
+          "text": "FileSwitch$SpecialField"
+        }
+      ],
+      "exceptions": [
+        2,
+        184,
+        544099,
+        0,
+        0,
+        0,
+        13208,
+        14401
+      ],
+      "generated_sprite_code": [
+        {
+          "pc": 25220916,
+          "word": 3834773508
+        },
+        {
+          "pc": 25220920,
+          "word": 3791654927
+        },
+        {
+          "pc": 25220924,
+          "word": 3785359904
+        },
+        {
+          "pc": 25220928,
+          "word": 3816816898
+        },
+        {
+          "pc": 25220932,
+          "word": 3785420814
+        },
+        {
+          "pc": 25220936,
+          "word": 3852312636
+        },
+        {
+          "pc": 25220940,
+          "word": 3811639296
+        },
+        {
+          "pc": 25220944,
+          "word": 60817408
+        },
+        {
+          "pc": 25220948,
+          "word": 345112580
+        },
+        {
+          "pc": 25220952,
+          "word": 295698736
+        },
+        {
+          "pc": 25220956,
+          "word": 329310209
+        },
+        {
+          "pc": 25220960,
+          "word": 293601662
+        },
+        {
+          "pc": 25220964,
+          "word": 3762917383
+        },
+        {
+          "pc": 25220968,
+          "word": 3767111687
+        },
+        {
+          "pc": 25220972,
+          "word": 3791654927
+        },
+        {
+          "pc": 25220976,
+          "word": 3786408480
+        },
+        {
+          "pc": 25220980,
+          "word": 201326574
+        },
+        {
+          "pc": 25220984,
+          "word": 3889827841
+        },
+        {
+          "pc": 25220988,
+          "word": 3785364065
+        },
+        {
+          "pc": 25220992,
+          "word": 3763965958
+        },
+        {
+          "pc": 25220996,
+          "word": 989855735
+        },
+        {
+          "pc": 25221000,
+          "word": 3785380389
+        },
+        {
+          "pc": 25221004,
+          "word": 3784393252
+        },
+        {
+          "pc": 25221008,
+          "word": 704643092
+        },
+        {
+          "pc": 25221012,
+          "word": 3797450753
+        },
+        {
+          "pc": 25221016,
+          "word": 3405774840
+        },
+        {
+          "pc": 25221020,
+          "word": 3852333132
+        },
+        {
+          "pc": 25221096,
+          "word": 3787735045
+        },
+        {
+          "pc": 25221100,
+          "word": 3852328988
+        },
+        {
+          "pc": 25221104,
+          "word": 3814588417
+        },
+        {
+          "pc": 25221108,
+          "word": 3405774825
+        },
+        {
+          "pc": 25221112,
+          "word": 3851673600
+        },
+        {
+          "pc": 25221116,
+          "word": 3759071237
+        },
+        {
+          "pc": 25221120,
+          "word": 3784237060
+        },
+        {
+          "pc": 25221124,
+          "word": 3833847812
+        },
+        {
+          "pc": 25221128,
+          "word": 3818930434
+        },
+        {
+          "pc": 25221132,
+          "word": 3818934272
+        },
+        {
+          "pc": 25221136,
+          "word": 3797450753
+        },
+        {
+          "pc": 25221140,
+          "word": 3405774809
+        },
+        {
+          "pc": 25221144,
+          "word": 3852333132
+        }
+      ],
+      "rom_sha256": "1059cfb0b5b4b87ca1828a428a5cf8f0fa01c9b1f305ec6f1f395fbf813624ee",
+      "screen": [
+        "???????????????????????????",
+        "???????????????????????????",
+        "?  ??????               ???",
+        "?  ??????               ? ?",
+        "???????????             ???",
+        "???????????             ???",
+        "???????????????????????????",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "????????????????????????????????????????????????????????????????????????????????",
+        "?       ???                                                                    ?",
+        "?????????????                                                        ????? ?????",
+        "?????????????                                                        ????? ?????",
+        "?__??___?????________________________________________________________?????_?????"
+      ],
+      "sprite_vector_calls": 160,
+      "status": "PASS",
+      "swi_counts": {
+        "000000": 1285,
+        "00000A": 462,
+        "00000C": 54,
+        "0000C1": 1,
+        "00000D": 153,
+        "0000D3": 33,
+        "0000D8": 20,
+        "0000DC": 1,
+        "00000F": 4,
+        "000001": 2,
+        "00001A": 19,
+        "00001B": 126,
+        "00001C": 22727,
+        "00001D": 4769,
+        "00001E": 482,
+        "00001F": 127,
+        "000002": 32,
+        "00002A": 9,
+        "00002B": 1,
+        "00002C": 11,
+        "00002D": 2,
+        "00002E": 161,
+        "00002F": 34,
+        "000003": 4,
+        "00003A": 9806,
+        "00003C": 1,
+        "00003E": 7,
+        "00003F": 10,
+        "00004A": 1,
+        "00004B": 1,
+        "00004C": 1,
+        "00004F": 106,
+        "000005": 76,
+        "00005A": 84,
+        "00005C": 35,
+        "00005F": 20,
+        "000006": 25463,
+        "000007": 281,
+        "000008": 57,
+        "000009": 83,
+        "000010": 8,
+        "00010A": 4,
+        "00010C": 1,
+        "00010D": 4,
+        "00010F": 1,
+        "000011": 8,
+        "00011A": 37,
+        "00011C": 16,
+        "000012": 6,
+        "000013": 4,
+        "000014": 2,
+        "000015": 2,
+        "000016": 4,
+        "000018": 2,
+        "000019": 2,
+        "000020": 96,
+        "000021": 171,
+        "000023": 1979,
+        "000024": 374,
+        "000025": 701,
+        "000026": 9685,
+        "000027": 201,
+        "000028": 1,
+        "000029": 197,
+        "000030": 266,
+        "000031": 152,
+        "000033": 16,
+        "000034": 632,
+        "000035": 656,
+        "000036": 123,
+        "000037": 123,
+        "000040": 5314,
+        "040D81": 48,
+        "041B40": 6,
+        "000042": 451837,
+        "042FC0": 1,
+        "042FC1": 1,
+        "042FC5": 1,
+        "000043": 15,
+        "000045": 218,
+        "000046": 288,
+        "000049": 4,
+        "000051": 83,
+        "000052": 14,
+        "000053": 32,
+        "000054": 27,
+        "000055": 486,
+        "000056": 103,
+        "000058": 66,
+        "000060": 5,
+        "000061": 108,
+        "000066": 2,
+        "000100": 1,
+        "000104": 1,
+        "000105": 37,
+        "000107": 1,
+        "000110": 60,
+        "000113": 52,
+        "000116": 4,
+        "000117": 216,
+        "000118": 30,
+        "0400A2": 6,
+        "0400C0": 9,
+        "0400C1": 11,
+        "0400C2": 34,
+        "0400C5": 9,
+        "0400C7": 72,
+        "0400C8": 4,
+        "0400C9": 2,
+        "0400CA": 7,
+        "0400CB": 15,
+        "0400CC": 3,
+        "0400CE": 1,
+        "0400D1": 49,
+        "0400D7": 16,
+        "0400D9": 7,
+        "0400DA": 7,
+        "0400DB": 25,
+        "0400DC": 1,
+        "0400DD": 21,
+        "0400DE": 13,
+        "0400E1": 59,
+        "0400E2": 4,
+        "0400E5": 4,
+        "0400E6": 7,
+        "0400E7": 12,
+        "0400E9": 8,
+        "0400EB": 11,
+        "0400EC": 15,
+        "0400EF": 22,
+        "0400F0": 2,
+        "0400F2": 12,
+        "0400F9": 44,
+        "0400FB": 3,
+        "0400FC": 6,
+        "0406C0": 49,
+        "0406C1": 49,
+        "0406C4": 48,
+        "04008A": 4,
+        "04018A": 4,
+        "04028A": 17,
+        "04054A": 1,
+        "04074F": 6,
+        "04304A": 1,
+        "04304B": 1,
+        "040081": 7,
+        "040082": 5,
+        "040084": 3,
+        "040085": 5,
+        "040086": 5,
+        "040088": 5,
+        "040092": 6,
+        "040140": 6,
+        "040141": 1,
+        "040142": 12,
+        "040143": 1,
+        "040183": 18,
+        "040185": 5,
+        "040186": 1,
+        "040189": 5,
+        "040242": 1,
+        "040245": 1,
+        "040480": 1,
+        "040540": 1,
+        "040541": 1,
+        "040542": 1,
+        "040545": 1,
+        "040702": 50,
+        "040704": 31,
+        "040740": 24,
+        "040742": 64,
+        "040743": 106,
+        "040744": 6,
+        "040750": 22,
+        "040758": 1,
+        "040759": 1,
+        "040761": 2,
+        "040763": 1,
+        "041501": 38,
+        "041502": 966,
+        "041503": 4,
+        "041504": 19,
+        "041506": 831,
+        "042583": 1,
+        "042680": 1,
+        "042942": 4,
+        "043040": 3,
+        "043041": 2,
+        "043044": 3,
+        "043048": 1,
+        "043053": 3,
+        "043055": 4,
+        "043057": 7,
+        "043058": 10,
+        "043100": 14,
+        "080681": 1
+      },
+      "task_count": 7,
+      "undefined": [
+        {
+          "component": "FPEmulator",
+          "pc": 59469036,
+          "psr": 2281701379,
+          "word": 3998236944
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890292,
+          "psr": 2818572291,
+          "word": 3996127504
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890332,
+          "psr": 1744830467,
+          "word": 3995078928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890012,
+          "psr": 671088643,
+          "word": 3995095312
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890052,
+          "psr": 671088643,
+          "word": 3995095312
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890292,
+          "psr": 2818572291,
+          "word": 3996127504
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890332,
+          "psr": 671088643,
+          "word": 3995078928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890292,
+          "psr": 2818572291,
+          "word": 3996127504
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890332,
+          "psr": 1744830467,
+          "word": 3995078928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890012,
+          "psr": 671088643,
+          "word": 3995095312
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890052,
+          "psr": 671088643,
+          "word": 3995095312
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890292,
+          "psr": 2818572291,
+          "word": 3996127504
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890332,
+          "psr": 671088643,
+          "word": 3995078928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890012,
+          "psr": 671088643,
+          "word": 3995095312
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890052,
+          "psr": 671088643,
+          "word": 3995095312
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890292,
+          "psr": 2818572291,
+          "word": 3996127504
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890332,
+          "psr": 671088643,
+          "word": 3995078928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890012,
+          "psr": 671088643,
+          "word": 3995095312
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890052,
+          "psr": 671088643,
+          "word": 3995095312
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890012,
+          "psr": 671088643,
+          "word": 3995095312
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890052,
+          "psr": 671088643,
+          "word": 3995095312
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890292,
+          "psr": 2818572291,
+          "word": 3996127504
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890332,
+          "psr": 671088643,
+          "word": 3995078928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890012,
+          "psr": 671088643,
+          "word": 3995095312
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890052,
+          "psr": 671088643,
+          "word": 3995095312
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890292,
+          "psr": 2818572291,
+          "word": 3996127504
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890332,
+          "psr": 671088643,
+          "word": 3995078928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890012,
+          "psr": 671088643,
+          "word": 3995095312
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890052,
+          "psr": 671088643,
+          "word": 3995095312
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890292,
+          "psr": 2818572291,
+          "word": 3996127504
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890332,
+          "psr": 671088643,
+          "word": 3995078928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890012,
+          "psr": 671088643,
+          "word": 3995095312
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890052,
+          "psr": 671088643,
+          "word": 3995095312
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890292,
+          "psr": 2818572291,
+          "word": 3996127504
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890332,
+          "psr": 671088643,
+          "word": 3995078928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890012,
+          "psr": 671088643,
+          "word": 3995095312
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890052,
+          "psr": 671088643,
+          "word": 3995095312
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890292,
+          "psr": 2818572291,
+          "word": 3996127504
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890332,
+          "psr": 671088643,
+          "word": 3995078928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890012,
+          "psr": 671088643,
+          "word": 3995095312
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890052,
+          "psr": 671088643,
+          "word": 3995095312
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890292,
+          "psr": 2818572291,
+          "word": 3996127504
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890332,
+          "psr": 671088643,
+          "word": 3995078928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890012,
+          "psr": 671088643,
+          "word": 3995095312
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890052,
+          "psr": 671088643,
+          "word": 3995095312
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890292,
+          "psr": 2818572291,
+          "word": 3996127504
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890332,
+          "psr": 671088643,
+          "word": 3995078928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890012,
+          "psr": 671088643,
+          "word": 3995095312
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890052,
+          "psr": 671088643,
+          "word": 3995095312
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890292,
+          "psr": 2818572291,
+          "word": 3996127504
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890332,
+          "psr": 1744830467,
+          "word": 3995078928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "SharedCLib",
+          "pc": 60291512,
+          "psr": 1744830467,
+          "word": 2116026640
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890012,
+          "psr": 671088643,
+          "word": 3995095312
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890052,
+          "psr": 671088643,
+          "word": 3995095312
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        },
+        {
+          "component": "Wimp",
+          "pc": 59890000,
+          "psr": 1744830467,
+          "word": 236998928
+        }
+      ]
+    },
+    "states": [
+      {
+        "blanked": 0,
+        "lit_pixels": 160608,
+        "marker": "ARCLIBRE UTILITY SCREEN BEFORE",
+        "palette": [
+          4095,
+          3549,
+          3003,
+          2457,
+          1911,
+          1365,
+          819,
+          0,
+          2368,
+          238,
+          192,
+          13,
+          3054,
+          133,
+          191,
+          4016
+        ],
+        "psr": 1610612736,
+        "sound_bytes": 670736,
+        "sound_non_silent": 6085,
+        "ticks": 1010013291
+      },
+      {
+        "blanked": 1,
+        "lit_pixels": 0,
+        "marker": "ARCLIBRE UTILITY SCREEN BLANK",
+        "palette": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "psr": 1610612736,
+        "sound_bytes": 679072,
+        "sound_non_silent": 6085,
+        "ticks": 1019613303
+      },
+      {
+        "blanked": 0,
+        "lit_pixels": 159282,
+        "marker": "ARCLIBRE UTILITY SCREEN RESTORED",
+        "palette": [
+          4095,
+          3549,
+          3003,
+          2457,
+          1911,
+          1365,
+          819,
+          0,
+          2368,
+          238,
+          192,
+          13,
+          3054,
+          133,
+          191,
+          4016
+        ],
+        "psr": 1610612736,
+        "sound_bytes": 687392,
+        "sound_non_silent": 6085,
+        "ticks": 1029213516
+      },
+      {
+        "blanked": 1,
+        "lit_pixels": 0,
+        "marker": "ARCLIBRE UTILITY SCREEN TIMED",
+        "palette": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "psr": 1610612736,
+        "sound_bytes": 801984,
+        "sound_non_silent": 6085,
+        "ticks": 1161213510
+      },
+      {
+        "blanked": 1,
+        "lit_pixels": 0,
+        "marker": "ARCLIBRE UTILITY SCREEN WRCHBLANK",
+        "palette": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "psr": 1610612736,
+        "sound_bytes": 810944,
+        "sound_non_silent": 6085,
+        "ticks": 1171533201
+      },
+      {
+        "blanked": 0,
+        "lit_pixels": 157149,
+        "marker": "ARCLIBRE UTILITY SCREEN WRCHRESTORED",
+        "palette": [
+          4095,
+          3549,
+          3003,
+          2457,
+          1911,
+          1365,
+          819,
+          0,
+          2368,
+          238,
+          192,
+          13,
+          3054,
+          133,
+          191,
+          4016
+        ],
+        "psr": 1610612736,
+        "sound_bytes": 819280,
+        "sound_non_silent": 6085,
+        "ticks": 1181134092
+      },
+      {
+        "blanked": 1,
+        "lit_pixels": 0,
+        "marker": "ARCLIBRE UTILITY SCREEN MOUSEBLANK",
+        "palette": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "psr": 1610612736,
+        "sound_bytes": 828240,
+        "sound_non_silent": 6085,
+        "ticks": 1191453009
+      },
+      {
+        "blanked": 0,
+        "lit_pixels": 155511,
+        "marker": "ARCLIBRE UTILITY SCREEN MOUSERESTORED",
+        "palette": [
+          4095,
+          3549,
+          3003,
+          2457,
+          1911,
+          1365,
+          819,
+          0,
+          2368,
+          238,
+          192,
+          13,
+          3054,
+          133,
+          191,
+          4016
+        ],
+        "psr": 1610612736,
+        "sound_bytes": 840736,
+        "sound_non_silent": 6085,
+        "ticks": 1205853069
+      },
+      {
+        "blanked": 1,
+        "lit_pixels": 0,
+        "marker": "ARCLIBRE UTILITY SCREEN KEYBLANK",
+        "palette": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "psr": 1610612736,
+        "sound_bytes": 849072,
+        "sound_non_silent": 6085,
+        "ticks": 1215453429
+      },
+      {
+        "blanked": 0,
+        "lit_pixels": 153923,
+        "marker": "ARCLIBRE UTILITY SCREEN KEYRESTORED",
+        "palette": [
+          4095,
+          3549,
+          3003,
+          2457,
+          1911,
+          1365,
+          819,
+          0,
+          2368,
+          238,
+          192,
+          13,
+          3054,
+          133,
+          191,
+          4016
+        ],
+        "psr": 1610612736,
+        "sound_bytes": 861568,
+        "sound_non_silent": 6085,
+        "ticks": 1229853165
+      },
+      {
+        "blanked": 0,
+        "lit_pixels": 153127,
+        "marker": "ARCLIBRE UTILITY FLASH 0",
+        "palette": [
+          4095,
+          3549,
+          3003,
+          2457,
+          1911,
+          1365,
+          819,
+          0,
+          2368,
+          238,
+          192,
+          13,
+          3054,
+          133,
+          191,
+          4016
+        ],
+        "psr": 1610612736,
+        "sound_bytes": 865744,
+        "sound_non_silent": 6085,
+        "ticks": 1234663632
+      },
+      {
+        "blanked": 1,
+        "lit_pixels": 0,
+        "marker": "ARCLIBRE UTILITY FLASH 1",
+        "palette": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "psr": 1610612736,
+        "sound_bytes": 869904,
+        "sound_non_silent": 6085,
+        "ticks": 1239463776
+      },
+      {
+        "blanked": 1,
+        "lit_pixels": 0,
+        "marker": "ARCLIBRE UTILITY FLASH 2",
+        "palette": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "psr": 1610612736,
+        "sound_bytes": 874080,
+        "sound_non_silent": 6085,
+        "ticks": 1244264238
+      },
+      {
+        "blanked": 0,
+        "lit_pixels": 146212,
+        "marker": "ARCLIBRE UTILITY FLASH 3",
+        "palette": [
+          4095,
+          3549,
+          3003,
+          2457,
+          1911,
+          1365,
+          819,
+          0,
+          2368,
+          238,
+          192,
+          13,
+          3054,
+          133,
+          191,
+          4016
+        ],
+        "psr": 1610612736,
+        "sound_bytes": 878240,
+        "sound_non_silent": 6085,
+        "ticks": 1249066605
+      },
+      {
+        "blanked": 0,
+        "lit_pixels": 151789,
+        "marker": "ARCLIBRE UTILITY FLASH 4",
+        "palette": [
+          4095,
+          3549,
+          3003,
+          2457,
+          1911,
+          1365,
+          819,
+          0,
+          2368,
+          238,
+          192,
+          13,
+          3054,
+          133,
+          191,
+          4016
+        ],
+        "psr": 1610612736,
+        "sound_bytes": 882416,
+        "sound_non_silent": 6085,
+        "ticks": 1253866614
+      },
+      {
+        "blanked": 1,
+        "lit_pixels": 11796,
+        "marker": "ARCLIBRE UTILITY FLASH 5",
+        "palette": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "psr": 1610612736,
+        "sound_bytes": 886576,
+        "sound_non_silent": 6085,
+        "ticks": 1258663671
+      },
+      {
+        "blanked": 1,
+        "lit_pixels": 0,
+        "marker": "ARCLIBRE UTILITY FLASH 6",
+        "palette": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "psr": 1610612736,
+        "sound_bytes": 890736,
+        "sound_non_silent": 6085,
+        "ticks": 1263464127
+      },
+      {
+        "blanked": 0,
+        "lit_pixels": 134251,
+        "marker": "ARCLIBRE UTILITY FLASH 7",
+        "palette": [
+          4095,
+          3549,
+          3003,
+          2457,
+          1911,
+          1365,
+          819,
+          0,
+          2368,
+          238,
+          192,
+          13,
+          3054,
+          133,
+          191,
+          4016
+        ],
+        "psr": 1610612736,
+        "sound_bytes": 894912,
+        "sound_non_silent": 6085,
+        "ticks": 1268266635
+      },
+      {
+        "blanked": 0,
+        "lit_pixels": 152568,
+        "marker": "ARCLIBRE UTILITY SCREEN FINAL",
+        "palette": [
+          4095,
+          3549,
+          3003,
+          2457,
+          1911,
+          1365,
+          819,
+          0,
+          2368,
+          238,
+          192,
+          13,
+          3054,
+          133,
+          191,
+          4016
+        ],
+        "psr": 1610612736,
+        "sound_bytes": 903440,
+        "sound_non_silent": 6085,
+        "ticks": 1278093954
+      },
+      {
+        "blanked": 0,
+        "lit_pixels": 152568,
+        "marker": "ARCLIBRE UTILITY VOICES READY",
+        "palette": [
+          4095,
+          3549,
+          3003,
+          2457,
+          1911,
+          1365,
+          819,
+          0,
+          2368,
+          238,
+          192,
+          13,
+          3054,
+          133,
+          191,
+          4016
+        ],
+        "psr": 1610612736,
+        "sound_bytes": 903616,
+        "sound_non_silent": 6085,
+        "ticks": 1278296691
+      },
+      {
+        "blanked": 0,
+        "lit_pixels": 152568,
+        "marker": "ARCLIBRE UTILITY VOICE 0 START",
+        "palette": [
+          4095,
+          3549,
+          3003,
+          2457,
+          1911,
+          1365,
+          819,
+          0,
+          2368,
+          238,
+          192,
+          13,
+          3054,
+          133,
+          191,
+          4016
+        ],
+        "psr": 1610612736,
+        "sound_bytes": 903824,
+        "sound_non_silent": 6085,
+        "ticks": 1278537174
+      },
+      {
+        "blanked": 0,
+        "lit_pixels": 153155,
+        "marker": "ARCLIBRE UTILITY VOICE 0 END",
+        "palette": [
+          4095,
+          3549,
+          3003,
+          2457,
+          1911,
+          1365,
+          819,
+          0,
+          2368,
+          238,
+          192,
+          13,
+          3054,
+          133,
+          191,
+          4016
+        ],
+        "psr": 1610612736,
+        "sound_bytes": 924704,
+        "sound_non_silent": 25732,
+        "ticks": 1302588378
+      },
+      {
+        "blanked": 0,
+        "lit_pixels": 153155,
+        "marker": "ARCLIBRE UTILITY VOICE 1 START",
+        "palette": [
+          4095,
+          3549,
+          3003,
+          2457,
+          1911,
+          1365,
+          819,
+          0,
+          2368,
+          238,
+          192,
+          13,
+          3054,
+          133,
+          191,
+          4016
+        ],
+        "psr": 1610612736,
+        "sound_bytes": 924912,
+        "sound_non_silent": 25940,
+        "ticks": 1302834285
+      },
+      {
+        "blanked": 0,
+        "lit_pixels": 153463,
+        "marker": "ARCLIBRE UTILITY VOICE 1 END",
+        "palette": [
+          4095,
+          3549,
+          3003,
+          2457,
+          1911,
+          1365,
+          819,
+          0,
+          2368,
+          238,
+          192,
+          13,
+          3054,
+          133,
+          191,
+          4016
+        ],
+        "psr": 1610612736,
+        "sound_bytes": 945952,
+        "sound_non_silent": 46507,
+        "ticks": 1327068192
+      },
+      {
+        "blanked": 0,
+        "lit_pixels": 153463,
+        "marker": "ARCLIBRE UTILITY VOICE 2 START",
+        "palette": [
+          4095,
+          3549,
+          3003,
+          2457,
+          1911,
+          1365,
+          819,
+          0,
+          2368,
+          238,
+          192,
+          13,
+          3054,
+          133,
+          191,
+          4016
+        ],
+        "psr": 1610612736,
+        "sound_bytes": 946160,
+        "sound_non_silent": 46715,
+        "ticks": 1327307472
+      },
+      {
+        "blanked": 0,
+        "lit_pixels": 153268,
+        "marker": "ARCLIBRE UTILITY VOICE 2 END",
+        "palette": [
+          4095,
+          3549,
+          3003,
+          2457,
+          1911,
+          1365,
+          819,
+          0,
+          2368,
+          238,
+          192,
+          13,
+          3054,
+          133,
+          191,
+          4016
+        ],
+        "psr": 1610612736,
+        "sound_bytes": 967008,
+        "sound_non_silent": 67076,
+        "ticks": 1351329360
+      },
+      {
+        "blanked": 0,
+        "lit_pixels": 152682,
+        "marker": "ARCLIBRE UTILITY VOICE 3 START",
+        "palette": [
+          4095,
+          3549,
+          3003,
+          2457,
+          1911,
+          1365,
+          819,
+          0,
+          2368,
+          238,
+          192,
+          13,
+          3054,
+          133,
+          191,
+          4016
+        ],
+        "psr": 1610612736,
+        "sound_bytes": 967232,
+        "sound_non_silent": 67300,
+        "ticks": 1351574811
+      },
+      {
+        "blanked": 0,
+        "lit_pixels": 153063,
+        "marker": "ARCLIBRE UTILITY VOICE 3 END",
+        "palette": [
+          4095,
+          3549,
+          3003,
+          2457,
+          1911,
+          1365,
+          819,
+          0,
+          2368,
+          238,
+          192,
+          13,
+          3054,
+          133,
+          191,
+          4016
+        ],
+        "psr": 1610612736,
+        "sound_bytes": 988240,
+        "sound_non_silent": 87886,
+        "ticks": 1375788510
+      },
+      {
+        "blanked": 0,
+        "lit_pixels": 152978,
+        "marker": "ARCLIBRE UTILITY PASS",
+        "palette": [
+          4095,
+          3549,
+          3003,
+          2457,
+          1911,
+          1365,
+          819,
+          0,
+          2368,
+          238,
+          192,
+          13,
+          3054,
+          133,
+          191,
+          4016
+        ],
+        "psr": 1610612736,
+        "sound_bytes": 998704,
+        "sound_non_silent": 88478,
+        "ticks": 1387841646
+      }
+    ],
+    "services": {
+      "11": 7,
+      "12": 7,
+      "17": 9,
+      "39": 1,
+      "42": 10,
+      "64": 2,
+      "67": 3,
+      "73": 6,
+      "74": 1,
+      "75": 4,
+      "76": 1,
+      "83": 15,
+      "84": 3,
+      "89": 1,
+      "93": 1,
+      "94": 3,
+      "96": 1,
+      "100": 1,
+      "104": 83,
+      "105": 1,
+      "110": 1,
+      "111": 1,
+      "112": 1,
+      "117": 2,
+      "118": 52,
+      "122": 7,
+      "123": 13,
+      "124": 1,
+      "130": 5,
+      "134": 2,
+      "135": 1
+    },
+    "copied_instruction_count": 444,
+    "voice_entries": [
+      25262940,
+      25262908,
+      25263060,
+      25263028,
+      25263180,
+      25263148,
+      25263300,
+      25263268
+    ],
+    "trace": {
+      "status": "PASS",
+      "scope": "All undefined exceptions; sampled ROM instruction paths, not exhaustive branch coverage",
+      "generated_sprite_instructions": 40,
+      "classified_software_fpa_traps": 184,
+      "unclassified_undefined_exceptions": 0,
+      "modules": {
+        "FileSwitch": 2163,
+        "ResourceFS": 323,
+        "MsgTrans": 284,
+        "Messages": 6,
+        "TerritoryManager": 97,
+        "UK": 20,
+        "Inter": 15,
+        "IntKey": 11,
+        "Desktop": 23,
+        "FileCore": 1793,
+        "ADFS": 185,
+        "FPEmulator": 275,
+        "Colours": 18,
+        "DrawMod": 9,
+        "Super": 0,
+        "Hourglass": 30,
+        "FontManager": 186,
+        "ROMFonts": 7,
+        "SprExtend": 85,
+        "Wimp": 1336,
+        "Switcher": 42,
+        "Filer": 73,
+        "Pinboard": 45,
+        "ADFSFiler": 20,
+        "ShellCLI": 10,
+        "Obey": 140,
+        "Buffers": 80,
+        "Sound0": 406,
+        "Sound1": 368,
+        "Sound2": 118,
+        "WaveSynth": 80,
+        "Percussion": 81,
+        "DragASprit": 4,
+        "SpriteUtil": 0,
+        "FilerSWIs": 4,
+        "BASIC": 2,
+        "BASICTrans": 5,
+        "ResFiler": 40,
+        "ArcPalette": 21,
+        "Filter": 29,
+        "TaskWindow": 91,
+        "DeviceFS": 30,
+        "SystemDevs": 10,
+        "PipeFS": 24,
+        "RamFS": 4,
+        "RAMFSFiler": 28,
+        "Free": 94,
+        "ScrBlank": 78,
+        "StringLib": 74,
+        "SharedCLib": 385,
+        "FilerAct": 25,
+        "Edit": 32,
+        "Draw": 32,
+        "Paint": 17
+      }
+    }
+  }
+}

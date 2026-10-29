@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "modules": [
+    {
+      "component": "SharedCLib",
+      "base": 60064916,
+      "length": 191944,
+      "sha256": "22052a585946b1d5086b52f1e58e07c23634845a526a4071768d2548f3a97bde",
+      "status": "STATIC_PASS_WITH_SOFTWARE_FPA",
+      "integer_arm2_instructions": 44171,
+      "software_fpa_instructions": 336,
+      "resolved_relocations": 4743,
+      "unresolved_symbols": 0,
+      "all_linked_bytes_mapped": true,
+      "all_nonrelocation_bytes_match": true,
+      "branches_and_psr_settling_checked": true
+    },
+    {
+      "component": "FilerAct",
+      "base": 60256864,
+      "length": 33504,
+      "sha256": "a9545f22fc093ae637f7a438b3230bca66041993736456e1033e04bb219f5d07",
+      "status": "STATIC_PASS_WITH_SOFTWARE_FPA",
+      "integer_arm2_instructions": 6015,
+      "software_fpa_instructions": 0,
+      "resolved_relocations": 948,
+      "unresolved_symbols": 0,
+      "all_linked_bytes_mapped": true,
+      "all_nonrelocation_bytes_match": true,
+      "branches_and_psr_settling_checked": true
+    }
+  ]
+}

@@ -1,0 +1,175 @@
+--- a/Sources/ArchimedesCore/Devices/WD1772.swift
++++ b/Sources/ArchimedesCore/Devices/WD1772.swift
+@@ -5,8 +5,11 @@
+ /// DRQ and INTRQ are wired to IOC FIQ status bits 0 and 1.
+ public final class WD1772 {
+     public struct Drive {
+-        public var disc: FloppyImage?
++        public var disc: FloppyImage? {
++            didSet { if oldValue !== disc { discChanged = true } }
++        }
+         public var headTrack = 0
++        var discChanged = false
+     }
+ 
+     public enum Command: String, Sendable {
+@@ -20,7 +23,22 @@
+         public var description: String { String(format: "%012llu pc=%07X ", tick, pc) + text }
+     }
+ 
+-    public var drives = [Drive(), Drive(), Drive(), Drive()]
++    public var drives = [Drive(), Drive(), Drive(), Drive()] {
++        didSet { updateDiscChangedLine() }
++    }
++    /// Original backplane: selected drive's change/empty signal on IOC IRQB4,
++    /// cleared by active-low latch A bit 7 when media is present.
++    var originalDiscChangeWiring = false
++    func updateDiscChangedLine() {
++        guard originalDiscChangeWiring else { return }
++        let changed = selectedDrive.map { drives[$0].disc == nil || drives[$0].discChanged } ?? false
++        ioc.setIRQB(IOC.irqBDiscChanged, changed)
++    }
++    var discChangeState: [Bool] { drives.map { $0.discChanged } }
++    func restoreDiscChangeState(_ state: [Bool]) {
++        for i in 0..<4 { drives[i].discChanged = state[i] }
++        updateDiscChangedLine()
++    }
+     public private(set) var selectedDrive: Int? = 0
+     public private(set) var side = 0
+     public private(set) var doubleDensity = true
+@@ -98,6 +116,10 @@
+         let sel = ~v & 0x0F
+         selectedDrive = sel == 0 ? nil : sel.trailingZeroBitCount
+         side = (v & 0x10) == 0 ? 1 : 0
++        if originalDiscChangeWiring, v & 0x80 == 0, let d = selectedDrive, drives[d].disc != nil {
++            drives[d].discChanged = false
++        }
++        updateDiscChangedLine()
+     }
+ 
+     func latchBChanged(_ v: UInt8) {
+@@ -113,6 +135,7 @@
+         sectorRegister = 1
+         setDRQ(false)
+         setINTRQ(false)
++        updateDiscChangedLine()
+         typeI = true
+     }
+ 
+--- a/Sources/ArchimedesCore/Machine/Machine.swift
++++ b/Sources/ArchimedesCore/Machine/Machine.swift
+@@ -196,6 +196,8 @@
+         memc.io = ioc
+         memc.vidc = vidc
+         ioc.fdc = fdc
++        // A3000 and the later 82C711 machines use different change-signal wiring.
++        fdc.originalDiscChangeWiring = model != .a3000 && !model.hasNewIO
+         // Hard disc images: the ones passed in, or opened from the configuration.
+         var images = [HardDiscImage?](repeating: nil, count: model.hardDiscSlots)
+         for i in images.indices {
+--- a/Sources/ArchimedesCore/Machine/Snapshot.swift
++++ b/Sources/ArchimedesCore/Machine/Snapshot.swift
+@@ -50,6 +50,8 @@
+     /// Hard discs are not captured: their paths and write counts are, so a
+     /// restore can tell whether the disc has changed since.
+     public var hardDiscs: [SnapshotHardDisc]?
++    /// Optional extension: old snapshots had no per-drive change latch model.
++    public var floppyDiscChanged: [Bool]? = nil
+ }
+ 
+ public struct SnapshotHardDisc: Codable, Sendable {
+@@ -182,9 +184,10 @@
+         let media = fdc.drives.enumerated().compactMap { i, d in
+             d.disc.map { SnapshotMedia(drive: i, path: $0.sourcePath, sha256: $0.sha256, format: $0.geometry.formatName) }
+         }
+-        let header = SnapshotHeader(configuration: configuration, romSHA256: rom.sha256, romVersion: rom.versionString,
++        var header = SnapshotHeader(configuration: configuration, romSHA256: rom.sha256, romVersion: rom.versionString,
+                                     guestTicks: ticks, frameCount: vidc.frameCount, media: media, createdBy: createdBy,
+                                     hardDiscs: hardDiscRecords)
++        header.floppyDiscChanged = fdc.discChangeState
+         let enc = JSONEncoder()
+         enc.outputFormatting = [.sortedKeys]
+         let json = [UInt8]((try? enc.encode(header)) ?? Data())
+@@ -260,6 +263,9 @@
+         if let sio = m.superIO { try b.tag("SIO"); try sio.loadState(&b) }
+         try b.tag("END")
+         guard b.remaining == 0 else { throw SnapshotError.corrupt("\(b.remaining) trailing bytes") }
++        let changes = header.floppyDiscChanged ?? [Bool](repeating: false, count: 4)
++        guard changes.count == 4 else { throw SnapshotError.corrupt("floppy change latch count") }
++        m.fdc.restoreDiscChangeState(changes)
+         m.deviceLog.append("restored snapshot at \(String(format: "%.3f", m.seconds)) s guest time")
+         return m
+     }
+--- /dev/null
++++ b/Tests/ArchimedesCoreTests/OriginalDiscChangeTests.swift
+@@ -0,0 +1,70 @@
++// SPDX-License-Identifier: GPL-3.0-or-later
++import XCTest
++@testable import ArchimedesCore
++
++final class OriginalDiscChangeTests: XCTestCase {
++    func machine(_ model: MachineModel = .a440) throws -> Machine {
++        // Original test ROM containing B .; no commercial ROM is opened.
++        var data = [UInt8](repeating: 0, count: 2 * 1024 * 1024)
++        data[0..<4] = [0xfe, 0xff, 0xff, 0xea]
++        let rom = try ROMImage.build(parts: [data], sources: [])
++        return try Machine(configuration: MachineConfiguration(model: model), rom: rom)
++    }
++    func disc(_ value: UInt8) -> FloppyImage {
++        FloppyImage(data: [UInt8](repeating: value, count: 819200), geometry: DiscGeometry(sides: 2, tracks: 80, sectorsPerTrack: 5, sectorSize: 1024, firstSectorID: 0, formatName: "test"), writeProtected: true)
++    }
++    func changed(_ m: Machine) -> Bool { m.ioc.irqBStatus & IOC.irqBDiscChanged != 0 }
++
++    func testInsertClearEjectAndEmptyCannotBeCleared() throws {
++        let m = try machine(); let d = disc(0)
++        m.fdc.latchAChanged(0xfe) // select 0, reset line inactive
++        XCTAssertTrue(changed(m)) // selected drive is empty
++        m.insertFloppy(d); XCTAssertTrue(changed(m))
++        m.fdc.latchAChanged(0x7e); XCTAssertFalse(changed(m))
++        m.fdc.latchAChanged(0xfe); XCTAssertFalse(changed(m))
++        m.ejectFloppy(); XCTAssertTrue(changed(m))
++        m.fdc.latchAChanged(0x7e); XCTAssertTrue(changed(m))
++        m.fdc.latchAChanged(0xff); XCTAssertFalse(changed(m)) // no selected drive
++        XCTAssertTrue(d.writeProtected); XCTAssertFalse(d.isModified)
++    }
++    func testDirectMediaReplacementAndIndependentDriveLatches() throws {
++        let m = try machine(); let a = disc(1), b = disc(2)
++        m.fdc.drives[0].disc = a; m.fdc.drives[1].disc = b
++        m.fdc.latchAChanged(0x7e); m.fdc.latchAChanged(0xfe); XCTAssertFalse(changed(m))
++        m.fdc.latchAChanged(0xfd); XCTAssertTrue(changed(m))
++        m.fdc.latchAChanged(0x7d); m.fdc.latchAChanged(0xfd); XCTAssertFalse(changed(m))
++        m.fdc.drives[0].disc = b; XCTAssertFalse(changed(m))
++        m.fdc.latchAChanged(0xfe); XCTAssertTrue(changed(m))
++        m.fdc.latchAChanged(0x7e); m.fdc.latchAChanged(0xfe)
++        m.fdc.drives[0].headTrack = 3; XCTAssertFalse(changed(m))
++        m.fdc.drives[0].disc = b; XCTAssertFalse(changed(m)) // same medium
++    }
++    func testIRQMaskAndOtherModelsUnaffected() throws {
++        let m = try machine(); m.insertFloppy(disc(1)); m.fdc.latchAChanged(0xfe)
++        m.ioc.writeInternal(0x28, IOC.irqBDiscChanged); XCTAssertTrue(m.cpu.irqLine)
++        m.fdc.latchAChanged(0x7e); XCTAssertFalse(m.cpu.irqLine)
++        for model: MachineModel in [.a3000, .a5000, .a3010, .a3020, .a4000] {
++            let other = try machine(model); other.insertFloppy(disc(2)); other.fdc.latchAChanged(0xfe)
++            XCTAssertFalse(changed(other)); other.ejectFloppy(); XCTAssertFalse(changed(other))
++        }
++    }
++    func testSnapshotPreservesSelectedAndUnselectedChanges() throws {
++        let m = try machine(); let a = disc(1), b = disc(2)
++        m.insertFloppy(a); m.insertFloppy(b, drive: 1)
++        m.fdc.latchAChanged(0x7e); m.fdc.latchAChanged(0xfe)
++        XCTAssertEqual(m.fdc.discChangeState, [false,true,false,false])
++        let data = m.snapshot(); let h = try Snapshot.header(of:data)
++        XCTAssertEqual(h.floppyDiscChanged, [false,true,false,false])
++        let restored = try Machine.restore(snapshot:data,rom:m.rom,resolveDisc:{$0.drive == 0 ? a:b})
++        XCTAssertFalse(changed(restored)); XCTAssertEqual(restored.fdc.discChangeState,m.fdc.discChangeState)
++        restored.fdc.latchAChanged(0xfd); XCTAssertTrue(changed(restored))
++        // An old v2 header has no latch metadata. Its state body is unchanged.
++        let n = Int(data[12]) | Int(data[13])<<8 | Int(data[14])<<16 | Int(data[15])<<24
++        var fields = try JSONSerialization.jsonObject(with:Data(data[16..<16+n])) as! [String:Any]
++        fields.removeValue(forKey:"floppyDiscChanged")
++        let oldHeader = Array(try JSONSerialization.data(withJSONObject:fields,options:[.sortedKeys]))
++        var writer = StateWriter(); writer.raw(Array(data.prefix(12))); writer.data(oldHeader); writer.raw(Array(data.dropFirst(16+n)))
++        let old = try Machine.restore(snapshot:writer.bytes,rom:m.rom,resolveDisc:{$0.drive == 0 ? a:b})
++        XCTAssertEqual(old.fdc.discChangeState,[false,false,false,false]); XCTAssertFalse(changed(old))
++    }
++}

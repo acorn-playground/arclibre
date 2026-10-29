@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "source_archive_sha256": "760ee12234370669dd2001c4827112442c56321a7a0690fef489ccd0a774fb54",
+  "fresh_bootstrap": true,
+  "cmunge_not_built": true,
+  "compiler_probe_identical_to_prior_toolchain": [
+    {
+      "optimisation": "-O2",
+      "assembly_sha256": "5a835e028ed6736f462e6b4994e37849620d8bcedca3dff879fca3f5bcf44ce2"
+    },
+    {
+      "optimisation": "-Os",
+      "assembly_sha256": "3bad770682095edcecc8769e79abf9f52a0a6e06b1c27b32c32e8618e2739d9b"
+    }
+  ],
+  "scope": "Fresh selected toolchain bootstrap, signed-stack-argument assembly equivalence and two complete C/application/component builds producing identical final ROM bytes.",
+  "source_selection_reproduced_twice": true,
+  "complete_builds": 2,
+  "final_rom_sha256": "f1e6a5d172047f278f9ea40780323d10aeed9da0f58e953113c47692be956232"
+}

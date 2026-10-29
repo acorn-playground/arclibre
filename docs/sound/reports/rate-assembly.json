@@ -1,0 +1,60 @@
+{
+  "status": "PASS",
+  "modules": [
+    {
+      "component": "Sound0",
+      "status": "STATIC_ARM2_PASS",
+      "bytes": 3604,
+      "sha256": "7e0c2ccb08dca0de3e16aab4e1d6ed89f6bfd2938c4f77bd2a9c88fb6e205be9",
+      "aof_sha256": "29312d06e90f17ef1b341ffb9895a4d9d2ca5afcd43fd603c175b3bad9410ec1",
+      "integer_instructions": 767,
+      "relocations": 0,
+      "unresolved_symbols": 0,
+      "swi_base": 262464
+    },
+    {
+      "component": "Sound1",
+      "status": "STATIC_ARM2_PASS",
+      "bytes": 5180,
+      "sha256": "0dd69acd17c5919721fa3adbdad9d912d548fb7afe0dea46e4e0fc4a1f673402",
+      "aof_sha256": "be357b80db93dc29ba93b89ac1e4299161bb33b8159674696968418a0ec10291",
+      "integer_instructions": 875,
+      "relocations": 0,
+      "unresolved_symbols": 0,
+      "swi_base": 262528
+    },
+    {
+      "component": "Sound2",
+      "status": "STATIC_ARM2_PASS",
+      "bytes": 2064,
+      "sha256": "e28eaebfaf6e08a4e8693424427858315c2ead9c474d1fedf792af2d8d5e68e6",
+      "aof_sha256": "361fe624ce4e7585a64b44ce81bb66ddf1e69b1751e9dd5d9f5160a7bc92fee5",
+      "integer_instructions": 437,
+      "relocations": 0,
+      "unresolved_symbols": 0,
+      "swi_base": 262592
+    },
+    {
+      "component": "WaveSynth",
+      "status": "STATIC_ARM2_PASS",
+      "bytes": 2712,
+      "sha256": "7b615d798ad9d74ee4b2fe655098ac3451a8385db84f1ab4a355171438f6da55",
+      "aof_sha256": "1bd6e34f3dcf75de1b911789f2273639b157d525abbe3582c361b6bb16828e19",
+      "integer_instructions": 441,
+      "relocations": 0,
+      "unresolved_symbols": 0,
+      "swi_base": null
+    },
+    {
+      "component": "Percussion",
+      "status": "STATIC_ARM2_PASS",
+      "bytes": 2932,
+      "sha256": "39c2385bf917938d0b58888a0316745b88c9448f885c5cfb6d0a4bc9d047ab77",
+      "aof_sha256": "4bba3cf22e5fce158db7f397ccd80e319ac5e20f014e3258991e74ebf3c7fa4e",
+      "integer_instructions": 659,
+      "relocations": 0,
+      "unresolved_symbols": 0,
+      "swi_base": null
+    }
+  ]
+}

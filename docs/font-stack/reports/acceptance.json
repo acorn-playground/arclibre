@@ -1,0 +1,298 @@
+{
+  "status": "PASS",
+  "cold_runs": 3,
+  "identical_results": true,
+  "rom_sha256": "bf5ca56ebd6f7fd7dc4149360d97f76f009abed8879693470421998d59f11791",
+  "modules": [
+    {
+      "component": "Colours",
+      "status": "STATIC_ARM2_PASS",
+      "bytes": 16376,
+      "sha256": "52296a453b64f326e88ff13bcd7ba2588adc768befd0d56f2d4920883337b51b",
+      "aof_sha256": "07c0176f07bb02df61b8738d985d5fb403f8c454e9571c8a15633ecf2830e88a",
+      "integer_instructions": 3644,
+      "relocations": 0,
+      "unresolved_symbols": 0,
+      "swi_base": 264000
+    },
+    {
+      "component": "DrawMod",
+      "status": "STATIC_ARM2_PASS",
+      "bytes": 10104,
+      "sha256": "ecc01224286a82aec6093257f3fe2ed7bc2161a6fe4e9bdb19a68204376bc139",
+      "aof_sha256": "7bb314056f787a104148f90e9f5ee5f2554e63cca51ed5afc418ac214c4ec7f0",
+      "integer_instructions": 2372,
+      "relocations": 0,
+      "unresolved_symbols": 0,
+      "swi_base": 263936
+    },
+    {
+      "component": "Super",
+      "status": "STATIC_ARM2_PASS",
+      "bytes": 2320,
+      "sha256": "bebfbebfc17810fe639f1c2ace12a74b257664ff6d86a389e701fab5ce5c1981",
+      "aof_sha256": "10c924dcfcf6f6a0be93022248eb37ae3824a21165571379049d52b9d41cd52f",
+      "integer_instructions": 255,
+      "relocations": 0,
+      "unresolved_symbols": 0,
+      "swi_base": 265600
+    },
+    {
+      "component": "Hourglass",
+      "status": "STATIC_ARM2_PASS",
+      "bytes": 2148,
+      "sha256": "7fac03c7c82bfd5afc7a38d48a660afefb7453af51ed8a6928a52bfe9462b49a",
+      "aof_sha256": "5617a088e3d9cb6c342ddc6472e6820040fa5cc9fe1cd619447045e95c159162",
+      "integer_instructions": 368,
+      "relocations": 0,
+      "unresolved_symbols": 0,
+      "swi_base": 263872
+    },
+    {
+      "component": "FontManager",
+      "status": "STATIC_ARM2_PASS",
+      "bytes": 60084,
+      "sha256": "e69268f15b0f8e8d27448ba1064a3fb773e4fd692d23364cf28900cf3d23b163",
+      "identical_aof_sha256": "57e40221a011644bb060fcb28fdd62f0a74662a9b4ab35c566c9b719a37e2281",
+      "unresolved_symbols": 0,
+      "relocations": 0,
+      "integer_arm2_instructions": 13868,
+      "fpa_instructions": 0,
+      "embedded_assets": 0,
+      "runtime_tested": false
+    },
+    {
+      "component": "ROMFonts",
+      "status": "STATIC_ARM2_PASS",
+      "bytes": 250000,
+      "sha256": "909493b93e4b4250feeb352d049298d5d09371cbbd5d40ab5b9ddf00ad464fd6",
+      "identical_aof_sha256": "bc1f76c77b0b152dacbdfd96450c4dd0ae405435c2c2ac18658ab7121da4429e",
+      "unresolved_symbols": 0,
+      "relocations": 0,
+      "integer_arm2_instructions": 46,
+      "fpa_instructions": 0,
+      "embedded_assets": 29,
+      "runtime_tested": false
+    }
+  ],
+  "swi_calls_per_run": 175,
+  "font_faces": 12,
+  "independent_widths": [
+    {
+      "name": "Corpus.Medium",
+      "metrics": {
+        "path": "src/ROMFonts/Fonts/Corpus/Medium/IntMetric0,ff6",
+        "sha256": "8710de77e676104e4b7c6dd8a92c36c492775e15fd710de8bef933050335d8d8",
+        "width": 144000
+      },
+      "pixel_bounds": [
+        51,
+        151,
+        227,
+        156
+      ],
+      "ink_pixels": 263,
+      "framebuffer_sha256": "cc65d37ebd885f919fe9f448d938d2f90f3f86bc7bcb40b84b0f59192d2f1a6f"
+    },
+    {
+      "name": "Corpus.Bold",
+      "metrics": {
+        "path": "src/ROMFonts/Fonts/Corpus/Bold/IntMetric0,ff6",
+        "sha256": "ab16fcdda7b7d60320f9215a95d70d2db2aea4651f094d30e36b14adc9bb584c",
+        "width": 144000
+      },
+      "pixel_bounds": [
+        51,
+        151,
+        228,
+        156
+      ],
+      "ink_pixels": 294,
+      "framebuffer_sha256": "0fe93871a26c49aaf8be8248abb2ce2ed9ad6e102a7b34020ffd3b51e5bfa2ae"
+    },
+    {
+      "name": "Corpus.Medium.Oblique",
+      "metrics": {
+        "path": "src/ROMFonts/Fonts/Corpus/Medium/Oblique/IntMetric0,ff6",
+        "sha256": "e1521f0a8e329a23a7b5cd176d8b8467f14d66e5da37a393cfa88127eed81bb6",
+        "width": 144000
+      },
+      "pixel_bounds": [
+        51,
+        151,
+        228,
+        156
+      ],
+      "ink_pixels": 270,
+      "framebuffer_sha256": "1def377a2c3df82d5a1220cd338373d6e0a451cdee7c0d10efe6f0bf631f28e3"
+    },
+    {
+      "name": "Corpus.Bold.Oblique",
+      "metrics": {
+        "path": "src/ROMFonts/Fonts/Corpus/Bold/Oblique/IntMetric0,ff6",
+        "sha256": "c2b402b1760475c1f890bb7a9544f735862b2dcf468a1d912c78ea097475ff24",
+        "width": 144000
+      },
+      "pixel_bounds": [
+        52,
+        151,
+        227,
+        156
+      ],
+      "ink_pixels": 289,
+      "framebuffer_sha256": "a5530a23b2cc538b07fc2449d985ca36c57017eaa454da56c51df8a2c7bbac27"
+    },
+    {
+      "name": "Homerton.Medium",
+      "metrics": {
+        "path": "src/ROMFonts/Fonts/Homerton/Medium/IntMetric0,ff6",
+        "sha256": "c2327990d8766609df5c00a526ae37371842a42aece2a289deafc30433485fae",
+        "width": 122724
+      },
+      "pixel_bounds": [
+        51,
+        150,
+        199,
+        157
+      ],
+      "ink_pixels": 325,
+      "framebuffer_sha256": "2b42821df1d0692d3119f6570969724222c08242ce363f3238a0c9983c43d4f1"
+    },
+    {
+      "name": "Homerton.Bold",
+      "metrics": {
+        "path": "src/ROMFonts/Fonts/Homerton/Bold/IntMetric0,ff6",
+        "sha256": "c8bd6bb61be2f55ccfcf2e3cfe59c0d7bfae76d79c36e1b2a04256e5ef6097b4",
+        "width": 129384
+      },
+      "pixel_bounds": [
+        51,
+        150,
+        208,
+        157
+      ],
+      "ink_pixels": 349,
+      "framebuffer_sha256": "f6e30a21f0a31250a6b90664d9bf926cc07b03d775f66b91122ead37793e9a74"
+    },
+    {
+      "name": "Homerton.Medium.Oblique",
+      "metrics": {
+        "path": "src/ROMFonts/Fonts/Homerton/Medium/Oblique/IntMetric0,ff6",
+        "sha256": "b35ded77f15cdc015d808e317a436f9505c94f95c8909cee42557417337626d4",
+        "width": 122724
+      },
+      "pixel_bounds": [
+        52,
+        150,
+        201,
+        157
+      ],
+      "ink_pixels": 264,
+      "framebuffer_sha256": "45185e100f1b02798c5412bc19b7028622c034178f7ae89cd6300b15f49d11c3"
+    },
+    {
+      "name": "Homerton.Bold.Oblique",
+      "metrics": {
+        "path": "src/ROMFonts/Fonts/Homerton/Bold/Oblique/IntMetric0,ff6",
+        "sha256": "2783bd1f10db615bc3f2735818a0e0a9d4db0aabe9c452f5686d0c423cb55e61",
+        "width": 129384
+      },
+      "pixel_bounds": [
+        52,
+        150,
+        210,
+        157
+      ],
+      "ink_pixels": 350,
+      "framebuffer_sha256": "569dc834bc4ace44ce440f6cbf1ce9473252cc0d1cd7e35fae77668d58deb45d"
+    },
+    {
+      "name": "Trinity.Medium",
+      "metrics": {
+        "path": "src/ROMFonts/Fonts/Trinity/Medium/IntMetric0,ff6",
+        "sha256": "cd6c1004db2672ea92e50cb8154b82a19745f6337ef788096eb0809f4d3bc945",
+        "width": 110976
+      },
+      "pixel_bounds": [
+        51,
+        150,
+        186,
+        157
+      ],
+      "ink_pixels": 327,
+      "framebuffer_sha256": "60068549bb321742a59ca9ca7ea27aabd1a3625d15ecbcb4645c10e7764abe71"
+    },
+    {
+      "name": "Trinity.Bold",
+      "metrics": {
+        "path": "src/ROMFonts/Fonts/Trinity/Bold/IntMetric0,ff6",
+        "sha256": "900c9128a3a3299f1380d875fcb3fdd8d94cad739285febf1a53dc9efc62fab5",
+        "width": 116328
+      },
+      "pixel_bounds": [
+        51,
+        150,
+        193,
+        157
+      ],
+      "ink_pixels": 355,
+      "framebuffer_sha256": "b2ec6c94e6b447a09f6e56155f07e408f5b7d780a1b40056db140b56ab4d913c"
+    },
+    {
+      "name": "Trinity.Medium.Italic",
+      "metrics": {
+        "path": "src/ROMFonts/Fonts/Trinity/Medium/Italic/IntMetric0,ff6",
+        "sha256": "113a5016632a55d6b248ea6dab5e0104f28c0fc233e7b2fc975dcacc28dac11f",
+        "width": 109644
+      },
+      "pixel_bounds": [
+        51,
+        150,
+        183,
+        157
+      ],
+      "ink_pixels": 254,
+      "framebuffer_sha256": "f76d697ef42a8bb01afac00c51415ddaabe09bebe630234c121dfac43f06126b"
+    },
+    {
+      "name": "Trinity.Bold.Italic",
+      "metrics": {
+        "path": "src/ROMFonts/Fonts/Trinity/Bold/Italic/IntMetric0,ff6",
+        "sha256": "9bf19f6e85523375175666d29feace421a9bff73b1c01aefe35e275eac5edcb3",
+        "width": 112332
+      },
+      "pixel_bounds": [
+        50,
+        150,
+        187,
+        157
+      ],
+      "ink_pixels": 317,
+      "framebuffer_sha256": "da722a0960f6cca120b8adec162cfa7f4390cc4b476a404bf4e496402f996010"
+    }
+  ],
+  "cache_base": 31457280,
+  "cache_bytes": 65536,
+  "antialias_levels": [
+    0,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "antialias_sha256": "885442971ce44bba8578678f91da93d4cdc702f69b741cdb3a6426ca242bfe42",
+  "cached_repaint_identical": true,
+  "baseline_rom_modified": false,
+  "emulator_modified": false,
+  "scope": "ASCII sample at 12pt, mode 12, all selected faces; not full encoding, font-format or RISC OS 3.11 conformance"
+}

@@ -1,0 +1,22 @@
+[
+  {
+    "component": "ARM3Support",
+    "path": "s/ARM3Support",
+    "revision": null,
+    "repository": null,
+    "origin": "new ArcLibre code",
+    "upstream_sha256": "ae2bcb6aa89ad5efec0aac78e4756378335760bd7313149af18adbd467cef360",
+    "sha256": "ae2bcb6aa89ad5efec0aac78e4756378335760bd7313149af18adbd467cef360",
+    "bytes": 8423
+  },
+  {
+    "component": "ARM3Support",
+    "path": "LICENSE",
+    "revision": null,
+    "repository": null,
+    "origin": "Apache License 2.0 text",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358
+  }
+]

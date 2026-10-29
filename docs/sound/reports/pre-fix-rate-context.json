@@ -1,0 +1,10 @@
+{
+  "rom_sha256": "be94be4cb5f67d20a7f49f0a74a2f0117bbdd69ab30a2c89913096805888a6c1",
+  "status": "PASS",
+  "scope": "Functional voice API passed while rate/elapsed-time measurements exposed a real defect.",
+  "fixture_manifest": {
+    "sha256": "660aad1e6215a5551c5dbeebc60b0bf1ff5c17e25cc20fdfb048bf3094ad74e8",
+    "program_sha256": "6282c22abc8f6b2d6bc5dfe925401fad9194214099f42971d082756050c3a45e",
+    "arm2_instructions": 117
+  }
+}

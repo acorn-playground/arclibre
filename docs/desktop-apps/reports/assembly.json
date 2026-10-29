@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "modules": [
+    {
+      "component": "BASIC",
+      "bytes": 52604,
+      "instructions": 11098,
+      "direct_branches": 3485,
+      "psr_sequences": 1,
+      "relocations": 0,
+      "unresolved_symbols": 0
+    },
+    {
+      "component": "BASICTrans",
+      "bytes": 3404,
+      "instructions": 205,
+      "direct_branches": 41,
+      "psr_sequences": 3,
+      "relocations": 0,
+      "unresolved_symbols": 0
+    },
+    {
+      "component": "ResFiler",
+      "bytes": 1852,
+      "instructions": 364,
+      "direct_branches": 53,
+      "psr_sequences": 0,
+      "relocations": 0,
+      "unresolved_symbols": 0
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,418 @@
+[
+  {
+    "path": "Video/Render/ScrBlank",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Video/Render/ScrBlank.git",
+    "cohort_matches": [
+      "9d17f822bccc749fa9d345301eb95573fb90c444"
+    ],
+    "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "license_apache2_text": true,
+    "file_count": 12
+  },
+  {
+    "path": "Utilities/Patches/IRQUtils2",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Utilities/Patches/IRQUtils2.git",
+    "cohort_matches": [
+      "1984643f955e1c99daee6afc355aa0f5195642d7"
+    ],
+    "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "license_apache2_text": true,
+    "file_count": 8
+  },
+  {
+    "path": "Desktop/TaskWindow",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/TaskWindow.git",
+    "cohort_matches": [
+      "9d0a32bfcc51b43840d28ef8a23713061834b6f2"
+    ],
+    "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "license_apache2_text": true,
+    "file_count": 34
+  },
+  {
+    "path": "Desktop/Filter",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filter.git",
+    "cohort_matches": [
+      "0728a78f554bdc46cac5043ba8a21941e6da3775"
+    ],
+    "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "license_apache2_text": true,
+    "file_count": 17
+  },
+  {
+    "path": "Desktop/WimpUtils",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/WimpUtils.git",
+    "cohort_matches": [
+      "717510785f21f01de3d286293c578732ec5aff37"
+    ],
+    "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "license_apache2_text": true,
+    "file_count": 10
+  },
+  {
+    "path": "Desktop/Free",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Free.git",
+    "cohort_matches": [
+      "ad049d9991c69640cf46586e82a5ddb0669e0df0"
+    ],
+    "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "license_apache2_text": true,
+    "file_count": 25
+  },
+  {
+    "path": "HWSupport/DeviceFS",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/DeviceFS.git",
+    "cohort_matches": [
+      "1d464cee133c220ff66d2f136284f633fe3f3086"
+    ],
+    "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "license_apache2_text": true,
+    "file_count": 37
+  },
+  {
+    "path": "HWSupport/SystemDevs",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/SystemDevs.git",
+    "cohort_matches": [
+      "32481c2bf1a836d989e5f3686653666c387c0d6e"
+    ],
+    "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "license_apache2_text": true,
+    "file_count": 16
+  },
+  {
+    "path": "HWSupport/Serial",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Serial.git",
+    "cohort_matches": [
+      "4d0e504f000ea706a6d07c69e35d82380b02c797"
+    ],
+    "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "license_apache2_text": true,
+    "file_count": 31
+  },
+  {
+    "path": "HWSupport/SerialSpt",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/SerialSpt.git",
+    "cohort_matches": [
+      "36b69cb232a28bd975545ea7eff3a75132d0eef0"
+    ],
+    "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "license_apache2_text": true,
+    "file_count": 12
+  },
+  {
+    "path": "HWSupport/Parallel",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Parallel.git",
+    "cohort_matches": [
+      "f9e3bcbbcc5849d4965077d5abafdd99db5954f0"
+    ],
+    "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "license_apache2_text": true,
+    "file_count": 26
+  },
+  {
+    "path": "HWSupport/Podule",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Podule.git",
+    "cohort_matches": [
+      "b33cb3fa32376b243c94d3870b33697f30cd9a70"
+    ],
+    "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "license_apache2_text": true,
+    "file_count": 29
+  },
+  {
+    "path": "HWSupport/ARM",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/ARM.git",
+    "cohort_matches": [
+      "9c748a12203cefca3df612ac5ed9d912dd0aae6a"
+    ],
+    "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "license_apache2_text": true,
+    "file_count": 15
+  },
+  {
+    "path": "HWSupport/IIC",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/IIC.git",
+    "cohort_matches": [
+      "3a9726dcc5cf61a5722dbcec9bc52f2468e9e57a"
+    ],
+    "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "license_apache2_text": true,
+    "file_count": 9
+  },
+  {
+    "path": "HWSupport/Joystick",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Joystick.git",
+    "cohort_matches": [
+      "2575b028f54b9a82946712fd74383a3f72b222a9"
+    ],
+    "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "license_apache2_text": true,
+    "file_count": 21
+  },
+  {
+    "path": "HWSupport/RTCAdjust",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/RTCAdjust.git",
+    "cohort_matches": [
+      "a0f37cd91cdd45e99d1643c77512a76b0f875d0e"
+    ],
+    "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "license_apache2_text": true,
+    "file_count": 12
+  },
+  {
+    "path": "HWSupport/Portable",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Portable.git",
+    "cohort_matches": [
+      "e5f03547d739b9b5a5f58f719f769e7a9916fbf4"
+    ],
+    "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "license_apache2_text": true,
+    "file_count": 27
+  },
+  {
+    "path": "HWSupport/Sound/Voices/StringLib",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Sound/Voices/StringLib.git",
+    "cohort_matches": [
+      "38468e6b620847a1eebe7f16a5648d51a0702200"
+    ],
+    "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "license_apache2_text": true,
+    "file_count": 10
+  },
+  {
+    "path": "FileSys/PipeFS",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/PipeFS.git",
+    "cohort_matches": [
+      "614e2725452d242c4f3d3c747d8790d74d7d5797"
+    ],
+    "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "license_apache2_text": true,
+    "file_count": 12
+  },
+  {
+    "path": "FileSys/RAMFS/RAMFS",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/RAMFS/RAMFS.git",
+    "cohort_matches": [
+      "ef43a7ada8c3681c33031c9ab4d4761dabf3d13d"
+    ],
+    "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "license_apache2_text": true,
+    "file_count": 29
+  },
+  {
+    "path": "FileSys/RAMFS/RAMFSFiler",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/RAMFS/RAMFSFiler.git",
+    "cohort_matches": [
+      "be30ead145d8f7c289f629cf540cb4d18c7cb47b"
+    ],
+    "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "license_apache2_text": true,
+    "file_count": 12
+  },
+  {
+    "path": "FileSys/ImageFS/DOSFS",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ImageFS/DOSFS.git",
+    "cohort_matches": [
+      "ec870faf21127aba600c58b3571115ac164e40f3"
+    ],
+    "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "license_apache2_text": true,
+    "file_count": 49
+  },
+  {
+    "path": "FileSys/ADFS/ADFS",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ADFS/ADFS.git",
+    "cohort_matches": [
+      "b32ebc4dd79436ecb942c773759583cd7365b178"
+    ],
+    "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "license_apache2_text": true,
+    "file_count": 149
+  },
+  {
+    "path": "FileSys/NetFS/NetFS",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/NetFS/NetFS.git",
+    "cohort_matches": [
+      "3b392f000e60fdc44c885f4e05100349b15d3a38"
+    ],
+    "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "license_apache2_text": true,
+    "file_count": 27
+  },
+  {
+    "path": "FileSys/NetFS/NetFiler",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/NetFS/NetFiler.git",
+    "cohort_matches": [
+      "e0076648687f4cec1a685cee59b164164ab4f593"
+    ],
+    "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "license_apache2_text": true,
+    "file_count": 11
+  },
+  {
+    "path": "FileSys/NetPrint",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/NetPrint.git",
+    "cohort_matches": [
+      "c7aa0ed874824eb9d396d2c1a814e9f4cad2ffa7"
+    ],
+    "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "license_apache2_text": true,
+    "file_count": 20
+  },
+  {
+    "path": "Networking/Econet",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Networking/Econet.git",
+    "cohort_matches": [
+      "413ae41f105d8fa01f72ccb6c425cdc1ed0c4e0b"
+    ],
+    "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "license_apache2_text": true,
+    "file_count": 52
+  },
+  {
+    "path": "Networking/BBCEconet",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Networking/BBCEconet.git",
+    "cohort_matches": [
+      "5a1db236887c5c9da3f6176b49799b40c495f934"
+    ],
+    "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "license_apache2_text": true,
+    "file_count": 11
+  },
+  {
+    "path": "Networking/NetStatus",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Networking/NetStatus.git",
+    "cohort_matches": [
+      "3e8e96c5cbfff5a5824e9a1f0d3498a501d4ce11"
+    ],
+    "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "license_apache2_text": true,
+    "file_count": 10
+  },
+  {
+    "path": "Networking/NetUtils",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Networking/NetUtils.git",
+    "cohort_matches": [],
+    "file_count": 0
+  },
+  {
+    "path": "Printing/PrinterManager",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "cohort_matches": [
+      "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3"
+    ],
+    "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "license_apache2_text": true,
+    "file_count": 143
+  },
+  {
+    "path": "Printing/Modules/PDriver",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDriver.git",
+    "cohort_matches": [
+      "de4185f8a1dcdb7ce57ef9e6a7fbad8a4c8a2d71"
+    ],
+    "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "license_apache2_text": true,
+    "file_count": 17
+  },
+  {
+    "path": "Printing/Modules/PDumperSpt",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDumperSpt.git",
+    "cohort_matches": [
+      "0748768b18f559be1731fbc8a6be231bdbf5c4f3"
+    ],
+    "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "license_apache2_text": true,
+    "file_count": 17
+  },
+  {
+    "path": "Printing/Modules/PDModules",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "cohort_matches": [
+      "d5db212e15135c64e3d7fc215d4a31ab93a6585d"
+    ],
+    "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "license_apache2_text": true,
+    "file_count": 69
+  },
+  {
+    "path": "Printing/PDumpers",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PDumpers.git",
+    "cohort_matches": [
+      "45c309a19b63e8137ab401fd22c127658668af11"
+    ],
+    "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "license_apache2_text": true,
+    "file_count": 119
+  },
+  {
+    "path": "Programmer/Squash",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Programmer/Squash.git",
+    "cohort_matches": [
+      "a21ce91e3d0a1a8c04f3e0dd72683a6d7fa2ab76"
+    ],
+    "license_sha256": "c24bc1135d10fa7475100578aa37aee7d04fe7bb65745a8bfc851a9f4f45817d",
+    "license_apache2_text": true,
+    "file_count": 31
+  },
+  {
+    "path": "Programmer/Debugger",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Programmer/Debugger.git",
+    "cohort_matches": [
+      "973b1967d8ff1c48dcd138d1d27f1721217228b8"
+    ],
+    "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "license_apache2_text": true,
+    "file_count": 19
+  },
+  {
+    "path": "SystemRes/Configure",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/SystemRes/Configure.git",
+    "cohort_matches": [
+      "d129c3c69fbf6911b5351cd7efc3281ee7651908"
+    ],
+    "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "license_apache2_text": true,
+    "file_count": 104
+  },
+  {
+    "path": "Apps/Alarm",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Alarm.git",
+    "cohort_matches": [
+      "ea4dc989e3121d63682cd6f8fce639667c501c7a"
+    ],
+    "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "license_apache2_text": true,
+    "file_count": 38
+  },
+  {
+    "path": "Apps/Chars",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Chars.git",
+    "cohort_matches": [
+      "6360d0336eff8cfd3a4857b0500c13f7c9d32e77"
+    ],
+    "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "license_apache2_text": true,
+    "file_count": 23
+  },
+  {
+    "path": "Apps/Help",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/Help.git",
+    "cohort_matches": [
+      "01f0e2d2ee060eff698cc50d4c2a0731a8bf3d07"
+    ],
+    "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "license_apache2_text": true,
+    "file_count": 23
+  },
+  {
+    "path": "Apps/SciCalc",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Apps/SciCalc.git",
+    "cohort_matches": [
+      "715a2c33121341677ba8256c28752e92e8108d2f"
+    ],
+    "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "license_apache2_text": true,
+    "file_count": 17
+  }
+]

@@ -1,0 +1,31 @@
+{
+  "omitted_unneeded_interfaces": [
+    "ATAPI",
+    "BasicTrans",
+    "ARM3Cache",
+    "CDROM",
+    "CDFS",
+    "ColourPick",
+    "DDT",
+    "Debugger",
+    "DeviceFS",
+    "DMA",
+    "DOSFS",
+    "DragAnObj",
+    "Filter",
+    "Free",
+    "FSLock",
+    "IIC",
+    "Joystick",
+    "MakePSFont",
+    "Parallel",
+    "PDumper",
+    "RAMFS",
+    "ScrBlank",
+    "ScrModes",
+    "SCSI",
+    "SCSIFS",
+    "TaskWindow"
+  ],
+  "sha256": "0631fcb2961137a3a46fdd417c3946fdd36b9f788b0b4b60d28e6a2e3aa0dfc6"
+}

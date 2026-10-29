@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "archives": {
+    "gccsdk-tools.tar.gz": "c401f3a9dc759ef3a6b88525e716fd970a4149f58e89607310170be711ea8f41",
+    "m4-1.4.20.tar.xz": "e236ea3a1ccf5f6c270b1c4bb60726f371fa49459a8eaaebc90b216b328daf2b",
+    "autoconf-2.72.tar.xz": "ba885c1319578d6c94d46e9b0dceb4014caafe2490e437a0dbca3f270a223f5a",
+    "macarch-core.tar.gz": "372f726ab74b78f4d3c2212dd892d0949fe12d564aa27f49b45a79a06f4712cb",
+    "automake-1.17.tar.xz": "8920c1fc411e13b90bf704ef9db6f29d540e76d232cb3b2c9f4dc4cc599bd990"
+  },
+  "binaries": {
+    "asasm": "6d1a65951bacc0e6d9bf5d7ba871375f0efefdbf50d91446180790ebcaa65989",
+    "asasm-observer": "bf42c06bd1f11d22dc12d11b64108230722fc0a2558759e7781239127f0e9e2e",
+    "tokenise": "c10c51574cda7ebe68b0e54987e9b65c97e098d61888ca311b888ae1deddc2fb"
+  },
+  "libtoolize": "/opt/homebrew/bin/glibtoolize"
+}

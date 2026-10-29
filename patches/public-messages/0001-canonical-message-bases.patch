@@ -1,0 +1,33 @@
+--- a/src/PublicInterfaces/hdr/Messages
++++ b/src/PublicInterfaces/hdr/Messages
+@@ -1,4 +1,5 @@
+ ; Copyright 2008 Castle Technology Ltd
++; Modified 2026 by ArcLibre: use complete exported SWI bases for message ranges.
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -86,13 +87,13 @@
+ ;  NetFiler message actions
+ ;
+ 
+-        ^       Module_SWISystemBase + NetFSSWI * Module_SWIChunkSize
++        ^       NetFSSWI_Base
+ Message_Notify          #       1       ; &40040
+ 
+ ;
+ ; Message actions (received from the Wimp)
+ ;
+-        ^       Module_SWISystemBase + WimpSWI * Module_SWIChunkSize
++        ^       WimpSWI_Base
+ 
+                                         ; &400C0 up
+ Message_MenuWarning     #       1       ; &400C0 special submenu opening message
+@@ -117,7 +118,7 @@
+ ;  Printer driver application messages
+ ;
+ 
+-        ^       Module_SWIApplicationBase + PrintSWI * Module_SWIChunkSize
++        ^       PrintSWI_Base
+                                         ; &80140 up
+ Message_PrintFile       #       1       ; "Do you want to print this file?"
+ Message_WillPrint       #       1       ; "Yes, I will print it"

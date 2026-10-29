@@ -1,0 +1,39 @@
+{
+  "status": "PASS",
+  "modules": [
+    {
+      "component": "RamFS",
+      "status": "STATIC_ARM2_PASS",
+      "bytes": 1684,
+      "sha256": "65d60ad308db135033aff8a77c765eb9ce2c04ab4c4aee581bf0b0496486769a",
+      "aof_sha256": "6b3b1dce9d1cbe916d7f94a7ee1c06ec4d381437999dbe760250c72a7f403c6f",
+      "integer_instructions": 340,
+      "relocations": 0,
+      "unresolved_symbols": 0,
+      "swi_base": 264064
+    },
+    {
+      "component": "RAMFSFiler",
+      "status": "STATIC_ARM2_PASS",
+      "bytes": 2432,
+      "sha256": "b362cf1173cdbbef0fda0ac9fd7a0f43dcdb8f44109b2a18551327760dd85187",
+      "aof_sha256": "e61c5ea33e4b614edc29858e0e06706819bc9b389cf6295a8d8c31c7ac4b267e",
+      "integer_instructions": 497,
+      "relocations": 0,
+      "unresolved_symbols": 0,
+      "swi_base": null
+    },
+    {
+      "component": "Free",
+      "status": "STATIC_ARM2_PASS",
+      "bytes": 4704,
+      "sha256": "dd90e505d994f13e79ae2feed8dde1bd7a56e205f737a388c12ba85185b71af2",
+      "aof_sha256": "9998c772239e80f3d09fb1bd2250c38dc9f5ea1e0ef5f6c0f0fb48887bf4e5aa",
+      "integer_instructions": 1066,
+      "relocations": 0,
+      "unresolved_symbols": 0,
+      "swi_base": 279744
+    }
+  ],
+  "resources_sha256": "36872468f6cdce1238849ca824937f2189ebbb81461e30faea91fc38046a085a"
+}

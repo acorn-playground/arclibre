@@ -1,0 +1,90 @@
+--- a/src/Pinboard/s/Backdrop
++++ b/src/Pinboard/s/Backdrop
+@@ -642,10 +642,10 @@
+ 
+ 01      ; It does have a palette, convert it to a form we can use.
+         ADD     r0,r0,r2                ; r0 -> Word after palette data
+-        ADD     r3,r2,#44               ; r3 -> First entry of palette
++        ADD     r3,r2,#44               ; r3 -> First KernelEntry of palette
+         MOV     r4,r3
+ 02
+-        LDR     r14,[r3],#8             ; Get every second entry.
++        LDR     r14,[r3],#8             ; Get every second KernelEntry.
+         STR     r14,[r4],#4
+         CMP     r3,r0
+         BNE     %BT02
+--- a/src/Pinboard/s/Buffering
++++ b/src/Pinboard/s/Buffering
+@@ -271,7 +271,7 @@
+         MOV     r14, #32
+         STMIA   r1!, {r6,r9,r10,r14}
+ ; Create the icon
+-        ADR     r1,dataarea             ; create iconbar entry
++        ADR     r1,dataarea             ; create iconbar KernelEntry
+         CMP     r7,#0
+         LDREQ   r0,backdrop_handle
+         STREQ   r0,[r1],#4
+--- a/src/Pinboard/s/Menu
++++ b/src/Pinboard/s/Menu
+@@ -210,7 +210,7 @@
+         SWI     XMessageTrans_MakeMenus
+         Pull    "PC",VS
+ 
+-        LDR     r14,info_dbox_handle                    ; Point info entry at info box.
++        LDR     r14,info_dbox_handle                    ; Point info KernelEntry at info box.
+         STR     r14,menu_store+28+tim_info*24+4
+ 
+ 
+@@ -288,10 +288,10 @@
+         SWI     XMessageTrans_MakeMenus
+         Pull    "PC",VS
+ 
+-        LDR     r14,info_dbox_handle                    ; Point info entry at info box.
++        LDR     r14,info_dbox_handle                    ; Point info KernelEntry at info box.
+         STR     r14,menu_store+28+pm_info*24+4
+ 
+-        LDR     r14,saveas_handle                       ; Point save entry at save box.
++        LDR     r14,saveas_handle                       ; Point save KernelEntry at save box.
+         STR     r14,menu_store+28+pm_save*24+4
+ 
+         LDR     r14,Pinboard_Icons
+--- a/src/Pinboard/s/Messages
++++ b/src/Pinboard/s/Messages
+@@ -753,7 +753,7 @@
+         STMIA   r1!, {r6,r9,r10,r14}
+ 
+ ; Create the icon
+-        ADR     r1,dataarea             ; create iconbar entry
++        ADR     r1,dataarea             ; create iconbar KernelEntry
+ 
+  [ iconise_to_iconbar
+         LDR     lr, Pinboard_options
+--- a/src/Pinboard/s/ModHead
++++ b/src/Pinboard/s/ModHead
+@@ -13,7 +13,6 @@
+ ; limitations under the License.
+ ;
+ ; > s.ModHead
+-        LEADR   Module_LoadAddr
+ 
+         ASSERT  (.=Module_BaseAddr)
+ 
+--- a/src/Pinboard/s/Pinboard
++++ b/src/Pinboard/s/Pinboard
+@@ -22,6 +22,7 @@
+ ;;
+ ;;-----------------------------------------------------------------------------
+ 
++        AREA Pinboard,CODE,READONLY
+ Module_BaseAddr
+ 
+         GET     hdr:ListOpts
+@@ -236,7 +237,7 @@
+ ;       Linked iconized window block structure
+                 ^       0
+ w_next_ptr        #       4       ;       Pointer to next in chain                (-1 if none)
+-w_prev_ptr        #       4       ;       Pointer to previous entry in chain      (-1 if none)
++w_prev_ptr        #       4       ;       Pointer to previous KernelEntry in chain      (-1 if none)
+ w_icon_handle     #       4       ;       Icon handle
+ w_icon_id         #       4       ;       Icon identifier
+ w_task            #       4       ;       Task ID.

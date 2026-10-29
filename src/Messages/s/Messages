@@ -1,0 +1,125 @@
+; Open Archimedes: modified for the ARM2 restoration; see patches/restoration and Git history.
+; Copyright 1996 Acorn Computers Ltd
+;
+; Licensed under the Apache License, Version 2.0 (the "License");
+; you may not use this file except in compliance with the License.
+; You may obtain a copy of the License at
+;
+;     http://www.apache.org/licenses/LICENSE-2.0
+;
+; Unless required by applicable law or agreed to in writing, software
+; distributed under the License is distributed on an "AS IS" BASIS,
+; WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+; See the License for the specific language governing permissions and
+; limitations under the License.
+;
+; > Sources.Messages
+
+
+        GET     Hdr:ListOpts
+        GET     Hdr:Macros
+        GET     Hdr:System
+        GET     Hdr:ModHand
+        GET     Hdr:Services
+        GET     Hdr:Proc
+        GET     Hdr:ResourceFS
+        GET     Version
+
+        GET     Hdr:NDRDebug
+
+        GBLL    debug
+        GBLL    debugxx
+        GBLL    hostvdu
+
+debug   SETL    false
+debugxx SETL    false
+hostvdu SETL    false
+
+
+        AREA ModuleCode, CODE, READONLY
+Module_BaseAddr
+
+
+; **************** Module code starts here **********************
+
+        ASSERT  (.-Module_BaseAddr) = 0
+
+        DCD     0 ; Messages_Start    - Module_BaseAddr
+        DCD     Messages_Init     - Module_BaseAddr
+        DCD     Messages_Die      - Module_BaseAddr
+        DCD     Messages_Service  - Module_BaseAddr
+        DCD     Messages_Title    - Module_BaseAddr
+        DCD     Messages_HelpStr  - Module_BaseAddr
+        DCD     0
+        DCD     0
+        DCD     0
+        DCD     0
+        DCD     0
+
+Messages_Title          DCB     "Messages", 0
+Messages_HelpStr        DCB     "UK Messages", 9, "$VString ($Date)", 0
+                        ALIGN
+
+; *****************************************************************************
+;
+;       Messages_Init - Initialisation entry
+;
+
+Messages_Init
+        KernelEntry
+        ADR     r0, Messages
+        SWI     XResourceFS_RegisterFiles
+        EXITS
+
+
+; *****************************************************************************
+;
+;       Messages_Die - Die entry
+;
+
+Messages_Die
+        KernelEntry
+        ADR     r0, Messages
+        SWI     XResourceFS_DeregisterFiles
+        EXIT
+
+; *****************************************************************************
+;
+;       Messages_Service - Main entry point for services
+;
+; in:   r1 = service reason code
+;       r2 = sub reason code
+;       r3-r5 parameters
+;
+; out:  r1 = 0 if we claimed it
+;       r2 preserved
+;       r3-r5 = ???
+;
+
+Messages_Service ROUT
+        TEQ     r1, #Service_ResourceFSStarting
+        MOVNES  pc, lr
+
+; In    r2 -> address inside ResourceFS module to call
+;       r3 = workspace pointer for module
+; Out   r2 called with r0 -> files, r3 -> workspace
+
+svc_desktopstarting
+        KernelEntry "r0-r5"
+        ADR     r0, Messages
+        MOV     lr, pc                          ; get return address
+        MOV     pc, r2                          ; r2 = address to call
+        EXITS
+
+; *****************************************************************************
+
+      [ debug
+        InsertNDRDebugRoutines
+      ]
+
+Messages
+        BIN     ResourcesData
+        ALIGN
+        DCD     0
+
+        END

@@ -1,0 +1,103 @@
+--- a/Kernel/s/Middle
++++ b/Kernel/s/Middle
+@@ -1158,12 +1158,18 @@
+  ]
+ 20
+         MOV     r0, #0
++; Modified 2026: no Dallas chip on this board; original workspace stores the public ID.
++ [ HasDallasID
+         LDR     r3, [r0, #RawMachineID+0]
+         LDR     r4, [r0, #RawMachineID+4]
+         MOV     r3, r3, LSR #8                  ; lose first 8 bits
+         ORR     r3, r3, r4, LSL #24             ; and put bits 0..7 of r3 into bits 24..31 of r2
+         MOV     r4, r4, LSL #8                  ; lose CRC bits
+         MOV     r4, r4, LSR #16                 ; and move the rest down to the bottom
++ |
++        LDR     r3, [r0, #UniqueMachineID+0]
++        LDR     r4, [r0, #UniqueMachineID+4]
++ ]
+         LDRB    r0, [r0, #IOSystemType]
+ 
+         ANDS    r2, r0, #IOST_LC
+@@ -1247,6 +1253,8 @@
+ ;                 by this call in preference to a locally provided value.
+ 
+ 40
++; Modified 2026: no motherboard-derived Ethernet address without a Dallas ID.
++ [ HasDallasID
+         MOV     r0, #0
+         LDRB    r1, [ r0, #RawMachineID ]               ; The family byte
+         TEQ     r1, #&81                                ; Is this a custom part?
+@@ -1270,6 +1278,7 @@
+         MOV     r1, #0                                  ; Top 16 bits are zero
+         ExitSWIHandler
+ 
++ ] ; HasDallasID
+ ExitNoEthernetAddress
+         MOV     r0, #0
+         MOV     r1, #0
+@@ -1284,8 +1293,12 @@
+ 
+ 50
+         MOV     r0, #0
++ [ HasDallasID
+         LDR     r1, [r0, #RawMachineID+4]
+         LDR     r0, [r0, #RawMachineID+0]
++ |
++        MOV     r1, #0                 ; no raw chip data (same absent-ID convention)
++ ]
+         ExitSWIHandler
+ 
+         LTORG
+--- a/Kernel/s/PMF/osinit
++++ b/Kernel/s/PMF/osinit
+@@ -112,7 +112,14 @@
+         BEQ     %FT20
+ 
+         BL      ReadMachineType
++; Modified 2026: initialise the existing public ID, without accessing an absent chip.
++ [ HasDallasID
+         BL      ReadUniqueID
++ |
++        MOV     r0, #0
++        STR     r0, [r0, #UniqueMachineID+0]
++        STR     r0, [r0, #UniqueMachineID+4]
++ ]
+         BL      ReadHardCMOSDefaults
+ 20
+         BL      ReadCMOSDefaults
+@@ -542,6 +549,8 @@
+ ;
+ 
+ ReadMachineType ENTRY "r0-r12"
++; Modified 2026: fixed original board has no IOEB/LC/combo ASIC to probe.
++ [ HasIOEB
+  [ IO_Type = "IOMD"
+   [ MorrisSupport
+         MOV     r12, #IOMD_Base
+@@ -590,6 +599,9 @@
+         MOVEQ   r0, #IOST_IOEB :OR: IOST_LC             ; IOEB and LC
+ 10
+  ]
++ |
++        MOV     r0, #0
++ ] ; HasIOEB
+         MOV     r1, #0                                  ; normal Hsync and address pointer
+         STRB    r0, [r1, #IOSystemType]
+ 
+@@ -1120,6 +1132,7 @@
+  ]
+         MEND
+ 
++ [ HasDallasID
+ ReadUniqueID    ENTRY "r0-r12"
+         MOV     r0, #0
+         LDR     r1, =IOC
+@@ -1241,6 +1254,7 @@
+         ORRNES  pc, lr, #V_bit                  ; then exit indicating error
+         BICS    pc, lr, #V_bit
+ 
++ ] ; HasDallasID
+         LTORG
+ 
+         END

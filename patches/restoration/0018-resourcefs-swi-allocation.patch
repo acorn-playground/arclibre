@@ -1,0 +1,11 @@
+--- a/ResourceFS/s/ResourceFS
++++ b/ResourceFS/s/ResourceFS
+@@ -139,7 +139,7 @@
+ 
+         ASSERT  (.-Module_BaseAddr) = 0
+ 
+-MySWIBase       *       Module_SWISystemBase + ResourceFSSWI * Module_SWIChunkSize
++MySWIBase       *       ResourceFSSWI_Base
+ 
+         DCD     0 ; ROMFS_Start    - Module_BaseAddr
+         DCD     ROMFS_Init     - Module_BaseAddr

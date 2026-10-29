@@ -1,0 +1,28 @@
+# Host/editor files and disposable language caches.
+.DS_Store
+._*
+.AppleDouble/
+*~
+*.swp
+*.swo
+__pycache__/
+*.py[cod]
+.venv/
+.build/
+.swiftpm/
+*.log
+
+# Build output, local host tools, test captures and release packages.
+/build/
+/dist/
+# Local settings (the MacArch ROM to install into; see BUILD.md).
+/arclibre.local.json
+
+# An optional local collection of upstream RISC OS sources, read only by the
+# maintainer import tools (tools/import_*.py); pinned inputs live in src/.
+/references/
+
+# Local overrides/secrets; an explicitly named example can be versioned.
+.env
+.env.*
+!.env.example

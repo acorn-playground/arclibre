@@ -1,0 +1,39 @@
+{
+  "status": "PASS",
+  "modules": [
+    {
+      "component": "DeviceFS",
+      "status": "STATIC_ARM2_PASS",
+      "bytes": 8016,
+      "sha256": "0391f15430baecb491cdba0b4f61dfef4e2c3ed2697ac8589a80c076d6ca667f",
+      "aof_sha256": "3139e4c960eb626d53ca161403988d1f56acdfcc84a8dec2bc9a810137e909da",
+      "integer_instructions": 1866,
+      "relocations": 0,
+      "unresolved_symbols": 0,
+      "swi_base": 272192
+    },
+    {
+      "component": "SystemDevs",
+      "status": "STATIC_ARM2_PASS",
+      "bytes": 3424,
+      "sha256": "f3846226d388b7ff28c53b085c03626411f60d6e8df6a19875961141ebf97951",
+      "aof_sha256": "67a24f60ca6d1ed1ead3912f98b62816b9695a513540de59fd2fd876b7c75dd8",
+      "integer_instructions": 690,
+      "relocations": 0,
+      "unresolved_symbols": 0,
+      "swi_base": null
+    },
+    {
+      "component": "PipeFS",
+      "status": "STATIC_ARM2_PASS",
+      "bytes": 4352,
+      "sha256": "b68d0f0c679d0510168d8ec2395d6555115fb786450a387ee5956eed94f1652a",
+      "aof_sha256": "54f356f4ee3c1ab8560bf3152125aba0849b5c5ee40d27c7679cdf5689a209e0",
+      "integer_instructions": 1008,
+      "relocations": 0,
+      "unresolved_symbols": 0,
+      "swi_base": 0
+    }
+  ],
+  "resources_sha256": "8fa2ecf271132bc2bd0d66a4c8c332cd626c5b693a5d20811df80841b515d51c"
+}

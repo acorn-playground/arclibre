@@ -1,0 +1,24 @@
+--- a/Kernel/s/Kernel
++++ b/Kernel/s/Kernel
+@@ -295,7 +295,9 @@
+         LDR     pc, MOSROMVecs+ProcVec_PrefAb
+         LDR     pc, MOSROMVecs+ProcVec_DataAb
+         LDR     pc, MOSROMVecs+ProcVec_AddrEx
+-        B       MOSROMVecs+IRQ_Test_CTRL_or_R_Pressed
++ ; Modified 2026: this vector is copied to address &18. ARM2 PC wraps at 64 MiB.
++ ; Encode the signed 24-word displacement from its RAM execution address.
++        DCD &EA000000 :OR: (((IRQ_Test_CTRL_or_R_Pressed - (.-MOSROMVecs) - 8) :SHR: 2) :AND: &FFFFFF)
+ 
+         MOV     r10, #IOC               ; we dunno what to do with it -
+                                         ; so cut it off - right off!
+@@ -374,7 +376,9 @@
+         LDR     PC, MOSROMVecs+DAbHan
+   ]
+         LDR     PC, MOSROMVecs+AdXHan
+-        B       MOSROMVecs+IRQ_Test_CTRL_or_R_Pressed
++ ; Modified 2026: this vector is copied to address &18. ARM2 PC wraps at 64 MiB.
++ ; Encode the signed 24-word displacement from its RAM execution address.
++        DCD &EA000000 :OR: (((IRQ_Test_CTRL_or_R_Pressed - (.-MOSROMVecs) - 8) :SHR: 2) :AND: &FFFFFF)
+         MOV     R10, #IOC               ; we dunno what to do with it -
+                                         ; so cut it off - right off!
+         STRB    R10, [R10, #IOCFIQMSK]  ; :LSB: IOC = 0

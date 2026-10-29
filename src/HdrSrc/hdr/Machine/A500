@@ -1,0 +1,68 @@
+; Copyright 1996 Acorn Computers Ltd
+;
+; Licensed under the Apache License, Version 2.0 (the "License");
+; you may not use this file except in compliance with the License.
+; You may obtain a copy of the License at
+;
+;     http://www.apache.org/licenses/LICENSE-2.0
+;
+; Unless required by applicable law or agreed to in writing, software
+; distributed under the License is distributed on an "AS IS" BASIS,
+; WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+; See the License for the specific language governing permissions and
+; limitations under the License.
+;
+        SUBT    Definition of the A500 prototype platform ==> Hdr:A500
+
+OldOpt  SETA    {OPT}
+        OPT     OptNoList+OptNoP1List
+
+; ***********************************
+; ***    C h a n g e   L i s t    ***
+; ***********************************
+;
+; Date       Name          Description
+; ----       ----          -----------
+; 04-Jan-93  BCockburn     Created from Hdr:System
+
+
+                GBLS    CPU_Type
+CPU_Type        SETS    "ARM2"                          ; A500 has a bog standard ARM 2
+                GBLS    GetCPU
+GetCPU          SETS    "GET Hdr:CPU." :CC: CPU_Type
+                $GetCPU
+
+                GBLS    IO_Type
+IO_Type         SETS    "IOC-A500"                          ; A500 has a bog standard ARM 2
+                GBLS    GetIO
+GetIO           SETS    "GET Hdr:IO." :CC: IO_Type
+
+
+                GBLS    VIDC_Type
+VIDC_Type       SETS    "VIDC1"
+                GBLS    GetVIDC
+GetVIDC         SETS    "GET Hdr:VIDC." :CC: VIDC_Type
+
+                GBLS    MEMC_Type
+MEMC_Type       SETS    "MEMC1"
+                GBLS    GetMEMC
+GetMEMC         SETS    "GET Hdr:MEMC." :CC: MEMC_Type
+
+                GBLS    MEMM_Type
+MEMM_Type       SETS    "MEMC1"
+                GBLS    GetMEMM
+GetMEMM         SETS    "GET Hdr:MEMM.MEMC1"
+
+                GBLS    FDC_Type
+FDC_Type        SETS    "FDC1793"
+                GBLS    GetFDC
+GetFDC          SETS    "GET Hdr:FDC." :CC: FDC_Type
+
+                GBLL    NewClockChip
+NewClockChip    SETL    {FALSE}
+
+                GBLS    Keyboard_Type
+Keyboard_Type   SETS    "A1A500"
+
+        OPT     OldOpt
+        END

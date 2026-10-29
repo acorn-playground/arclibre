@@ -1,0 +1,1698 @@
+--- a/src/Econet/s/Background
++++ b/src/Econet/s/Background
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: ARM2 assembly contracts (see patches/network).
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -17,7 +18,7 @@
+         ALIGN   $Alignment
+ Interrupt       ROUT
+         Push    "lr"
+-        ADR     r14, IOC
++        MOV     r14, #IOC
+         LDRB    r14, [ r14, #IOCIRQREQA ]               ; IRQ Request register
+         TST     r14, #force_bit                         ; IRQ forced from FIQ
+         Pull    "pc", EQ                                ; If it wasn't an FIQ to IRQ down-grade
+@@ -34,7 +35,8 @@
+         ]
+ InterruptLoop
+         TEQP    psr, #( FFlag + IFlag + SVC_mode )      ; Disable FIQ
+-        ADR     r1, IOC                                 ; Not mode dependent
++        MOV     r0, r0                                  ; ArcLibre: ARM2 settling after a PSR write
++        MOV     r1, #IOC                                 ; Not mode dependent
+         LDRB    r0, [ r1, #IOCIRQMSKA ]                 ; IRQ Mask register
+         BIC     r0, r0, #force_bit                      ; Must clear it first in case it happens again!
+         STRB    r0, [ r1, #IOCIRQMSKA ]                 ; IRQ Mask register
+@@ -101,7 +103,7 @@
+         TEQ     r0, #BitSeven + Econet_JSR
+         BEQ     DoJSR
+         ASL     r2, 16
+-        ASR     r2, 16                                  ; Clear the top 16 bits of the procedure number
++        MOV     r2, r2, ASR #16                                  ; Clear the top 16 bits of the procedure number
+         TEQ     r0, #BitSeven + Econet_UserProcedureCall
+         MOVEQ   r0, #Event_Econet_UserRPC
+         MOVNE   r0, #Event_Econet_OSProc
+@@ -298,12 +300,14 @@
+         TEQ     r7, #NIL
+         BEQ     %70                                     ; Its OK, so lets do it
+         TEQP    psr, #( IFlag + SVC_mode )              ; Goto SVC
++        MOV     r0, r0                                  ; ArcLibre: ARM2 settling after a PSR write
+         MOV     r2, #ServicePortable_TidyUp             ; Lets beg for it (non-mode dependent register)
+         Push    "r1, lr"                                ; This may cause SWIs, which will change PowerDownTime
+         MOV     r1, #Service_Portable
+         SWI     XOS_ServiceCall
+         Pull    "r1, lr"
+         TEQP    psr, r5                                 ; Restore mode and interrupt state
++        MOV     r0, r0                                  ; ArcLibre: ARM2 settling after a PSR write
+         LDR     r7, RxCBList
+         TEQ     r7, #NIL
+ 60
+@@ -506,7 +510,8 @@
+         TEQ     r4, #0                                  ; Test it
+         BNE     ExitRestartRecord
+         ST      r7, Record                              ; Save the address of the transmit control block
+-        ST      pc, FIQBusy                             ; Set the FIQ flag <> 0 (Mode = SVC)
++        MOV     r4, #1                                ; ArcLibre: an explicit non-zero flag; a byte
++        ST      r4, FIQBusy                             ; store of the PC is not used on ARM2
+         LDRB    r4, [ r7, #Offset_Station ]             ; Now set up the TxMode flags
+         EORS    r4, r4, #255                            ; Z if it is 255 ==> broadcast
+         ORREQ   r4, r4, #BroadcastBit
+@@ -578,7 +583,7 @@
+         TEQP    psr, r4                                 ; Restore interrupts and mode
+         NOP
+         STR     r3, [ r7, #Offset_Event ]
+-        ADR     r4, IOC
++        MOV     r4, #IOC
+         LDRB    r3, [ r4, #IOCIRQMSKA ]                 ; IRQ Mask register
+         ORR     r3, r3, #force_bit
+         STRB    r3, [ r4, #IOCIRQMSKA ]                 ; IRQ Mask register
+--- a/src/Econet/s/Interface
++++ b/src/Econet/s/Interface
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: ARM2 assembly contracts (see patches/network).
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -518,6 +519,7 @@
+ ReceptionCompleted
+         SWI     XOS_EnterOS                             ; Get back to SVC mode, ignore error
+         TEQP    psr, r9                                 ; Restore interrupts and mode (might be IRQ)
++        MOV     r0, r0                                  ; ArcLibre: ARM2 settling after a PSR write
+         MOV     r1, r0                                  ; The final status to return
+         MOV     r0, #Econet_FinishReception
+         MOV     r9, #EconetV                            ; Turn off the hourglass
+@@ -533,6 +535,7 @@
+         MOV     r11, r0                                 ; Keep the error
+         SWI     XOS_EnterOS                             ; Get back to SVC mode, ignore error
+         TEQP    psr, r9                                 ; Restore interrupts and mode (might be IRQ)
++        MOV     r0, r0                                  ; ArcLibre: ARM2 settling after a PSR write
+         MOV     r0, #Econet_FinishReception
+         MOV     r9, #EconetV                            ; Turn off the hourglass
+         SWI     XOS_CallAVector
+@@ -711,6 +714,7 @@
+         MOV     r14, #IFlag
+         TST     r14, psr                                ; Is the IRQ flag set?
+         TEQEQP  r14, psr                                ; No, so set it for this atomic stuff
++        MOV     r0, r0                                  ; ArcLibre: ARM2 settling after a PSR write
+         [       False ; Debug
+         NOP
+         DREG    psr, "Tx PSR = &"
+@@ -761,6 +765,7 @@
+         LDR     r10, [ r10, #Offset_Handle ]            ; Keep the handle for polling with
+         MOV     r9, psr                                 ; Keep the mode and interrupt state
+         TEQP    psr, #0                                 ; Enable all interrupts and go to user mode
++        MOV     r0, r0                                  ; ArcLibre: ARM2 settling after a PSR write
+ TxPollLoop
+         SWI     XOS_ReadEscapeState                     ; Doesn't enable IRQ, ignore the error
+         CLC     VS
+@@ -773,6 +778,7 @@
+         BEQ     TxPollLoop
+         SWI     XOS_EnterOS                             ; Get back to SVC mode, ignore error
+         TEQP    psr, r9                                 ; Restore interrupts and mode (might be IRQ)
++        MOV     r0, r0                                  ; ArcLibre: ARM2 settling after a PSR write
+         MOV     r0, #Econet_FinishTransmission
+         MOV     r9, #EconetV                            ; Turn off the hourglass
+         SWI     XOS_CallAVector
+@@ -783,6 +789,7 @@
+ EscapedOutOfTx
+         SWI     XOS_EnterOS                             ; Get back to SVC mode, ignore error
+         TEQP    psr, r9                                 ; Restore interrupts and mode (might be IRQ)
++        MOV     r0, r0                                  ; ArcLibre: ARM2 settling after a PSR write
+         MOV     r0, #Econet_FinishTransmission
+         MOV     r9, #EconetV                            ; Turn off the hourglass
+         SWI     XOS_CallAVector
+@@ -798,6 +805,7 @@
+         MOV     r10, r0                                 ; Keep the error
+         SWI     XOS_EnterOS                             ; Get back to SVC mode, ignore error
+         TEQP    psr, r9                                 ; Restore interrupts and mode (might be IRQ)
++        MOV     r0, r0                                  ; ArcLibre: ARM2 settling after a PSR write
+         MOV     r0, #Econet_FinishTransmission
+         MOV     r9, #EconetV                            ; Turn off the hourglass
+         SWI     XOS_CallAVector
+@@ -1684,7 +1692,7 @@
+         ]
+         |
+         LDR     r0, =EconetController                   ; If not from a podule
+-        ADR     r1, IOC
++        MOV     r1, #IOC
+         ADD     r1, r1, #IOCFIQMSK                      ; Defaults for internal hardware
+         MOV     r2, #econet_FIQ_bit
+         ]
+@@ -1818,7 +1826,7 @@
+         ADR     r1, PortTable
+         ADD     r1, r1, r2, LSR #2                      ; Add in the offset
+         AND     r2, r0, #2_00001111
+-        LSL     r2, 1                                   ; Calculate the shift value
++        MOV     r2, r2, LSL #1                                   ; Calculate the shift value
+         MOV     pc, lr
+ 
+ CheckPort       ROUT
+--- a/src/Econet/s/Macros
++++ b/src/Econet/s/Macros
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: ARM2 assembly contracts (see patches/network).
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -38,6 +39,7 @@
+         STMIA   r4!, { r5 }
+         MOV     r5, psr                                 ; Preserve mode
+         TEQP    psr, #( FFlag + IFlag + SVC_mode )      ; Set FIQ flag and goto SVC mode
++        MOV     r0, r0                                  ; ArcLibre: ARM2 settling after a PSR write
+         CMP     r2, #50
+         BLT     %FT30
+         ADR     r3, %FT20
+@@ -54,6 +56,7 @@
+         ALIGN
+ 30
+         TEQP    r5, #0                                  ; Return to Correct mode
++        MOV     r0, r0                                  ; ArcLibre: ARM2 settling after a PSR write
+         LDMDB   r4!, { r5 }
+         STMDB   r4!, { r1, r2 }
+         LDMDB   r4!, { r0-r3 }
+@@ -72,12 +75,14 @@
+         MOV     r0, $r
+         ]
+         TEQP    psr, #( FFlag + IFlag + SVC_mode )      ; Set FIQ flag and goto SVC mode
++        MOV     r0, r0                                  ; ArcLibre: ARM2 settling after a PSR write
+         LDMIA   r4!, { r1, r2 }
+         STMIA   r4!, { r14 }                            ; Preserve SVC r14
+         SWI     XOS_ConvertHex8
+         LDMDB   r4!, { r14 }
+         STMDB   r4!, { r1, r2 }
+         TEQP    r3, #0                                  ; Return to Correct mode
++        MOV     r0, r0                                  ; ArcLibre: ARM2 settling after a PSR write
+         LDMDB   r4!, { r0-r3 }
+         LDR     r4, [ r0, -r0 ]
+         MEND
+@@ -87,6 +92,7 @@
+         Push    "r0-r4"
+         MOV     r4, psr                                 ; Preserve mode
+         TEQP    psr, #( FFlag + IFlag + SVC_mode )      ; Set FIQ flag and goto SVC mode
++        MOV     r0, r0                                  ; ArcLibre: ARM2 settling after a PSR write
+         LDR     r0, =DebugTraceAddr                     ; Work area
+         LDMIA   r0, { r1, r2 }
+         CMP     r2, #50
+@@ -107,6 +113,7 @@
+         LDR     r0, =DebugTraceAddr                     ; Work area
+         STMIA   r0, { r1, r2 }
+         TEQP    r4, #0                                  ; Return to Correct mode
++        MOV     r0, r0                                  ; ArcLibre: ARM2 settling after a PSR write
+         Pull    "r0-r4"
+         MEND
+ 
+@@ -115,6 +122,7 @@
+         Push    "r0-r4"
+         MOV     r4, psr                                 ; Preserve mode
+         TEQP    psr, #( FFlag + IFlag + SVC_mode )      ; Set FIQ flag and goto SVC mode
++        MOV     r0, r0                                  ; ArcLibre: ARM2 settling after a PSR write
+         LDR     r0, =DebugTraceAddr                     ; Work area
+         LDMIA   r0, { r1, r2 }
+         CMP     r2, #50
+@@ -147,6 +155,7 @@
+         LDR     r0, =DebugTraceAddr                     ; Work area
+         STMIA   r0, { r1, r2 }
+         TEQP    r4, #0                                  ; Return to Correct mode
++        MOV     r0, r0                                  ; ArcLibre: ARM2 settling after a PSR write
+         Pull    "r0-r4"
+         MEND
+ 
+@@ -203,22 +212,22 @@
+         [       UseLDR
+         [       "$init" = "Init"
+ $a
+-        [       {TRUE} ;                                ; Cope with 32bit CPUs
++        [       {FALSE} ;                               ; ArcLibre: ARM2/ARM3 have no 32-bit mode (was {TRUE}: cope with 32bit CPUs)
+         mrs     AL, $regc, CPSR_all                     ; Switch to _32 mode with IRQs and FIQs off
+         ORR     $regb, $regc, #I32_bit :OR: F32_bit     ; Has to be done in two stages because RISC OS
+         msr     AL, CPSR_all, $regb                     ; can't return to a 32bit mode and interrupts
+         ORR     $regb, $regb, #2_10000                  ; can occur after the MSR but before the following
+         msr     AL, CPSR_all, $regb                     ; instruction.
+         ]
+-        ADR     $rega, FIQVector
++        MOV     $rega, #FIQVector; ArcLibre: the fixed FIQ vector address
+         LDR     $regb, =&E51FF004                       ; LDR pc, .+4 = LDR pc, [ pc, #-4 ]
+         STR     $regb, [ $rega ], #4
+-        [       {TRUE} ;                                ; Cope with 32bit CPUs
++        [       {FALSE} ;                               ; ArcLibre: ARM2/ARM3 have no 32-bit mode (was {TRUE}: cope with 32bit CPUs)
+         ; And switch back
+         msr     AL, CPSR_all, $regc
+         ]
+         |
+-$a      ADR     $rega, FIQVector + 4
++$a      MOV     $rega, #FIQVector + 4; ArcLibre: the fixed FIQ vector address
+         ]
+         [       "$style" = "Long"
+         ADRL    $regb, $dest
+@@ -234,7 +243,7 @@
+         ]
+         MOV     $rega, $rega, LSR#2
+         ORR     $rega, $rega, #&EA000000                ; BAL
+-        ADR     $regb, FIQVector
++        MOV     $regb, #FIQVector; ArcLibre: the fixed FIQ vector address
+         STR     $rega, [ $regb, #0 ]
+         ]
+         MEND
+@@ -252,7 +261,7 @@
+         |
+ $a      ADR     $rega, $dest
+         ]
+-        ADR     $regb, NextJump
++        MOV     $regb, #NextJump; ArcLibre: a fixed address
+         STR     $rega, [ $regb, #0 ]
+         MEND
+ 
+@@ -265,17 +274,17 @@
+         ]
+         [       UseLDR
+         [       "$init" = "Init"
+-$a      ADR     $rega, FIQVector
++$a      MOV     $rega, #FIQVector; ArcLibre: the fixed FIQ vector address
+         LDR     $regb, =&E51FF004                       ; LDR pc, .+4 = LDR pc, [ pc, #-4 ]
+         STR     $regb, [ $rega ], #4
+         |
+-$a      ADR     $rega, FIQVector + 4
++$a      MOV     $rega, #FIQVector + 4; ArcLibre: the fixed FIQ vector address
+         ]
+-        ADR     $regb, NextJump
++        MOV     $regb, #NextJump; ArcLibre: a fixed address
+         LDR     $regb, [ $regb, #0 ]
+         STR     $regb, [ $rega, #0 ]
+         |
+-$a      ADR     $rega, NextJump
++$a      MOV     $rega, #NextJump; ArcLibre: a fixed address
+         LDR     $regb, [ $rega, #0 ]
+         SUB     $regb, $regb #FIQVector + 8
+         MOV     $regb, $regb, LSR#2
+@@ -297,14 +306,14 @@
+         !       1,"Syntax is: WaitForFIQ rega, regb"
+         ]
+         [       UseLDR
+-$a      ADR     $rega, FIQVector + 4
++$a      MOV     $rega, #FIQVector + 4; ArcLibre: the fixed FIQ vector address
+         ADR     $regb, %FT10
+         STR     $regb, [ $rega, #0 ]
+         |
+ $a      ADR     $rega, %FT10 - ( FIQVector + 8 )        ; Byte offset
+         MOV     $rega, $rega, LSR#2                     ; Word offset
+         ORR     $rega, $rega, #&EA000000                ; BAL
+-        ADR     $regb, FIQVector                        ; Place for new instruction
++        MOV     $regb, #FIQVector                        ; Place for new instruction
+         STR     $rega, [ $regb, #0 ]
+         ]
+         SUBS    pc, lr, #4
+@@ -354,7 +363,7 @@
+ 
+         MACRO
+         TurnAroundDelay $reg1,$reg2,$reg3,$delay
+-        ADR     r10, IOC
++        MOV     r10, #IOC
+         [               "$delay" = ""                   ; Default case is 40 microseconds
+         MOV     $reg1, #80
+         |                                               ; Delay value in microseconds
+--- a/src/Econet/s/Module
++++ b/src/Econet/s/Module
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: ARM2 assembly contracts (see patches/network).
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -109,6 +110,8 @@
+                 GBLS    Alignment
+ Alignment       SETS    "16, 12"
+ 
++        AREA    |Econet$$Code|, CODE, READONLY
++
+ Origin
+         DCD     0                                       ; Start
+         DCD     InitModule - Origin                     ; Initialisation
+@@ -447,7 +450,7 @@
+         ]
+         [       PoduleCapable
+         STR     r10, HardwareAddress
+-        ADR     r0, IOC
++        MOV     r0, #IOC                                ; ArcLibre: the fixed IOC address, not a label
+         ADD     r0, r0, #IOCFIQMSK                      ; Defaults for internal hardware
+         MOV     r1, #econet_FIQ_bit
+         Push    "r0, r1"
+@@ -927,6 +930,7 @@
+         MOV     r1, psr
+         BIC     r1, r1, #FFlag
+         TEQP    psr, r1
++        MOV     r0, r0                                  ; ArcLibre: ARM2 settling after a PSR write
+ WaitForNotBusy
+         LD      r1, FIQBusy
+         TEQ     r1, #0
+@@ -934,6 +938,7 @@
+         MOV     r1, psr
+         ORR     r1, r1, #FFlag
+         TEQP    psr, r1
++        MOV     r0, r0                                  ; ArcLibre: ARM2 settling after a PSR write
+         LD      r1, FIQBusy
+         TEQ     r1, #0
+         BNE     TryForNotBusy
+@@ -954,7 +959,7 @@
+         BIC     r14, r14, r1
+         STRB    r14, [ r0, #0 ]
+         |
+-        ADR     r1, IOC
++        MOV     r1, #IOC
+         LDRB    r0, [ r1, #IOCFIQMSK ]                  ; FIQ Mask register
+         BIC     r0, r0, #econet_FIQ_bit
+         STRB    r0, [ r1, #IOCFIQMSK ]                  ; FIQ Mask register
+@@ -968,7 +973,7 @@
+         TEQ     r14, #FIQ_Owner
+         LD      r14, SWILock, EQ                        ; See if we are executing a SWI
+         TEQEQ   r14, #0
+-        ADREQ   r14, IOC
++        MOVEQ   r14, #IOC
+         LDREQB  r14, [ r14, #IOCIRQREQA ]               ; IRQ Request register
+         TSTEQ   r14, #force_bit                         ; If FIQ downgrade pending do not release FIQ
+         Pull    "pc", NE
+@@ -979,24 +984,26 @@
+         MOV     r14, psr
+         ORR     r14, r14, #FFlag                        ; Disable FIQ
+         TEQP    psr, r14
++        MOV     r0, r0                                  ; ArcLibre: ARM2 settling after a PSR write
+         LD      r14, FIQBusy
+         TEQ     r14, #0                                 ; Is it still not busy?
+         BEQ     DoClaimFIQ                              ; Yes
+         MOV     r14, psr
+         BIC     r14, r14, #FFlag                        ; Re-enable FIQ because something has just started
+         TEQP    psr, r14
++        MOV     r0, r0                                  ; ArcLibre: ARM2 settling after a PSR write
+ BackgroundClaimFails
+         MOV     r1, #Service_ClaimFIQinBackground
+         Pull    "r0, pc"
+ 
+ DoReset ROUT                                            ; Install the FIQ code
+-        ADR     r1, ModuleWorkspace                     ; Stored where FIQ code can find it
++        MOV     r1, #ModuleWorkspace                     ; Stored where FIQ code can find it
+         STR     wp, [ r1 ]
+         MOV     r1, lr                                  ; The return address, for RTFIQ (from SVC 'lr')
+         TEQP    psr, #( FFlag + IFlag + FIQ_mode )      ; Set FIQ flag and goto FIQ mode
+         NOP
+         ADD     lr, r1, #4                              ; The return address, for RTFIQ (to FIQ 'lr')
+-        ADR     r12, ModuleWorkspace
++        MOV     r12, #ModuleWorkspace
+         LDR     r12, [ r12 ]                            ; FIQ_R12 points to Econet's workspace
+         [       PoduleCapable
+         LDR     r10, HardwareAddress
+@@ -1027,7 +1034,7 @@
+         BREG    r11, "Msk reg now = &"
+         ]
+         |
+-        ADR     r11, IOC                                ; Now allow ADLC interrupts to actually give FIQs
++        MOV     r11, #IOC                                ; Now allow ADLC interrupts to actually give FIQs
+         LDRB    r13, [ r11, #IOCFIQMSK ]                ; FIQ Mask register
+         ORR     r13, r13, #econet_FIQ_bit
+         STRB    r13, [ r11, #IOCFIQMSK ]                ; FIQ Mask register
+@@ -1037,7 +1044,7 @@
+         ; also used as an exit from FIQ code after an
+         ; error so it has to EXIT with RTFIQ
+         [       PoduleCapable
+-        ADR     r12, ModuleWorkspace
++        MOV     r12, #ModuleWorkspace
+         LDR     r12, [ r12 ]                            ; FIQ_R12 points to Econet's workspace
+         LDR     r10, HardwareAddress
+         |
+@@ -1062,7 +1069,7 @@
+         ]
+         ]
+         [       PoduleCapable
+-        ADR     r12, ModuleWorkspace
++        MOV     r12, #ModuleWorkspace
+         LDR     r12, [ r12 ]                            ; FIQ_R12 points to Econet's workspace
+         LDR     r10, HardwareAddress
+         |
+@@ -1075,7 +1082,7 @@
+         LD      r13, SReg2                              ; Ensure that we keep Status2 up-to-date
+         ST      r13, Status2
+ Ready                                                   ; Restores FIQ_R10 and FIQ_R12
+-        ADR     r12, ModuleWorkspace
++        MOV     r12, #ModuleWorkspace
+         LDR     r12, [ r12 ]                            ; FIQ_R12 points to Econet's workspace
+         MOV     r13, #0
+         ST      r13, FIQBusy                            ; Show that FIQ is not busy, by storing a zero
+@@ -1131,9 +1138,9 @@
+         ADR     r7, HardwareAddress
+         LDMIA   r7, { r7, r8, r9 }
+         MOV     r10, r7
+-        ADR     r11, IOC
++        MOV     r11, #IOC
+         |       ; PoduleCapable
+-        ADR     r11, IOC
++        MOV     r11, #IOC
+         ADD     r8, r11, #IOCFIQMSK
+         MOV     r9, #econet_FIQ_bit
+         LDR     r10, =EconetController
+@@ -1330,7 +1337,7 @@
+         MOV     r1, #37                                 ; Magic value determined emperically
+         DivRem  r2, r0, r1, r14
+         INC     r2
+-        ASR     r2, 1
++        MOV     r2, r2, ASR #1
+         ST      r2, BroadcastTime                       ; In quarters of a micro second
+         [       False ; DebugFindLocalNet
+         DLINE   "Final interrupt OK"
+--- a/src/Econet/s/Receive
++++ b/src/Econet/s/Receive
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: ARM2 assembly contracts (see patches/network).
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -36,7 +37,8 @@
+         BNE     FrameDiscontinue
+         SetFIQ  CheckNetOfScoutForBroadcast, r11, r13
+ 40
+-        ST      pc, FIQBusy                             ; Set the Busy flag, since this is not executed in UserMode
++        MOV     r13, #1                                ; ArcLibre: an explicit non-zero flag; a byte
++        ST      r13, FIQBusy                             ; store of the PC is not used on ARM2
+         RTFIQ
+ 
+         ALIGN   $Alignment
+@@ -160,7 +162,7 @@
+         DECS    r9
+ 10
+         TurnAroundDelay r8, r11, r13
+-        ADR     r13, NextJump                           ; The data fitted in the buffer and all is well
++        MOV     r13, #NextJump                           ; The data fitted in the buffer and all is well
+         LDR     pc, [ r13 ]
+ 
+         ALIGN   $Alignment
+@@ -222,11 +224,11 @@
+         STRB    r13, [ r11, #Offset_Status ]
+         LDR     r13, ScoutBuffer + 0                    ; Source Station, Network, Control, Port
+         STRB    r13, [ r11, #Offset_Station ]
+-        ASR     r13, 8
++        MOV     r13, r13, ASR #8
+         STRB    r13, [ r11, #Offset_Network ]
+-        ASR     r13, 8
++        MOV     r13, r13, ASR #8
+         STRB    r13, [ r11, #Offset_Control ]
+-        ASR     r13, 8
++        MOV     r13, r13, ASR #8
+         STRB    r13, [ r11, #Offset_Port ]
+         ST      r11, Record
+ 
+@@ -362,7 +364,7 @@
+         ST      r13, EventSequenceNumber
+         STR     r13, [ r11, #Offset_Event ]
+ CauseInterruptAndReset
+-        ADR     r11, IOC
++        MOV     r11, #IOC
+         LDRB    r13, [ r11, #IOCIRQMSKA ]               ; IRQ Mask register
+         ORR     r13, r13, #force_bit                    ; FIQ to IRQ down-grade
+         STRB    r13, [ r11, #IOCIRQMSKA ]               ; IRQ Mask register
+@@ -379,12 +381,12 @@
+         LDR     r13, [ r12 ], #4                        ; Source station, net, control and port
+         ; R12 now pointing at the actual data
+         STRB    r13, [ r11, #Offset_Station ]
+-        ASR     r13, 8
++        MOV     r13, r13, ASR #8
+         STRB    r13, [ r11, #Offset_Network ]
+-        ASR     r13, 8
++        MOV     r13, r13, ASR #8
+         BIC     r13, r13, #BitSeven
+         STRB    r13, [ r11, #Offset_Control ]
+-        ASR     r13, 8
++        MOV     r13, r13, ASR #8
+         STRB    r13, [ r11, #Offset_Port ]
+         LDR     r8, [ r11, #Offset_Start ]
+         ; At this point the register useage is as follows;
+@@ -402,19 +404,19 @@
+         STRB    r10, [ r8 ], #1                         ; Copy the first byte
+         DECS    r9
+         BEQ     CompleteReception                       ; There was only one byte
+-        LSR     r10, 8
++        MOV     r10, r10, LSR #8
+         TST     r8, #3                                  ; Check for alignment
+         BEQ     CopyAlignmentOne
+         STRB    r10, [ r8 ], #1                         ; Copy the second byte
+         DECS    r9
+         BEQ     CompleteReception                       ; There were only two bytes
+-        LSR     r10, 8
++        MOV     r10, r10, LSR #8
+         TST     r8, #3                                  ; Check for alignment
+         BEQ     CopyAlignmentTwo
+         STRB    r10, [ r8 ], #1                         ; Copy the third byte
+         DECS    r9
+         BEQ     CompleteReception                       ; There were only three bytes
+-        LSR     r10, 8
++        MOV     r10, r10, LSR #8
+ 
+ CopyAlignmentThree                                      ; There is one byte left in R10
+         LDR     r13, [ r12 ], #4
+@@ -479,9 +481,9 @@
+         STRB    r8, [ r11, #Offset_Status ]
+         LDR     r8, ScoutBuffer + 0                     ; Station
+         STRB    r8, [ r11, #Offset_Station ]
+-        ASR     r8, 8                                   ; Network
++        MOV     r8, r8, ASR #8                                   ; Network
+         STRB    r8, [ r11, #Offset_Network ]
+-        ASR     r8, 8                                   ; Control, Port is always zero
++        MOV     r8, r8, ASR #8                                   ; Control, Port is always zero
+         STRB    r8, [ r11, #Offset_Control ]
+         DEC     r8                                      ; Make base of Immediates &80 not &81
+         AND     r8, r8, #2_00011111                     ; Clear the top bits [ 0..31 ]
+@@ -518,8 +520,9 @@
+         STR     r8, [ r11, #Offset_Start ]
+         SUB     r9, r9, r8                              ; Size = End - Start
+         STR     r9, [ r11, #Offset_Size ]
+-        ST      pc, PeekPokeFlag                        ; Non zero because of the mode
+-        ADR     r8, IOC
++        MOV     r9, #1                                ; ArcLibre: an explicit non-zero flag; a byte
++        ST      r9, PeekPokeFlag                             ; store of the PC is not used on ARM2
++        MOV     r8, #IOC
+         LDRB    r13, [ r8, #IOCIRQMSKA ]                ; IRQ Mask register
+         ORR     r13, r13, #force_bit                    ; FIQ to IRQ down-grade
+         STRB    r13, [ r8, #IOCIRQMSKA ]                ; IRQ Mask register
+@@ -626,8 +629,10 @@
+         B       CommonPeek
+ 
+ RxGetRegisters                                          ; &89
+-        ADR     r9, Registers
+-        STMIA   r9!, { r0-r14 } ^                       ; Put down user R0 to R14, R9 now has address of R15
++        MOV     r9, #Registers
++        STMIA   r9, { r0-r14 } ^                        ; Put down user R0 to R14
++        MOV     r0, r0                                  ; ArcLibre: ARM2 forbids writeback with a user-bank
++        ADD     r9, r9, #15*4                           ; transfer, so R9 now has address of R15 explicitly
+         SUB     r8, lr, #4                              ; Correct PC
+         STR     r8, [ r9 ], #4                          ; Store R15 (PC+PSR)
+         TEQP    psr, #FFlag + IFlag + IRQ_mode          ; Go to IRQ Mode
+@@ -638,7 +643,7 @@
+         STMIA   r9, { r13, r14 }
+         TEQP    psr, #FFlag + IFlag + FIQ_mode          ; Go back to FIQ Mode
+         NOP
+-        ADR     r8, Registers
++        MOV     r8, #Registers
+         MOV     r9, #?Registers - 1
+ CommonPeek
+         SetFIQ  TxFromMe, r11, r13
+--- a/src/Econet/s/Transmit
++++ b/src/Econet/s/Transmit
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: ARM2 assembly contracts (see patches/network).
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -65,16 +66,16 @@
+         MakeNetError1 EQ
+         LDR     r13, [ r11, #Offset_Destination ]
+         ST      r13, TxByte                             ; Lo byte
+-        ASR     r13, 8
++        MOV     r13, r13, ASR #8
+         ST      r13, TxByte                             ; MidLo byte
+         WaitForFIQ r8, r9
+         LD      r13, SReg1
+         TSTS    r13, #TxDRA                             ; TDRA OK ?
+         MakeNetError1 EQ
+         LDR     r13, [ r11, #Offset_Destination ]
+-        ASR     r13, 16
++        MOV     r13, r13, ASR #16
+         ST      r13, TxByte                             ; MidHi byte
+-        ASR     r13, 8
++        MOV     r13, r13, ASR #8
+         ST      r13, TxByte                             ; Hi byte
+         LD      r13, TxMode
+         TST     r13, #LongBit
+@@ -87,7 +88,7 @@
+         LDR     r9, [ r11, #Offset_Size ]
+         ADD     r13, r13, r9                            ; The end address
+         ST      r13, TxByte                             ; Lo byte
+-        ASR     r13, 8
++        MOV     r13, r13, ASR #8
+         ST      r13, TxByte                             ; MidLo byte
+         WaitForFIQ r8, r9
+         LD      r13, SReg1
+@@ -96,9 +97,9 @@
+         LDR     r13, [ r11, #Offset_Destination ]
+         LDR     r9, [ r11, #Offset_Size ]
+         ADD     r13, r13, r9                            ; The end address
+-        ASR     r13, 16
++        MOV     r13, r13, ASR #16
+         ST      r13, TxByte                             ; MidHi byte
+-        ASR     r13, 8
++        MOV     r13, r13, ASR #8
+         ST      r13, TxByte                             ; Hi byte
+ FinishScout
+         LDR     r13, =2_00111111                        ; -RTS, ClrRxST, TxLast, FC, FlagIdle, 2Byte, PSE
+--- a/src/BBCEconet/s/Interface
++++ b/src/BBCEconet/s/Interface
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: ARM2 assembly contracts (see patches/network).
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -300,18 +301,18 @@
+         STRB    r4, [ r8, #4 ]
+         ADD     r6, r5, r6                      ; Change to end address
+         STRB    r5, [ r8, #5 ]
+-        ASR     r5, 8
++        MOV     r5, r5, ASR #8
+         STRB    r5, [ r8, #6 ]
+-        ASR     r5, 8
++        MOV     r5, r5, ASR #8
+         STRB    r5, [ r8, #7 ]
+-        ASR     r5, 8
++        MOV     r5, r5, ASR #8
+         STRB    r5, [ r8, #8 ]
+         STRB    r6, [ r8, #9 ]
+-        ASR     r6, 8
++        MOV     r6, r6, ASR #8
+         STRB    r6, [ r8, #10 ]
+-        ASR     r6, 8
++        MOV     r6, r6, ASR #8
+         STRB    r6, [ r8, #11 ]
+-        ASR     r6, 8
++        MOV     r6, r6, ASR #8
+         STRB    r6, [ r8, #12 ]
+         B       MainExit
+ 
+--- a/src/BBCEconet/s/Module
++++ b/src/BBCEconet/s/Module
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: ARM2 assembly contracts (see patches/network).
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -30,6 +31,8 @@
+ 
+         SUBT    Module header ==> &.Arthur.BBCEconet.Module
+ 
++        AREA    |BBCEconet$$Code|, CODE, READONLY ; ArcLibre: AsAsm needs an area
++
+ Origin
+         DCD     0 ; Start
+         DCD     InitModule - Origin             ; Initialisation
+--- a/src/NetFS/s/Catalog
++++ b/src/NetFS/s/Catalog
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: ARM2 assembly contracts (see patches/network).
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -218,7 +219,7 @@
+         CMN     r3, #&00100000                          ; Check for load < &FFF00000
+         BLO     DoLoadAndExec
+         LDR     r2, [ r5, #4 ]                          ; Load address
+-        LSR     r2, 8
++        MOV     r2, r2, LSR #8
+         MOV     r0, #FSControl_ReadFileType
+         SWI     XOS_FSControl
+         Pull    pc, VS
+--- a/src/NetFS/s/Commands
++++ b/src/NetFS/s/Commands
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: ARM2 assembly contracts (see patches/network).
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -788,7 +789,7 @@
+         BL      PrintDecimalNumber
+         BVS     ExitFromStarFree
+         LDR     r6, [ r1, #4 ]
+-        LSL     r6, 16
++        MOV     r6, r6, LSL #16
+         ORR     r6, r6, r3                              ; Make the disc size, in bytes
+         SUB     r0, r6, r0                              ; Calculate the amount used
+         MOV     r3, #( DiscNameSize + 2 )
+@@ -1397,6 +1398,7 @@
+         BL      DoUpCall
+         BVS     FillCacheFails
+         TEQP    psr, #0                                 ; Go into User mode to allow callbacks
++        MOV     r0, r0                                  ; ArcLibre: ARM2 settling after a PSR write
+ FillCacheTimeLoop
+         SWI     XOS_ReadMonotonicTime
+         BVS     ExitFillCacheLoop
+@@ -2421,6 +2423,7 @@
+         TEQ     r8, #0
+         BEQ     DoBroadcast
+         TEQP    psr, #0                                 ; Go into User mode to allow callbacks
++        MOV     r0, r0                                  ; ArcLibre: ARM2 settling after a PSR write
+         SWI     XOS_ReadMonotonicTime
+         MOVVS   r5, r0                                  ; Save the error
+         MOVVC   r5, #0                                  ; Or make the no error state
+@@ -2454,6 +2457,7 @@
+         BL      DoUpCall
+         MOVVC   r0, r8
+         TEQVCP  r7, #0
++        MOV     r0, r0                                  ; ArcLibre: ARM2 settling after a PSR write
+ ExitFindFileServerEarly
+         Pull    "r5, r7-r9, pc"
+ 
+--- a/src/NetFS/s/Functions
++++ b/src/NetFS/s/Functions
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: ARM2 assembly contracts (see patches/network).
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -478,6 +479,7 @@
+         BL      MyFreeRMA
+         MOV     r0, r5                                  ; Restore error
+         TEQP    r4, #0                                  ; Restore flags
++        MOV     r0, r0                                  ; ArcLibre: ARM2 settling after a PSR write
+ 99
+         INC     sp, 4                                   ; Don't return R0
+         [       Debug
+@@ -825,6 +827,7 @@
+         BL      MyFreeRMA
+         MOV     r0, r5                                  ; Restore error
+         TEQP    r4, #0                                  ; Restore flags
++        MOV     r0, r0                                  ; ArcLibre: ARM2 settling after a PSR write
+ 99
+         INC     sp, 4                                   ; Don't return R0
+         [       Debug
+@@ -874,7 +877,7 @@
+ 
+ 20
+         AND     r9, r0, #2_11100000                     ; Get high order bits of the year
+-        ASR     r9, 1                                   ; Align to the correct place
++        MOV     r9, r9, ASR #1                                   ; Align to the correct place
+         AND     r8, r0, #2_1111000000000000             ; Change to &1000*(0..15), the year since 1981
+         ORRS    r8, r9, r8, ASR #12                     ; Change to (0..127), note leap years end in 2_xx11
+         INC     r8                                      ; Change to (1..128), now leap years end in 4_xxx0
+@@ -905,7 +908,7 @@
+         CMP     r9, r14                                 ; Are there too many days for this month?
+         BHS     %70
+         Pull    r9                                      ; The year
+-        LSR     r8, 6                                   ; Align as a word address
++        MOV     r8, r8, LSR #6                                   ; Align as a word address
+         DECS    r8, 8                                   ; Reduce to 4*(-1..10)
+         BMI     %60                                     ; Nothing to do in Jan, so it's now 4*(0..10)
+         BEQ     %50                                     ; If still in Feb skip adding possible leap day
+--- a/src/NetFS/s/Interface
++++ b/src/NetFS/s/Interface
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: ARM2 assembly contracts (see patches/network).
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -593,14 +594,14 @@
+         [       Debug
+         BREG    r0, "URD handle is &", cc
+         ]
+-        ASR     r7, 2
++        MOV     r7, r7, ASR #2
+         AND     r2, r7, #2_00000011
+         LDRB    r0, [ r1, r2 ]
+         STRB    r0, [ r8, #3 ]                          ; CSD slot in 'TxHeader'
+         [       Debug
+         BREG    r0, ", CSD handle is &", cc
+         ]
+-        ASR     r7, 2
++        MOV     r7, r7, ASR #2
+         AND     r2, r7, #2_00000011
+         LDRB    r0, [ r1, r2 ]
+         STRB    r0, [ r8, #4 ]                          ; LIB slot in 'TxHeader'
+@@ -1408,7 +1409,7 @@
+         BNE     NextUIDLookUp
+         ADD     r0, r7, #Cache_Name
+         BL      CompareTwoStrings
+-        ROR     r2, 16                                  ; Byte order is now (highest to lowest) Net, Station, ?, Drive
++        MOV     r2, r2, ROR #16                                  ; Byte order is now (highest to lowest) Net, Station, ?, Drive
+         AND     r2, r2, #&FFFF00FF                      ; We only want the Station, net, and drive numbers
+         BEQ     EncodeUID
+ NextUIDLookUp
+@@ -1429,12 +1430,12 @@
+         ; Now encode UID.  Inputs R8 and R2, outputs R0 and R1, trashes r14
+         MOV     r14, #32
+ UIDEncodeLoop
+-        ROR     r8, 29, S                               ; Get every third bit starting from the top
+-        RRX     r0, S                                   ; Move it in
+-        RRX     r1, S                                   ; and through
+-        ROR     r2, 5, S                                ; Get every fifth bit starting from the bottom
+-        RRX     r0, S                                   ; Move it in
+-        RRX     r1, S                                   ; and through
++        MOVS     r8, r8, ROR #29                               ; Get every third bit starting from the top
++        MOVS     r0, r0, RRX                                   ; Move it in
++        MOVS     r1, r1, RRX                                   ; and through
++        MOVS     r2, r2, ROR #5                                ; Get every fifth bit starting from the bottom
++        MOVS     r0, r0, RRX                                   ; Move it in
++        MOVS     r1, r1, RRX                                   ; and through
+         DECS    r14                                     ; Have we been and done it all yet?
+         BNE     UIDEncodeLoop
+         ADD     r14, sp, #24
+--- a/src/NetFS/s/Module
++++ b/src/NetFS/s/Module
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: ARM2 assembly contracts (see patches/network).
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -37,7 +38,10 @@
+ 
+         SUBT    Module header ==> &.Arthur.NetFS.Module
+ 
+-MySWIChunkBase  *       Module_SWISystemBase + NetFSSWI * Module_SWIChunkSize
++; ArcLibre: the chunk is NetFS_ReadFSNumber's (&40040); the original sum is
++; Module_SWISystemBase + NetFSSWI * Module_SWIChunkSize, which the asserted
++; equality below states.
++MySWIChunkBase  *       NetFS_ReadFSNumber
+         ASSERT  MySWIChunkBase = NetFS_ReadFSNumber
+ 
+         ASSERT  Files24Bit :LOR: Files32Bit             ; Must be ome or other or both
+@@ -60,6 +64,8 @@
+ DiscNameSize    *       16
+ UserIdSize      *       21                              ; "TenChars**.TenChars**"
+ 
++        AREA    |NetFS$$Code|, CODE, READONLY ; ArcLibre: AsAsm needs an area
++
+ Origin
+         DCD     0                                       ; StartAsFS
+         DCD     InitModule - Origin                     ; Initialisation
+--- a/src/NetFS/s/Random
++++ b/src/NetFS/s/Random
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: ARM2 assembly contracts (see patches/network).
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -152,7 +153,7 @@
+         ORRNE   r2, r2, #FCB_Status_Directory           ; Set the dir bit
+         TEQ     r14, #&FF                               ; Public or Owner ??
+         MOV     r0, r6                                  ; Copy for modifying
+-        ASR     r0, 2, NE                               ; Move Owner bits where public were 'R' Bit0, 'W' Bit1
++        MOVNE     r0, r0, ASR #2                               ; Move Owner bits where public were 'R' Bit0, 'W' Bit1
+         AND     r0, r0, #BitZero+BitOne
+         TEQ     r0, #2_10                               ; Write allowed, Read not allowed
+         ORREQ   r2, r2, #FCB_Status_WriteOnly           ; Set write only bit
+--- a/src/NetFiler/s/NetFiler
++++ b/src/NetFiler/s/NetFiler
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: ARM2 assembly contracts (see patches/network).
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -105,6 +106,8 @@
+ ;;                      so that fancy font desktops look tidier.
+ ;;----------------------------------------------------------------------------
+ 
++        AREA    |NetFiler$$Code|, CODE, READONLY ; ArcLibre: AsAsm needs an area
++
+ Module_BaseAddr
+         GET     Version
+ 
+@@ -429,7 +432,7 @@
+ ; Module header
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-        LEADR   Module_LoadAddr
++        ; ArcLibre: LEADR (an Acorn aasm load address) is not needed for a ROM module
+ 
+  ASSERT (.=Module_BaseAddr)
+ 
+@@ -492,7 +495,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; Had *command to enter NetFiler, so start up via module handler
+ 
+-Desktop_NetFiler_Code ENTRY "r7"
++Desktop_NetFiler_Code KernelEntry "r7"
+ 
+         LDR     wp, [r12]
+         CMP     wp, #0
+@@ -572,7 +575,7 @@
+ 
+ 
+       [ Version >= 40
+-NetFiler_Service_MessageFileClosed ENTRY "r0,r12"
++NetFiler_Service_MessageFileClosed KernelEntry "r0,r12"
+ 
+         LDR     r12, [r12]              ; are we active?
+         CMP     r12, #0
+@@ -585,7 +588,7 @@
+ 
+  [ :DEF:Include_Messages
+       [ Version >= 48
+-NetFiler_Service_ResourceFSStarting ENTRY "r0"
++NetFiler_Service_ResourceFSStarting KernelEntry "r0"
+ 
+         ADRL    r0, resourcefsfiles
+         MOV     lr, pc                  ; LR -> return address
+@@ -595,7 +598,7 @@
+       ]
+  ]
+ 
+-NetFiler_Service_ModeChange ENTRY "r0-r3"
++NetFiler_Service_ModeChange KernelEntry "r0-r3"
+ 
+         ADR     r0, vduinput
+         ADR     r1, vduoutput
+@@ -619,7 +622,7 @@
+         DCD     -1
+ 
+ 
+-NetFiler_Service_StartedFiler ENTRY
++NetFiler_Service_StartedFiler KernelEntry
+ 
+         LDR     r14, [r12]              ; cancel 'don't start' flag
+         CMP     r14, #0
+@@ -629,7 +632,7 @@
+         EXIT
+ 
+ 
+-NetFiler_Service_StartFiler ENTRY "r2,r3,r6"
++NetFiler_Service_StartFiler KernelEntry "r2,r3,r6"
+ 
+         LDR     r2, [r12]
+         CMP     r2, #0
+@@ -674,7 +677,7 @@
+         EXIT
+ 
+ 
+-NetFiler_Service_Reset ENTRY "r0-r6"
++NetFiler_Service_Reset KernelEntry "r0-r6"
+ 
+         LDR     r2, [r12]               ; cancel 'don't start' flag
+         CMP     r2, #0
+@@ -691,7 +694,7 @@
+ ; ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+       [ Version >= 48
+-NetFiler_Init ENTRY "r0"
++NetFiler_Init KernelEntry "r0"
+ 
+ ; initialise NetFiler$Path if not already done
+ 
+@@ -727,7 +730,7 @@
+ ; ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+       [ Version >= 48:LAND::DEF:Include_Messages
+-NetFiler_Die ENTRY "r0"
++NetFiler_Die KernelEntry "r0"
+ 
+         ADRL    r0, resourcefsfiles
+         SWI     XResourceFS_DeregisterFiles
+@@ -737,7 +740,7 @@
+ NetFiler_Die ROUT
+       ]
+ 
+-NetFiler_Service_FilerDying ENTRY "r0-r6"
++NetFiler_Service_FilerDying KernelEntry "r0-r6"
+ 
+         LDR     wp, [r12]
+         BL      freeworkspace
+@@ -817,7 +820,7 @@
+ ;       r3 -> parent block
+ ;       V set ==> no room in RMA to create block
+ 
+-findstation ENTRY           ; NB assume V unset on entry
++findstation KernelEntry           ; NB assume V unset on entry
+ 
+         ADR     r2, notifylist-notify_link
+         B       %FT02
+@@ -1168,7 +1171,7 @@
+ 
+       [ Version >= 29
+ 
+-event_poll_word ENTRY
++event_poll_word KernelEntry
+ 
+         LDR     r14, recacheflag
+         TST     r14, #scan_loggedon
+@@ -1192,7 +1195,7 @@
+ 
+ ; Only look for notify blocks on null events, to avoid hogging CPU
+ 
+-event_null_reason ENTRY
++event_null_reason KernelEntry
+ 
+       [ Version >= 29
+         LDR     r14, wimpversion        ; if pollword events can't happen,
+@@ -1286,7 +1289,7 @@
+ 
+ ; Out   all regs may be corrupted - going back to PollWimp
+ 
+-event_mouse_click ENTRY
++event_mouse_click KernelEntry
+ 
+         LDMIA   r1, {r0-r4}             ; set mousex, mousey, buttonstate
+         ADR     r14, mousedata          ; windowhandle, iconhandle
+@@ -1383,7 +1386,7 @@
+ ; Out   R2 --> fs block for this fs  (Z set)
+ ;       R2 = -1 (Z unset) if not found
+ 
+-matchiconbar ENTRY
++matchiconbar KernelEntry
+ 
+         ADR     r2, dummynet
+         LDR     r14, [r2, #fsb_iconhandle]
+@@ -1414,9 +1417,9 @@
+ ;       [relmousex/y] set up from [mousex/y]
+ 
+       [ Version >= 38
+-matchfsviewer ENTRY "r1,x0,y0,x1,y1,scx,scy"
++matchfsviewer KernelEntry "r1,x0,y0,x1,y1,scx,scy"
+       |
+-matchfsviewer ENTRY "x0,y0,x1,y1,scx,scy"
++matchfsviewer KernelEntry "x0,y0,x1,y1,scx,scy"
+       ]
+ 
+         LDR     r0, h_fsviewer
+@@ -1472,7 +1475,7 @@
+ filerclosedir ROUT
+         LDR     r0, =Message_FilerCloseDir
+ 
+-messagetoFiler ENTRY "r1-r2"
++messagetoFiler KernelEntry "r1-r2"
+ 
+         SUB     sp, sp, #256            ; make temp frame for message
+         STR     r0, [sp, #message_action]
+@@ -1521,7 +1524,7 @@
+ filer_opendir
+         DCB     "Filer_OpenDir "
+ 
+-fileropendir ENTRY "r1-r2"
++fileropendir KernelEntry "r1-r2"
+         SUB     sp, sp, #256
+         ADR     r2, filer_opendir
+         MOV     r1, sp
+@@ -1555,7 +1558,7 @@
+ ; In    r2 -> fs block (dummynet if none)
+ ;       [menu_whandle] = window handle where all this started
+ 
+-EncodeMenu ENTRY "r1-r3"
++EncodeMenu KernelEntry "r1-r3"
+ 
+         STR     r2, menu_fsblock        ; for later
+ 
+@@ -1794,7 +1797,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; In    r2 -> fs block (dummynet if none)
+ 
+-EncodeLogonWindow ENTRY "r1,r2"
++EncodeLogonWindow KernelEntry "r1,r2"
+ 
+         LDR     r1, ib_fsname
+         ADD     r2, r2, #fsb_name       ; put fs name in
+@@ -1845,7 +1848,7 @@
+ 
+ ; Out   all regs may be corrupted - going back to PollWimp
+ 
+-event_key_pressed ENTRY
++event_key_pressed KernelEntry
+ 
+         LDMIA   r1, {r0-r6}             ; window,icon, x,y,height, index, char
+ 
+@@ -1940,6 +1943,7 @@
+ spacequote      DCB     " "              ; Share quote with ...
+ quote           DCB     """", 0
+ 
++        ALIGN                                   ; ArcLibre: code after text (aasm aligned implicitly)
+ logonkey
+         MOV     r7, #5                  ; max icon number
+         BL      dboxkey
+@@ -2105,7 +2109,7 @@
+ ; In    r3 = station / net number
+ ; Out   r1 -> full path name, constructed in [userdata..]
+ 
+-GetStationName ENTRY "r2"
++GetStationName KernelEntry "r2"
+ 
+         LDR     r2, fs_headpointer
+         B       %FT22
+@@ -2144,7 +2148,7 @@
+ ;       r1 = icon handle
+ ; Out   r5 = indirected icon len
+ GetIconStrLen
+-        ENTRY   "r0, r1"
++        KernelEntry   "r0, r1"
+         STMDB   sp!, {r0-r9}            ; R2-R9 make space for icon
+         MOV     r1, sp                  ; Point at block on stack
+         SWI     Wimp_GetIconState       ; Shouldn't fail
+@@ -2164,7 +2168,7 @@
+ ; Out   caret updated, Z set ==> do it!
+ ;       Wimp_ProcessKey called if necessary
+ 
+-dboxkey ENTRY
++dboxkey KernelEntry
+ 
+         CMP     r6, #CR
+         BNE     %FT01
+@@ -2209,7 +2213,7 @@
+ ; In    r0 = window handle
+ ;       r1 = icon handle
+ 
+-RedrawIcon ENTRY "r0-r3", 4*4
++RedrawIcon KernelEntry "r0-r3", 4*4
+ 
+         MOV     r2, #0                  ; set to same state to ensure redraw
+         MOV     r3, #0
+@@ -2226,7 +2230,7 @@
+ ; A menu is created with the title above the x,y values you feed it, with the
+ ; top left hand corner being at the x,y position
+ 
+-CreateMenu ENTRY "r2, r3"
++CreateMenu KernelEntry "r2, r3"
+ 
+         BL      EncodeMenu              ; r2 -> fs block (or dummynet)
+         BL      EncodeLogonWindow
+@@ -2256,7 +2260,7 @@
+ ; In    r1 --> menu tree just opened
+ ; Out   if r1=[h_logon], caret is moved to icon #3 if icon #1 is not null
+ 
+-smartenlogon ENTRY "r1-r5"
++smartenlogon KernelEntry "r1-r5"
+         LDR     r0, h_logon             ; r0 = window handle
+         TEQ     r1, r0
+         EXIT    NE
+@@ -2422,7 +2426,7 @@
+ 
+ ; Copy menu structures into ram, relocating as we go
+ 
+-CopyMenus ENTRY "r0-r11"
++CopyMenus KernelEntry "r0-r11"
+ 
+         ADR     r1, rom_menustart       ; src^
+         ADR     r2, ram_menustart       ; dst^
+@@ -2496,7 +2500,7 @@
+ 
+ ; .............................................................................
+ 
+-CopyMenus ENTRY "r1-r3"
++CopyMenus KernelEntry "r1-r3"
+ 
+         BL      allocatemessagedata             ; if not already done
+ 
+@@ -2533,7 +2537,7 @@
+ 
+ ; Out   all regs may be corrupted - going back to PollWimp
+ 
+-event_menu_select ENTRY
++event_menu_select KernelEntry
+ 
+         MOV     r2, r1
+         LDR     r1, menuhandle
+@@ -2555,7 +2559,7 @@
+ ; In     r1 = menu handle
+ ;        r2 -> list of selections
+ 
+-DecodeMenu ENTRY
++DecodeMenu KernelEntry
+ 
+  [ debug
+  dreg r1, "menu_select: menu handle ",cc
+@@ -2730,7 +2734,7 @@
+ ;
+ ; NB: If logon window is to be opened, refuse if it's currently closed
+ 
+-event_open_window ENTRY "cx0,cy0, r6-r9"
++event_open_window KernelEntry "cx0,cy0, r6-r9"
+ 
+         LDR     r0, [r1, #u_handle]     ; R0 = window handle
+       [ Version >= 20
+@@ -2831,7 +2835,7 @@
+         EXIT
+ 
+ 
+-event_close_window ENTRY
++event_close_window KernelEntry
+ 
+         SWI     XWimp_CloseWindow
+ 
+@@ -2843,7 +2847,7 @@
+ ; In    r1 -> block (contains window handle)
+ ; Out   window redrawn
+ 
+-event_redraw_window ENTRY "r1-r11"
++event_redraw_window KernelEntry "r1-r11"
+ 
+         SWI     XWimp_RedrawWindow
+         EXIT    VS
+@@ -2864,7 +2868,7 @@
+ 
+ ; In    r0 -> routine to call in middle of loop
+ 
+-iconloop ENTRY "r0-r11"
++iconloop KernelEntry "r0-r11"
+ 
+         LDRB    r14, fs_viewmode
+         ADRL    r1, wh_fsicons
+@@ -2921,7 +2925,7 @@
+ ;       x0,y0,x1,y1 = window-relative coords of this icon
+ ; Out   Z set ==> abort the loop now and return r2
+ 
+-icon_redraw ENTRY
++icon_redraw KernelEntry
+ 
+         LDRB    r14, fs_viewmode
+         TEQ     r14, #view_fullinfo
+@@ -3011,7 +3015,7 @@
+ ;       x0,y0,x1,y1 = window-relative coords of this icon
+ ; Out   Z set ==> abort the loop now and return r2
+ 
+-icon_search ENTRY "cx0,cy0"
++icon_search KernelEntry "cx0,cy0"
+ 
+         LDR     cx0, relmousex
+         LDR     cy0, relmousey
+@@ -3037,7 +3041,7 @@
+ ; In    [fs_viewmode] = relevant view mode
+ ; Out   cx0,cy0 = x,y size of box containing fs
+ 
+-getboxsize ENTRY "r1, cx1,cy1"
++getboxsize KernelEntry "r1, cx1,cy1"
+ 
+         ADRL    r1, wh_fsicons + i_size * 3
+         LDRB    r14, fs_viewmode
+@@ -3053,7 +3057,7 @@
+ ; In    r0 = window handle
+ ; Out   whole of visible area of window marked invalid
+ 
+-ForceAll ENTRY "r1-r4"
++ForceAll KernelEntry "r1-r4"
+ 
+         MOV     R1,#-bignum
+         MOV     R2,#-bignum
+@@ -3105,7 +3109,7 @@
+ 
+ ; Out   V set, r0 = 0 ==> forget it (net is not present)
+ 
+-SetUpIconBar ENTRY
++SetUpIconBar KernelEntry
+ 
+         ADR     R1,swiname_dofsop
+         SWI     XOS_SWINumberFromString
+@@ -3166,7 +3170,7 @@
+ ; In    nicons = number of icons on the bar at the moment
+ ; Out   if [nicons] was 0, the dummy net icon is added to the bar
+ 
+-ensureicon ENTRY "r2"
++ensureicon KernelEntry "r2"
+ 
+         LDR     r14, nicons
+         CMP     r14, #0
+@@ -3181,7 +3185,7 @@
+ ; In    r2 -> fs block
+ ; Out   [r2, #fsb_iconhandle] = icon index (created on iconbar)
+ 
+-AddToIconBar ENTRY "r1-y1"
++AddToIconBar KernelEntry "r1-y1"
+ 
+         ADR     r14, dummynet
+         TEQ     r14, r2                 ; is this the dummy icon?
+@@ -3305,7 +3309,7 @@
+ 
+       [ Version >= 28
+ 
+-claimblock ENTRY "r0"
++claimblock KernelEntry "r0"
+ 
+         MOV     r0, #ModHandReason_Claim
+         SWI     XOS_Module
+@@ -3321,7 +3325,7 @@
+ ; Out   icon deleted from iconbar
+ ;       [nicons] decreased by one
+ 
+-RemoveFromIconBar ENTRY "r1"
++RemoveFromIconBar KernelEntry "r1"
+ 
+       [ Version >= 28
+         LDR     r14, nicons                     ; keep track of these
+@@ -3458,6 +3462,7 @@
+         SWI     XWimp_CloseTemplate
+         MOVVC   r0, r2                  ; restore original error if it closed
+         TEQVCP  r3, #0
++        MOV     r0, r0                                  ; ArcLibre: ARM2 settling after a PSR write
+ 
+         Pull    "PC"
+ 
+@@ -3483,7 +3488,7 @@
+ ; Out   [r1] contains the window / icons
+ ;       [r2] contains the indirected data
+ 
+-ReadTemplate ENTRY
++ReadTemplate KernelEntry
+ 
+         MOV     r4, #-1
+         MOV     r6, #0
+@@ -3528,7 +3533,7 @@
+         BLVC    readFSList              ; read all fileservers
+         Pull    "PC"
+       ]
+-readFSList ENTRY "r1-r8"
++readFSList KernelEntry "r1-r8"
+ 
+       [ Version >= 22
+         LDR     r2, fs_headpointer      ; mark all FS's in the list 'unknown'
+@@ -3549,7 +3554,7 @@
+       [ Version < 22 :LOR: Version >= 71
+ sussloggedon
+       ]
+-readFSs ENTRY "r1-r8"
++readFSs KernelEntry "r1-r8"
+ 
+         MOV     r8, #0
+       [ Version >= 29
+@@ -3842,7 +3847,7 @@
+ ;       if NO disc on this station logged on, remove 'net#nnn.nnn:' dirs
+ ;       remove icon from bar
+ 
+-checklogoff ENTRY "r1-r4"
++checklogoff KernelEntry "r1-r4"
+ 
+     [ Version < 55
+         ; Version >= 55 : CloseDir from Logoff handled by NetFS/Filer interacting
+@@ -3902,7 +3907,7 @@
+ 
+  [ Version < 60
+       [ Version >= 36
+-closerootdir    ENTRY "r1"
++closerootdir    KernelEntry "r1"
+ 
+         ADR     r1, userdata
+         BL      GetPathName                     ; close 'net#fsname:&'
+@@ -3926,12 +3931,13 @@
+         SWI     XOS_EnterOS             ; use SVC mode here (Scratch space)
+         BL      sortfslist
+         TEQP    pc, #0
++        MOV     r0, r0                                  ; ArcLibre: ARM2 settling after a PSR write
+         MOVNV   r0, r0
+         MOV     pc, lr                  ; this lot helps Tim to debug the MOS
+ 
+-sortfslist ENTRY
++sortfslist KernelEntry
+ 
+-        ADR     r2, ScratchSpace
++        MOV     r2, #ScratchSpace
+         LDR     r3, fs_headpointer
+         CMP     r3, #0
+         EXIT    LE                      ; can't sort a null array!
+@@ -3941,7 +3947,7 @@
+         CMP     r3, #0
+         BGT     %BT01
+ 
+-        ADR     r1, ScratchSpace        ; r1 --> pointer array
++        MOV     r1, #ScratchSpace        ; r1 --> pointer array
+         SUB     r0, r2, r1
+         MOV     r0, r0, LSR #2          ; r0 = number of items
+         LDRB    r14, fs_sortmode        ; viewmode including flags
+@@ -3956,7 +3962,7 @@
+ 
+ ; go through the list of pointers, writing them back as links
+ 
+-        ADR     r1, ScratchSpace
++        MOV     r1, #ScratchSpace
+         ADR     r3, fs_headpointer - fsb_link
+ 01
+         LDR     r14, [r1], #4
+@@ -3976,7 +3982,7 @@
+ ;       r0-r3 trashable
+ ; Out   LT,GE from CMP between 1st and 2nd objects
+ 
+-sort_byname ENTRY "r0-r1, r4-r5"
++sort_byname KernelEntry "r0-r1, r4-r5"
+ 
+         ADD     r0, r0, #fsb_name
+         ADD     r1, r1, #fsb_name
+@@ -3996,7 +4002,7 @@
+ 
+         Pull    "r0-r1, r4-r5, lr"      ; drop through to number sort
+ 
+-sort_bynumber ENTRY
++sort_bynumber KernelEntry
+ 
+         LDR     r2, [r0, #fsb_station]  ; sort on net/station/drive
+         LDRB    r14, [r0, #fsb_drive]   ; (in that order)
+@@ -4032,7 +4038,7 @@
+         ADR     r1, userdata
+         Pull    "lr"
+ 
+-testpresent ENTRY "r2-r5"               ; r1 -> pathname
++testpresent KernelEntry "r2-r5"               ; r1 -> pathname
+ 
+         MOV     r0, #OSFile_ReadInfo
+  [ debug
+@@ -4078,7 +4084,7 @@
+ ; Out   r1 --> terminating zero of pathname (net#fsname:&)
+ ;                                      >>>>  net#sta.net:&  (if duplicate name)
+ 
+-GetPathName ENTRY "r2"
++GetPathName KernelEntry "r2"
+ 
+         ASSERT  ?nethash = 4                    ; load this as a word
+         LDRB    r14, [r2, #fsb_name]
+@@ -4109,7 +4115,7 @@
+ ;       r4 --> discname
+ ; Out   r1 --> terminating zero of pathname (net#sta.net::fsname.$)
+ 
+-GetFullPathName ENTRY "r2"
++GetFullPathName KernelEntry "r2"
+ 
+         ASSERT  ?nethash = 4            ; load this as a word
+         LDR     r14, nethash
+@@ -4124,7 +4130,7 @@
+         EXIT
+ 
+         [ 0=1
+-getstationpath ENTRY "r3"
++getstationpath KernelEntry "r3"
+ 
+         ASSERT  ?nethash = 4             ; load this as a word
+         LDR     r14, nethash
+@@ -4151,7 +4157,7 @@
+ ;       r3 bits 8..15 = net number
+ ; Out   r1 --> terminating zero of string (net.station)
+ 
+-ConvertNetStation ENTRY "r2"
++ConvertNetStation KernelEntry "r2"
+ 
+         MOV     r0, r3, LSR #8          ; net number
+         MOV     r2, #8                  ; buffer size
+@@ -4173,7 +4179,7 @@
+ 
+       [ :LNOT: logontask2
+ 
+-WoggleIcon ENTRY "r0-r3"
++WoggleIcon KernelEntry "r0-r3"
+ 
+         MOV     r2, #is_inverted        ; eor value
+         MOV     r3, #0                  ; bic value
+@@ -4211,7 +4217,7 @@
+ 
+ ; Out   new string in r1 = "r1" :CC: "r2" :CC: 0
+ 
+-strcat ENTRY "r1-r3"
++strcat KernelEntry "r1-r3"
+ 
+         MOV     r3, #space-1
+ 
+@@ -4254,7 +4260,7 @@
+ 
+ ; Out   r1 -> terminating null
+ 
+-strcpy_advance ENTRY "r2"
++strcpy_advance KernelEntry "r2"
+ 
+ 10      LDRB    r14, [r2], #1           ; Copy from *r2++
+         CMP     r14, #delete            ; Order, you git!
+@@ -4279,7 +4285,7 @@
+ 
+ ; Out   all regs may be corrupted - going back to PollWimp
+ 
+-event_user_message ENTRY
++event_user_message KernelEntry
+ 
+         LDR     r0, [r1, #message_action]
+         CMP     r0, #Message_Quit
+@@ -4462,7 +4468,7 @@
+         !       1, "Sorry, this source file can't make version 0.38"
+       ]
+ 
+-lookuptoken ENTRY "r0-r4"
++lookuptoken KernelEntry "r0-r4"
+ 
+         DebugS  ndr,"Look up token ",R0
+         DebugS  ndr,"Parameter 0 = ",R3
+@@ -4484,7 +4490,7 @@
+ ; In    [messagedata] -> message file desc (0 => not yet opened)
+ ; Out   r0 = [messagedata] -> message file desc (opened if not already open)
+ 
+-allocatemessagedata ENTRY "r1, r2"
++allocatemessagedata KernelEntry "r1, r2"
+ 
+         LDR     r0, messagedata
+         CMP     r0, #0
+@@ -4507,7 +4513,7 @@
+         EXIT
+ 
+ CopyError
+-        ENTRY   r1-r7
++        KernelEntry   r1-r7
+         BL      allocatemessagedata
+         EXIT    VS
+         LDR     r1, messagedata
+@@ -4524,7 +4530,7 @@
+ ; In    [messagedata] -> message file desc, or = 0 if not loaded
+ ; Out   [messagedata] = 0, OS_Module (Free) called if required, error preserved
+ 
+-deallocatemessagedata ENTRY "r0,r2"
++deallocatemessagedata KernelEntry "r0,r2"
+ 
+         LDR     r2, messagedata
+         MOVS    r0, r2
+@@ -4590,7 +4596,7 @@
+ 
+ ; Acknowledge Message_SaveDesktop - this will abort the sequence
+ 
+-ack_savedesktop ENTRY "R0-R2"
++ack_savedesktop KernelEntry "R0-R2"
+ 
+         ADR     R1,userdata             ; message is still in here
+         LDR     R14,[R1,#ms_myref]
+@@ -4606,7 +4612,7 @@
+ ; In    r0 -> string to write to file
+ ;       r1 = file handle
+ 
+-writestr  ENTRY  "r2"
++writestr  KernelEntry  "r2"
+ 
+         MOV     r2, r0
+ 01      LDRB    r0, [r2], #1
+@@ -4620,7 +4626,7 @@
+ 
+ ;............................................................................
+ 
+-event_message_returned ENTRY "r1"
++event_message_returned KernelEntry "r1"
+ 
+         LDR     r0, [r1, #message_action]
+         LDR     r14, =Message_Notify
+@@ -4659,7 +4665,7 @@
+ reporterror_ok
+         MOV     r1, #2_001              ; OK button only
+ 
+-ReportError ENTRY "r2,r4,r5"
++ReportError KernelEntry "r2,r4,r5"
+ 
+         SUB     sp, sp, #NetFiler_MaxBannerSize
+         MOV     r4, r0
+--- a/src/NetPrint/s/FileSystem
++++ b/src/NetPrint/s/FileSystem
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: ARM2 assembly contracts (see patches/network).
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -1015,7 +1016,7 @@
+ ; a long time rendering white space and just keep dribbling carriage
+ ; returns into our 1280 byte buffer.
+ 
+-check_time_flush ENTRY "r0-r6"
++check_time_flush KernelEntry "r0-r6"
+         LD      r0, FileExt
+         LD      r14, BufferSize
+         TEQ     r0, r14
+@@ -1176,7 +1177,7 @@
+         Pull    pc
+ 
+ AbandonR10 ; Preserves R0-R1, and VFlag(out) := VFlag(in) :LOR: Error
+-        ENTRY   "r0, r1"
++        KernelEntry   "r0, r1"
+ AbandonR10_Alt
+         MOV     r1, psr                                 ; Save the previous error state
+         MOVS    r0, r10                                 ; If R10 is zero then do nothing
+--- a/src/NetPrint/s/Interface
++++ b/src/NetPrint/s/Interface
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: ARM2 assembly contracts (see patches/network).
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -373,6 +374,7 @@
+         MOVVS   r3, r0                                  ; Record error
+         SWI     XOS_EnterOS                             ; Get back to SVC mode, ignore error
+         TEQP    psr, r4                                 ; Restore interrupts and mode (might be IRQ)
++        MOV     r0, r0                                  ; ArcLibre: ARM2 settling after a PSR write
+         CMP     r3, #0                                  ; Test of the error, clears V
+         MOVNE   r0, r3                                  ; There was an error
+         SETV    NE                                      ; So go to the error state
+@@ -449,7 +451,7 @@
+         ADR     r1, TempPSName                          ; A buffer to make the station number
+         MOV     r2, #?TempPSName                        ; string into
+         AND     r3, r11, #&FF                           ; Get the station number back
+-        LSR     r11, 8                                  ; Throw station number away
++        MOV     r11, r11, LSR #8                                  ; Throw station number away
+         AND     r4, r11, #&FF                           ; Get the network number back
+         Push    "r3, r4"                                ; Put station address in stack
+         MOVVC   r0, sp
+@@ -484,7 +486,7 @@
+         DCB     0
+         ALIGN
+         AND     r3, r11, #&FF                           ; Get the station number back
+-        LSR     r11, 8                                  ; Throw station number away
++        MOV     r11, r11, LSR #8                                  ; Throw station number away
+         AND     r4, r11, #&FF                           ; Get the network number back
+         Push    "r3, r4"                                ; Put station address in stack
+         MOVVC   r0, sp
+@@ -661,6 +663,7 @@
+         MOVVS   r7, r0                                  ; Record error
+         SWI     XOS_EnterOS                             ; Get back to SVC mode, ignore error
+         TEQP    psr, r8                                 ; Restore interrupts and mode (might be IRQ)
++        MOV     r0, r0                                  ; ArcLibre: ARM2 settling after a PSR write
+         CMP     r7, #0                                  ; Test of the error, clears V
+         MOVNE   r0, r7                                  ; There was an error
+         SETV    NE                                      ; So go to the error state
+--- a/src/NetPrint/s/Module
++++ b/src/NetPrint/s/Module
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: ARM2 assembly contracts (see patches/network).
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -58,6 +59,8 @@
+ NetPrint_Inter_Help     *       0
+         ]
+ 
++        AREA    |NetPrint$$Code|, CODE, READONLY ; ArcLibre: AsAsm needs an area
++
+ ModuleBase ROUT
+         DCD     0                                       ; Start
+         DCD     InitCode - ModuleBase                   ; Initialisation
+@@ -66,7 +69,7 @@
+         DCD     ModuleTitle - ModuleBase                ; Title
+         DCD     Help - ModuleBase                       ; Help String
+         DCD     Commands - ModuleBase                   ; Combined Help/* command table
+-        DCD     Module_SWISystemBase + ( NetPrintSWI * Module_SWIChunkSize )
++        DCD     NetPrintSWI_Base                        ; ArcLibre: was Module_SWISystemBase + ( NetPrintSWI * Module_SWIChunkSize )
+         DCD     SWICode - ModuleBase                    ; Offset of code to handle SWIs
+         DCD     SWINames - ModuleBase                   ; Offset of a table of SWI names
+         DCD     0                                       ; Terminate
+--- a/src/NetStatus/s/Module
++++ b/src/NetStatus/s/Module
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: ARM2 assembly contracts (see patches/network).
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -64,6 +65,8 @@
+ ;
+ ;=========================================================================
+ 
++        AREA    |NetStatus$$Code|, CODE, READONLY ; ArcLibre: AsAsm needs an area
++
+ Origin  DCD     0 ; StartCode
+         DCD     InitialisationCode - Origin
+         DCD     FinalisationCode - Origin

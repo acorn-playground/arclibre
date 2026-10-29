@@ -1,0 +1,174 @@
+{
+  "status": "PASS",
+  "runs": [
+    {
+      "run": 1,
+      "client_calls": 196,
+      "tables": 17,
+      "property_bits": 2816,
+      "conversion_bytes": 1296,
+      "resource_variants": 48,
+      "manager_workspace": 25172756,
+      "uk_workspace": 25172932,
+      "registration": 25173172,
+      "entry_pointers": {
+        "ReadTimeZones": 58976560,
+        "ConvertDateAndTime": 58979840,
+        "ConvertStandardDateAndTime": 58981832,
+        "ConvertStandardDate": 58981792,
+        "ConvertStandardTime": 58981812,
+        "ConvertTimeToOrdinals": 58980780,
+        "ConvertTimeStringToOrdinals": 58981300,
+        "ConvertOrdinalsToTime": 58980852,
+        "Alphabet": 58976132,
+        "AlphabetIdent": 58976140,
+        "SelectKeyboardHandler": 58976156,
+        "WriteDirection": 58976188,
+        "CharacterPropertyTable": 58976196,
+        "GetLowerCaseTable": 58976392,
+        "GetUpperCaseTable": 58976404,
+        "GetControlTable": 58976416,
+        "GetPlainTable": 58976428,
+        "GetValueTable": 58976440,
+        "GetRepresentationTable": 58976452,
+        "Collate": 58976464,
+        "ReadSymbols": 58976688,
+        "GetCalendarInformation": 58976816,
+        "NameToNumber": 58977024,
+        "TransformString": 58981872
+      },
+      "expected_errors": [
+        {
+          "name": "Unknown property",
+          "text": "Unknown character property"
+        },
+        {
+          "name": "Reserved entry 24",
+          "text": "SWI value out of range for module TerritoryManager"
+        },
+        {
+          "name": "Reserved last",
+          "text": "SWI value out of range for module TerritoryManager"
+        },
+        {
+          "name": "Missing territory",
+          "text": "Territory not present"
+        }
+      ]
+    },
+    {
+      "run": 2,
+      "client_calls": 196,
+      "tables": 17,
+      "property_bits": 2816,
+      "conversion_bytes": 1296,
+      "resource_variants": 48,
+      "manager_workspace": 25172756,
+      "uk_workspace": 25172932,
+      "registration": 25173172,
+      "entry_pointers": {
+        "ReadTimeZones": 58976560,
+        "ConvertDateAndTime": 58979840,
+        "ConvertStandardDateAndTime": 58981832,
+        "ConvertStandardDate": 58981792,
+        "ConvertStandardTime": 58981812,
+        "ConvertTimeToOrdinals": 58980780,
+        "ConvertTimeStringToOrdinals": 58981300,
+        "ConvertOrdinalsToTime": 58980852,
+        "Alphabet": 58976132,
+        "AlphabetIdent": 58976140,
+        "SelectKeyboardHandler": 58976156,
+        "WriteDirection": 58976188,
+        "CharacterPropertyTable": 58976196,
+        "GetLowerCaseTable": 58976392,
+        "GetUpperCaseTable": 58976404,
+        "GetControlTable": 58976416,
+        "GetPlainTable": 58976428,
+        "GetValueTable": 58976440,
+        "GetRepresentationTable": 58976452,
+        "Collate": 58976464,
+        "ReadSymbols": 58976688,
+        "GetCalendarInformation": 58976816,
+        "NameToNumber": 58977024,
+        "TransformString": 58981872
+      },
+      "expected_errors": [
+        {
+          "name": "Unknown property",
+          "text": "Unknown character property"
+        },
+        {
+          "name": "Reserved entry 24",
+          "text": "SWI value out of range for module TerritoryManager"
+        },
+        {
+          "name": "Reserved last",
+          "text": "SWI value out of range for module TerritoryManager"
+        },
+        {
+          "name": "Missing territory",
+          "text": "Territory not present"
+        }
+      ]
+    },
+    {
+      "run": 3,
+      "client_calls": 196,
+      "tables": 17,
+      "property_bits": 2816,
+      "conversion_bytes": 1296,
+      "resource_variants": 48,
+      "manager_workspace": 25172756,
+      "uk_workspace": 25172932,
+      "registration": 25173172,
+      "entry_pointers": {
+        "ReadTimeZones": 58976560,
+        "ConvertDateAndTime": 58979840,
+        "ConvertStandardDateAndTime": 58981832,
+        "ConvertStandardDate": 58981792,
+        "ConvertStandardTime": 58981812,
+        "ConvertTimeToOrdinals": 58980780,
+        "ConvertTimeStringToOrdinals": 58981300,
+        "ConvertOrdinalsToTime": 58980852,
+        "Alphabet": 58976132,
+        "AlphabetIdent": 58976140,
+        "SelectKeyboardHandler": 58976156,
+        "WriteDirection": 58976188,
+        "CharacterPropertyTable": 58976196,
+        "GetLowerCaseTable": 58976392,
+        "GetUpperCaseTable": 58976404,
+        "GetControlTable": 58976416,
+        "GetPlainTable": 58976428,
+        "GetValueTable": 58976440,
+        "GetRepresentationTable": 58976452,
+        "Collate": 58976464,
+        "ReadSymbols": 58976688,
+        "GetCalendarInformation": 58976816,
+        "NameToNumber": 58977024,
+        "TransformString": 58981872
+      },
+      "expected_errors": [
+        {
+          "name": "Unknown property",
+          "text": "Unknown character property"
+        },
+        {
+          "name": "Reserved entry 24",
+          "text": "SWI value out of range for module TerritoryManager"
+        },
+        {
+          "name": "Reserved last",
+          "text": "SWI value out of range for module TerritoryManager"
+        },
+        {
+          "name": "Missing territory",
+          "text": "Territory not present"
+        }
+      ]
+    }
+  ],
+  "identical_cold_repeats": true,
+  "all_24_entry_pointers_match_real_rom_code": true,
+  "reserved_25th_slot_unreachable": true,
+  "source_tables_independently_parsed": true
+}

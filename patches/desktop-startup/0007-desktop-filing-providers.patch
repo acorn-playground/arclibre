@@ -1,0 +1,640 @@
+--- a/src/ADFSFiler/s/ADFSFiler
++++ b/src/ADFSFiler/s/ADFSFiler
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: ARM2 AsAsm build and explicit instruction alignment.
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -170,6 +171,7 @@
+ ;;----------------------------------------------------------------------------
+ 
+ 
++        AREA ADFSFiler,CODE,READONLY
+ Module_BaseAddr
+ 
+         GET     Hdr:ListOpts
+@@ -525,8 +527,6 @@
+ ; Module header
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-        LEADR   Module_LoadAddr
+-
+  ASSERT (.=Module_BaseAddr)
+ 
+         DCD     ADFSFiler_Start        -Module_BaseAddr
+@@ -554,7 +554,7 @@
+ stk_buffer2     #       &40
+ stk_total       #       0
+ 
+-ADFSFiler_Init  ENTRY "r1-r5"
++ADFSFiler_Init  KernelEntry "r1-r5"
+ 
+ ; initialise ADFSFiler$Path if not already done
+ 
+@@ -634,7 +634,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; Had *command to enter ADFSFiler, so start up via module handler
+ 
+-Desktop_ADFSFiler_Code ENTRY
++Desktop_ADFSFiler_Code KernelEntry
+ 
+       [ Version >= 42
+         LDRB    r14,[r0]
+@@ -713,7 +713,7 @@
+         TEQ     r1, #Service_StartedFiler
+         MOVNE   pc, lr
+ 
+-ADFSFiler_Service_StartedFiler ENTRY
++ADFSFiler_Service_StartedFiler KernelEntry
+ 
+         LDR     r14, [r12]              ; cancel 'don't start' flag
+         CMP     r14, #0
+@@ -722,7 +722,7 @@
+ 
+         EXIT
+ 
+-ADFSFiler_Service_StartFiler ENTRY "r2,r3,r6"
++ADFSFiler_Service_StartFiler KernelEntry "r2,r3,r6"
+ 
+         LDR     r2, [r12]
+         CMP     r2, #0
+@@ -770,7 +770,7 @@
+         EXIT
+ 
+       [ Version >= 25
+-ADFSFiler_Service_MessageFileClosed ENTRY "r0,r1,r12"
++ADFSFiler_Service_MessageFileClosed KernelEntry "r0,r1,r12"
+ 
+         LDR     r12, [r12]              ; are we active?
+         CMP     r12, #0
+@@ -783,7 +783,7 @@
+         EXITS
+       ]
+ 
+-ADFSFiler_Service_Reset ENTRY "r0-r11"
++ADFSFiler_Service_Reset KernelEntry "r0-r11"
+ 
+         LDR     r2, [r12]               ; cancel 'don't start' flag
+         CMP     r2, #0
+@@ -799,7 +799,7 @@
+ 
+ ; ******************************************************************************
+ 
+-ADFSFiler_Die ENTRY "r0-r11"
++ADFSFiler_Die KernelEntry "r0-r11"
+ 
+      [ standalonemessages
+         ADRL     r0, ResourceFSFiles
+@@ -926,7 +926,7 @@
+ ;       r5 -> name of relevant entry
+ ;       r6 = position to search from
+ 
+-load_template ENTRY , 16                ; 16 bytes of stack for name
++load_template KernelEntry , 16                ; 16 bytes of stack for name
+         MOV     lr, sp
+         Push    "r1, r2"
+         MOV     r1, lr
+@@ -1196,7 +1196,7 @@
+ 
+ ; Out   all regs may be corrupted - going back to PollWimp
+ 
+-event_mouse_click ENTRY
++event_mouse_click KernelEntry
+ 
+         LDMIA   r1, {r0-r4}             ; set mousex, mousey, buttonstate
+         ADR     r14, mousedata          ; windowhandle, iconhandle
+@@ -1280,7 +1280,7 @@
+ ; In    r0 = message action
+ ;       r1 -> media name
+ 
+-messagetoFiler ENTRY
++messagetoFiler KernelEntry
+ 
+         SUB     sp, sp, #256            ; make temp frame for message
+         STR     r0, [sp, #message_action]
+@@ -1353,7 +1353,7 @@
+ 
+ update_menu_iconbar
+ ; In:   r8 = drive specifier eg. "0","4","5" etc.
+-        ENTRY
++        KernelEntry
+ 
+  [ debug
+         DREG    r8,"drive specifier "
+@@ -1486,7 +1486,7 @@
+ ;               [matchedindex] = index of this icon
+ ;               [driveno+1]b = drive number
+ 
+-matchdriveicon  ENTRY "r2"
++matchdriveicon  KernelEntry "r2"
+ 
+         MOV     r2, #ndrives
+         ADR     r1, iconbaricons
+@@ -1522,7 +1522,7 @@
+ ; A menu is created with the title above the x,y values you feed it, with the
+ ; top left hand corner being at the x,y position
+ 
+-CreateMenu ENTRY "r2, r3"
++CreateMenu KernelEntry "r2, r3"
+ 
+         STR     r1, menuhandle
+         LDR     r2, mousex
+@@ -1581,7 +1581,7 @@
+ 
+ ; .............................................................................
+ 
+-CopyMenus ENTRY "r1-r3"
++CopyMenus KernelEntry "r1-r3"
+ 
+         ADR     r1, mb_namedisc                 ; fill in writeable fields now
+         ADR     r2, mv_namedisc
+@@ -1632,7 +1632,7 @@
+ 
+ ; Out   all regs may be corrupted - going back to PollWimp
+ 
+-event_menu_select ENTRY
++event_menu_select KernelEntry
+ 
+         MOV     r2, r1                  ; r2 -> menu selection list
+         LDR     r1, menuhandle          ; r1 = menu handle
+@@ -1656,7 +1656,7 @@
+ ; In     r1 = menu handle
+ ;        r2 -> list of selections
+ 
+-DecodeMenu ENTRY
++DecodeMenu KernelEntry
+ 
+ decodelp
+         Push    "r1,r2"
+@@ -1905,7 +1905,7 @@
+         BEQ     set_share_options_unprot
+         EXIT
+ 
+-interactive_command ENTRY
++interactive_command KernelEntry
+         ADR     r0, userdata
+       [ debug
+         DSTRING r0,"Interactive command is : "
+@@ -1938,7 +1938,7 @@
+         EXIT
+ 
+       [ Version >= 42
+-dismountit_byname       ENTRY "r1"
++dismountit_byname       KernelEntry "r1"
+ 
+         ADRL    r3, dismount
+         BL      copycommand
+@@ -2067,7 +2067,7 @@
+ ; ShareD_CreateShare
+ ; Calls Shared_CreateShare
+ 
+-SetShareD       ENTRY
++SetShareD       KernelEntry
+         MOV     r10, r0
+         ADR     r1, driveno
+         BLVC    GetMediaName              ; r1 -> media name
+@@ -2133,7 +2133,7 @@
+ 
+ ; Calls ShareD_StopShare
+ 
+-UnSetShareD     ENTRY
++UnSetShareD     KernelEntry
+ 
+         BIC     r0, r0, r0
+         BIC     r1, r1, r1
+@@ -2150,7 +2150,7 @@
+ 
+ ; Check which bits are to be updated in CMOS
+ 
+-WriteCMOSbitS   ENTRY                     ; write S bit in CMOS
++WriteCMOSbitS   KernelEntry                     ; write S bit in CMOS
+         ADR     r1, driveno               ; load drive number
+         LDRB    r14, [r1, #1]
+         CMP     r14, #"4"
+@@ -2178,7 +2178,7 @@
+ 99
+         EXIT
+ 
+-WriteCMOSbitP   ENTRY                     ; write P bit in CMOS
++WriteCMOSbitP   KernelEntry                     ; write P bit in CMOS
+         ADR     r1, driveno               ; load drive number
+         LDRB    r14, [r1, #1]
+         CMP     r14, #"4"
+@@ -2206,7 +2206,7 @@
+ 99
+         EXIT
+ 
+-ClearCMOSbitS   ENTRY                     ; clear S bit in CMOS
++ClearCMOSbitS   KernelEntry                     ; clear S bit in CMOS
+         ADR     r1, driveno               ; load drive number
+         LDRB    r14, [r1, #1]
+         CMP     r14, #"4"
+@@ -2234,7 +2234,7 @@
+ 99
+         EXIT
+ 
+-ClearCMOSbitP   ENTRY                     ; clear P bit in CMOS
++ClearCMOSbitP   KernelEntry                     ; clear P bit in CMOS
+         ADR     r1, driveno               ; load drive number
+         LDRB    r14, [r1, #1]
+         CMP     r14, #"4"
+@@ -2264,7 +2264,7 @@
+ 
+ 
+ ; Scan the CMOS bits and update the menu flags however needed
+-scan_CMOS      ENTRY
++scan_CMOS      KernelEntry
+         ADR     r1, driveno               ; load drive number
+         LDRB    r8, [r1,#1]
+         BIC     r9, r9, r9
+@@ -2346,46 +2346,46 @@
+ 05
+         EXIT
+ 
+-tick_share      ENTRY                     ; tick share option
++tick_share      KernelEntry                     ; tick share option
+         LDR     r14, m_floppydisc+m_headersize+mi_size*mo_fl_share+0
+         ORR     r14,r14,#mi_it_tick
+         STR     r14, m_floppydisc+m_headersize+mi_size*mo_fl_share+0
+         EXITS
+ 
+-untick_share    ENTRY                     ; untick share option
++untick_share    KernelEntry                     ; untick share option
+         LDR     r14, m_floppydisc+m_headersize+mi_size*mo_fl_share+0
+         BIC     r14,r14,#mi_it_tick
+         STR     r14, m_floppydisc+m_headersize+mi_size*mo_fl_share+0
+         EXITS
+ 
+-tick_protected  ENTRY                     ; tick protected option
++tick_protected  KernelEntry                     ; tick protected option
+         ADR     r1, m_sharedisc
+         BL      EncodeMenu
+         MOV     r2, #mo_fl_prot
+         BL      TickMenu
+         EXITS
+ 
+-tick_notshared  ENTRY                     ; tick not shared option
++tick_notshared  KernelEntry                     ; tick not shared option
+         ADR     r1, m_sharedisc
+         BL      EncodeMenu
+         MOV     r2, #mo_fl_notsh
+         BL      TickMenu
+         EXITS
+ 
+-tick_unprotected ENTRY                    ; tick unprotected option
++tick_unprotected KernelEntry                    ; tick unprotected option
+         ADR     r1, m_sharedisc
+         BL      EncodeMenu
+         MOV     r2, #mo_fl_unprot
+         BL      TickMenu
+         EXITS
+ 
+-shade_namedisc  ENTRY                     ; shade namedisc
++shade_namedisc  KernelEntry                     ; shade namedisc
+         LDR     r14, m_floppydisc+m_headersize+mi_size*mo_fl_namedisc+mi_iconflags
+         ORR     r14, r14, #is_shaded
+         STR     r14, m_floppydisc+m_headersize+mi_size*mo_fl_namedisc+mi_iconflags
+         EXITS
+ 
+-shade_verify  ENTRY                     ; shade verify
++shade_verify  KernelEntry                     ; shade verify
+         LDR     r14, m_floppydisc+m_headersize+mi_size*mo_fl_verify+mi_iconflags
+         ORR     r14, r14, #is_shaded
+         STR     r14, m_floppydisc+m_headersize+mi_size*mo_fl_verify+mi_iconflags
+@@ -2393,13 +2393,13 @@
+ 
+ ; procedures to clear/read/write CMOS bits (byte &6B)
+ 
+-ReadCMOSbits    ENTRY                     ; Out: r2 -> content of location &6B (ADFS CMOS bits)
++ReadCMOSbits    KernelEntry                     ; Out: r2 -> content of location &6B (ADFS CMOS bits)
+         MOV     r0, #ReadCMOS
+         MOV     r1, #ADFS_CMOS_bits
+         SWI     XOS_Byte
+         EXITS
+ 
+-WriteCMOSbits   ENTRY                     ; r3 -> bit mask to write under
++WriteCMOSbits   KernelEntry                     ; r3 -> bit mask to write under
+         BL      ReadCMOSbits              ; r2 -> current state of CMOS &6B
+         ORR     r2, r2, r3                ; merge the bits
+         MOV     r0, #WriteCMOS
+@@ -2407,7 +2407,7 @@
+         SWI     XOS_Byte
+         EXITS
+ 
+-ClearCMOSbits   ENTRY                     ; r3 -> bit mask to write under
++ClearCMOSbits   KernelEntry                     ; r3 -> bit mask to write under
+         BL      ReadCMOSbits              ; r2 -> current state of CMOS &6B
+         EOR     r3, r3, #&FF              ; reverse mask
+         AND     r2, r2, r3                ; clear the bit
+@@ -2429,7 +2429,7 @@
+ ; A couple of procedure to tick and check sharedisc submenu
+ ; In    r1 -> menu
+ 
+-EncodeMenu ENTRY "r0, r1"
++EncodeMenu KernelEntry "r0, r1"
+ 
+         ADD     r1, r1, #m_headersize     ; skip menu header
+ 
+@@ -2451,7 +2451,7 @@
+ ;       r2 = item to tick
+ ; Out   item marked as ticked, flags preserved
+ 
+-TickMenu ENTRY "r1, r2"
++TickMenu KernelEntry "r1, r2"
+         ADD     r1, r1, #m_headersize + mi_itemflags ; skip menu header
+                                           ; and item fields before itemflags
+    ASSERT mi_size = 24
+@@ -2464,7 +2464,7 @@
+ ; In    r1 -> menu
+ ;       r2 = item to untick
+ ; Out   item marked as ticked, flags preserved
+-UnTickMenu ENTRY "r1, r2"
++UnTickMenu KernelEntry "r1, r2"
+         ADD     r1, r1, #m_headersize + mi_itemflags ; skip menu header
+                                           ; and item fields before itemflags
+    ASSERT mi_size = 24
+@@ -2477,7 +2477,7 @@
+ ; In    r1 -> "adfs::discname"
+ ; Out   dismounted, and any dirs 'adfs::discname' closed
+ 
+-dismountit ENTRY "r1"
++dismountit KernelEntry "r1"
+       [ Version < 39
+         LDR     r0, =Message_FilerCloseDir
+         BL      messagetoFiler
+@@ -2507,15 +2507,15 @@
+ ; Out   [userdata..] = "adfs:<command> <drive no>"
+ ;       r1 -> terminator (drive number inserted at [r1,#-2])
+       [ Version >= 37
+-copycommand1 ENTRY "r2"
++copycommand1 KernelEntry "r2"
+         ADR     r1, userdata
+         B int_copycommand
+       ]
+ 
+       [ Version >= 26
+-copycommand ENTRY "r2"
++copycommand KernelEntry "r2"
+       |
+-copycommand ENTRY
++copycommand KernelEntry
+       ]
+         ADR     r1, userdata
+         ADRL    r2, adfscolon
+@@ -2532,7 +2532,7 @@
+ 
+ ; Out    r1 -> media name (in dirnamebuffer) - "adfs::discname"
+ 
+-GetMediaName ENTRY "r1-r3"
++GetMediaName KernelEntry "r1-r3"
+ 
+ getmedialoop
+ 
+@@ -2581,7 +2581,7 @@
+ 
+ ; Out    r1 -> media name (in dirnamebuffer) - "adfs::discname"
+ 
+-GetMediaName_warn ENTRY "r1-r3"
++GetMediaName_warn KernelEntry "r1-r3"
+ 
+ getmedialoop_warn
+ 
+@@ -2621,7 +2621,7 @@
+ 
+       ; NOEXIT
+ 
+-checkambiguous ENTRY "r1-r5"
++checkambiguous KernelEntry "r1-r5"
+ 
+         MOVVC   r0, #OSFile_ReadInfo    ; see if we get "ambiguous disc name"
+         SWIVC   XOS_File
+@@ -2636,7 +2636,7 @@
+         LTORG
+ 
+ 
+-GetMediaName_nochecks ENTRY "r1-r7"
++GetMediaName_nochecks KernelEntry "r1-r7"
+ 
+         MOV     r0, r1
+         ADR     r1, userdata + &80
+@@ -2724,7 +2724,7 @@
+ 
+         ALIGN
+ 
+-SetUpIconBar ENTRY
++SetUpIconBar KernelEntry
+ 
+         SWI     XADFS_Drives
+         EXITS   VS                      ; r2 := no of winnies
+@@ -2796,7 +2796,7 @@
+ 
+       [ Version >= 20
+ 
+-AddToIconBar ENTRY "r1-r3, r5"
++AddToIconBar KernelEntry "r1-r3, r5"
+ 
+         ADD     r1, r1, #icb_drivenumber
+         MOV     r2, r1                          ; r2 -> drive number
+@@ -2855,7 +2855,7 @@
+ 
+       |
+ 
+-AddToIconBar ENTRY "r1-r3"
++AddToIconBar KernelEntry "r1-r3"
+ 
+         BL      AllocateIcon                    ; NB. icon handles start at 1
+         ADDVC   r1, r1, #12+2                   ; r1 -> file prefix
+@@ -2868,7 +2868,7 @@
+       ]
+ 
+ ; If S bit is set in CMOS, then call ShareD_CreateShare with the set option (protected/unprotected)
+-call_share      ENTRY
++call_share      KernelEntry
+         BIC     r9, r9, r9
+         CMP     r10, #4                   ; which winnie?
+         BEQ     %FT03
+@@ -2964,7 +2964,7 @@
+ 
+ ; Out   r0 = icon index (created on iconbar)
+ 
+-AllocateIcon ENTRY "r1-r5, x0, y0, x1, y1"
++AllocateIcon KernelEntry "r1-r5, x0, y0, x1, y1"
+ 
+         MOV     r2, r1
+         MOV     r0, #SpriteReason_ReadSpriteSize
+@@ -3034,7 +3034,7 @@
+ 
+ ; Out   r0 = icon index
+ 
+-AllocateIcon ENTRY "r1-r4, x0, y0, x1, y1"
++AllocateIcon KernelEntry "r1-r4, x0, y0, x1, y1"
+ 
+         MOV     r2, r1
+         MOV     r0, #SpriteReason_ReadSpriteSize
+@@ -3090,7 +3090,7 @@
+ ; Out   new string in r1 = "r1" :CC: "r2" :CC: 0
+ 
+ 
+-strcat ENTRY "r1-r3"
++strcat KernelEntry "r1-r3"
+ 
+         MOV     r3, #space-1
+ 
+@@ -3139,7 +3139,7 @@
+ 
+ ; Out   r1 -> terminating null
+ 
+-strcpy_advance ENTRY "r2"
++strcpy_advance KernelEntry "r2"
+ 
+ 10      LDRB    r14, [r2], #1           ; Copy from *r2++
+         CMP     r14, #delete            ; Order, you git!
+@@ -3164,7 +3164,7 @@
+ 
+ ; Out   all regs may be corrupted - going back to PollWimp
+ 
+-event_user_message ENTRY
++event_user_message KernelEntry
+ 
+         LDR     r0, [r1, #message_action]
+ 
+@@ -3393,7 +3393,7 @@
+         !       1, "Sorry, this source file can't make version 0.23"
+       ]
+ 
+-lookuptoken ENTRY "r0-r7"
++lookuptoken KernelEntry "r0-r7"
+ 
+  [ debug
+ ;  dstring r0, "Look up token "
+@@ -3412,7 +3412,7 @@
+         STRVS   r0, [sp]
+         EXIT
+ 
+-lookuperror ENTRY "r0-r7"
++lookuperror KernelEntry "r0-r7"
+ 
+         BL      allocatemessagedata             ; r0 -> file desc on exit
+ 
+@@ -3433,7 +3433,7 @@
+ ; In    [messagedata] -> message file desc (0 => not yet opened)
+ ; Out   r0 = [messagedata] -> message file desc (opened if not already open)
+ 
+-allocatemessagedata ENTRY "r1, r2"
++allocatemessagedata KernelEntry "r1, r2"
+ 
+         LDR     r0, messagedata
+         CMP     r0, #0
+@@ -3460,7 +3460,7 @@
+ ; In    [messagedata] -> message file desc, or = 0 if not loaded
+ ; Out   [messagedata] = 0, OS_Module (Free) called if required, error preserved
+ 
+-deallocatemessagedata ENTRY "r0,r2"
++deallocatemessagedata KernelEntry "r0,r2"
+ 
+         LDR     r2, messagedata
+         MOVS    r0, r2
+@@ -4025,7 +4025,7 @@
+ ; In    r1 = state for ReportError
+ ; Out   r1 = 1 (OK) or 2 (Cancel)
+ 
+-ReportError ENTRY "r2"
++ReportError KernelEntry "r2"
+ 
+         BL      MkBannerIn_userdata
+         SWI     XWimp_ReportError
+@@ -4036,7 +4036,7 @@
+ Banner  DCB "Banner", 0
+         ALIGN
+ 
+-MkBannerIn_userdata ENTRY "r0,r1,r3"
++MkBannerIn_userdata KernelEntry "r0,r1,r3"
+         ADR     r0, Banner
+         ADR     r1, userdata
+         MOV     r2, #?userdata
+@@ -4051,7 +4051,7 @@
+ BackBan  DCB "BackBan", 0
+         ALIGN
+ 
+-MkBackupBannerIn_userdata ENTRY "r0,r1,r3"
++MkBackupBannerIn_userdata KernelEntry "r0,r1,r3"
+         ADR     r0, BackBan
+         ADR     r1, userdata
+         MOV     r2, #?userdata
+--- a/src/ADFSFiler/s/Backup
++++ b/src/ADFSFiler/s/Backup
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: ARM2 AsAsm build and explicit instruction alignment.
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -1052,6 +1053,7 @@
+         Pull    "PC"
+ 
+ bkp_dismount DCB "ADFS:%Dismount :",0
++        ALIGN
+ 
+  [ chkbkpdefects
+ ; SMC: complain if backup destination disc has defects
+--- a/src/ADFSFiler/s/Format
++++ b/src/ADFSFiler/s/Format
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: ARM2 AsAsm build and explicit instruction alignment.
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -202,7 +203,7 @@
+ ;               r8 -> data block
+ ; Error:        V set, r0 -> error block
+ 
+-format_verify_get_memory ENTRY "r1-r7"  ; Do not stack r0 or r8
++format_verify_get_memory KernelEntry "r1-r7"  ; Do not stack r0 or r8
+         ADRL    r1, str_templatefile
+         SWI     XWimp_OpenTemplate
+         EXIT    VS
+@@ -275,7 +276,7 @@
+ ; ** Drop through **
+ 
+ format_verify_get_memory_error_free
+-        PullEnv                                 ; Unstacks ENTRY stuff.
++        PullEnv                                 ; Unstacks KernelEntry stuff.
+         Push    "lr"                            ; Get lr back on stack.
+         MOV     r2, r8                          ; Get data block into r2.
+         B       format_verify_error_delete_window ; Assumes a stacked lr.
+--- a/src/ShellCLI/s/ShellCLI
++++ b/src/ShellCLI/s/ShellCLI
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: ARM2 AsAsm build and explicit instruction alignment.
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -39,6 +40,7 @@
+ ;; 10-Dec-91    0.25    Shortened message tokens.
+ ;;----------------------------------------------------------------------------
+ 
++        AREA ShellCLI,CODE,READONLY
+ Module_BaseAddr
+ 
+         GET       hdr:ListOpts
+@@ -391,7 +393,7 @@
+ ; but I'm paranoid - reset all my handlers first
+ ;
+         TEQP    pc, #0                 ; make really sure we are user mode
+-        MOVNV   r0, r0
++        NOP     ; ARM2 processor-state settling
+         LDR     sp, MyStack
+         ADD     sp, sp, #MyStackSize
+ 
+@@ -501,7 +503,7 @@
+ ;
+         MOV     r12, r0                ; get Workspace pointer in correct reg
+         TEQP    pc, #0                 ; make really sure we are user mode
+-        MOVNV   r0, r0
++        NOP     ; ARM2 processor-state settling
+         LDR     r13, MyStack
+         ADD     r13, r13, #MyStackSize
+ 

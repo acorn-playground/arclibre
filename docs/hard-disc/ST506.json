@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "rom_sha256": "abf25cc15a6f626d502fb7bdaa72f9ccc209786f3ffd2604f43301b99dbf56a9",
+  "writes": 11,
+  "reopen_writes": 0,
+  "directory": {
+    "ReadMe": {
+      "load": 4294967091,
+      "execute": 1855547904,
+      "length": 35,
+      "address": 14,
+      "attributes": 3
+    },
+    "Saved": {
+      "load": 4294967091,
+      "execute": 1855547904,
+      "length": 35,
+      "address": 15,
+      "attributes": 3
+    }
+  },
+  "disk_sha256": "5e53ad274f13eb6a07c7420a885a0f20e79752ef8f3cea4265f343d69051dd6d",
+  "independent_directory_and_map_checksums": true
+}

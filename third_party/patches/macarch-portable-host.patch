@@ -1,0 +1,390 @@
+--- a/Package.swift
++++ b/Package.swift
+@@ -10,11 +10,14 @@
+     targets: [
+         .target(
+             name: "ArchimedesCore",
++            // Linux has no SDK zlib module; Sources/zlib supplies the same one.
++            dependencies: [.target(name: "zlib", condition: .when(platforms: [.linux]))],
+             swiftSettings: [
+                 .unsafeFlags(["-Ounchecked", "-enforce-exclusivity=unchecked", "-wmo"], .when(configuration: .release)),
+             ],
+             linkerSettings: [.linkedLibrary("z")]
+         ),
++        .systemLibrary(name: "zlib", path: "Sources/zlib"),
+         .testTarget(
+             name: "ArchimedesCoreTests",
+             dependencies: ["ArchimedesCore"],
+--- a/Sources/ArchimedesCore/Debug/Debugger.swift
++++ b/Sources/ArchimedesCore/Debug/Debugger.swift
+@@ -112,6 +112,10 @@
+         public var interrupt: String?
+ 
+         public var registerText: String {
++            // Interrupt entries carry no registers (interruptTaken). Reading
++            // them unchecked returned host memory past the empty array, which
++            // differs with each Linux process's address layout.
++            guard registers.count >= 16 else { return interrupt ?? "" }
+             var s = (0..<15).map { String(format: "R%d=%X", $0, registers[$0]) }.joined(separator: " ")
+             let psr = registers[15]
+             s += " " + Debugger.flagText(psr) + " " + ARM2<MEMC>.Mode(rawValue: psr & 3)!.description
+--- a/Sources/ArchimedesCore/Diagnostics/PNGEncoder.swift
++++ b/Sources/ArchimedesCore/Diagnostics/PNGEncoder.swift
+@@ -1,6 +1,25 @@
++#if canImport(Compression)
+ import Compression
++#else
++import zlib
++#endif
+ import Foundation
+ 
++#if !canImport(Compression)
++/// Apple's COMPRESSION_ZLIB writes raw DEFLATE (RFC 1951); zlib does the same
++/// with negative window bits. Level 5 is the level Apple documents for it.
++private let COMPRESSION_ZLIB = 0
++private func compression_encode_buffer(_ dst: UnsafeMutablePointer<UInt8>, _ dstSize: Int, _ src: UnsafePointer<UInt8>,
++                                       _ srcSize: Int, _ scratch: UnsafeMutableRawPointer?, _ algorithm: Int) -> Int {
++    var z = z_stream()
++    guard deflateInit2_(&z, 5, Z_DEFLATED, -MAX_WBITS, 8, Z_DEFAULT_STRATEGY, ZLIB_VERSION, Int32(MemoryLayout<z_stream>.size)) == Z_OK else { return 0 }
++    defer { deflateEnd(&z) }
++    z.next_in = UnsafeMutablePointer(mutating: src); z.avail_in = uInt(srcSize)
++    z.next_out = dst; z.avail_out = uInt(dstSize)
++    return deflate(&z, Z_FINISH) == Z_STREAM_END ? dstSize - Int(z.avail_out) : 0
++}
++#endif
++
+ /// Minimal PNG writer (8-bit RGB) so captures work without UI frameworks.
+ public enum PNGEncoder {
+     public static func encode(_ frame: VideoFrame, scaleX: Int = 1, scaleY: Int = 1) -> Data {
+--- a/Sources/ArchimedesCore/Econet/Internet/RoomAPI.swift
++++ b/Sources/ArchimedesCore/Econet/Internet/RoomAPI.swift
+@@ -1,4 +1,7 @@
+ import Foundation
++#if canImport(FoundationNetworking)
++import FoundationNetworking
++#endif
+ 
+ // The service's HTTP API (cloudflare-econet's econet/docs/protocol.md): making,
+ // joining and managing rooms. Credentials only in Authorization headers.
+--- a/Sources/ArchimedesCore/Econet/Internet/RoomConnection.swift
++++ b/Sources/ArchimedesCore/Econet/Internet/RoomConnection.swift
+@@ -1,4 +1,7 @@
+ import Foundation
++#if canImport(FoundationNetworking)
++import FoundationNetworking
++#endif
+ 
+ /// A station of this network's, as the room's told of it.
+ public struct StationClaim: Sendable, Equatable, Hashable {
+--- a/Sources/ArchimedesCore/Econet/Internet/RoomCredentials.swift
++++ b/Sources/ArchimedesCore/Econet/Internet/RoomCredentials.swift
+@@ -1,5 +1,7 @@
+ import Foundation
++#if canImport(Security)
+ import Security
++#endif
+ 
+ // A room's secrets: the member token (to connect), and for the host the
+ // owner token. Kept in the Keychain, scoped to the service's origin and the
+@@ -24,6 +26,7 @@
+     func remove(service: URL, roomId: String)
+ }
+ 
++#if canImport(Security)
+ /// The macOS Keychain: one generic password per service origin and room.
+ public struct KeychainCredentialStore: RoomCredentialStore {
+     static let itemService = "MacArch Internet Econet"
+@@ -74,6 +77,7 @@
+         SecItemDelete(query(service, roomId) as CFDictionary)
+     }
+ }
++#endif
+ 
+ /// In memory: for tests and self-tests (which mustn't touch the user's
+ /// Keychain).
+--- a/Sources/ArchimedesCore/Econet/Internet/RoomScreens.swift
++++ b/Sources/ArchimedesCore/Econet/Internet/RoomScreens.swift
+@@ -1,4 +1,7 @@
+ import Foundation
++#if canImport(FoundationNetworking)
++import FoundationNetworking
++#endif
+ 
+ /// A room's screens connection: apart from its Econet (its own WebSocket,
+ /// to its own object on the service), so an image never waits in front of
+--- a/Sources/ArchimedesCore/Econet/LockstepWorkers.swift
++++ b/Sources/ArchimedesCore/Econet/LockstepWorkers.swift
+@@ -66,10 +66,14 @@
+     /// the rest of the Mac.
+     public static let maxThreads: Int = {
+         var cores: Int32 = 0
++        #if canImport(Darwin)
+         var size = MemoryLayout<Int32>.size
+         if sysctlbyname("hw.perflevel0.physicalcpu", &cores, &size, nil, 0) != 0 || cores <= 0 {
+             cores = Int32(ProcessInfo.processInfo.activeProcessorCount)
+         }
++        #else
++        cores = Int32(ProcessInfo.processInfo.activeProcessorCount)
++        #endif
+         return max(1, Int(cores) - 1)
+     }()
+ 
+--- a/Sources/ArchimedesCore/Media/ADFSHardDiscWriter.swift
++++ b/Sources/ArchimedesCore/Media/ADFSHardDiscWriter.swift
+@@ -1,4 +1,7 @@
+ import Foundation
++#if canImport(Glibc)
++import Glibc
++#endif
+ 
+ /// Adds files to an existing old-map hard disc (the layout `ADFSFormatter`
+ /// and `ADFSHardDiscBuilder` make, and !HForm's old-map option), so
+@@ -212,7 +215,11 @@
+         var newBoot: [UInt8]?
+ 
+         init(path: String) throws {
++            #if canImport(Darwin)
+             let fd = Darwin.open(path, O_RDWR)
++            #else
++            let fd = Glibc.open(path, O_RDWR)
++            #endif
+             guard fd >= 0 else { throw HardDiscError.cannotOpen(path) }
+             var st = stat()
+             fstat(fd, &st)
+--- a/Sources/ArchimedesCore/Media/HardDiscImage.swift
++++ b/Sources/ArchimedesCore/Media/HardDiscImage.swift
+@@ -1,4 +1,7 @@
+ import Foundation
++#if canImport(Glibc)
++import Glibc
++#endif
+ 
+ /// Physical shape of a hard drive: ST506 drives under ADFS have 256-byte
+ /// sectors, IDE drives 512.
+@@ -88,7 +91,11 @@
+     deinit { close(fd) }
+ 
+     public static func open(path: String, sectorSize: Int = 256) throws -> HardDiscImage {
++        #if canImport(Darwin)
+         let fd = Darwin.open(path, O_RDWR)
++        #else
++        let fd = Glibc.open(path, O_RDWR)
++        #endif
+         guard fd >= 0 else { throw HardDiscError.cannotOpen(path) }
+         var st = stat()
+         fstat(fd, &st)
+@@ -106,7 +113,11 @@
+     @discardableResult
+     public static func create(path: String, geometry: HardDiscGeometry) throws -> HardDiscImage {
+         guard FileManager.default.createFile(atPath: path, contents: nil) else { throw HardDiscError.create(path) }
++        #if canImport(Darwin)
+         let fd = Darwin.open(path, O_RDWR)
++        #else
++        let fd = Glibc.open(path, O_RDWR)
++        #endif
+         guard fd >= 0, ftruncate(fd, off_t(geometry.byteCount)) == 0 else {
+             if fd >= 0 { close(fd) }
+             throw HardDiscError.create(path)
+--- a/Sources/ArchimedesCore/Media/Util.swift
++++ b/Sources/ArchimedesCore/Media/Util.swift
+@@ -1,12 +1,62 @@
++#if canImport(Compression)
+ import Compression
++#endif
+ import zlib
++#if canImport(CryptoKit)
+ import CryptoKit
++#endif
+ import Foundation
+ 
+ public enum SHA256 {
+     public static func hex(_ data: [UInt8]) -> String {
++        #if canImport(CryptoKit)
+         CryptoKit.SHA256.hash(data: data).map { String(format: "%02x", $0) }.joined()
++        #else
++        digest(data).map { String(format: "%02x", $0) }.joined()
++        #endif
+     }
++
++    #if !canImport(CryptoKit)
++    /// FIPS 180-4 SHA-256, where CryptoKit is unavailable.
++    static func digest(_ data: [UInt8]) -> [UInt8] {
++        let k: [UInt32] = [
++            0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5,
++            0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3, 0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174,
++            0xe49b69c1, 0xefbe4786, 0x0fc19dc6, 0x240ca1cc, 0x2de92c6f, 0x4a7484aa, 0x5cb0a9dc, 0x76f988da,
++            0x983e5152, 0xa831c66d, 0xb00327c8, 0xbf597fc7, 0xc6e00bf3, 0xd5a79147, 0x06ca6351, 0x14292967,
++            0x27b70a85, 0x2e1b2138, 0x4d2c6dfc, 0x53380d13, 0x650a7354, 0x766a0abb, 0x81c2c92e, 0x92722c85,
++            0xa2bfe8a1, 0xa81a664b, 0xc24b8b70, 0xc76c51a3, 0xd192e819, 0xd6990624, 0xf40e3585, 0x106aa070,
++            0x19a4c116, 0x1e376c08, 0x2748774c, 0x34b0bcb5, 0x391c0cb3, 0x4ed8aa4a, 0x5b9cca4f, 0x682e6ff3,
++            0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208, 0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2]
++        var h: [UInt32] = [0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a, 0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19]
++        var m = data
++        m.append(0x80)
++        while m.count % 64 != 56 { m.append(0) }
++        let bits = UInt64(data.count) &* 8
++        for i in (0..<8).reversed() { m.append(UInt8(truncatingIfNeeded: bits >> (UInt64(i) * 8))) }
++        var w = [UInt32](repeating: 0, count: 64)
++        func rotr(_ x: UInt32, _ n: UInt32) -> UInt32 { (x >> n) | (x << (32 - n)) }
++        for chunk in stride(from: 0, to: m.count, by: 64) {
++            for i in 0..<16 {
++                w[i] = UInt32(m[chunk + 4 * i]) << 24 | UInt32(m[chunk + 4 * i + 1]) << 16
++                    | UInt32(m[chunk + 4 * i + 2]) << 8 | UInt32(m[chunk + 4 * i + 3])
++            }
++            for i in 16..<64 {
++                let s0 = rotr(w[i - 15], 7) ^ rotr(w[i - 15], 18) ^ (w[i - 15] >> 3)
++                let s1 = rotr(w[i - 2], 17) ^ rotr(w[i - 2], 19) ^ (w[i - 2] >> 10)
++                w[i] = w[i - 16] &+ s0 &+ w[i - 7] &+ s1
++            }
++            var a = h[0], b = h[1], c = h[2], d = h[3], e = h[4], f = h[5], g = h[6], hh = h[7]
++            for i in 0..<64 {
++                let t1 = hh &+ (rotr(e, 6) ^ rotr(e, 11) ^ rotr(e, 25)) &+ ((e & f) ^ (~e & g)) &+ k[i] &+ w[i]
++                let t2 = (rotr(a, 2) ^ rotr(a, 13) ^ rotr(a, 22)) &+ ((a & b) ^ (a & c) ^ (b & c))
++                hh = g; g = f; f = e; e = d &+ t1; d = c; c = b; b = a; a = t1 &+ t2
++            }
++            h[0] &+= a; h[1] &+= b; h[2] &+= c; h[3] &+= d; h[4] &+= e; h[5] &+= f; h[6] &+= g; h[7] &+= hh
++        }
++        return h.flatMap { v in (0..<4).map { UInt8(truncatingIfNeeded: v >> (24 - 8 * UInt32($0))) } }
++    }
++    #endif
+ }
+ 
+ public enum Gzip {
+--- a/Sources/zlib/module.modulemap
++++ b/Sources/zlib/module.modulemap
+@@ -0,0 +1,5 @@
++module zlib [system] {
++    header "shim.h"
++    link "z"
++    export *
++}
+--- a/Sources/zlib/shim.h
++++ b/Sources/zlib/shim.h
+@@ -0,0 +1 @@
++#include <zlib.h>
+--- a/Tests/ArchimedesCoreTests/CollectionSmokeTests.swift
++++ b/Tests/ArchimedesCoreTests/CollectionSmokeTests.swift
+@@ -10,7 +10,7 @@
+     typealias Script = GameSmokeTests.Script
+ 
+     func script(_ name: String, disc: String) throws -> Script {
+-        try GameSmokeTests().script(name, disc: disc)
++        try helperInstance(GameSmokeTests.self).script(name, disc: disc)
+     }
+ 
+     /// Runs an application on the floppy as the Filer would (F12, then
+--- a/Tests/ArchimedesCoreTests/HardDiscBuilderTests.swift
++++ b/Tests/ArchimedesCoreTests/HardDiscBuilderTests.swift
+@@ -4,6 +4,24 @@
+ @testable import ArchimedesCore
+ 
+ final class HardDiscBuilderTests: XCTestCase {
++    #if !canImport(Darwin)
++    /// Raw DEFLATE, which NSData's .zlib writes on Apple platforms.
++    static func rawDeflate(_ d: [UInt8]) -> [UInt8] {
++        var z = z_stream()
++        precondition(deflateInit2_(&z, Z_DEFAULT_COMPRESSION, Z_DEFLATED, -MAX_WBITS, 8, Z_DEFAULT_STRATEGY, ZLIB_VERSION, Int32(MemoryLayout<z_stream>.size)) == Z_OK)
++        defer { deflateEnd(&z) }
++        var input = d, out = [UInt8](repeating: 0, count: Int(deflateBound(&z, uLong(d.count))))
++        let n = input.withUnsafeMutableBufferPointer { i in
++            out.withUnsafeMutableBufferPointer { o -> Int in
++                z.next_in = i.baseAddress; z.avail_in = uInt(i.count); z.next_out = o.baseAddress; z.avail_out = uInt(o.count)
++                precondition(deflate(&z, Z_FINISH) == Z_STREAM_END)
++                return o.count - Int(z.avail_out)
++            }
++        }
++        return Array(out.prefix(n))
++    }
++    #endif
++
+     /// A ZIP archive built by hand: one stored member with an Acorn extra
+     /// field, one deflated member without.
+     static func zip(_ members: [(name: String, data: [UInt8], deflate: Bool, acorn: (UInt32, UInt32)?)]) -> [UInt8] {
+@@ -11,7 +29,11 @@
+         func le32(_ v: UInt32) -> [UInt8] { (0..<4).map { UInt8((v >> (8 * $0)) & 0xFF) } }
+         var out: [UInt8] = [], central: [UInt8] = []
+         for m in members {
++            #if canImport(Darwin)
+             let body = m.deflate ? [UInt8](try! (Data(m.data) as NSData).compressed(using: .zlib) as Data) : m.data
++            #else
++            let body = m.deflate ? Self.rawDeflate(m.data) : m.data
++            #endif
+             var extra: [UInt8] = []
+             if let (load, exec) = m.acorn {
+                 extra = le16(0x4341) + le16(20) + Array("ARC0".utf8) + le32(load) + le32(exec) + le32(3) + le32(0)
+--- a/Tests/ArchimedesCoreTests/HardwareTests.swift
++++ b/Tests/ArchimedesCoreTests/HardwareTests.swift
+@@ -453,7 +453,7 @@
+ 
+     func testMissingDiscIsReported() throws {
+         let m = try syntheticMachine()
+-        m.insertFloppy(FloppyTests().syntheticDisc())
++        m.insertFloppy(helperInstance(FloppyTests.self).syntheticDisc())
+         let s = m.snapshot()
+         XCTAssertThrowsError(try Machine.restore(snapshot: s, rom: m.rom)) {
+             guard case SnapshotError.mediaMissing(drive: 0, _, _) = $0 else { return XCTFail("\($0)") }
+@@ -468,7 +468,7 @@
+         c.romPaths = [dir]
+         c.powerOnKeys = [0x34]
+         let m = try Machine(configuration: c)
+-        let disc = FloppyTests().syntheticDisc()
++        let disc = helperInstance(FloppyTests.self).syntheticDisc()
+         m.insertFloppy(disc)
+         m.powerOn()
+         m.run(seconds: 21)
+@@ -509,7 +509,7 @@
+             let hx = x[lo..<hi].map { String(format: "%02X", $0) }.joined(), hy = y[lo..<hi].map { String(format: "%02X", $0) }.joined()
+             print("DIFF section \(t) at byte \(i) of \(x.count): \(hx) vs \(hy)")
+         }
+-        XCTAssertEqual(SnapshotTests().fingerprint(a), SnapshotTests().fingerprint(b))
++        XCTAssertEqual(helperInstance(SnapshotTests.self).fingerprint(a), helperInstance(SnapshotTests.self).fingerprint(b))
+     }
+ }
+ 
+@@ -520,14 +520,14 @@
+         var fingerprints: [UInt64: [String]] = [:]
+         for _ in 0..<12 {
+             m.run(seconds: 0.01)
+-            fingerprints[m.nominalTicks] = SnapshotTests().fingerprint(m)
++            fingerprints[m.nominalTicks] = helperInstance(SnapshotTests.self).fingerprint(m)
+             r.captureIfDue(m)
+         }
+         XCTAssertLessThanOrEqual(r.points.count, 10)
+         // Any recorded moment after the earliest point can be revisited.
+         let target = r.points[1].ticks + 240_000 // 10 ms after a point
+         let back = try XCTUnwrap(try r.machine(at: target, from: m))
+-        XCTAssertEqual(SnapshotTests().fingerprint(back), fingerprints[target])
++        XCTAssertEqual(helperInstance(SnapshotTests.self).fingerprint(back), fingerprints[target])
+         XCTAssertEqual(r.points.last?.ticks, r.points[1].ticks, "later history discarded")
+         XCTAssertEqual(r.points[0].thumbnail.count, Rewinder.thumbnailWidth * Rewinder.thumbnailHeight)
+     }
+@@ -556,7 +556,7 @@
+         try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
+         defer { try? FileManager.default.removeItem(at: dir) }
+         let path = dir.appendingPathComponent("disc.adf").path
+-        try Data(FloppyTests().syntheticDisc().mergedImage()).write(to: URL(fileURLWithPath: path))
++        try Data(helperInstance(FloppyTests.self).syntheticDisc().mergedImage()).write(to: URL(fileURLWithPath: path))
+         let img = try FloppyImage.open(path: path)
+         let originalHash = img.sha256
+         img.writeSector(side: 1, track: 3, sectorID: 2, data: [UInt8](repeating: 0xAB, count: 1024))
+--- a/Tests/ArchimedesCoreTests/HostTestSupport.swift
++++ b/Tests/ArchimedesCoreTests/HostTestSupport.swift
+@@ -0,0 +1,7 @@
++import XCTest
++
++/// A helper instance of another test class. swift-corelibs-xctest, unlike
++/// Apple's XCTest, has no plain XCTestCase(); its named initialiser is required.
++func helperInstance<T: XCTestCase>(_ type: T.Type) -> T {
++    type.init(name: String(describing: type), testClosure: { _ in })
++}
+--- a/Tests/ArchimedesCoreTests/MandelbrotNetworkTests.swift
++++ b/Tests/ArchimedesCoreTests/MandelbrotNetworkTests.swift
+@@ -229,7 +229,7 @@
+     func testRenderTimes() throws {
+         guard ProcessInfo.processInfo.environment["MANDELBROT_BENCH"] != nil else { throw XCTSkip("MANDELBROT_BENCH=1 to run") }
+         for count in [1, 2, 4, 8] {
+-            let tests = MandelbrotNetworkTests()
++            let tests = helperInstance(MandelbrotNetworkTests.self)
+             let rig = try tests.rig(workers: Array(2 ..< 2 + count))
+             rig.run(until: { rig.workers.allSatisfy { rig.screen($0).contains("waiting for a coordinator") } }, seconds: 90)
+             let wall = Date()

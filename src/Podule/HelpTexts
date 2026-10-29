@@ -1,0 +1,43 @@
+ SUBT => &.Arthur.Podule.HelpTexts
+; Modified 2026 by ArcLibre: RISC OS 3.11's podule wording (see patches/hardware).
+
+  [ International_Help <> 0
+
+HelpForStarPodules      =       "HPDLPD",0
+SyntaxOfStarPodules     =       "SPDLPD",0
+
+HelpForStarPoduleLoad   =       "HPDLPDL",0
+SyntaxOfStarPoduleLoad  =       "SPDLPDL",0
+
+HelpForStarPoduleSave   =       "HPDLPDS",0
+SyntaxOfStarPoduleSave  =       "SPDLPDS",0
+
+  |
+
+HelpForStarPodules
+        =       "*", TokenEscapeChar,Token0
+        =       " gives information about podules"
+        =       " installed in the computer", 13
+SyntaxOfStarPodules
+        =       "Syntax: *", TokenEscapeChar,Token0
+        =       0
+
+HelpForStarPoduleLoad
+        =       "*", TokenEscapeChar,Token0
+        =       " copies a file into the RAM of a specified podule", 13
+SyntaxOfStarPoduleLoad
+        =       "Syntax: *", TokenEscapeChar,Token0
+        =       " <podule number> <filename> [<offset>]"
+        =       0
+
+HelpForStarPoduleSave
+        =       "*", TokenEscapeChar,Token0
+        =       " copies the ROM of a specified podule into a file", 13
+SyntaxOfStarPoduleSave
+        =       "Syntax: *", TokenEscapeChar,Token0
+        =       " <podule number> <filename> <size> [<offset>]"
+        =       0
+
+  ]
+
+        END

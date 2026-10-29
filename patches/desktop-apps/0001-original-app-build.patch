@@ -1,0 +1,380 @@
+--- a/src/EditApp/c/edit
++++ b/src/EditApp/c/edit
+@@ -56,6 +56,13 @@
+ #include <locale.h>
+ #include <ctype.h>
+ #include <setjmp.h>
++/* ArcLibre: use the real SCL jump ABI. GCCSDK otherwise rewrites these
++ * calls to its separate alloca bookkeeping runtime. This application has
++ * no alloca or variable-length arrays; keep GCC's returns-twice knowledge. */
++#ifdef __GNUC__
++extern int setjmp(jmp_buf) __asm__("ArcLibre_setjmp") __attribute__((returns_twice));
++extern void longjmp(jmp_buf, int) __asm__("ArcLibre_longjmp") __attribute__((noreturn));
++#endif
+ #include <signal.h>
+ 
+ #include "kernel.h"
+--- a/src/EditApp/s/ResFiles
++++ b/src/EditApp/s/ResFiles
+@@ -14,6 +14,18 @@
+ ;
+ ; > ResFiles
+ ;
+-        ResourceFile Resources.Export,   Resources.Edit.Export
++; ArcLibre: preserve the source catalogue's ,ffb file type explicitly.
++; Unix copies lack RISC OS metadata; :FLOAD: otherwise defaults to Text and
++; recurses through Edit's text-file alias instead of running BBC BASIC.
++        DCD     ExportEnd - .
++        DCD     &FFFFFB00, 0, :FSIZE:"Resources.Export", 3
++        DCB     "Resources.Edit.Export",0
++        ALIGN
++        DCD     ExportDataEnd - ExportData + 4
++ExportData
++        BIN     Resources.Export
++ExportDataEnd
++        ALIGN
++ExportEnd
+ 
+         END
+--- a/src/ResFiler/s/ResFiler
++++ b/src/ResFiler/s/ResFiler
+@@ -1,3 +1,4 @@
++; ArcLibre: explicit AOF code area for AsAsm; original runtime retained.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -31,6 +32,7 @@
+ ;;
+ ;;----------------------------------------------------------------------------
+ 
++        AREA |ResourceFiler$$Code|, CODE, READONLY
+ Module_BaseAddr
+ 
+         GET     Hdr:ListOpts
+@@ -190,8 +192,6 @@
+ ; Module header
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-        LEADR   Module_LoadAddr
+-
+  ASSERT (.=Module_BaseAddr)
+ 
+         DCD     ResourceFiler_Start        -Module_BaseAddr
+@@ -243,7 +243,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; out   r2->banner or error
+ 
+-GetBanner ENTRY "r0-r1,r3-r7"
++GetBanner KernelEntry "r0-r1,r3-r7"
+         BL      allocatemessagedata
+         ADRVC   r1, ResourceFiler_Banner
+         MOVVC   r2, #0
+@@ -267,7 +267,7 @@
+         ADRGT   r1, ResourceFiler_TitleString
+         SWIGT   XOS_Module
+ 
+-MakeError_CantStartResourceFiler ENTRY
++MakeError_CantStartResourceFiler KernelEntry
+         ADR     r0, ErrorBlock_CantStartResourceFiler
+         MOV     r1, #0
+         MOV     r2, #0
+@@ -301,7 +301,7 @@
+         MOVNE   pc, lr
+ 
+ 
+-ResourceFiler_Service_StartedFiler ENTRY
++ResourceFiler_Service_StartedFiler KernelEntry
+ 
+         LDR     r14, [r12]              ; cancel 'don't start' flag
+         CMP     r14, #0
+@@ -311,7 +311,7 @@
+         EXIT
+ 
+ 
+-ResourceFiler_Service_StartFiler ENTRY "r2,r3,r6"
++ResourceFiler_Service_StartFiler KernelEntry "r2,r3,r6"
+ 
+         LDR     r2, [r12]
+         CMP     r2, #0
+@@ -339,7 +339,7 @@
+ 
+         EXIT
+ 
+-ResourceFiler_Service_MessageFileClosed ENTRY "r0,r12"
++ResourceFiler_Service_MessageFileClosed KernelEntry "r0,r12"
+ 
+         LDR     r12, [r12]              ; are we active?
+         CMP     r12, #0
+@@ -349,7 +349,7 @@
+ 
+         EXITS
+ 
+-ResourceFiler_Service_Reset ENTRY "r0-r6"
++ResourceFiler_Service_Reset KernelEntry "r0-r6"
+ 
+         LDR     r2, [r12]               ; cancel 'don't start' flag
+         CMP     r2, #0
+@@ -363,7 +363,7 @@
+ 
+         EXITS                           ; Sorry, but no can do errors here
+ 
+-ResourceFiler_Init ENTRY "r0"
++ResourceFiler_Init KernelEntry "r0"
+ 
+ ; initialise ResFiler$Path if not already done
+ 
+@@ -391,7 +391,7 @@
+ 
+ ResourceFiler_Die ; drop through...
+ 
+-ResourceFiler_Service_FilerDying ENTRY "r0-r6"
++ResourceFiler_Service_FilerDying KernelEntry "r0-r6"
+ 
+         LDR     wp, [r12]
+         BL      freeworkspace
+@@ -537,7 +537,7 @@
+ 
+ ; Out   all regs may be corrupted - going back to PollWimp
+ 
+-event_mouse_click ENTRY
++event_mouse_click KernelEntry
+ 
+         LDMIA   r1, {r0-r4}             ; set mousex, mousey, buttonstate
+         ADR     r14, mousedata          ; windowhandle, iconhandle
+@@ -615,7 +615,7 @@
+ ; A menu is created with the title above the x,y values you feed it, with the
+ ; top left hand corner being at the x,y position
+ 
+-CreateMenu ENTRY "r2, r3"
++CreateMenu KernelEntry "r2, r3"
+ 
+         STR     r1, menuhandle
+ 
+@@ -681,7 +681,7 @@
+ 
+ ; .............................................................................
+ 
+-CopyMenus ENTRY "r1-r3"
++CopyMenus KernelEntry "r1-r3"
+ 
+         BL      allocatemessagedata             ; if not already done
+         ADRVC   r1, rom_menustart
+@@ -700,7 +700,7 @@
+ 
+ ; Out   all regs may be corrupted - going back to PollWimp
+ 
+-event_menu_select ENTRY
++event_menu_select KernelEntry
+ 
+         MOV     r2, r1
+         LDR     r1, menuhandle
+@@ -722,7 +722,7 @@
+ ; In     r1 = menu handle
+ ;        r2 -> list of selections
+ 
+-DecodeMenu ENTRY
++DecodeMenu KernelEntry
+ 
+  [ debug
+  dreg r1, "menu_select: menu handle ",cc
+@@ -793,7 +793,7 @@
+ ; Out   much corruption, but Z unset ==> no ResourceFS present
+ 
+ 
+-SetUpIconBar ENTRY
++SetUpIconBar KernelEntry
+ 
+         BL      testresourcefs
+         BLEQ    AllocateIcon
+@@ -803,7 +803,7 @@
+ ; Out   EQ ==> resourcefs exists, NE ==> doesn't
+ ;       all regs preserved
+ 
+-testresourcefs ENTRY   "r0-r2"
++testresourcefs KernelEntry   "r0-r2"
+         BL      readfs
+         MOV     r3, r0                  ; r3 = original fs
+         MOV     r2, #0
+@@ -816,13 +816,13 @@
+         BL      writefs                 ; re-write original fs
+         EXIT
+ 
+-readfs  ENTRY   "r1-r2"
++readfs  KernelEntry   "r1-r2"
+         MOV     r0, #0
+         MOV     r1, #0
+         SWI     XOS_Args
+         EXITS                           ; r0 = current fs
+ 
+-writefs ENTRY   "r0-r2"
++writefs KernelEntry   "r0-r2"
+         MOV     r0, #&8F                ; try filing system r2
+         MOV     r1, #18
+         SWI     XOS_Byte
+@@ -832,7 +832,7 @@
+ ; Out   VC => r0 = icon index, flags preserved
+ ;       VS => r0 -> error, flags trashed
+ 
+-AllocateIcon ENTRY "r1-r4, x0, y0, x1, y1"
++AllocateIcon KernelEntry "r1-r4, x0, y0, x1, y1"
+ 
+         MOV     r0, #SpriteReason_ReadSpriteSize
+         ADR     r2, ic_spritename               ; r2 -> sprite name
+@@ -895,7 +895,7 @@
+ 
+ ; Out   r1 -> terminating null
+ 
+-strcpy_advance ENTRY "r2"
++strcpy_advance KernelEntry "r2"
+ 
+ 10      LDRB    r14, [r2], #1           ; Copy from *r2++
+         CMP     r14, #delete            ; Order, you git!
+@@ -920,7 +920,7 @@
+ 
+ ; Out   all regs may be corrupted - going back to PollWimp
+ 
+-event_user_message ENTRY
++event_user_message KernelEntry
+ 
+         LDR     r0, [r1, #message_action]
+ 
+@@ -1024,7 +1024,7 @@
+ ; Out   r0 corrupt if VC, else r0 -> error block if VS
+ ;       r3 = size of string excluding terminator
+ 
+-lookup_1par ENTRY "r5-r7"
++lookup_1par KernelEntry "r5-r7"
+ 
+         BL      allocatemessagedata     ; r0 -> file desc
+         MOVVC   r5, #0
+@@ -1039,7 +1039,7 @@
+ ; In    [messagedata] -> message file desc (0 => not yet opened)
+ ; Out   r0 = [messagedata] -> message file desc (opened if not already open)
+ 
+-allocatemessagedata ENTRY "r1, r2"
++allocatemessagedata KernelEntry "r1, r2"
+ 
+         LDR     r0, messagedata
+         CMP     r0, #0
+@@ -1069,7 +1069,7 @@
+ ; In    [messagedata] -> message file desc, or = 0 if not loaded
+ ; Out   [messagedata] = 0, OS_Module (Free) called if required, error preserved
+ 
+-deallocatemessagedata ENTRY "r0,r2"
++deallocatemessagedata KernelEntry "r0,r2"
+ 
+         LDR     r2, messagedata
+         MOVS    r0, r2
+@@ -1089,7 +1089,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; In    r1 = state for ReportError
+ 
+-ReportError ENTRY "r1, r2"
++ReportError KernelEntry "r1, r2"
+ 
+         BL      GetBanner
+         SWI     XWimp_ReportError
+--- a/src/BASIC/Assembler
++++ b/src/BASIC/Assembler
+@@ -1,3 +1,4 @@
++; ArcLibre: numeric backslash character avoids AsAsm string escapes.
+ ; > Assembler
+ ASS MOV R10,#3
+  STRB R10,[ARGP,#BYTESM]
+@@ -26,7 +27,7 @@
+  TEQ R10,#":"
+  TEQNE R10,#13
+  BEQ CASMX
+- CMP R10,#"\"
++ CMP R10,#&5C
+  CMPNE R10,#";"
+  CMPNE R10,#TREM
+  BEQ CASMXCOM
+@@ -538,7 +539,7 @@
+  LDRB R0,[LINE],#1
+  CMP R0,#":"
+  CMPNE R0,#";"
+- CMPNE R0,#"\"
++ CMPNE R0,#&5C
+  CMPNE R0,#TREM
+  CMPNE R0,#" "
+  BHI CASMXL
+@@ -685,7 +686,7 @@
+  TEQNE R10,#13
+  MOVEQ PC,R14
+  TEQ R10,#";"
+- TEQNE R10,#"\"
++ TEQNE R10,#&5C
+  TEQNE R10,#TREM
+  BNE ERSYNT
+ ASMCHK2 LDRB R10,[AELINE],#1
+--- a/src/BASIC/Basic
++++ b/src/BASIC/Basic
+@@ -162,6 +162,7 @@
+ SAFECRUNCH * 15
+ 
+ MODULEMAIN TEQP PC,#0
++ MOV R0,R0 ; ArcLibre: ARM2 bank-select settling cycle
+  SWI GETENV
+  SUB R1,R1,#VARS
+  SUBS R1,R1,#FREE+256
+--- a/src/BASIC/ModuleAB
++++ b/src/BASIC/ModuleAB
+@@ -1,3 +1,4 @@
++; ArcLibre: relocatable AOF area for AsAsm.
+ ;> ModuleAB
+ 
+ RELEASEVER * 1;1 for release version: no MANDEL or Roger
+@@ -322,7 +323,7 @@
+ Service_UKConfig   * &28
+ Service_UKStatus   * &29
+ 
+- LEADR Module_LoadAddr
++ AREA |BASIC$$Code|, CODE, READONLY
+ 
+ Module_BaseAddr * .
+ 
+--- a/src/BASIC/TransSrc
++++ b/src/BASIC/TransSrc
+@@ -1,3 +1,4 @@
++; ArcLibre: relocatable AOF area for AsAsm.
+  GBLS ShortDate
+ ShortDate SETS "13 May 1993"
+ 
+@@ -204,7 +205,7 @@
+ TINSTALL # 1
+ TTWOCOMMLIMIT # 0
+ 
+- LEADR Module_LoadAddr
++ AREA |BASIC$$Code|, CODE, READONLY
+ 
+ Module_BaseAddr * .
+ 
+@@ -277,6 +278,7 @@
+ BASICTrans_HELP
+  MVN R11,#&08000000
+  TSTP R11,PC
++ MOV R0,R0 ; ArcLibre: ARM2 processor-state settling
+  STMFD SP!,{R14}
+  MOV R1,#0
+  LDRB R10,[R0],#1
+@@ -559,6 +561,7 @@
+  STMDB sp!, {lr}
+  MVN R11,#&08000000
+  TSTP R11,PC
++ MOV R0,R0 ; ArcLibre: ARM2 processor-state settling
+  MOV r2, r1
+  ADR r1,ERRTABLE
+  TST R0,#1
+@@ -803,9 +806,11 @@
+ BADPRO1 = "BADPRO1",0
+ NOLIBROOM = "NOLIBROOM",0
+ 
++ ALIGN ; ArcLibre: code follows variable-length token strings
+ BASICTrans_Message
+  MVN R11,#&08000000
+  TSTP R11,PC
++ MOV R0,R0 ; ArcLibre: ARM2 processor-state settling
+  CMP r0, #26
+  BCS UnknownSWI
+ 

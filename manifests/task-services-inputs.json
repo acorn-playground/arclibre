@@ -1,0 +1,236 @@
+[
+  {
+    "component": "TaskWindow",
+    "path": "Doc/Bugs",
+    "revision": "9d0a32bfcc51b43840d28ef8a23713061834b6f2",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/TaskWindow.git",
+    "upstream_sha256": "2daf929ef14c039ef747c2e088699f3251708e991d6173b76fa6755b9d3b44b6",
+    "sha256": "2daf929ef14c039ef747c2e088699f3251708e991d6173b76fa6755b9d3b44b6",
+    "bytes": 3765
+  },
+  {
+    "component": "TaskWindow",
+    "path": "Doc/Thoughts",
+    "revision": "9d0a32bfcc51b43840d28ef8a23713061834b6f2",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/TaskWindow.git",
+    "upstream_sha256": "fdc178268547ba5c4d3c50ae43a371a8a0f8019a972418eb2cbbbeeb0eac51a4",
+    "sha256": "fdc178268547ba5c4d3c50ae43a371a8a0f8019a972418eb2cbbbeeb0eac51a4",
+    "bytes": 10659
+  },
+  {
+    "component": "TaskWindow",
+    "path": "Help",
+    "revision": "9d0a32bfcc51b43840d28ef8a23713061834b6f2",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/TaskWindow.git",
+    "upstream_sha256": "20a675f53f07033e68922e0aed8a388d2aea937ddf1f98faef9d004f5cb8c39f",
+    "sha256": "20a675f53f07033e68922e0aed8a388d2aea937ddf1f98faef9d004f5cb8c39f",
+    "bytes": 789
+  },
+  {
+    "component": "TaskWindow",
+    "path": "LICENSE",
+    "revision": "9d0a32bfcc51b43840d28ef8a23713061834b6f2",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/TaskWindow.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358
+  },
+  {
+    "component": "TaskWindow",
+    "path": "Makefile",
+    "revision": "9d0a32bfcc51b43840d28ef8a23713061834b6f2",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/TaskWindow.git",
+    "upstream_sha256": "8cbbb0b21695b69944b0eb9a227acade291417c366e2bbc463373128c9dcb0f6",
+    "sha256": "8cbbb0b21695b69944b0eb9a227acade291417c366e2bbc463373128c9dcb0f6",
+    "bytes": 1835
+  },
+  {
+    "component": "TaskWindow",
+    "path": "Resources/UK/Messages",
+    "revision": "9d0a32bfcc51b43840d28ef8a23713061834b6f2",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/TaskWindow.git",
+    "upstream_sha256": "628e2369d7f88cf660d1c03c0ff25fd2048c93fb16f36d858c5d880ad48c1dec",
+    "sha256": "628e2369d7f88cf660d1c03c0ff25fd2048c93fb16f36d858c5d880ad48c1dec",
+    "bytes": 1614
+  },
+  {
+    "component": "TaskWindow",
+    "path": "Syntax",
+    "revision": "9d0a32bfcc51b43840d28ef8a23713061834b6f2",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/TaskWindow.git",
+    "upstream_sha256": "84423248607e137f6e60f66f1a32e9e81b63eb7b5b7c30c8ed1c844a79dfa8ad",
+    "sha256": "84423248607e137f6e60f66f1a32e9e81b63eb7b5b7c30c8ed1c844a79dfa8ad",
+    "bytes": 158
+  },
+  {
+    "component": "TaskWindow",
+    "path": "Version",
+    "revision": "9d0a32bfcc51b43840d28ef8a23713061834b6f2",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/TaskWindow.git",
+    "upstream_sha256": "c2387d86b9847e47a25d4befe7b07fffc09fbaf216884e7a81bf981647cddec8",
+    "sha256": "c2387d86b9847e47a25d4befe7b07fffc09fbaf216884e7a81bf981647cddec8",
+    "bytes": 169
+  },
+  {
+    "component": "TaskWindow",
+    "path": "hdr/TaskWindow",
+    "revision": "9d0a32bfcc51b43840d28ef8a23713061834b6f2",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/TaskWindow.git",
+    "upstream_sha256": "f280d8205b9a77812e37b07e5a65ae9695d9e64d158c6ffd3a493634373f919d",
+    "sha256": "f280d8205b9a77812e37b07e5a65ae9695d9e64d158c6ffd3a493634373f919d",
+    "bytes": 1153
+  },
+  {
+    "component": "TaskWindow",
+    "path": "s/Messages",
+    "revision": "9d0a32bfcc51b43840d28ef8a23713061834b6f2",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/TaskWindow.git",
+    "upstream_sha256": "2be601bdcfe259fc4948aa97c7fda1e118d907741824230b656221034846962e",
+    "sha256": "2be601bdcfe259fc4948aa97c7fda1e118d907741824230b656221034846962e",
+    "bytes": 1136
+  },
+  {
+    "component": "TaskWindow",
+    "path": "s/Redirect",
+    "revision": "9d0a32bfcc51b43840d28ef8a23713061834b6f2",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/TaskWindow.git",
+    "upstream_sha256": "c935d6b17fdbea7413970b62409216d18d04e7d2c7a0ca355dc62a555f77afb3",
+    "sha256": "c935d6b17fdbea7413970b62409216d18d04e7d2c7a0ca355dc62a555f77afb3",
+    "bytes": 6953
+  },
+  {
+    "component": "TaskWindow",
+    "path": "s/TaskIcon",
+    "revision": "9d0a32bfcc51b43840d28ef8a23713061834b6f2",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/TaskWindow.git",
+    "upstream_sha256": "e9e737ce0239867affe84bc46634be237404bc27b96eeb6095cd6d40ada8f294",
+    "sha256": "e9e737ce0239867affe84bc46634be237404bc27b96eeb6095cd6d40ada8f294",
+    "bytes": 16483
+  },
+  {
+    "component": "TaskWindow",
+    "path": "s/Taskman",
+    "revision": "9d0a32bfcc51b43840d28ef8a23713061834b6f2",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/TaskWindow.git",
+    "upstream_sha256": "5fc4266b9dc60750afbc6753a8b0afcf6102fcbd98ea0fbc42c3f239276eddf8",
+    "sha256": "0453228644955d78f0b2763418ddf2515636d6fe5d936dc850550288315e7ea5",
+    "bytes": 161486
+  },
+  {
+    "component": "Filter",
+    "path": "Doc/SWIs",
+    "revision": "0728a78f554bdc46cac5043ba8a21941e6da3775",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filter.git",
+    "upstream_sha256": "0d8e58e67c913939ef43ec6642bfc4402552bf02bfc7e587b32ae377cd008d9a",
+    "sha256": "0d8e58e67c913939ef43ec6642bfc4402552bf02bfc7e587b32ae377cd008d9a",
+    "bytes": 3630
+  },
+  {
+    "component": "Filter",
+    "path": "LICENSE",
+    "revision": "0728a78f554bdc46cac5043ba8a21941e6da3775",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filter.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358
+  },
+  {
+    "component": "Filter",
+    "path": "Makefile",
+    "revision": "0728a78f554bdc46cac5043ba8a21941e6da3775",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filter.git",
+    "upstream_sha256": "334fe11ba43f8d8ca61afbba3abe805a121ccfe60c10072374dfa0cee3d3f2d7",
+    "sha256": "334fe11ba43f8d8ca61afbba3abe805a121ccfe60c10072374dfa0cee3d3f2d7",
+    "bytes": 1822
+  },
+  {
+    "component": "Filter",
+    "path": "Resources/UK/Messages",
+    "revision": "0728a78f554bdc46cac5043ba8a21941e6da3775",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filter.git",
+    "upstream_sha256": "7306517562711e61cdf2f358374cf137947f48242a4550bd7c4abd7bd7b187c4",
+    "sha256": "7306517562711e61cdf2f358374cf137947f48242a4550bd7c4abd7bd7b187c4",
+    "bytes": 297
+  },
+  {
+    "component": "Filter",
+    "path": "Version",
+    "revision": "0728a78f554bdc46cac5043ba8a21941e6da3775",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filter.git",
+    "upstream_sha256": "1c5331330c00e5830f81539f3bbbc8d51a25b4c02b10ecbfe091fb1fe00abe89",
+    "sha256": "1c5331330c00e5830f81539f3bbbc8d51a25b4c02b10ecbfe091fb1fe00abe89",
+    "bytes": 233
+  },
+  {
+    "component": "Filter",
+    "path": "hdr/Filter",
+    "revision": "0728a78f554bdc46cac5043ba8a21941e6da3775",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filter.git",
+    "upstream_sha256": "712e2bf2cbe568ad2d8fd3834fba8274261931c26d1b93445fdeaa4f7d718b16",
+    "sha256": "712e2bf2cbe568ad2d8fd3834fba8274261931c26d1b93445fdeaa4f7d718b16",
+    "bytes": 1220
+  },
+  {
+    "component": "Filter",
+    "path": "s/FilterMgr",
+    "revision": "0728a78f554bdc46cac5043ba8a21941e6da3775",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filter.git",
+    "upstream_sha256": "76c42ff6df089ef092391c465885ef38ae0c5345ca1a3ae87fe12ad463b46084",
+    "sha256": "23d51c419f28080126a9ce430c9348790a758c755493d5b52ac40b526cbf9f83",
+    "bytes": 4414
+  },
+  {
+    "component": "Filter",
+    "path": "s/ModHead",
+    "revision": "0728a78f554bdc46cac5043ba8a21941e6da3775",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filter.git",
+    "upstream_sha256": "ad91193055e586638ffba3917d416188bd7828edf3b970ba7f0967b535d1eb15",
+    "sha256": "1aafa6508f09c45f387a9a9c6a030889ec3528e1c821edb4569de777ad000fa6",
+    "bytes": 12896
+  },
+  {
+    "component": "Filter",
+    "path": "s/MsgTrans",
+    "revision": "0728a78f554bdc46cac5043ba8a21941e6da3775",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filter.git",
+    "upstream_sha256": "01f415866a05c92cc93641343043713d582101562d3637a89cc7fdd10e3ce1cb",
+    "sha256": "eed4265bbd1cfdad9f4b908194f902fa8f7904ce0db6c59a2f305da1ce42101f",
+    "bytes": 2756
+  },
+  {
+    "component": "Filter",
+    "path": "s/PostFilter",
+    "revision": "0728a78f554bdc46cac5043ba8a21941e6da3775",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filter.git",
+    "upstream_sha256": "c29d6dcee7fd8146cb686cb908f0a9c226b44fb1c1d92fd9f57143ab7913acc8",
+    "sha256": "c29d6dcee7fd8146cb686cb908f0a9c226b44fb1c1d92fd9f57143ab7913acc8",
+    "bytes": 2582
+  },
+  {
+    "component": "Filter",
+    "path": "s/PreFilter",
+    "revision": "0728a78f554bdc46cac5043ba8a21941e6da3775",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filter.git",
+    "upstream_sha256": "c5d006abd0d6ac3ca053bc76d2197c4cdf431303ac0379aeae431c4fa19de7f0",
+    "sha256": "c5d006abd0d6ac3ca053bc76d2197c4cdf431303ac0379aeae431c4fa19de7f0",
+    "bytes": 1634
+  },
+  {
+    "component": "Filter",
+    "path": "s/SWIS",
+    "revision": "0728a78f554bdc46cac5043ba8a21941e6da3775",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filter.git",
+    "upstream_sha256": "143cddf8a564a5c6ed27b8faf2c8e2060ae5f208065dc866a4cb0a6ef2e499d1",
+    "sha256": "6f03dded6d1462afbcc704ebb16f9ce1073bcf74e3ab879a826e27c7e0c7af8e",
+    "bytes": 11956
+  },
+  {
+    "component": "Filter",
+    "path": "s/Tail",
+    "revision": "0728a78f554bdc46cac5043ba8a21941e6da3775",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filter.git",
+    "upstream_sha256": "6d0eefbdeb55456982524bce8b8c3a34a75f538a3d13054fe41c48f8f3f76fb7",
+    "sha256": "6d0eefbdeb55456982524bce8b8c3a34a75f538a3d13054fe41c48f8f3f76fb7",
+    "bytes": 1659
+  }
+]

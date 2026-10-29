@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "modules": [
+    {
+      "component": "IIC",
+      "status": "STATIC_ARM2_PASS",
+      "bytes": 1096,
+      "sha256": "ca2ebdd0d030aa2037eea9a178f9471755ac805b38b5bdbb92cb6d2cf1538d81",
+      "aof_sha256": "bdb1257eac20b925eb3548085eb6d89634cc7c169dbd255a2391c8617871759d",
+      "integer_instructions": 238,
+      "relocations": 0,
+      "unresolved_symbols": 0,
+      "swi_base": 576
+    },
+    {
+      "component": "RTCAdjust",
+      "status": "STATIC_ARM2_PASS",
+      "bytes": 1836,
+      "sha256": "3dea6b3efb199f36abb7a2f34710ecc90f0016a1703e8a382ea449a3909e76b2",
+      "aof_sha256": "2d529567027b74daeb10e619a13297f3e31b4920b8283f75b5633ac5d711b641",
+      "integer_instructions": 405,
+      "relocations": 0,
+      "unresolved_symbols": 0,
+      "swi_base": null
+    }
+  ],
+  "resources_sha256": "a05f900482208dc67079a8dc2d5dd4fbb4b7d3339b5241306183c9d393a8e8c8"
+}

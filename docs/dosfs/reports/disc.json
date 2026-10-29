@@ -1,0 +1,23 @@
+{
+  "image": "build/dosfs/arclibre-dosfs.adf",
+  "sha256": "cc74f90dd44ded82377e2beb6223d21a0836bfaeb85a5fb0a3612db3c010dbeb",
+  "bytes": 819200,
+  "format": "ADFS D (old map) 800K",
+  "disc_name": "DOSFS",
+  "files": [
+    {
+      "name": "DOSFS",
+      "filetype": "&FFA",
+      "bytes": 50992,
+      "sha256": "6dc485d83503d3bc26ebd0b2a1f1ff81c5e4700feb653d341e5a5c987406ecad",
+      "sector": 12
+    },
+    {
+      "name": "ReadMe",
+      "filetype": "&FFF",
+      "bytes": 2184,
+      "sha256": "372b0e94473c27d2d256d01462254457cad53228e1fe0e86846f4f279d73b028",
+      "sector": 212
+    }
+  ]
+}

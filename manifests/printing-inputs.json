@@ -1,0 +1,2042 @@
+[
+  {
+    "component": "PDriver",
+    "path": "LICENSE",
+    "revision": "de4185f8a1dcdb7ce57ef9e6a7fbad8a4c8a2d71",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDriver.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358,
+    "modified": false
+  },
+  {
+    "component": "PDriver",
+    "path": "Makefile",
+    "revision": "de4185f8a1dcdb7ce57ef9e6a7fbad8a4c8a2d71",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDriver.git",
+    "upstream_sha256": "c1256bcaa4551b75375da6b69debf3af23723728f88a4f9169c32cb5a3d32db3",
+    "sha256": "c1256bcaa4551b75375da6b69debf3af23723728f88a4f9169c32cb5a3d32db3",
+    "bytes": 2374,
+    "modified": false
+  },
+  {
+    "component": "PDriver",
+    "path": "Version",
+    "revision": "de4185f8a1dcdb7ce57ef9e6a7fbad8a4c8a2d71",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDriver.git",
+    "upstream_sha256": "388ec20a2e8243f1ffc9cd006e9514153bb2b688b05834c674e85c69fd866f35",
+    "sha256": "388ec20a2e8243f1ffc9cd006e9514153bb2b688b05834c674e85c69fd866f35",
+    "bytes": 169,
+    "modified": false
+  },
+  {
+    "component": "PDriver",
+    "path": "Resources/UK/Messages",
+    "revision": "de4185f8a1dcdb7ce57ef9e6a7fbad8a4c8a2d71",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDriver.git",
+    "upstream_sha256": "3e55bc21f5a8a1d0d1430ade5722db9de0e2b44d2906dfd7cf69119078b6aecd",
+    "sha256": "3e55bc21f5a8a1d0d1430ade5722db9de0e2b44d2906dfd7cf69119078b6aecd",
+    "bytes": 2490,
+    "modified": false
+  },
+  {
+    "component": "PDriver",
+    "path": "hdr/PDriver",
+    "revision": "de4185f8a1dcdb7ce57ef9e6a7fbad8a4c8a2d71",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDriver.git",
+    "upstream_sha256": "ed8b93a3b920af907e0bde7d16690b00048bd039aed13524dc0f01cdd02253c3",
+    "sha256": "ed8b93a3b920af907e0bde7d16690b00048bd039aed13524dc0f01cdd02253c3",
+    "bytes": 6335,
+    "modified": false
+  },
+  {
+    "component": "PDriver",
+    "path": "s/PDriver",
+    "revision": "de4185f8a1dcdb7ce57ef9e6a7fbad8a4c8a2d71",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDriver.git",
+    "upstream_sha256": "d899346cef47c8aa511d9e88d728ea66b387f80c9664790561ea6256a1c0bfbd",
+    "sha256": "c436a89806e57ffedde0a0639ad9521de51485fc4a52350256c3811bf162ddc9",
+    "bytes": 42198,
+    "modified": true
+  },
+  {
+    "component": "PDriver",
+    "path": "s/MsgCode",
+    "revision": "de4185f8a1dcdb7ce57ef9e6a7fbad8a4c8a2d71",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDriver.git",
+    "upstream_sha256": "86de4b2fc724aae0f94d68224b72b3245eff7187e2f8d3b3edce5eef80894ae5",
+    "sha256": "86de4b2fc724aae0f94d68224b72b3245eff7187e2f8d3b3edce5eef80894ae5",
+    "bytes": 10190,
+    "modified": false
+  },
+  {
+    "component": "PDriver",
+    "path": "s/StandAlone",
+    "revision": "de4185f8a1dcdb7ce57ef9e6a7fbad8a4c8a2d71",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDriver.git",
+    "upstream_sha256": "d57f46978c3c0f48fb1a8d76dcecdf31dc1842bcc15e9b1e13fe33512588304e",
+    "sha256": "d57f46978c3c0f48fb1a8d76dcecdf31dc1842bcc15e9b1e13fe33512588304e",
+    "bytes": 711,
+    "modified": false
+  },
+  {
+    "component": "PDModules",
+    "path": "LICENSE",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358,
+    "modified": false
+  },
+  {
+    "component": "PDModules",
+    "path": "Makefile",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "3a49e76438b1de91dbf3c489af82becb12f38492659a5b93c786e16d67a52c38",
+    "sha256": "3a49e76438b1de91dbf3c489af82becb12f38492659a5b93c786e16d67a52c38",
+    "bytes": 2007,
+    "modified": false
+  },
+  {
+    "component": "PDModules",
+    "path": "Version",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "9c523cd8cb9555d697730c62ab6d6e73609f24a3da08aff43484946e87959283",
+    "sha256": "9c523cd8cb9555d697730c62ab6d6e73609f24a3da08aff43484946e87959283",
+    "bytes": 314,
+    "modified": false
+  },
+  {
+    "component": "PDModules",
+    "path": "s/PrinterDP",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "7524ea4f81e3b7b29da72c3c670c88bc53f16d2f59620f6a829e7ce43c88bed6",
+    "sha256": "7524ea4f81e3b7b29da72c3c670c88bc53f16d2f59620f6a829e7ce43c88bed6",
+    "bytes": 11792,
+    "modified": false
+  },
+  {
+    "component": "PDModules",
+    "path": "s/Core/ColTrans",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "a4de6b754af3d9a300503b97d4c6e01dcb7faf61ad411fea6f15951116ef333b",
+    "sha256": "a4de6b754af3d9a300503b97d4c6e01dcb7faf61ad411fea6f15951116ef333b",
+    "bytes": 24607,
+    "modified": false
+  },
+  {
+    "component": "PDModules",
+    "path": "s/Core/Colour",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "6cf933beb8eea14f2e63ee93add9ba19bec52a397bb8e10c88ebd30677700854",
+    "sha256": "6cf933beb8eea14f2e63ee93add9ba19bec52a397bb8e10c88ebd30677700854",
+    "bytes": 6262,
+    "modified": false
+  },
+  {
+    "component": "PDModules",
+    "path": "s/Core/Constants",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "c66ffd7c2e6a514bd7c7917144e56faedbb070367ed595717c280f78fead98f2",
+    "sha256": "c66ffd7c2e6a514bd7c7917144e56faedbb070367ed595717c280f78fead98f2",
+    "bytes": 3101,
+    "modified": false
+  },
+  {
+    "component": "PDModules",
+    "path": "s/Core/Device",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "baef1e840c5e68db57c231eb5de66ded260a9127de397e6b3168e3337bbdcbf9",
+    "sha256": "baef1e840c5e68db57c231eb5de66ded260a9127de397e6b3168e3337bbdcbf9",
+    "bytes": 62450,
+    "modified": false
+  },
+  {
+    "component": "PDModules",
+    "path": "s/Core/Draw",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "129febffaa04dcd067b1d39d4b65228495a0d408641a57c50f437e292c4992bb",
+    "sha256": "129febffaa04dcd067b1d39d4b65228495a0d408641a57c50f437e292c4992bb",
+    "bytes": 9430,
+    "modified": false
+  },
+  {
+    "component": "PDModules",
+    "path": "s/Core/Error",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "b5cec82e967956da7a14b8cb808ab0927329c0d2ce3368fc8dd72a2edac18237",
+    "sha256": "b5cec82e967956da7a14b8cb808ab0927329c0d2ce3368fc8dd72a2edac18237",
+    "bytes": 11523,
+    "modified": false
+  },
+  {
+    "component": "PDModules",
+    "path": "s/Core/FontSWI",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "5505f656b81e47c2f99934b5b9b57b92bcc64864044589eb328f60fff70e2ec5",
+    "sha256": "4737098a78a552811f42bcb2a632c4c2022d174e7f08a32e1a7cee7a410f1e07",
+    "bytes": 36424,
+    "modified": true
+  },
+  {
+    "component": "PDModules",
+    "path": "s/Core/Header",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "47a33b75311ffc403c19ce03d84c2a5d24acee5a406fde6474e55091295dbf3a",
+    "sha256": "53251db7434ffb218e43e5ffe6b6cd0ba522383c051e1ebe28187deb5415487f",
+    "bytes": 17056,
+    "modified": true
+  },
+  {
+    "component": "PDModules",
+    "path": "s/Core/Intercept",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "5ead6cd189bbd7bf811682fc8377f1f5c0d05fcc6586f5ecc81553c7c18b7670",
+    "sha256": "5ead6cd189bbd7bf811682fc8377f1f5c0d05fcc6586f5ecc81553c7c18b7670",
+    "bytes": 9522,
+    "modified": false
+  },
+  {
+    "component": "PDModules",
+    "path": "s/Core/JPEGSWI",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "8cedbb68b3d226e5128f6a0c9aa61f5de2d1fba715f1aa67d503d97384df2b02",
+    "sha256": "8cedbb68b3d226e5128f6a0c9aa61f5de2d1fba715f1aa67d503d97384df2b02",
+    "bytes": 3952,
+    "modified": false
+  },
+  {
+    "component": "PDModules",
+    "path": "s/Core/JobManager",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "b8fd40529aa9fe3d8706defa50cbed59be94f70f4933540d39a43bb21b87cd86",
+    "sha256": "b8fd40529aa9fe3d8706defa50cbed59be94f70f4933540d39a43bb21b87cd86",
+    "bytes": 3428,
+    "modified": false
+  },
+  {
+    "component": "PDModules",
+    "path": "s/Core/MsgCode",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "734b3091559038fce3778338d5f694146645405f6436e731e04b1f5e09be5239",
+    "sha256": "734b3091559038fce3778338d5f694146645405f6436e731e04b1f5e09be5239",
+    "bytes": 10191,
+    "modified": false
+  },
+  {
+    "component": "PDModules",
+    "path": "s/Core/OSByte",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "db23095f28b8d2a90d7ecad11e4694436eaaddfbd532b94a2c2e2eb2ef810cee",
+    "sha256": "db23095f28b8d2a90d7ecad11e4694436eaaddfbd532b94a2c2e2eb2ef810cee",
+    "bytes": 5265,
+    "modified": false
+  },
+  {
+    "component": "PDModules",
+    "path": "s/Core/PDriver",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "09edf2eb62a4d95d18ea722bbb9a4402919b4204aa08dee0f25b797caa7a1e1e",
+    "sha256": "09edf2eb62a4d95d18ea722bbb9a4402919b4204aa08dee0f25b797caa7a1e1e",
+    "bytes": 9433,
+    "modified": false
+  },
+  {
+    "component": "PDModules",
+    "path": "s/Core/SWIs",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "5f8c0429b8cafa1ebce7d4842146fa989957fcca1f22a69f7b9209959bb489e3",
+    "sha256": "5f8c0429b8cafa1ebce7d4842146fa989957fcca1f22a69f7b9209959bb489e3",
+    "bytes": 70975,
+    "modified": false
+  },
+  {
+    "component": "PDModules",
+    "path": "s/Core/Sprite",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "184375f29ead482fe1f97bcf13e34efe1db14d37d330f90d6f3ede10eccf552b",
+    "sha256": "184375f29ead482fe1f97bcf13e34efe1db14d37d330f90d6f3ede10eccf552b",
+    "bytes": 18199,
+    "modified": false
+  },
+  {
+    "component": "PDModules",
+    "path": "s/Core/Vdu5",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "f89b982ed828dcafb848bceecb1f69e514eb1de69f1f15520889692d46b56101",
+    "sha256": "f89b982ed828dcafb848bceecb1f69e514eb1de69f1f15520889692d46b56101",
+    "bytes": 2554,
+    "modified": false
+  },
+  {
+    "component": "PDModules",
+    "path": "s/Core/Workspace",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "c390dcba12a6558dda05b7cb767389d2f8506f5eab495619ad4e6c9feec222d7",
+    "sha256": "c390dcba12a6558dda05b7cb767389d2f8506f5eab495619ad4e6c9feec222d7",
+    "bytes": 17988,
+    "modified": false
+  },
+  {
+    "component": "PDModules",
+    "path": "s/Core/Wrch",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "c8098ac3777c67c9d887d986cdbb703134713ad1402437e55238898d38a78a12",
+    "sha256": "c8098ac3777c67c9d887d986cdbb703134713ad1402437e55238898d38a78a12",
+    "bytes": 36757,
+    "modified": false
+  },
+  {
+    "component": "PDModules",
+    "path": "s/PDriverDP/Colour",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "53a6ca9277592e94d22aff916256a3118a3457ff9ea61cf666527d77a7131356",
+    "sha256": "53a6ca9277592e94d22aff916256a3118a3457ff9ea61cf666527d77a7131356",
+    "bytes": 27595,
+    "modified": false
+  },
+  {
+    "component": "PDModules",
+    "path": "s/PDriverDP/Configure",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "0ccdea0428f7f2d8830a9b5489e90f649f5dd6905a0aa1ec196be7ac37349d06",
+    "sha256": "7432e2ced9b5e45ac0a2b2542de0a479946c567faeea42f09729a7bea9ad12cc",
+    "bytes": 15367,
+    "modified": true
+  },
+  {
+    "component": "PDModules",
+    "path": "s/PDriverDP/Constants",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "9d2e3d715702f45f1ee7bcbe44b8933035c4655387645cf86ea482e1f904ff9a",
+    "sha256": "9d2e3d715702f45f1ee7bcbe44b8933035c4655387645cf86ea482e1f904ff9a",
+    "bytes": 1383,
+    "modified": false
+  },
+  {
+    "component": "PDModules",
+    "path": "s/PDriverDP/Draw",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "5424bc189b05c16d8cf5b60f3726c1752598d4c981b18f16c13f58234dc4076e",
+    "sha256": "5424bc189b05c16d8cf5b60f3726c1752598d4c981b18f16c13f58234dc4076e",
+    "bytes": 11571,
+    "modified": false
+  },
+  {
+    "component": "PDModules",
+    "path": "s/PDriverDP/Font",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "6ff9d7ed09a3f3bcf73aa089641021ff77d2f595ba2d844c354986169b7bb37c",
+    "sha256": "6ff9d7ed09a3f3bcf73aa089641021ff77d2f595ba2d844c354986169b7bb37c",
+    "bytes": 21910,
+    "modified": false
+  },
+  {
+    "component": "PDModules",
+    "path": "s/PDriverDP/GlobalWS",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "4d32ec5b26e93ffd2ab071f77dcc9a2adc2af12320529d01e64c430eea194db2",
+    "sha256": "4d32ec5b26e93ffd2ab071f77dcc9a2adc2af12320529d01e64c430eea194db2",
+    "bytes": 2666,
+    "modified": false
+  },
+  {
+    "component": "PDModules",
+    "path": "s/PDriverDP/JPEG",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "9e24211ca01d09f6d9793f020c1f5adc772d480798f485d786a1df1939991403",
+    "sha256": "9e24211ca01d09f6d9793f020c1f5adc772d480798f485d786a1df1939991403",
+    "bytes": 13469,
+    "modified": false
+  },
+  {
+    "component": "PDModules",
+    "path": "s/PDriverDP/JobWS",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "c0ca635382b68d51c9471a22cc3f08eec83fca5764282d5c26a742e496795dde",
+    "sha256": "c0ca635382b68d51c9471a22cc3f08eec83fca5764282d5c26a742e496795dde",
+    "bytes": 5842,
+    "modified": false
+  },
+  {
+    "component": "PDModules",
+    "path": "s/PDriverDP/Macros",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "a578e42f37fd62fc43b3113d92b4b1891a9135578772d559321288e5e744bf42",
+    "sha256": "a578e42f37fd62fc43b3113d92b4b1891a9135578772d559321288e5e744bf42",
+    "bytes": 5392,
+    "modified": false
+  },
+  {
+    "component": "PDModules",
+    "path": "s/PDriverDP/ManageJob",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "14e8952c0b7a0bc65729f8d633f206d1225921089b53444750e1f851d6c8113b",
+    "sha256": "14e8952c0b7a0bc65729f8d633f206d1225921089b53444750e1f851d6c8113b",
+    "bytes": 12299,
+    "modified": false
+  },
+  {
+    "component": "PDModules",
+    "path": "s/PDriverDP/MiscOp",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "ff21d6437063105517d522274128d6e5f560f825ef7434f9f1befeca5237937f",
+    "sha256": "ff21d6437063105517d522274128d6e5f560f825ef7434f9f1befeca5237937f",
+    "bytes": 10664,
+    "modified": false
+  },
+  {
+    "component": "PDModules",
+    "path": "s/PDriverDP/PageBox",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "8533149b94bdee5397d68c98bc446de1f6fae146e7fe005ac3aeabe2f2bddf02",
+    "sha256": "f6fe424278984d3b4aa1b82254b672a35d7fac62411199f18512ec7fb9b70fd0",
+    "bytes": 57705,
+    "modified": true
+  },
+  {
+    "component": "PDModules",
+    "path": "s/PDriverDP/Picture",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "f77b1aadd0a4513fb1655c41a2af5d9ce35ce8149c9aa4885674411a409b3e36",
+    "sha256": "864c17d0d7ec34e17672d4b149e96ad61ded3a8697b0daf4772828b2b90ccc3f",
+    "bytes": 1048,
+    "modified": true
+  },
+  {
+    "component": "PDModules",
+    "path": "s/PDriverDP/Plot",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "71089cedeb1ab1381b95a1d6cc1c7230ffdb937f9026eb30a7df38b8f8138460",
+    "sha256": "71089cedeb1ab1381b95a1d6cc1c7230ffdb937f9026eb30a7df38b8f8138460",
+    "bytes": 30363,
+    "modified": false
+  },
+  {
+    "component": "PDModules",
+    "path": "s/PDriverDP/Private",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "c2ee8616677977b63b13785b2fa2dfc6ebfaff564c5cfb113d87766e3c490d88",
+    "sha256": "c2ee8616677977b63b13785b2fa2dfc6ebfaff564c5cfb113d87766e3c490d88",
+    "bytes": 3686,
+    "modified": false
+  },
+  {
+    "component": "PDModules",
+    "path": "s/PDriverDP/Private2",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "47c9e0b736d26489c948b03539d88e022e4afa0387cdbe471143d79a4cf03694",
+    "sha256": "47c9e0b736d26489c948b03539d88e022e4afa0387cdbe471143d79a4cf03694",
+    "bytes": 34487,
+    "modified": false
+  },
+  {
+    "component": "PDModules",
+    "path": "s/PDriverDP/ScreenDump",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "432a83c34dad63bda1d9ce0c69a399af766e43218af4bc82319c19d8b7e59ec9",
+    "sha256": "bc28bb4501376248d01fb93154dd7142c7e3d5f7d9174336286e2b1b57393859",
+    "bytes": 1035,
+    "modified": true
+  },
+  {
+    "component": "PDModules",
+    "path": "s/PDriverDP/Sprite",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "7313b20fb796f253a703e5a7daa80d7fec06ece78c487d905343b6a932b26a9a",
+    "sha256": "66c2db12f214cd1d8355de319a19158f5188985fd5511e137ac8a6b28ad23559",
+    "bytes": 18020,
+    "modified": true
+  },
+  {
+    "component": "PDModules",
+    "path": "s/PDriverDP/TranSprite",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "ab5d4ee01b9d8c9fd1cf498778094bd5d3612a3db5a907b9f9373646c9f2eadb",
+    "sha256": "ab5d4ee01b9d8c9fd1cf498778094bd5d3612a3db5a907b9f9373646c9f2eadb",
+    "bytes": 7420,
+    "modified": false
+  },
+  {
+    "component": "PDModules",
+    "path": "s/PDriverDP/Vdu5",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "9e8e949003e08d532417ba3264596db00470acaa2fd221b7ea6a1785a66938d3",
+    "sha256": "9e8e949003e08d532417ba3264596db00470acaa2fd221b7ea6a1785a66938d3",
+    "bytes": 9478,
+    "modified": false
+  },
+  {
+    "component": "PDModules",
+    "path": "s/PrinterPS",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "a7e5bd157465899fa7989326258e7dee7bde2ec091ae8da984d5ca7c04f0d3a7",
+    "sha256": "a7e5bd157465899fa7989326258e7dee7bde2ec091ae8da984d5ca7c04f0d3a7",
+    "bytes": 22396,
+    "modified": false
+  },
+  {
+    "component": "PDModules",
+    "path": "s/PDriverPS/Colour",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "da6af98a310fb58a9014e805a788369bcbcff8ef2bafed4569959d3b420709dc",
+    "sha256": "da6af98a310fb58a9014e805a788369bcbcff8ef2bafed4569959d3b420709dc",
+    "bytes": 10388,
+    "modified": false
+  },
+  {
+    "component": "PDModules",
+    "path": "s/PDriverPS/Configure",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "464fb938058c63fd4e3462f941fe70d0a071d33ac0274ef544825d21e4dbd996",
+    "sha256": "17655bee85a44e00fba48fa2bd53e4c4a4107da3ae2cc52fe90a7a5dbced88d3",
+    "bytes": 8194,
+    "modified": true
+  },
+  {
+    "component": "PDModules",
+    "path": "s/PDriverPS/Constants",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "73d69dd9d748cc1b286f007426c4fa0b3abc5db0ee87ef98a7200bb9be61a715",
+    "sha256": "73d69dd9d748cc1b286f007426c4fa0b3abc5db0ee87ef98a7200bb9be61a715",
+    "bytes": 689,
+    "modified": false
+  },
+  {
+    "component": "PDModules",
+    "path": "s/PDriverPS/Draw",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "ca8513737af1968899d5389d970e0cd52ca8597ba3261473c78e02d3c50be926",
+    "sha256": "7b9d004792ab30b988967fcd695f9ca6d7fc71ec4603bc5514c5fd1061db53fc",
+    "bytes": 24536,
+    "modified": true
+  },
+  {
+    "component": "PDModules",
+    "path": "s/PDriverPS/Font",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "fe3c172c04bff3efa95092e6f666619aaa85fd3d74b9cfc1d8c72484db1f7809",
+    "sha256": "3d9c0667dd61616eeee56d295b24c35c3b3f106d560f1441261c0e81c1203e88",
+    "bytes": 48649,
+    "modified": true
+  },
+  {
+    "component": "PDModules",
+    "path": "s/PDriverPS/GlobalWS",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "0490828d8b22ec5ee9e23943e6a924466599db5beecb5337c543479774f2ccf6",
+    "sha256": "0490828d8b22ec5ee9e23943e6a924466599db5beecb5337c543479774f2ccf6",
+    "bytes": 4798,
+    "modified": false
+  },
+  {
+    "component": "PDModules",
+    "path": "s/PDriverPS/JPEG",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "7f0e98c2b9d5ca1ffa9f0731a16db356b11399a1db2ded27904dfeeb6ad4ad1c",
+    "sha256": "7f0e98c2b9d5ca1ffa9f0731a16db356b11399a1db2ded27904dfeeb6ad4ad1c",
+    "bytes": 16073,
+    "modified": false
+  },
+  {
+    "component": "PDModules",
+    "path": "s/PDriverPS/JobWS",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "1ef720dd2df8191a7d07b2842fa8d7332c93380fdbca7d4958c8bf777708e731",
+    "sha256": "1ef720dd2df8191a7d07b2842fa8d7332c93380fdbca7d4958c8bf777708e731",
+    "bytes": 6523,
+    "modified": false
+  },
+  {
+    "component": "PDModules",
+    "path": "s/PDriverPS/Macros",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "6f519cfc3b96df122595c33488f0a368beaa86d27dd7b5d8e2b7becebb836d2b",
+    "sha256": "6f519cfc3b96df122595c33488f0a368beaa86d27dd7b5d8e2b7becebb836d2b",
+    "bytes": 9439,
+    "modified": false
+  },
+  {
+    "component": "PDModules",
+    "path": "s/PDriverPS/ManageJob",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "7ba541980b06b42853c1f8fed24c0c0940d1cafa6c5bb0841f0c3df35bc7e303",
+    "sha256": "7ba541980b06b42853c1f8fed24c0c0940d1cafa6c5bb0841f0c3df35bc7e303",
+    "bytes": 12378,
+    "modified": false
+  },
+  {
+    "component": "PDModules",
+    "path": "s/PDriverPS/MiscOp",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "3a0a2c02ffee935775ef61dce5327da7c3d876e5d4dedab9757efd6b7e6e1a8a",
+    "sha256": "3a0a2c02ffee935775ef61dce5327da7c3d876e5d4dedab9757efd6b7e6e1a8a",
+    "bytes": 1141,
+    "modified": false
+  },
+  {
+    "component": "PDModules",
+    "path": "s/PDriverPS/PageBox",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "8bea73630041efc4c54eda4d6724accdd71cc0fb9c2ec93c29613c202e99727d",
+    "sha256": "8bea73630041efc4c54eda4d6724accdd71cc0fb9c2ec93c29613c202e99727d",
+    "bytes": 25503,
+    "modified": false
+  },
+  {
+    "component": "PDModules",
+    "path": "s/PDriverPS/Picture",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "db5c3df678a5be4f588fd286128097a878f2fe717337ef9c6c3723ba6025959f",
+    "sha256": "670d4a2eedc5034fb0e555459901aa0fb674dfaaa5b342ee8d3521d0bed29e64",
+    "bytes": 956,
+    "modified": true
+  },
+  {
+    "component": "PDModules",
+    "path": "s/PDriverPS/Plot",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "1a289218c58f838d44aacfa56ff80fd1af4ecbffd0fbe4fba883a4b68dc2c9bd",
+    "sha256": "1a289218c58f838d44aacfa56ff80fd1af4ecbffd0fbe4fba883a4b68dc2c9bd",
+    "bytes": 7387,
+    "modified": false
+  },
+  {
+    "component": "PDModules",
+    "path": "s/PDriverPS/Private",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "0fa7a402301b4158efe18b7aba920df3187fd8b3bdaf7cb9b9a2e05a0a65b145",
+    "sha256": "59be8d78b8a9c6250e9be3ab2b0afabb18329f40b53a43c86c0ca4d8973a7c3a",
+    "bytes": 23465,
+    "modified": true
+  },
+  {
+    "component": "PDModules",
+    "path": "s/PDriverPS/ScreenDump",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "4158b42012a54f5e8b298b24abf98431b1d066aecb65469e7c80ff554947227c",
+    "sha256": "5d046c388a6d7bb44e8e804d8086fe56dd29decf662a6cd45b6d1226f5e10ab4",
+    "bytes": 943,
+    "modified": true
+  },
+  {
+    "component": "PDModules",
+    "path": "s/PDriverPS/Sprite",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "1db7c5fd9715272012e1978df866e1613db964585ec33a000f4327285bfcd149",
+    "sha256": "1db7c5fd9715272012e1978df866e1613db964585ec33a000f4327285bfcd149",
+    "bytes": 99357,
+    "modified": false
+  },
+  {
+    "component": "PDModules",
+    "path": "s/PDriverPS/TranSprite",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "427ca3be03a09a2e3219fcead2b6355adf8e74f7647a5173e103d9ae0b7120b1",
+    "sha256": "e465b6042bc5b949c6fea7178c71bdab7d68e5d6cbbdf81f6dad73ba75197f61",
+    "bytes": 18140,
+    "modified": true
+  },
+  {
+    "component": "PDModules",
+    "path": "s/PDriverPS/Vdu5",
+    "revision": "d5db212e15135c64e3d7fc215d4a31ab93a6585d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDModules.git",
+    "upstream_sha256": "6fadce45780a9c0ef0f0b874efbc1dc1b5cb626442bd7be1ddc47f3cef9a7984",
+    "sha256": "3a5c9cc3e81d7971cf56ad81e98f75c03e1702c068c754056302f284c9fd127c",
+    "bytes": 6016,
+    "modified": true
+  },
+  {
+    "component": "PDumperSpt",
+    "path": "LICENSE",
+    "revision": "0748768b18f559be1731fbc8a6be231bdbf5c4f3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDumperSpt.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358,
+    "modified": false
+  },
+  {
+    "component": "PDumperSpt",
+    "path": "Makefile",
+    "revision": "0748768b18f559be1731fbc8a6be231bdbf5c4f3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDumperSpt.git",
+    "upstream_sha256": "5d4e8d4140bbb7de552a121aa618e438388892819d3c5dbbfc0a19b53b830187",
+    "sha256": "5d4e8d4140bbb7de552a121aa618e438388892819d3c5dbbfc0a19b53b830187",
+    "bytes": 1752,
+    "modified": false
+  },
+  {
+    "component": "PDumperSpt",
+    "path": "Version",
+    "revision": "0748768b18f559be1731fbc8a6be231bdbf5c4f3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDumperSpt.git",
+    "upstream_sha256": "b727f6b74b80f7c23007202d2c30cf64224bebab6fa17d8c8688ee90e6af294d",
+    "sha256": "b727f6b74b80f7c23007202d2c30cf64224bebab6fa17d8c8688ee90e6af294d",
+    "bytes": 169,
+    "modified": false
+  },
+  {
+    "component": "PDumperSpt",
+    "path": "s/CTrans",
+    "revision": "0748768b18f559be1731fbc8a6be231bdbf5c4f3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDumperSpt.git",
+    "upstream_sha256": "6a62c2919f4558efcc08b49cb3e358cc480b0e30064c3decb3e2c09e1be1dca6",
+    "sha256": "6a62c2919f4558efcc08b49cb3e358cc480b0e30064c3decb3e2c09e1be1dca6",
+    "bytes": 6000,
+    "modified": false
+  },
+  {
+    "component": "PDumperSpt",
+    "path": "s/Colour",
+    "revision": "0748768b18f559be1731fbc8a6be231bdbf5c4f3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDumperSpt.git",
+    "upstream_sha256": "04e40a450102bdc104e9944c67c30f8091597af4a12eabc0a77115e91ba1f17e",
+    "sha256": "04e40a450102bdc104e9944c67c30f8091597af4a12eabc0a77115e91ba1f17e",
+    "bytes": 9899,
+    "modified": false
+  },
+  {
+    "component": "PDumperSpt",
+    "path": "s/Error",
+    "revision": "0748768b18f559be1731fbc8a6be231bdbf5c4f3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDumperSpt.git",
+    "upstream_sha256": "9e09f2b121e086bc58d5fa38c3839697ec5b95082e7ad9e4f8161d5b69580057",
+    "sha256": "9e09f2b121e086bc58d5fa38c3839697ec5b95082e7ad9e4f8161d5b69580057",
+    "bytes": 16854,
+    "modified": false
+  },
+  {
+    "component": "PDumperSpt",
+    "path": "s/FullRGB",
+    "revision": "0748768b18f559be1731fbc8a6be231bdbf5c4f3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDumperSpt.git",
+    "upstream_sha256": "fd1c023e48696d3451c0a7f7ff57a2bc1c61ca90bd4af712823a1bde311032aa",
+    "sha256": "fd1c023e48696d3451c0a7f7ff57a2bc1c61ca90bd4af712823a1bde311032aa",
+    "bytes": 3238,
+    "modified": false
+  },
+  {
+    "component": "PDumperSpt",
+    "path": "s/Halftone",
+    "revision": "0748768b18f559be1731fbc8a6be231bdbf5c4f3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDumperSpt.git",
+    "upstream_sha256": "dfd872b3824f784cdf595392ba123c754a951d01584979a16e48963616fd5ae9",
+    "sha256": "dfd872b3824f784cdf595392ba123c754a951d01584979a16e48963616fd5ae9",
+    "bytes": 10902,
+    "modified": false
+  },
+  {
+    "component": "PDumperSpt",
+    "path": "s/Manipulate",
+    "revision": "0748768b18f559be1731fbc8a6be231bdbf5c4f3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDumperSpt.git",
+    "upstream_sha256": "a5645355c6c314d9517bfb637cb7820d4574d8f790b3c4e76db28bab63bc3be6",
+    "sha256": "a5645355c6c314d9517bfb637cb7820d4574d8f790b3c4e76db28bab63bc3be6",
+    "bytes": 35045,
+    "modified": false
+  },
+  {
+    "component": "PDumperSpt",
+    "path": "s/MsgCode",
+    "revision": "0748768b18f559be1731fbc8a6be231bdbf5c4f3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDumperSpt.git",
+    "upstream_sha256": "86de4b2fc724aae0f94d68224b72b3245eff7187e2f8d3b3edce5eef80894ae5",
+    "sha256": "86de4b2fc724aae0f94d68224b72b3245eff7187e2f8d3b3edce5eef80894ae5",
+    "bytes": 10190,
+    "modified": false
+  },
+  {
+    "component": "PDumperSpt",
+    "path": "s/PDumperSpt",
+    "revision": "0748768b18f559be1731fbc8a6be231bdbf5c4f3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/PDumperSpt.git",
+    "upstream_sha256": "d83ad3fe3cce12d1465e81770dea2a1e8fbad66d1a7e32b36796ac3c8d05afe8",
+    "sha256": "356584b4f502acc40c154344162c519dfaf0aa1d93ee2861e3a01408dcc052cc",
+    "bytes": 32697,
+    "modified": true
+  },
+  {
+    "component": "PDumpers",
+    "path": "LICENSE",
+    "revision": "45c309a19b63e8137ab401fd22c127658668af11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PDumpers.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358,
+    "modified": false
+  },
+  {
+    "component": "PDumpers",
+    "path": "Makefile",
+    "revision": "45c309a19b63e8137ab401fd22c127658668af11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PDumpers.git",
+    "upstream_sha256": "bb9697e67a699f199a5d0929ef0cfb42dbe0e052c2b87601caf4fefaa7fd15ae",
+    "sha256": "bb9697e67a699f199a5d0929ef0cfb42dbe0e052c2b87601caf4fefaa7fd15ae",
+    "bytes": 2793,
+    "modified": false
+  },
+  {
+    "component": "PDumpers",
+    "path": "Version",
+    "revision": "45c309a19b63e8137ab401fd22c127658668af11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PDumpers.git",
+    "upstream_sha256": "ad89fd840aa7f6d274c48174246c09d9fa9c296e6b4bea86a3a1357b26650284",
+    "sha256": "ad89fd840aa7f6d274c48174246c09d9fa9c296e6b4bea86a3a1357b26650284",
+    "bytes": 255,
+    "modified": false
+  },
+  {
+    "component": "PDumpers",
+    "path": "hdr/PDumper",
+    "revision": "45c309a19b63e8137ab401fd22c127658668af11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PDumpers.git",
+    "upstream_sha256": "18f1114ade95944a4cba94030d7cb92bb766e12c667ae4ffa81e01ef1cf79763",
+    "sha256": "18f1114ade95944a4cba94030d7cb92bb766e12c667ae4ffa81e01ef1cf79763",
+    "bytes": 5244,
+    "modified": false
+  },
+  {
+    "component": "PDumpers",
+    "path": "PDumperDM/Makefile",
+    "revision": "45c309a19b63e8137ab401fd22c127658668af11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PDumpers.git",
+    "upstream_sha256": "488e8cd5896a8b4807734acc1c69781cb8db9378732bbf940446c9e03821ae82",
+    "sha256": "488e8cd5896a8b4807734acc1c69781cb8db9378732bbf940446c9e03821ae82",
+    "bytes": 1285,
+    "modified": false
+  },
+  {
+    "component": "PDumpers",
+    "path": "Generic/s/24Bit",
+    "revision": "45c309a19b63e8137ab401fd22c127658668af11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PDumpers.git",
+    "upstream_sha256": "1c8c87ccb9a2715cf1591fa4b705418c6793208829dbb90b3ab2d6a18b24421f",
+    "sha256": "1c8c87ccb9a2715cf1591fa4b705418c6793208829dbb90b3ab2d6a18b24421f",
+    "bytes": 4067,
+    "modified": false
+  },
+  {
+    "component": "PDumpers",
+    "path": "Generic/s/AbortJob",
+    "revision": "45c309a19b63e8137ab401fd22c127658668af11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PDumpers.git",
+    "upstream_sha256": "e95001512d3e2d6c9c0d4a894dba602e1fa8a9931a86df81ebb66a36ae21825c",
+    "sha256": "e95001512d3e2d6c9c0d4a894dba602e1fa8a9931a86df81ebb66a36ae21825c",
+    "bytes": 2485,
+    "modified": false
+  },
+  {
+    "component": "PDumpers",
+    "path": "Generic/s/BranchCode",
+    "revision": "45c309a19b63e8137ab401fd22c127658668af11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PDumpers.git",
+    "upstream_sha256": "d802a264f1a25d563819efe014fa2753490c84f50ab7eefeb27c9bad21a9c6c5",
+    "sha256": "d802a264f1a25d563819efe014fa2753490c84f50ab7eefeb27c9bad21a9c6c5",
+    "bytes": 2931,
+    "modified": false
+  },
+  {
+    "component": "PDumpers",
+    "path": "Generic/s/ColourSet",
+    "revision": "45c309a19b63e8137ab401fd22c127658668af11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PDumpers.git",
+    "upstream_sha256": "db92b8e4e7873c18dbf4721fb2eae5a3fc058cce9c20a28d02e324f2524654a4",
+    "sha256": "db92b8e4e7873c18dbf4721fb2eae5a3fc058cce9c20a28d02e324f2524654a4",
+    "bytes": 1475,
+    "modified": false
+  },
+  {
+    "component": "PDumpers",
+    "path": "Generic/s/EndPage",
+    "revision": "45c309a19b63e8137ab401fd22c127658668af11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PDumpers.git",
+    "upstream_sha256": "1fe9ba43c12bc4ba13fbe6eda6db5c1470980867c9403e91add61b8959f2661f",
+    "sha256": "1fe9ba43c12bc4ba13fbe6eda6db5c1470980867c9403e91add61b8959f2661f",
+    "bytes": 2274,
+    "modified": false
+  },
+  {
+    "component": "PDumpers",
+    "path": "Generic/s/Header",
+    "revision": "45c309a19b63e8137ab401fd22c127658668af11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PDumpers.git",
+    "upstream_sha256": "ad70e983475eb0bd2eb4b1d78e10a164b7f87528903c595fe8f57ff9c4101e2b",
+    "sha256": "c62ac64bfea7aed9804a46053445817cddd50d71e169dc1d265cc37405899759",
+    "bytes": 15107,
+    "modified": true
+  },
+  {
+    "component": "PDumpers",
+    "path": "Generic/s/Macros",
+    "revision": "45c309a19b63e8137ab401fd22c127658668af11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PDumpers.git",
+    "upstream_sha256": "bdcb6aa4ea30262b20992ae6d859775153a94e04e49d156d3adb6b8200c490cc",
+    "sha256": "bdcb6aa4ea30262b20992ae6d859775153a94e04e49d156d3adb6b8200c490cc",
+    "bytes": 9647,
+    "modified": false
+  },
+  {
+    "component": "PDumpers",
+    "path": "Generic/s/MiscOp",
+    "revision": "45c309a19b63e8137ab401fd22c127658668af11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PDumpers.git",
+    "upstream_sha256": "0d4aa493faa41a4b96de08ee4a5cd7e72cf8edde71421aee7cf8c90069262881",
+    "sha256": "0d4aa493faa41a4b96de08ee4a5cd7e72cf8edde71421aee7cf8c90069262881",
+    "bytes": 970,
+    "modified": false
+  },
+  {
+    "component": "PDumpers",
+    "path": "Generic/s/OutputDump",
+    "revision": "45c309a19b63e8137ab401fd22c127658668af11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PDumpers.git",
+    "upstream_sha256": "74374f56ff44975c2a422cc04115995e6e1ef8f1c855a0dcf61e8a1d477c94b5",
+    "sha256": "74374f56ff44975c2a422cc04115995e6e1ef8f1c855a0dcf61e8a1d477c94b5",
+    "bytes": 4833,
+    "modified": false
+  },
+  {
+    "component": "PDumpers",
+    "path": "Generic/s/SendExtra",
+    "revision": "45c309a19b63e8137ab401fd22c127658668af11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PDumpers.git",
+    "upstream_sha256": "98d615f5bea3817013aba152b3ef454787b21ba01c07ffdacedb0aa1a4ec5cad",
+    "sha256": "98d615f5bea3817013aba152b3ef454787b21ba01c07ffdacedb0aa1a4ec5cad",
+    "bytes": 2445,
+    "modified": false
+  },
+  {
+    "component": "PDumpers",
+    "path": "Generic/s/SetDriver",
+    "revision": "45c309a19b63e8137ab401fd22c127658668af11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PDumpers.git",
+    "upstream_sha256": "9892984b897097c3c34f7ffcc6cd353334fbd4374fad4e60bf5901d9947e5653",
+    "sha256": "9892984b897097c3c34f7ffcc6cd353334fbd4374fad4e60bf5901d9947e5653",
+    "bytes": 1486,
+    "modified": false
+  },
+  {
+    "component": "PDumpers",
+    "path": "Generic/s/StartJob",
+    "revision": "45c309a19b63e8137ab401fd22c127658668af11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PDumpers.git",
+    "upstream_sha256": "8314b8c0e2f8c4bdefa225e55a03d4e563082a4dbdcb40dd81650a7cbc36c06e",
+    "sha256": "8314b8c0e2f8c4bdefa225e55a03d4e563082a4dbdcb40dd81650a7cbc36c06e",
+    "bytes": 1437,
+    "modified": false
+  },
+  {
+    "component": "PDumpers",
+    "path": "PDumperDM/s/24Bit",
+    "revision": "45c309a19b63e8137ab401fd22c127658668af11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PDumpers.git",
+    "upstream_sha256": "c3961a88c0448fb2bdb4ca45cbdfae91bc858411a90b587f70568069b5452eb1",
+    "sha256": "c3961a88c0448fb2bdb4ca45cbdfae91bc858411a90b587f70568069b5452eb1",
+    "bytes": 631,
+    "modified": false
+  },
+  {
+    "component": "PDumpers",
+    "path": "PDumperDM/s/AbortJob",
+    "revision": "45c309a19b63e8137ab401fd22c127658668af11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PDumpers.git",
+    "upstream_sha256": "3ad7d031af8bc290b2718af1694c61d96925812090119b92a570ef630f6aa775",
+    "sha256": "3ad7d031af8bc290b2718af1694c61d96925812090119b92a570ef630f6aa775",
+    "bytes": 637,
+    "modified": false
+  },
+  {
+    "component": "PDumpers",
+    "path": "PDumperDM/s/BranchCode",
+    "revision": "45c309a19b63e8137ab401fd22c127658668af11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PDumpers.git",
+    "upstream_sha256": "2f1e391052dcb5bbccc89a09fe7fca3dab02d2fb336ff799d6f9909f24059e2c",
+    "sha256": "2f1e391052dcb5bbccc89a09fe7fca3dab02d2fb336ff799d6f9909f24059e2c",
+    "bytes": 641,
+    "modified": false
+  },
+  {
+    "component": "PDumpers",
+    "path": "PDumperDM/s/ColourSet",
+    "revision": "45c309a19b63e8137ab401fd22c127658668af11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PDumpers.git",
+    "upstream_sha256": "7dd1d11ede28259388b0c984a9a7dd4c819562ad0f3be47f7f6982af7c5a0f7d",
+    "sha256": "7dd1d11ede28259388b0c984a9a7dd4c819562ad0f3be47f7f6982af7c5a0f7d",
+    "bytes": 639,
+    "modified": false
+  },
+  {
+    "component": "PDumpers",
+    "path": "PDumperDM/s/DumpIX",
+    "revision": "45c309a19b63e8137ab401fd22c127658668af11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PDumpers.git",
+    "upstream_sha256": "ba1c9feabdd22a1e2b267f1fa0bac30ccb17eb8e7d7c18b455e22abde8e40b18",
+    "sha256": "ba1c9feabdd22a1e2b267f1fa0bac30ccb17eb8e7d7c18b455e22abde8e40b18",
+    "bytes": 7060,
+    "modified": false
+  },
+  {
+    "component": "PDumpers",
+    "path": "PDumperDM/s/DumpJX",
+    "revision": "45c309a19b63e8137ab401fd22c127658668af11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PDumpers.git",
+    "upstream_sha256": "a527b3963fb605fc1001fad2925abf788447bb339750a762cec9f267793d14a8",
+    "sha256": "26d5e8696fecfb6f8b158c924d86b32ced2f68cf107e6a674d549aa9b9a78ddb",
+    "bytes": 20354,
+    "modified": true
+  },
+  {
+    "component": "PDumpers",
+    "path": "PDumperDM/s/EndPage",
+    "revision": "45c309a19b63e8137ab401fd22c127658668af11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PDumpers.git",
+    "upstream_sha256": "d4048230f6ea9ed7d9a52e60967876030668561577166aab18f01870936a7414",
+    "sha256": "d4048230f6ea9ed7d9a52e60967876030668561577166aab18f01870936a7414",
+    "bytes": 635,
+    "modified": false
+  },
+  {
+    "component": "PDumpers",
+    "path": "PDumperDM/s/Header",
+    "revision": "45c309a19b63e8137ab401fd22c127658668af11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PDumpers.git",
+    "upstream_sha256": "6a8612aae2a414fccebbb3f4211dd6156a188b63f6e5ca2f3a3fcb99caec8939",
+    "sha256": "6a8612aae2a414fccebbb3f4211dd6156a188b63f6e5ca2f3a3fcb99caec8939",
+    "bytes": 633,
+    "modified": false
+  },
+  {
+    "component": "PDumpers",
+    "path": "PDumperDM/s/Macros",
+    "revision": "45c309a19b63e8137ab401fd22c127658668af11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PDumpers.git",
+    "upstream_sha256": "2253a6c9d8da6cc76f056e0a90509f9ff9e6b1ad6fef903d764316b6c27cbf6a",
+    "sha256": "2253a6c9d8da6cc76f056e0a90509f9ff9e6b1ad6fef903d764316b6c27cbf6a",
+    "bytes": 633,
+    "modified": false
+  },
+  {
+    "component": "PDumpers",
+    "path": "PDumperDM/s/MiscOp",
+    "revision": "45c309a19b63e8137ab401fd22c127658668af11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PDumpers.git",
+    "upstream_sha256": "4add652b1da20d7718005f9318524fe1ae58d7deda640c39187ba832f1416d84",
+    "sha256": "4add652b1da20d7718005f9318524fe1ae58d7deda640c39187ba832f1416d84",
+    "bytes": 633,
+    "modified": false
+  },
+  {
+    "component": "PDumpers",
+    "path": "PDumperDM/s/OutputDump",
+    "revision": "45c309a19b63e8137ab401fd22c127658668af11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PDumpers.git",
+    "upstream_sha256": "f79c3e3f5a1e4a00f65a94de3672b79971b51fc8c67b84eaf8afe79393f79ce4",
+    "sha256": "f79c3e3f5a1e4a00f65a94de3672b79971b51fc8c67b84eaf8afe79393f79ce4",
+    "bytes": 2153,
+    "modified": false
+  },
+  {
+    "component": "PDumpers",
+    "path": "PDumperDM/s/SetDriver",
+    "revision": "45c309a19b63e8137ab401fd22c127658668af11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PDumpers.git",
+    "upstream_sha256": "f70c37199a92dddff683b5d623f801c219dc9fd9143bb0bb6171c2157b95f9b2",
+    "sha256": "f70c37199a92dddff683b5d623f801c219dc9fd9143bb0bb6171c2157b95f9b2",
+    "bytes": 638,
+    "modified": false
+  },
+  {
+    "component": "PDumpers",
+    "path": "PDumperDM/s/StartJob",
+    "revision": "45c309a19b63e8137ab401fd22c127658668af11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PDumpers.git",
+    "upstream_sha256": "d6ef2662599a027b2209f8c3bd30e240146bc6afdd049bb743221021e82a1850",
+    "sha256": "d6ef2662599a027b2209f8c3bd30e240146bc6afdd049bb743221021e82a1850",
+    "bytes": 636,
+    "modified": false
+  },
+  {
+    "component": "PDumpers",
+    "path": "PDumperDM/s/StartPage",
+    "revision": "45c309a19b63e8137ab401fd22c127658668af11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PDumpers.git",
+    "upstream_sha256": "0fe2ff2b1b251eeb61b8231965b972b0e05321ee76af1c9ec1aee9cf68dbc961",
+    "sha256": "0fe2ff2b1b251eeb61b8231965b972b0e05321ee76af1c9ec1aee9cf68dbc961",
+    "bytes": 4485,
+    "modified": false
+  },
+  {
+    "component": "PDumpers",
+    "path": "PDumperDM/s/Version",
+    "revision": "45c309a19b63e8137ab401fd22c127658668af11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PDumpers.git",
+    "upstream_sha256": "efe6135913c784acaba7f78eafbae5e264cd6461ad13f7b7493dfdac117b93c9",
+    "sha256": "efe6135913c784acaba7f78eafbae5e264cd6461ad13f7b7493dfdac117b93c9",
+    "bytes": 4134,
+    "modified": false
+  },
+  {
+    "component": "PDumpers",
+    "path": "PDumperDM/s/Workspace",
+    "revision": "45c309a19b63e8137ab401fd22c127658668af11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PDumpers.git",
+    "upstream_sha256": "229a1e7ff313f2e2da165b4334e9deee04828173cbea7c50809032cd447e9179",
+    "sha256": "229a1e7ff313f2e2da165b4334e9deee04828173cbea7c50809032cd447e9179",
+    "bytes": 1865,
+    "modified": false
+  },
+  {
+    "component": "PDumpers",
+    "path": "PDumperLJ/Makefile",
+    "revision": "45c309a19b63e8137ab401fd22c127658668af11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PDumpers.git",
+    "upstream_sha256": "c0b15c86bda7fb8a4d99ce6e9255c8c73f134c2822b843a5524808313c5420e0",
+    "sha256": "c0b15c86bda7fb8a4d99ce6e9255c8c73f134c2822b843a5524808313c5420e0",
+    "bytes": 1316,
+    "modified": false
+  },
+  {
+    "component": "PDumpers",
+    "path": "PDumperLJ/s/24Bit",
+    "revision": "45c309a19b63e8137ab401fd22c127658668af11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PDumpers.git",
+    "upstream_sha256": "c3961a88c0448fb2bdb4ca45cbdfae91bc858411a90b587f70568069b5452eb1",
+    "sha256": "c3961a88c0448fb2bdb4ca45cbdfae91bc858411a90b587f70568069b5452eb1",
+    "bytes": 631,
+    "modified": false
+  },
+  {
+    "component": "PDumpers",
+    "path": "PDumperLJ/s/AbortJob",
+    "revision": "45c309a19b63e8137ab401fd22c127658668af11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PDumpers.git",
+    "upstream_sha256": "3ad7d031af8bc290b2718af1694c61d96925812090119b92a570ef630f6aa775",
+    "sha256": "3ad7d031af8bc290b2718af1694c61d96925812090119b92a570ef630f6aa775",
+    "bytes": 637,
+    "modified": false
+  },
+  {
+    "component": "PDumpers",
+    "path": "PDumperLJ/s/BranchCode",
+    "revision": "45c309a19b63e8137ab401fd22c127658668af11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PDumpers.git",
+    "upstream_sha256": "2f1e391052dcb5bbccc89a09fe7fca3dab02d2fb336ff799d6f9909f24059e2c",
+    "sha256": "2f1e391052dcb5bbccc89a09fe7fca3dab02d2fb336ff799d6f9909f24059e2c",
+    "bytes": 641,
+    "modified": false
+  },
+  {
+    "component": "PDumpers",
+    "path": "PDumperLJ/s/ColourSet",
+    "revision": "45c309a19b63e8137ab401fd22c127658668af11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PDumpers.git",
+    "upstream_sha256": "7dd1d11ede28259388b0c984a9a7dd4c819562ad0f3be47f7f6982af7c5a0f7d",
+    "sha256": "7dd1d11ede28259388b0c984a9a7dd4c819562ad0f3be47f7f6982af7c5a0f7d",
+    "bytes": 639,
+    "modified": false
+  },
+  {
+    "component": "PDumpers",
+    "path": "PDumperLJ/s/EndPage",
+    "revision": "45c309a19b63e8137ab401fd22c127658668af11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PDumpers.git",
+    "upstream_sha256": "8310e3aab74feb23632e0781dd4549e5d0bc77b9db6ab99b89e44d0f926f46d4",
+    "sha256": "8310e3aab74feb23632e0781dd4549e5d0bc77b9db6ab99b89e44d0f926f46d4",
+    "bytes": 1714,
+    "modified": false
+  },
+  {
+    "component": "PDumpers",
+    "path": "PDumperLJ/s/Header",
+    "revision": "45c309a19b63e8137ab401fd22c127658668af11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PDumpers.git",
+    "upstream_sha256": "6a8612aae2a414fccebbb3f4211dd6156a188b63f6e5ca2f3a3fcb99caec8939",
+    "sha256": "6a8612aae2a414fccebbb3f4211dd6156a188b63f6e5ca2f3a3fcb99caec8939",
+    "bytes": 633,
+    "modified": false
+  },
+  {
+    "component": "PDumpers",
+    "path": "PDumperLJ/s/Macros",
+    "revision": "45c309a19b63e8137ab401fd22c127658668af11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PDumpers.git",
+    "upstream_sha256": "2253a6c9d8da6cc76f056e0a90509f9ff9e6b1ad6fef903d764316b6c27cbf6a",
+    "sha256": "2253a6c9d8da6cc76f056e0a90509f9ff9e6b1ad6fef903d764316b6c27cbf6a",
+    "bytes": 633,
+    "modified": false
+  },
+  {
+    "component": "PDumpers",
+    "path": "PDumperLJ/s/MiscOp",
+    "revision": "45c309a19b63e8137ab401fd22c127658668af11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PDumpers.git",
+    "upstream_sha256": "4add652b1da20d7718005f9318524fe1ae58d7deda640c39187ba832f1416d84",
+    "sha256": "4add652b1da20d7718005f9318524fe1ae58d7deda640c39187ba832f1416d84",
+    "bytes": 633,
+    "modified": false
+  },
+  {
+    "component": "PDumpers",
+    "path": "PDumperLJ/s/OutputDump",
+    "revision": "45c309a19b63e8137ab401fd22c127658668af11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PDumpers.git",
+    "upstream_sha256": "ff6284da0d127825299a00835f4c7df9a7590c6ac179eec861a9b3d769be2bac",
+    "sha256": "ff6284da0d127825299a00835f4c7df9a7590c6ac179eec861a9b3d769be2bac",
+    "bytes": 26399,
+    "modified": false
+  },
+  {
+    "component": "PDumpers",
+    "path": "PDumperLJ/s/SetDriver",
+    "revision": "45c309a19b63e8137ab401fd22c127658668af11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PDumpers.git",
+    "upstream_sha256": "f70c37199a92dddff683b5d623f801c219dc9fd9143bb0bb6171c2157b95f9b2",
+    "sha256": "f70c37199a92dddff683b5d623f801c219dc9fd9143bb0bb6171c2157b95f9b2",
+    "bytes": 638,
+    "modified": false
+  },
+  {
+    "component": "PDumpers",
+    "path": "PDumperLJ/s/StartJob",
+    "revision": "45c309a19b63e8137ab401fd22c127658668af11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PDumpers.git",
+    "upstream_sha256": "d6ef2662599a027b2209f8c3bd30e240146bc6afdd049bb743221021e82a1850",
+    "sha256": "d6ef2662599a027b2209f8c3bd30e240146bc6afdd049bb743221021e82a1850",
+    "bytes": 636,
+    "modified": false
+  },
+  {
+    "component": "PDumpers",
+    "path": "PDumperLJ/s/StartPage",
+    "revision": "45c309a19b63e8137ab401fd22c127658668af11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PDumpers.git",
+    "upstream_sha256": "cc7bdc9882835b1b40ea21599be582742faabc1c78eddd84f66711e8523af008",
+    "sha256": "cc7bdc9882835b1b40ea21599be582742faabc1c78eddd84f66711e8523af008",
+    "bytes": 7275,
+    "modified": false
+  },
+  {
+    "component": "PDumpers",
+    "path": "PDumperLJ/s/Version",
+    "revision": "45c309a19b63e8137ab401fd22c127658668af11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PDumpers.git",
+    "upstream_sha256": "35e157423e4ca46780c511896cc2262121c307c70aedbb1daab9f74a08da0420",
+    "sha256": "35e157423e4ca46780c511896cc2262121c307c70aedbb1daab9f74a08da0420",
+    "bytes": 4430,
+    "modified": false
+  },
+  {
+    "component": "PDumpers",
+    "path": "PDumperLJ/s/Workspace",
+    "revision": "45c309a19b63e8137ab401fd22c127658668af11",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PDumpers.git",
+    "upstream_sha256": "8063ba98d750ed7ad38ef46e487aad13e2b76db335fc5999a808f305c669ba87",
+    "sha256": "8063ba98d750ed7ad38ef46e487aad13e2b76db335fc5999a808f305c669ba87",
+    "bytes": 2389,
+    "modified": false
+  },
+  {
+    "component": "MakePSFont",
+    "path": "LICENSE",
+    "revision": "3a303276d3fc5ec6c8d7294a7f9ba63d8874250a",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/MakePSFont.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358,
+    "modified": false
+  },
+  {
+    "component": "MakePSFont",
+    "path": "hdr/MakePSFont",
+    "revision": "3a303276d3fc5ec6c8d7294a7f9ba63d8874250a",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/Modules/MakePSFont.git",
+    "upstream_sha256": "ff8c51212f64b9c23034501704b9ef9a11113b8ecfaa7681030f0a425a91db73",
+    "sha256": "ff8c51212f64b9c23034501704b9ef9a11113b8ecfaa7681030f0a425a91db73",
+    "bytes": 1028,
+    "modified": false
+  },
+  {
+    "component": "HdrSrc",
+    "path": "hdr/PDriverReg",
+    "revision": "403c6dd8bce92d0629634cbf57f68f43b2f30d38",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Programmer/HdrSrc.git",
+    "upstream_sha256": "fa47cf2b1d94b10b02f9e91a5f946c272cb0fcebf13dedc694ca5bc05305c80a",
+    "sha256": "fa47cf2b1d94b10b02f9e91a5f946c272cb0fcebf13dedc694ca5bc05305c80a",
+    "bytes": 1793,
+    "modified": false
+  },
+  {
+    "component": "HdrSrc",
+    "path": "hdr/PDumperReg",
+    "revision": "403c6dd8bce92d0629634cbf57f68f43b2f30d38",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Programmer/HdrSrc.git",
+    "upstream_sha256": "305760877b505d4c71b2bdd25443ff920e4ccec654c57103523e55f7ce1c97f4",
+    "sha256": "305760877b505d4c71b2bdd25443ff920e4ccec654c57103523e55f7ce1c97f4",
+    "bytes": 2043,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "LICENSE",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "Makefile",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "6b0bab9766c67d40c315a0391c3fa29cb66b52e0c7646408e1d2dc31e372b837",
+    "sha256": "6b0bab9766c67d40c315a0391c3fa29cb66b52e0c7646408e1d2dc31e372b837",
+    "bytes": 15284,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "sources/RunImage",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "550c8070013bb3501775d5a82e11c7c9af6b6499fcc9d0fb92a183c2c7f504c0",
+    "sha256": "550c8070013bb3501775d5a82e11c7c9af6b6499fcc9d0fb92a183c2c7f504c0",
+    "bytes": 322818,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "sources/SupportDP",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "ecbd577808ac68a4998d53a30d917b22f92b0be8b3244abb4261a9d71a2451fd",
+    "sha256": "fcfc7e379cfdbd863254a2ddb5fd22cceca6d406bed4be461a9052f928d0fe3a",
+    "bytes": 48222,
+    "modified": true
+  },
+  {
+    "component": "PrinterManager",
+    "path": "sources/SuppSrc",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "323097d8b358c721cf7c39141478f774487f49d149ca7a9e97dba76e88a02284",
+    "sha256": "323097d8b358c721cf7c39141478f774487f49d149ca7a9e97dba76e88a02284",
+    "bytes": 78170,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "sources/Export",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "e069f8bcd13ed110140b4fea622a24fc3f5ee3a05d2d4c557cd459f26751ca89",
+    "sha256": "e069f8bcd13ed110140b4fea622a24fc3f5ee3a05d2d4c557cd459f26751ca89",
+    "bytes": 882,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "sources/Sparrow",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "6a8f769e2f8a9073834b63c3499751aebfd62a21b4d263f111010e7f71903e0e",
+    "sha256": "6a8f769e2f8a9073834b63c3499751aebfd62a21b4d263f111010e7f71903e0e",
+    "bytes": 68819,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "h/Values",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "981b6af62fc5eabad6f9aa2a2db3df6968b170359a5729cce2b2d00ff77e01f3",
+    "sha256": "981b6af62fc5eabad6f9aa2a2db3df6968b170359a5729cce2b2d00ff77e01f3",
+    "bytes": 19100,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "h/Trace",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "9efab9f89938d2904dc4f0feae023ae03e8113655c3d25e9fb21417e3f63779c",
+    "sha256": "9efab9f89938d2904dc4f0feae023ae03e8113655c3d25e9fb21417e3f63779c",
+    "bytes": 925,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "h/ConstVals",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "7a1c4223e9562f00d2979cf9a1cdc9cc38b1c00155fb8a3f1d475ea0b7da142f",
+    "sha256": "7a1c4223e9562f00d2979cf9a1cdc9cc38b1c00155fb8a3f1d475ea0b7da142f",
+    "bytes": 7998,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "s/SetPrint",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "93adc12de3cafe18cc6e53b1fa40530f479ea4e180c67ab07932b0c0e492102c",
+    "sha256": "bcfe38600f8d9bacbc80d1b368cffd30ab7f23d09336bc164197b7641f4a2726",
+    "bytes": 5489,
+    "modified": true
+  },
+  {
+    "component": "PrinterManager",
+    "path": "crunch/RunImage,ffe",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "b7ce016df15d06b848f6cbd266cfcabd514d114acc372d8dbff21e1354e95a83",
+    "sha256": "b7ce016df15d06b848f6cbd266cfcabd514d114acc372d8dbff21e1354e95a83",
+    "bytes": 62,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "crunch/SupportDP,ffe",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "ad86a1d3ec203dee7a798ad25b04b1c0765345c8fd9cd5e2424bc2639b2c6aeb",
+    "sha256": "ad86a1d3ec203dee7a798ad25b04b1c0765345c8fd9cd5e2424bc2639b2c6aeb",
+    "bytes": 64,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "UK/!Help",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "5781f01c8c2bc0475052c3d9e26fae8894d522faca472d5ec07099b15335341c",
+    "sha256": "5781f01c8c2bc0475052c3d9e26fae8894d522faca472d5ec07099b15335341c",
+    "bytes": 260,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "UK/!Run,feb",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "a2b9d03cb70dcfb17f5785625473568fa92f8154e5d791805e0259aa66eab298",
+    "sha256": "5fb14123659246fb87b6376ea6ac2508eb2361fb4612835a70b6cf0a0d78a734",
+    "bytes": 1790,
+    "modified": true
+  },
+  {
+    "component": "PrinterManager",
+    "path": "UK/!Sprites,ff9",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "56d50a7e8b2ab23037a0c16dbbf9fc0ba8451c9d1013bc4999f5acb0c24a3717",
+    "sha256": "56d50a7e8b2ab23037a0c16dbbf9fc0ba8451c9d1013bc4999f5acb0c24a3717",
+    "bytes": 2852,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "UK/!Sprites22,ff9",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "359db2f848458f6617ab5427dc0e83e3ba8b632776d69dad4dc593c2bb23a791",
+    "sha256": "359db2f848458f6617ab5427dc0e83e3ba8b632776d69dad4dc593c2bb23a791",
+    "bytes": 4460,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "UK/!Sprites23,ff9",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "22dc5e1615705213e18ab25fba65df465d1f20ccc6b0e9c19e337dde22ae9f7f",
+    "sha256": "22dc5e1615705213e18ab25fba65df465d1f20ccc6b0e9c19e337dde22ae9f7f",
+    "bytes": 1868,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "UK/Messages",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "a936575b2d04a4d0e594665d4aad796457d9b51cb36cfe150dea3fb03ce532d0",
+    "sha256": "a936575b2d04a4d0e594665d4aad796457d9b51cb36cfe150dea3fb03ce532d0",
+    "bytes": 14244,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "UK/PaperRO,fc6",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "818fc9dbefb44fc8092a0347f2dbb6581bc0806d4ac7dc321982a8e3a4998879",
+    "sha256": "818fc9dbefb44fc8092a0347f2dbb6581bc0806d4ac7dc321982a8e3a4998879",
+    "bytes": 750,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "UK/Templates,fec",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "a681af432ee35b1b63c9f1f13d252b58234cddfa457b6f77b1f28d07a29ccd74",
+    "sha256": "a681af432ee35b1b63c9f1f13d252b58234cddfa457b6f77b1f28d07a29ccd74",
+    "bytes": 6675,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "UK/Template3D,fec",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "4467a3e182f4304ff70a741a40a95a753b7f8926588e042763cf1e546fc6d0ab",
+    "sha256": "4467a3e182f4304ff70a741a40a95a753b7f8926588e042763cf1e546fc6d0ab",
+    "bytes": 6838,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "UK/dp/Resources/Messages",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "0c74c83112d9c59234c78f53c1314dfff5f759f108a738e21b841a97f1dd6922",
+    "sha256": "0c74c83112d9c59234c78f53c1314dfff5f759f108a738e21b841a97f1dd6922",
+    "bytes": 1986,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "UK/dp/Resources/Templates,fec",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "3652d64d72ed9cba2676c4da1dd9c960d4d4c91a5d3cbd951925a78a8fe1a8e8",
+    "sha256": "3652d64d72ed9cba2676c4da1dd9c960d4d4c91a5d3cbd951925a78a8fe1a8e8",
+    "bytes": 1708,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "UK/dp/Resources/Template3D,fec",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "72fc1e766de2eb02d9df7ca02358ae19c0b27d51ab81defa2535a3b715bb1dc6",
+    "sha256": "72fc1e766de2eb02d9df7ca02358ae19c0b27d51ab81defa2535a3b715bb1dc6",
+    "bytes": 1745,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "DataFiles/!Boot,feb",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "0acde07f292ff4a9804aa93f64b03ed52b28df224613d8cbd1a25e3d27c4de21",
+    "sha256": "0acde07f292ff4a9804aa93f64b03ed52b28df224613d8cbd1a25e3d27c4de21",
+    "bytes": 791,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "DataFiles/Palettes/0",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "e51231f303365c0d46e8a0e25f4f8906372ff38f64558dc102d4a856f81e46e8",
+    "sha256": "e51231f303365c0d46e8a0e25f4f8906372ff38f64558dc102d4a856f81e46e8",
+    "bytes": 3637,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "DataFiles/Palettes/1",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "d0eced43c11fc6f64874b5d915fd0b11b897fe247c605804af9a33dce8d20986",
+    "sha256": "d0eced43c11fc6f64874b5d915fd0b11b897fe247c605804af9a33dce8d20986",
+    "bytes": 3637,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "DataFiles/Palettes/2",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "79f07224e2ff3012c7d85c5c3ed554f6320a1986682ef9ea1bfb10b225649980",
+    "sha256": "79f07224e2ff3012c7d85c5c3ed554f6320a1986682ef9ea1bfb10b225649980",
+    "bytes": 3637,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "DataFiles/dp/PrData,fc6",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "7aafda84bbe8ad16173d1c5d11ecce1f2ff9d1d168e56b6b07b08959dfe7b730",
+    "sha256": "7aafda84bbe8ad16173d1c5d11ecce1f2ff9d1d168e56b6b07b08959dfe7b730",
+    "bytes": 56,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "DataFiles/dp/Template,fc6",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "a3b7a5e0e927d267b4372e94c3f5362ac47fda0e5515ab7de7ef126b03ec9251",
+    "sha256": "a3b7a5e0e927d267b4372e94c3f5362ac47fda0e5515ab7de7ef126b03ec9251",
+    "bytes": 805,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "DataFiles/dp/Resources/!Sprites,ff9",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "0a3adea23b09a8c8c282f162a6f551a2258b7254525176edd653d132aa25e91b",
+    "sha256": "0a3adea23b09a8c8c282f162a6f551a2258b7254525176edd653d132aa25e91b",
+    "bytes": 4764,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "DataFiles/dp/Resources/!Sprites22,ff9",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "1575d6d30e3d14b86191e8fdd00263cbf294b5a777a6473fe43a46a232f8d3ad",
+    "sha256": "1575d6d30e3d14b86191e8fdd00263cbf294b5a777a6473fe43a46a232f8d3ad",
+    "bytes": 7956,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "DataFiles/dp/Resources/!Sprites23,ff9",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "d76f928a338c046de2dacc4e878fb1e16b3af84f30a6cfa9cb3f686291da8701",
+    "sha256": "d76f928a338c046de2dacc4e878fb1e16b3af84f30a6cfa9cb3f686291da8701",
+    "bytes": 3316,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "DataFiles/dp/Resources/PaperRO,fc6",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "1d6b24a6b48138c408ac9127d78e4da33915a5901b800f5f833b46a7b8cad5bf",
+    "sha256": "1d6b24a6b48138c408ac9127d78e4da33915a5901b800f5f833b46a7b8cad5bf",
+    "bytes": 751,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "sources/SupportLJ",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "eb1b13c18a7ab286977fdbc87c7e2c61821456131163130be73c8242ef568d09",
+    "sha256": "9ab8c45ee8753f804c13b5006422b0c18de304b82efbcaf0cd93e63888cca9fa",
+    "bytes": 49340,
+    "modified": true
+  },
+  {
+    "component": "PrinterManager",
+    "path": "crunch/SupportLJ,ffe",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "09c3e4725c656f790dabae42797d7f4a57624765242caedcbb37141bc84c2a98",
+    "sha256": "09c3e4725c656f790dabae42797d7f4a57624765242caedcbb37141bc84c2a98",
+    "bytes": 64,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "UK/lj/Resources/Messages",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "45ce127e0e0504ee5a3fad67ba1a19bd0e5be71ae31261ff1777097df3fc1fb0",
+    "sha256": "45ce127e0e0504ee5a3fad67ba1a19bd0e5be71ae31261ff1777097df3fc1fb0",
+    "bytes": 2240,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "UK/lj/Resources/Templates,fec",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "1fe6c70d1ebf08b8e277ac4b6c87c4fb0545bc11051035d8b3e7c6a4a7c8a96e",
+    "sha256": "1fe6c70d1ebf08b8e277ac4b6c87c4fb0545bc11051035d8b3e7c6a4a7c8a96e",
+    "bytes": 1594,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "UK/lj/Resources/Template3D,fec",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "79e499b958a39cd6deb87c5ed5bc0325a2885ed9e0989a8f653899717778ec75",
+    "sha256": "79e499b958a39cd6deb87c5ed5bc0325a2885ed9e0989a8f653899717778ec75",
+    "bytes": 1697,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "DataFiles/lj/PrData,fc6",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "7aafda84bbe8ad16173d1c5d11ecce1f2ff9d1d168e56b6b07b08959dfe7b730",
+    "sha256": "7aafda84bbe8ad16173d1c5d11ecce1f2ff9d1d168e56b6b07b08959dfe7b730",
+    "bytes": 56,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "DataFiles/lj/Template,fc6",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "1d7c406a5760b2fa784a89c9ffccdb65eeadafbff75271b8ad54ce92d8508d1e",
+    "sha256": "1d7c406a5760b2fa784a89c9ffccdb65eeadafbff75271b8ad54ce92d8508d1e",
+    "bytes": 805,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "DataFiles/lj/Resources/!Sprites,ff9",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "18ffa91d1e8374f08d91d0f2e6200c6a1abcd83d1b243db1a8ef99055787855e",
+    "sha256": "18ffa91d1e8374f08d91d0f2e6200c6a1abcd83d1b243db1a8ef99055787855e",
+    "bytes": 3000,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "DataFiles/lj/Resources/!Sprites22,ff9",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "589cf2a9cb2340363f377f3fd4c97c32cb63b978c582cb819357e92ac2e685e9",
+    "sha256": "589cf2a9cb2340363f377f3fd4c97c32cb63b978c582cb819357e92ac2e685e9",
+    "bytes": 4464,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "DataFiles/lj/Resources/!Sprites23,ff9",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "3a83f28f2a5f870a4d74fc6bd3b2027e3129045519f6cc3aa1ec8a1a66180848",
+    "sha256": "3a83f28f2a5f870a4d74fc6bd3b2027e3129045519f6cc3aa1ec8a1a66180848",
+    "bytes": 1584,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "DataFiles/lj/Resources/PaperRO,fc6",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "7de4fa82a161db9e77ead68e56e3c386d8b86b1ea8915efac3a23f5ebc100e5e",
+    "sha256": "7de4fa82a161db9e77ead68e56e3c386d8b86b1ea8915efac3a23f5ebc100e5e",
+    "bytes": 891,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "sources/SupportPS",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "126abc9a87bc56b40268d30d5bbd4373bf3c52633641ca08b9a3fa31d50d8cff",
+    "sha256": "6de3f237218706963436737c68497814d0754178b95da8259bb23863c1255a2e",
+    "bytes": 51912,
+    "modified": true
+  },
+  {
+    "component": "PrinterManager",
+    "path": "crunch/SupportPS,ffe",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "13494f9cc3cdb6472e051fe053811f29894df40965e37d58acc64c24e1378b14",
+    "sha256": "13494f9cc3cdb6472e051fe053811f29894df40965e37d58acc64c24e1378b14",
+    "bytes": 64,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "UK/ps/Resources/Messages",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "1ceeddc005cd54241ac205d408d47ca96a4366d40698fa90dca463449d7727b4",
+    "sha256": "1ceeddc005cd54241ac205d408d47ca96a4366d40698fa90dca463449d7727b4",
+    "bytes": 2707,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "UK/ps/Resources/Templates,fec",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "fb2510832d7c019fc45664389cd6bc5a05b6eb5e7458f71bff91552b6549fc08",
+    "sha256": "fb2510832d7c019fc45664389cd6bc5a05b6eb5e7458f71bff91552b6549fc08",
+    "bytes": 2301,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "UK/ps/Resources/Template3D,fec",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "24d345ade070a6e18306f762c873bdb16edd0e29782f6e57adec04b3383f8bca",
+    "sha256": "24d345ade070a6e18306f762c873bdb16edd0e29782f6e57adec04b3383f8bca",
+    "bytes": 2341,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "DataFiles/ps/PrData,fc6",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "46ebf8dff8a7180090900c4cbd527893b8c142808eb1f8d47385acca46bf42fe",
+    "sha256": "46ebf8dff8a7180090900c4cbd527893b8c142808eb1f8d47385acca46bf42fe",
+    "bytes": 25,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "DataFiles/ps/Template,fc6",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "a11995c0e4fcae762059dc8850c574fbd05403b63e4e91a07aa9022009744f13",
+    "sha256": "a11995c0e4fcae762059dc8850c574fbd05403b63e4e91a07aa9022009744f13",
+    "bytes": 305,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "DataFiles/ps/Resources/!Sprites,ff9",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "a0454d9c075afd534386ee011a8afb90ceeeff8fc20479aeea5a0e8d1eb91c27",
+    "sha256": "a0454d9c075afd534386ee011a8afb90ceeeff8fc20479aeea5a0e8d1eb91c27",
+    "bytes": 2184,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "DataFiles/ps/Resources/!Sprites22,ff9",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "4efe35bfcaee95169d5edaf80d11c277c1ccdf8de9f6aa79a64c92cac0db09de",
+    "sha256": "4efe35bfcaee95169d5edaf80d11c277c1ccdf8de9f6aa79a64c92cac0db09de",
+    "bytes": 3984,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "DataFiles/ps/Resources/!Sprites23,ff9",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "d6da0ea35ed5445dd3e87e325f67f3bd9005e18a2639e93f24e7a46c660d7998",
+    "sha256": "d6da0ea35ed5445dd3e87e325f67f3bd9005e18a2639e93f24e7a46c660d7998",
+    "bytes": 1680,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "DataFiles/ps/Resources/PaperRO,fc6",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "e00f95d6a0c9a12402c790dc4c0e02b2a76725b7a797201647c59f0e7e158066",
+    "sha256": "e00f95d6a0c9a12402c790dc4c0e02b2a76725b7a797201647c59f0e7e158066",
+    "bytes": 390,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "DataFiles/ps/Adobe/Special",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "b7f9a348b7b15f351b9dbc223ed8f6e134ff6d0ccdd86ddbe33dd2f4f463363f",
+    "sha256": "b7f9a348b7b15f351b9dbc223ed8f6e134ff6d0ccdd86ddbe33dd2f4f463363f",
+    "bytes": 2737,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "DataFiles/ps/Adobe/Standard",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "3ae62d3de5195cf622ea06b99c550dc1a87aa57a3e165ea31a14d75981850cb8",
+    "sha256": "3ae62d3de5195cf622ea06b99c550dc1a87aa57a3e165ea31a14d75981850cb8",
+    "bytes": 2355,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "prolog/OldLatin1",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "cb3b612b6149b796798c474de6bb5c7b731c7036bf4cc1576130efde59ad147b",
+    "sha256": "cb3b612b6149b796798c474de6bb5c7b731c7036bf4cc1576130efde59ad147b",
+    "bytes": 2193,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "prolog/PSepilog",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "29b2e533e1a0aec7c810fd4416795ba028684aad6f090aeb8c27cc1522d86c90",
+    "sha256": "29b2e533e1a0aec7c810fd4416795ba028684aad6f090aeb8c27cc1522d86c90",
+    "bytes": 38,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "prolog/PSprolog",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "d3e041554d6af44bddb276b575d2a3a4b73a5750349fa031781199fa88579065",
+    "sha256": "d3e041554d6af44bddb276b575d2a3a4b73a5750349fa031781199fa88579065",
+    "bytes": 13871,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "prolog/PSprolog2",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "e298a0c00044d89d5d6c4affb17152f6c38a64257f402b8468672d0bb587d977",
+    "sha256": "e298a0c00044d89d5d6c4affb17152f6c38a64257f402b8468672d0bb587d977",
+    "bytes": 52245,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "prolog/PStprolog",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "ca4375dcb660393b8410e9b5227dfdb141bc613a753fcb1e7a21624a26b21a18",
+    "sha256": "ca4375dcb660393b8410e9b5227dfdb141bc613a753fcb1e7a21624a26b21a18",
+    "bytes": 12967,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "prolog/Selwyn",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "3bc5f43e1c9ec582671c11ffbb83dd1240976b30834548302a55e7e0fdb7c994",
+    "sha256": "3bc5f43e1c9ec582671c11ffbb83dd1240976b30834548302a55e7e0fdb7c994",
+    "bytes": 2337,
+    "modified": false
+  },
+  {
+    "component": "PrinterManager",
+    "path": "prolog/Sidney",
+    "revision": "8b91b0070ad814d5fd35c078c3dfa0c8391bcda3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrinterManager.git",
+    "upstream_sha256": "32c28e7ab7872bf11e6cb927489fc38a0add5c38f18c2d2b9f139068ef3d9640",
+    "sha256": "32c28e7ab7872bf11e6cb927489fc38a0add5c38f18c2d2b9f139068ef3d9640",
+    "bytes": 2593,
+    "modified": false
+  },
+  {
+    "component": "PrintDefs",
+    "path": "LICENSE",
+    "revision": "763f4cabce7972b2ee10f5a2d23574d620600553",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrintDefs.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358,
+    "modified": false
+  },
+  {
+    "component": "PrintDefs",
+    "path": "Resources/NonSTB/Epson/FX-80,fc6",
+    "revision": "763f4cabce7972b2ee10f5a2d23574d620600553",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrintDefs.git",
+    "upstream_sha256": "1afdc3ed82326f7bcda9442e9aae29540a9cb159c2b4c71ca6b19bd333d5bf34",
+    "sha256": "1afdc3ed82326f7bcda9442e9aae29540a9cb159c2b4c71ca6b19bd333d5bf34",
+    "bytes": 2064,
+    "modified": false
+  },
+  {
+    "component": "PrintDefs",
+    "path": "Resources/NonSTB/Apple/LW,fc6",
+    "revision": "763f4cabce7972b2ee10f5a2d23574d620600553",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrintDefs.git",
+    "upstream_sha256": "c0534eaba05118afcf36d6353d1a06fa4bfb499e5cd18d820c5dfc238e9b7247",
+    "sha256": "c0534eaba05118afcf36d6353d1a06fa4bfb499e5cd18d820c5dfc238e9b7247",
+    "bytes": 689,
+    "modified": false
+  },
+  {
+    "component": "PrintDefs",
+    "path": "Resources/NonSTB/HP/LasJet-II,fc6",
+    "revision": "763f4cabce7972b2ee10f5a2d23574d620600553",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Printing/PrintDefs.git",
+    "upstream_sha256": "0b1d131b6628eb5035b2f33308a6332b4752de2886a83251057b71517ad42863",
+    "sha256": "0b1d131b6628eb5035b2f33308a6332b4752de2886a83251057b71517ad42863",
+    "bytes": 1248,
+    "modified": false
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "status": "STATIC_PASS_WITH_EXPLICIT_SOFTWARE_FPA_TRAPS",
+  "bytes": 26700,
+  "sha256": "be6a5904849685002e9e862fe859cdf5369eaf55d0b9590546b949d5ff1cb665",
+  "aof_sha256": "cb0f8aa3fe19cd029e3ffede95f323a6da997fbb353d031ec14cf894498c2293",
+  "unresolved_symbols": 0,
+  "relocations": 0,
+  "integer_arm2_instructions": 5584,
+  "recursive_and_probe_fpa_instructions": 396,
+  "psr_settling_checked": true,
+  "code_data_coverage": true,
+  "resource_sha256": "e65d05a13fa5ffe56212b7e63b6dd36c4454ad272c89ca67ea9bfafc623a660c",
+  "client_sha256": "f4c1786475327a6dc61550d7e22f8a2d6cccb5f4d6e6ef20e8ca16daeba8ced1",
+  "baseline_rom_modified": false
+}

@@ -1,0 +1,38 @@
+{
+  "status": "PASS",
+  "modules": [
+    {
+      "component": "DragASprit",
+      "status": "STATIC_ARM2_PASS",
+      "bytes": 4352,
+      "sha256": "bfe083b13a4725a981f00daf0f738df0e10f4293db3b8a7bbd933ac1a4110c71",
+      "aof_sha256": "430442add913a48b46826a7b6cdc77cec2efb431ad1804427821698b20a87d85",
+      "integer_instructions": 1028,
+      "relocations": 0,
+      "unresolved_symbols": 0,
+      "swi_base": 271360
+    },
+    {
+      "component": "FilerSWIs",
+      "status": "STATIC_ARM2_PASS",
+      "bytes": 748,
+      "sha256": "dfeca7e2b7f4dc4de5902fd8381345b5088d4bff81ba76d9ca3d7d132c079aec",
+      "aof_sha256": "4751edb97130c785456b6d4e01e05470ace195684ea84f7a5864edc780543281",
+      "integer_instructions": 142,
+      "relocations": 0,
+      "unresolved_symbols": 0,
+      "swi_base": 266112
+    },
+    {
+      "component": "SpriteUtil",
+      "status": "STATIC_ARM2_PASS",
+      "bytes": 1508,
+      "sha256": "fdcf91cbff2a36e10d0913dd685b5e7d461e14fb7be37b207780c4c23a931f78",
+      "aof_sha256": "9d4b7a28cd603adb4d27728946a0a84dc662d0c9fe279a763a180326cd2eb184",
+      "integer_instructions": 185,
+      "relocations": 0,
+      "unresolved_symbols": 0,
+      "swi_base": 0
+    }
+  ]
+}

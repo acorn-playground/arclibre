@@ -1,0 +1,38 @@
+--- a/ADFS/s/Adfs18
++++ b/ADFS/s/Adfs18
+@@ -1124,6 +1124,14 @@
+ 39
+ 
+ 
++ [ A1
++        ; Keep the current 26-bit mode while protecting the vector copy.
++        MOV     r1, pc
++        Push    "r1"
++        ORR     r1, r1, #I_bit :OR: F_bit
++        TEQP    r1, #0
++        MOV     r0, r0 ; ARM2 bank-select settling.
++ |
+         ; Switch to _32 mode with IRQs and FIQs off
+         ; Note must switch interrupts off before switching mode as
+         ; there can be an interrupt after the msr instruction
+@@ -1142,6 +1150,7 @@
+         ORR     r1, r1, #2_10000
+         msr     AL, CPSR_all, r1
+ 
++ ]
+         NOP
+         MOV     LR, #FiqVector          ; FIQ vector address
+ 
+@@ -1155,7 +1164,12 @@
+         ; Pull  "r1"
+         ; NOP
+         Pull    "r1"
++ [ A1
++        TEQP    r1, #0
++        MOV     r0, r0 ; ARM2 bank-select settling.
++ |
+         msr     AL, CPSR_all, r1
++ ]
+ 
+         ; Put DCBbuffer into place
+         LDR     R1, [R2, #FlpDCBbuffer]

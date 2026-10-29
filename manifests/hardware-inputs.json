@@ -1,0 +1,452 @@
+[
+  {
+    "component": "Podule",
+    "path": "LICENSE",
+    "revision": "b33cb3fa32376b243c94d3870b33697f30cd9a70",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Podule.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358,
+    "modified": false
+  },
+  {
+    "component": "Podule",
+    "path": "Makefile",
+    "revision": "b33cb3fa32376b243c94d3870b33697f30cd9a70",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Podule.git",
+    "upstream_sha256": "293b1de7b0b1eefcba65a70b79b484cef01b24e1c035d70d7c5b1b53a1b77429",
+    "sha256": "293b1de7b0b1eefcba65a70b79b484cef01b24e1c035d70d7c5b1b53a1b77429",
+    "bytes": 2962,
+    "modified": false
+  },
+  {
+    "component": "Podule",
+    "path": "HelpTexts",
+    "revision": "b33cb3fa32376b243c94d3870b33697f30cd9a70",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Podule.git",
+    "upstream_sha256": "c039e15f9b674055f49d74ef62baaeecd7010a619096f8cd9326cefcf31b4b0a",
+    "sha256": "b77fbdfb9d26300bb6e681aed6eb208320a32c0f97bc8e3601cda84c67102021",
+    "bytes": 1274,
+    "modified": true
+  },
+  {
+    "component": "Podule",
+    "path": "Time+Date",
+    "revision": "b33cb3fa32376b243c94d3870b33697f30cd9a70",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Podule.git",
+    "upstream_sha256": "5f5d0b284cb1a0dc77bdf2e7b6fc82809a6520c6124e9d1ca133d3efe94d178d",
+    "sha256": "5f5d0b284cb1a0dc77bdf2e7b6fc82809a6520c6124e9d1ca133d3efe94d178d",
+    "bytes": 265,
+    "modified": false
+  },
+  {
+    "component": "Podule",
+    "path": "Resources/UK/Messages",
+    "revision": "b33cb3fa32376b243c94d3870b33697f30cd9a70",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Podule.git",
+    "upstream_sha256": "7cc17225b935349f32243644b0228acded34f99320b4cfd5223a636231047b60",
+    "sha256": "9047c553ec953517c6ec9abe7117cab63738365b731e9d4caaa387e6913fde37",
+    "bytes": 1488,
+    "modified": true
+  },
+  {
+    "component": "Podule",
+    "path": "hdr/Podule",
+    "revision": "b33cb3fa32376b243c94d3870b33697f30cd9a70",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Podule.git",
+    "upstream_sha256": "45c07de78c5b0b82ff1dcccb9da8bbac2ea07e0a3f205d71c36aff58db86f15e",
+    "sha256": "45c07de78c5b0b82ff1dcccb9da8bbac2ea07e0a3f205d71c36aff58db86f15e",
+    "bytes": 7729,
+    "modified": false
+  },
+  {
+    "component": "Podule",
+    "path": "s/GetAll",
+    "revision": "b33cb3fa32376b243c94d3870b33697f30cd9a70",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Podule.git",
+    "upstream_sha256": "06fbc247282a4d640236148c024bec40e7f83f81254fd2f1fff473ee7eda9a1c",
+    "sha256": "06fbc247282a4d640236148c024bec40e7f83f81254fd2f1fff473ee7eda9a1c",
+    "bytes": 1432,
+    "modified": false
+  },
+  {
+    "component": "Podule",
+    "path": "s/Module",
+    "revision": "b33cb3fa32376b243c94d3870b33697f30cd9a70",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Podule.git",
+    "upstream_sha256": "122ccf98ee92486a73154fca03aec553b601e44da97ed3dfbe8c3259add8b01b",
+    "sha256": "1174ea576b29c6e8cf5004baadad6d92232e02afc0455d70eaab7c4912f17f53",
+    "bytes": 34503,
+    "modified": true
+  },
+  {
+    "component": "Podule",
+    "path": "s/Interface",
+    "revision": "b33cb3fa32376b243c94d3870b33697f30cd9a70",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Podule.git",
+    "upstream_sha256": "0daed94c5842a10f77a58297e159c3ce3335fa2ebd7e34d96d976c4fd38f6c79",
+    "sha256": "1d88ec1b310e9d672ef176ed6e343dd84d017a103e8bdc2a77859de35b5a108b",
+    "bytes": 79767,
+    "modified": true
+  },
+  {
+    "component": "Podule",
+    "path": "s/Commands",
+    "revision": "b33cb3fa32376b243c94d3870b33697f30cd9a70",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Podule.git",
+    "upstream_sha256": "aadaba656f6d9fbc064585148cccae76cb37dfa0606efa5c81cf1c11d4687442",
+    "sha256": "044257daa6a615e3ad346fd8f8bcf721efee129e35439edadc79d8c42e637c2b",
+    "bytes": 15099,
+    "modified": true
+  },
+  {
+    "component": "Podule",
+    "path": "s/Errors",
+    "revision": "b33cb3fa32376b243c94d3870b33697f30cd9a70",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Podule.git",
+    "upstream_sha256": "40973902836944dc1ee8d9b4018b21b0c500f5d3b5306b88bb9f42d4c2d31f0d",
+    "sha256": "40973902836944dc1ee8d9b4018b21b0c500f5d3b5306b88bb9f42d4c2d31f0d",
+    "bytes": 1488,
+    "modified": false
+  },
+  {
+    "component": "Podule",
+    "path": "s/ROMExtend",
+    "revision": "b33cb3fa32376b243c94d3870b33697f30cd9a70",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Podule.git",
+    "upstream_sha256": "71b0ffaeb52781801ef808efbfc6a761e1411968007c6112d593032d40e9c07d",
+    "sha256": "e13a075ac49566930375dfbd0ecb09d7988d490645bdf04fb21b473a4325d003",
+    "bytes": 29347,
+    "modified": true
+  },
+  {
+    "component": "Podule",
+    "path": "s/MsgCode",
+    "revision": "b33cb3fa32376b243c94d3870b33697f30cd9a70",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Podule.git",
+    "upstream_sha256": "aeaac4054404afbf1acb762c44a0f773b43a7d58c0d4bf3be4345dcd29c4f0f4",
+    "sha256": "de792c32627c5cbbe0aac6c1a7efe650598bbcfa34191aca0850e3b4bcc6b25b",
+    "bytes": 6853,
+    "modified": true
+  },
+  {
+    "component": "Serial",
+    "path": "LICENSE",
+    "revision": "4d0e504f000ea706a6d07c69e35d82380b02c797",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Serial.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358,
+    "modified": false
+  },
+  {
+    "component": "Serial",
+    "path": "Makefile",
+    "revision": "4d0e504f000ea706a6d07c69e35d82380b02c797",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Serial.git",
+    "upstream_sha256": "26301f6cc7f4d6228d12a82fcf9eb55491cc09a2fb1901108cf12694d5b4754c",
+    "sha256": "26301f6cc7f4d6228d12a82fcf9eb55491cc09a2fb1901108cf12694d5b4754c",
+    "bytes": 2208,
+    "modified": false
+  },
+  {
+    "component": "Serial",
+    "path": "Version",
+    "revision": "4d0e504f000ea706a6d07c69e35d82380b02c797",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Serial.git",
+    "upstream_sha256": "8f4a6095a3296d33557f581dcb7a6fe5c559dcf663ff7d57aa3d18bd484a2357",
+    "sha256": "8f4a6095a3296d33557f581dcb7a6fe5c559dcf663ff7d57aa3d18bd484a2357",
+    "bytes": 220,
+    "modified": false
+  },
+  {
+    "component": "Serial",
+    "path": "Resources/UK/Messages",
+    "revision": "4d0e504f000ea706a6d07c69e35d82380b02c797",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Serial.git",
+    "upstream_sha256": "46bb1c254dfb4b3356be61c2607bf93ef6133023c23bc418b8d6054512c047e3",
+    "sha256": "46bb1c254dfb4b3356be61c2607bf93ef6133023c23bc418b8d6054512c047e3",
+    "bytes": 219,
+    "modified": false
+  },
+  {
+    "component": "Serial",
+    "path": "hdr/RS423",
+    "revision": "4d0e504f000ea706a6d07c69e35d82380b02c797",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Serial.git",
+    "upstream_sha256": "3c09435034bbd8aa276a641b8d6f12078ddf41ccf48b5e97ea6d449dc20d0e33",
+    "sha256": "3c09435034bbd8aa276a641b8d6f12078ddf41ccf48b5e97ea6d449dc20d0e33",
+    "bytes": 7491,
+    "modified": false
+  },
+  {
+    "component": "Serial",
+    "path": "hdr/Serial",
+    "revision": "4d0e504f000ea706a6d07c69e35d82380b02c797",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Serial.git",
+    "upstream_sha256": "17e7a9434c4f18bebecdb4ab39f3cef3dafb544f57caa243d044985c7bf7e170",
+    "sha256": "17e7a9434c4f18bebecdb4ab39f3cef3dafb544f57caa243d044985c7bf7e170",
+    "bytes": 2810,
+    "modified": false
+  },
+  {
+    "component": "Serial",
+    "path": "s/Serial",
+    "revision": "4d0e504f000ea706a6d07c69e35d82380b02c797",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Serial.git",
+    "upstream_sha256": "042e24faffaedd57981344a9a47c7e21b78cb6e37fa8957960ce3e12dc7e7b2b",
+    "sha256": "8b26258e3c37ff7ed86615ff021343eeaf6a3659ad31cd2d1a15c68957005acc",
+    "bytes": 12163,
+    "modified": true
+  },
+  {
+    "component": "Serial",
+    "path": "s/Macros",
+    "revision": "4d0e504f000ea706a6d07c69e35d82380b02c797",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Serial.git",
+    "upstream_sha256": "e5410cf282526075cc53045230aaba8c00f8f23ca2b5700bc65dafd12ea2b914",
+    "sha256": "e5410cf282526075cc53045230aaba8c00f8f23ca2b5700bc65dafd12ea2b914",
+    "bytes": 1504,
+    "modified": false
+  },
+  {
+    "component": "Serial",
+    "path": "s/Errors",
+    "revision": "4d0e504f000ea706a6d07c69e35d82380b02c797",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Serial.git",
+    "upstream_sha256": "71a1d5b2ae911d79d4f92a2e89fadadeb49257d1e11f8d11e7099f68374ddc6d",
+    "sha256": "71a1d5b2ae911d79d4f92a2e89fadadeb49257d1e11f8d11e7099f68374ddc6d",
+    "bytes": 2185,
+    "modified": false
+  },
+  {
+    "component": "Serial",
+    "path": "s/Init",
+    "revision": "4d0e504f000ea706a6d07c69e35d82380b02c797",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Serial.git",
+    "upstream_sha256": "63079f70925dda23e9ffdd0bf656becc48d739640f4b91a399ea4be1cde18289",
+    "sha256": "37d79f9af5130e7451d578b731fd39d6e23b10b106695448b05ff861d1f1d82e",
+    "bytes": 27561,
+    "modified": true
+  },
+  {
+    "component": "Serial",
+    "path": "s/Common",
+    "revision": "4d0e504f000ea706a6d07c69e35d82380b02c797",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Serial.git",
+    "upstream_sha256": "ded2f5ddc80dee98fa63789ad6875345039345b400084efba7cc53b4a7f5de10",
+    "sha256": "a256d6ad6c19404681e6970f0b202e009e5295697228cdf94f69e75834235955",
+    "bytes": 9544,
+    "modified": true
+  },
+  {
+    "component": "Serial",
+    "path": "s/Serial6551",
+    "revision": "4d0e504f000ea706a6d07c69e35d82380b02c797",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Serial.git",
+    "upstream_sha256": "1ba102c71c3e98b03e48db4536c615bee0c8718a81ec7f2eb7e1cfaeaf7be786",
+    "sha256": "91160de8f81ea7d36e3bf7f58edead6e38d8ead87c7c770912d10f4fcd03b057",
+    "bytes": 52879,
+    "modified": true
+  },
+  {
+    "component": "Serial",
+    "path": "s/Serial710",
+    "revision": "4d0e504f000ea706a6d07c69e35d82380b02c797",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Serial.git",
+    "upstream_sha256": "1f4b6e6991b7033cb027dcd42e876e9f6839377f4d08796fd157eafa6bc44c63",
+    "sha256": "c582ea49bfb94ed078dfadeaff2771b295d4f91636eb8fb65c5d055c5d29a4bf",
+    "bytes": 66461,
+    "modified": true
+  },
+  {
+    "component": "Serial",
+    "path": "s/ResFiles",
+    "revision": "4d0e504f000ea706a6d07c69e35d82380b02c797",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Serial.git",
+    "upstream_sha256": "f707d7658b0745f4c83410c28b00a990b06b603cb2a290d6eea2b85e1cb61b16",
+    "sha256": "f707d7658b0745f4c83410c28b00a990b06b603cb2a290d6eea2b85e1cb61b16",
+    "bytes": 1218,
+    "modified": false
+  },
+  {
+    "component": "SerialSpt",
+    "path": "LICENSE",
+    "revision": "36b69cb232a28bd975545ea7eff3a75132d0eef0",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/SerialSpt.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358,
+    "modified": false
+  },
+  {
+    "component": "SerialSpt",
+    "path": "Makefile",
+    "revision": "36b69cb232a28bd975545ea7eff3a75132d0eef0",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/SerialSpt.git",
+    "upstream_sha256": "6f4e24ff511ac1c0417f3a737537f6f4f2ff14e07ddf6296b769e17ad6059641",
+    "sha256": "6f4e24ff511ac1c0417f3a737537f6f4f2ff14e07ddf6296b769e17ad6059641",
+    "bytes": 1509,
+    "modified": false
+  },
+  {
+    "component": "SerialSpt",
+    "path": "Version",
+    "revision": "36b69cb232a28bd975545ea7eff3a75132d0eef0",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/SerialSpt.git",
+    "upstream_sha256": "41c20394bde1bdd2b62ba10a2533128b80b04800b7b02353bad9936e743903dd",
+    "sha256": "41c20394bde1bdd2b62ba10a2533128b80b04800b7b02353bad9936e743903dd",
+    "bytes": 169,
+    "modified": false
+  },
+  {
+    "component": "SerialSpt",
+    "path": "s/SerialSpt",
+    "revision": "36b69cb232a28bd975545ea7eff3a75132d0eef0",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/SerialSpt.git",
+    "upstream_sha256": "f6512c2e2c7dd21eebbe08ccdee0c0cfb9815548074c08a5992c14e948d14c5c",
+    "sha256": "6dc8ae55f0cb56c810f25f8c97a262870607f88ddc44ec348daaee8c58b14898",
+    "bytes": 42697,
+    "modified": true
+  },
+  {
+    "component": "SerialSpt",
+    "path": "s/Macros",
+    "revision": "36b69cb232a28bd975545ea7eff3a75132d0eef0",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/SerialSpt.git",
+    "upstream_sha256": "1d9915f2b90c8bc8f6966b7f05cdf057e1800e9d5ca753b95e997ded51b43eae",
+    "sha256": "1d9915f2b90c8bc8f6966b7f05cdf057e1800e9d5ca753b95e997ded51b43eae",
+    "bytes": 1056,
+    "modified": false
+  },
+  {
+    "component": "SerialSpt",
+    "path": "s/Errors",
+    "revision": "36b69cb232a28bd975545ea7eff3a75132d0eef0",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/SerialSpt.git",
+    "upstream_sha256": "c19d48380b5dc72a5180b0b37564e32ee61dd07b36a67d2de4274e1e4a70c9b3",
+    "sha256": "c19d48380b5dc72a5180b0b37564e32ee61dd07b36a67d2de4274e1e4a70c9b3",
+    "bytes": 2053,
+    "modified": false
+  },
+  {
+    "component": "Parallel",
+    "path": "LICENSE",
+    "revision": "f9e3bcbbcc5849d4965077d5abafdd99db5954f0",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Parallel.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358,
+    "modified": false
+  },
+  {
+    "component": "Parallel",
+    "path": "Makefile",
+    "revision": "f9e3bcbbcc5849d4965077d5abafdd99db5954f0",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Parallel.git",
+    "upstream_sha256": "f62f99eb2501224985e0e0f79fa45d284e639cd008caac973bcda4fab51f528e",
+    "sha256": "f62f99eb2501224985e0e0f79fa45d284e639cd008caac973bcda4fab51f528e",
+    "bytes": 2133,
+    "modified": false
+  },
+  {
+    "component": "Parallel",
+    "path": "Version",
+    "revision": "f9e3bcbbcc5849d4965077d5abafdd99db5954f0",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Parallel.git",
+    "upstream_sha256": "f4973caf141e0e6647f0563fa567b61bbe122c5fc2d351e2a151d4d5a553ef12",
+    "sha256": "f4973caf141e0e6647f0563fa567b61bbe122c5fc2d351e2a151d4d5a553ef12",
+    "bytes": 220,
+    "modified": false
+  },
+  {
+    "component": "Parallel",
+    "path": "Resources/UK/Messages",
+    "revision": "f9e3bcbbcc5849d4965077d5abafdd99db5954f0",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Parallel.git",
+    "upstream_sha256": "3ee623bd709ac81ba496509071c249d9fd671ef8866d1205de116a8e14b6341f",
+    "sha256": "3ee623bd709ac81ba496509071c249d9fd671ef8866d1205de116a8e14b6341f",
+    "bytes": 32,
+    "modified": false
+  },
+  {
+    "component": "Parallel",
+    "path": "hdr/Parallel",
+    "revision": "f9e3bcbbcc5849d4965077d5abafdd99db5954f0",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Parallel.git",
+    "upstream_sha256": "3df63c6d41235f5a634137383cc0b53e019332d6a61c232eef0277e1f9f1edca",
+    "sha256": "3df63c6d41235f5a634137383cc0b53e019332d6a61c232eef0277e1f9f1edca",
+    "bytes": 1132,
+    "modified": false
+  },
+  {
+    "component": "Parallel",
+    "path": "s/Parallel",
+    "revision": "f9e3bcbbcc5849d4965077d5abafdd99db5954f0",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Parallel.git",
+    "upstream_sha256": "00124b976a48d6f1ed304dd65953eba60815eee73cfe6b53b39e3e95c2e48ac1",
+    "sha256": "054b3575e4f4e3059a9af53f404d23b25e81db843730cc6daa16a914cd986382",
+    "bytes": 37883,
+    "modified": true
+  },
+  {
+    "component": "Parallel",
+    "path": "s/Errors",
+    "revision": "f9e3bcbbcc5849d4965077d5abafdd99db5954f0",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Parallel.git",
+    "upstream_sha256": "6db5982275c76f0788bb95affdb2435ce4564d72eb2f477488328b0c6c1ac095",
+    "sha256": "6db5982275c76f0788bb95affdb2435ce4564d72eb2f477488328b0c6c1ac095",
+    "bytes": 1764,
+    "modified": false
+  },
+  {
+    "component": "Parallel",
+    "path": "s/Common",
+    "revision": "f9e3bcbbcc5849d4965077d5abafdd99db5954f0",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Parallel.git",
+    "upstream_sha256": "88217e3eff641cbb4504b33caa6ef9a947d31542258fdeffcec84daa9a8bb428",
+    "sha256": "05d1671a4da76fe481fa4850c4e40f800c48102d898a3f4f4017f4813fa85ece",
+    "bytes": 6398,
+    "modified": true
+  },
+  {
+    "component": "Parallel",
+    "path": "s/IOC",
+    "revision": "f9e3bcbbcc5849d4965077d5abafdd99db5954f0",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Parallel.git",
+    "upstream_sha256": "6005fb9b4771e99de45620c6be8e9f4c1ca5eb48c13d84196353ea15d8d44827",
+    "sha256": "e011c68c944d352ccfc73b9167a89d500b74d8d3654461899f32986f6bc0f3d3",
+    "bytes": 16397,
+    "modified": true
+  },
+  {
+    "component": "Parallel",
+    "path": "s/IOEB",
+    "revision": "f9e3bcbbcc5849d4965077d5abafdd99db5954f0",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Parallel.git",
+    "upstream_sha256": "2efc7851f748510a86c9915bbbec8f079fee32a56183fb35b881400a734f28ea",
+    "sha256": "2fe28ab8ee129c8f6c016301f442d57b61784c7dc53a441ce37b15ad02149075",
+    "bytes": 28857,
+    "modified": true
+  },
+  {
+    "component": "Parallel",
+    "path": "s/FastCent",
+    "revision": "f9e3bcbbcc5849d4965077d5abafdd99db5954f0",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Parallel.git",
+    "upstream_sha256": "29d5f8a040be0e2d09e2fca314ff5398ad611db5dd17252cc01ba7272f2df67b",
+    "sha256": "423910ba180af759d6cf87ae6e7a6ecbd0e02752e55f76afe8418cb88f7f0778",
+    "bytes": 9377,
+    "modified": true
+  },
+  {
+    "component": "Parallel",
+    "path": "s/ResFiles",
+    "revision": "f9e3bcbbcc5849d4965077d5abafdd99db5954f0",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Parallel.git",
+    "upstream_sha256": "fefe043e6f581248f54d5e94625b31ac0f8858b224171ddaa7d426146f4124ac",
+    "sha256": "fefe043e6f581248f54d5e94625b31ac0f8858b224171ddaa7d426146f4124ac",
+    "bytes": 1212,
+    "modified": false
+  }
+]

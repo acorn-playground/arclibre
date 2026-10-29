@@ -1,0 +1,12 @@
+--- a/Kernel/s/NewReset
++++ b/Kernel/s/NewReset
+@@ -381,7 +381,8 @@
+  ]
+ 
+ 
+- [ MEMM_Type <> "ARM600"
++; Modified 2026: a fixed ARM2 build must not emit ARM3 CP15 detection/cache operations.
++ [ (MEMM_Type <> "ARM600") :LAND: (CPU_Type <> "ARM2")
+         GBLL    ARM3_Support
+  ]
+ 

@@ -1,0 +1,117 @@
+--- a/src/FPEmulator/riscos/s/fpe400
++++ b/src/FPEmulator/riscos/s/fpe400
+@@ -1,3 +1,4 @@
++; Modified 2026 for Open Archimedes; see patches/fpemulator/0001-arm2-build.patch.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -44,7 +45,7 @@
+ ; Controls for veneer sources
+ ;
+ 	GBLS	Flavour
+-Flavour	SETS	"Both"
++Flavour	SETS	"SoftOnly"
+ 
+ 	GBLL	Arm600
+ Arm600	SETL	{FALSE}
+--- a/src/FPEmulator/coresrc/s/fpeundef
++++ b/src/FPEmulator/coresrc/s/fpeundef
+@@ -1,3 +1,4 @@
++; Modified 2026 for Open Archimedes; see patches/fpemulator/0001-arm2-build.patch.
+ ; Assembler source for FPA support code and emulator
+ ; ==================================================
+ ; Undefined instruction handler for FPA Emulator
+@@ -413,6 +414,7 @@
+                                                 ;Replace mode - note Rregval is
+           ORR     Rtmp,Rregval,Rtmp             ; just a convenient temporary
+           TEQP    PC,Rtmp                       ;Change to caller's mode
++            NOP ; Modified 2026: explicit ARM2 bank-select settling.
+         ]
+         CMP     Rregno,#R13:SHL:DT_ARMreg_pos   ;Rregval := base address
+         MOVEQ   Rregval,R13                     ; = correct one of R13 and R14
+@@ -436,6 +438,7 @@
+         ]
+         [ {CONFIG}=26
+           TEQP    PC,Rtmp2                      ;Change back to original mode
++            NOP ; Modified 2026: explicit ARM2 bank-select settling.
+         ]
+         MEND
+ 
+@@ -2089,10 +2092,12 @@
+           AND     Rregval,Rtmp2,#PSR_mask:AND:(:NOT:Mode_mask)
+           ORR     Rtmp,Rregval,Rtmp
+           TEQP    PC,Rtmp                       ;Change to caller's mode
++            NOP ; Modified 2026: explicit ARM2 bank-select settling.
+           CMP     Rregno,#R13:SHL:RT_ARMreg_pos ;EQ if R13, NE if R14
+           MOVEQ   R13,Rarith
+           MOVNE   R14,Rarith
+           TEQP    PC,Rtmp2                      ;Change back to original mode
++            NOP ; Modified 2026: explicit ARM2 bank-select settling.
+         ]
+ 
+ ; Now write back the possibly modified FPSR and return.
+@@ -2161,10 +2166,12 @@
+           AND     Rarith,Rtmp2,#PSR_mask:AND:(:NOT:Mode_mask)
+           ORR     Rtmp,Rarith,Rtmp
+           TEQP    PC,Rtmp                       ;Change to caller's mode
++            NOP ; Modified 2026: explicit ARM2 bank-select settling.
+           CMP     Rregno,#R13:SHL:RT_ARMreg_pos ;EQ if R13, NE if R14
+           MOVEQ   Rarith,R13
+           MOVNE   Rarith,R14
+           TEQP    PC,Rtmp2                      ;Change back to original mode
++            NOP ; Modified 2026: explicit ARM2 bank-select settling.
+         ]
+ 
+         B       FPE_WFSBounce_Common
+@@ -2305,10 +2312,12 @@
+           AND     Rarith,Rtmp2,#PSR_mask:AND:(:NOT:Mode_mask)
+           ORR     Rtmp,Rarith,Rtmp
+           TEQP    PC,Rtmp                       ;Change to caller's mode
++            NOP ; Modified 2026: explicit ARM2 bank-select settling.
+           CMP     Rregno,#R13:SHL:RT_ARMreg_pos ;EQ if R13, NE if R14
+           MOVEQ   Rarith,R13
+           MOVNE   Rarith,R14
+           TEQP    PC,Rtmp2                      ;Change back to original mode
++            NOP ; Modified 2026: explicit ARM2 bank-select settling.
+         ]
+ 
+         B       FPE_FltBounce_Common
+--- a/src/FPEmulator/coresrc/s/interf
++++ b/src/FPEmulator/coresrc/s/interf
+@@ -1,3 +1,4 @@
++; Modified 2026 for Open Archimedes; see patches/fpemulator/0001-arm2-build.patch.
+ ; Assembler source for FPA support code and emulator
+ ; ==================================================
+ ; Core routines to implement the core/veneer interface
+@@ -469,6 +470,7 @@
+             MOV     R3,PC
+             ORR     R0,R3,#I_bit
+             TEQP    PC,R0
++            NOP ; Modified 2026: explicit ARM2 bank-select settling.
+           ]
+ 
+           [ {CONFIG} = 32
+@@ -540,6 +542,7 @@
+ 
+           [ {CONFIG} = 26
+             TEQP    PC,R3
++            NOP ; Modified 2026: explicit ARM2 bank-select settling.
+           ]
+ 
+           [ {CONFIG} = 32
+--- a/src/FPEmulator/vensrc/riscos/options
++++ b/src/FPEmulator/vensrc/riscos/options
+@@ -1,3 +1,4 @@
++; Modified 2026 for Open Archimedes; see patches/fpemulator/0001-arm2-build.patch.
+ ; >riscos.options
+ ;
+ ; Copyright (c) 1993 Acorn Computers Ltd., Cambridge, England.
+@@ -221,7 +222,7 @@
+ FPEChecksNextInstr      SETL    {TRUE}
+ NoTranscendentals       SETL    {FALSE}
+ NoPacked                SETL    {FALSE}
+-DynamicRounding         SETL    {FALSE}
++; Core 1.13 has no DynamicRounding option; all rounding uses its real core paths.
+ 
+         END
+ 

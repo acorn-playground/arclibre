@@ -1,0 +1,20 @@
+--- a/ADFS/s/Adfs11
++++ b/ADFS/s/Adfs11
+@@ -1489,7 +1489,7 @@
+         SetBorder  &F,&F,&F
+  ]
+ ; R0 SSB>>2
+-        CMPS    R0, #&48 :SHR 2         ;&48 = SSB for corrected ECC
++        CMPS    R0, #&48 :SHR: 2         ;&48 = SSB for corrected ECC
+         LDR     R2, opCode
+         AND     R2, R2, #OpMask         ; get the opcode
+         BNE     %FT10                   ; on the compare with &48
+@@ -2230,7 +2230,7 @@
+         mess    CS,"WHOLE",NL
+  ]
+  [ MEMC1A
+-        ADDCS   R10,HDC,#:INDEX HDCdataWrite
++        ADDCS   R10,HDC,#:INDEX: HDCdataWrite
+  ]
+         ADRCS   PC, LowCodeLocation     ;same as BCS LowCodeLocation
+ 

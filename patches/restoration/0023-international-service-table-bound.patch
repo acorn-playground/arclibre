@@ -1,0 +1,34 @@
+--- a/Inter/s/InterBody
++++ b/Inter/s/InterBody
+@@ -546,10 +546,11 @@
+ Inter_Service ROUT
+         TEQ     R1, #Service_International      ; is it our service ?
+         MOVNE   PC, R14                         ; no, then exit
+-        CMP     R2, #Inter_Highest              ; is it one we know ?
++        CMP     R2, #Inter_SupportedCount              ; is it one we know ?
+         ADDCC   PC, PC, R2, LSL #2              ; yes, go thru despatch
+         MOV     PC, R14                         ; no, then exit
+ 
++Inter_ServiceTable
+         B       DoCNaToCNo
+         B       DoANaToANo
+         B       DoCNoToCNa
+@@ -558,6 +559,9 @@
+         B       DoDefine
+         MOV     PC, R14                 ; new keyboard service is ignored by us
+ 
++Inter_ServiceTableEnd
++Inter_SupportedCount * (Inter_ServiceTableEnd-Inter_ServiceTable)/4
++
+         ASSERT Inter_CNaToCNo = 0
+         ASSERT Inter_ANaToANo = 1
+         ASSERT Inter_CNoToCNa = 2
+@@ -565,7 +569,7 @@
+         ASSERT Inter_CNoToANo = 4
+         ASSERT Inter_Define   = 5
+         ASSERT Inter_Keyboard = 6
+-        ASSERT Inter_Highest = 7
++        ASSERT Inter_SupportedCount = 7
+ 
+ ; *****************************************************************************
+ ;

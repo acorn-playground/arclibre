@@ -1,0 +1,25 @@
+{
+  "base": "550bee4842e45eafdf331f0d06e11df1368403e8",
+  "files": [
+    {
+      "path": "Sources/ArchimedesCore/Devices/WD1772.swift",
+      "before": "ca167281863caf2e26ebe28b997f62eb3485891bf741aaf815f72493e04195a6",
+      "after": "98a52ee3a4d99267d54b33e2e734b8d64c2b92aa08e850e7759d616a80a39cf3"
+    },
+    {
+      "path": "Sources/ArchimedesCore/Machine/Machine.swift",
+      "before": "b685a972528b5b0a4af19174a3a1037e384eb71c9210cb403082d64dee6bae18",
+      "after": "459c7a579ec6c2e1ac88f18b8c63081477b7a89165f8be64d1319b9c18939490"
+    },
+    {
+      "path": "Sources/ArchimedesCore/Machine/Snapshot.swift",
+      "before": "8549deef86c73ef9a04fa41e58cdcbb89c948e4bfd77a4fbe1ddbb1b8242ec18",
+      "after": "9be2f6761caf4119c52c280ab44f927c17f7cb1a9f63bb07b648859b76c12a2a"
+    },
+    {
+      "path": "Tests/ArchimedesCoreTests/OriginalDiscChangeTests.swift",
+      "before": null,
+      "after": "6ae67023efe89e7e843926b10173b155b737484062a72c83a54493bd980a126c"
+    }
+  ]
+}

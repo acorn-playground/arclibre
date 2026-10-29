@@ -1,0 +1,11 @@
+--- a/src/Squash/c/cssr
++++ b/src/Squash/c/cssr
+@@ -250,6 +250,8 @@
+                         return output_failed;
+                 }
+ 
++                /* ArcLibre: these labels also resume before a header exists. */
++                code_size = INIT_BITS;
+                 clear_tables();
+                 offset = 0;
+                 in_count = 0;

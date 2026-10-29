@@ -1,0 +1,398 @@
+{
+  "status": "STATIC_PASS",
+  "module_bytes": 50992,
+  "module_sha256": "6dc485d83503d3bc26ebd0b2a1f1ff81c5e4700feb653d341e5a5c987406ecad",
+  "image_bytes": 50188,
+  "relocation_code_offset": 50188,
+  "relocations": 183,
+  "relocation_code": "src/ArcLibre/s/DOSFSReloc",
+  "relocation_check": "binary links at 0x8000 and 0x1238000: the differing words (each by the base difference) are the table; all are object word relocations; equal to drlink -rmf table; applying it reproduces the second link",
+  "rw_template_bytes": 4936,
+  "rma_workspace_bytes": 4948,
+  "integer_arm2_instructions": 10086,
+  "fpa_instructions": 0,
+  "branches_in_code": true,
+  "psr_settling_checked": true,
+  "all_bytes_mapped_to_object_areas": true,
+  "header": {
+    "init": 312,
+    "final": 448,
+    "service": 484,
+    "swi_chunk": 281344,
+    "swi_handler": 600,
+    "commands": [
+      {
+        "name": "DOSMap",
+        "code": 652,
+        "min": 0,
+        "gstrans": 255,
+        "max": 2,
+        "flags": 16,
+        "syntax": "SDOSMAP",
+        "help": "HDOSMAP"
+      },
+      {
+        "name": "CopyBoot",
+        "code": 660,
+        "min": 2,
+        "gstrans": 255,
+        "max": 2,
+        "flags": 16,
+        "syntax": "SDOSCPB",
+        "help": "HDOSCPB"
+      }
+    ],
+    "messages": "Resources:$.Resources.DOSFS.Messages"
+  },
+  "areas": [
+    {
+      "offset": 0,
+      "size": 728,
+      "kind": "R/O code",
+      "area": "!!!Module$$Header",
+      "object": "build/dosfs/DOSFSHdr.o"
+    },
+    {
+      "offset": 728,
+      "size": 100,
+      "kind": "R/O code",
+      "area": "C$$code",
+      "object": "build/dosfs/stubs.o"
+    },
+    {
+      "offset": 828,
+      "size": 88,
+      "kind": "R/O code",
+      "area": "C$$code",
+      "object": "build/dosfs/GCCDiv.o"
+    },
+    {
+      "offset": 916,
+      "size": 332,
+      "kind": "R/O code",
+      "area": "C$$code",
+      "object": "build/dosfs/MsgTrans.o"
+    },
+    {
+      "offset": 1248,
+      "size": 344,
+      "kind": "R/O code",
+      "area": "C$$code",
+      "object": "build/dosfs/wcompare.o"
+    },
+    {
+      "offset": 1592,
+      "size": 1408,
+      "kind": "R/O code",
+      "area": "C$$code",
+      "object": "build/dosfs/TIMEconv.o"
+    },
+    {
+      "offset": 3000,
+      "size": 484,
+      "kind": "R/O code",
+      "area": "C$$code",
+      "object": "build/dosfs/FSerrors.o"
+    },
+    {
+      "offset": 3484,
+      "size": 1444,
+      "kind": "R/O code",
+      "area": "C$$code",
+      "object": "build/dosfs/DOSnaming.o"
+    },
+    {
+      "offset": 4928,
+      "size": 19892,
+      "kind": "R/O code",
+      "area": "C$$code",
+      "object": "build/dosfs/DOSFSops.o"
+    },
+    {
+      "offset": 24820,
+      "size": 8312,
+      "kind": "R/O code",
+      "area": "C$$code",
+      "object": "build/dosfs/DOSFS.o"
+    },
+    {
+      "offset": 33132,
+      "size": 512,
+      "kind": "R/O code",
+      "area": "DOSFS_BootSector",
+      "object": "build/dosfs/DOSFSBoot.o"
+    },
+    {
+      "offset": 33644,
+      "size": 840,
+      "kind": "R/O code",
+      "area": "DOSFS_Statics",
+      "object": "build/dosfs/StaticDefs.o"
+    },
+    {
+      "offset": 34484,
+      "size": 6900,
+      "kind": "R/O code",
+      "area": "DOSFS_Support",
+      "object": "build/dosfs/DOSFSctl.o"
+    },
+    {
+      "offset": 41384,
+      "size": 432,
+      "kind": "R/O code",
+      "area": "Stub$$Code",
+      "object": "build/dosfs/stubs.o"
+    },
+    {
+      "offset": 41816,
+      "size": 932,
+      "kind": "R/O code",
+      "area": "Stub$$Entries",
+      "object": "build/dosfs/stubs.o"
+    },
+    {
+      "offset": 42748,
+      "size": 2464,
+      "kind": "R/O data",
+      "area": "DOSFS$$Resources",
+      "object": "build/dosfs/DOSFSRes.o"
+    },
+    {
+      "offset": 45212,
+      "size": 40,
+      "kind": "R/O data",
+      "area": "RTSK$$Data",
+      "object": "build/dosfs/stubs.o"
+    },
+    {
+      "offset": 45252,
+      "size": 12,
+      "kind": "R/W data",
+      "area": "C$$data",
+      "object": "build/dosfs/Statics.o"
+    },
+    {
+      "offset": 45264,
+      "size": 60,
+      "kind": "R/W data",
+      "area": "C$$data",
+      "object": "build/dosfs/MsgTrans.o"
+    },
+    {
+      "offset": 45324,
+      "size": 12,
+      "kind": "R/W data",
+      "area": "C$$data",
+      "object": "build/dosfs/TIMEconv.o"
+    },
+    {
+      "offset": 45336,
+      "size": 272,
+      "kind": "R/W data",
+      "area": "C$$data",
+      "object": "build/dosfs/FSerrors.o"
+    },
+    {
+      "offset": 45608,
+      "size": 92,
+      "kind": "R/W data",
+      "area": "C$$data",
+      "object": "build/dosfs/DOSnaming.o"
+    },
+    {
+      "offset": 45700,
+      "size": 120,
+      "kind": "R/W data",
+      "area": "C$$data",
+      "object": "build/dosfs/DOSFSops.o"
+    },
+    {
+      "offset": 45820,
+      "size": 684,
+      "kind": "R/W data",
+      "area": "C$$data",
+      "object": "build/dosfs/DOSFS.o"
+    },
+    {
+      "offset": 46504,
+      "size": 3684,
+      "kind": "R/W data",
+      "area": "Stub$$Data",
+      "object": "build/dosfs/stubs.o"
+    }
+  ],
+  "resources": {
+    "name": "Resources.DOSFS.Messages",
+    "source": "src/DOSFS/Resources/UK/Messages",
+    "sha256": "72e2d235db21965ba103ac8be4f1c6db5150ceddd68016f4f663fdd62bbbfb7b"
+  },
+  "boot_sector": {
+    "status": "PASS",
+    "template": {
+      "jump": "eb3c90",
+      "oem": "4152434c49425245",
+      "bytes_per_sector": 512,
+      "sectors_per_cluster": 2,
+      "reserved": 1,
+      "fats": 2,
+      "root_entries": 112,
+      "total_sectors": 1440,
+      "media": 249,
+      "sectors_per_fat": 3,
+      "sectors_per_track": 9,
+      "heads": 2,
+      "hidden": 0,
+      "signature": "55aa"
+    },
+    "template_layout": {
+      "clusters": 713,
+      "root_sectors": 7,
+      "first_data_sector": 14
+    },
+    "boot_code_start": 62,
+    "boot_message": "\r\nNon-system disc: ArcLibre DOSFS data disc.\r\nThere is no operating system on it.\r\nRemove it and press a key to restart.\r\n",
+    "x86_runs": [
+      {
+        "entry": "0000:7C00",
+        "ended": "INT 19h",
+        "instructions": 869
+      },
+      {
+        "entry": "07C0:0000",
+        "ended": "INT 19h",
+        "instructions": 869
+      }
+    ],
+    "if_int19_returns": "HLT loop",
+    "formats": [
+      {
+        "format": "DOS/Q",
+        "total_sectors": 2880,
+        "sectors_per_cluster": 1,
+        "sectors_per_fat": 9,
+        "root_entries": 224,
+        "media": "&F0",
+        "heads": 2,
+        "sectors_per_track": 18,
+        "clusters": 2847,
+        "root_sectors": 14,
+        "first_data_sector": 33
+      },
+      {
+        "format": "DOS/M",
+        "total_sectors": 1440,
+        "sectors_per_cluster": 2,
+        "sectors_per_fat": 3,
+        "root_entries": 112,
+        "media": "&F9",
+        "heads": 2,
+        "sectors_per_track": 9,
+        "clusters": 713,
+        "root_sectors": 7,
+        "first_data_sector": 14
+      },
+      {
+        "format": "DOS/H",
+        "total_sectors": 2400,
+        "sectors_per_cluster": 1,
+        "sectors_per_fat": 7,
+        "root_entries": 224,
+        "media": "&F9",
+        "heads": 2,
+        "sectors_per_track": 15,
+        "clusters": 2371,
+        "root_sectors": 14,
+        "first_data_sector": 29
+      },
+      {
+        "format": "DOS/N",
+        "total_sectors": 720,
+        "sectors_per_cluster": 2,
+        "sectors_per_fat": 2,
+        "root_entries": 112,
+        "media": "&FD",
+        "heads": 2,
+        "sectors_per_track": 9,
+        "clusters": 354,
+        "root_sectors": 7,
+        "first_data_sector": 12
+      },
+      {
+        "format": "DOS/P",
+        "total_sectors": 360,
+        "sectors_per_cluster": 1,
+        "sectors_per_fat": 2,
+        "root_entries": 64,
+        "media": "&FC",
+        "heads": 1,
+        "sectors_per_track": 9,
+        "clusters": 351,
+        "root_sectors": 4,
+        "first_data_sector": 9
+      },
+      {
+        "format": "DOS/T",
+        "total_sectors": 640,
+        "sectors_per_cluster": 2,
+        "sectors_per_fat": 1,
+        "root_entries": 112,
+        "media": "&FF",
+        "heads": 2,
+        "sectors_per_track": 8,
+        "clusters": 315,
+        "root_sectors": 7,
+        "first_data_sector": 10
+      },
+      {
+        "format": "DOS/U",
+        "total_sectors": 320,
+        "sectors_per_cluster": 1,
+        "sectors_per_fat": 1,
+        "root_entries": 64,
+        "media": "&FE",
+        "heads": 1,
+        "sectors_per_track": 8,
+        "clusters": 313,
+        "root_sectors": 4,
+        "first_data_sector": 7
+      },
+      {
+        "format": "Atari/M",
+        "total_sectors": 1440,
+        "sectors_per_cluster": 2,
+        "sectors_per_fat": 5,
+        "root_entries": 112,
+        "media": "&F9",
+        "heads": 2,
+        "sectors_per_track": 9,
+        "clusters": 711,
+        "root_sectors": 7,
+        "first_data_sector": 18
+      },
+      {
+        "format": "Atari/N",
+        "total_sectors": 720,
+        "sectors_per_cluster": 2,
+        "sectors_per_fat": 5,
+        "root_entries": 112,
+        "media": "&F8",
+        "heads": 1,
+        "sectors_per_track": 9,
+        "clusters": 351,
+        "root_sectors": 7,
+        "first_data_sector": 18
+      }
+    ],
+    "offset": 33132,
+    "sha256": "70a92cc24dcb7e337e02a2878c2e13fa82335441e17c6c29e576406fe081bba5",
+    "source": "src/ArcLibre/s/DOSFSBoot"
+  },
+  "symbols": {
+    "func_default_dbsector": 33132,
+    "func_DOS_formats": 34352,
+    "func_DOS_formatinfo": 33644,
+    "default_dbsector": 45252,
+    "DOS_formats": 45256,
+    "DOS_formatinfo": 45260
+  }
+}

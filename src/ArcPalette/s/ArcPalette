@@ -1,0 +1,1084 @@
+; SPDX-License-Identifier: Apache-2.0
+; Copyright 2026 ArcLibre contributors.
+; New original-VIDC palette utility, not the unpublished Acorn PaletteUtil.
+; Its window, menus and file handling follow the RISC OS 3 User Guide
+; (3.10, pp.115-118), the PRM (vol. 3) and measured 3.11 screenshots; no
+; Acorn code, templates or artwork are used. Uses the maintained Wimp task,
+; menu, icon, drag and 20-word palette APIs; live sliders use Wimp_ResizeIcon.
+        AREA |ArcPalette$$Code|, CODE, READONLY
+Base
+        GET Hdr:ListOpts
+        GET Hdr:Macros
+        GET Hdr:System
+        GET Hdr:ModHand
+        GET Hdr:Services
+        GET Hdr:Wimp
+        GET Hdr:WimpSpace
+; Entirely new private workspace, allocated from RMA (4096 bytes):
+Task    * 0
+Started * 4
+Window  * 8
+BarIcon * 12
+Selected * 16                      ; 0-15 swatch, 16-19 Bor/Ms1/Ms2/Ms3
+Dragging * 20                      ; slider being dragged (0-2) or -1
+MenuX * 24
+MenuY * 28
+Palette * 32                       ; 20 BGR0 words (16 desktop, border, pointer)
+Block   * 112                      ; 256-byte Wimp poll / call block
+SaveBox * 368
+SaveDrag * 372
+SaveRef * 376
+MainMenu * 384                     ; 28 + 4*24 bytes
+ModesMenu * 512                    ; 28 + 5*24 bytes
+ModeText * 660
+SwatchText * 680                   ; 16 indirected two-character labels
+FileName * 752                     ; 64 bytes
+Path    * 832                      ; 256 bytes
+FileData * 1088                    ; 120-byte VDU 19 palette file
+StackTop * 4096                    ; full descending user stack above byte 1216
+FileSize * 120
+        DCD Start-Base,Init-Base,Die-Base,Service-Base
+        DCD Title-Base,Help-Base,Commands-Base
+        DCD 0,0,0,0,0
+Title   DCB "PaletteUtil",0
+Help    DCB "PaletteUtil",9,"0.10 (ArcLibre, 27 Oct 2026)",0
+TaskName DCB "Palette Utility",0
+CommandName DCB "Desktop_PaletteUtil",0
+        ALIGN
+Commands
+        DCB "Desktop_PaletteUtil",0
+        ALIGN
+        DCD Command-Base,&00000000,Syntax-Base,Syntax-Base
+        DCD 0
+Syntax  DCB "Syntax: Desktop_PaletteUtil",0
+        ALIGN
+Init
+        STMFD sp!,{r0-r3,lr}
+        LDR r2,[r12]
+        CMP r2,#0
+        BNE InitDone
+        MOV r0,#6
+        MOV r3,#StackTop
+        SWI XOS_Module
+        STRVS r0,[sp]                   ; return the real allocation error
+        BVS InitDone
+        STR r2,[r12]
+        MOV r0,#0
+        STR r0,[r2,#Task]
+        STR r0,[r2,#Started]
+        STR r0,[r2,#Selected]
+InitDone
+        LDMFD sp!,{r0-r3,pc}
+Die
+        STMFD sp!,{r0-r2,lr}
+        LDR r2,[r12]
+        CMP r2,#0
+        BEQ DieDone
+        STMFD sp!,{r2}
+        LDR r0,[r2,#Task]
+        CMP r0,#0
+        LDRNE r1,TaskMagic
+        SWINE XWimp_CloseDown
+        LDMFD sp!,{r2}
+        MOV r0,#7
+        SWI XOS_Module
+        STRVS r0,[sp]                   ; preserve a real free error
+        MOVVC r0,#0
+        STRVC r0,[r12]
+DieDone
+        LDMFD sp!,{r0-r2,pc}
+Service
+        CMP r1,#Service_Reset
+        BEQ Reset
+        CMP r1,#Service_StartedWimp
+        BEQ StartedWimp
+        CMP r1,#Service_StartWimp
+        MOVNE pc,lr
+        STMFD sp!,{r2,r3,lr}
+        LDR r2,[r12]
+        LDR r3,[r2,#Task]
+        CMP r3,#0
+        LDREQ r3,[r2,#Started]
+        CMPEQ r3,#0
+        MOVEQ r3,#1
+        STREQ r3,[r2,#Started]
+        ADREQL r0,CommandName
+        MOVEQ r1,#0
+        LDMFD sp!,{r2,r3,pc}
+Reset
+        STMFD sp!,{r2,r3,lr}
+        LDR r2,[r12]
+        MOV r3,#0
+        STR r3,[r2,#Task]
+        STR r3,[r2,#Started]
+        LDMFD sp!,{r2,r3,pc}
+StartedWimp
+        STMFD sp!,{r2,r3,lr}
+        LDR r2,[r12]
+        MOV r3,#0
+        STR r3,[r2,#Started]
+        LDMFD sp!,{r2,r3,pc}
+Command
+        LDR r0,[r12]
+        LDR r0,[r0,#Task]
+        CMP r0,#0
+        MOVNE pc,lr
+        MOV r0,#2
+        ADRL r1,Title
+        SWI XOS_Module
+        MOV pc,lr
+Start
+        LDR r12,[r12]
+        ADD sp,r12,#StackTop
+        MOV r0,#-1
+        STR r0,[r12,#Dragging]
+        MOV r0,#0
+        STR r0,[r12,#SaveDrag]
+        STR r0,[r12,#SaveRef]
+        MOV r0,#300
+        LDR r1,TaskMagic
+        ADRL r2,TaskName
+        ADRL r3,Messages
+        SWI XWimp_Initialise
+        BVS Fatal
+        STR r1,[r12,#Task]
+        ADRL r0,BarDefinition
+        ADD r1,r12,#Block
+        MOV r2,#36
+        BL Copy
+        MOV r0,#0
+        ADD r1,r12,#Block
+        SWI XWimp_CreateIcon
+        BVS Fatal
+        STR r0,[r12,#BarIcon]
+        ADRL r0,WindowDefinition
+        ADD r1,r12,#Block
+        MOV r2,#88
+        BL Copy
+        ADD r1,r12,#Block
+        SWI XWimp_CreateWindow
+        BVS Fatal
+        STR r0,[r12,#Window]
+ ; Sixteen contiguous swatches, 4x4, each 64x44 OS units. Each has an
+ ; indirected label: empty, or the logical colour number when selected.
+        MOV r8,#0
+MakeSwatch
+        ADD r1,r12,#Block
+        LDR r0,[r12,#Window]
+        STR r0,[r1]
+        AND r0,r8,#3
+        MOV r3,r0,LSL #6
+        ADD r3,r3,#16
+        STR r3,[r1,#4]
+        ADD r3,r3,#64
+        STR r3,[r1,#12]
+        MOV r0,r8,LSR #2
+        MOV r2,#44
+        MUL r3,r0,r2
+        RSB r3,r3,#0
+        SUB r3,r3,#164
+        STR r3,[r1,#8]
+        ADD r3,r3,#44
+        STR r3,[r1,#16]
+        BL SwatchFlags
+        STR r0,[r1,#20]
+        ADD r0,r12,#SwatchText
+        ADD r0,r0,r8,LSL #2
+        MOV r2,#0
+        STRB r2,[r0]
+        STR r0,[r1,#24]
+        MOV r0,#-1
+        STR r0,[r1,#28]
+        MOV r0,#4
+        STR r0,[r1,#32]
+        SWI XWimp_CreateIcon
+        BVS Fatal
+        ADD r8,r8,#1
+        CMP r8,#16
+        BNE MakeSwatch
+        ADRL r9,ControlDefinitions
+        MOV r8,#13
+        BL MakeIcons
+        BVS Fatal
+ ; The save box is a dialogue opened as the Save submenu.
+        ADRL r0,SaveDefinition
+        ADD r1,r12,#Block
+        MOV r2,#88
+        BL Copy
+        ADD r1,r12,#Block
+        SWI XWimp_CreateWindow
+        BVS Fatal
+        STR r0,[r12,#SaveBox]
+        ADRL r0,DefaultName
+        ADD r1,r12,#FileName
+        MOV r2,#8
+        BL Copy
+        ADRL r9,SaveIconDefinitions
+        MOV r8,#1
+        LDR r0,[r12,#SaveBox]
+        BL MakeIconsIn                   ; 0: the palette file
+        BVS Fatal
+        ADD r1,r12,#Block                ; 1: the name, in its own buffer
+        LDR r0,[r12,#SaveBox]
+        STR r0,[r1],#4
+        MOV r0,r9
+        MOV r2,#32
+        BL Copy
+        ADD r0,r12,#FileName
+        STR r0,[r12,#Block+24]
+        MOV r0,#0
+        ADD r1,r12,#Block
+        SWI XWimp_CreateIcon
+        BVS Fatal
+        ADD r9,r9,#32
+        MOV r8,#1
+        LDR r0,[r12,#SaveBox]
+        BL MakeIconsIn                   ; 2: OK
+        BVS Fatal
+        BL Refresh
+        BVS Fatal
+Poll
+        LDR r0,[r12,#Dragging]
+        CMP r0,#0
+        MOVLT r0,#null_bit
+        MOVGE r0,#0                     ; null events only during live slider drag
+        ADD r1,r12,#Block
+        SWI XWimp_Poll
+        BVS Fatal
+        CMP r0,#Null_Reason
+        BEQ DragUpdate
+        CMP r0,#Redraw_Window_Request
+        BEQ Redraw
+        CMP r0,#Open_Window_Request
+        BEQ Open
+        CMP r0,#Close_Window_Request
+        BEQ Close
+        CMP r0,#Mouse_Button_Change
+        BEQ Click
+        CMP r0,#User_Drag_Box
+        BEQ SaveDragEnded
+        CMP r0,#Key_Pressed
+        BEQ Key
+        CMP r0,#Menu_Select
+        BEQ MenuSelection
+        CMP r0,#User_Message
+        CMPNE r0,#User_Message_Recorded
+        BNE Poll                         ; enter/leave/caret events are not close requests
+        LDR r0,[r1,#16]
+        CMP r0,#0
+        BEQ Quit
+        CMP r0,#2
+        BEQ SaveAcknowledged
+        CMP r0,#3
+        BEQ LoadPalette
+        CMP r0,#9
+        BEQ PaletteChanged
+        LDR r2,ModeMessage
+        CMP r0,r2
+        BNE Poll
+PaletteChanged
+        BL Refresh
+        BVS Fatal
+        B Poll
+Redraw
+        SWI XWimp_RedrawWindow
+RedrawMore
+        BVS Fatal
+        CMP r0,#0
+        BEQ Poll
+        ADD r1,r12,#Block
+        SWI XWimp_GetRectangle
+        B RedrawMore
+Open
+        SWI XWimp_OpenWindow
+        BVS Fatal
+        B Poll
+Close
+        SWI XWimp_CloseWindow
+        BVS Fatal
+        MOV r0,#-1
+        STR r0,[r12,#Dragging]
+        B Poll
+Key
+        LDR r0,[r1]
+        LDR r2,[r12,#SaveBox]
+        CMP r0,r2
+        BNE KeyPass
+        LDR r0,[r1,#24]
+        CMP r0,#13
+        BEQ SaveToName                  ; Return in the name field is OK
+KeyPass
+        LDR r0,[r1,#24]
+        SWI XWimp_ProcessKey
+        BVS Fatal
+        B Poll
+Click
+        LDR r0,[r1,#8]
+        TST r0,#2
+        BNE MenuClick
+        LDR r2,[r1,#12]
+        LDR r3,[r12,#SaveBox]
+        CMP r2,r3
+        BEQ SaveBoxClick
+        CMN r2,#2
+        BNE WindowClick
+        BL Refresh
+        BVS Fatal
+        ADRL r0,OpenDefinition
+        ADD r1,r12,#Block+4
+        MOV r2,#28
+        BL Copy
+        ADD r1,r12,#Block
+        LDR r0,[r12,#Window]
+        STR r0,[r1]
+        B Open
+WindowClick
+        LDR r0,[r12,#Window]
+        CMP r2,r0
+        BNE Poll
+        LDR r8,[r1,#16]
+        CMP r8,#20
+        BCS SliderClick
+        STR r8,[r12,#Selected]
+        BL Refresh
+        BVS Fatal
+        B Poll
+SliderClick
+        CMP r8,#26
+        BCS Poll
+        CMP r8,#23
+        SUBCS r8,r8,#3
+        SUB r8,r8,#20
+        STR r8,[r12,#Dragging]
+DragUpdate
+        ADD r1,r12,#Block
+        SWI XWimp_GetPointerInfo
+        BVS Fatal
+        LDR r0,[r1,#8]
+        TST r0,#5
+        BEQ DragReleased
+        LDR r8,[r12,#Dragging]
+        CMP r8,#0
+        BLT Poll
+        LDR r9,[r1]                     ; screen x
+        LDR r0,[r12,#Window]
+        STR r0,[r1]
+        SWI XWimp_GetWindowState
+        BVS Fatal
+        LDR r0,[r1,#4]
+        SUB r9,r9,r0
+        LDR r0,[r1,#20]
+        ADD r9,r9,r0                    ; work-area x
+        SUB r9,r9,#16
+        MOVS r9,r9,ASR #4               ; sixteen equal steps across the bar
+        MOVMI r9,#0
+        CMP r9,#15
+        MOVGT r9,#15
+        BL Read
+        BVS Fatal
+        ADD r1,r12,#Palette
+        BL SelectedEntry
+        LDR r2,[r1,r0,LSL #2]
+        MOV r4,r8,LSL #3
+        ADD r4,r4,#12
+        MOV r5,r2,LSR r4
+        AND r5,r5,#15
+        CMP r5,r9
+        BEQ Poll
+        MOV r6,#15
+        BIC r2,r2,r6,LSL r4
+        ORR r2,r2,r9,LSL r4
+        STR r2,[r1,r0,LSL #2]
+        BL SetPalette                   ; the whole screen follows the drag
+        BVS RecoverError
+        BL Refresh
+        BVS Fatal
+        B Poll
+ ; On release, colours 0 and 7 re-spread the grey tones 1-6 between them,
+ ; and the change is announced once with Message_PaletteChange.
+DragReleased
+        LDR r8,[r12,#Dragging]
+        MOV r0,#-1
+        STR r0,[r12,#Dragging]
+        CMP r8,#0
+        BLT Poll
+        LDR r0,[r12,#Selected]
+        CMP r0,#0
+        CMPNE r0,#7
+        BNE Announce
+        BL Read
+        BVS Fatal
+        BL SpreadGreys
+        BL SetPalette
+        BVS RecoverError
+Announce
+        BL Broadcast
+        BVS Fatal
+        BL Refresh
+        BVS Fatal
+        B Poll
+MenuClick
+        LDR r2,[r1]
+        SUB r2,r2,#64
+        LDR r3,[r1,#4]
+        CMP r3,#340
+        MOVLT r3,#340
+        STR r2,[r12,#MenuX]
+        STR r3,[r12,#MenuY]
+        ADRL r0,MainDefinition
+        ADD r1,r12,#MainMenu
+        MOV r2,#124
+        BL Copy
+        ADRL r0,ModesDefinition
+        ADD r1,r12,#ModesMenu
+        MOV r2,#148
+        BL Copy
+        ADRL r0,Mode12Label
+        STR r0,[r12,#ModesMenu+40]
+        ADRL r0,Mode15Label
+        STR r0,[r12,#ModesMenu+64]
+        ADRL r0,Mode35Label
+        STR r0,[r12,#ModesMenu+88]
+        ADRL r0,Mode36Label
+        STR r0,[r12,#ModesMenu+112]
+        ADD r0,r12,#ModesMenu
+        STR r0,[r12,#MainMenu+56]        ; Mode submenu
+        LDR r0,[r12,#SaveBox]
+        STR r0,[r12,#MainMenu+80]        ; Save dialogue box
+        ADD r0,r12,#ModeText
+        STR r0,[r12,#ModesMenu+136]      ; writable fifth item text
+        ADRL r0,Digits
+        STR r0,[r12,#ModesMenu+140]
+        MOV r0,#1
+        SWI XWimp_ReadSysInfo
+        BVS Fatal
+        MOV r4,r0
+        MOV r2,#0
+ModeDecimal
+        CMP r0,#10
+        SUBGE r0,r0,#10
+        ADDGE r2,r2,#1
+        BGE ModeDecimal
+        ADD r1,r12,#ModeText
+        CMP r2,#0
+        ADDNE r2,r2,#'0'
+        STRNEB r2,[r1],#1
+        ADD r0,r0,#'0'
+        STRB r0,[r1],#1
+        MOV r0,#0
+        STRB r0,[r1]
+        ADRL r1,ModeNumbers
+        MOV r0,#0
+TickMode
+        LDR r2,[r1,r0,LSL #2]
+        CMP r2,r4
+        MOVEQ r2,#mi_it_tick
+        MOVNE r2,#0
+        MOV r3,#24
+        MUL r3,r0,r3
+        ADD r3,r3,#ModesMenu+28
+        STR r2,[r12,r3]
+        ADD r0,r0,#1
+        CMP r0,#4
+        BNE TickMode
+        ADD r1,r12,#MainMenu
+        LDR r2,[r12,#MenuX]
+        LDR r3,[r12,#MenuY]
+        SWI XWimp_CreateMenu
+        BVS Fatal
+        B Poll
+MenuSelection
+        LDR r8,[r1]
+        LDR r9,[r1,#4]
+        CMP r8,#2
+        BEQ Poll                         ; Save works through its dialogue box
+        MOV r1,#-1
+        SWI XWimp_CreateMenu
+        BVS Fatal
+        CMP r8,#0
+        BEQ Invert
+        CMP r8,#1
+        BEQ SelectMode
+        CMP r8,#3
+        BEQ Defaults
+        B Poll
+SelectMode
+        CMP r9,#4
+        BHI Poll
+        ADRL r1,ModeNumbers
+        LDRCC r0,[r1,r9,LSL #2]
+        BCC SetMode
+        MOV r0,#10
+        ADD r1,r12,#ModeText
+        MOV r2,#46
+        ORR r0,r0,#&C0000000
+        SWI XOS_ReadUnsigned
+        BVS RecoverError
+        LDRB r0,[r1]
+        CMP r0,#32
+        ADRHIL r0,BadMode
+        BHI RecoverError
+        MOV r0,r2
+SetMode
+        SWI XWimp_SetMode
+        BVS RecoverError
+        BL Refresh
+        BVS Fatal
+        B Poll
+RecoverError
+        MOV r1,#1
+        ADRL r2,TaskName
+        SWI XWimp_ReportError
+        B Poll                          ; a rejected mode or file never kills the utility
+ ; Invert reverses the grey colours 0-7: white becomes black and so on.
+Invert
+        BL Read
+        BVS Fatal
+        ADD r1,r12,#Palette
+        MOV r2,#0
+        MOV r3,#7
+InvertLoop
+        LDR r4,[r1,r2,LSL #2]
+        LDR r5,[r1,r3,LSL #2]
+        STR r5,[r1,r2,LSL #2]
+        STR r4,[r1,r3,LSL #2]
+        ADD r2,r2,#1
+        SUB r3,r3,#1
+        CMP r2,#4
+        BNE InvertLoop
+        BL SetPalette
+        BVS RecoverError
+        B Announce
+Defaults
+        MOV r1,#0                        ; Wimp_SetPalette's standard palette
+        MOV r2,#0
+        SWI XWimp_SetPalette
+        BVS RecoverError
+        B Announce
+SaveBoxClick
+        LDR r0,[r1,#8]
+        LDR r2,[r1,#16]
+        CMP r2,#2
+        BEQ SaveToName                   ; OK
+        CMP r2,#0
+        BNE Poll
+        TST r0,#&50                      ; a drag of the file icon
+        BEQ Poll
+        LDR r0,[r12,#SaveBox]
+        ADD r1,r12,#Block
+        STR r0,[r1]
+        SWI XWimp_GetWindowState
+        BVS Fatal
+        LDR r4,[r1,#4]                   ; screen x of work area 0
+        LDR r5,[r1,#16]                  ; screen y of work area 0
+        LDR r0,[r1,#20]
+        SUB r4,r4,r0
+        LDR r0,[r1,#24]
+        SUB r5,r5,r0
+        ADRL r0,SaveIconDefinitions
+        LDMIA r0,{r6-r9}                 ; the file icon's bounding box
+        ADD r6,r6,r4
+        ADD r7,r7,r5
+        ADD r8,r8,r4
+        ADD r9,r9,r5
+        ADD r1,r12,#Block
+        MOV r0,#0
+        STR r0,[r1]
+        MOV r0,#5                        ; drag a fixed-size box
+        STR r0,[r1,#4]
+        ADD r0,r1,#8
+        STMIA r0,{r6-r9}
+        MOV r6,#0
+        MOV r7,#0
+        MOV r8,#&7F000000
+        STR r6,[r1,#24]
+        STR r7,[r1,#28]
+        STR r8,[r1,#32]
+        STR r8,[r1,#36]
+        SWI XWimp_DragBox
+        BVS Fatal
+        MOV r0,#1
+        STR r0,[r12,#SaveDrag]
+        B Poll
+ ; Dropped: ask the destination for a path with Message_DataSave.
+SaveDragEnded
+        LDR r0,[r12,#SaveDrag]
+        CMP r0,#0
+        BEQ Poll
+        MOV r0,#0
+        STR r0,[r12,#SaveDrag]
+        ADD r1,r12,#Block
+        SWI XWimp_GetPointerInfo
+        BVS Fatal
+        LDMIA r1,{r4-r8}                 ; x, y, buttons, window, icon
+        ADD r1,r12,#Block
+        STR r7,[r1,#20]
+        STR r8,[r1,#24]
+        STR r4,[r1,#28]
+        STR r5,[r1,#32]
+        MOV r0,#FileSize
+        STR r0,[r1,#36]
+        LDR r0,PaletteType
+        STR r0,[r1,#40]
+        ADD r0,r12,#FileName             ; the leaf after the last '.'
+        MOV r2,r0
+LeafScan
+        LDRB r3,[r2],#1
+        CMP r3,#'.'
+        MOVEQ r0,r2
+        CMP r3,#32
+        BHI LeafScan
+        ADD r2,r1,#44
+LeafCopy
+        LDRB r3,[r0],#1
+        CMP r3,#32
+        MOVLS r3,#0
+        STRB r3,[r2],#1
+        BHI LeafCopy
+        SUB r2,r2,r1
+        ADD r2,r2,#3
+        BIC r2,r2,#3
+        STR r2,[r1]
+        MOV r0,#0
+        STR r0,[r1,#12]
+        MOV r0,#1
+        STR r0,[r1,#16]
+        MOV r0,#User_Message
+        MOV r2,r7
+        MOV r3,r8
+        SWI XWimp_SendMessage
+        BVS Fatal
+        LDR r0,[r1,#8]
+        STR r0,[r12,#SaveRef]
+        B Poll
+SaveAcknowledged
+        LDR r0,[r1,#12]
+        LDR r2,[r12,#SaveRef]
+        CMP r0,r2
+        BNE Poll
+        MOV r0,#0
+        STR r0,[r12,#SaveRef]
+        ADD r0,r1,#44
+        ADD r1,r12,#Path
+        MOV r2,#212
+        BL Copy
+        ADD r1,r12,#Path
+        BL WriteFile
+        BVS RecoverError
+        ADD r1,r12,#Block                ; Message_DataLoad back to the saver
+        LDR r0,[r1,#8]
+        STR r0,[r1,#12]
+        MOV r0,#3
+        STR r0,[r1,#16]
+        MOV r0,#User_Message
+        LDR r2,[r1,#4]
+        SWI XWimp_SendMessage
+        BVS Fatal
+        MOV r1,#-1
+        SWI XWimp_CreateMenu
+        B Poll
+ ; OK, or Return in the name field: the name must be a full pathname.
+SaveToName
+        ADD r1,r12,#FileName
+        MOV r2,r1
+NameScan
+        LDRB r0,[r2],#1
+        CMP r0,#'.'
+        BEQ NameFull
+        CMP r0,#32
+        BHI NameScan
+        ADRL r0,DragToSave
+        B RecoverError
+NameFull
+        ADD r1,r12,#FileName
+        BL WriteFile
+        BVS RecoverError
+        MOV r1,#-1
+        SWI XWimp_CreateMenu
+        B Poll
+ ; A palette file dropped on the icon or window is applied by *WimpPalette.
+LoadPalette
+        LDR r0,[r1,#40]
+        LDR r2,PaletteType
+        CMP r0,r2
+        BNE Poll
+        ADRL r0,WimpPaletteCommand
+        ADD r1,r12,#Path
+        MOV r2,#12
+        BL Copy
+        ADD r0,r12,#Block+44
+        ADD r1,r12,#Path+12
+        MOV r2,#212
+        BL Copy
+        ADD r0,r12,#Path
+        SWI XOS_CLI
+        BVS RecoverError
+        ADD r1,r12,#Block                ; Message_DataLoadAck
+        LDR r0,[r1,#8]
+        STR r0,[r1,#12]
+        MOV r0,#4
+        STR r0,[r1,#16]
+        MOV r0,#User_Message
+        LDR r2,[r1,#4]
+        SWI XWimp_SendMessage
+        BVS Fatal
+        B Announce
+ ; Palette file: VDU 19 for colours 0-15, then the border, then pointer 1-3.
+WriteFile
+        STMFD sp!,{r1,r4-r9,lr}
+        ADD r1,r12,#Palette              ; full 24-bit values, as the PRM's files hold
+        LDR r2,TrueWord
+        SWI XWimp_ReadPalette
+        BVS WriteDone
+        ADD r1,r12,#Palette
+        ADD r2,r12,#FileData
+        MOV r3,#0
+WriteEntry
+        MOV r0,#19
+        STRB r0,[r2],#1
+        CMP r3,#16
+        MOVLO r4,r3
+        MOVLO r5,#16
+        MOVEQ r4,#0
+        MOVEQ r5,#24
+        SUBHI r4,r3,#16
+        MOVHI r5,#25
+        STRB r4,[r2],#1
+        STRB r5,[r2],#1
+        LDR r0,[r1,r3,LSL #2]
+        MOV r4,r0,LSR #8
+        STRB r4,[r2],#1
+        MOV r4,r0,LSR #16
+        STRB r4,[r2],#1
+        MOV r4,r0,LSR #24
+        STRB r4,[r2],#1
+        ADD r3,r3,#1
+        CMP r3,#20
+        BNE WriteEntry
+        MOV r0,#10                       ; save with file type
+        LDR r1,[sp]
+        LDR r2,PaletteType
+        ADD r4,r12,#FileData
+        ADD r5,r4,#FileSize
+        SWI XOS_File
+WriteDone
+        LDMFD sp!,{r1,r4-r9,pc}
+ ; Greys 1-6 are spread between colours 0 and 7, per gun, in VIDC1's four-bit
+ ; steps: n = n0 + (n7-n0)*i/7, truncated toward zero. This reproduces the
+ ; standard greys FF DD BB 99 77 55 33 00 exactly.
+SpreadGreys
+        STMFD sp!,{r1-r9,lr}
+        ADD r1,r12,#Palette
+        LDR r8,[r1]
+        LDR r9,[r1,#28]
+        MOV r2,#1
+SpreadEntry
+        MOV r7,#0
+        MOV r3,#12                       ; high nibble of each gun byte
+SpreadGun
+        MOV r4,r8,LSR r3
+        AND r4,r4,#15                    ; n0
+        MOV r5,r9,LSR r3
+        AND r5,r5,#15                    ; n7
+        SUBS r6,r5,r4
+        RSBLT r6,r6,#0                   ; |n7-n0|
+        MUL r5,r6,r2                     ; |n7-n0|*i
+        MOV r6,#0
+SpreadDivide
+        CMP r5,#7
+        SUBGE r5,r5,#7
+        ADDGE r6,r6,#1
+        BGE SpreadDivide
+        MOV r5,r9,LSR r3
+        AND r5,r5,#15
+        CMP r5,r4
+        RSBLT r6,r6,#0                   ; back to the sign of n7-n0
+        ADD r4,r4,r6
+        ORR r4,r4,r4,LSL #4              ; four bits replicated to a byte
+        SUB r5,r3,#4
+        ORR r7,r7,r4,LSL r5
+        ADD r3,r3,#8
+        CMP r3,#36
+        BNE SpreadGun
+        STR r7,[r1,r2,LSL #2]
+        ADD r2,r2,#1
+        CMP r2,#7
+        BNE SpreadEntry
+        LDMFD sp!,{r1-r9,pc}
+SetPalette
+        STMFD sp!,{r1,r2,lr}
+        ADD r1,r12,#Palette
+        MOV r2,#0
+        SWI XWimp_SetPalette
+        LDMFD sp!,{r1,r2,pc}
+Broadcast
+        STMFD sp!,{r1,r2,lr}
+        ADD r1,r12,#Block
+        MOV r0,#20
+        STR r0,[r1]
+        MOV r0,#0
+        STR r0,[r1,#12]
+        MOV r0,#9                        ; Message_PaletteChange
+        STR r0,[r1,#16]
+        MOV r0,#User_Message
+        MOV r2,#0
+        SWI XWimp_SendMessage
+        LDMFD sp!,{r1,r2,pc}
+Read
+        STMFD sp!,{lr}
+        ADD r1,r12,#Palette
+        MOV r2,#0
+        SWI XWimp_ReadPalette
+        LDMFD sp!,{pc}
+ ; r0 = palette word index for the current selection (swatch, border, pointer).
+SelectedEntry
+        LDR r0,[r12,#Selected]
+        MOV pc,lr
+ ; r0 = flags for swatch r8: its own background colour, contrasting text.
+SwatchFlags
+        STMFD sp!,{r1,lr}
+        LDR r0,SwatchBase
+        ORR r0,r0,r8,LSL #28
+        ADRL r1,Contrast
+        LDRB r1,[r1,r8]
+        ORR r0,r0,r1,LSL #24
+        LDMFD sp!,{r1,pc}
+ ; Create r8 icons from 32-byte definitions at r9 in r0 (default: Window).
+MakeIcons
+        LDR r0,[r12,#Window]
+MakeIconsIn
+        STMFD sp!,{r4,lr}
+        MOV r4,r0
+MakeIcon
+        ADD r1,r12,#Block
+        STR r4,[r1],#4
+        MOV r0,r9
+        MOV r2,#32
+        BL Copy
+        ADD r9,r9,#32
+        MOV r0,#0
+        ADD r1,r12,#Block
+        SWI XWimp_CreateIcon
+        BVS MakeIconsDone
+        SUBS r8,r8,#1
+        BNE MakeIcon
+MakeIconsDone
+        LDMFD sp!,{r4,pc}
+ ; Show the selection: its number in the swatch, or the control inverted.
+Refresh
+        STMFD sp!,{r4-r9,lr}
+        BL Read
+        BVS RefreshDone
+        MOV r8,#0
+RefreshSwatch
+        ADD r0,r12,#SwatchText
+        ADD r0,r0,r8,LSL #2
+        LDR r2,[r12,#Selected]
+        CMP r2,r8
+        MOVNE r3,#0
+        BNE RefreshText
+        CMP r8,#10
+        MOVLT r3,#'0'
+        ADDLT r3,r3,r8
+        SUBGE r3,r8,#10
+        ADDGE r3,r3,#'0'
+        MOVGE r4,#'1'
+        ORRGE r3,r4,r3,LSL #8
+RefreshText
+        STR r3,[r0]
+        ADD r1,r12,#Block
+        LDR r0,[r12,#Window]
+        STR r0,[r1]
+        STR r8,[r1,#4]
+        LDR r2,[r12,#Selected]
+        CMP r2,r8
+        MOVEQ r0,#4                      ; outline the selected swatch
+        MOVNE r0,#0
+        STR r0,[r1,#8]
+        MOV r0,#4
+        STR r0,[r1,#12]
+        SWI XWimp_SetIconState
+        BVS RefreshDone
+        ADD r8,r8,#1
+        CMP r8,#16
+        BNE RefreshSwatch
+RefreshControl
+        ADD r1,r12,#Block
+        LDR r0,[r12,#Window]
+        STR r0,[r1]
+        STR r8,[r1,#4]
+        LDR r2,[r12,#Selected]
+        CMP r2,r8
+        MOVEQ r0,#&70000000              ; inverted: black background, white text
+        MOVNE r0,#&07000000              ; white background, black text
+        STR r0,[r1,#8]
+        MOV r0,#&FF000000
+        STR r0,[r1,#12]
+        SWI XWimp_SetIconState
+        BVS RefreshDone
+        ADD r8,r8,#1
+        CMP r8,#20
+        BNE RefreshControl
+        BL ResizeSliders
+RefreshDone
+        LDMFD sp!,{r4-r9,pc}
+ ; Slider fills are real window icons, resized through the maintained Wimp API.
+ResizeSliders
+        STMFD sp!,{r8-r10,lr}
+        BL SelectedEntry
+        ADD r1,r12,#Palette
+        LDR r10,[r1,r0,LSL #2]
+        MOV r8,#0
+ResizeSlider
+        MOV r3,r8,LSL #3
+        ADD r3,r3,#12
+        MOV r4,r10,LSR r3
+        AND r4,r4,#15
+        MOV r2,r4,LSL #4                 ; 16 OS units per step, full at 240
+        ADD r4,r2,#20
+        MOV r2,#32
+        MUL r3,r8,r2
+        RSB r3,r3,#0
+        SUB r5,r3,#20                    ; fill top, inside the outline
+        SUB r3,r3,#36                    ; fill bottom
+        MOV r2,#20
+        ADD r1,r8,#23
+        LDR r0,[r12,#Window]
+        SWI XWimp_ResizeIcon
+        BVS ResizeDone
+        ADD r8,r8,#1
+        CMP r8,#3
+        BNE ResizeSlider
+        LDR r0,[r12,#Window]             ; redraw the slider band
+        MOV r1,#0
+        MOV r2,#-112
+        MOV r3,#288
+        MOV r4,#0
+        SWI XWimp_ForceRedraw
+ResizeDone
+        LDMFD sp!,{r8-r10,pc}
+
+Copy
+        LDRB r3,[r0],#1
+        STRB r3,[r1],#1
+        SUBS r2,r2,#1
+        BNE Copy
+        MOV pc,lr
+Fatal
+        MOV r1,#1
+        ADRL r2,TaskName
+        SWI XWimp_ReportError
+Quit
+        LDR r0,[r12,#Task]
+        LDR r1,TaskMagic
+        SWI XWimp_CloseDown
+        MOV r0,#0
+        STR r0,[r12,#Task]
+        SWI OS_Exit
+        LTORG
+TaskMagic DCB "TASK"
+TrueWord DCB "TRUE"
+SwatchBase DCD &00003139             ; text, centred, filled, indirected, click
+PaletteType DCD &FED
+ModeMessage DCD &400C1
+Messages DCD 2,3,9,&400C1,0
+ModeNumbers DCD 12,15,35,36
+ ; Contrasting text colour for each swatch's own Wimp colour.
+Contrast DCB 7,7,7,7,0,0,0,0,0,7,7,0,7,0,7,7
+BarDefinition
+        DCD -1,0,0,68,68,&0000301A
+        DCB "palette",0,0,0,0,0
+WindowDefinition
+OpenDefinition
+        DCD 500,260,788,620,0,0,-1
+        DCD &87000002 ; owner redraws live sliders; Wimp draws the icon definitions
+        DCB 7,2,7,1,3,1,12,0
+        DCD 0,-360,288,0
+        DCD &3D,0,1,0
+        DCB "Palette",0,0,0,0,0
+        DCD 0
+ ; Icons 16-19 Bor/Ms1/Ms2/Ms3, 20-22 slider outlines, 23-25 fills, 26-28 R/G/B.
+ControlDefinitions
+        DCD 16,-344,76,-300,&0700303D
+        DCB "Bor",0,0,0,0,0,0,0,0,0
+        DCD 82,-344,142,-300,&0700303D
+        DCB "Ms1",0,0,0,0,0,0,0,0,0
+        DCD 148,-344,208,-300,&0700303D
+        DCB "Ms2",0,0,0,0,0,0,0,0,0
+        DCD 212,-344,272,-300,&0700303D
+        DCB "Ms3",0,0,0,0,0,0,0,0,0
+        DCD 16,-40,260,-16,&17003024
+        DCB "",0,0,0,0,0,0,0,0,0,0,0,0
+        DCD 16,-72,260,-48,&17003024
+        DCB "",0,0,0,0,0,0,0,0,0,0,0,0
+        DCD 16,-104,260,-80,&17003024
+        DCB "",0,0,0,0,0,0,0,0,0,0,0,0
+        DCD 20,-36,21,-20,&50003020
+        DCD 0,0,0
+        DCD 20,-68,21,-52,&50003020
+        DCD 0,0,0
+        DCD 20,-100,21,-84,&50003020
+        DCD 0,0,0
+        DCD 264,-44,288,-12,&17000011
+        DCB "R",0,0,0,0,0,0,0,0,0,0,0
+        DCD 264,-76,288,-44,&17000011
+        DCB "G",0,0,0,0,0,0,0,0,0,0,0
+        DCD 264,-108,288,-76,&17000011
+        DCB "B",0,0,0,0,0,0,0,0,0,0,0
+SaveDefinition
+        DCD 0,0,296,180,0,0,-1
+        DCD &84000012
+        DCB 7,2,7,1,3,1,12,0
+        DCD 0,-180,296,0
+        DCD &3D,&3000,1,0
+        DCB "Save as",0,0,0,0,0
+        DCD 0
+ ; Save box icons: 0 the draggable palette file, 1 the name, 2 OK.
+SaveIconDefinitions
+        DCD 100,-112,196,-16,&1700601A
+        DCB "file_fed",0,0,0,0
+        DCD 16,-164,216,-124,&0700F135
+        DCD 0,-1,64
+        DCD 224,-168,280,-120,&C700303D
+        DCB "OK",0,0,0,0,0,0,0,0,0,0
+MainDefinition
+        DCB "Palette",0,0,0,0,0
+        DCB 7,2,7,0
+        DCD 160,44,0
+        DCD 0,-1,&07000001
+        DCB "Invert",0,0,0,0,0,0
+        DCD 0,-1,&07000001
+        DCB "Mode",0,0,0,0,0,0,0,0
+        DCD 0,-1,&07000001
+        DCB "Save",0,0,0,0,0,0,0,0
+        DCD 128,-1,&07000001
+        DCB "Default",0,0,0,0,0
+ModesDefinition
+        DCB "Mode",0,0,0,0,0,0,0,0
+        DCB 7,2,7,0
+        DCD 288,44,0
+        DCD 0,-1,&07000101
+        DCD 0,-1,16
+        DCD 0,-1,&07000101
+        DCD 0,-1,17
+        DCD 0,-1,&07000101
+        DCD 0,-1,13
+        DCD 0,-1,&07000101
+        DCD 0,-1,14
+        DCD 132,-1,&07000101
+        DCD 0,0,8
+Mode12Label DCB "12 (16 colours)",0
+Mode15Label DCB "15 (256 colours)",0
+Mode35Label DCB "35 (wide 16)",0
+Mode36Label DCB "36 (wide 256)",0
+Digits DCB "D",0
+DefaultName DCB "Palette",0
+WimpPaletteCommand DCB "WimpPalette "
+        ALIGN
+BadMode DCD &1E6
+        DCB "Enter an original Archimedes graphics mode number (0-46)",0
+        ALIGN
+DragToSave DCD 0
+        DCB "To save, drag the icon to a directory display",0
+        ALIGN
+        END

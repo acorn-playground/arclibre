@@ -1,0 +1,102 @@
+[
+  {
+    "component": "Debugger",
+    "path": "LICENSE",
+    "revision": "973b1967d8ff1c48dcd138d1d27f1721217228b8",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Programmer/Debugger.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358,
+    "modified": false
+  },
+  {
+    "component": "Debugger",
+    "path": "Makefile",
+    "revision": "973b1967d8ff1c48dcd138d1d27f1721217228b8",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Programmer/Debugger.git",
+    "upstream_sha256": "4d0fda5e5bbf2109160be517a33a9be105940dd91981097ff6c53406a48d7b6e",
+    "sha256": "4d0fda5e5bbf2109160be517a33a9be105940dd91981097ff6c53406a48d7b6e",
+    "bytes": 1995,
+    "modified": false
+  },
+  {
+    "component": "Debugger",
+    "path": "HelpSrc",
+    "revision": "973b1967d8ff1c48dcd138d1d27f1721217228b8",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Programmer/Debugger.git",
+    "upstream_sha256": "4c7be4b360a694a0adb6a046c9b0d3356f5cbfede9494063e4d509ba4737b1a1",
+    "sha256": "4c7be4b360a694a0adb6a046c9b0d3356f5cbfede9494063e4d509ba4737b1a1",
+    "bytes": 3655,
+    "modified": false
+  },
+  {
+    "component": "Debugger",
+    "path": "TokHelpSrc",
+    "revision": "973b1967d8ff1c48dcd138d1d27f1721217228b8",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Programmer/Debugger.git",
+    "upstream_sha256": "bec4ef3e7209f9e81caf10bb3a54ce0043b7e5ffcea6d55bcf27d638ab0a392f",
+    "sha256": "bec4ef3e7209f9e81caf10bb3a54ce0043b7e5ffcea6d55bcf27d638ab0a392f",
+    "bytes": 5970,
+    "modified": false
+  },
+  {
+    "component": "Debugger",
+    "path": "Version",
+    "revision": "973b1967d8ff1c48dcd138d1d27f1721217228b8",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Programmer/Debugger.git",
+    "upstream_sha256": "e658a12c840073b829ec10f299e21944c36d959bf1d404d5582f2d0194b59e78",
+    "sha256": "e658a12c840073b829ec10f299e21944c36d959bf1d404d5582f2d0194b59e78",
+    "bytes": 213,
+    "modified": false
+  },
+  {
+    "component": "Debugger",
+    "path": "Syntax",
+    "revision": "973b1967d8ff1c48dcd138d1d27f1721217228b8",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Programmer/Debugger.git",
+    "upstream_sha256": "0a719974f83e30c92456ee0931b2155e410ea738918b9f960cbd50dba470d5d4",
+    "sha256": "0a719974f83e30c92456ee0931b2155e410ea738918b9f960cbd50dba470d5d4",
+    "bytes": 368,
+    "modified": false
+  },
+  {
+    "component": "Debugger",
+    "path": "hdr/Debugger",
+    "revision": "973b1967d8ff1c48dcd138d1d27f1721217228b8",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Programmer/Debugger.git",
+    "upstream_sha256": "ded23ea0d945c993148f4c62ec492e7a76ff4776bc0f5b7541fc5624502751a5",
+    "sha256": "ded23ea0d945c993148f4c62ec492e7a76ff4776bc0f5b7541fc5624502751a5",
+    "bytes": 1082,
+    "modified": false
+  },
+  {
+    "component": "Debugger",
+    "path": "s/Debugger",
+    "revision": "973b1967d8ff1c48dcd138d1d27f1721217228b8",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Programmer/Debugger.git",
+    "upstream_sha256": "3da157b4fe77559264cad7b9f421faa5753d647408b4387bad62b55a043d30af",
+    "sha256": "93b7000409193b2d87642345a817b017b0fd89161f35696f8bd3c98010555c94",
+    "bytes": 103361,
+    "modified": true
+  },
+  {
+    "component": "Debugger",
+    "path": "Resources/UK/Messages",
+    "revision": "973b1967d8ff1c48dcd138d1d27f1721217228b8",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Programmer/Debugger.git",
+    "upstream_sha256": "3e1424cb680de00d4548a4831087e600b238e664f380947d47b2039d996ea0fb",
+    "sha256": "3e1424cb680de00d4548a4831087e600b238e664f380947d47b2039d996ea0fb",
+    "bytes": 2601,
+    "modified": false
+  },
+  {
+    "component": "Debugger",
+    "path": "Doc/info",
+    "revision": "973b1967d8ff1c48dcd138d1d27f1721217228b8",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Programmer/Debugger.git",
+    "upstream_sha256": "0b2aa8752b33b0d7a3a3de1b2c1b8f1bd5ff837d9fae4bb0d06c576cd8ad5015",
+    "sha256": "0b2aa8752b33b0d7a3a3de1b2c1b8f1bd5ff837d9fae4bb0d06c576cd8ad5015",
+    "bytes": 1451,
+    "modified": false
+  }
+]

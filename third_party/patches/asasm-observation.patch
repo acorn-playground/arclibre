@@ -1,0 +1,108 @@
+--- a/src/put.c
++++ b/src/put.c
+@@ -35,6 +35,29 @@
+ #include "state.h"
+ 
+ 
++
++/* Modified 2026: optional observation only; TSV fields have no embedded tabs. */
++#include <stdio.h>
++#include <stdlib.h>
++#include "filestack.h"
++#include "phase.h"
++static FILE *restoration_trace(void) {
++  static FILE *out;
++  if (!out) { const char *p=getenv("ASASM_TRACE"); if(p) out=fopen(p,"a"); }
++  return out;
++}
++static PObject *restoration_caller(void) {
++  PObject *p=gCurPObjP;
++  while(p>gPOStack && p->type==POType_eMacro) --p;
++  return p;
++}
++static void restoration_emit(char kind,unsigned offset,unsigned size,uint64_t value,unsigned times) {
++  if(gPhase!=ePassTwo) return;
++  FILE *f=restoration_trace(); if(!f) return;
++  PObject *p=restoration_caller();
++  fprintf(f,"%c\t%u\t%u\t%llu\t%u\t%s\t%u\t%s\t%u\n",kind,offset,size,(unsigned long long)value,times,FS_GetCurFileName(),FS_GetCurLineNumber(),p->fileName,p->lineNum);
++}
++
+ static void
+ ReportOverflow (unsigned dataSize, uint32_t dataValue)
+ {
+@@ -56,6 +79,7 @@
+ Put_DataWithOffset (uint32_t offset, unsigned dataSize, uint64_t dataValue,
+                     uint32_t times)
+ {
++  restoration_emit('D',offset,dataSize,dataValue,times);
+   const uint32_t newOffset = offset + dataSize*times;
+ 
+   if (!Area_IsNoInit (areaCurrentSymbol->attr.area))
+@@ -335,6 +359,7 @@
+     }
+   else
+     Put_DataWithOffset (offset, size, ins, 1);
++  restoration_emit('I',offset,size,ins,1);
+ }
+ 
+ 
+--- a/src/symbol.c
++++ b/src/symbol.c
+@@ -57,9 +57,41 @@
+ 
+ static unsigned int Symbol_CalculateHash (const char *s, size_t maxn);
+ 
++
++/* Modified 2026: complete symbol and lookup provenance, observation only. */
++static void restoration_ref(const char *name,size_t len) {
++  if(gPhase!=ePassTwo) return;
++  static FILE *f; if(!f) {const char *p=getenv("ASASM_REFS");if(p) f=fopen(p,"a");}
++  PObject *caller=gCurPObjP;
++  while(caller>gPOStack && caller->type==POType_eMacro) --caller;
++  if(f) fprintf(f,"%.*s\t%s\t%u\t%s\t%u\n",(int)len,name,FS_GetCurFileName(),FS_GetCurLineNumber(),caller->fileName,caller->lineNum);
++}
++static void restoration_symbols(void) {
++  const char *p=getenv("ASASM_SYMBOLS"); if(!p) return;
++  FILE *f=fopen(p,"w"); if(!f) return;
++  for(unsigned i=0;i<SYMBOL_TABLESIZE;++i) for(Symbol *s=symbolTable[i];s;s=s->next) {
++    const Value *v=&s->attr.value; long long value=0; unsigned reg=0;
++    switch(v->Tag) {
++      case ValueInt:value=(unsigned)v->Data.Int.i;break;
++      case ValueBool:value=v->Data.Bool.b;break;
++      case ValueAddr:value=(unsigned)v->Data.Addr.i;reg=v->Data.Addr.r;break;
++      case ValueSymbol:
++        if(v->Data.Symbol.symbol->attr.value.Tag==ValueInt)
++          value=(unsigned)(v->Data.Symbol.symbol->attr.value.Data.Int.i*v->Data.Symbol.factor+v->Data.Symbol.offset);
++        break;
++      default:break;
++    }
++    fprintf(f,"%s\t%u\t%lld\t%u\t%u\t%u\t%s\t%u\t",s->str,v->Tag,value,reg,s->attr.type,s->attr.codeSize,s->attr.fileName?s->attr.fileName:"",s->attr.lineNumber);
++    if(v->Tag==ValueString) for(size_t j=0;j<v->Data.String.len;++j) fprintf(f,"%02x",(unsigned char)v->Data.String.s[j]);
++    fprintf(f,"\n");
++  }
++  fclose(f);
++}
++
+ void
+ Symbol_PrepareForPhase (Phase_e phase)
+ {
++  if(phase==eOutput) restoration_symbols();
+   switch (phase)
+     {
+       case eStartUp:
+@@ -135,6 +167,7 @@
+ Symbol *
+ Symbol_Get (const char *symNameP, size_t symLen)
+ {
++  restoration_ref(symNameP,symLen);
+   const unsigned hash = Symbol_CalculateHash (symNameP, symLen);
+   Symbol **isearch;
+   for (isearch = &symbolTable[hash]; *isearch; isearch = &(*isearch)->next)
+@@ -155,6 +188,7 @@
+ Symbol *
+ Symbol_Find (const char *symNameP, size_t symLen)
+ {
++  restoration_ref(symNameP,symLen);
+   const unsigned hash = Symbol_CalculateHash (symNameP, symLen);
+   for (Symbol **isearch = &symbolTable[hash]; *isearch; isearch = &(*isearch)->next)
+     {

@@ -1,0 +1,22 @@
+--- a/src/Squash/h/cssr
++++ b/src/Squash/h/cssr
+@@ -39,7 +39,7 @@
+ #include "defs.h"
+ 
+ typedef struct {
+-        int     starting:1,             /* A flag to say if we've just started */
++        unsigned int starting:1,             /* A flag to say if we've just started */
+                 output_caller:3;        /* Where output_code was called from */
+         int     offset;                 /* The bit position in the output mini buffer */
+         char    buf[BITS + 1];          /* The output buffer */
+--- a/src/Squash/h/zssr
++++ b/src/Squash/h/zssr
+@@ -39,7 +39,7 @@
+ #include "defs.h"
+ 
+ typedef struct {
+-        int     starting:1,             /* A flag to say if we've just started */
++        unsigned int starting:1,             /* A flag to say if we've just started */
+                 input_caller:3;         /* Where input_code was called from */
+         int     offset;                 /* The bit position in the output mini buffer */
+         /* State for the decompress itself */

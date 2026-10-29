@@ -1,0 +1,100 @@
+{
+  "status": "PASS",
+  "rom_sha256": "bf5ca56ebd6f7fd7dc4149360d97f76f009abed8879693470421998d59f11791",
+  "kernel_sha256": "cd2c3eb18de6ffab8fabb59406efb50eafd6851c305a58e88e2cc554facfcc30",
+  "kernel_code_and_data_preserved": true,
+  "chain_extension_offset": 145148,
+  "used_bytes": 381128,
+  "modules": [
+    {
+      "component": "FileSwitch",
+      "title": "FileSwitch",
+      "base": 58865408,
+      "length": 48832,
+      "size_word_address": 58865404,
+      "size_word": 48836,
+      "sha256": "6bc54f7d09a58070544ba936ee2bbdddd2655654a0990f56795d9ead0be5440e"
+    },
+    {
+      "component": "ResourceFS",
+      "title": "ResourceFS",
+      "base": 58914244,
+      "length": 3144,
+      "size_word_address": 58914240,
+      "size_word": 3148,
+      "sha256": "1bb85e896b2c8c3c7726ea2dda0e5a29eb0535d8344a147acb28ac0819ee6247"
+    },
+    {
+      "component": "MsgTrans",
+      "title": "MessageTrans",
+      "base": 58917392,
+      "length": 3592,
+      "size_word_address": 58917388,
+      "size_word": 3596,
+      "sha256": "6c1ea7e28ac1c3505d8e3569b54322470137dd5ba2161ddef490d98fce0065e9"
+    },
+    {
+      "component": "Messages",
+      "title": "Messages",
+      "base": 58920988,
+      "length": 47904,
+      "size_word_address": 58920984,
+      "size_word": 47908,
+      "sha256": "bcfb03f51eb51ccc61431021d5eef3e8fbb2b146aa6d12699df176275dad7709"
+    },
+    {
+      "component": "TerritoryManager",
+      "title": "TerritoryManager",
+      "base": 58968896,
+      "length": 6572,
+      "size_word_address": 58968892,
+      "size_word": 6576,
+      "sha256": "80957c1bb7c64bd4a558b161f2379982d76e3abc9767a6f54229f55a7d7febb5"
+    },
+    {
+      "component": "UK",
+      "title": "UK",
+      "base": 58975472,
+      "length": 6464,
+      "size_word_address": 58975468,
+      "size_word": 6468,
+      "sha256": "23e7f55d1d8166f15bba89ca24b002572056e5abcf26e922ec11c9aa888ebcbe"
+    },
+    {
+      "component": "Inter",
+      "title": "International",
+      "base": 58981940,
+      "length": 13096,
+      "size_word_address": 58981936,
+      "size_word": 13100,
+      "sha256": "0d413abbb58e1bbca1072c917feac92bdfcb0f35da6060a0d692ec79c95700d4"
+    },
+    {
+      "component": "IntKey",
+      "title": "InternationalKeyboard",
+      "base": 58995040,
+      "length": 3948,
+      "size_word_address": 58995036,
+      "size_word": 3952,
+      "sha256": "3733aa9d0052a9da9467befe46cf8780a0eea4e39d2768ec3936993110f28b8e"
+    },
+    {
+      "component": "FileCore",
+      "title": "FileCore",
+      "base": 58998992,
+      "length": 67788,
+      "size_word_address": 58998988,
+      "size_word": 67792,
+      "sha256": "46864b526ad54e0e4b114473e83a9258921e3363952396512753d6e25597365e"
+    },
+    {
+      "component": "ADFS",
+      "title": "ADFS",
+      "base": 59066784,
+      "length": 34596,
+      "size_word_address": 59066780,
+      "size_word": 34600,
+      "sha256": "df4fe463ef529725bfc0f9dd62ce1c36f3133721967644a330d736d062af2669"
+    }
+  ]
+}

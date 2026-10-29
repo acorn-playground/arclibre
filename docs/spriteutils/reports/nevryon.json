@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "scope": "Real desktop double-click, original sprite commands and bounded title-screen execution; not gameplay, disc swapping or full-game compatibility",
+  "cold_boots": 3,
+  "rom_sha256": "2e0fda2cd4217ad2d7185c77218e8484bd0a947ce6b984a9891a0ce68a73453c",
+  "external_disc_sha256": "69831ce537cccf0f0f69356050d0778f3b94afafae84a53460417a093f6eed97",
+  "disc_unchanged": true,
+  "read_only_media": true,
+  "title_usr26": true,
+  "identical_observations": true,
+  "screen_sha256": "3bde32926e1281a9c0519dbbf8c00a83045b7f875be19bc8fe44c26de10d6a98",
+  "classified_software_fpa_traps": 113,
+  "emulator_unchanged": true
+}

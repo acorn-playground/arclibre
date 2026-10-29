@@ -1,0 +1,22 @@
+[
+  {
+    "component": "ArcCalc",
+    "path": "bas/Calc",
+    "revision": null,
+    "repository": null,
+    "origin": "new ArcLibre code",
+    "upstream_sha256": "71fb431ec3ddcbeca59e9ab9df7474086a5396ca8ff94a1265018547b39f4581",
+    "sha256": "6298da2cf274f5cb7adffa6f1d06334e69926b10886e0cabb43a897fb48229dd",
+    "bytes": 6035
+  },
+  {
+    "component": "ArcCalc",
+    "path": "s/ArcCalc",
+    "revision": null,
+    "repository": null,
+    "origin": "new ArcLibre code",
+    "upstream_sha256": "4fc3513b7accdab3257160ba2dc78d0b97513629166bd94367632cd442de6da7",
+    "sha256": "8a3bda3e2974f5f3f3a17eb0aad340c0258a112f43efc67f777b5bbf508635bc",
+    "bytes": 1408
+  }
+]

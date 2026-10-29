@@ -1,0 +1,27 @@
+{
+  "status": "FAIL_RAMFSFILER_NOT_RESTARTED",
+  "rom_sha256": "006d4a1516da6c8affa9d587cb25f19a29be073e2c9d808eb642bd35daca2b3e",
+  "failure": "RAMFSFiler task active",
+  "startup_tasks": [
+    "Desktop_Filer",
+    "Desktop_ADFSFiler",
+    "Desktop_ResourceFiler",
+    "Desktop_RAMFSFiler",
+    "Desktop_TaskManager",
+    "Desktop_Pinboard",
+    "Desktop_ArcPalette",
+    "Desktop_Free"
+  ],
+  "errors": [],
+  "exceptions": [
+    2,
+    373,
+    108673,
+    0,
+    0,
+    0,
+    9465,
+    14401
+  ],
+  "cause": "TaskManager allocates workspace after the initial Filer startup service, losing filertaskhandle; original reinitramfsfiler refuses without it"
+}

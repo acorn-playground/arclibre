@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "modules": [
+    {
+      "component": "ArcPalette",
+      "status": "STATIC_ARM2_PASS",
+      "bytes": 3304,
+      "sha256": "35f17014a9c272247a6a89ba3f90bfaea8b628f2c167e551dabb0666cea852c0",
+      "aof_sha256": "628c9915efaaf6dd79470c87ea13814f109f290653ebc8cada91ae22fc50faad",
+      "integer_instructions": 522,
+      "relocations": 0,
+      "unresolved_symbols": 0,
+      "swi_base": null
+    }
+  ],
+  "source_sha256": "9a2664f0aaf7de4b366a02750e57eced48309d1e7a9e828773b664328d1fd012",
+  "license": "Apache-2.0",
+  "provenance": "New ArcLibre code; original Wimp palette sprite remains a pinned Wimp resource"
+}

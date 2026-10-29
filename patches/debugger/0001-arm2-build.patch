@@ -1,0 +1,503 @@
+--- a/src/Debugger/s/Debugger
++++ b/src/Debugger/s/Debugger
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: relocatable ARM2 assembly contracts.
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -230,7 +231,7 @@
+ 
+ ARM_Addr_Mask * &FC000000 ; local mask to avoid knocking off byte offsets
+ 
+-        LEADR   Module_LoadAddr
++        AREA    |Debugger$$Code|, CODE, READONLY
+ 
+ Module_BaseAddr
+ 
+@@ -241,7 +242,7 @@
+         DCD     Debug_Title - Module_BaseAddr
+         DCD     Debug_HelpStr - Module_BaseAddr
+         DCD     Debug_HC_Table - Module_BaseAddr
+-        DCD     Module_SWISystemBase + DebuggerSWI * Module_SWIChunkSize
++        DCD     DebuggerSWI_Base
+         DCD     Debug_SWI_Code - Module_BaseAddr
+         DCD     Debug_SWI_Name - Module_BaseAddr
+         DCD     0
+@@ -264,7 +265,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; In    r0-r6 trashable
+ 
+-Debug_Init ENTRY
++Debug_Init KernelEntry
+ 
+         LDR     r2, [r12]               ; Hard or soft init ?
+         TEQ     r2, #0
+@@ -328,7 +329,7 @@
+         TEQ     r1, #Service_Reset
+         MOVNE   pc, lr
+ 
+-        ENTRY   "r0, r1"
++        KernelEntry   "r0, r1"
+         LDR     wp, [r12]
+         MOV     r0, #ExceptionDumpArea          ; Set exception dump area
+         ADR     r1, Registers
+@@ -339,7 +340,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; In    r0-r6 trashable
+ 
+-Debug_Die ENTRY
++Debug_Die KernelEntry
+ 
+         LDR     wp, [r12]
+ 
+@@ -402,7 +403,7 @@
+ ; Out   r1 -> core containing string
+ ;       r2 = length of string including 0
+ 
+-Debug_SWI_Code ENTRY "r9"
++Debug_SWI_Code KernelEntry "r9"
+ 
+         LDR     wp, [r12]
+         TEQ     R11,#0 ;only one SWI
+@@ -456,7 +457,7 @@
+ ;       r2 = length of string including 0
+ ;       r10,r11 corrupt
+ 
+-Instruction ENTRY "r0, r3-r9"
++Instruction KernelEntry "r0, r3-r9"
+ 
+         SUB     R4, R9, #4
+         LDR     R5, OldAddress
+@@ -1424,7 +1425,7 @@
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-Tab_CPN ENTRY
++Tab_CPN KernelEntry
+ 
+         BL      Tab
+ 
+@@ -1587,7 +1588,7 @@
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-FPRT_FPDO_Common ENTRY
++FPRT_FPDO_Common KernelEntry
+ 
+         ADD     r6, r6, r6, LSL #1      ; *3
+         ADD     r1, r1, r6
+@@ -1748,7 +1749,7 @@
+         ANDS    r2, r2, #&FF            ; LSL #0 -> no shift at all
+         MOVEQ   pc, lr
+ 
+-        ENTRY
++        KernelEntry
+ 
+         TEQ     r2, #2_00000110         ; ROR #0 -> RRX
+         BEQ     %FT80
+@@ -1799,7 +1800,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; In    r5 = fp register
+ 
+-Dis_F_Register ENTRY "r2"
++Dis_F_Register KernelEntry "r2"
+ 
+         MOV     r10, #"F"
+ 
+@@ -1885,7 +1886,7 @@
+ 
+ ; Out   r0 ++, r10++
+ 
+-SaveString ENTRY
++SaveString KernelEntry
+ 
+ 10      LDRB    r14, [r10], #1
+         CMP     r14, #32
+@@ -1898,7 +1899,7 @@
+ 
+ ; Out   r0++ with condition codes appended
+ 
+-Conditions ENTRY "r1, r10"
++Conditions KernelEntry "r1, r10"
+ 
+ 10      MOV     r1, r4, LSR #28
+         CMP     R1, #15
+@@ -1944,7 +1945,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; Pad with spaces to operand field or comment field
+ 
+-Tab ENTRY
++Tab KernelEntry
+ 
+ 10      ADR     r1, StringBuffer
+         SUB     r1, r0, r1
+@@ -1963,7 +1964,7 @@
+         ALIGN
+ 
+ TestMistakes
+-        ENTRY   "r5"
++        KernelEntry   "r5"
+         LDR     R5,Mistake
+         CMP     R5,#1
+         BLT     exitM
+@@ -1996,7 +1997,7 @@
+ 
+ ; Out   r0 ++
+ 
+-StoreHex ENTRY "r2"
++StoreHex KernelEntry "r2"
+ 
+         MOV     r14, #"&"
+         STRB    r14, [r0], #1
+@@ -2017,7 +2018,7 @@
+ 
+ ; Out   r0++
+ 
+-StoreDecimal ENTRY "r1-r2, r4"
++StoreDecimal KernelEntry "r1-r2, r4"
+ 
+         SUB     sp, sp, #16
+         MOV     r4, r0
+@@ -2038,7 +2039,7 @@
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-StoreDecimal_Comma ENTRY
++StoreDecimal_Comma KernelEntry
+ 
+         BL      StoreDecimal
+         B       %FT50
+@@ -2069,7 +2070,7 @@
+         ALIGN
+ 
+ 
+-MemoryI_Code ENTRY "r6-r11"
++MemoryI_Code KernelEntry "r6-r11"
+ 
+         LDR     wp, [r12]
+ 
+@@ -2157,7 +2158,7 @@
+ 
+ UserMemStart  * &8000
+ 
+-InitStore_Code ENTRY "r6-r11"
++InitStore_Code KernelEntry "r6-r11"
+ 
+         LDR     wp, [r12]
+ 
+@@ -2195,7 +2196,7 @@
+ 
+ ; .............................................................................
+ 
+-ShowRegs_Code_Common ENTRY "r6-r11"
++ShowRegs_Code_Common KernelEntry "r6-r11"
+ 
+         BL      message_writes        ; Display address of register dump
+         DCB     "M17", 0
+@@ -2305,7 +2306,7 @@
+ 
+ ; Out   char printed uppercase or lowercase, r0 corrupt
+ 
+-DoFlagBit ENTRY
++DoFlagBit KernelEntry
+ 
+         TST     r1, r10
+         ORREQ   r0, r0, #&20            ; Cheap lowercase, known values input
+@@ -2320,7 +2321,7 @@
+         ALIGN
+ 
+ 
+-Memory_Code ENTRY "r6-r11"
++Memory_Code KernelEntry "r6-r11"
+ 
+         BL      MemoryCommon
+ 
+@@ -2460,7 +2461,7 @@
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-SpaceColonSpace ENTRY
++SpaceColonSpace KernelEntry
+ 
+         SWI     XOS_WriteI+space
+         SWIVC   XOS_WriteI+colon
+@@ -2469,7 +2470,7 @@
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-MemoryHeader ENTRY
++MemoryHeader KernelEntry
+ 
+         SWI     XOS_NewLine
+         EXIT    VS
+@@ -2510,7 +2511,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; Print header in right order dependent on r9 (0,4,8,C)
+ 
+-Words ENTRY "r9, r10, r11"
++Words KernelEntry "r9, r10, r11"
+ 
+         LDR     r11, BytesPerLine
+ 
+@@ -2540,7 +2541,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; Count from r9 to r9+15 modulo 16 along the top
+ 
+-Bytes ENTRY "r9, r10, r11"
++Bytes KernelEntry "r9, r10, r11"
+ 
+         LDR     r11, BytesPerLine
+ 
+@@ -2561,7 +2562,7 @@
+ 
+ ; In    r2 = number of blanks to go (multiple of 4)
+ 
+-Blank ENTRY
++Blank KernelEntry
+ 
+ 10      SWI     XOS_WriteI+space
+         EXIT    VS
+@@ -2578,7 +2579,7 @@
+ ;       r6 = 1 or 4 depending on whether 'B' present (+ skipped)
+ ;       r0 corrupt
+ 
+-MemoryCommon ENTRY
++MemoryCommon KernelEntry
+ 
+         LDR     wp, [r12]
+ 
+@@ -2595,7 +2596,7 @@
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-MemoryA_Code ENTRY "r6-r11"
++MemoryA_Code KernelEntry "r6-r11"
+ 
+         BL      MemoryCommon
+ 
+@@ -2805,7 +2806,7 @@
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-BreakSet_Code ENTRY "r6-r11"
++BreakSet_Code KernelEntry "r6-r11"
+ 
+         LDR     wp, [r12]
+ 
+@@ -2893,7 +2894,7 @@
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-BreakList_Code ENTRY "r6-r11"
++BreakList_Code KernelEntry "r6-r11"
+ 
+         LDR     wp, [r12]
+ 
+@@ -2967,7 +2968,7 @@
+         ALIGN
+ 
+ 
+-BreakClr_Code ENTRY "r6-r11"
++BreakClr_Code KernelEntry "r6-r11"
+ 
+         LDR     wp, [r12]
+ 
+@@ -3039,7 +3040,7 @@
+ ;       r3 = breakpoint number*8
+ ;       r4 -> Breaklist
+ 
+-ClearBreakpoint ENTRY "r0-r2, r10"
++ClearBreakpoint KernelEntry "r0-r2, r10"
+ 
+         MOV     r14, #-1                ; Always clear breakpoint entry
+         STR     r14, [r4, r3]           ; Only need to zap address field
+@@ -3069,7 +3070,7 @@
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-Continue_Code ENTRY "r6-r11"
++Continue_Code KernelEntry "r6-r11"
+ 
+         LDR     wp, [r12]
+ 
+@@ -3222,7 +3223,7 @@
+ 
+ ; .............................................................................
+ 
+-Debug_Code_Common ENTRY "r6-r11"
++Debug_Code_Common KernelEntry "r6-r11"
+ 
+ 10
+         BL      message_writes
+@@ -3253,7 +3254,7 @@
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-AckEscape ENTRY "r1, r2"
++AckEscape KernelEntry "r1, r2"
+ 
+         MOV     r0, #&7E
+         SWI     XOS_Byte
+@@ -3266,7 +3267,7 @@
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-PrintError ENTRY
++PrintError KernelEntry
+ 
+         ADD     r0, r0, #4
+         SWI     XOS_Write0
+@@ -3279,7 +3280,7 @@
+ 
+ ; Out   r0 corrupt if error
+ 
+-DisplayHex ENTRY "r0, r2"
++DisplayHex KernelEntry "r0, r2"
+ 
+ 10      MOV     r0, r10, LSR r2
+         AND     r0, r0, #15
+@@ -3303,7 +3304,7 @@
+ 
+ ; .............................................................................
+ 
+-DisplayHexWord ENTRY "r2"
++DisplayHexWord KernelEntry "r2"
+ 
+         MOV     r2, #32-4
+         BL      DisplayHex
+@@ -3316,7 +3317,7 @@
+ ; Out   VS: r0 -> error
+ ;       VC: all preserved
+ 
+-DisplayCharacters ENTRY "r0, r2, r9"
++DisplayCharacters KernelEntry "r0, r2, r9"
+ 
+ 10
+  [ Addr26
+@@ -3337,7 +3338,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; In    r8 = number to display
+ 
+-DisplayDecimalNumber ENTRY "r0-r2"
++DisplayDecimalNumber KernelEntry "r0-r2"
+ 
+         SUB     sp, sp, #16
+         MOV     r0, r8
+@@ -3358,7 +3359,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; In    r9 = address to consider
+ 
+-MarkBreakpoints ENTRY "r2, r3"
++MarkBreakpoints KernelEntry "r2, r3"
+ 
+         ADR     r2, Breaklist
+         MOV     r3, #(nbreakpoints-1)*8
+@@ -3390,7 +3391,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; Swap old data back into core, remembering our branches
+ 
+-SwapAllBreakpoints ENTRY "r1-r5"
++SwapAllBreakpoints KernelEntry "r1-r5"
+ 
+         ADR     r4, Breaklist
+         ADD     r5, r4, #4              ; r5 -> old data list to index on
+@@ -3496,7 +3497,7 @@
+ ; a + b + c -> a+b, a+b+c
+ ; a - b + c -> a-b, a-b+c
+ 
+-GetCommandParms ENTRY "r2"
++GetCommandParms KernelEntry "r2"
+ 
+  [ debug
+  DSTRING r1, "Command tail "
+@@ -3507,7 +3508,7 @@
+         EXIT
+ 
+ 00
+-        ENTRY
++        KernelEntry
+  ]
+ 
+         BL      ReadFirstParm           ; r7 := parm
+@@ -3584,7 +3585,7 @@
+ 
+ ; .............................................................................
+ 
+-ReadParm ENTRY "r2"
++ReadParm KernelEntry "r2"
+ 
+  [ debug
+  DSTRING r1, "ReadParm "
+@@ -3594,7 +3595,7 @@
+         EXIT
+ 
+ 00
+-        ENTRY
++        KernelEntry
+  ]
+         BIC     r8, r8, #hasparm + parmfollowed ; in all cases
+ 
+@@ -3669,7 +3670,7 @@
+ 
+ ; Out   r7, r8 from ReadFirstParm
+ 
+-ReadOneParm ENTRY "r0"
++ReadOneParm KernelEntry "r0"
+ 
+         BL      ReadFirstParm           ; r7 := parm
+         EXIT    VS
+@@ -3714,7 +3715,7 @@
+  ]
+         MOVS    pc, lr
+ 
+-lookup_r10 ENTRY r0-r7
++lookup_r10 KernelEntry r0-r7
+         BL      open_messagefile
+         STRVS   r0, [sp]
+         EXIT    VS
+@@ -3732,7 +3733,7 @@
+         EXIT
+ 
+ message_writes
+-        ENTRY   r0-r7
++        KernelEntry   r0-r7
+         BIC     r0, lr, #&fc000003
+         MOV     r2, r0
+ 10      LDRB    r1, [r2], #1
+@@ -3745,7 +3746,7 @@
+         STR     lr, [sp, #8 * 4]
+         B       message_write0_tail
+ 
+-message_write0 ENTRY r0-r7
++message_write0 KernelEntry r0-r7
+ message_write0_tail
+         BL      open_messagefile
+         STRVS   r0, [sp]
+@@ -3768,7 +3769,7 @@
+         BCS     %B10
+         EXIT
+ 
+-CopyErrorP1 ENTRY r1-r7
++CopyErrorP1 KernelEntry r1-r7
+         BL      open_messagefile
+         EXIT    VS
+         ADRL    R4,Debug_Title
+@@ -3777,7 +3778,7 @@
+ CopyErrorR2
+         MOV     R0,R2
+ 
+-CopyError ENTRY r1-r7
++CopyError KernelEntry r1-r7
+         BL      open_messagefile
+         EXIT    VS
+         MOV     R4, #0
+@@ -3795,7 +3796,7 @@
+ 
+         ALIGN
+ 
+-open_messagefile ENTRY r0-r2
++open_messagefile KernelEntry r0-r2
+         LDR     r0, MessageFile_Open
+         CMP     r0, #0
+         EXIT    NE

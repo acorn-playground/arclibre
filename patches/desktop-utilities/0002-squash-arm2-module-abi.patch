@@ -1,0 +1,217 @@
+--- a/src/Squash/hdr/StaticDecl
++++ b/src/Squash/hdr/StaticDecl
+@@ -22,5 +22,5 @@
+         MEND
+ 
+         ^ -|_Mod$Reloc$Off|, r10
+-        GET     Hdr.statics
++        GET     hdr/statics
+         END
+--- a/src/Squash/hdr/magicoff
++++ b/src/Squash/hdr/magicoff
+@@ -12,6 +12,7 @@
+ ; See the License for the specific language governing permissions and
+ ; limitations under the License.
+ ;
++; ArcLibre: GCCSDK module statics use [sl,#-536]. Bias sl, not the workspace.
+ ; Magic offset from r10 giving fixup offset for C proggies
+-|_Mod$Reloc$Off|        *       0
++|_Mod$Reloc$Off|        *       536
+         END
+--- a/src/Squash/s/Version
++++ b/src/Squash/s/Version
+@@ -12,7 +12,7 @@
+ ; See the License for the specific language governing permissions and
+ ; limitations under the License.
+ ;
+-        SUBT => s.Version
++        SUBT => s/Version
+ 
+         GBLS Version
+         GBLS CurrentDate
+--- a/src/Squash/s/comp_ass
++++ b/src/Squash/s/comp_ass
+@@ -21,7 +21,7 @@
+         GBLL    Debug
+ Debug   SETL    {TRUE}
+ 
+-        GET     hdr.debug
++        GET     hdr/debug
+ 
+ ;       IMPORT  |x$stack_overflow|
+         EXPORT  compress_store_ass
+@@ -399,6 +399,7 @@
+         LDR     r0, [sp]
+         SUB     r0, output, r0
+         LDMFD   sp, {r1, r3-r9, sl, fp, sp, pc}^
++        MOV     r0, r0 ; ARM2 status settling
+ 
+ ;
+ ; Tables of increments for CLEAR code
+--- a/src/Squash/s/mr_module
++++ b/src/Squash/s/mr_module
+@@ -19,10 +19,10 @@
+         GET     Hdr:ModHand
+         GET     Hdr:MsgTrans
+ 
+-        GET     Hdr.MagicOff
+-        GET     Hdr.StaticDecl
+-        GET     s.Version
+-        GET     Hdr.debug
++        GET     hdr/magicoff
++        GET     hdr/StaticDecl
++        GET     s/Version
++        GET     hdr/debug
+ 
+         ; Linker symbols
+         IMPORT  |Image$$RO$$Base|
+@@ -50,7 +50,7 @@
+         IMPORT  mr_module_swihandler, WEAK
+         IMPORT  mr_module_swinames, WEAK
+ 
+-        EXPORT  |_Mod$Reloc$Off|    ; defined in Hdr.MagicOff
++        EXPORT  |_Mod$Reloc$Off|    ; defined in hdr/magicoff
+ ;       EXPORT  |x$stack_overflow|
+ 
+         AREA    |!!!Module$$Header|,CODE,READONLY
+@@ -91,7 +91,7 @@
+ 
+ 
+ |_mr_module_initialise|
+-        Push    "r0,r2,r3,lr"
++        Push    "r0-r4,lr"
+         LDR     r2, [r12]
+         TEQ     r2, #0
+         BNE     %FT10
+@@ -102,10 +102,20 @@
+         MOV     r0, #ModHandReason_Claim
+         SWI     XOS_Module
+         STRVS   r0, [sp]
+-        Pull    "r0,r2,r3,pc",VS
++        Pull    "r0-r4,pc",VS
+ 
+         ; Attach workspace to private workspace
+         STR     r2, [r12]
++
++        ; ArcLibre: GCC places module strings/initialised statics in RW.
++        ; Copy the real linked template into the original RMA allocation.
++        LDR     r0, =|Image$$RW$$Base|
++        LDR     r3, =|Image$$RW$$Limit|
++        MOV     r1, r2
++05      CMP     r0, r3
++        LDRCC   r4, [r0], #4
++        STRCC   r4, [r1], #4
++        BCC     %BT05
+ 10
+         ; Set up the magic offset for C proggies
+         LDR     r0, =|Image$$RW$$Base|
+@@ -114,7 +124,7 @@
+         ADD     r3, r3, r0
+         STR     r0, [r3]
+ 
+-        Pull    "r0,r2,r3,lr"
++        Pull    "r0-r4,lr"
+         EnterModule
+ 
+         MOV     r0, #0
+@@ -140,6 +150,7 @@
+ |_mr_module_servicehandler|
+         ; Plug in fast service rejection here
+         MOVS    pc, lr
++        MOV     r0, r0 ; ARM2 status settling
+ 
+         EnterModule
+         BL      mr_module_servicehandler
+@@ -153,7 +164,9 @@
+         STRNE   r0, [sp]
+         Pull    "r0-r12,lr"
+         MOVEQS  pc, lr
++        MOV     r0, r0 ; ARM2 status settling
+         ORRS    pc, lr, #V_bit
++        MOV     r0, r0 ; ARM2 status settling
+ 
+ ModEntry
+         Push    "r0-r12"
+@@ -162,6 +175,7 @@
+         ADD     r10, r10, r0
+         LDR     r0, =|Image$$RW$$Base|
+         SUB     r10, r10, r0
++        ADD     r10, r10, #|_Mod$Reloc$Off| ; GCC static-base bias
+         MOV     r0, sp
+         MOV     pc, lr
+ 
+@@ -245,10 +259,10 @@
+                = "COM4",0
+                ALIGN
+ Error_Table
+-               DCD Squash_bad_SWI
+-               DCD Squash_bad_address
+-               DCD Squash_corrupt_input
+-               DCD Squash_corrupt_workspace
+-               DCD Squash_bad_parameters
++               DCD Squash_bad_SWI - Module_BaseAddr
++               DCD Squash_bad_address - Module_BaseAddr
++               DCD Squash_corrupt_input - Module_BaseAddr
++               DCD Squash_corrupt_workspace - Module_BaseAddr
++               DCD Squash_bad_parameters - Module_BaseAddr
+ 
+         END
+--- a/src/Squash/s/statics
++++ b/src/Squash/s/statics
+@@ -18,7 +18,7 @@
+         GET     Hdr:Macros
+         GET     Hdr:System
+ 
+-        GET     Hdr.MagicOff
++        GET     hdr/magicoff
+ 
+         MACRO
+         AsmVar  $VarName,$VarSize
+@@ -30,10 +30,10 @@
+         ]
+         MEND
+ 
+-        AREA    |!!!asm$$Data|,NOINIT
++        AREA    |!!!asm$$Data|,DATA
+ |hdr$statics|
+         EXPORT  |hdr$statics|
+-        GET     Hdr.statics
++        GET     hdr/statics
+ 
+ LTORG
+ 
+--- a/src/Squash/s/zcat_ass
++++ b/src/Squash/s/zcat_ass
+@@ -12,7 +12,7 @@
+ ; See the License for the specific language governing permissions and
+ ; limitations under the License.
+ ;
+-; -> s.zcat_ass
++; -> s/zcat_ass
+ 
+         GET     hdr:ListOpts
+         GET     hdr:Macros
+@@ -203,6 +203,7 @@
+  ]
+         SUB     r0, output, r0
+         LDMFD   sp, {r4-r9, sl, fp, sp, pc}^
++        MOV     r0, r0 ; ARM2 status settling
+ 
+ ;
+ ; Stuff used by main inline get_input
+--- a/src/Squash/s/zcat_ass12
++++ b/src/Squash/s/zcat_ass12
+@@ -12,11 +12,11 @@
+ ; See the License for the specific language governing permissions and
+ ; limitations under the License.
+ ;
+-; -> s.zcat_ass12
++; -> s/zcat_ass12
+ 
+ BITS    *       12
+ 
+         GBLL    Module
+ Module  SETL    {TRUE}
+ 
+-        LNK s.zcat_ass
++        LNK s/zcat_ass

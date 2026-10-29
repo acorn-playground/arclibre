@@ -1,0 +1,61 @@
+{
+  "status": "PASS",
+  "rom_sha256": "7d12851323365238211dad1903392dc826471f9c40764ee3658d14b459640a3e",
+  "checks": [
+    {
+      "report": "build/arclibre/acceptance.json",
+      "status": "PASS",
+      "sha256": "8678f66f71879758387d304e7e4018dde13c4aad3e441f9660fc9c6986a4f149",
+      "rom_sha256": "7d12851323365238211dad1903392dc826471f9c40764ee3658d14b459640a3e",
+      "cold_boots": 3,
+      "application_cold_boots": 3
+    },
+    {
+      "report": "build/sound/acceptance.json",
+      "status": "PASS",
+      "sha256": "a203d4d4527f59cf5cd78804f0df79f82fb48e83832855e19475c1dd7f9be766",
+      "rom_sha256": "7d12851323365238211dad1903392dc826471f9c40764ee3658d14b459640a3e",
+      "cold_boots": 3
+    },
+    {
+      "report": "build/desktop-actions/acceptance.json",
+      "status": "PASS",
+      "sha256": "265f19e914cdc123f9e45fae4ba329e45a58d19f29a6f11a1b0e7d179e29db93",
+      "rom_sha256": "7d12851323365238211dad1903392dc826471f9c40764ee3658d14b459640a3e",
+      "cold_boots": 3
+    },
+    {
+      "report": "build/desktop-c-runtime/acceptance.json",
+      "status": "PASS",
+      "sha256": "318a3fa0a8ece70f287a4778a232668e321c68682c29f1896a0e23894c8e3109",
+      "rom_sha256": "7d12851323365238211dad1903392dc826471f9c40764ee3658d14b459640a3e",
+      "independent_machines": 15
+    },
+    {
+      "report": "build/desktop-apps/acceptance/acceptance.json",
+      "status": "PASS",
+      "sha256": "9e4106c32d0e76755619cda22a78cd347827110246cbd604707b6f882043f8be",
+      "rom_sha256": "7d12851323365238211dad1903392dc826471f9c40764ee3658d14b459640a3e",
+      "independent_cold_boots": 6,
+      "trials": 3
+    },
+    {
+      "report": "build/graphics-apps/acceptance/acceptance.json",
+      "status": "PASS",
+      "sha256": "3505f43954ae0198173582a37fd8fddc2ca0cc20ecc6c805be2fd1f8331e364c",
+      "rom_sha256": "7d12851323365238211dad1903392dc826471f9c40764ee3658d14b459640a3e",
+      "independent_cold_boots": 12,
+      "trials_per_app": 3
+    },
+    {
+      "report": "build/private-zarch/acceptance/acceptance.json",
+      "status": "PASS",
+      "sha256": "d32b9a0ee97f0759fa9076846e60332d2ba3204727504d10f5c9ebbb1b947311",
+      "rom_sha256": "7d12851323365238211dad1903392dc826471f9c40764ee3658d14b459640a3e",
+      "cold_boots": 3,
+      "scope": "Desktop double-click, game entry, title, keyboard start and bounded three-second paired flight/fire/steering tests; not full-game compatibility"
+    }
+  ],
+  "emulator_unchanged": true,
+  "private_game_bytes_and_captures_excluded": true
+}

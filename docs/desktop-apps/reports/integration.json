@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "rom_sha256": "c5855025f912c86f056e5a6e0b6979866022e3eba8be210290e956f4969fd9a3",
+  "gates": {
+    "desktop": {
+      "status": "PASS",
+      "report": "build/arclibre/acceptance.json",
+      "rom_sha256": "c5855025f912c86f056e5a6e0b6979866022e3eba8be210290e956f4969fd9a3"
+    },
+    "sound": {
+      "status": "PASS",
+      "report": "build/sound/acceptance.json",
+      "rom_sha256": "c5855025f912c86f056e5a6e0b6979866022e3eba8be210290e956f4969fd9a3"
+    },
+    "drag": {
+      "status": "PASS",
+      "report": "build/desktop-actions/acceptance.json",
+      "rom_sha256": "c5855025f912c86f056e5a6e0b6979866022e3eba8be210290e956f4969fd9a3"
+    },
+    "filing_c_abi": {
+      "status": "PASS",
+      "report": "build/desktop-c-runtime/acceptance.json",
+      "rom_sha256": "c5855025f912c86f056e5a6e0b6979866022e3eba8be210290e956f4969fd9a3"
+    },
+    "edit_persistence": {
+      "status": "PASS",
+      "report": "build/desktop-apps/acceptance/acceptance.json",
+      "rom_sha256": "c5855025f912c86f056e5a6e0b6979866022e3eba8be210290e956f4969fd9a3"
+    },
+    "zarch_private": {
+      "status": "PASS",
+      "report": "build/private-zarch/acceptance/acceptance.json",
+      "rom_sha256": "c5855025f912c86f056e5a6e0b6979866022e3eba8be210290e956f4969fd9a3"
+    }
+  },
+  "complete_app_builds": 2,
+  "edit_cold_boots": 6,
+  "filing_c_abi_cold_boots": 15,
+  "all_edit_initialisations_usr26": true,
+  "new_emulator_changes": false,
+  "private_game_bytes_not_packaged": true
+}

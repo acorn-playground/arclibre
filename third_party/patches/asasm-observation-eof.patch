@@ -1,0 +1,32 @@
+--- a/src/put.c
++++ b/src/put.c
+@@ -48,14 +48,14 @@
+ }
+ static PObject *restoration_caller(void) {
+   PObject *p=gCurPObjP;
+-  while(p>gPOStack && p->type==POType_eMacro) --p;
++  while(p && p>gPOStack && p->type==POType_eMacro) --p;
+   return p;
+ }
+ static void restoration_emit(char kind,unsigned offset,unsigned size,uint64_t value,unsigned times) {
+   if(gPhase!=ePassTwo) return;
+   FILE *f=restoration_trace(); if(!f) return;
+   PObject *p=restoration_caller();
+-  fprintf(f,"%c\t%u\t%u\t%llu\t%u\t%s\t%u\t%s\t%u\n",kind,offset,size,(unsigned long long)value,times,FS_GetCurFileName(),FS_GetCurLineNumber(),p->fileName,p->lineNum);
++  fprintf(f,"%c\t%u\t%u\t%llu\t%u\t%s\t%u\t%s\t%u\n",kind,offset,size,(unsigned long long)value,times,FS_GetCurFileName(),FS_GetCurLineNumber(),p ? p->fileName : FS_GetCurFileName(),p ? p->lineNum : 0);
+ }
+ 
+ static void
+--- a/src/symbol.c
++++ b/src/symbol.c
+@@ -63,8 +63,8 @@
+   if(gPhase!=ePassTwo) return;
+   static FILE *f; if(!f) {const char *p=getenv("ASASM_REFS");if(p) f=fopen(p,"a");}
+   PObject *caller=gCurPObjP;
+-  while(caller>gPOStack && caller->type==POType_eMacro) --caller;
+-  if(f) fprintf(f,"%.*s\t%s\t%u\t%s\t%u\n",(int)len,name,FS_GetCurFileName(),FS_GetCurLineNumber(),caller->fileName,caller->lineNum);
++  while(caller && caller>gPOStack && caller->type==POType_eMacro) --caller;
++  if(f) fprintf(f,"%.*s\t%s\t%u\t%s\t%u\n",(int)len,name,FS_GetCurFileName(),FS_GetCurLineNumber(),caller ? caller->fileName : FS_GetCurFileName(),caller ? caller->lineNum : 0);
+ }
+ static void restoration_symbols(void) {
+   const char *p=getenv("ASASM_SYMBOLS"); if(!p) return;

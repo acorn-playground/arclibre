@@ -1,0 +1,51 @@
+--- a/src/DOSFS/s/DOSFSctl
++++ b/src/DOSFS/s/DOSFSctl
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: unquoted GET paths for AsAsm.
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -63,16 +64,16 @@
+ 
+         ; -------------------------------------------------------------------
+ 
+-        GET     "Hdr:listopts"
+-        GET     "Hdr:macros"
+-        GET     "Hdr:system"
++        GET     Hdr:ListOpts
++        GET     Hdr:Macros
++        GET     Hdr:System
+ ;        GET     "Hdr:File"
+-        GET     "Hdr:modhand"
+-        GET     "Hdr:wimp"
+-        GET     "Hdr:hostfs"
+-        GET     "Hdr:NdrDebug"
+-        GET     "Hdr:DDVMacros"
+-        GET     "s.MFSmacros"
++        GET     Hdr:ModHand
++        GET     Hdr:Wimp
++        GET     Hdr:HostFS
++        GET     Hdr:NdrDebug
++        GET     Hdr:DDVMacros
++        GET     s.MFSmacros
+ 
+         ; -------------------------------------------------------------------
+ 
+--- a/src/DOSFS/s/StaticDefs
++++ b/src/DOSFS/s/StaticDefs
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: default boot sector supplied by src/ArcLibre/s/DOSFSBoot.
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -198,4 +199,8 @@
+ ; values, "MSDOS3.3" OEM text and opaque x86 boot code) is not
+ ; redistributed. manifests/dosfs-inputs.json records the hashes of the
+ ; complete upstream file and of the excised lines.]
++
++; ArcLibre: func_default_dbsector, the boot sector DOSFS_LayoutStructure
++; starts from (see c.Statics and h.BOOTblock), is the independently written
++; non-system data-disc sector in src/ArcLibre/s/DOSFSBoot.
+         END

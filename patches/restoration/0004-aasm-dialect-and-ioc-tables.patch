@@ -1,0 +1,1545 @@
+--- a/HdrSrc/hdr/Proc
++++ b/HdrSrc/hdr/Proc
+@@ -1,3 +1,4 @@
++; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -30,7 +31,7 @@
+ ; *** Also ensures that the code entry label is word-aligned.               ***
+ ; *****************************************************************************
+         MACRO
+-$label  ENTRY   $reglist,$framesize
++$label  KernelEntry   $reglist,$framesize
+         ALIGN
+ Proc_RegList SETS "$reglist"
+  [ "$framesize" = ""
+--- a/Kernel/TestSrc/MEMC1
++++ b/Kernel/TestSrc/MEMC1
+@@ -1,3 +1,4 @@
++; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; > MEMC1
+ 
+ ; MEMC interface file - MEMC1 version
+@@ -23,7 +24,7 @@
+ ;
+ 
+         [ {FALSE}
+-SetDAG  ENTRY   "r0"
++SetDAG  KernelEntry   "r0"
+         CMP     r1, #MEMCDAG_MaxReason
+         EXIT    HI
+         ADR     r14, DAGAddressTable
+--- a/Kernel/s/ARM600
++++ b/Kernel/s/ARM600
+@@ -1,3 +1,4 @@
++; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -103,7 +104,7 @@
+ ; out:  All registers preserved, operation ignored if illegal
+ ;
+ 
+-SetDAG  ENTRY   "r0,r12"
++SetDAG  KernelEntry   "r0,r12"
+         MOV     r12, #IOMD_Base
+         CMP     r1, #1
+         BEQ     %FT10
+@@ -171,7 +172,7 @@
+ ; out:  All registers preserved, operation ignored if illegal
+ ;
+ 
+-SetDAG  ENTRY   "r0"
++SetDAG  KernelEntry   "r0"
+         CMP     r1, #MEMCDAG_MaxReason
+         EXIT    HI
+         ADR     r14, DAGAddressTable
+@@ -1874,7 +1875,7 @@
+ MMUCReason_ModifyControl        # 1
+ MMUCReason_Unknown              # 0
+ 
+-MMUControlSWI   ENTRY
++MMUControlSWI   KernelEntry
+         BL      MMUControlSub
+         PullEnv
+         ORRVS   lr, lr, #V_bit
+@@ -1896,7 +1897,7 @@
+         SETV
+         MOV     pc, lr
+ 
+-MMUControl_ModifyControl ENTRY "r3, r4"
++MMUControl_ModifyControl KernelEntry "r3, r4"
+         MOV     r4, pc
+         ORR     lr, r4, #I_bit
+         TEQP    lr, #0                  ; disable IRQs while we modify soft copy
+@@ -2441,7 +2442,7 @@
+ SmallPageSizeShift *    12
+ SmallPageSize   *       1 :SHL: SmallPageSizeShift
+ 
+-ProcessTransfer ENTRY "r1-r7,r12"
++ProcessTransfer KernelEntry "r1-r7,r12"
+ 
+  [ DebugAborts
+         DLINE   "ProcessTransfer entered"
+--- a/Kernel/s/Arthur3
++++ b/Kernel/s/Arthur3
+@@ -1,3 +1,4 @@
++; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -1266,7 +1267,7 @@
+ ;   Exit : R2 -> table entry, EQ for not found
+ ;          R0 stepped on
+ 
+-FindOption ENTRY "r1, r3-r5"
++FindOption KernelEntry "r1, r3-r5"
+         ADRL    r2, Config_Table+1
+ 04
+         MOV     r1, #0                         ; offset
+@@ -1448,7 +1449,7 @@
+         =       "BadConOpt:Bad configure option", 0
+         ALIGN
+ 
+-ReadNumParm ENTRY "r1"
++ReadNumParm KernelEntry "r1"
+ 10
+         LDRB    r2, [r0], #1
+         CMP     r2, #" "
+@@ -1466,7 +1467,7 @@
+ ; returns R2 = number or -1 for Auto
+ ;         R0 -> terminator
+ 
+-ReadNumAuto ENTRY "r1,r3,r4"
++ReadNumAuto KernelEntry "r1,r3,r4"
+ 10
+         LDRB    r2, [r0], #1
+         CMP     r2, #" "
+@@ -1962,7 +1963,7 @@
+ 
+ ; read byte from CMOS RAM : info word in R0, byte -> R1
+ 
+-ReadByte ENTRY  "r0, r2"
++ReadByte KernelEntry  "r0, r2"
+         MOV     r1, r0, LSR #16         ; get bytoff
+         AND     r1, r1, #&FF
+         MOV     r0, #ReadCMOS
+@@ -1972,7 +1973,7 @@
+ 
+ ; take infoword in R0, return value in R0
+ 
+-GetValue ENTRY  "r1"
++GetValue KernelEntry  "r1"
+         BL      ReadByte                ; now extract the value
+         AND     r14, r0, #&FF           ; get bitoff
+         MOV     r1, r1, LSR r14         ; throw away low bits
+@@ -1983,7 +1984,7 @@
+         MOV     r0, r1, LSR r0          ; ...then down again
+         EXITS
+ 
+-PrintR0 ENTRY   "r1, r2"
++PrintR0 KernelEntry   "r1, r2"
+         CMP     r0, #-1
+         BNE     %FT10
+         ADRL    r0, AutoString
+@@ -2181,7 +2182,7 @@
+ ;
+ ; out:  -
+ 
+-WriteMultiField ENTRY "r0-r5"
++WriteMultiField KernelEntry "r0-r5"
+         MOV     r3, r0                  ; pointer to where we're at in table
+         MOV     r4, r2                  ; value
+ 10
+@@ -2205,7 +2206,7 @@
+ ; in:   r0 -> table
+ ; out:  r0 = value
+ 
+-ReadMultiField ENTRY "r1-r6"
++ReadMultiField KernelEntry "r1-r6"
+         LDR     r6, [r0, #4]            ; get maximum value allowed
+         ADD     r3, r0, #2*4            ; pointer to where we're at in table (skip auto, max)
+         MOV     r4, #0                  ; cumulative value
+@@ -2250,7 +2251,7 @@
+         ADR     r0, WimpModeSpacedString
+         B       ModeWimpModeShowCode
+ 
+-Read_Configd_Mode ENTRY
++Read_Configd_Mode KernelEntry
+         ADR     r0, ModeCMOSTable
+         BL      ReadMultiField
+         EXIT
+@@ -2395,7 +2396,7 @@
+         ADD     r2, r4, #4
+         B       ExitShow
+ 
+-Read_Configd_MonitorType ENTRY
++Read_Configd_MonitorType KernelEntry
+         ADR     r0, MonitorTypeCMOSTable
+         BL      ReadMultiField
+         EXIT
+@@ -2425,13 +2426,13 @@
+         ADD     r2, r4, #4
+         B       ExitShow
+ 
+-Read_Configd_Sync ENTRY
++Read_Configd_Sync KernelEntry
+         ADR     r0, SyncCMOSTable
+         BL      ReadMultiField
+         EXIT
+ 
+  [ :LNOT: DriversInKernel
+-SetUpPrinterBuffer ENTRY "r1-r3"
++SetUpPrinterBuffer KernelEntry "r1-r3"
+         MOV     r0, #PrinterBufferCMOS
+         BL      Read
+         MOV     r2, #0
+--- a/Kernel/s/ArthurSWIs
++++ b/Kernel/s/ArthurSWIs
+@@ -1,3 +1,4 @@
++; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -37,7 +38,7 @@
+ ; Out   VC : r1 -> first unused char, r2 = number
+ ;       VS : r1 unchanged, r2 = 0, current error block set
+ 
+-ReadUnsigned_Routine ENTRY "r0-r1, r3-r4, r9"
++ReadUnsigned_Routine KernelEntry "r0-r1, r3-r4, r9"
+ 
+         TEQP    PC, #SVC_mode
+ 
+@@ -143,7 +144,7 @@
+ ; Out   VC : Number read in r2, r1 updated. r3 = number of chars used
+ ;       VS : r1 preserved, r2 -> error block
+ 
+-ReadNumberInBase ENTRY "r0, r1, r12"
++ReadNumberInBase KernelEntry "r0, r1, r12"
+ 
+         MOV     r2, #0          ; Result
+         MOV     r3, #0          ; Number of valid digits read
+@@ -204,7 +205,7 @@
+ ; Out   EQ -> r0 = valid number in [0..base-1], r1++
+ ;       NE -> r0 invalid, r1 same
+ 
+-GetCharForReadNumber ENTRY
++GetCharForReadNumber KernelEntry
+ 
+         LDRB    r0, [r1]
+         CMP     r0, #"0"
+@@ -949,7 +950,7 @@
+ ;       R1 = SysHeapStart
+ ;
+ 
+-FreeSysHeapNode ENTRY
++FreeSysHeapNode KernelEntry
+         MOV     R0, #HeapReason_Free
+         LDR     R1, =SysHeapStart
+         SWI     XOS_Heap
+--- a/Kernel/s/ChangeDyn
++++ b/Kernel/s/ChangeDyn
+@@ -1,3 +1,4 @@
++; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -1015,7 +1016,7 @@
+   [ 1 = 1
+ ; in:   r0 = logical address where page is now
+ 
+-GetPageFlagsForR0IntoR6 ENTRY "R0-R2, R4-R5, R7"
++GetPageFlagsForR0IntoR6 KernelEntry "R0-R2, R4-R5, R7"
+ ;
+ ; code from MoveCAMatR0toR3
+ ;
+@@ -1085,7 +1086,7 @@
+ ;       r4,r5 corrupted
+ 
+  [ MEMM_Type = "ARM600"
+-MoveCAMatR0toR3 ENTRY "r0,r1,r6,r7"
++MoveCAMatR0toR3 KernelEntry "r0,r1,r6,r7"
+         LDR     r5, =L2PT
+         ADD     r4, r5, r0, LSR #10             ; r4 -> L2PT for log addr r0
+         MOV     r2, r4, LSR #12
+@@ -1199,7 +1200,7 @@
+ ;
+ ; Note: this still needs some serious work done to it to cope with doubly-mapped areas
+ 
+-MoveCAMatR0toR3issuingPagesSafe ENTRY "r0,r1,r3,r6,r7,r12", 6*4
++MoveCAMatR0toR3issuingPagesSafe KernelEntry "r0,r1,r3,r6,r7,r12", 6*4
+         STR     r2, [sp, #0*4]                  ; store old page number at offset 0 in frame
+         LDR     r5, =L2PT
+         ADD     r4, r5, r0, LSR #10             ; r4 -> L2PT for log addr r0
+@@ -1735,7 +1736,7 @@
+ 
+ PageFlags_Required      *       1 :SHL: 14      ; physical page asked for by handler
+ 
+-DynamicAreaSWI ENTRY
++DynamicAreaSWI KernelEntry
+         BL      DynAreaSub
+         PullEnv
+         ORRVS   lr, lr, #V_bit
+@@ -1796,7 +1797,7 @@
+ ;       r10-r12 may be corrupted
+ ;
+ 
+-DynArea_Create ENTRY "r2,r6-r8"
++DynArea_Create KernelEntry "r2,r6-r8"
+         CMP     r1, #-1         ; do we have to allocate a new area number
+         BEQ     %FT10
+ 
+@@ -1981,7 +1982,7 @@
+ ;       All other registers preserved
+ ;
+ 
+-DynArea_Remove ENTRY
++DynArea_Remove KernelEntry
+         BL      CheckAreaNumber         ; check that area is there
+         BCC     UnknownDyn              ; [not found]
+ 
+@@ -2161,7 +2162,7 @@
+ ;         C=0, r10,r11 corrupted
+ ;       endif
+ 
+-CheckAreaNumber ENTRY
++CheckAreaNumber KernelEntry
+         MOV     r10, #DAList
+         ASSERT  DANode_Link = 0                 ; because DAList has only link
+ 10
+@@ -2193,7 +2194,7 @@
+ ;       endif
+ ;
+ 
+-CheckForOverlappingAreas ENTRY "r0-r5"
++CheckForOverlappingAreas KernelEntry "r0-r5"
+         TST     r4, #DynAreaFlags_DoublyMapped          ; check if doubly mapped
+         BEQ     %FT05                                   ; [not, so don't mangle]
+ 
+@@ -2301,7 +2302,7 @@
+ ;         V=1
+ ;       endif
+ 
+-AllocateAreaAddress ENTRY "r0-r2,r4-r7"
++AllocateAreaAddress KernelEntry "r0-r2,r4-r7"
+         TST     r4, #DynAreaFlags_DoublyMapped          ; check if doubly mapped
+         BEQ     %FT05                                   ; [not, so don't mangle]
+         MOVS    r5, r5, LSL #1                          ; double size
+@@ -2353,7 +2354,7 @@
+ ;       Either r0 or r1 updated to next one (except when r2=-1 on exit)
+ ;
+ 
+-GetNextRange ENTRY "r7,r8"
++GetNextRange KernelEntry "r7,r8"
+         LDMIA   r0, {r2, r6}                            ; load start, size from fixed list
+         ADD     r6, r6, r2                              ; r6 = end+1
+ 
+@@ -2398,7 +2399,7 @@
+ ;         V=1
+ ;       endif
+ 
+-AllocateBackingLevel2 ENTRY "r0-r8,r11"
++AllocateBackingLevel2 KernelEntry "r0-r8,r11"
+         TST     r4, #DynAreaFlags_DoublyMapped          ; if doubly mapped
+         SUBNE   r3, r3, r5                              ; then area starts further back
+         MOVNE   r5, r5, LSL #1                          ; and is twice the size
+@@ -2539,7 +2540,7 @@
+ ; out:  -
+ ;
+ 
+-InitDynamicAreas ENTRY "r0-r8,r11"
++InitDynamicAreas KernelEntry "r0-r8,r11"
+         MOV     lr, #AppSpaceDANode
+         ADR     r0, InitAppSpaceTable
+         LDMIA   r0, {r0-r8}
+@@ -3011,7 +3012,7 @@
+         SUB     r1, r1, r3                      ; subtract off amount left, to leave done amount
+         B       ChangeDynErrorSomeMoved
+ 
+-GenNotAllMovedError ENTRY "r0"
++GenNotAllMovedError KernelEntry "r0"
+         ADRL    r0, ErrorBlock_ChDynamNotAllMoved
+  [ International
+         BL      TranslateError
+@@ -3098,7 +3099,7 @@
+ 
+ DoTheGrowStackSize *    :INDEX: @
+ 
+-DoTheGrow ENTRY "r3,r5,r10-r12", DoTheGrowStackSize
++DoTheGrow KernelEntry "r3,r5,r10-r12", DoTheGrowStackSize
+ 
+ ; First fill in the page block with -1 in the physical page number words
+ 
+@@ -3507,7 +3508,7 @@
+ ; Note: Removal is from one area only, the calling routine breaks the chunk at free/app boundary.
+ 
+ 
+-DoTheGrowNotSpecified ENTRY "r3,r5,r10-r12", DoTheGrowNotSpecifiedStackSize
++DoTheGrowNotSpecified KernelEntry "r3,r5,r10-r12", DoTheGrowNotSpecifiedStackSize
+ 
+         STR     r2, NumEntries                  ; save number of entries for use later
+         STR     r7, TotalAmount                 ; save amount growing by
+@@ -3595,7 +3596,7 @@
+ ;       endif
+ ;
+ 
+-CheckAppSpace ENTRY "r0-r3"
++CheckAppSpace KernelEntry "r0-r3"
+         MOV     r2, #0
+         LDR     r3, [r2, #AplWorkSize]
+         LDR     r2, [r2, #Curr_Active_Object]
+@@ -3651,7 +3652,7 @@
+ ;       else r0 -> error block or 0 for generic error, and r2=0
+ ;
+ 
+-CallPreShrink ENTRY "r0,r3,r4, r12"
++CallPreShrink KernelEntry "r0,r3,r4, r12"
+         LDR     r0, [r11, #DANode_Handler]              ; check if no handler
+         CMP     r0, #0                                  ; if none (V=0)
+         EXIT    EQ                                      ; then exit
+@@ -3690,7 +3691,7 @@
+ ; out:  All registers preserved
+ ;
+ 
+-CallPostShrink ENTRY "r0,r3,r4, r12"
++CallPostShrink KernelEntry "r0,r3,r4, r12"
+         LDR     r0, [r11, #DANode_Handler]              ; check if no handler
+         CMP     r0, #0                                  ; if none (V=0)
+         EXIT    EQ                                      ; then exit
+@@ -3726,7 +3727,7 @@
+ ;       endif
+ ;
+ 
+-CallPreGrow ENTRY "r0,r4, r12"
++CallPreGrow KernelEntry "r0,r4, r12"
+         LDR     r0, [r12, #DANode_Handler]              ; check if no handler
+         CMP     r0, #0                                  ; if none (V=0)
+         EXIT    EQ                                      ; then exit
+@@ -3761,7 +3762,7 @@
+ ; out:  All registers preserved
+ ;
+ 
+-CallPostGrow ENTRY "r0,r3,r4, r12"
++CallPostGrow KernelEntry "r0,r3,r4, r12"
+         LDR     r0, [r12, #DANode_Handler]              ; check if no handler
+         CMP     r0, #0                                  ; if none (V=0)
+         EXIT    EQ                                      ; then exit
+@@ -3787,7 +3788,7 @@
+ ; out:  All registers preserved
+ ;
+ 
+-MovePageAtR0ToR1WithAccessR6 ENTRY "r2-r5,r11"
++MovePageAtR0ToR1WithAccessR6 KernelEntry "r2-r5,r11"
+         MOV     r3, r1
+         MOV     r11, r6
+         BL      MoveCAMatR0toR3         ; use old internal routine for now
+@@ -3795,7 +3796,7 @@
+ 
+ ; Same as above, but returns with r2 = page number of page that moved
+ 
+-MovePageAtR0ToR1WithAccessR6ReturnPageNumber ENTRY "r3-r5,r11"
++MovePageAtR0ToR1WithAccessR6ReturnPageNumber KernelEntry "r3-r5,r11"
+         MOV     r3, r1
+         MOV     r11, r6
+         BL      MoveCAMatR0toR3         ; use old internal routine for now
+@@ -3875,7 +3876,7 @@
+         B       PostShrink_Sprite
+ 
+ PostGrow_Sprite
+-PostShrink_Sprite ENTRY "r0"
++PostShrink_Sprite KernelEntry "r0"
+ 
+ ; in - r3 = size change (+ve), r4 = new size, r5 = page size
+ 
+@@ -3904,7 +3905,7 @@
+         CLRV                            ; don't need to do anything here
+         MOV     pc, lr                  ; so just exit
+ 
+-PreShrink_Sprite ENTRY "r0"
++PreShrink_Sprite KernelEntry "r0"
+         TEQ     r4, #0                  ; if current size is zero
+         BEQ     %FT10                   ; then any shrink is OK (shouldn't happen)
+ 
+@@ -3938,7 +3939,7 @@
+         B       PostShrink_RAMDisc
+ 
+ PostGrow_RAMDisc
+-PostShrink_RAMDisc ENTRY "r0-r6"
++PostShrink_RAMDisc KernelEntry "r0-r6"
+ 
+ ; in - r3 = size change (+ve), r4 = new size, r5 = page size
+ ; but we don't really care about any of these
+@@ -3981,7 +3982,7 @@
+         EXIT
+ 
+ PreGrow_RAMDisc
+-PreShrink_RAMDisc ENTRY "r0-r5"
++PreShrink_RAMDisc KernelEntry "r0-r5"
+         MOV     r0, #0
+         LDR     r0, [r0, #Module_List]  ; first check if any modules going
+         TEQ     r0, #0
+@@ -4027,7 +4028,7 @@
+         B       PreShrink_FontArea
+         B       PostShrink_FontArea
+ 
+-PostGrow_FontArea ENTRY "r0-r2"
++PostGrow_FontArea KernelEntry "r0-r2"
+ 
+ ; in - r3 = size change (+ve), r4 = new size, r5 = page size
+ 
+@@ -4044,7 +4045,7 @@
+         CLRV                            ; don't need to do anything here
+         MOV     pc, lr                  ; so just exit
+ 
+-PreShrink_FontArea ENTRY "r0-r2"
++PreShrink_FontArea KernelEntry "r0-r2"
+         MOV     r1, #-1                 ; ask font manager for minimum size of font area
+         MOV     r2, #0                  ; default value if no font manager
+         SWI     XFont_ChangeArea        ; out: r2 = minimum size
+@@ -4160,7 +4161,7 @@
+ ;
+ ; exit with V clear, all preserved
+ 
+-PreGrow_Screen  ENTRY   "r0-r2,r4"
++PreGrow_Screen  KernelEntry   "r0-r2,r4"
+         LDR     r0, [WsPtr, #CursorFlags]       ; test if VDU inited yet
+         TEQ     r0, #0                          ; if not, CursorFlags will be zero
+         SWINE   XOS_RemoveCursors               ; if VDU inited, then remove cursors
+@@ -4188,7 +4189,7 @@
+ ;R4 = new size of area (bytes)
+ ;R5 = page size
+ 
+-PostGrow_Screen ENTRY   "r0,r5"
++PostGrow_Screen KernelEntry   "r0,r5"
+         LDR     r0, [WsPtr, #CursorFlags]       ; test if VDU inited (CursorFlags=0 => not)
+         TEQ     r0, #0
+         BEQ     %FT90                           ; if not inited, do nothing
+@@ -4214,7 +4215,7 @@
+ ;R5 = page size
+ ;R12 = vdu workspace
+ 
+-PreShrink_Screen ENTRY   "R0-R2,R4-R5"
++PreShrink_Screen KernelEntry   "R0-R2,R4-R5"
+ 
+         ;need to check whether the proposed shrink still leaves enough for
+         ;the current amount needed by the vdu drivers, if it doesn't we
+@@ -4248,7 +4249,7 @@
+ ;R4 = new size of area (bytes)
+ ;R5 = page size
+ 
+-PostShrink_Screen ENTRY
++PostShrink_Screen KernelEntry
+         SWI     XOS_RestoreCursors
+         CLRV                                    ;ok, so I'm paranoid...
+         EXIT
+--- a/Kernel/s/ExtraSWIs
++++ b/Kernel/s/ExtraSWIs
+@@ -1,3 +1,4 @@
++; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -41,7 +42,7 @@
+ ;       Allows a module to attach itself to one of the processor vectors.
+ ;
+ ClaimProcVecSWI ROUT
+-        ENTRY   "r3-r5"
++        KernelEntry   "r3-r5"
+ 
+         AND     r3, r0, #&FF            ; Get vector number.
+         CMP     r3, #(ProcVec_End-ProcVec_Start):SHR:2
+--- a/Kernel/s/HeapSort
++++ b/Kernel/s/HeapSort
+@@ -1,3 +1,4 @@
++; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -263,7 +264,7 @@
+ 
+ ; Out   all preserved
+ 
+-MoveToTempSlot ENTRY "r4, r8, r9"
++MoveToTempSlot KernelEntry "r4, r8, r9"
+ 
+         TST     r4, #3                  ; If base and element size wordy
+         TSTEQ   r8, #3                  ; then do faster copy. Also temp wordy
+@@ -288,7 +289,7 @@
+ 
+ ; Out   all preserved
+ 
+-MoveFromGivenSlot ENTRY "r4, r7, r8"
++MoveFromGivenSlot KernelEntry "r4, r7, r8"
+ 
+         TST     r4, #3                  ; If dest and element size wordy
+         TSTEQ   r8, #3                  ; then do faster copy. Also src wordy
+--- a/Kernel/s/MEMC1
++++ b/Kernel/s/MEMC1
+@@ -1,3 +1,4 @@
++; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -36,7 +37,7 @@
+ ; out:  All registers preserved, operation ignored if illegal
+ ;
+ 
+-SetDAG  ENTRY   "r0"
++SetDAG  KernelEntry   "r0"
+         CMP     r1, #MEMCDAG_MaxReason
+         EXIT    HI
+         ADR     r14, DAGAddressTable
+--- a/Kernel/s/MEMC2
++++ b/Kernel/s/MEMC2
+@@ -1,3 +1,4 @@
++; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -37,7 +38,7 @@
+ ; out:  All registers preserved, operation ignored if illegal
+ ;
+ 
+-SetDAG  ENTRY   "r0,r1"
++SetDAG  KernelEntry   "r0,r1"
+         CMP     r1, #MEMCDAG_MaxReason
+         EXIT    HI
+         ADR     r14, DAGAddressTable
+--- a/Kernel/s/MemInfo
++++ b/Kernel/s/MemInfo
+@@ -1,3 +1,4 @@
++; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -106,7 +107,7 @@
+ flush_cache     *       1:SHL:31        ; Internal flag.
+ 
+ MemoryConvert   ROUT
+-        ENTRY   "r0-r11"                ; Need lots of registers!!
++        KernelEntry   "r0-r11"                ; Need lots of registers!!
+ 
+         BIC     lr, r0, #all,given      ; Need to munge r0 to get rotates to work (must be even).
+         AND     r0, r0, #all,given
+@@ -363,7 +364,7 @@
+ ;       Returns the physical memory arrangement table in the given block.
+ ;
+ MemoryReadPhys  ROUT
+-        ENTRY   "r1-r10"
++        KernelEntry   "r1-r10"
+ 
+  [ OSROM_ImageSize = 4096
+         ; &00000000 to &00400000 is ROM.
+@@ -499,7 +500,7 @@
+ ;       Return the amount of the specified type of memory.
+ ;
+ MemoryAmounts   ROUT
+-        ENTRY   "r3"
++        KernelEntry   "r3"
+ 
+         BICS    lr, r0, #&FF            ; Get type of memory required (leave bits 12-31, non-zero => error).
+         BEQ     %FT30                   ; Don't understand 0 (so the spec says).
+@@ -553,7 +554,7 @@
+ ;       Return the location of the specified controller.
+ ;
+ MemoryIOSpace   ROUT
+-        ENTRY   "r2"
++        KernelEntry   "r2"
+ 
+         AND     r2, r1, #&FF            ; Get sequence number.
+         MOV     r1, r1, LSR #8          ; Get controller type.
+--- a/Kernel/s/ModHand
++++ b/Kernel/s/ModHand
+@@ -1,3 +1,4 @@
++; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -89,7 +90,7 @@
+ 
+ ;+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-ModuleInit   ENTRY "r0-r12"                             ; call here on system startup
++ModuleInit   KernelEntry "r0-r12"                             ; call here on system startup
+ 
+         MOV     r0, #HeapReason_Init                    ; first initialise the heap
+         MOV     r1, #RMAAddress
+@@ -346,7 +347,7 @@
+ ; out:  All registers preserved
+ ;
+ 
+-InitialiseROMModule ENTRY "r0-r12"
++InitialiseROMModule KernelEntry "r0-r12"
+         MOV     r14, #1
+         STRB    r14, [r11, #ROMModule_Initialised]      ; indicate it's been initialised
+         LDR     r2, [r11, #ROMModule_ChunkNumber]
+@@ -384,7 +385,7 @@
+ ;       All other registers preserved, except if error (when R0 -> error)
+ ;
+ 
+-AddROMModuleNode ENTRY "r0,r1,r3-r12"
++AddROMModuleNode KernelEntry "r0,r1,r3-r12"
+         MOV     r3, #ROMModule_NodeSize                 ; claim a rom module node
+         BL      ClaimSysHeapNode                        ; r0,r1 corrupted, r2 -> block
+         STRVS   r0, [stack]
+@@ -457,7 +458,7 @@
+         CLRV
+         EXIT
+ 
+-CompareVersions ENTRY
++CompareVersions KernelEntry
+         LDR     r14, [r12, #ROMModule_Version]          ; r14 = version(this)
+         CMP     r1, r14
+         EXIT    NE                                      ; exit with this condition codes, unless equal
+@@ -486,7 +487,7 @@
+ ;       All other registers preserved
+ ;
+ 
+-FindROMModule ENTRY
++FindROMModule KernelEntry
+         TEQ     r12, #0                                 ; if zero passed in on entry
+         LDREQ   r12, =ROMModuleChain                    ; then search from start of chain
+ 10
+@@ -1057,7 +1058,7 @@
+ 
+ ;****************************************************************************
+ 
+-Module_Clear ENTRY "r0-r3"
++Module_Clear KernelEntry "r0-r3"
+         TEQP    pc, #SVC_mode                           ; interrupts on
+         MOV     r3, #0                                  ; position in chain
+ 
+@@ -1372,13 +1373,13 @@
+ ;
+ ; out:  All registers preserved
+ 
+-Module_AddPoduleModule ENTRY
++Module_AddPoduleModule KernelEntry
+         TEQP    pc, #SVC_mode                   ; interrupts on
+         BL      APMEntry
+         PullEnv
+         B       SLVK_TestV
+ 
+-APMEntry ENTRY "r0-r7,r9"
++APMEntry KernelEntry "r0-r7,r9"
+         MOV     r0, r2
+         SWI     XPodule_EnumerateChunksWithInfo ; out: r1=size, r2=type, r4->name, r5->help string, r6=module address if in ROM
+         BVS     %FT99
+@@ -1716,7 +1717,7 @@
+ ;      Other registers may be corrupted
+ ;
+ 
+-AddModuleIfInROM ENTRY "r5-r8"
++AddModuleIfInROM KernelEntry "r5-r8"
+         MOV     r4, r0
+         MOV     r12, #0                                 ; search entire ROM set
+         MOV     r7, r1                                  ; save pointer to beginning of name
+@@ -1813,7 +1814,7 @@
+ ;    "hardware" in R11
+ ;     returns module node pointer in R9
+ 
+-LinkAndInit ENTRY "r2, r3"
++LinkAndInit KernelEntry "r2, r3"
+         MOV     r3, #ModInfo
+         BL      ClaimSysHeapNode
+         EXIT    VS
+@@ -2398,7 +2399,7 @@
+ ;       R3 corrupted in all cases
+ ;
+ 
+-Module_StrCmp ENTRY "r1,r2,r5-r7"
++Module_StrCmp KernelEntry "r1,r2,r5-r7"
+         MOV     r2, #0
+ 01
+         LDRB    r7, [r1], #1
+@@ -2554,7 +2555,7 @@
+ ;*****************************************************************************
+ ; *Unplug code.
+ 
+-Unplug_Code ENTRY "r7-r9"
++Unplug_Code KernelEntry "r7-r9"
+         CMP     r1, #0
+         BNE     ZapTheModule
+ 
+--- a/Kernel/s/MoreComms
++++ b/Kernel/s/MoreComms
+@@ -1,3 +1,4 @@
++; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -182,7 +183,7 @@
+ 
+ ;*****************************************************************************
+ 
+-ROMModules_Code ENTRY
++ROMModules_Code KernelEntry
+       [ International
+         BL      GSWriteS_Translated
+         =       "ROMMTitle:No. Position|IModule Name|I|IVersion|IStatus|M|J",0
+@@ -372,7 +373,7 @@
+ 
+ ;*****************************************************************************
+ 
+-RMEnsure_Code ENTRY "r0, r1"
++RMEnsure_Code KernelEntry "r0, r1"
+         MOV     r1, r0                          ; name pointer
+         MOV     r0, #ModHandReason_LookupName
+         SWI     XOS_Module
+@@ -463,7 +464,7 @@
+ ;            only the last 4 digits of the integer part, and the first 4 decimal places are stored
+ ;
+ 
+-RMEGetVerNo ENTRY
++RMEGetVerNo KernelEntry
+         MOV     r1, #0
+ 10
+         LDRB    r12, [r0], #1
+@@ -503,7 +504,7 @@
+ ;       All other registers preserved
+ ;
+ 
+-GetVerNoFromHelpString ENTRY "r0, r4, r5, r12"
++GetVerNoFromHelpString KernelEntry "r0, r4, r5, r12"
+         MOV     r5, #0                          ; char count
+ 10
+         LDRB    r1, [r0], #1
+--- a/Kernel/s/NewIRQs
++++ b/Kernel/s/NewIRQs
+@@ -1,3 +1,5 @@
++; Modified 2026: IOC tables also use this counter.
++       GBLA DTabC
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -307,7 +309,7 @@
+ 
+ ; Following tables encode the priority of the devices within each register
+ 
+-       GBLA  DTabC
++; DTabC declaration moved to file scope for IOC tables.
+ DTabC  SETA 1
+ 
+ ; generic IRQA bits
+--- a/Kernel/s/NewReset
++++ b/Kernel/s/NewReset
+@@ -1,3 +1,4 @@
++; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -119,7 +120,7 @@
+ 
+ ; NB this routine doesn't do screen size mangling (yet!)
+ 
+-GetConfiguredSize ENTRY "r1"
++GetConfiguredSize KernelEntry "r1"
+         MOV     r1, #0
+         LDR     r1, [r1, #Page_Size]
+         ADRL    lr, PageShifts-1
+@@ -2155,7 +2156,7 @@
+ ; Out   EQ: key pressed
+ ;       NE: key not pressed
+ 
+-IsKeyPressedAtReset ENTRY "r0-r2"
++IsKeyPressedAtReset KernelEntry "r0-r2"
+ 
+         MOV     r0, #129
+         MOV     r2, #&FF
+--- a/Kernel/s/PMF/i2cutils
++++ b/Kernel/s/PMF/i2cutils
+@@ -1,3 +1,4 @@
++; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -820,7 +821,7 @@
+ 
+  [ CacheCMOSRAM
+ 
+-InitCMOSCache   ENTRY "r0-r3"
++InitCMOSCache   KernelEntry "r0-r3"
+         MOV     R2, #16
+         ADR     R3, CMOSRAMCache-16
+ 
+--- a/Kernel/s/PMF/key
++++ b/Kernel/s/PMF/key
+@@ -1,3 +1,4 @@
++; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -834,7 +835,7 @@
+ ; out:  V=1 => error (and possibly R0 -> error block if you're lucky!)
+ ;
+ 
+-RdchInkey ENTRY
++RdchInkey KernelEntry
+ 
+ ; Enable interrupts so that keyboard can work properly
+ 
+@@ -956,7 +957,7 @@
+         CLRPSR  V_bit, R14
+         EXIT
+ 
+-RestoreSpeed ENTRY "R0"
++RestoreSpeed KernelEntry "R0"
+         MOV     R0, R6                  ; restore old speed
+         MOV     R1, #0                  ; AND mask of 0
+         SWI     XPortable_Speed
+--- a/Kernel/s/PMF/osinit
++++ b/Kernel/s/PMF/osinit
+@@ -1,3 +1,4 @@
++; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -548,7 +549,7 @@
+ ;       ReadMachineType - Determine machine type and store it in IOSystemType
+ ;
+ 
+-ReadMachineType ENTRY "r0-r12"
++ReadMachineType KernelEntry "r0-r12"
+ ; Modified 2026: fixed original board has no IOEB/LC/combo ASIC to probe.
+  [ HasIOEB
+  [ IO_Type = "IOMD"
+@@ -768,7 +769,7 @@
+ ;       r5 = default sync to use
+ ;
+ 
+-TranslateMonitorLeadType ENTRY "r0-r2"
++TranslateMonitorLeadType KernelEntry "r0-r2"
+         MOV     r1, #Service_MonitorLeadTranslation
+         LDRB    r2, [r1, #MonitorLeadType-Service_MonitorLeadTranslation]
+         SWI     XOS_ServiceCall
+@@ -839,7 +840,7 @@
+         DCD     0
+ 
+ PowerHardware           ;On Stork, ensure Combo chip, Winnie, Floppy etc are powered
+-        ENTRY "r0,r1"
++        KernelEntry "r0,r1"
+ 
+         MOV     r0, #0
+         LDRB    lr, [r0, #IOSystemType]
+@@ -881,7 +882,7 @@
+ 
+ 
+  [ IO_Type <> "IOMD"
+-Configure82C710 ENTRY "r0,r1"
++Configure82C710 KernelEntry "r0,r1"
+         MOV     r0, #0
+         LDRB    lr, [r0, #IOSystemType]
+         TST     lr, #IOST_IOEB          ; no IOEB, then don't bother
+@@ -1013,7 +1014,7 @@
+ ;
+ ; Simplified version of Configure82C710 programs SMC 37C665 only.
+ ;
+-Configure37C665 ENTRY "r0,r1"
++Configure37C665 KernelEntry "r0,r1"
+         TEQP    pc, #SVC_mode + I_bit + F_bit   ; Disable FIQ and IRQ
+         LDR     r0, =CnTbase            ; R0-> SMC 665 base address
+ 
+@@ -1133,7 +1134,7 @@
+         MEND
+ 
+  [ HasDallasID
+-ReadUniqueID    ENTRY "r0-r12"
++ReadUniqueID    KernelEntry "r0-r12"
+         MOV     r0, #0
+         LDR     r1, =IOC
+         TEQP    pc, #SVC_mode + I_bit + F_bit
+@@ -1165,7 +1166,7 @@
+         STR     r0, [r0, #RawMachineID+4]
+         EXIT
+ 
+-RestoreIOCState ENTRY
++RestoreIOCState KernelEntry
+         STRB    r3, [r1, #IOCControl]                   ; put back old value
+         MOV     r12, #defaultlatch :AND: &FF
+         STRB    r12, [r1, #Timer0LL]                    ; and restore old timer 0 latch values
+--- a/Kernel/s/SWINaming
++++ b/Kernel/s/SWINaming
+@@ -1,3 +1,4 @@
++; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -415,7 +416,7 @@
+ ;
+ ; out:  R10, R11 corrupted
+ 
+-AddString ENTRY
++AddString KernelEntry
+ 01
+         LDRB    r10, [r11], #1
+         CMP     r10, #0
+@@ -448,7 +449,7 @@
+ ; R1 pointer to name terminated by char <= " "
+ ; return R0 as SWI number
+ 
+-SWINumberFromString_Code ENTRY "r1,r2"
++SWINumberFromString_Code KernelEntry "r1,r2"
+ 
+         TEQP    pc, #SVC_mode                   ; enable interrupts
+         LDRB    R10, [R1]
+--- a/Kernel/s/SysComms
++++ b/Kernel/s/SysComms
+@@ -1,3 +1,4 @@
++; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -514,7 +515,7 @@
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-Close_Code ENTRY
++Close_Code KernelEntry
+ 
+         MOV    R0, #0
+         MOV    R1, #0
+@@ -523,7 +524,7 @@
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-FX_Code ENTRY
++FX_Code KernelEntry
+ 
+         MOV     R1, #0
+         MOV     R2, #0
+@@ -589,7 +590,7 @@
+         B       TV_EntryPoint
+ 
+ 
+-Shadow_Code ENTRY
++Shadow_Code KernelEntry
+ 
+        CMP      R1, #0
+        MOV      R1, R0
+@@ -623,7 +624,7 @@
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-Key_Code ENTRY
++Key_Code KernelEntry
+ 
+         SUB     sp, sp, #32
+         MOV     R1, R0
+@@ -668,7 +669,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; Exec, Spool and SpoolOn share a common body
+ 
+-Exec_Code ENTRY "$UtilRegs"
++Exec_Code KernelEntry "$UtilRegs"
+ 
+         MOV     r3, #&40        ; OPENIN exec
+         MOV     r4, #198        ; r0b for osbyte exec
+@@ -734,7 +735,7 @@
+ unprinthex      * 2_00000001
+ unprintdot      * 2_00000001
+ 
+-Print_Code ENTRY "$UtilRegs"
++Print_Code KernelEntry "$UtilRegs"
+ 
+         MOV     listopt, #0             ; No line numbers, raw ASCII
+         B       %FT01
+@@ -860,7 +861,7 @@
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-Dump_Code ENTRY "$UtilRegs"
++Dump_Code KernelEntry "$UtilRegs"
+ 
+         MOV     r7, r1                  ; Remember nparms
+         MOV     r8, r0                  ; Remember filename^ for below
+@@ -1090,7 +1091,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; Append and Build share a common body
+ 
+-Append_Code ENTRY "$UtilRegs"
++Append_Code KernelEntry "$UtilRegs"
+ 
+         MOV     r1, r0          ; -> filename
+         MOV     r0, #&C0        ; OPENUP
+@@ -1168,7 +1169,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; OSFile routines: Load, Save, Create, Delete and Remove
+ 
+-Load_Code ENTRY "$UtilRegs"
++Load_Code KernelEntry "$UtilRegs"
+ 
+         MOV     r7, r0                  ; -> filename
+         CMP     r1, #1                  ; Just filename (1 parm) ?
+@@ -1194,7 +1195,7 @@
+       ]
+         ALIGN
+ 
+-Save_Code ENTRY "$UtilRegs"
++Save_Code KernelEntry "$UtilRegs"
+ 
+         BL      SkipNameAndReadAddr
+         EXIT    VS
+@@ -1226,7 +1227,7 @@
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-Create_Code ENTRY "r1, $UtilRegs"
++Create_Code KernelEntry "r1, $UtilRegs"
+ 
+         CMP     r1, #1                  ; Filename only -> length 0, dated
+         MOVEQ   r7, r0                  ; Filename^
+@@ -1254,7 +1255,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; Delete and Remove share a common body
+ 
+-Delete_Code ENTRY
++Delete_Code KernelEntry
+ 
+         MOV     r6, #0                  ; Give error if file doesn't exist
+         B       %FT01                   ; Use a reg. not affected by OSFile !
+@@ -1277,7 +1278,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; Gosh, doesn't use UtilRegs !!!
+ 
+-Opt_Code ENTRY
++Opt_Code KernelEntry
+ 
+         MOV     r3, #0                  ; Default parms are 0, 0
+         MOV     r4, #0
+@@ -1328,7 +1329,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; Variegated output routines
+ 
+-HexR0LongWord ENTRY "r0"
++HexR0LongWord KernelEntry "r0"
+ 
+         MOV     r0, r0, ROR #16
+         BL      HexR0Word
+@@ -1338,7 +1339,7 @@
+         EXIT
+ 
+ 
+-HexR0Word ENTRY "r0"
++HexR0Word KernelEntry "r0"
+ 
+         MOV     r0, r0, ROR #8
+         BL      HexR0Byte
+@@ -1348,7 +1349,7 @@
+         EXIT
+ 
+ 
+-HexR0Byte ENTRY "r0"
++HexR0Byte KernelEntry "r0"
+ 
+         MOV     r0, r0, ROR #4
+         BL      HexR0Nibble
+@@ -1358,7 +1359,7 @@
+         EXIT
+ 
+ 
+-HexR0Nibble ENTRY "r0"
++HexR0Nibble KernelEntry "r0"
+ 
+         AND     r0, r0, #15
+         CMP     r0, #10
+@@ -1384,7 +1385,7 @@
+         BICS    pc, lr, #V_bit  ; r0 = first ~space. Can't really fail
+ 
+ 
+-SkipToSpace ENTRY "r0"
++SkipToSpace KernelEntry "r0"
+ 
+ 10      LDRB    r0, [r1], #1
+         CMP     r0, #&7F
+@@ -1413,7 +1414,7 @@
+ ; Out   VC: r0 = r1 = handle
+ ;       VS: r0 -> error (FilingSystemError or 'NotFound')
+ 
+-OpenFileWithWinge ENTRY
++OpenFileWithWinge KernelEntry
+ 
+         ORR     r0, r0, #(open_mustopen :OR: open_nodir) ; Saves us code here
+         SWI     XOS_Find
+@@ -1428,7 +1429,7 @@
+ ; Out   VC: PTR moved
+ ;       VS: r0 -> Filing System Error
+ 
+-MoveToEOF ENTRY "r0, r2"
++MoveToEOF KernelEntry "r0, r2"
+ 
+         MOV     r0, #OSArgs_ReadEXT
+         SWI     XOS_Args
+@@ -1453,7 +1454,7 @@
+ ; Out   VC: file closed, or nothing done
+ ;       VS: r0 -> Filing System Error, or VSet on entry
+ 
+-CloseR1 ENTRY "r0"
++CloseR1 KernelEntry "r0"
+ 
+         CMP     r1, #0                  ; Is there a handle to close ? VClear
+         MOVNE   r0, #0                  ; CLOSE#han
+@@ -1466,7 +1467,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ; Increment then print a line number in decimal
+ 
+-LineNumberPrint ENTRY "r0-r1"
++LineNumberPrint KernelEntry "r0-r1"
+ 
+         ADD     linecount, linecount, #1 ; r0 := ++linecount
+         MOV     r0, linecount
+@@ -1483,7 +1484,7 @@
+ 
+ ; Number gets printed RJ in a field of 4 if possible, or more as necessary
+ 
+-PrintR0Decimal ENTRY "r0-r3"
++PrintR0Decimal KernelEntry "r0-r3"
+ 
+         SUB     sp, sp, #32
+         MOV     r3, r1                  ; Save flag
+@@ -1516,7 +1517,7 @@
+ 
+ ; Out   r1 = bits read from CMOS ram
+ 
+-ReadGSFormat ENTRY "r0, r2"
++ReadGSFormat KernelEntry "r0, r2"
+ 
+         MOV     r0, #ReadCMOS
+         MOV     r1, #TutuCMOS
+@@ -1530,7 +1531,7 @@
+ 
+ ; Out   r0 corrupt
+ 
+-PrintCharInGSFormat ENTRY "r1, listopt"
++PrintCharInGSFormat KernelEntry "r1, listopt"
+ 
+         AND     r0, r0, #&FF    ; Just in case
+         TST     listopt, #forcetbsrange ; Forcing tbs into 00..7F ?
+@@ -1614,7 +1615,7 @@
+ ;       VS : failed to read address, r0 -> error
+ ;       CS : text present comes immediately after address
+ 
+-SkipNameAndReadAddr ENTRY
++SkipNameAndReadAddr KernelEntry
+ 
+         MOV     r7, r0          ; Save filename^
+         MOV     r1, r0          ; -> filename
+@@ -1632,7 +1633,7 @@
+ ;       VS if failed, error ('Bad Address' or whatever) set
+ ;       CS if something comes afterwards ...
+ 
+-ReadOptionalLoadAndExec ENTRY "r0, FSUTtemp"
++ReadOptionalLoadAndExec KernelEntry "r0, FSUTtemp"
+ 
+         MOV     FSUTtemp, r2    ; Save initial value
+ 
+@@ -1662,7 +1663,7 @@
+ ; Out   VC: r1 -> first char not used in building number, r2 = number
+ ;       VS: error ('Bad Address') set
+ 
+-ReadAtMost8Hex ENTRY "r0, r3-r4"
++ReadAtMost8Hex KernelEntry "r0, r3-r4"
+ 
+         MOV     R0, #16                 ; default base, don't trap bad terms
+         SWI     XOS_ReadUnsigned
+--- a/Kernel/s/UnSqueeze
++++ b/Kernel/s/UnSqueeze
+@@ -1,3 +1,4 @@
++; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -338,7 +339,7 @@
+ ; in: R2 -> block
+ ; out: R0,R1 corrupted
+ 
+-FreeRMABlock ENTRY
++FreeRMABlock KernelEntry
+ ;        LDR     R0, [R2, #-4]
+ ;        DREG    R0, "FreeRMABlock called, block size purports to be "
+ 
+--- a/Kernel/s/vdu/vdudriver
++++ b/Kernel/s/vdu/vdudriver
+@@ -1,3 +1,4 @@
++; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -283,7 +284,7 @@
+ ; out:  All registers may be corrupted (except R13_svc !)
+ ;
+ 
+-InitialiseMode ENTRY
++InitialiseMode KernelEntry
+  [ SoftResets
+         MOV     r0, #&FD                ; read last reset type
+         MOV     r1, #0
+@@ -1157,7 +1158,7 @@
+ ; out:  R1 corrupted
+ ;
+ 
+-IssueModeService ENTRY "r2,r3"
++IssueModeService KernelEntry "r2,r3"
+         BL      ReadMonitorType
+         LDR     r2, [WsPtr, #DisplayModeNo]
+         IssueService
+@@ -1448,7 +1449,7 @@
+ ;       All other registers preserved
+ ;
+ 
+-GenerateModeSelectorVars ENTRY "r0,r1,r3-r8,r10-r12"
++GenerateModeSelectorVars KernelEntry "r0,r1,r3-r8,r10-r12"
+  [ ModeSelectors
+         ASSERT  ModeSelector_Flags = 0
+         ASSERT  ModeSelector_XRes = 4
+@@ -1645,7 +1646,7 @@
+ ;       endif
+ ;
+ 
+-ValidateModeSelector ENTRY
++ValidateModeSelector KernelEntry
+         LDR     lr, [r0, #ModeSelector_Flags]
+         AND     lr, lr, #ModeSelectorFlags_FormatMask
+         TEQ     lr, #ModeSelectorFlags_ValidFormat
+@@ -1682,7 +1683,7 @@
+ ;
+ ; out:  All registers preserved
+ 
+-ProcessModeVarPairs ENTRY "r4, r8, r10"
++ProcessModeVarPairs KernelEntry "r4, r8, r10"
+         ADRL    r14, RMVTab
+ 10
+         LDR     r10, [r4], #4           ; get next entry in ws table
+@@ -1990,7 +1991,7 @@
+ ; out:  r0-r2, r4, r7, r8, r10, r11 may be corrupted
+ ;       r3, r9, r12 must be preserved
+ 
+-ProcessControlListItem ENTRY
++ProcessControlListItem KernelEntry
+         LDR     pc, [pc, r4, LSL #2]
+         NOP
+         &       ProcessControlListNOP                   ; 0 - NOP
+@@ -2092,7 +2093,7 @@
+ BestRangeError          #       4
+ ComputeModuliStack      *       :INDEX: @
+ 
+-ComputeModuli ENTRY "r2-r12", ComputeModuliStack
++ComputeModuli KernelEntry "r2-r12", ComputeModuliStack
+         MOV     r12, #-1                ; smallest error for values in or out of VCO range
+         MOV     r11, #-1                ; smallest error for values in VCO range
+         STR     r11, BestDInRange
+--- a/Kernel/s/vdu/vdugrafj
++++ b/Kernel/s/vdu/vdugrafj
+@@ -1,3 +1,4 @@
++; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -631,7 +632,7 @@
+ ;       endif
+ ;
+ 
+-SanitizeSGetMode ENTRY "r0-r4,r11"
++SanitizeSGetMode KernelEntry "r0-r4,r11"
+         LDR     r11, [WsPtr, #SGetMode]
+ 
+         CMP     r11, #&100
+--- a/Kernel/s/vdu/vdupal10
++++ b/Kernel/s/vdu/vdupal10
+@@ -1,3 +1,4 @@
++; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -261,7 +262,7 @@
+         MOV     r4, #0                  ; indicate successful PaletteV op
+         Pull    "r0-r3, pc"
+ 
+-BorderInitEntry ENTRY "r0-r3"           ; entry used in default palette setting
++BorderInitEntry KernelEntry "r0-r3"           ; entry used in default palette setting
+ BorderColour ROUT
+         LDR     r0, [WsPtr, #PalIndex]  ; if hi res mono
+         TEQ     r0, #5
+@@ -322,7 +323,7 @@
+ 
+ ; and drop thru to ...
+ 
+-UpdateSettingStraightRGB ENTRY "r2,r5,r6"
++UpdateSettingStraightRGB KernelEntry "r2,r5,r6"
+         PHPSEI                          ; protect against IRQs
+         ORR     r3, r3, r0, LSL #26     ; form VIDC register number at top
+         LDRB    r5, [WsPtr, #ScreenBlankFlag]
+@@ -363,7 +364,7 @@
+ ; out:  r3, r4 may be corrupted
+ ;
+ 
+-UpdateHiResRGB ENTRY "r5"
++UpdateHiResRGB KernelEntry "r5"
+         PHPSEI
+         Push    "lr"
+         LDROSB  r5, FlashState
+@@ -382,7 +383,7 @@
+         PLP
+         EXITS
+ 
+-UpdateOneHiResSetting ENTRY "r1,r2,r6-r9"
++UpdateOneHiResSetting KernelEntry "r1,r2,r6-r9"
+         LDRB    lr, [WsPtr, #ScreenBlankFlag]
+         TEQ     lr, #0
+         MOVNE   lr, #&00FFFFFF          ; if blanked, mask off these bits
+@@ -546,7 +547,7 @@
+ ;       UpdateAllPalette - Update all VIDC palette entries
+ ;
+ 
+-UpdateAllPalette ENTRY "r0-r3"          ; "r0-r3,lr" stacked ready to branch to code
++UpdateAllPalette KernelEntry "r0-r3"          ; "r0-r3,lr" stacked ready to branch to code
+         LDROSB  r0, FlashState
+         CMP     r0, #1
+         ADDCS   r0, WsPtr, #FirPalSetting ; FlashState = 1 => 1st state, 0 => 2nd state
+--- a/Kernel/s/vdu/vdupal20
++++ b/Kernel/s/vdu/vdupal20
+@@ -1,3 +1,4 @@
++; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -485,7 +486,7 @@
+ ; out:  r0,r1,r2,r4 preserved
+ ;       r3 corrupted
+ 
+-UpdateSettingStraightRGB ENTRY "r2,r5,r6,r7"
++UpdateSettingStraightRGB KernelEntry "r2,r5,r6,r7"
+         ANDS    r5, r3, #1 :SHL: 12     ; get supremacy bit in 1st colour
+         MOVNE   r5, #1 :SHL: 27         ; put in r5 in new position
+         AND     r6, r3, #&FF0           ; r6 = 00000BG0
+@@ -872,7 +873,7 @@
+ ;       UpdateAllPalette - Update all VIDC palette entries
+ ;
+ 
+-UpdateAllPalette ENTRY "r0-r3"          ; "r0-r3,lr" stacked ready to branch to code
++UpdateAllPalette KernelEntry "r0-r3"          ; "r0-r3,lr" stacked ready to branch to code
+         LDROSB  r0, FlashState
+         CMP     r0, #1
+         LDRCS   r0, [WsPtr, #FirPalAddr] ; FlashState = 1 => 1st state, 0 => 2nd state
+--- a/Kernel/s/vdu/vdupalette
++++ b/Kernel/s/vdu/vdupalette
+@@ -1,3 +1,4 @@
++; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -76,7 +77,7 @@
+ DC3     ROUT
+         ADD     R1, WsPtr, #QQ          ; Point R1 at the queued data
+                                         ; and drop thru to Palette OSWORD code
+-SetPal  ENTRY
++SetPal  KernelEntry
+         LDR     R6, [WsPtr, #DisplayModeFlags]
+         TST     R6, #Flag_Teletext      ; if teletext mode
+         EXITS   NE                      ; then ignore VDU 19
+@@ -148,7 +149,7 @@
+ ;       R10-R12 corrupted (preserved by Sam), all others preserved
+ ;
+ 
+-SWIReadPalette ENTRY "r4"
++SWIReadPalette KernelEntry "r4"
+         VDWS    WsPtr
+         MOV     r4, #paletteV_Read
+         BL      CallPaletteV
+@@ -179,7 +180,7 @@
+ ;       R0-R4, R11, R12 can be corrupted
+ ;
+ 
+-DoReadPalette ENTRY
++DoReadPalette KernelEntry
+         MOV     r4, r1                  ; save pointer to block
+         LDRB    r0, [r4]                ; r0 = logical colour
+         MOV     r1, #16
+@@ -201,7 +202,7 @@
+ ;                      Called in either SVC or IRQ mode
+ ;
+ 
+-DoFirstFlash ENTRY "r0,r4"
++DoFirstFlash KernelEntry "r0,r4"
+         MOV     r4, #paletteV_1stFlashState
+ SetFlashState
+         MOV     r0, pc
+--- a/Kernel/s/vdu/vduswis
++++ b/Kernel/s/vdu/vduswis
+@@ -1,3 +1,4 @@
++; Modified 2026: rename ENTRY macro to avoid the AsAsm directive.
+ ; Copyright 1996 Acorn Computers Ltd
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+@@ -569,7 +570,7 @@
+ ;       endif
+ ;       r10 corrupted in both cases
+ 
+-CheckWorkspaceList ENTRY
++CheckWorkspaceList KernelEntry
+ 10
+         LDR     r14, [r10], #8          ; load next index (and skip index+value)
+         CMP     r14, #-1                ; if end of list
+@@ -946,7 +947,7 @@
+ ;       r11 corrupted, all other registers preserved
+ ;
+ 
+-FindSubstitute ENTRY
++FindSubstitute KernelEntry
+         MOV     r11, #0
+         BL      PushModeInfoAnyMonitor
+         EXIT    VS                              ; if error, then exit now
+@@ -966,7 +967,7 @@
+ ;       All other registers preserved
+ ;
+ 
+-ReadMonitorType ENTRY "r0-r2"
++ReadMonitorType KernelEntry "r0-r2"
+         MOV     r0, #1
+         SWI     XOS_ReadSysInfo         ; out: r0 = mode, r1 = monitortype, r2 = sync
+         MOV     r3, r1                  ; move into r3
+@@ -981,7 +982,7 @@
+ ;       All other registers preserved
+ ;
+ 
+-ReadSyncType ENTRY "r0-r2"
++ReadSyncType KernelEntry "r0-r2"
+         MOV     r0, #1
+         SWI     XOS_ReadSysInfo         ; out: r0 = mode, r1 = monitortype, r2 = sync
+         MOVS    r4, r2                  ; move into r4
+@@ -1857,7 +1858,7 @@
+ ; out:  Depends on reason code
+ ;
+ 
+-ScreenModeSWI ENTRY
++ScreenModeSWI KernelEntry
+         BL      ScreenModeSub
+         PullEnv
+         ORRVS   lr, lr, #V_bit
+@@ -1912,7 +1913,7 @@
+ ;       All other registers preserved
+ ;
+ 
+-ScreenMode_SelectMode ENTRY "r0-r9"
++ScreenMode_SelectMode KernelEntry "r0-r9"
+         TEQP    pc, #SVC_mode           ; enable IRQs
+         VDWS    WsPtr
+         BL      PreWrchCursor           ; remove cursor
+@@ -1967,7 +1968,7 @@
+ ;       All other registers are preserved
+ ;
+ 
+-ScreenMode_EnumerateModes ENTRY "r3-r5"
++ScreenMode_EnumerateModes KernelEntry "r3-r5"
+         MOV     r1, #Service_EnumerateScreenModes
+         BL      ReadMonitorType
+         GetBandwidthAndSize     r4, r5
+@@ -1987,7 +1988,7 @@
+ ;       All other registers preserved
+ ;
+ 
+-ScreenMode_SelectMonitorType ENTRY "r0"
++ScreenMode_SelectMonitorType KernelEntry "r0"
+         VDWS    WsPtr
+         CMP     r1, #-1                                 ; if not restoring configured value
+         BNE     %FT10                                   ; then skip

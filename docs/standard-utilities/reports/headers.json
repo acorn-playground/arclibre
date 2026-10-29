@@ -1,0 +1,438 @@
+{
+  "SWIs": {
+    "source": "PublicInterfaces/SWIs",
+    "sha256": "666228bf92450ab75673d9014ed3f9354c056b978429eac185ffb2d0ffb72d90"
+  },
+  "CMOS": {
+    "source": "PublicInterfaces/CMOS",
+    "sha256": "3f6871f1bfc24a6b48bb09c832b60b208293a228f575373adcd5cabe24c3ebc9"
+  },
+  "Services": {
+    "source": "PublicInterfaces/Services",
+    "sha256": "a69daa1f675c189e2de30af6a1313c50122a784f12d1bf24c325fbcafcf41561"
+  },
+  "FSNumbers": {
+    "source": "PublicInterfaces/FSNumbers",
+    "sha256": "ba979eddcd9f758d5ee74420bae97e2a6dfad5007e7397dfaf4b1b81c5af7cbf"
+  },
+  "NewErrors": {
+    "source": "PublicInterfaces/NewErrors",
+    "sha256": "468b4d7da14c8c8a120ee2c85a1414e12271cd5773e794dd78ea1039578355e8"
+  },
+  "UpCall": {
+    "source": "PublicInterfaces/UpCall",
+    "sha256": "22f8b6896545ad35d730cfdc9267d7438c2e93cbba977335aa74359e0ae8330a"
+  },
+  "Pointer": {
+    "source": "PublicInterfaces/Pointer",
+    "sha256": "3e8ee37d4dee5a381ada1fe05c6bb2e26df8b8ade2b5b2e2efbefc1e9170a884"
+  },
+  "DevNos": {
+    "source": "PublicInterfaces/DevNos",
+    "sha256": "6427b89acc6faa0fd04a63fb1a9a337dbd7a05d7be39f366b009424ae86e4698"
+  },
+  "PaletteV": {
+    "source": "PublicInterfaces/PaletteV",
+    "sha256": "4223492a81c02d4487a90d548b3e8315992e9ff22c6d2cdf6e8cdce949c00d34"
+  },
+  "Buffer": {
+    "source": "Buffers/hdr/Buffer",
+    "sha256": "e2b79fc42869f6b7676ff6eed24f6a85a1907fe094c41db2a8725bb7bb57adaa"
+  },
+  "ColourTran": {
+    "source": "Colours/hdr/ColourTran",
+    "sha256": "45a808a19080e7f0a3c8ba683c7a62339d3fa2f5d0ff95617b5ae6988f74e005"
+  },
+  "LowFSI": {
+    "source": "FileSwitch/hdr/LowFSI",
+    "sha256": "0a080dc3411369c032bdeb8722b51bd6bda0cba5f88c5e9e16d2c22459f4d316"
+  },
+  "HighFSI": {
+    "source": "FileSwitch/hdr/HighFSI",
+    "sha256": "97a2881ae9349edd9c52e97aadd9e5b2665d87e999ff7829e2cdaf9f5798e86e"
+  },
+  "Font": {
+    "source": "FontManager/hdr/Font",
+    "sha256": "5a120b206641757b0c4e5abff7a9b9545b31b11b7fb7a41ed33defab1ab04079"
+  },
+  "Proc": {
+    "source": "HdrSrc/hdr/Proc",
+    "sha256": "5868798ba88627a88eb1197dc6c7322e26e1886b8a936b2d4f096a40108115e9"
+  },
+  "Macros": {
+    "source": "HdrSrc/hdr/Macros",
+    "sha256": "602517b4d550ad50236d4a165b3f1f8c7bb69dc55b50b9d2afcbb826c0ce0610"
+  },
+  "System": {
+    "source": "HdrSrc/hdr/System",
+    "sha256": "c5ca6c88e796dbe20e94e1715b264bc83f53eedbc8fadbea13b63af2c366dadf"
+  },
+  "ExtraLong": {
+    "source": "HdrSrc/hdr/ExtraLong",
+    "sha256": "fb49fcb7b88bdb12b5b75cddaaa2e0eb60b0385784138180f46240e58a624445"
+  },
+  "Heap": {
+    "source": "HdrSrc/hdr/Heap",
+    "sha256": "e889e2415fcd608ef8909e6884e374256b5f2be84464a941c311c5f32df595c4"
+  },
+  "Sprite": {
+    "source": "HdrSrc/hdr/Sprite",
+    "sha256": "6ee0fda13dd352184744248d325d053a2dddcf2219fd64d979bde3be8d1e9653"
+  },
+  "Symbols": {
+    "source": "HdrSrc/hdr/Symbols",
+    "sha256": "f5802110f5135c527546cdc203f68a31b45b614574555a788c7dda150b844187"
+  },
+  "ListOpts": {
+    "source": "HdrSrc/hdr/ListOpts",
+    "sha256": "d6ea3b932d743d7d233684f04a8897ef3d2368b03638652a242869a8f9470b1d"
+  },
+  "Tokens": {
+    "source": "HdrSrc/hdr/Tokens",
+    "sha256": "3a850b61c6ff1d0ee84cad3400e9b54583269b2b8ed32a184efaf71ec5415f58"
+  },
+  "DDVMacros": {
+    "source": "HdrSrc/hdr/DDVMacros",
+    "sha256": "d85a76ecc5d7b44d9ba4ea336375de5b0fb07cf3f9ecc46e5e0260955281cfcb"
+  },
+  "NdrDebug": {
+    "source": "HdrSrc/hdr/NdrDebug",
+    "sha256": "dbc06d5830e13b0c1009f162a6fe29e7d7c34bd23e4573b6c9d0abae1311de15"
+  },
+  "Debug": {
+    "source": "HdrSrc/hdr/Debug",
+    "sha256": "0dc02476a516b50dea9c1e68e5e36a19dab08ef404d5dde313ed0302cd1f050b"
+  },
+  "MEMM/MEMC20": {
+    "source": "HdrSrc/hdr/MEMM/MEMC20",
+    "sha256": "6cd029cf81c1d7a3d1c17ba9aca327361303d8977ea9c56e62869c6354afc289"
+  },
+  "MEMM/ARM600": {
+    "source": "HdrSrc/hdr/MEMM/ARM600",
+    "sha256": "a360c087f4314a30ff0f7a733d07f2051da2e29e88c110cc858aacc5e63bebe4"
+  },
+  "MEMM/MEMC1": {
+    "source": "HdrSrc/hdr/MEMM/MEMC1",
+    "sha256": "a2de1a6787bf5bef56dd83bab6dfbaaf030df198f66e145d62a4b6767b6132d8"
+  },
+  "CPU/ARM600": {
+    "source": "HdrSrc/hdr/CPU/ARM600",
+    "sha256": "b7f74d4c5562e9cbab0a03f445c1edc4c06f7944ae22fa8c79d422c361083c4c"
+  },
+  "CPU/ARM3": {
+    "source": "HdrSrc/hdr/CPU/ARM3",
+    "sha256": "c4a9fb8d5cc37f680457dc7ca4719403a5c68d1165c98ebf744d163dc3873286"
+  },
+  "CPU/Generic26": {
+    "source": "SharedHeaders/CPU/Generic26",
+    "sha256": "326f84d1e1478a1633e6ff391610b71d14f93ec5cbc3a17661d592e39964a0a2"
+  },
+  "CPU/ARM2": {
+    "source": "HdrSrc/hdr/CPU/ARM2",
+    "sha256": "a41d3c1ffd21523bba3074db4e738f85298d1dc4f14cd3173b3414473d23ceb5"
+  },
+  "CPU/ARM1": {
+    "source": "HdrSrc/hdr/CPU/ARM1",
+    "sha256": "770c4906e42d4d9047e53168614a8f27a81afaf808e0ffd8caa80600568184eb"
+  },
+  "MEMC/MEMC1a": {
+    "source": "HdrSrc/hdr/MEMC/MEMC1a",
+    "sha256": "949ec6a4c1b4d9e2c8da2e157fc445dd291d7399234e2e68d65c3c047d6adc14"
+  },
+  "MEMC/MEMC2": {
+    "source": "HdrSrc/hdr/MEMC/MEMC2",
+    "sha256": "99de726d05e72ea5e8ae4150e878edb3e956fe26be92fd077ec7ee992868aec5"
+  },
+  "MEMC/MEMC1": {
+    "source": "HdrSrc/hdr/MEMC/MEMC1",
+    "sha256": "8aa521b728c19faf847d4b1464dd1a71dfb29a17602ab8c1a0b236da0d373ff6"
+  },
+  "VIDC/VIDC1": {
+    "source": "HdrSrc/hdr/VIDC/VIDC1",
+    "sha256": "b460f448b9cc0c7f509b6f34195c7d876cf07525b69ba57203f32307803a9d8f"
+  },
+  "VIDC/VIDC20": {
+    "source": "HdrSrc/hdr/VIDC/VIDC20",
+    "sha256": "c882ca2f3d05d7a261eff072eedaa1b411da1778abe5c55a5056bf0458beee47"
+  },
+  "VIDC/VIDC1a": {
+    "source": "HdrSrc/hdr/VIDC/VIDC1a",
+    "sha256": "8b1905ede6b38a707c12575c78496ee2901f71a9d958d98924130d7730f9c604"
+  },
+  "IO/IOC-A500": {
+    "source": "HdrSrc/hdr/IO/IOC-A500",
+    "sha256": "ef6d4f84054b01997310baa1562bcbc5165561ccc7660c771ec588913de4669a"
+  },
+  "IO/IOMD": {
+    "source": "HdrSrc/hdr/IO/IOMD",
+    "sha256": "83ca30766b612aa7ad280cb039534bc30008eb54e9dc896b6f4048edff4765cd"
+  },
+  "IO/IOMDL": {
+    "source": "HdrSrc/hdr/IO/IOMDL",
+    "sha256": "e93154a92ad6fa5a0dee55f83bec75a32198e06d95f10c278a94a13b684c37d0"
+  },
+  "IO/IOC-A1": {
+    "source": "HdrSrc/hdr/IO/IOC-A1",
+    "sha256": "8768ed1361f0c508ca83f9b424380ddebfe038f65a85044f95fe267df52d7feb"
+  },
+  "IO/GenericIO": {
+    "source": "HdrSrc/hdr/IO/GenericIO",
+    "sha256": "0781efa0a87552b267949286c94cf995b2a0b56a2bcc4aba8e1a3fd3050a3979"
+  },
+  "IO/IOEB": {
+    "source": "HdrSrc/hdr/IO/IOEB",
+    "sha256": "de0c56b5a5f02ea28843d284b3902c9bbaff693c776135875e0380fb5289875c"
+  },
+  "IO/IOC": {
+    "source": "HdrSrc/hdr/IO/IOC",
+    "sha256": "d53ace8a3cd17a26ffd4256ddfa3f51348908c0c73cd76f058569fd866ad950c"
+  },
+  "ImageSize/4096K": {
+    "source": "HdrSrc/hdr/ImageSize/4096K",
+    "sha256": "c6d0bcc33afe4c580338a441267f96421464602ae67b55559b21122c4616d15c"
+  },
+  "ImageSize/2048K": {
+    "source": "HdrSrc/hdr/ImageSize/2048K",
+    "sha256": "5fce2e96beba555347ee8fd2aa041981d3553f9d61aa0199377c8d46c87761ff"
+  },
+  "Machine/A440": {
+    "source": "HdrSrc/hdr/Machine/A440",
+    "sha256": "6ee5c5d9c567923ab4eb931e20b451dba21cfddbecdadc8d7c9d0dc2bba89ae0"
+  },
+  "Machine/A5000": {
+    "source": "HdrSrc/hdr/Machine/A5000",
+    "sha256": "8559fe3b983206c1d5db26d02ad411604b3de0b780c86b04a8a55790796c7e39"
+  },
+  "Machine/Morris": {
+    "source": "HdrSrc/hdr/Machine/Morris",
+    "sha256": "d42b8b4ca0a8e89c8b4d726d14a694ddf3f91de3320248d6745308ed1a754a86"
+  },
+  "Machine/V20": {
+    "source": "HdrSrc/hdr/Machine/V20",
+    "sha256": "bef067489add26be131f67397b0fe4b1dc7eb56816e3066bf81345c1d011e892"
+  },
+  "Machine/A500": {
+    "source": "HdrSrc/hdr/Machine/A500",
+    "sha256": "89d18daf52b0a14c463925db22395fb44f3eaa5b20dd4dc37c9438f0421a81c2"
+  },
+  "Machine/Vicky": {
+    "source": "HdrSrc/hdr/Machine/Vicky",
+    "sha256": "2f59177a340a3c779edd269020f241bd30ca04c8780b1257ac4f58e5df2dcba8"
+  },
+  "Machine/Vic20": {
+    "source": "HdrSrc/hdr/Machine/Vic20",
+    "sha256": "4d978f46c101ccb068014a74dcfc281ec467c571b9de85c4f6df01a28960a1bf"
+  },
+  "Machine/Jordan": {
+    "source": "HdrSrc/hdr/Machine/Jordan",
+    "sha256": "1813774a6c76d58f5fdfd780bb6a83bf84e8b2f2e6f248ddc80da8faf5b7e776"
+  },
+  "FDC/FDC711": {
+    "source": "HdrSrc/hdr/FDC/FDC711",
+    "sha256": "d6e6b4a613accb2b4284839385c5406437f4e874da1b161cdd70d0ba0e73ba0f"
+  },
+  "FDC/FDC1772": {
+    "source": "HdrSrc/hdr/FDC/FDC1772",
+    "sha256": "0051273eeea3a8040c8823c3154d9db975b1ab61d1dd8f2465bcf82a5a9224b9"
+  },
+  "FDC/FDC1793": {
+    "source": "HdrSrc/hdr/FDC/FDC1793",
+    "sha256": "2d01dfd9123f45c1cc04f1c235397e4bac7c511463fd282324f978a305925d9b"
+  },
+  "EnvNumbers": {
+    "source": "Kernel/hdr/EnvNumbers",
+    "sha256": "92d6523f1daee863a23d1bffc2d7da0e4b8c0724373a667aeb36aeae2b3a5058"
+  },
+  "VduExt": {
+    "source": "Kernel/hdr/VduExt",
+    "sha256": "98b186f9b3c221082b0ae1e4afdde45f2120165e2a457173d6eefd71d3abfe7a"
+  },
+  "KernelWS": {
+    "source": "Kernel/hdr/KernelWS",
+    "sha256": "39abc4a95de5aebe4346abc198df817ab87bb5b33265ef77ae905e5961578e22"
+  },
+  "KeyWS": {
+    "source": "Kernel/hdr/KeyWS",
+    "sha256": "a6965d84b90911de62a65ff3ae097ed794350e89b2a86b8cd84da2eeb62ac981"
+  },
+  "Variables": {
+    "source": "Kernel/hdr/Variables",
+    "sha256": "2905716941b29c22263bb667f0179e472456cc38ed482a480fb572871d0ef4b6"
+  },
+  "PublicWS": {
+    "source": "Kernel/hdr/PublicWS",
+    "sha256": "cef9172edbe7b749cc936ae18b65cdeee6e536fd66d2ca7478fe5c31ea0d3bd6"
+  },
+  "ModHand": {
+    "source": "Kernel/hdr/ModHand",
+    "sha256": "09d98ead73288d722477070f3bae56289b7fb929579d26882b3e9bc126523ab0"
+  },
+  "RISCOS": {
+    "source": "Kernel/hdr/RISCOS",
+    "sha256": "be67be20dfe02a8701771aaf1d96a102c2388da6237fc11e3a2418106f8a876d"
+  },
+  "Old/NewSpace": {
+    "source": "Kernel/hdr/Old/NewSpace",
+    "sha256": "55064c9828583b79e903044f3bfa35926e240a951b45e4de6bd071e43b25927f"
+  },
+  "Old/VickySpace": {
+    "source": "Kernel/hdr/Old/VickySpace",
+    "sha256": "3617c12ac02e21cf73bf0fd4c93ac038d9e1d9bacb8a38e65377e9e2d91184db"
+  },
+  "ExportVals/Mk,fd7": {
+    "source": "Kernel/hdr/ExportVals/Mk,fd7",
+    "sha256": "8f305e6525d20a859a4b9956dc629620ae28266c370348dcdf2ee06eea672a5e"
+  },
+  "ExportVals/Makefile": {
+    "source": "Kernel/hdr/ExportVals/Makefile",
+    "sha256": "4bd08762993893a92da025f36380ec978a5e69ed51db3c5c3990ccca8446c59a"
+  },
+  "ExportVals/values": {
+    "source": "Kernel/hdr/ExportVals/values",
+    "sha256": "119c213f88e09d2ca07ad42ac491f1b855d4f60490da4fdf756f8221088756f7"
+  },
+  "ExportVals/!HowTo": {
+    "source": "Kernel/hdr/ExportVals/!HowTo",
+    "sha256": "e0b87aab1bb90511f580cf55c3044525307d878a811e4e1612f56fffcf51bfa6"
+  },
+  "ExportVals/s/GetVals": {
+    "source": "Kernel/hdr/ExportVals/s/GetVals",
+    "sha256": "e6729f2d94bf3077a3b83f76c09d202ffd6a5238c043b0c9d1fca89a88fb5cc7"
+  },
+  "Old/Arthur/Space200": {
+    "source": "Kernel/hdr/Old/Arthur/Space200",
+    "sha256": "6f1b11c3ff01493cf6f3ec4ddc4e3ca7878b2782e9fffab4ae5f4e7022f6b7c8"
+  },
+  "Old/Arthur/PublicWS": {
+    "source": "Kernel/hdr/Old/Arthur/PublicWS",
+    "sha256": "73be0563adc80fccfda88301d04ee4a08427e7eedbd83a267616379ef68c953b"
+  },
+  "MsgTrans": {
+    "source": "MsgTrans/hdr/MsgTrans",
+    "sha256": "30bc9e2073801253e50e70076a8d5504601c7d5d888db6edbf22b21202712784"
+  },
+  "MsgMenus": {
+    "source": "MsgTrans/hdr/MsgMenus",
+    "sha256": "85720d1b70bff2cb91737b99d0249b985f7486c869dfb907d88e2786b74546d8"
+  },
+  "Podule": {
+    "source": "Podule/hdr/Podule",
+    "sha256": "45c07de78c5b0b82ff1dcccb9da8bbac2ea07e0a3f205d71c36aff58db86f15e"
+  },
+  "Portable": {
+    "source": "Portable/hdr/Portable",
+    "sha256": "619a5d10d4c83d2968f8a9136e44b8fe4576f3d00003ca4403cc45c204eed3ec"
+  },
+  "RS423": {
+    "source": "Serial/hdr/RS423",
+    "sha256": "3c09435034bbd8aa276a641b8d6f12078ddf41ccf48b5e97ea6d449dc20d0e33"
+  },
+  "Serial": {
+    "source": "Serial/hdr/Serial",
+    "sha256": "17e7a9434c4f18bebecdb4ab39f3cef3dafb544f57caa243d044985c7bf7e170"
+  },
+  "Sound": {
+    "source": "Sound0/hdr/Sound",
+    "sha256": "7e3908921bb0ce83dc846f39cc4e27e06f808ffeceee329f17333158e138fc9f"
+  },
+  "Territory": {
+    "source": "TerritoryManager/hdr/Territory",
+    "sha256": "1bf401af13f34d62a8e7355074f7d3e1dc258e7d304f0da00f0391d7f86d5ade"
+  },
+  "Wimp": {
+    "source": "Wimp/hdr/Wimp",
+    "sha256": "684a770db1684452304eb124bfba0f4ed2c4d74e831e558c15c5696c4034cbf1"
+  },
+  "WimpSpace": {
+    "source": "Wimp/hdr/WimpSpace",
+    "sha256": "49e42c49db57cf8fa957f417680b142f0d6053e671364b6c9356db6528880abc"
+  },
+  "WIMPMacros": {
+    "source": "Wimp/hdr/WIMPMacros",
+    "sha256": "a5596833bda68ce55dbda25cc1a60123d33a71e228dca603d797604a29fab308"
+  },
+  "ResourceFS": {
+    "source": "ResourceFS/hdr/ResourceFS",
+    "sha256": "c74751b67fe0a453dfc455a0294c4bf4ce24a272f1772fbaa7a0344221f55950"
+  },
+  "Squash": {
+    "source": "Squash/hdr/Squash",
+    "sha256": "47a98e19fbef2ddca2278150d47687e5a60db5133248db0664fe964bceafc7ff"
+  },
+  "Messages": {
+    "source": "PublicInterfaces/hdr/Messages",
+    "sha256": "5c0cb8098a7e802b32bd7d19b794882a6aa13192890ec2d09df20f023f685267"
+  },
+  "FileTypes": {
+    "source": "PublicInterfaces/hdr/FileTypes",
+    "sha256": "e7e695d39273c109206f08552d871e0279476f32588accaa013a08d166872d39"
+  },
+  "MultiFS": {
+    "source": "FileCore/hdr/MultiFS",
+    "sha256": "c06f85d2d87df66f49dc5abfc4e980e9f7476a013748da395ed92f7523965705"
+  },
+  "FileCore": {
+    "source": "FileCore/hdr/FileCore",
+    "sha256": "e4e2cf49621499d637c52fca5acf7599a3f51de335b6e3224e8c1444502bf028"
+  },
+  "ADFS": {
+    "source": "ADFS/hdr/ADFS",
+    "sha256": "d1bbd82419b3502d3d771fcd71c4455832045c0a1a2882de130957f900b39aa8"
+  },
+  "HostFS": {
+    "source": "HostFS/hdr/HostFS",
+    "sha256": "573d6f4e25048ee5049af56da0c6f116c091455f73fd67021fc60679bc5128ef"
+  },
+  "Hourglass": {
+    "source": "Hourglass/hdr/Hourglass",
+    "sha256": "f14d3203ca4873808bbddd7fcb2ca175d8c31bbdcfcb4fb0d30eca886f6af4c3"
+  },
+  "Super": {
+    "source": "Super/hdr/Super",
+    "sha256": "c4fa8a0362324abcc3a6df5dfdbe1b37a95721005cbe6a0cae0817087a354cbf"
+  },
+  "PDriver": {
+    "source": "PDriver/hdr/PDriver",
+    "sha256": "ed8b93a3b920af907e0bde7d16690b00048bd039aed13524dc0f01cdd02253c3"
+  },
+  "Draw": {
+    "source": "DrawMod/hdr/Draw",
+    "sha256": "11501df1b890cba39c0b54105083f2b0866918a158db300efd0ed87ce9a601ee"
+  },
+  "Switcher": {
+    "source": "Switcher/hdr/Switcher",
+    "sha256": "94660eb7c5849b68704ec9193bc704fc15f34ef4e5d608aa6d9323f58f80bbd4"
+  },
+  "FPEmulator": {
+    "source": "FPASC/riscos/hdr/FPEmulator",
+    "sha256": "4eccf1e3312625c82d3ccab9a8ed0a08f331d6dac5eec26a6d5df99d4199f34c"
+  },
+  "Econet": {
+    "source": "Econet/hdr/Econet",
+    "sha256": "f0acf214a555ef6201292c769dc9811abb35de3f7ba773be7d7f9fcfa9579d98"
+  },
+  "FilerAct": {
+    "source": "FilerAct/hdr/FilerAct",
+    "sha256": "69ef15ee9cf0f84efacf828c1c2105d559c5b13c32278713ab2984b1d5a80792"
+  },
+  "DragASprit": {
+    "source": "DragASprit/hdr/DragASprit",
+    "sha256": "ed65b4739b48fa70c043660f9ec0aba028a54602b4ec75ff19fc954d4a9d05ab"
+  },
+  "HostDebug": {
+    "source": "HostFS/hdr/HostDebug",
+    "sha256": "88eb9bbff70f437034dddccf045780a43cd41bdce354bed1fcb5dfe3fdae4d44"
+  },
+  "ShareD": {
+    "source": "ArcLibre/hdr/ShareD",
+    "sha256": "ca5549b130eaa0b8ff03b74cb298373553a8cf909ad4b95f12e4200e7cae00f7"
+  },
+  "Shell": {
+    "source": "ShellCLI/hdr/Shell",
+    "sha256": "b7202387aebf33bd04fe1397584cfcd002390271977588c2068e11c44466f09e"
+  },
+  "ScrBlank": {
+    "source": "ScrBlank/hdr/ScrBlank",
+    "sha256": "3addf69b2ef34f75062557e64d406af8dbdc3430fe9c1d440eef0b05554f908d"
+  }
+}

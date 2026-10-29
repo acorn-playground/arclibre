@@ -1,0 +1,1405 @@
+--- a/HdrSrc/hdr/CPU/Generic26
++++ b/HdrSrc/hdr/CPU/Generic26
+@@ -187,6 +187,7 @@
+ $label  CLRPSR  $bits, $regtmp, $cond
+ $label  MVN$cond   $regtmp, #$bits
+         TST$cond.P $regtmp, pc
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         MEND
+ 
+ ; **************************************************
+@@ -207,6 +208,7 @@
+ $label  MOV     R14, #I_bit
+         TST     R14, PC                 ; is I_bit set ?
+         TEQEQP  R14, PC                 ; no, then set it (and R14 = I_bit)
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         MOVNE   R14, #0                 ; yes, then leave alone (and R14=0)
+   |
+ $label  MOV     $register, #I_bit
+@@ -224,6 +226,7 @@
+ $label  PLP     $register
+   [     "$register" = ""
+ $label  TEQP    R14, PC
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+   |
+ $label  TEQP    $register, PC
+   ]
+@@ -273,6 +276,7 @@
+ $label  MOV$cond   $regtmp, pc
+         ORR$cond   $regtmp, $regtmp, #$bits
+         TEQ$cond.P $regtmp, #0
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         MEND
+ 
+ ; **************************************************
+--- a/Kernel/s/Arthur2
++++ b/Kernel/s/Arthur2
+@@ -384,6 +384,7 @@
+ 
+         ; Enable interupts as we've no right to have them disabled here
+         TEQP    pc, #SVC_mode
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+ 
+  [ GS_BufferNotStack
+         AND     R2, R2, #GS_NoQuoteMess :OR: GS_NoVBarStuff :OR: GS_Spc_term
+@@ -453,6 +454,7 @@
+         ; enable interupts as (a) they'll get enabled by a <thing> entry
+         ; and (b) GSREAD may take some time
+         TEQP    pc, #SVC_mode
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+ 
+         BIC     lr, lr, #C_bit
+         MOV     R10, #0
+@@ -756,6 +758,7 @@
+         BIC      lr, lr, #C_bit
+         Push    "R1, R3-R5, lr"
+         TEQP     PC, #SVC_mode             ; enable ints.
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+ 
+         MOV      R3, R1
+         MOV      R4, R1                    ; two copies of start ptr
+@@ -838,6 +841,7 @@
+ 
+ ReadVarValue ROUT
+         TEQP    PC, #SVC_mode   ; enable interupts (mode remains unchanged)
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         Entry   "r0,r1"
+ 
+         MOV     r11, r4
+@@ -1139,6 +1143,7 @@
+ SetVarValue
+         ; enable IRQs
+         TEQP    pc, #SVC_mode
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+ 
+         Entry   "r0,r1,r2,r4,r5,r6,r9"
+ 
+@@ -2118,6 +2123,7 @@
+         MOVLS   r4, r11
+         MOVHI   r3, #0
+         TEQLSP  pc, r10
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+ 
+  [ DebugSysVars
+         SWI     XOS_WriteS
+@@ -2127,6 +2133,7 @@
+         MOV     r12, r6
+         MOV     lr, pc
+         TEQP    lr, #Z_bit
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         EXIT
+ 
+ 65
+--- a/Kernel/s/Arthur3
++++ b/Kernel/s/Arthur3
+@@ -237,6 +237,7 @@
+ ReadExpression ROUT
+         Push    "R0-R4, lr"
+         TEQP    PC, #SVC_mode   ; interrupts on, ta.
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         LDR     R12, =ExprWSpace
+         STR     R13, ExprSVCstack
+         ADR     R1, ExprBuff
+@@ -1285,6 +1286,7 @@
+         CMP     r3, #"."
+         MOV     r3, #Z_bit
+         TEQP    r3, pc                          ; invert EQ/NE
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         CMPNE   r1, #0
+         ADDNE   r1, r1, #1                      ; skip .
+         BNE     %FT02
+--- a/Kernel/s/ArthurSWIs
++++ b/Kernel/s/ArthurSWIs
+@@ -41,6 +41,7 @@
+ ReadUnsigned_Routine KernelEntry "r0-r1, r3-r4, r9"
+ 
+         TEQP    PC, #SVC_mode
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+ 
+ ; first set range limit
+         MOV     r9, r2            ; limit value
+@@ -270,6 +271,7 @@
+ 
+         Push    lr                      ; claimed return goes back to caller
+         TEQP    lr, #0                  ; put back caller's flags + int state
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+ 
+         LDR     r14, =VecPtrTab         ; Point at table of head pointers
+         LDR     r10, [r14, r10, LSL #2] ; nextblock:=vecptrtab!(n*4)
+@@ -316,6 +318,7 @@
+         MOV     R4, #I_bit
+         TST     R4, PC                  ; is I_bit set ?
+         TEQEQP  R4, PC                  ; No, then set it, save changed bits
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         MOVNE   R4, #0                  ; Else no changed bits
+ 
+         MOV     R3, #0                  ; List of de-linked nodes is empty
+@@ -327,6 +330,7 @@
+         BVC     %BT01                   ; Repeat until all nodes de-linked
+ 
+         TEQP    R4, PC                  ; Restore IRQ state
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+ 
+ ; Free the list of de-linked nodes, pointed to by R3, enter with VS
+ 
+@@ -354,6 +358,7 @@
+       BVS   BadClaimVector          ; Failed : Exit
+ 
+       TEQP  PC, #SVC_mode+I_bit     ; force noirq
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+       LDR   R3, [R11]               ; "nextblock" :=vecptrtab!(n*4)
+       STMIA R2, {R3, R4, R10}       ; Atomic Operation thus links in the new
+                                     ; routine
+@@ -390,12 +395,14 @@
+         MOV     R9, #I_bit
+         TST     R9, PC                  ; is I_bit set ?
+         TEQEQP  R9, PC                  ; No, then set it, R9 = changed bits
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         MOVNE   R9, #0                  ; Else R9=0 for no change
+ 
+         LDR     R11, =VecPtrTab         ; Get ptr to table of head pointers
+         LDR     R10, [R11, R0, LSL #2]! ; R10 "nextblock" := *oldptr, R11= root ptr
+         BL      FindAndDelinkNode       ; R10,R11->R10,R11,R12
+         TEQP    R9, PC                  ; Restore IRQ state
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         BLVC    FreeNode                ; If found, free the node in R12
+ 
+         Pull    "R0-R2,R9,link"
+@@ -597,6 +604,7 @@
+       MOV   R3, #NVECTORS-1
+       LDR   R4, [R3, #AplWorkSize-(NVECTORS-1)]
+       TEQP  PC, #SVC_mode+I_bit     ; IRQs off while holding context.
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+ 
+ 03    LDR   R11, =VecPtrTab         ; Point at table of head pointers
+       ADD   R10, R11, R3, LSL #2
+@@ -870,6 +878,7 @@
+        MOV       R10, R9
+        ORR       R14, R14, #SVC_mode
+        TEQP      PC, R14             ; restore caller CCs
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+        BL        CallVector
+        MOV       R10, PC, LSR #28    ; restore CCs
+        Pull     "lr"
+--- a/Kernel/s/ChangeDyn
++++ b/Kernel/s/ChangeDyn
+@@ -214,12 +214,14 @@
+ 
+         MOV     lr, pc                                  ; save I_bit
+         TEQP    pc, #SVC_mode + I_bit                   ; disable IRQs round this bit
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         LDR     r5, [r10]                               ; current size
+         LDR     r2, [r10, #hpdbase-hpdend]              ; remove all of the contiguous free chunk from the heap
+         STR     r2, [r10]                               ; so that noone can steal any of it under IRQs
+         MOV     r10, r5
+         STR     r10, [stack, #4*9]                      ; but save the old size on stack to restore later
+         TEQP    lr, #0                                  ; restore state
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+ 
+ CDA_GotSize
+  ]
+@@ -555,6 +557,7 @@
+ 
+         MOV     r9, pc
+         TEQEQP  pc, #SVC_mode+I_bit+Z_bit
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         NOP
+     ; disable interrupts while sorting out the screen, in case (e.g) screen
+     ; start address is being reprogrammed under interrupt
+@@ -562,6 +565,7 @@
+         BLEQ    RemovePages
+ 
+         TEQP    pc, r9          ; restore interrupt state
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+ 
+ ; calculate addresses of blocks
+ 
+@@ -715,12 +719,14 @@
+ 
+         MOV     r9, pc
+         TEQEQP  pc, #SVC_mode+I_bit+Z_bit
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+     ; disable interrupts while sorting out the screen, in case (e.g) screen
+     ; start address is being reprogrammed under interrupt
+ 
+         BLEQ    InsertPages
+ 
+         TEQP    pc, r9       ; restore interrupt state
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+ 
+         CMP     r11, #ChangeDyn_Screen
+         CMPNE   r12, #ChangeDyn_Screen
+@@ -883,6 +889,7 @@
+         ADD     r1, r0, r6              ; end marker
+ 
+         TEQP    pc, #SVC_mode+I_bit     ; disable IRQs as we may be moving
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         NOP                             ; IRQ workspace
+ 
+ ; copy R6 bytes from nextscreenblock to last src block; the last
+@@ -920,6 +927,7 @@
+         BL      Call_CAM_Mapping                ; nextscreenblock moves into place
+ 
+         TEQP    pc, r7                          ; restore IRQ state
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         NOP
+ 
+         MOV     r1, #Service_ReleaseFIQ
+--- a/Kernel/s/HeapMan
++++ b/Kernel/s/HeapMan
+@@ -247,6 +247,7 @@
+         LDR     work, [stack, #3*4]     ; get user link
+         ANDS    work, work, #I_bit      ; look at I_bit
+         TEQEQP  PC, #SVC_mode           ; if was clear then clear it now
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+ 
+         ADD     bp, bp, #4              ; new block pointer
+         STR     bp, [stack]             ; return to user
+@@ -259,6 +260,7 @@
+         BGT     cpe_prev
+ 
+         TEQP    PC, #SVC_mode + I_bit   ; disable IRQs before we venture back
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         B       GoodExtension           ; into danger zone
+ 
+ ReallocateInSafeZone
+@@ -309,10 +311,12 @@
+ 
+         MOV     R0, #HeapReason_ExtendBlock
+         TEQP    PC, #SVC_mode + I_bit   ; disable IRQs before we venture back
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         B       GoodExtension           ; into danger zone
+ 
+ SafeNaffExtension
+         TEQP    PC, #SVC_mode + I_bit   ; disable IRQs before we venture back
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         B       NaffExtension           ; into danger zone
+ 
+  ]
+@@ -377,6 +381,7 @@
+ 
+  ; First check that we aren't in an interrupted Heap Op
+         TEQP    PC, #SVC_mode+I_bit
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         MOV     R11, #IRQsema
+ inspect_IRQ_stack
+         LDR     R11, [R11]
+@@ -433,6 +438,7 @@
+         LDR     R12, [R12, #HeapReturnedReg_PC-HeapSavedReg_R0]
+         CMP     R12, #0
+         TEQEQP  PC, lr                  ; restore callers interrupt state
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+                                         ; only if no foreground waiting to
+                                         ; complete
+ 
+@@ -473,6 +479,7 @@
+         MOV     R12, PC
+         ORR     R12, R12, #I_bit        ; IRQs off
+         TEQP    PC, R12
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         MOVNV   R0, R0
+         Pull    lr
+         ORRVS   lr, lr, #V_bit          ; VSet Exit
+@@ -531,6 +538,7 @@
+         Push   "R0-R2, lr"
+ 
+         TEQP    PC, #SVC_mode+I_bit  ; interrupts off for validation
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         MOV     R0, hpd
+         ADD     R1, hpd, #hpdsize+freblksize
+         SWI     XOS_ValidateAddress
+@@ -784,6 +792,7 @@
+         ADDNE   HpTemp, HpTemp, tp        ; convert offset into offset from
+                                           ; previous block
+         TEQP    PC, #SVC_mode+I_bit
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         ASSERT  frelink=0
+         STR     HpTemp, [addr, -tp]       ; store in link of previous block
+  |
+@@ -809,6 +818,7 @@
+  ]
+ 
+         TEQP    PC, #SVC_mode+I_bit
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         STR     HpTemp, [addr, #fresize]  ; Adjust size of free block remaining
+         ADD     addr, addr, HpTemp        ; addr -> free block just deallocated
+ 
+@@ -845,6 +855,7 @@
+         ADD     tp, addr, size        ; addr := (hpd!base +:= size)
+         LDR     HpTemp, hpdend
+         TEQP    PC, #SVC_mode+I_bit
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         CMP     tp, HpTemp            ; See if we'd fall out of the bottom
+         STRLS   tp, hpdbase           ; Only adjust hpdbase if valid alloc
+         ADDLS   addr, addr, hpd       ; offset conversion
+@@ -973,6 +984,7 @@
+         RSB     size, size, #0
+         LDR     bp, [addr, hpd]          ; get block size
+         TEQP    PC, #SVC_mode+I_bit
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         SUBS    bp, bp, size             ; size of block left
+ 
+  [ debheap
+@@ -1051,6 +1063,7 @@
+ 
+         ORR      lr, lr, #I_bit            ; disable IRQs
+         TEQP     PC, lr
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+ 
+  [ debheap
+ ; HpTemp, EQ/NE critical
+@@ -1162,6 +1175,7 @@
+  ]
+ 
+         TEQP     PC, #SVC_mode+I_bit       ; IRQs off
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+ 
+ hack_preceder
+ ; bp is new size of preceding block
+@@ -1259,6 +1273,7 @@
+  ]
+ 
+         TEQP     PC, #SVC_mode+I_bit   ; IRQs off
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+    ; delink block at bp
+         LDR      work, hpdbase
+         CMP      bp, work              ; extend into free, or delink block?
+@@ -1385,6 +1400,7 @@
+         BGT      ExtendHeap_badshrink
+ 
+         TEQP     PC, #SVC_mode+I_bit
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         Push    "R0, R1"
+         MOV      R0, hpd             ; Ensure heap will be in valid area
+         ADD      R1, hpd, HpTemp
+@@ -1663,6 +1679,7 @@
+         LDR    bp, [bp, #fresize]
+         ADD    bp, bp, size
+         TEQP   PC, #SVC_mode+I_bit
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         STR    bp, [addr, hpd]       ; enlarge our block
+         LDR    bp, [HpTemp, hpd]     ; offset in free list
+         CMP    bp, #Nil
+@@ -1698,6 +1715,7 @@
+         LDR    bp, [addr, hpd]         ; get block size
+         ADD    size, bp, size          ; new free block size
+         TEQP   PC, #SVC_mode+I_bit
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         STR    size, [HpTemp, #fresize]
+ ; now check for butts against base : work is still prevnode to tp
+         ADD    HpTemp, size, tp
+@@ -1719,6 +1737,7 @@
+         BNE     AddToFreeList
+         SUB     bp, bp, size
+         TEQP    PC, #SVC_mode+I_bit
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         STR     bp, hpdbase
+         ORRS    PC, lr, #I_bit
+ 
+@@ -1739,6 +1758,7 @@
+  ]
+         LDR    size, [addr, hpd]!
+         TEQP   PC, #SVC_mode+I_bit
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         STR    size, [addr, #fresize]
+         SUB    addr, addr, hpd
+         LDR    size, [hpd, tp]      ; prevlink
+--- a/Kernel/s/HeapSort
++++ b/Kernel/s/HeapSort
+@@ -69,6 +69,7 @@
+ 
+         MVN     r14, #I_bit             ; Enable interrupts (may take ages)
+         TSTP    r14, pc
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+ 
+  [ False
+         STR     r0, ndump               ; For debugging porpoises
+--- a/Kernel/s/Kernel
++++ b/Kernel/s/Kernel
+@@ -746,6 +746,7 @@
+         BGE     Do_CallBack
+ 
+         TEQP    PC, #SVC_mode+I_bit            ; ints off while flag updated
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         LDRB    r11, [r10, #CallBack_Flag]
+         ORR     r11, r11, #CBack_Postpone      ; signal to IRQs
+         STRB    r11, [r10, #CallBack_Flag]
+@@ -769,6 +770,7 @@
+         BLO     back_to_user                    ; No then no call back
+  ]
+         TEQP    PC, #SVC_mode+I_bit             ; ints off while flag updated
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         LDRB    r11, [r10, #CallBack_Flag]
+         BIC     r11, r11, #CBack_Postpone+CBack_OldStyle
+         STRB    r11, [r10, #CallBack_Flag]
+@@ -792,6 +794,7 @@
+         MOV     r10, #0
+ 
+         TEQP    PC, #SVC_mode+I_bit             ; ints off while flag updated
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         LDRB    r11, [r10, #CallBack_Flag]
+         BIC     r11, r11, #CBack_VectorReq
+         STRB    r11, [r10, #CallBack_Flag]
+@@ -804,6 +807,7 @@
+ ; request, then it could free the 2nd node before it was used.
+ 
+ 01      TEQP    PC, #SVC_mode+I_bit             ; ints off while head updated
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         MOV     r2, #0
+         LDR     r2, [r2, #CallBack_Vector]
+         TEQ     r2, #0
+@@ -814,6 +818,7 @@
+         STR     r10, [r0, #CallBack_Vector-HeapReason_Free] ; Keep head valid
+ 
+         TEQP    PC, #SVC_mode                   ; enable ints for long bits
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         LDR     r1, =SysHeapStart
+         SWI     XOS_Heap
+ 
+@@ -871,6 +876,7 @@
+ SWIWriteC ROUT
+ 
+         TEQP    pc, #SVC_mode           ; enable interrupts
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+ 
+         BIC     lr, lr, #V_bit          ; clear caller's V cos we didn't before
+         Push    lr
+@@ -1200,6 +1206,7 @@
+         ORR     r14, lr, #SVC_mode
+         BIC     r14, r14, #I_bit        ; Enable IRQs
+         TEQP    r14, #0
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         BL      CallVector
+ 
+ ; So the vectored routine can update the pushed link CCodes if wanted
+@@ -1221,6 +1228,7 @@
+         MOV     r10, r11                ; SWI number from R11->R10
+         ORR     r14, lr, #SVC_mode+I_bit ; Disable IRQ
+         TEQP    r14, #0
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         BL      CallVector
+         Pull    lr                      ; Punter lr has VClear
+         BIC     lr, lr, #C_bit          ; Copy C,V to punter lr
+--- a/Kernel/s/MEMC1
++++ b/Kernel/s/MEMC1
+@@ -224,6 +224,7 @@
+         AND     r10, r0, r1
+         MOV     r12, #0
+         TEQP    pc, #SVC_mode+I_bit+F_bit
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         LDR     r0, [r12, #MEMC_CR_SoftCopy] ; return old value
+         BIC     r11, r0, r1
+         ORR     r11, r11, R10
+@@ -233,6 +234,7 @@
+         STR     r11, [r12, #MEMC_CR_SoftCopy]
+         STR     r11, [r11]
+         TEQP    pc, #SVC_mode+I_bit
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         ExitSWIHandler
+ 
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+--- a/Kernel/s/Middle
++++ b/Kernel/s/Middle
+@@ -150,6 +150,7 @@
+ SCTRL   Push    "R0-R3, lr"
+ 
+         TEQP    PC, #SVC_mode+I_bit ; need IRQs off to get consistent state
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         MOV     R0, #EventHandler
+         MOV     R1, R3
+         BL      CallCESWI
+@@ -181,6 +182,7 @@
+ 
+ SSTENV  Push    "R0, R1, lr"
+         TEQP    PC, #SVC_mode+I_bit     ; no irqs - want consistent set.
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         MOV     R0, #AddressExceptionHandler
+         MOV     R1, R7
+         SWI     XOS_ChangeEnvironment
+@@ -261,9 +263,11 @@
+         MOV     r0, r12
+         LDMFD   sp, {r10-r12}           ; Not banked if IRQ mode
+         TEQP    pc, R14                 ; get at registers
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         NOP
+         STMIA   r0, {r1-r14}
+         TEQP    pc, #SVC_mode
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         B       %BT10
+ 
+ 
+@@ -289,6 +293,7 @@
+ SSETCALL ROUT
+ 
+         TEQP    pc, #SVC_mode+I_bit
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         MOV     r10, #0
+         LDRB    r11, [r10, #CallBack_Flag]
+         ORR     r11, r11, #CBack_OldStyle
+@@ -304,6 +309,7 @@
+ VecMouse
+      MOV   R10, #MouseV
+      TEQP  PC, #SVC_mode+I_bit ; no irqs
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+      Push "lr"
+      BL    CallVector
+      Pull "lr"
+@@ -382,6 +388,7 @@
+ NOCALL  MOV     r0, #0                  ; default callback routine
+         LDR     r14, [r0, #CallBf]
+         LDMIA   r14, {r0-r12, r13_usr, r14_usr}^ ; load user's regs
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         NOP
+         LDR     r14, [r14, #4*15]
+         MOVS    pc, r14
+@@ -460,6 +467,7 @@
+ DEFBRK
+       [ International
+         TEQP    pc, #0
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         MOV     r0, r0
+         MOV     r13, #0
+         LDR     r13, [r13, #BrkBf]
+@@ -590,9 +598,11 @@
+         ORR     R1, R1, #I_bit :OR: F_bit
+                                  ; keep interrupts off until handlers restored
+         TEQP    R1, #0                  ; get at registers
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         NOP
+         STMIA   R0, {R8-R14}
+         TEQP    PC, #SVC_mode :OR: I_bit :OR: F_bit
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         AND     R1, R1, #SVC_mode
+         EORS    R2, R1, #FIQ_mode       ; Was we in FIQ ? Zero if so
+         MOVEQ   R3, #IOC
+@@ -660,6 +670,7 @@
+       ]
+ 
+         TEQP    PC, #IRQ_mode+I_bit
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         MOV     R1, #0
+         STR     R1, [R1, #IRQsema]
+         LDR     SPIRQ, =IRQSTK
+@@ -681,6 +692,7 @@
+ 
+ UNDEF ROUT
+         TEQP    pc, #F_bit :OR: I_bit :OR: SVC_mode ; FIQ off too
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         STR     R14, [R0, -R0]
+         MOV     R14, #0
+         LDR     R14, [R14, #ExceptionDump]
+@@ -696,6 +708,7 @@
+ 
+ ABORTP ROUT
+         TEQP    pc, #F_bit :OR: I_bit :OR: SVC_mode ; FIQ off too
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         STR     R14, [R0, -R0]
+         MOV     R14, #0
+         LDR     R14, [R14, #ExceptionDump]
+@@ -712,6 +725,7 @@
+ 
+ ABORTD ROUT
+         TEQP    pc, #F_bit :OR: I_bit :OR: SVC_mode ; FIQ off too
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         STR     R14, [R0, -R0]
+         MOV     R14, #0
+         LDR     R14, [R14, #ExceptionDump]
+@@ -728,6 +742,7 @@
+ 
+ ADDREX ROUT
+         TEQP    pc, #F_bit :OR: I_bit :OR: SVC_mode ; FIQ off too
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         STR     R14, [R0, -R0]
+         MOV     R14, #0
+         LDR     R14, [R14, #ExceptionDump]
+@@ -787,6 +802,7 @@
+         Push    lr                  ; better have one of these to pull later !
+         AND     r10, lr, #&F0000000 ; copy user flags (I_bit clear)
+         TEQP    r10, #SVC_mode      ; ints on, stay in SVC mode, flags in psr
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         MOV     r10, #UpCallV
+         BL      CallVector
+         Pull    lr
+@@ -812,6 +828,7 @@
+ 
+ AdjustOurSet
+         TEQP    PC, #SVC_mode+I_bit
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         CMP     R0, #MaxEnvNumber
+         BHI     AOS_Silly
+ 
+--- a/Kernel/s/ModHand
++++ b/Kernel/s/ModHand
+@@ -559,6 +559,7 @@
+ 
+ Module_Run      ROUT
+        TEQP     PC, #SVC_mode               ; interrupts on
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+        Push    "R9, lr"
+        BL       Load_Module
+        BVS      LoadFailed
+@@ -589,6 +590,7 @@
+        LDR      stack, =SVCSTK
+        MOV      R0, R10
+        TEQP     pc, #0
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+        MOV      r0, r0                      ; NOP because we've changed mode
+ 
+        TST      R11, #ARM_CC_Mask           ; check for B startit, etc.
+@@ -605,6 +607,7 @@
+ 
+ Module_Load     ROUT
+         TEQP    PC, #SVC_mode               ; interrupts on
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         Push    "R9, lr"
+         BL      Load_Module
+         Pull    "R9, lr"
+@@ -718,6 +721,7 @@
+          Push   "R0-R6, R9, lr"
+ 
+          TEQP    PC, #SVC_mode
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+ 
+          MOV     r0, #0
+          LDR     r0, [r0, #Curr_Active_Object]
+@@ -1060,6 +1064,7 @@
+ 
+ Module_Clear KernelEntry "r0-r3"
+         TEQP    pc, #SVC_mode                           ; interrupts on
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         MOV     r3, #0                                  ; position in chain
+ 
+ ; now find entry in chain to kill : one with successor = R3
+@@ -1103,6 +1108,7 @@
+ Module_AddArea   ROUT
+          Push   "R9, lr"
+          TEQP    PC, #SVC_mode               ; interrupts on
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+          ADRL    R10, crstring               ; null environment
+          BL      ModuleIn_CheckForDuplicate  ; altentry to Load_Module
+          Pull   "R9, lr"
+@@ -1117,6 +1123,7 @@
+ Module_CopyArea  ROUT
+          Push   "R0-R5, R9, lr"
+          TEQP    PC, #SVC_mode
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+ 
+   ; R1 address, R2 size
+          BL      CheckHeader
+@@ -1170,6 +1177,7 @@
+ 
+ Module_GetNames  ROUT
+          TEQP    PC, #SVC_mode               ; interrupts on
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+          MOV     R11, R1
+          MOV     R12, R2
+          MOV     R10, #Module_List
+@@ -1237,6 +1245,7 @@
+ Module_NewIncarnation ROUT
+          Push   "R0-R4, R9, lr"
+          TEQP    PC, #SVC_mode
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+          BL      LookUp_Module
+          BEQ     CheckTheROM
+          CMP     R12, #0
+@@ -1375,6 +1384,7 @@
+ 
+ Module_AddPoduleModule KernelEntry
+         TEQP    pc, #SVC_mode                   ; interrupts on
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         BL      APMEntry
+         PullEnv
+         B       SLVK_TestV
+@@ -2258,6 +2268,7 @@
+ lookup_commoned ROUT
+        BIC      lr, lr, #I_bit
+        TEQP     PC, #SVC_mode
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+        Push    "lr"
+        BL       LookUp_Module               ; node ptr in R0
+        BEQ      %FT01                       ; not found
+@@ -2324,6 +2335,7 @@
+ LookUp_Module ROUT
+          Push   "R4, R5, lr"
+          TEQP    PC, #SVC_mode               ; interrupts on
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+          LDR     R2, =Module_List
+ 01       LDR     R0, [R2, #Module_chain_Link]
+          CMP     R0, #0
+@@ -2416,6 +2428,7 @@
+         CMP     r2, #0
+         MOV     r2, #Z_bit
+         TEQP    r2, pc                          ; invert EQ/NE
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         CMPEQ   r7, #"."                        ; success if abbreviation
+         EXIT    NE
+         CMP     r5, #" "                        ; reject abbreviation
+@@ -2426,6 +2439,7 @@
+         CMP     r2, #0                          ; reject 0-length match
+         MOV     r2, #Z_bit
+         TEQP    r2, pc                          ; invert EQ/NE
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         STREQ   r1, [stack]                     ; r1 -> terminator
+         EXIT                                    ; return with success
+ 
+--- a/Kernel/s/MoreSWIs
++++ b/Kernel/s/MoreSWIs
+@@ -27,6 +27,7 @@
+ XOS_SubstituteArgs_code ROUT
+ 
+       TEQP    PC, #SVC_mode     ; enable IRQs
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+ 
+       Push   "R0-R8, lr"
+       BIC     r0, r0, #&80000000
+@@ -200,6 +201,7 @@
+ ;              r12 is the special token pointer
+ 
+           TEQP    PC, #SVC_mode
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+ 
+           Push   "r0-r9, lr"
+ 
+@@ -408,6 +410,7 @@
+ RdArgs_SWICode ROUT
+ 
+       TEQP    PC, #SVC_mode
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+ 
+       Push   "R4, R8, R9, lr"
+       MOV     R10, R2             ; R10 points at next available word
+@@ -701,6 +704,7 @@
+ 13    STR     R1, [stack, #4]
+       MVN     R0, #V_bit
+       TSTP    R0, PC              ; clrV (just)
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+       Pull   "R0-R3, R5-R6, PC"   ; back with success
+ 
+ CheckR2OKChar ROUT
+@@ -848,6 +852,7 @@
+       Pull   "r0, r1"
+       MOV     r10, #0
+       TEQP    PC, #SVC_mode+I_bit       ; IRQs off while holding context.
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+       LDR     r3, [r10, #CallBack_Vector]
+  [ True
+       STR     r3, [r2, #0]
+@@ -888,6 +893,7 @@
+         MOV     r10, PC                 ; save old I bit
+ 10
+         TEQP    PC, #SVC_mode+I_bit     ; disable IRQs while looking at list
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         MOV     r11, #0
+         LDR     r2, [r11, #CallBack_Vector]! ; r11 -> prev, r2 -> this
+ 20
+@@ -904,6 +910,7 @@
+ 
+         STR     r3, [r11]               ; prev.link := next
+         TEQP    r10, #0                 ; safe now to restore IRQ status
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+ 
+         Push    "r0, r1, lr"            ; now free this node
+         BL      FreeSysHeapNode         ; and then start again (NB we must
+@@ -934,6 +941,7 @@
+ confirm_scale   DCD 1,1,1,1             ; Scaling factor for sprite op
+ Confirm_Code ROUT
+         TEQP    pc, #SVC_mode           ; enable IRQs
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         Push   "r0-r7, lr"
+ 
+ ; Lookup the symbols for Y/N
+@@ -1068,6 +1076,7 @@
+ 
+         [ {TRUE}
+         TEQP    pc, #SVC_mode           ; Could take a long time
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+ 
+         Push    "r3, r14"
+         TEQ     r3, #0                  ; is increment 0? - if so, it's silly
+--- a/Kernel/s/MsgCode
++++ b/Kernel/s/MsgCode
+@@ -52,6 +52,7 @@
+  [ {TRUE}
+         ORR     LR, LR, #SVC_mode               ; SVC mode, preserve IRQ state
+         TEQP    PC, LR
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+  |
+         TEQP    PC,#SVC_mode
+  ]
+@@ -79,6 +80,7 @@
+         Pull    "R0-R7,LR"                      ; Exit with new block and V set.
+ 
+         TEQP    PC,R8                           ; Back to original mode.
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         MOV     R0,R0
+         Pull    "R8,LR"
+         ORRS    PC,R14,#V_bit                   ; original R0.
+--- a/Kernel/s/NewIRQs
++++ b/Kernel/s/NewIRQs
+@@ -86,12 +86,15 @@
+ 
+         Pull     "r0-r3, r11, r12"
+         TEQP     pc, #SVC_mode
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         MOVNV    r0, r0
+         Push     "r10-r12"
+         TEQP     pc, #IRQ_mode
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         MOVNV    r0, r0
+         Pull     "r12"                  ; lr really
+         TEQP     pc, #SVC_mode
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         MOVNV    r0, r0
+         MOV      lr, r12
+         MOV      r10, #0
+@@ -700,6 +703,7 @@
+         LDR     r1, =DefaultIRQ1V-DefaultIRQ1Vcode+Devices
+         ADD     r1, r1, r0, LSL #2
+         TEQP    pc, #SVC_mode+I_bit     ; IRQs off for update
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         LDMIA   r1, {r0, r3, r10}
+         STMIA   r2, {r0, r3, r10}       ; copy current head into node
+         LDR     r10, [sp, #4*2]         ; r12 value
+@@ -739,6 +743,7 @@
+         LDREQ   r0, =PIRQ_Chain
+         LDRNE   r0, =PFIQasIRQ_Chain
+         TEQP    pc, #SVC_mode+I_bit     ; IRQs off for update
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         LDR     r1, [r0]
+         STR     r1, [r10, #PodDesp_Link]
+         STR     r10, [r0]
+@@ -760,6 +765,7 @@
+         BGE     DV_Fail_NaffDevNo
+ 
+         TEQP    pc, #SVC_mode + I_bit   ; IRQs off while holding context
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         CMP     r0, #Podule_DevNo
+         CMPNE   r0, #PFIQasIRQ_DevNo
+         BEQ     PoduleChainRelease
+@@ -945,10 +951,12 @@
+  ]
+         MOV     lr, pc
+         TEQP    pc, #IRQ_mode+I_bit+F_bit
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         LDRB    r12, [r0]       ; FIQs off for updating IOCIRQMSKA
+         BIC     r12, r12, r1
+         STRB    r12, [r0]       ; relevant IRQ disabled
+         TEQP    lr, #0          ; absolute minimum FIQ disable period
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+ 
+         STRB    r1, [r0, #IOCIRQCLRA-IOCIRQMSKA] ; Clear IRQ
+         Pull    pc,,^           ; claim vector
+@@ -963,6 +971,7 @@
+ 
+         Push    lr
+         TEQP    pc, #SVC_mode+I_bit     ; Disable IRQs. MUST call these ones
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         BL      OSEVEN                  ; in SVC mode as people expect it
+         Pull    lr
+         B       SLVK
+--- a/Kernel/s/NewReset
++++ b/Kernel/s/NewReset
+@@ -632,6 +632,7 @@
+ 
+  |
+         TEQP    pc, #IRQ_mode + I_bit   ; set up IRQ stack
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         NOP
+         LDR     sp_irq, =IRQSTK
+ 
+@@ -641,6 +642,7 @@
+         STR     R0, [R1, #&18]          ; but hopefully by the same value!
+ 
+         TEQP    pc, #SVC_mode           ; Enable interrupts, back to supervisor mode
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         NOP
+  ]
+ 
+@@ -1740,6 +1742,7 @@
+ 
+ ResetPart1Done                          ; R0 is reset type
+         TEQP    PC, #SVC_mode + I_bit   ; interrupts off since kbd bash done
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         LDR     R1, =OsbyteVars + :INDEX: LastBREAK
+         STRB    R0, [R1]
+ 
+@@ -1819,6 +1822,7 @@
+         BL      OscliInit               ; before initialising modules
+ 
+         TEQP    pc, #SVC_mode           ; enable IRQs
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         NOP
+ 
+         BL      InitialiseMode          ; select correct screen mode, in case any
+@@ -1864,6 +1868,7 @@
+ ; Go into user mode, issue a dummy SWI, then go back into SVC mode
+ 
+         TEQP    PC, #0                  ; enter USR mode (IRQs, FIQs enabled)
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         NOP                             ; wait for it to take effect
+         SWI     XOS_WriteI+0            ; I hope it doesn't generate an error
+                                         ; otherwise the callback will get deferred!
+--- a/Kernel/s/Oscli
++++ b/Kernel/s/Oscli
+@@ -474,6 +474,7 @@
+          ADRL      R1, SysCommsModule
+          MOV       R2, #SCHCTab-SysCommsModule
+          TEQP      PC, #C_bit :OR: SVC_mode     ; carry set means sys module
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+          BL        ModCommsLookUp
+          BCS       OscliExit
+ 
+@@ -494,6 +495,7 @@
+          LDR       R12, [R11, #Module_incarnation_list] ; preferred life
+          ADD       R12, R12, #Incarnation_Workspace
+          TEQP      PC, #SVC_mode              ; clear C
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+          BL        ModCommsLookUp
+          BCC       %BT74
+          ADD       stack, stack, #4           ; discard R2
+@@ -513,6 +515,7 @@
+          BEQ       SecondaryFSCTab
+          ORR       R2, R2, #&80000000            ; FS command needed flag
+          TEQP      PC, #SVC_mode                 ; clear C
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+          BL        ModCommsLookUp
+          BCC       SecondaryFSCTab
+          B         OscliExit
+@@ -531,6 +534,7 @@
+          BEQ       NoFSCommands
+          ORR       R2, R2, #&80000000            ; FS command needed flag
+          TEQP      PC, #SVC_mode                 ; clear C
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+          BL        ModCommsLookUp
+          BCC       NoFSCommands
+          B         OscliExit
+--- a/Kernel/s/PMF/Buffer
++++ b/Kernel/s/PMF/Buffer
+@@ -165,6 +165,7 @@
+         Push    "R3-R5"
+ 
+         TEQP    R14, #0                 ; restore V and C
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+ 
+         MOV     R3, R1, LSL #2
+ 
+--- a/Kernel/s/PMF/i2cutils
++++ b/Kernel/s/PMF/i2cutils
+@@ -135,6 +135,7 @@
+         MOV     R1,PC
+         ORR     R1,R1,#I_bit
+         TEQP    PC,R1
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+  ]
+         MOV     R1, #1                  ; Clock hi
+         BL      SetC1C0
+@@ -212,6 +213,7 @@
+         Push    "R1"
+         ORR     R1,R1,#I_bit
+         TEQP    PC,R1
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+  ]
+         MOV     R0, #1                  ; clock HI, data HI
+         MOV     R1, #1
+@@ -229,6 +231,7 @@
+  [ {TRUE}
+         Pull    "R1"
+         TEQP    PC,R1
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+  ]
+ 
+         TST     R2, #1                  ; should be LO for correct acknowledge
+@@ -236,6 +239,7 @@
+         BICEQ   R2, R2, #V_bit          ; clear V if correct acknowledge
+         ORRNE   R2, R2, #V_bit          ; set V if no acknowledge
+         TEQP    R2, #0
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+ 
+         Pull    "R0-R2,PC"
+ 
+@@ -308,6 +312,7 @@
+         Push    "R1"
+         ORR     R1,R1,#I_bit
+         TEQP    PC,R1
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+  ]
+         MOV     R0, #1                  ; pulse clock HI
+         MOV     R1, #1
+@@ -324,6 +329,7 @@
+  [ {TRUE}
+         Pull    "R1"
+         TEQP    PC,R1
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+  ]
+         SUBS    R4, R4, #1
+         BCS     %BT10
+--- a/Kernel/s/PMF/key
++++ b/Kernel/s/PMF/key
+@@ -70,6 +70,7 @@
+ 
+         [ AssemblingArthur
+         TEQP PC,#I_bit :OR: SVC_mode
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         |
+         SWI     OS_IntOff
+         SWI     OS_EnterOS
+@@ -192,11 +193,13 @@
+         Push    "r10-r12,lr"
+         MOV     r11, pc                 ; Save current PSR.
+         TEQP    pc, #SVC_mode + I_bit   ; Call KEYV in SVC mode, no IRQs.
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         MOV     r10, #KEYV
+         Push    "lr"                    ; Save SVC lr.
+         BL      CallVector
+         Pull    "lr"                    ; Restore SVC lr.
+         TEQP    r11, #0                 ; Go back to old mode.
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         NOP
+         Pull    "r10-r12,pc"
+  |
+@@ -626,6 +629,7 @@
+ ; offer the pre-reset service
+ 
+         TEQP    PC, #ARM_CC_Mask                ; set FI bits, SVC mode
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+ 
+ ; Ensure any CMOS operation aborted
+ 
+@@ -639,6 +643,7 @@
+         IssueService
+ 
+         TEQP    PC, #ARM_CC_Mask                ; set FI bits, SVC mode
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+                                                 ; just in case!
+         B       CONT_Break
+         |
+@@ -840,6 +845,7 @@
+ ; Enable interrupts so that keyboard can work properly
+ 
+         TEQP    pc, #SVC_mode
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+ 
+  [ redirectinkey
+         MOV     r1, #0
+@@ -1392,6 +1398,7 @@
+         MOV     R11, PC
+         TST     R11, #I_bit
+         TEQEQP  R11, #I_bit             ; disable IRQs
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+ 
+         MOV     R11, #KeyWorkSpace
+         TEQ     R0, #1                  ; asking for keyboard id ?
+--- a/Kernel/s/PMF/mouse
++++ b/Kernel/s/PMF/mouse
+@@ -351,11 +351,13 @@
+         MOV     r3, #0
+         MOV     r9, pc                  ; Save current PSR.
+         TEQP    pc, #SVC_mode + I_bit   ; Call PointerV in SVC mode, no IRQs.
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         MOV     r10, #PointerV          ; Call PointerV to get movements & button states
+         Push    "lr"                    ; Save SVC lr.
+         BL      CallVector
+         Pull    "lr"                    ; Restore SVC lr.
+         TEQP    r9, #0
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         NOP
+ 
+         BL      ProcessMouseXY
+--- a/Kernel/s/PMF/osbyte
++++ b/Kernel/s/PMF/osbyte
+@@ -349,7 +349,9 @@
+ 10
+         MVN     R3, #I_bit
+         TSTP    R3, PC                  ; CLI
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         TEQP    R14, #0                 ; restore old I
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+ 
+         MOV     R3, #0
+         LDRB    R3, [R3, #ESC_Status]
+@@ -660,7 +662,9 @@
+         LDRB    R0, CFStime
+ 10
+         TEQP    R14, #I_bit             ; CLI
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         TEQP    R14, #0                 ; SEI
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         LDRB    R1, CFStime
+         TEQ     R1, R0
+         BEQ     %BT10
+@@ -959,12 +963,14 @@
+         MOV     R11, PC                         ; Preserve old processor state
+         ORR     R12, R11, #SVC_mode             ; Switch to SVC mode preserving IRQ_bit
+         TEQP    R12, #0
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         NOP
+         Push    R14                             ; Preserve SVC_R14
+         SWI     XOS_SetCallBack
+         ORRVS   R11, R11, #V_bit                ; Preserve V_bit
+         Pull    R14                             ; Restore SVC_R14
+         TEQP    R11, #0                         ; Switch back to original mode, with V_bit intact from SWI
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         NOP
+ 
+         Pull    "R11, PC"
+--- a/Kernel/s/PMF/oseven
++++ b/Kernel/s/PMF/oseven
+@@ -242,7 +242,9 @@
+         MVN     R2, #I_bit              ; mask to clear I_bit
+         MOV     R14, PC
+         TSTP    R2, PC                  ; CLI
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         TEQP    PC, R14                 ; restore I
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         B       %BT10
+ 
+ ; *****************************************************************************
+--- a/Kernel/s/PMF/osinit
++++ b/Kernel/s/PMF/osinit
+@@ -367,6 +367,7 @@
+         MOV     R14, PC
+         ORR     R2, R14, #I_bit
+         TEQP    R2, #0                  ; disable IRQ
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+ 
+         MOV     R2, #0
+         LDRB    R3, [R2, #LatchBSoftCopy]
+@@ -380,6 +381,7 @@
+  ]
+ 
+         TEQP    R14, #0
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         Pull    "R2, R3, PC"
+ 
+ 
+@@ -895,6 +897,7 @@
+         EXIT    EQ
+ 
+         TEQP    pc, #SVC_mode + I_bit + F_bit   ; Disable FIQ and IRQ
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         LDR     r0, =CnTbase            ; R0-> 82C710 base address
+ 
+ ; First try to configure 82C711 or SMC665
+@@ -974,6 +977,7 @@
+         STRB    lr, [r0, #IOSystemType]
+ 
+         TEQP    pc, #SVC_mode + I_bit   ; Restore IRQ/FIQ state
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         EXIT
+  ]
+ 
+--- a/Kernel/s/SWINaming
++++ b/Kernel/s/SWINaming
+@@ -36,6 +36,7 @@
+ 
+ SWINumberToString_Code    ROUT
+         TEQP    pc, #SVC_mode           ; interrupts on!
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         MOV     r12, lr                 ; keep here so subroutines can update flags
+         Push    "r3, r9"
+         MOV     r9, r0                  ; r0 to pass back
+@@ -452,6 +453,7 @@
+ SWINumberFromString_Code KernelEntry "r1,r2"
+ 
+         TEQP    pc, #SVC_mode                   ; enable interrupts
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         LDRB    R10, [R1]
+         CMP     R10, #"X"
+         MOVEQ   R0, #Auto_Error_SWI_bit
+--- a/Kernel/s/Super1
++++ b/Kernel/s/Super1
+@@ -48,6 +48,7 @@
+ CLIEXIT BL      DEFHN2                  ; restore all our world
+ 
+ GOSUPV  TEQP    PC, #0
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         BL      DEFHAN                  ; including error handler!
+ 
+ CLILOP ROUT
+@@ -88,6 +89,7 @@
+         =       "Escape:Escape",10,13,0
+         ALIGN
+         TEQP    PC,#0                   ; Back to user mode.
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         MOV     R0,R0
+       |
+         SWI     OS_WriteS
+--- a/Kernel/s/SysComms
++++ b/Kernel/s/SysComms
+@@ -195,6 +195,7 @@
+         TST       R1, #5
+         SWIEQ     XOS_WriteI+15  ; paged mode off
+         TEQP      PC, r6         ; restore V state
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         MOVNV     r0, r0
+         Pull     "r7, PC"
+ 
+--- a/Kernel/s/TickEvents
++++ b/Kernel/s/TickEvents
+@@ -110,6 +110,7 @@
+         MOV     r10, pc
+         ORR     r10, r10, #I_bit
+         TEQP    r10, #0
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         LDR     r10, =TickNodeChain
+ 01
+         MOV     r11, r10
+@@ -150,6 +151,7 @@
+         Push    "lr"                            ; save IRQ_lr
+  [ TickIrqReenter
+         TEQP    pc, #SVC_mode+I_bit             ; switch to SVC mode, IRQ's off
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         NOP
+         Push    "lr"                            ; save SVC_lr
+  ]
+@@ -169,11 +171,13 @@
+ 
+  [ TickIrqReenter
+         TEQP    pc, #SVC_mode                   ; IRQ's ON for the  S L O W  bit
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         MOV     r2, r1                          ; R2->node to free
+         LDR     r1, =SysHeapStart
+         MOV     r0, #HeapReason_Free
+         SWI     XOS_Heap
+         TEQP    pc, #SVC_mode+I_bit             ; IRQ's off again
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+ 
+ ; Check for more events down the list
+ 10
+@@ -187,6 +191,7 @@
+ 02
+         Pull    "lr"                            ; restore SVC_lr
+         TEQP    pc, #IRQ_mode+I_bit             ; back to IRQ mode
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         NOP
+         Pull    "pc"                            ; pull IRQ_lr from IRQ stack
+  |
+@@ -212,6 +217,7 @@
+ RemoveTickerEvent_Code
+ ; R0 is address of code to remove, R1 the R12 value
+         TEQP    pc, #SVC_mode+I_bit
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         LDR     r10, =TickNodeChain
+ 01
+         LDR     r11, [r10]
+--- a/Kernel/s/vdu/vducursoft
++++ b/Kernel/s/vdu/vducursoft
+@@ -97,6 +97,7 @@
+         MOVCSS  PC, R14                         ; already off, so exit
+                                                 ; (restoring I_bit)
+         TEQP    R14, #0                         ; restore old I_bit
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+ 
+         LDR     R2, [WsPtr, #CursorAddr]        ; point to output
+         TST     R6, #CursorsSplit
+--- a/Kernel/s/vdu/vdudriver
++++ b/Kernel/s/vdu/vdudriver
+@@ -2740,6 +2740,7 @@
+ 
+ SetCol90
+         TEQP    R7, #SVC_mode                   ; put bits into N, Z, C, V
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+                                                 ;              OO,EO,OE,EE
+ 
+         MOVCC   R10, R5                         ; if ORing with &00000000
+--- a/Kernel/s/vdu/vdugrafg
++++ b/Kernel/s/vdu/vdugrafg
+@@ -364,6 +364,7 @@
+ SpriteVecHandler
+         Push    "R10-R12"
+         TEQP    PC, #SVC_mode           ; Re-enable interupts
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+ 
+         VDWS    WsPtr                   ; Point R12 at Vdu driver workspace
+         ADD     R11, WsPtr, #RetnReg0
+--- a/Kernel/s/vdu/vdupal10
++++ b/Kernel/s/vdu/vdupal10
+@@ -585,8 +585,10 @@
+         MOV     r0, pc
+         ORR     lr, r0, #I_bit          ; disable IRQs so we don't get a flash in the middle
+         TEQP    lr, #0
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         BL      UpdateAllPalette        ; update all palette, including border + pointer
+         TEQP    r0, #0                  ; restore old IRQ state
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+ 99
+         MOV     r0, r3
+         MOV     r4, #0
+--- a/Kernel/s/vdu/vdupalette
++++ b/Kernel/s/vdu/vdupalette
+@@ -207,11 +207,13 @@
+ SetFlashState
+         MOV     r0, pc
+         TEQP    pc, #SVC_mode + I_bit
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         NOP
+         Push    "lr"
+         BL      CallPaletteV
+         Pull    "lr"
+         TEQP    r0, #0
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         NOP
+         EXITS
+ 
+--- a/Kernel/s/vdu/vduplot
++++ b/Kernel/s/vdu/vduplot
+@@ -1198,6 +1198,7 @@
+ 
+ SwiReadPoint ROUT
+         TEQP    PC, #SVC_mode           ; re-enable interrupts
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         VDWS    WsPtr                   ; point R12 at vdu driver workspace
+ 
+       [ {TRUE}
+--- a/Kernel/s/vdu/vdupointer
++++ b/Kernel/s/vdu/vdupointer
+@@ -286,6 +286,7 @@
+         MOV     R14, PC
+         ORR     R0, R14, #I_bit
+         TEQP    R0, #0
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+ 
+         Push    R11
+         MOV     R11, #KeyWorkSpace
+--- a/Kernel/s/vdu/vduswis
++++ b/Kernel/s/vdu/vduswis
+@@ -1008,6 +1008,7 @@
+         MOV     R11, PC                 ; disable IRQs, so can be called from
+         TST     R11, #I_bit             ; an IRQ routine
+         TEQEQP  R11, #I_bit
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+ 
+         VDWS    WsPtr
+         TEQ     R0, #0                  ; 0 => release
+@@ -1168,6 +1169,7 @@
+ SWIWriteN ROUT
+         Push    "R0,R1,R14"
+         TEQP    PC, #SVC_mode               ; enable interrupts
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+ 
+         BranchNotJustUsWrch %F70
+ 
+@@ -1225,6 +1227,7 @@
+ SWIWrite0 ROUT
+         Push    "R14"
+         TEQP    PC, #SVC_mode                   ; enable interrupts
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+ 
+         MOV     R10, R0                         ; R10 -> string
+ 
+@@ -1274,6 +1277,7 @@
+ SWIWriteS ROUT
+         Push    "R0, R14"
+         TEQP    PC, #SVC_mode                   ; enable interrupts
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+ 
+         BIC     R10, R14, #ARM_CC_Mask          ; R10 -> string
+ 
+@@ -1483,6 +1487,7 @@
+ 
+         STR     R0, [R1]                ; then store R0 in ClipBoxEnable
+         TEQP    PC, #SVC_mode + I_bit   ; disable IRQs to update CursorFlags
++        MOV     r0, r0 ; Modified 2026: ARM2 bank-select settling; preserves registers/flags.
+         TST     R0, #1
+         LDR     R0, [WsPtr, #CursorFlags]
+         BICEQ   R0, R0, #ClipBoxEnableBit

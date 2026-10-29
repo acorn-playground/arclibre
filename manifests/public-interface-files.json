@@ -1,0 +1,72 @@
+[
+  {
+    "component": "PublicInterfaces",
+    "revision": "403c6dd8bce92d0629634cbf57f68f43b2f30d38",
+    "path": "CMOS",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Programmer/HdrSrc.git",
+    "sha256": "3f6871f1bfc24a6b48bb09c832b60b208293a228f575373adcd5cabe24c3ebc9"
+  },
+  {
+    "component": "PublicInterfaces",
+    "revision": "403c6dd8bce92d0629634cbf57f68f43b2f30d38",
+    "path": "DevNos",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Programmer/HdrSrc.git",
+    "sha256": "6427b89acc6faa0fd04a63fb1a9a337dbd7a05d7be39f366b009424ae86e4698"
+  },
+  {
+    "component": "PublicInterfaces",
+    "revision": "403c6dd8bce92d0629634cbf57f68f43b2f30d38",
+    "path": "FSNumbers",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Programmer/HdrSrc.git",
+    "sha256": "ba979eddcd9f758d5ee74420bae97e2a6dfad5007e7397dfaf4b1b81c5af7cbf"
+  },
+  {
+    "component": "PublicInterfaces",
+    "revision": "403c6dd8bce92d0629634cbf57f68f43b2f30d38",
+    "path": "LICENSE",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Programmer/HdrSrc.git",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+  },
+  {
+    "component": "PublicInterfaces",
+    "revision": "403c6dd8bce92d0629634cbf57f68f43b2f30d38",
+    "path": "NewErrors",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Programmer/HdrSrc.git",
+    "sha256": "b2bb808aed77f3ed7fa56fb06d6a3c7a5fe646f0d89997a1181950dcdbcbfb28"
+  },
+  {
+    "component": "PublicInterfaces",
+    "revision": "403c6dd8bce92d0629634cbf57f68f43b2f30d38",
+    "path": "PaletteV",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Programmer/HdrSrc.git",
+    "sha256": "4223492a81c02d4487a90d548b3e8315992e9ff22c6d2cdf6e8cdce949c00d34"
+  },
+  {
+    "component": "PublicInterfaces",
+    "revision": "403c6dd8bce92d0629634cbf57f68f43b2f30d38",
+    "path": "Pointer",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Programmer/HdrSrc.git",
+    "sha256": "3e8ee37d4dee5a381ada1fe05c6bb2e26df8b8ade2b5b2e2efbefc1e9170a884"
+  },
+  {
+    "component": "PublicInterfaces",
+    "revision": "403c6dd8bce92d0629634cbf57f68f43b2f30d38",
+    "path": "SWIs",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Programmer/HdrSrc.git",
+    "sha256": "991ab5a51bf52ec9f18ec2ff93b3f9938178db579764f1101fde235ad4d74392"
+  },
+  {
+    "component": "PublicInterfaces",
+    "revision": "403c6dd8bce92d0629634cbf57f68f43b2f30d38",
+    "path": "Services",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Programmer/HdrSrc.git",
+    "sha256": "a69daa1f675c189e2de30af6a1313c50122a784f12d1bf24c325fbcafcf41561"
+  },
+  {
+    "component": "PublicInterfaces",
+    "revision": "403c6dd8bce92d0629634cbf57f68f43b2f30d38",
+    "path": "UpCall",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Programmer/HdrSrc.git",
+    "sha256": "22f8b6896545ad35d730cfdc9267d7438c2e93cbba977335aa74359e0ae8330a"
+  }
+]

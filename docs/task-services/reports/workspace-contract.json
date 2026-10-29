@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "kernel_sha256": "71b0c301ed58f7f60d84899ca80acdef3d6cb9c9f6d82182f441e66676c35c80",
+  "addresses": {
+    "SvcTable": 32519164,
+    "BranchToSWIExit": 32520188,
+    "RedirectInHandle": 2785,
+    "RedirectOutHandle": 2786,
+    "DomainId": 4088,
+    "SVCSTK": 29368320,
+    "SysHeapStart": 29368320
+  }
+}

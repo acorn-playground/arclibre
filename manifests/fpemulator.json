@@ -1,0 +1,235 @@
+{
+  "component": "FPEmulator",
+  "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/FPASC.git",
+  "revision": "827b16098de462b3dadc6caadf62d30ed664c926",
+  "core": "ARM 1.13 BSD-3-Clause vendor import",
+  "module_version": "4.28",
+  "cohort_exception": "Complete public vendor snapshot including its RISC OS veneer; not a reconstructed 3.60 core or a claim of RISC OS 3.11 conformance.",
+  "configuration": {
+    "Flavour": "SoftOnly",
+    "Arm600": false,
+    "ARM2Safe": true,
+    "MultipleContexts": true,
+    "Use64bitMultiply": false,
+    "UseCLZ": false
+  },
+  "files": [
+    {
+      "path": "LICENSE",
+      "original_sha256": "02fd60c8b5af6755120b80be5378bbea4d5684fcb97e7784d74e1a8995205fbb",
+      "sha256": "02fd60c8b5af6755120b80be5378bbea4d5684fcb97e7784d74e1a8995205fbb",
+      "bytes": 13076,
+      "modified": false
+    },
+    {
+      "path": "VersionASM",
+      "original_sha256": "7bcd49da9d6be7abf38c30218c9bc9828e284316f103a1171e672ad84bc735e5",
+      "sha256": "7bcd49da9d6be7abf38c30218c9bc9828e284316f103a1171e672ad84bc735e5",
+      "bytes": 1014,
+      "modified": false
+    },
+    {
+      "path": "VersionNum",
+      "original_sha256": "2a24d03507fcee1f748b6528829b29f28a140b62d8e775ff6f012f84ac4de372",
+      "sha256": "2a24d03507fcee1f748b6528829b29f28a140b62d8e775ff6f012f84ac4de372",
+      "bytes": 807,
+      "modified": false
+    },
+    {
+      "path": "riscos/Makefile",
+      "original_sha256": "09ad6388edb6895760fa85da03493b147bda82f5b193f07f3e39076ab48f460d",
+      "sha256": "09ad6388edb6895760fa85da03493b147bda82f5b193f07f3e39076ab48f460d",
+      "bytes": 2630,
+      "modified": false
+    },
+    {
+      "path": "riscos/s/fpe400",
+      "original_sha256": "9f6c5fbf901f09837130a5ec67767a058c45e9a91f5a1c0535afa86b36b46979",
+      "sha256": "65a2030f35a959bd9348aca2098ffe8ff7603106f366eabcb1fb88106a848844",
+      "bytes": 1800,
+      "modified": true
+    },
+    {
+      "path": "riscos/hdr/FPEmulator",
+      "original_sha256": "0a27813a664349ccb4caa7f2ab94bc63eba6aba71dd7b6644416ac9de89ae62c",
+      "sha256": "0a27813a664349ccb4caa7f2ab94bc63eba6aba71dd7b6644416ac9de89ae62c",
+      "bytes": 1183,
+      "modified": false
+    },
+    {
+      "path": "riscos/Resources/UK/Messages",
+      "original_sha256": "e87101a9e34109811504c282be06add92c55c2d5bfd02ec16c2ff91813737622",
+      "sha256": "e87101a9e34109811504c282be06add92c55c2d5bfd02ec16c2ff91813737622",
+      "bytes": 352,
+      "modified": false
+    },
+    {
+      "path": "coresrc/s/arith",
+      "original_sha256": "daed521323d5461aeb52280644a017a39a4c8ec44c90f34647811d90f519cff7",
+      "sha256": "daed521323d5461aeb52280644a017a39a4c8ec44c90f34647811d90f519cff7",
+      "bytes": 194834,
+      "modified": false
+    },
+    {
+      "path": "coresrc/s/armdefs",
+      "original_sha256": "7220c6cca45c0bbc9a3d47e3ebe59f7c6c2aad4b4a211eb436462ee89dba11b9",
+      "sha256": "7220c6cca45c0bbc9a3d47e3ebe59f7c6c2aad4b4a211eb436462ee89dba11b9",
+      "bytes": 3377,
+      "modified": false
+    },
+    {
+      "path": "coresrc/s/defaults",
+      "original_sha256": "caef3433a4928980180cd6b37bb91a5ec215d40ade36cfac4f52242261fb4878",
+      "sha256": "caef3433a4928980180cd6b37bb91a5ec215d40ade36cfac4f52242261fb4878",
+      "bytes": 2849,
+      "modified": false
+    },
+    {
+      "path": "coresrc/s/fpadefs",
+      "original_sha256": "9e620bb573dd7f44ebfdeb81a99daa8b37787a6fdb90e68d0ef84e59a874f1a6",
+      "sha256": "9e620bb573dd7f44ebfdeb81a99daa8b37787a6fdb90e68d0ef84e59a874f1a6",
+      "bytes": 35566,
+      "modified": false
+    },
+    {
+      "path": "coresrc/s/fpaundef",
+      "original_sha256": "8808c51462c001ce7ca1e7f623a3d9b9f795a4cd9173e5df8cda50aa661b227d",
+      "sha256": "8808c51462c001ce7ca1e7f623a3d9b9f795a4cd9173e5df8cda50aa661b227d",
+      "bytes": 79906,
+      "modified": false
+    },
+    {
+      "path": "coresrc/s/fpeundef",
+      "original_sha256": "45e386b564e8cacbb96c9a27f856fd1fd5b4c2535853a3e3766c2c0affee7832",
+      "sha256": "64202c7bd33db1f1afc4d070276971f453478eeeeff71ec8d45b3a803645bb61",
+      "bytes": 98046,
+      "modified": true
+    },
+    {
+      "path": "coresrc/s/interf",
+      "original_sha256": "8b4ba67526f4228e461086523db42d3efb46d62735011f249180222f9531df9d",
+      "sha256": "5ea9c65d473290c1f1d43bbd975b4e29ec3a43ec7c01e979dfd385dbba0454e3",
+      "bytes": 41816,
+      "modified": true
+    },
+    {
+      "path": "coresrc/s/ldst",
+      "original_sha256": "1b099149d7ef6df6d9d7c07692c7da5d23790826d0b31d2adbd89d17352f4120",
+      "sha256": "1b099149d7ef6df6d9d7c07692c7da5d23790826d0b31d2adbd89d17352f4120",
+      "bytes": 100810,
+      "modified": false
+    },
+    {
+      "path": "coresrc/s/macros",
+      "original_sha256": "87c7865965645fc67502aee83da81ff7dc0017a21276bf33b0f6fe1247c4a34e",
+      "sha256": "87c7865965645fc67502aee83da81ff7dc0017a21276bf33b0f6fe1247c4a34e",
+      "bytes": 36043,
+      "modified": false
+    },
+    {
+      "path": "coresrc/s/main",
+      "original_sha256": "40856df483d500d642090a34439898907bd4c1d11016a7354a9c1df16caf2cf0",
+      "sha256": "40856df483d500d642090a34439898907bd4c1d11016a7354a9c1df16caf2cf0",
+      "bytes": 113662,
+      "modified": false
+    },
+    {
+      "path": "coresrc/s/nans",
+      "original_sha256": "938fbfe799bb3446835f8018f617e5cf378536c216b3b5584a3893003acbf179",
+      "sha256": "938fbfe799bb3446835f8018f617e5cf378536c216b3b5584a3893003acbf179",
+      "bytes": 56738,
+      "modified": false
+    },
+    {
+      "path": "coresrc/s/optcheck",
+      "original_sha256": "0876ade81db18312b10e110ea4b4ecf213699e49f8d7cbe26f6dd5bf1c137650",
+      "sha256": "0876ade81db18312b10e110ea4b4ecf213699e49f8d7cbe26f6dd5bf1c137650",
+      "bytes": 5601,
+      "modified": false
+    },
+    {
+      "path": "coresrc/s/regnames",
+      "original_sha256": "44987d27e6fe05908706635f906224bb04941bd2e64df9335f6c3fe1cf72b012",
+      "sha256": "44987d27e6fe05908706635f906224bb04941bd2e64df9335f6c3fe1cf72b012",
+      "bytes": 4774,
+      "modified": false
+    },
+    {
+      "path": "coresrc/s/rounding",
+      "original_sha256": "e695f5378af42af03b1f45b6136e1bdba6a9eb4297dba46979cb77bcdd8ca924",
+      "sha256": "e695f5378af42af03b1f45b6136e1bdba6a9eb4297dba46979cb77bcdd8ca924",
+      "bytes": 48307,
+      "modified": false
+    },
+    {
+      "path": "coresrc/s/toplevel",
+      "original_sha256": "ca3379266d73fbee5adaa7de3c9e9221287d5086003642f0df49902166ec443d",
+      "sha256": "ca3379266d73fbee5adaa7de3c9e9221287d5086003642f0df49902166ec443d",
+      "bytes": 25739,
+      "modified": false
+    },
+    {
+      "path": "coresrc/s/transhw",
+      "original_sha256": "6c15d04e1a72a6ce82e4bef28181303440efc51e1267319ac2e2f7e7aba028c4",
+      "sha256": "6c15d04e1a72a6ce82e4bef28181303440efc51e1267319ac2e2f7e7aba028c4",
+      "bytes": 104573,
+      "modified": false
+    },
+    {
+      "path": "coresrc/s/wsdefs",
+      "original_sha256": "1c4072991d7005274d9cffb9b356cd38063f73419639c9c6d27982fac3ccce41",
+      "sha256": "1c4072991d7005274d9cffb9b356cd38063f73419639c9c6d27982fac3ccce41",
+      "bytes": 5507,
+      "modified": false
+    },
+    {
+      "path": "vensrc/riscos/FPEMacros",
+      "original_sha256": "0dd173ecb40222776b16fe73463486fae33e0ff79b5bdd6e12a3cfb3b22896e0",
+      "sha256": "0dd173ecb40222776b16fe73463486fae33e0ff79b5bdd6e12a3cfb3b22896e0",
+      "bytes": 1648,
+      "modified": false
+    },
+    {
+      "path": "vensrc/riscos/Version",
+      "original_sha256": "9d60e946b2d0b41fe6a7eda68f8c77ac5844bdcb94dcaa6dd6e1c389353b11e8",
+      "sha256": "9d60e946b2d0b41fe6a7eda68f8c77ac5844bdcb94dcaa6dd6e1c389353b11e8",
+      "bytes": 1444,
+      "modified": false
+    },
+    {
+      "path": "vensrc/riscos/ctxtws",
+      "original_sha256": "39f3f61283ed8dc3ff8ed3530ea7190e3958ac1a48bb430710c7f459d318c13c",
+      "sha256": "39f3f61283ed8dc3ff8ed3530ea7190e3958ac1a48bb430710c7f459d318c13c",
+      "bytes": 310,
+      "modified": false
+    },
+    {
+      "path": "vensrc/riscos/end",
+      "original_sha256": "9e61394bcce8a7bdf1cb2a552fcc447bb585834682b228712942fc2ec941736c",
+      "sha256": "9e61394bcce8a7bdf1cb2a552fcc447bb585834682b228712942fc2ec941736c",
+      "bytes": 19399,
+      "modified": false
+    },
+    {
+      "path": "vensrc/riscos/globalws",
+      "original_sha256": "23a76476a3293582c530d2cac594c572550685d5dc8c83475e26aa334ed0ad40",
+      "sha256": "23a76476a3293582c530d2cac594c572550685d5dc8c83475e26aa334ed0ad40",
+      "bytes": 1330,
+      "modified": false
+    },
+    {
+      "path": "vensrc/riscos/options",
+      "original_sha256": "28d376dbbe5ed38ab806a4da9e21ffb670828243e6ba016cbd9d741b7eeb2ea8",
+      "sha256": "305c15120512866032ae4ebdf9e2d4f8000f2e268716b42e4aee4a8e5242a150",
+      "bytes": 5454,
+      "modified": true
+    },
+    {
+      "path": "vensrc/riscos/start",
+      "original_sha256": "dc621cb1b68b9428bee04d5789a9fa90563b616ae56a39ccb209f8f63b7ca17c",
+      "sha256": "dc621cb1b68b9428bee04d5789a9fa90563b616ae56a39ccb209f8f63b7ca17c",
+      "bytes": 16224,
+      "modified": false
+    }
+  ]
+}

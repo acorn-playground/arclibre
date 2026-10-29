@@ -1,0 +1,11 @@
+--- a/ADFS/s/Consts
++++ b/ADFS/s/Consts
+@@ -61,7 +61,7 @@
+ ; BigDisc - if true then use sector addressing, false use byte
+ 
+ 	GBLL	BigDisc
+-BigDisc	SETL	{TRUE}
++BigDisc	SETL	:LNOT: Top16Write ; original ST506 uses byte addresses
+ 
+  [ BigDisc
+ BigBit * BigDiscSupport

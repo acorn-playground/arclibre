@@ -1,0 +1,12 @@
+--- a/src/RISC_OSLib/c/armsys
++++ b/src/RISC_OSLib/c/armsys
+@@ -50,7 +50,8 @@
+ #define xstr(x) str(x)
+ const char *_clib_version(void)
+ {   return  LIB_SHARED "C Library vsn " xstr(__LIB_VERSION) "/" LIB_APCS
+-            " [" __DATE__ "]\n";
++            /* ArcLibre: identify this build without a host-calendar dependency. */
++            " [ArcLibre]\n";
+ }
+ #undef str
+ #undef xstr

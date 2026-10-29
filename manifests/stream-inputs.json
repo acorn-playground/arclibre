@@ -1,0 +1,380 @@
+[
+  {
+    "component": "DeviceFS",
+    "path": "Doc/Calls",
+    "revision": "1d464cee133c220ff66d2f136284f633fe3f3086",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/DeviceFS.git",
+    "upstream_sha256": "ee32021097a030e6e39220ab8fd4a3896e17a112f2aed0b413c20ab6ff11a965",
+    "sha256": "ee32021097a030e6e39220ab8fd4a3896e17a112f2aed0b413c20ab6ff11a965",
+    "bytes": 8717
+  },
+  {
+    "component": "DeviceFS",
+    "path": "Doc/Changes",
+    "revision": "1d464cee133c220ff66d2f136284f633fe3f3086",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/DeviceFS.git",
+    "upstream_sha256": "3a9ef4286435281a5f6df35026be3c340c24f6aa0bf01571a14f4105d8461429",
+    "sha256": "3a9ef4286435281a5f6df35026be3c340c24f6aa0bf01571a14f4105d8461429",
+    "bytes": 1247
+  },
+  {
+    "component": "DeviceFS",
+    "path": "Doc/DeviceFS",
+    "revision": "1d464cee133c220ff66d2f136284f633fe3f3086",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/DeviceFS.git",
+    "upstream_sha256": "f3f83432f0a9057904c5c802cef76dd57d80b66c7c018d2ac83bb3428e2c55b0",
+    "sha256": "f3f83432f0a9057904c5c802cef76dd57d80b66c7c018d2ac83bb3428e2c55b0",
+    "bytes": 1974
+  },
+  {
+    "component": "DeviceFS",
+    "path": "Doc/SWIs",
+    "revision": "1d464cee133c220ff66d2f136284f633fe3f3086",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/DeviceFS.git",
+    "upstream_sha256": "9975b1c68b6bf470b044e3e30d51212617c32b40a452a9c6c51759b66a048953",
+    "sha256": "9975b1c68b6bf470b044e3e30d51212617c32b40a452a9c6c51759b66a048953",
+    "bytes": 10069
+  },
+  {
+    "component": "DeviceFS",
+    "path": "Doc/Services",
+    "revision": "1d464cee133c220ff66d2f136284f633fe3f3086",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/DeviceFS.git",
+    "upstream_sha256": "0d712963d19fb91d8571ba91a81a7e239de3fe4c331c7dad22e8aced89f58d74",
+    "sha256": "0d712963d19fb91d8571ba91a81a7e239de3fe4c331c7dad22e8aced89f58d74",
+    "bytes": 1695
+  },
+  {
+    "component": "DeviceFS",
+    "path": "Doc/Special",
+    "revision": "1d464cee133c220ff66d2f136284f633fe3f3086",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/DeviceFS.git",
+    "upstream_sha256": "aa3f52c4c0f41b356694c2655d121051690c339b69ecfe56128d17bac44f891b",
+    "sha256": "aa3f52c4c0f41b356694c2655d121051690c339b69ecfe56128d17bac44f891b",
+    "bytes": 2718
+  },
+  {
+    "component": "DeviceFS",
+    "path": "Doc/UpCalls",
+    "revision": "1d464cee133c220ff66d2f136284f633fe3f3086",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/DeviceFS.git",
+    "upstream_sha256": "cf756d44e8818710a44d4eb6245ec8637bac288d444dafc76d08c9f3acc9eaa9",
+    "sha256": "cf756d44e8818710a44d4eb6245ec8637bac288d444dafc76d08c9f3acc9eaa9",
+    "bytes": 926
+  },
+  {
+    "component": "DeviceFS",
+    "path": "Doc/private/Associate",
+    "revision": "1d464cee133c220ff66d2f136284f633fe3f3086",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/DeviceFS.git",
+    "upstream_sha256": "675c8ccdb373c09c34e3699e4dcefbb300bf201ef4ca90c5440f2aa740b9b5a5",
+    "sha256": "675c8ccdb373c09c34e3699e4dcefbb300bf201ef4ca90c5440f2aa740b9b5a5",
+    "bytes": 490
+  },
+  {
+    "component": "DeviceFS",
+    "path": "Doc/private/DevSpec",
+    "revision": "1d464cee133c220ff66d2f136284f633fe3f3086",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/DeviceFS.git",
+    "upstream_sha256": "ccd4350d2987a4c0320ee01ff42b76b5b6002d798243d3d18a087842d9a52e7d",
+    "sha256": "ccd4350d2987a4c0320ee01ff42b76b5b6002d798243d3d18a087842d9a52e7d",
+    "bytes": 15515
+  },
+  {
+    "component": "DeviceFS",
+    "path": "Doc/private/FS_Think",
+    "revision": "1d464cee133c220ff66d2f136284f633fe3f3086",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/DeviceFS.git",
+    "upstream_sha256": "5643fb18a77fcc67f57e837791dd1774676c98bdce65df6afc035b37cc7ab931",
+    "sha256": "5643fb18a77fcc67f57e837791dd1774676c98bdce65df6afc035b37cc7ab931",
+    "bytes": 4566
+  },
+  {
+    "component": "DeviceFS",
+    "path": "Doc/private/Quirks",
+    "revision": "1d464cee133c220ff66d2f136284f633fe3f3086",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/DeviceFS.git",
+    "upstream_sha256": "8e0155f62c1b6b47257eb1af07eb200d0ef24ca7fb92b8f0e4cabf81e02ac42a",
+    "sha256": "8e0155f62c1b6b47257eb1af07eb200d0ef24ca7fb92b8f0e4cabf81e02ac42a",
+    "bytes": 121
+  },
+  {
+    "component": "DeviceFS",
+    "path": "Doc/private/SpecChange",
+    "revision": "1d464cee133c220ff66d2f136284f633fe3f3086",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/DeviceFS.git",
+    "upstream_sha256": "1a9cfa2b0aaae9a5a0b90bea10c079224b11dfb7600f604c0acc320a1fb06c5f",
+    "sha256": "1a9cfa2b0aaae9a5a0b90bea10c079224b11dfb7600f604c0acc320a1fb06c5f",
+    "bytes": 670
+  },
+  {
+    "component": "DeviceFS",
+    "path": "LICENSE",
+    "revision": "1d464cee133c220ff66d2f136284f633fe3f3086",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/DeviceFS.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358
+  },
+  {
+    "component": "DeviceFS",
+    "path": "Makefile",
+    "revision": "1d464cee133c220ff66d2f136284f633fe3f3086",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/DeviceFS.git",
+    "upstream_sha256": "8310cbe7ecb2d1b4a80e1f888669750f11380cd02822a687d72648eca39af329",
+    "sha256": "8310cbe7ecb2d1b4a80e1f888669750f11380cd02822a687d72648eca39af329",
+    "bytes": 2121
+  },
+  {
+    "component": "DeviceFS",
+    "path": "Resources/UK/Messages",
+    "revision": "1d464cee133c220ff66d2f136284f633fe3f3086",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/DeviceFS.git",
+    "upstream_sha256": "322f038bd85ac9da31c90e3e165e92e1c544717f7bcbebd9cf26e8efc62862fa",
+    "sha256": "322f038bd85ac9da31c90e3e165e92e1c544717f7bcbebd9cf26e8efc62862fa",
+    "bytes": 350
+  },
+  {
+    "component": "DeviceFS",
+    "path": "Version",
+    "revision": "1d464cee133c220ff66d2f136284f633fe3f3086",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/DeviceFS.git",
+    "upstream_sha256": "be85f02c4028bf2d0c482481bcfd72fffe6c030ec506d7e1b33740303c13cef1",
+    "sha256": "be85f02c4028bf2d0c482481bcfd72fffe6c030ec506d7e1b33740303c13cef1",
+    "bytes": 1892
+  },
+  {
+    "component": "DeviceFS",
+    "path": "hdr/DeviceFS",
+    "revision": "1d464cee133c220ff66d2f136284f633fe3f3086",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/DeviceFS.git",
+    "upstream_sha256": "445f48f0b2e551ec6d0d424a89b888dd711d5d4f1e5222646b6bbf87a35638e0",
+    "sha256": "445f48f0b2e551ec6d0d424a89b888dd711d5d4f1e5222646b6bbf87a35638e0",
+    "bytes": 4069
+  },
+  {
+    "component": "DeviceFS",
+    "path": "s/DeviceFS",
+    "revision": "1d464cee133c220ff66d2f136284f633fe3f3086",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/DeviceFS.git",
+    "upstream_sha256": "feadb39c0fae40ae181d57afbd30c0f5a652c094207ebc9a2a566a0ac91e47c1",
+    "sha256": "62d0a27927a38df9f22b8467d0cf7bf807e9eda8dac25bafae3d654918745ba2",
+    "bytes": 80629
+  },
+  {
+    "component": "DeviceFS",
+    "path": "s/Errors",
+    "revision": "1d464cee133c220ff66d2f136284f633fe3f3086",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/DeviceFS.git",
+    "upstream_sha256": "d1a4700218f814cb3b135c02920bde4c55923a483a6b8510bb2bf88d44c5b576",
+    "sha256": "d1a4700218f814cb3b135c02920bde4c55923a483a6b8510bb2bf88d44c5b576",
+    "bytes": 3191
+  },
+  {
+    "component": "DeviceFS",
+    "path": "s/FSystem",
+    "revision": "1d464cee133c220ff66d2f136284f633fe3f3086",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/DeviceFS.git",
+    "upstream_sha256": "d34c6737123a2c2033779b9da32953158d58bdc70d90aca87c098b87537217f9",
+    "sha256": "8f6c89e686b4a06989fe3a40f968d29a176bbb7bdbdcdbcf148d99381c2de6d6",
+    "bytes": 73551
+  },
+  {
+    "component": "DeviceFS",
+    "path": "s/Macros",
+    "revision": "1d464cee133c220ff66d2f136284f633fe3f3086",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/DeviceFS.git",
+    "upstream_sha256": "d0a12cc2f4a5582d4c66b0ce31eaae0442975c493459c125a762c263f4d0f11d",
+    "sha256": "d0a12cc2f4a5582d4c66b0ce31eaae0442975c493459c125a762c263f4d0f11d",
+    "bytes": 4346
+  },
+  {
+    "component": "DeviceFS",
+    "path": "s/ResFiles",
+    "revision": "1d464cee133c220ff66d2f136284f633fe3f3086",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/DeviceFS.git",
+    "upstream_sha256": "f707d7658b0745f4c83410c28b00a990b06b603cb2a290d6eea2b85e1cb61b16",
+    "sha256": "f707d7658b0745f4c83410c28b00a990b06b603cb2a290d6eea2b85e1cb61b16",
+    "bytes": 1218
+  },
+  {
+    "component": "DeviceFS",
+    "path": "s/Special",
+    "revision": "1d464cee133c220ff66d2f136284f633fe3f3086",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/DeviceFS.git",
+    "upstream_sha256": "950620ab0d25d4eac2e07b12da8ef435bde3c260a6da5398c5dd05407cec3c9c",
+    "sha256": "950620ab0d25d4eac2e07b12da8ef435bde3c260a6da5398c5dd05407cec3c9c",
+    "bytes": 19441
+  },
+  {
+    "component": "DeviceFS",
+    "path": "s/StandAlone",
+    "revision": "1d464cee133c220ff66d2f136284f633fe3f3086",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/DeviceFS.git",
+    "upstream_sha256": "917414b29c80d0e2f9bd7b5da067bb43ce44d71d08c1dde1b99bfe1f94e8ef11",
+    "sha256": "917414b29c80d0e2f9bd7b5da067bb43ce44d71d08c1dde1b99bfe1f94e8ef11",
+    "bytes": 740
+  },
+  {
+    "component": "SystemDevs",
+    "path": "Doc/SysDev",
+    "revision": "32481c2bf1a836d989e5f3686653666c387c0d6e",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/SystemDevs.git",
+    "upstream_sha256": "0a497da61c52d6e1c4252d48691a6f06669a5f4580b1eb08083b8f982ea98d99",
+    "sha256": "0a497da61c52d6e1c4252d48691a6f06669a5f4580b1eb08083b8f982ea98d99",
+    "bytes": 1840
+  },
+  {
+    "component": "SystemDevs",
+    "path": "Doc/SystemDevs",
+    "revision": "32481c2bf1a836d989e5f3686653666c387c0d6e",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/SystemDevs.git",
+    "upstream_sha256": "feb4e57375c6c720413187fde95147db1a692584685fe12cfcdc1e19858dcb5c",
+    "sha256": "feb4e57375c6c720413187fde95147db1a692584685fe12cfcdc1e19858dcb5c",
+    "bytes": 808
+  },
+  {
+    "component": "SystemDevs",
+    "path": "LICENSE",
+    "revision": "32481c2bf1a836d989e5f3686653666c387c0d6e",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/SystemDevs.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358
+  },
+  {
+    "component": "SystemDevs",
+    "path": "Makefile",
+    "revision": "32481c2bf1a836d989e5f3686653666c387c0d6e",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/SystemDevs.git",
+    "upstream_sha256": "9a5377052a2631fcf2501ca3c6fa274f296175a00af758ac38e60bb15d81d9da",
+    "sha256": "9a5377052a2631fcf2501ca3c6fa274f296175a00af758ac38e60bb15d81d9da",
+    "bytes": 1969
+  },
+  {
+    "component": "SystemDevs",
+    "path": "Resources/UK/Messages",
+    "revision": "32481c2bf1a836d989e5f3686653666c387c0d6e",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/SystemDevs.git",
+    "upstream_sha256": "22f678e9f96a4369932ca876a7a978d565c5155e5b561f7d7a845ed56374da92",
+    "sha256": "22f678e9f96a4369932ca876a7a978d565c5155e5b561f7d7a845ed56374da92",
+    "bytes": 30
+  },
+  {
+    "component": "SystemDevs",
+    "path": "Version",
+    "revision": "32481c2bf1a836d989e5f3686653666c387c0d6e",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/SystemDevs.git",
+    "upstream_sha256": "2d4767b3935640ec40404cb4528bc62c9d9c287ca33b285099250576109f783f",
+    "sha256": "2d4767b3935640ec40404cb4528bc62c9d9c287ca33b285099250576109f783f",
+    "bytes": 215
+  },
+  {
+    "component": "SystemDevs",
+    "path": "s/MsgCode",
+    "revision": "32481c2bf1a836d989e5f3686653666c387c0d6e",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/SystemDevs.git",
+    "upstream_sha256": "7f4abfb332e3de423340c95ff2a028c7740db9473c42bc963ed1f3de9077fa4b",
+    "sha256": "407087622c6895151da5a1cc322d355ce3effcbdb264355b38f7e5a2991a8fd9",
+    "bytes": 2539
+  },
+  {
+    "component": "SystemDevs",
+    "path": "s/ResFiles",
+    "revision": "32481c2bf1a836d989e5f3686653666c387c0d6e",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/SystemDevs.git",
+    "upstream_sha256": "f707d7658b0745f4c83410c28b00a990b06b603cb2a290d6eea2b85e1cb61b16",
+    "sha256": "f707d7658b0745f4c83410c28b00a990b06b603cb2a290d6eea2b85e1cb61b16",
+    "bytes": 1218
+  },
+  {
+    "component": "SystemDevs",
+    "path": "s/StandAlone",
+    "revision": "32481c2bf1a836d989e5f3686653666c387c0d6e",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/SystemDevs.git",
+    "upstream_sha256": "b9ae14a52da8ce18c159cca812c75197ce91f1d0f368f8f6085b0fca80d8bf29",
+    "sha256": "b9ae14a52da8ce18c159cca812c75197ce91f1d0f368f8f6085b0fca80d8bf29",
+    "bytes": 755
+  },
+  {
+    "component": "SystemDevs",
+    "path": "s/SystemDevs",
+    "revision": "32481c2bf1a836d989e5f3686653666c387c0d6e",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/SystemDevs.git",
+    "upstream_sha256": "cb2b49b48a54afade8098dc50966cd0a90ec0060927ee8446c7f1a72f0b35522",
+    "sha256": "ac8ad72b39790d85c992344e4fa0198cb90ff343ecbe73b1caab751a48c9fcb0",
+    "bytes": 53745
+  },
+  {
+    "component": "PipeFS",
+    "path": "Doc/Sleep",
+    "revision": "614e2725452d242c4f3d3c747d8790d74d7d5797",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/PipeFS.git",
+    "upstream_sha256": "3a70053fae18e74b66dbd7a48b44a533ba4ea4aabd8697cb328f7998bc7e2a5e",
+    "sha256": "3a70053fae18e74b66dbd7a48b44a533ba4ea4aabd8697cb328f7998bc7e2a5e",
+    "bytes": 3111
+  },
+  {
+    "component": "PipeFS",
+    "path": "Help",
+    "revision": "614e2725452d242c4f3d3c747d8790d74d7d5797",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/PipeFS.git",
+    "upstream_sha256": "c99f7b9409e466e51c4a80964bab8a1199be83b087e45762ec5fb63b1d622e41",
+    "sha256": "c99f7b9409e466e51c4a80964bab8a1199be83b087e45762ec5fb63b1d622e41",
+    "bytes": 102
+  },
+  {
+    "component": "PipeFS",
+    "path": "LICENSE",
+    "revision": "614e2725452d242c4f3d3c747d8790d74d7d5797",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/PipeFS.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358
+  },
+  {
+    "component": "PipeFS",
+    "path": "Makefile",
+    "revision": "614e2725452d242c4f3d3c747d8790d74d7d5797",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/PipeFS.git",
+    "upstream_sha256": "6fbae142645e0e3625b0c3a79afbf4324b50edf4540cb4829ffb6659d95f964d",
+    "sha256": "6fbae142645e0e3625b0c3a79afbf4324b50edf4540cb4829ffb6659d95f964d",
+    "bytes": 1666
+  },
+  {
+    "component": "PipeFS",
+    "path": "Resources/UK/Messages",
+    "revision": "614e2725452d242c4f3d3c747d8790d74d7d5797",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/PipeFS.git",
+    "upstream_sha256": "400670d7f00c30c5ba8cb60d689c221e4c619628ae9084a4fb56dc6f781841f1",
+    "sha256": "400670d7f00c30c5ba8cb60d689c221e4c619628ae9084a4fb56dc6f781841f1",
+    "bytes": 248
+  },
+  {
+    "component": "PipeFS",
+    "path": "Syntax",
+    "revision": "614e2725452d242c4f3d3c747d8790d74d7d5797",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/PipeFS.git",
+    "upstream_sha256": "4c57f60d60c52955b068e7f3a9c3b7478f56d475d60aa1fa39e7df672e55e3a4",
+    "sha256": "4c57f60d60c52955b068e7f3a9c3b7478f56d475d60aa1fa39e7df672e55e3a4",
+    "bytes": 61
+  },
+  {
+    "component": "PipeFS",
+    "path": "Version",
+    "revision": "614e2725452d242c4f3d3c747d8790d74d7d5797",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/PipeFS.git",
+    "upstream_sha256": "8c4fd82856beffca54cbc31014889e1d26683ff6954fd56d21ea3ec0a5c5c0ba",
+    "sha256": "8c4fd82856beffca54cbc31014889e1d26683ff6954fd56d21ea3ec0a5c5c0ba",
+    "bytes": 169
+  },
+  {
+    "component": "PipeFS",
+    "path": "s/PipeFS",
+    "revision": "614e2725452d242c4f3d3c747d8790d74d7d5797",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/PipeFS.git",
+    "upstream_sha256": "32b8b66dc4be6ecd970c5b0dea500398c7a551190f71e3cb2f163fbf6b742e50",
+    "sha256": "aae3a8c326f0d8d96e21f4cc65b880e28dfebfedcd87c8127409c7ca9505303c",
+    "bytes": 61860
+  }
+]

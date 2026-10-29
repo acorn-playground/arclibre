@@ -1,0 +1,13 @@
+--- a/Kernel/s/GetAll
++++ b/Kernel/s/GetAll
+@@ -575,7 +575,10 @@
+ GiveMeBfontAnyDay SETS "GET s.vdu.VduFont"
+         ]
+ 
++        ; DoResetFont uses word loads; ARM2 rotates unaligned LDR data.
++        ALIGN
+         $GiveMeBfontAnyDay
++        ASSERT (HardFont :AND: 3) = 0
+ 
+         ! 0, "Vdu drivers size = &" :CC: :STR: (.-StartOfVduDriver)
+ 

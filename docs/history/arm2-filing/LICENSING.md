@@ -1,0 +1,9 @@
+# Provenance and licensing
+
+The ROM, kernel and original RISC OS modules are byte-identical to `../arm2-floppy`. Their original public cleaned 3.60 source cohort, individual notices, Apache-2.0 licensing assessment and accumulated restoration patches are preserved in that experiment and its nested evidence chain. This is not RO26 and does not import any proprietary ROM bytes. See `../arm2-floppy/LICENSING.md` for the component inventory and `manifests/cohort.json` there for revisions.
+
+New diagnostic source, harness changes, fixture generator, verification scripts and generated file payloads are original work under Apache-2.0; see `LICENSE`. Copied original sources retain their notices. Format definitions used are the pinned public FileCore `Doc/Dir`, `Doc/EMaps`, `Doc/EAddrs`, `Doc/DFormat` and `Doc/OldMaps`; the generator also follows the original FileCore checksum and map-validation routines. The generated track fault containers follow MacArch's public JFD decoder. No pre-existing user or commercial disc was opened or embedded.
+
+The isolated MacArch changes and device tests are GPL-3.0-or-later, matching MacArch. `licenses/MacArch-GPL3` supplies the license. `sources/macarch-core-baseline.tar.gz` contains the complete pinned core source, with its existing notices; `patches/macarch-original-disc-change.patch` and the exact build recipe supply the changes. Host harness executables linked with that core are treated as GPL-covered combined executables if distributed; the evidence archive excludes native executable/build products. This GPL host dependency does not become part of the guest ROM.
+
+AsAsm and the earlier public host tools retain the licenses documented in the preceding build chain. This milestone adds no proprietary tool or runtime service dependency. No desktop integration, ROM-image resource extraction, guest disc writing or commercial application execution occurred.

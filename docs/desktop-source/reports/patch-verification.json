@@ -1,0 +1,16 @@
+[
+  {
+    "series": "desktop-source",
+    "status": "PASS",
+    "files": 166,
+    "reverse_restores_original_hashes": true,
+    "forward_restores_maintained_hashes": true
+  },
+  {
+    "series": "fpemulator",
+    "status": "PASS",
+    "files": 31,
+    "reverse_restores_original_hashes": true,
+    "forward_restores_maintained_hashes": true
+  }
+]

@@ -1,0 +1,16 @@
+diff --git a/src/Kernel/s/NewReset b/src/Kernel/s/NewReset
+index dce4a0e..ef6aa04 100644
+--- a/src/Kernel/s/NewReset
++++ b/src/Kernel/s/NewReset
+@@ -1043,7 +1043,11 @@ DefaultCMOSTable ; list of non-zero options wanted :
+                               ;                                              Wimp dither colours off
+                               ;                                                             last shutdown ordinary
+ 
++ [ :DEF: ArcLibreDesktopDefaults
++        =       DesktopFeaturesCMOS,&83 ; 3D furniture, bitmap system font, flat backgrounds
++ |
+         =       DesktopFeaturesCMOS,(1:SHL:0) :OR: (8:SHL:1) :OR: (0:SHL:7)
++ ]
+                               ;      3D look
+                               ;                     Homerton.Medium
+                               ;                                    tiled window background

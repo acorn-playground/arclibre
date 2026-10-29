@@ -1,0 +1,17 @@
+{
+  "baseline_commit": "0923b6f2025cf7e9dda26d11de06ab433bf15039",
+  "command": "OPEN_ARCHIMEDES_OUTPUT=\"$PWD/build/filing-writes\" make test",
+  "inputs": {
+    "tests/harness/Package.swift": "8662ff3c40dead09533e9e9f1867a3caa48fb9155aae78815f04363ceb7b9aa3",
+    "tests/harness/Sources/WriteProbe/main.swift": "6f42d6cb0a1dffa2c72ea4a349d9b2e490e62dd16ec7b0b5e7b3b1b0f9ed29a4",
+    "tests/verify/disc_image.py": "917b1a994d12475961d86439a15135edd63d217a19686863e2a4cce458046cff",
+    "tests/verify/verify_writes.py": "bdb1f25289cc9c5fd75a81061146e1452bc573ea41e0d006db6da8ea69e43f27",
+    "tests/run.py": "bbafe9def4eccbd6438b2d6e1cfda9541eb37ed55c91a284134dc17cf190652f",
+    "tests/build_fixtures.py": "9f0f5019c0cf1afb4abad2da0cea78bceddcbb7968c43a601fbf9673b85db1f4",
+    "manifests/baseline-rom.json": "9ffb43250f878524ef6feff953c8a63f1a321c1841622235323f77125209f32c",
+    "manifests/emulator-patch.json": "4acc44a999b820688c0d560f76f4c689ad7deed2726f693d5f83cbd9de70b3da"
+  },
+  "harness_sha256": "634a9977ae011c5029ee4637ee44188872a555f206bc715f715f77c24934fc8e",
+  "guest_source_changed": false,
+  "emulator_dependency_changed": false
+}

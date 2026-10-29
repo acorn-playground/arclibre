@@ -1,0 +1,12 @@
+--- a/Kernel/s/GetAll
++++ b/Kernel/s/GetAll
+@@ -358,7 +358,8 @@
+ ; Flags for RISC OS Blue changes
+ ;
+                         GBLL    AssembleA1KeyHandler
+-AssembleA1KeyHandler    SETL    {FALSE}
++; Original MEMC1 machines use the existing resident A1 translation handler.
++AssembleA1KeyHandler    SETL    (MEMM_Type = "MEMC1") :LAND: (Keyboard_Type = "A1A500")
+                         GBLL    AssembleKEYV
+ AssembleKEYV            SETL    {TRUE}          ; Use KEYV.
+                         GBLL    AssemblePointerV

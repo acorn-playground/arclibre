@@ -1,0 +1,25 @@
+--- a/src/Squash/c/zssr
++++ b/src/Squash/c/zssr
+@@ -265,7 +265,8 @@
+                 final_char = workspace->final_char;
+                 previous_code = workspace->previous_code;
+                 in_code = workspace->in_code;
+-                workspace->buf_size = buf_size;
++                /* ArcLibre: resume this stream, not the last caller. */
++                buf_size = workspace->buf_size;
+                 stackp = stack + workspace->stack_offset;
+                 buf = workspace->buf;
+ 
+--- a/src/Squash/c/compress
++++ b/src/Squash/c/compress
+@@ -205,7 +205,9 @@
+                         {
+                                 /* Fast <=> from scratch to end and enough output space worst case */
+                                 int fast = (r->r[0] & (SquashContinue | SquashMoreInput)) == 0
+-                                                && 3 + r->r[3]*3/2 <= r->r[5];
++                                                /* ArcLibre: use the advertised safe bound and let the
++                                                 * state path handle empty input without reading a byte. */
++                                                && r->r[3] > 0 && 12 + r->r[3]*3/2 <= r->r[5];
+                                 char *input = (char *)r->r[2];
+ 
+                                 if ( fast )

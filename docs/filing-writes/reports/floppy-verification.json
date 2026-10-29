@@ -1,0 +1,210 @@
+{
+  "status": "PASS",
+  "rom_sha256": "bf5ca56ebd6f7fd7dc4149360d97f76f009abed8879693470421998d59f11791",
+  "disc_sha256": "fe6da71633fe82c803b91d134fbacf6b5ab6b292a05325dfbf556cbef25d2d21",
+  "identical_cold_runs": true,
+  "original_byte_address_driver": true,
+  "runs": [
+    {
+      "run": 1,
+      "calls": 35,
+      "fiq_exceptions": 90261,
+      "sampled_instructions": 227,
+      "paths": [
+        {
+          "call": "Catalogue",
+          "handler": "ReadTrackFiq",
+          "instructions": 65,
+          "return_pc": "0x3857ec0",
+          "return_psr": "0x60000003"
+        },
+        {
+          "call": "BGet Hello",
+          "handler": "ReadSecsFiq",
+          "instructions": 6,
+          "return_pc": "0x3857ec4",
+          "return_psr": "0x60000003"
+        },
+        {
+          "call": "BGet Pattern",
+          "handler": "ReadSecsFiq",
+          "instructions": 6,
+          "return_pc": "0x3857ec4",
+          "return_psr": "0x60000003"
+        },
+        {
+          "call": "Read Pattern",
+          "handler": "ReadSecsFiq",
+          "instructions": 6,
+          "return_pc": "0x38525d0",
+          "return_psr": "0x60000003"
+        },
+        {
+          "call": "Cross-side random read",
+          "handler": "ReadSecsFiq",
+          "instructions": 66,
+          "return_pc": "0x3857ec8",
+          "return_psr": "0x60000003"
+        },
+        {
+          "call": "Close Pattern",
+          "handler": "ReadSecsFiq",
+          "instructions": 6,
+          "return_pc": "0x385260c",
+          "return_psr": "0x3"
+        },
+        {
+          "call": "Load Pattern",
+          "handler": "ReadSecsFiq",
+          "instructions": 66,
+          "return_pc": "0x3857ec4",
+          "return_psr": "0x60000003"
+        },
+        {
+          "call": "BGet ReadMe",
+          "handler": "ReadSecsFiq",
+          "instructions": 6,
+          "return_pc": "0x3857ec4",
+          "return_psr": "0x60000003"
+        }
+      ],
+      "fdc_commands": 107,
+      "disc_reads_byte_exact": true,
+      "program_usr26_and_exit": true
+    },
+    {
+      "run": 2,
+      "calls": 35,
+      "fiq_exceptions": 90261,
+      "sampled_instructions": 227,
+      "paths": [
+        {
+          "call": "Catalogue",
+          "handler": "ReadTrackFiq",
+          "instructions": 65,
+          "return_pc": "0x3857ec0",
+          "return_psr": "0x60000003"
+        },
+        {
+          "call": "BGet Hello",
+          "handler": "ReadSecsFiq",
+          "instructions": 6,
+          "return_pc": "0x3857ec4",
+          "return_psr": "0x60000003"
+        },
+        {
+          "call": "BGet Pattern",
+          "handler": "ReadSecsFiq",
+          "instructions": 6,
+          "return_pc": "0x3857ec4",
+          "return_psr": "0x60000003"
+        },
+        {
+          "call": "Read Pattern",
+          "handler": "ReadSecsFiq",
+          "instructions": 6,
+          "return_pc": "0x38525d0",
+          "return_psr": "0x60000003"
+        },
+        {
+          "call": "Cross-side random read",
+          "handler": "ReadSecsFiq",
+          "instructions": 66,
+          "return_pc": "0x3857ec8",
+          "return_psr": "0x60000003"
+        },
+        {
+          "call": "Close Pattern",
+          "handler": "ReadSecsFiq",
+          "instructions": 6,
+          "return_pc": "0x385260c",
+          "return_psr": "0x3"
+        },
+        {
+          "call": "Load Pattern",
+          "handler": "ReadSecsFiq",
+          "instructions": 66,
+          "return_pc": "0x3857ec4",
+          "return_psr": "0x60000003"
+        },
+        {
+          "call": "BGet ReadMe",
+          "handler": "ReadSecsFiq",
+          "instructions": 6,
+          "return_pc": "0x3857ec4",
+          "return_psr": "0x60000003"
+        }
+      ],
+      "fdc_commands": 107,
+      "disc_reads_byte_exact": true,
+      "program_usr26_and_exit": true
+    },
+    {
+      "run": 3,
+      "calls": 35,
+      "fiq_exceptions": 90261,
+      "sampled_instructions": 227,
+      "paths": [
+        {
+          "call": "Catalogue",
+          "handler": "ReadTrackFiq",
+          "instructions": 65,
+          "return_pc": "0x3857ec0",
+          "return_psr": "0x60000003"
+        },
+        {
+          "call": "BGet Hello",
+          "handler": "ReadSecsFiq",
+          "instructions": 6,
+          "return_pc": "0x3857ec4",
+          "return_psr": "0x60000003"
+        },
+        {
+          "call": "BGet Pattern",
+          "handler": "ReadSecsFiq",
+          "instructions": 6,
+          "return_pc": "0x3857ec4",
+          "return_psr": "0x60000003"
+        },
+        {
+          "call": "Read Pattern",
+          "handler": "ReadSecsFiq",
+          "instructions": 6,
+          "return_pc": "0x38525d0",
+          "return_psr": "0x60000003"
+        },
+        {
+          "call": "Cross-side random read",
+          "handler": "ReadSecsFiq",
+          "instructions": 66,
+          "return_pc": "0x3857ec8",
+          "return_psr": "0x60000003"
+        },
+        {
+          "call": "Close Pattern",
+          "handler": "ReadSecsFiq",
+          "instructions": 6,
+          "return_pc": "0x385260c",
+          "return_psr": "0x3"
+        },
+        {
+          "call": "Load Pattern",
+          "handler": "ReadSecsFiq",
+          "instructions": 66,
+          "return_pc": "0x3857ec4",
+          "return_psr": "0x60000003"
+        },
+        {
+          "call": "BGet ReadMe",
+          "handler": "ReadSecsFiq",
+          "instructions": 6,
+          "return_pc": "0x3857ec4",
+          "return_psr": "0x60000003"
+        }
+      ],
+      "fdc_commands": 107,
+      "disc_reads_byte_exact": true,
+      "program_usr26_and_exit": true
+    }
+  ]
+}

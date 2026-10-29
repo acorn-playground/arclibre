@@ -1,0 +1,126 @@
+--- a/FileSwitch/s/KernelFSW
++++ b/FileSwitch/s/KernelFSW
+@@ -20,7 +20,7 @@
+         EXPORT  BGetEntry
+         EXPORT  BPutEntry
+  |
+-        ORG     0 ; position-independent module, offsets relative to header
++        AREA ModuleCode, CODE, READONLY
+  ]
+ 
+ 
+--- a/FileSwitch/s/FileSwHdr
++++ b/FileSwitch/s/FileSwHdr
+@@ -46,7 +46,7 @@
+         EXPORT  BGetEntry
+         EXPORT  BPutEntry
+  |
+-        ORG     0 ; position-independent module, offsets relative to header
++        AREA ModuleCode, CODE, READONLY
+  ]
+ 
+ TAB     *       09
+--- a/ResourceFS/s/ResourceFS
++++ b/ResourceFS/s/ResourceFS
+@@ -41,7 +41,6 @@
+ ; 12-Mar-92     0.14    JSR  Misc bugs from failure to initialise workspace. G-RO-5512.
+ 
+ ;
+-Module_BaseAddr
+ 
+         GET     Hdr:ListOpts
+         GET     Hdr:Macros
+@@ -84,7 +83,8 @@
+ 
+ hostvdu SETL    false
+ 
+-        ORG     0 ; position-independent module, offsets relative to header
++        AREA ModuleCode, CODE, READONLY
++Module_BaseAddr
+ 
+ TAB     *       9
+ LF      *       10
+--- a/MsgTrans/s/MsgTrans
++++ b/MsgTrans/s/MsgTrans
+@@ -75,7 +75,6 @@
+ ;;
+ ;;----------------------------------------------------------------------------
+ 
+-Module_BaseAddr
+ 
+         GET     Hdr:ListOpts
+         GET     Hdr:Macros
+@@ -147,7 +146,8 @@
+ ; Module header
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+-        ORG     0 ; position-independent module, offsets relative to header
++        AREA ModuleCode, CODE, READONLY
++Module_BaseAddr
+ 
+         ASSERT  (.=Module_BaseAddr)
+ 
+--- a/Messages/s/Messages
++++ b/Messages/s/Messages
+@@ -14,7 +14,6 @@
+ ;
+ ; > Sources.Messages
+ 
+-Module_BaseAddr
+ 
+         GET     Hdr:ListOpts
+         GET     Hdr:Macros
+@@ -36,7 +35,8 @@
+ hostvdu SETL    false
+ 
+ 
+-        ORG     0 ; position-independent module, offsets relative to header
++        AREA ModuleCode, CODE, READONLY
++Module_BaseAddr
+ 
+ 
+ ; **************** Module code starts here **********************
+--- a/TerritoryManager/s/TerrMgr
++++ b/TerritoryManager/s/TerrMgr
+@@ -28,7 +28,6 @@
+ ;; Wish list
+ ;;-----------------------------------------------------------------------------
+ 
+-Module_BaseAddr
+ 
+         GET     Hdr:ListOpts
+         GET     Hdr:Macros
+--- a/TerritoryManager/s/ModHead
++++ b/TerritoryManager/s/ModHead
+@@ -13,7 +13,8 @@
+ ; limitations under the License.
+ ;
+ ; > s.ModHead
+-        ORG     0
++        AREA ModuleCode, CODE, READONLY
++Module_BaseAddr
+ 
+         ASSERT  (.=Module_BaseAddr)
+ MySWIBase       *       TerritorySWI_Base
+--- a/UK/s/ModHead
++++ b/UK/s/ModHead
+@@ -13,7 +13,8 @@
+ ; limitations under the License.
+ ;
+ ; > Sources.ModHead
+-        ORG     0
++        AREA ModuleCode, CODE, READONLY
++Module_BaseAddr
+ 
+         ASSERT  (.=Module_BaseAddr)
+ 
+--- a/UK/s/UK
++++ b/UK/s/UK
+@@ -27,7 +27,6 @@
+ ;; Wish list
+ ;;-----------------------------------------------------------------------------
+ 
+-Module_BaseAddr
+ 
+         GET     Hdr:ListOpts
+         GET     Hdr:Macros

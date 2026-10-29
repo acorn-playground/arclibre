@@ -1,0 +1,13 @@
+; SPDX-License-Identifier: Apache-2.0
+; GCC callers without alloca use the original SharedCLibrary jump ABI.
+        AREA |C$$code|, CODE, READONLY
+; Tail calls preserve the caller frame and original 22-word SCL jmp_buf.
+        IMPORT |setjmp|
+        IMPORT |longjmp|
+        EXPORT |ArcLibre_setjmp|
+        EXPORT |ArcLibre_longjmp|
+|ArcLibre_setjmp|
+        B |setjmp|
+|ArcLibre_longjmp|
+        B |longjmp|
+        END

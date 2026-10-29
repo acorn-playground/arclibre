@@ -1,0 +1,10 @@
+[
+  {
+    "component": "PublicInterfaces",
+    "path": "hdr/Messages",
+    "revision": "403c6dd8bce92d0629634cbf57f68f43b2f30d38",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Programmer/HdrSrc.git",
+    "upstream_sha256": "15073df4273e708bf4002d1af993f314e4f75e4be56a396776f3ff8e7b284b6a",
+    "sha256": "5c0cb8098a7e802b32bd7d19b794882a6aa13192890ec2d09df20f023f685267"
+  }
+]

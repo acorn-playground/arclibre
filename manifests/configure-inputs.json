@@ -1,0 +1,44 @@
+[
+  {
+    "component": "ArcConfigure",
+    "path": "bas/Configure",
+    "revision": null,
+    "repository": null,
+    "origin": "new ArcLibre code",
+    "upstream_sha256": "fe3c1954b8704b7b6da471cedb4f3d554fda8377673fcabc75068b5b8ddde978",
+    "sha256": "fe3c1954b8704b7b6da471cedb4f3d554fda8377673fcabc75068b5b8ddde978",
+    "bytes": 22801
+  },
+  {
+    "component": "ArcConfigure",
+    "path": "s/ArcConfigure",
+    "revision": null,
+    "repository": null,
+    "origin": "new ArcLibre code",
+    "upstream_sha256": "d1e880deab8986b39a198d5d835d60c250d5c7e14e132fc71b3e53ca28e76ad1",
+    "sha256": "d1e880deab8986b39a198d5d835d60c250d5c7e14e132fc71b3e53ca28e76ad1",
+    "bytes": 1434
+  },
+  {
+    "component": "ArcConfigure",
+    "path": "Resources/Sprites,ff9",
+    "revision": "2fb77e8dc4c0ebac6c32d62614168afb8dcff714",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/SystemRes/Configure.git",
+    "upstream_path": "Resources/Sprites,ff9",
+    "upstream_sha256": "bd3a0241124a876bbd38316ef3ce65b0d0f4572f6d8c607d3b81da69d63f9ff9",
+    "sha256": "bd3a0241124a876bbd38316ef3ce65b0d0f4572f6d8c607d3b81da69d63f9ff9",
+    "bytes": 20852,
+    "modified": false
+  },
+  {
+    "component": "ArcConfigure",
+    "path": "Resources/LICENSE",
+    "revision": "2fb77e8dc4c0ebac6c32d62614168afb8dcff714",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/SystemRes/Configure.git",
+    "upstream_path": "LICENSE",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358,
+    "modified": false
+  }
+]

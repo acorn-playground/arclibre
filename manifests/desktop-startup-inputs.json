@@ -1,0 +1,1361 @@
+[
+  {
+    "component": "Desktop",
+    "path": "LICENSE",
+    "revision": "4a444dda0d87eec121c2d2969cdaf1c842bc0e3e",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Desktop.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358
+  },
+  {
+    "component": "Desktop",
+    "path": "Makefile",
+    "revision": "4a444dda0d87eec121c2d2969cdaf1c842bc0e3e",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Desktop.git",
+    "upstream_sha256": "5d5c18b89bf313119fd508e6d67eed2b0df9d6f34530cbbb5353d16b4c18da76",
+    "sha256": "5d5c18b89bf313119fd508e6d67eed2b0df9d6f34530cbbb5353d16b4c18da76",
+    "bytes": 1680
+  },
+  {
+    "component": "Desktop",
+    "path": "Resources/UK/Messages",
+    "revision": "4a444dda0d87eec121c2d2969cdaf1c842bc0e3e",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Desktop.git",
+    "upstream_sha256": "63da5726797f75138e5104433991f5f0ad1aab5fcc7baafb1113e130902fd25f",
+    "sha256": "d19eb61dff6f35d9d8f650589bbed9a04c4d3b07a92bed3f1b529f9200bdb51c",
+    "bytes": 742
+  },
+  {
+    "component": "Desktop",
+    "path": "Version",
+    "revision": "4a444dda0d87eec121c2d2969cdaf1c842bc0e3e",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Desktop.git",
+    "upstream_sha256": "1c5d13b13c3fdc48ae30d4fa77c2b9f2f29036267601e581b06d1c7d4044a891",
+    "sha256": "1c5d13b13c3fdc48ae30d4fa77c2b9f2f29036267601e581b06d1c7d4044a891",
+    "bytes": 169
+  },
+  {
+    "component": "Desktop",
+    "path": "s/Desktop",
+    "revision": "4a444dda0d87eec121c2d2969cdaf1c842bc0e3e",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Desktop.git",
+    "upstream_sha256": "e26c76ad47be94fd5c52ccc79d1c287add76b765b9c0d77eab3ddcd3f5b000a9",
+    "sha256": "079103751218bbe437ea84bda2528ffbbbf6b2fad70f30ac68aeb779e988716f",
+    "bytes": 39187
+  },
+  {
+    "component": "Filer",
+    "path": "HelpSrc",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "8ae19fb956fee04ab9c16a801e9096b9cff2b2056907424c4e934263dd99519d",
+    "sha256": "8ae19fb956fee04ab9c16a801e9096b9cff2b2056907424c4e934263dd99519d",
+    "bytes": 3080
+  },
+  {
+    "component": "Filer",
+    "path": "LICENSE",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358
+  },
+  {
+    "component": "Filer",
+    "path": "Makefile",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "9c963ae77371ab799f5f4a827254b3f49b5cda4a74ccb8f57d65d72a270e2b92",
+    "sha256": "9c963ae77371ab799f5f4a827254b3f49b5cda4a74ccb8f57d65d72a270e2b92",
+    "bytes": 1831
+  },
+  {
+    "component": "Filer",
+    "path": "Resources/UK/Messages",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "402de260bcb2a99bc3980cd09a55382bd2b864ba8b2ecb44344005d6b1ade6f5",
+    "sha256": "402de260bcb2a99bc3980cd09a55382bd2b864ba8b2ecb44344005d6b1ade6f5",
+    "bytes": 9292
+  },
+  {
+    "component": "Filer",
+    "path": "Resources/UK/Templates,fec",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "a072637960d684d6ee00b58b747af7510221809ca985a57e3e7c06057a062673",
+    "sha256": "a072637960d684d6ee00b58b747af7510221809ca985a57e3e7c06057a062673",
+    "bytes": 2154
+  },
+  {
+    "component": "Filer",
+    "path": "Version",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "e12cd55691d308f2008e5925518d84a7f2ef2fe88d208fef8b6daa3780ab28da",
+    "sha256": "e12cd55691d308f2008e5925518d84a7f2ef2fe88d208fef8b6daa3780ab28da",
+    "bytes": 271
+  },
+  {
+    "component": "Filer",
+    "path": "s/ActionStrt",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "d2f02a0bad899c5a7ab483e606d37c21ce70b3f15df6ea5a5666b6bad3b22e77",
+    "sha256": "59dff59c55f1d44a092e5b79751321e100d9dba2ac726e05c8815d668f5d2b45",
+    "bytes": 2580
+  },
+  {
+    "component": "Filer",
+    "path": "s/CMOSUtils",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "a6370df91a39d3525de4be6d0d2d477f0ce413a048dae2c31acc7954d7446dcd",
+    "sha256": "1bb9d85035e62042ad166662afb1beed17d47e6337ad78915c009fcb6597fa51",
+    "bytes": 1683
+  },
+  {
+    "component": "Filer",
+    "path": "s/CPM",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "4ca9cc8756878de5d4b9ae48649a72327f976a9db384376136200231f9ef485d",
+    "sha256": "4ca9cc8756878de5d4b9ae48649a72327f976a9db384376136200231f9ef485d",
+    "bytes": 7159
+  },
+  {
+    "component": "Filer",
+    "path": "s/CacheDir",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "6b8e48a9c1d5f2429546a373e32afaf2081106e98a5a8b88e5a83beef126a284",
+    "sha256": "b297a8ca57064dadc8b8d7b0900734449be4f32e14abe1738471c89215df24bb",
+    "bytes": 13759
+  },
+  {
+    "component": "Filer",
+    "path": "s/Clicks",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "e75a7c37a6b0a432c973ce352e409c1532240f689c4f733b654ab2bf09f591c3",
+    "sha256": "27c187a23447b53341c5a82ab6de59c7dd834f0576546e2b01ec82b592412130",
+    "bytes": 37326
+  },
+  {
+    "component": "Filer",
+    "path": "s/Close",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "9f19beb0007f1091d3629c8c8a5b7f5b6a7790929e0dfe452cab6c535a07bbb6",
+    "sha256": "b72f6613f37c855f131dde57b4b1a684763d457b099a2f4124adb67255bda53e",
+    "bytes": 3771
+  },
+  {
+    "component": "Filer",
+    "path": "s/Commands",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "ae1cc95ffdf819775ed00eb1033fb4db7c62bfd353a463082746627a17a34b62",
+    "sha256": "3f0e54d2a451dbe63e7b21cf3e9405f0041aaf47784d5067d0bff72ac51a121a",
+    "bytes": 13257
+  },
+  {
+    "component": "Filer",
+    "path": "s/DebugFlags",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "c9fd3a1ef2b1bb2f553a470f1fa7e23987f560be57a5b9da789eb7fbce2ba724",
+    "sha256": "c9fd3a1ef2b1bb2f553a470f1fa7e23987f560be57a5b9da789eb7fbce2ba724",
+    "bytes": 2229
+  },
+  {
+    "component": "Filer",
+    "path": "s/DecodeMenu",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "7b02e188dc5f1b7171a53d5e6caa5352f75f5169020aee66c59ab7374a341265",
+    "sha256": "4b5b01ddbf18d45e74e508991df7b49d8800c2e19bd0db424c67bca50ef97975",
+    "bytes": 34925
+  },
+  {
+    "component": "Filer",
+    "path": "s/DelViews",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "65d450c3915ee61f5c7b21607805aa8c32731a60c8175fb59625f56d581debe1",
+    "sha256": "fb382a6a3f4e724c41b7769083e1dc0766faf6f8286b414f973c06c4d85d4ae4",
+    "bytes": 5506
+  },
+  {
+    "component": "Filer",
+    "path": "s/DragEnd",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "f58496cf37a8c83ad5de346f1b0ea6d5d9ed30bf367159f7f3d0a4a9c64f2587",
+    "sha256": "70c33b5d1d9669906d4d52f007562033c1eec5908ef715e96c6961e4280e85ec",
+    "bytes": 26062
+  },
+  {
+    "component": "Filer",
+    "path": "s/Errors",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "93f1bd8a4790b8aadf4190a4cb52dc04b88b19d84d9eda737b0d020f2652655f",
+    "sha256": "48867644fdf6196bc09903a093ff40dc91451e38f83f84a305967bcee0c4896f",
+    "bytes": 3445
+  },
+  {
+    "component": "Filer",
+    "path": "s/FileType",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "5b2a6bf96812fbd8303a91c000ec7036c123644a459ff8b7da0ac9831a109952",
+    "sha256": "e262201242036a952f5db0926f91d8e7086aee81c384a2acf3c8680fb9f01b43",
+    "bytes": 2943
+  },
+  {
+    "component": "Filer",
+    "path": "s/Filer",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "ed2e965dc431243ff6cc1bbefba6fc67c95f1ab4e5015b688c27c0110d035034",
+    "sha256": "ed2e965dc431243ff6cc1bbefba6fc67c95f1ab4e5015b688c27c0110d035034",
+    "bytes": 13215
+  },
+  {
+    "component": "Filer",
+    "path": "s/FreeLists",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "fa6a3a90461be313c557c2e6b36ec6fab6e8c7b34f6d9ddab6fda159e186b99a",
+    "sha256": "4f310934eb6f346abd925f75c8e6235538555a87248d265336917bfa014c639b",
+    "bytes": 2943
+  },
+  {
+    "component": "Filer",
+    "path": "s/Gets",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "48a59cb0c3444e8891c6b2986c72b4a954805e09dd2760a3b52c95e4a92d32c2",
+    "sha256": "d0c428b8ae069e38f85382a70a4349a3da30aef4f7c229e466700613b6db595d",
+    "bytes": 2842
+  },
+  {
+    "component": "Filer",
+    "path": "s/GoFiler",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "e3fc1c931748585ebdd17ecc7fca5a4131a8a6ade779568081f6802c028f3893",
+    "sha256": "cacc2f16b850d26bb8b29e6926da1697301cd931fab8e6ccb1860a1b10605868",
+    "bytes": 15798
+  },
+  {
+    "component": "Filer",
+    "path": "s/HelpSrc",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "ad58178d6bc183ec15c707429c6453fe7593e3b152ef558f0389c11660261809",
+    "sha256": "ad58178d6bc183ec15c707429c6453fe7593e3b152ef558f0389c11660261809",
+    "bytes": 3664
+  },
+  {
+    "component": "Filer",
+    "path": "s/IconUtils",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "df16f4d7486e9f6469c21855a6082378963151c29dedc76da02bb812da491b13",
+    "sha256": "4e534120eb317cf05ac5938beb8b052a4e337d6da17d55dfdbe1fbd5c2537b87",
+    "bytes": 2421
+  },
+  {
+    "component": "Filer",
+    "path": "s/MenuCreate",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "392c6e863c49ce9b185b9afdf0b90ffb32fc4b5c72243eb8ccc6b2ffcb3d0fcd",
+    "sha256": "ec0608c7f89f9f5ad02e7bb0bccbbb537b9de5ff44a4f584399399e65bfa86a7",
+    "bytes": 25955
+  },
+  {
+    "component": "Filer",
+    "path": "s/MenuIn",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "c4ae3323d720099f921496d7720726467874a457ffdc25e5d620c0909ff3a631",
+    "sha256": "afad278377f6d301bc479709c50fd33d66c209a22c029f79145397eb103b6b5c",
+    "bytes": 3163
+  },
+  {
+    "component": "Filer",
+    "path": "s/MenuUtils",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "c644d927610a933d871e3f88f4f9db7cbb6675ea6ee07d987087b1d255a75b6c",
+    "sha256": "8fc32f6797091fa8d2ddbbc2ffc2968711b44424872dbf15bab55a4e7b7de3fd",
+    "bytes": 3004
+  },
+  {
+    "component": "Filer",
+    "path": "s/MiscEvents",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "d9dad10b536277ae4073c754ffd44c6331a48eb7deff84a39117498299f90464",
+    "sha256": "22e0d0e3ccdce2190605b953cfff0b3dfd6a8652ffd5f1e35910d1623f0b5e18",
+    "bytes": 15476
+  },
+  {
+    "component": "Filer",
+    "path": "s/MiscUtils",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "2b2a3fe6901e928b649c9dc9286a3202cd70c6012080472faf44b72a68ee7cfb",
+    "sha256": "d8a6b4c85956b2ed2b7e66c1b5bef4585fa8d9767899825ceb64eac09ef8b4ad",
+    "bytes": 2795
+  },
+  {
+    "component": "Filer",
+    "path": "s/ModHdr",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "799e2bc13c76982ea00e8fac1c63c905f387633cc929913af7abe9624426a149",
+    "sha256": "e9129383bf7f10fb62d55569bffd972985ca59509ef4a508e3ed5533959156cf",
+    "bytes": 2017
+  },
+  {
+    "component": "Filer",
+    "path": "s/ModStuff",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "982a62b616b18c61e37d6ef3ab0c90b965bb45c4b1e6abf30391a2bfc13478e0",
+    "sha256": "beeac3d2cc493135b701ce54fd3fba3376117b2f0f40bbf0636fd2520b3c9679",
+    "bytes": 14846
+  },
+  {
+    "component": "Filer",
+    "path": "s/MsgsIn",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "d50651514e6536fea2f6b934ce2185a46ff6eeab532d43dcd0df372eaad42df3",
+    "sha256": "8a31aca8aec84eca4bdf7027f92655cefda0fa6cef27bd91b5a37ee2fa129e33",
+    "bytes": 31352
+  },
+  {
+    "component": "Filer",
+    "path": "s/OSCliInBox",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "cf5acf672b2a5fce67c805aea1c55ed6a7868fbaab54e9e05a5e1e5cb5242c80",
+    "sha256": "2ecd29c325adacb1706d9f075119574236075ab1efb4db59f2e0f6c36eeca557",
+    "bytes": 1708
+  },
+  {
+    "component": "Filer",
+    "path": "s/Open",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "e60378453fa351b285386ffeedb4debb4e02df41ec7099b1403ecd65b22efd77",
+    "sha256": "e84512e0395077b930f314c977ac1ab732447ab48fd60545ba3a71ffb43a224d",
+    "bytes": 8817
+  },
+  {
+    "component": "Filer",
+    "path": "s/OpenDir",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "53d1f516fcf79db2683032f7f22047ee3ab495fd156c7dcd5dd54705230fda8a",
+    "sha256": "40f71688f54e8d62146db2d5c517af9f2c80851fdea9a8270e8ae50dea12a632",
+    "bytes": 11918
+  },
+  {
+    "component": "Filer",
+    "path": "s/Options",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "9b38b5159318d58f7417809334614ad5e1c65b819725e6a127ab1adff0d7ec2a",
+    "sha256": "9b38b5159318d58f7417809334614ad5e1c65b819725e6a127ab1adff0d7ec2a",
+    "bytes": 4295
+  },
+  {
+    "component": "Filer",
+    "path": "s/PathMunge",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "6171af95955ca734a59b1ec00333a67701f6a56e7afdd2d633168b456113edfe",
+    "sha256": "f3100a4021290f8a4235dbe3869efa19bc47d41ad16d29d127bf1f5c558bf99c",
+    "bytes": 2824
+  },
+  {
+    "component": "Filer",
+    "path": "s/RMAlloc",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "36f9179a5f1e36d16eb302f910c937a2991f7755bc3f43f692035fe1fc5c2566",
+    "sha256": "3c95e098c7da7d555cbf7d6eb40b42b2aead32cd9655d3cda38f5d274579b3d1",
+    "bytes": 3125
+  },
+  {
+    "component": "Filer",
+    "path": "s/Recache",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "8f7c9cd6455c79e4442950b9193975c5d189caeaf3f56af14d7f74215220f67f",
+    "sha256": "ef80c8d2662b6bb245ab6c9cad43dfe169bb4003bf329b185142a8b2d5b93d21",
+    "bytes": 5794
+  },
+  {
+    "component": "Filer",
+    "path": "s/Redraw",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "6ebdcfde575ab76cf3f069280dfb3578639d2bf63728159b1ce9d2e488c640a0",
+    "sha256": "96857fb91f584af74996d0d0aa0961a2852924bc0fd58ab8eeb479bf255a4d4d",
+    "bytes": 47545
+  },
+  {
+    "component": "Filer",
+    "path": "s/RedrawOld",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "c924f98a4b6fe9fb6e21c783fa6d3797275b43ecfe6d1b6965ad6b2b55605f7b",
+    "sha256": "021e156a0592cd5a4823afe8cb9e067f70c0af23e31681e43a69ddccb49b4bb4",
+    "bytes": 45143
+  },
+  {
+    "component": "Filer",
+    "path": "s/ResGets",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "70301fcf6ca44b535524bc09f4ddf7c13e7c9f2cfdae5e97d4ea792b4c23afe2",
+    "sha256": "70301fcf6ca44b535524bc09f4ddf7c13e7c9f2cfdae5e97d4ea792b4c23afe2",
+    "bytes": 899
+  },
+  {
+    "component": "Filer",
+    "path": "s/SaveDisply",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "c90fa008933ae5014e1b51935157e6fd11f9f9bacfebe4b5cf1df5aaa69b6322",
+    "sha256": "ab7729292b790f2691722fe244b7e1fba4afa19ad1fcc07dfcb5dcd7b156a58f",
+    "bytes": 14792
+  },
+  {
+    "component": "Filer",
+    "path": "s/SelStuff",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "49f99cc639e4a8d1abc6d39409fb7dceced0c6f891e91b7f4fa0fec9f3d0dce3",
+    "sha256": "bc30173f31c7e122d407ae5c4a1ad39a8dc8f10abcb04bb5589e1ed0da103a3f",
+    "bytes": 4600
+  },
+  {
+    "component": "Filer",
+    "path": "s/SelStuff0",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "0b5db36c42eefb0260c5d01b4a44b41fbf938fe336bb628810a8a8126275cbdd",
+    "sha256": "8a6e45d7df1844de078f2569aa0a3d90cdba52020f24e52db192ee025bc2f714",
+    "bytes": 1075
+  },
+  {
+    "component": "Filer",
+    "path": "s/SelUtils",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "afc8ae2f01f043c26d4bb69acaa2ff2561e73232fdf1bb5ae2b7ca01ee047898",
+    "sha256": "73f0add7dc2f53a2e80bde2f26f1967ae34c673e5f5b1352302a92eaae08ae0a",
+    "bytes": 10944
+  },
+  {
+    "component": "Filer",
+    "path": "s/SendAck",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "33758e696221c39310b5883403067fbbcc6e4da38c601e983c2b72de9170d89f",
+    "sha256": "714ae57ffca8bf50fecc4823a6013a7a2efd47f3df651c14b76c54b1ac95eede",
+    "bytes": 1275
+  },
+  {
+    "component": "Filer",
+    "path": "s/SendMsg",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "b9762ef2f05cb9fd0bd50c431f8259cd469c874feacb38487f734396767a2646",
+    "sha256": "2d7ecaca6424938e3859e90a0121c8d8b809a65936b44b10af67c5d99845a89f",
+    "bytes": 5098
+  },
+  {
+    "component": "Filer",
+    "path": "s/SortDir",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "692098e30a3fdfbdd839431a7c564939e15b8bbf8776e03d78b382bc9adff612",
+    "sha256": "90c35ff9c1c0532a3821f65a36f6cccf9aaa8cb9fca59a3364dc51a41e1bab1d",
+    "bytes": 6487
+  },
+  {
+    "component": "Filer",
+    "path": "s/SprUtils",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "881832c20d2b333519772415e71ac05cd05da6fcdc0a3c6d32ac5d236c214d84",
+    "sha256": "33887eb0d2f2aa1a9b22d07e3dbe05d7d3de7a82887785e58d9e052d735d5193",
+    "bytes": 1891
+  },
+  {
+    "component": "Filer",
+    "path": "s/StrUtils",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "219282b5b13b05c5c25ab9ef6346717a534ebc8d021006f61cd136b5fd4e9076",
+    "sha256": "a685a8aceef9208e532d90841b9f58bc6dd867d6131b5958a219ff0261f56c08",
+    "bytes": 9156
+  },
+  {
+    "component": "Filer",
+    "path": "s/SussApplic",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "87f6c60227a8f0d1380ce4b3c98230fb6617a88769ded1fb2f44e368651f1bcf",
+    "sha256": "ed99f74d7e9f883abb99e1d7e275d06ac9ae38f5c2b4308026d1d83631b37515",
+    "bytes": 12727
+  },
+  {
+    "component": "Filer",
+    "path": "s/TokHelpSrc",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "e81f57ea7378afe1ac0aa99f8df1c2d526d51205c1123f14be9b1fcc3a69e11b",
+    "sha256": "e81f57ea7378afe1ac0aa99f8df1c2d526d51205c1123f14be9b1fcc3a69e11b",
+    "bytes": 6360
+  },
+  {
+    "component": "Filer",
+    "path": "s/UpCall",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "59c26b9a392337d5faab41de4dae1bf7b7753b64b9ef7dddaea8abe6605f0477",
+    "sha256": "3fccd791439d1263da5215c118b2b4099e5724517c6e318970b75baf1d0d767c",
+    "bytes": 13951
+  },
+  {
+    "component": "Filer",
+    "path": "s/WinUtils",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "2c50b27303bcd19dcb7a4d0009e89f26fb0c43e51e88ec753361c09846ef763e",
+    "sha256": "7cb1a2f332c5691234a3fc1a71737bd1304a523b7cfb41756e2afaa12d37c323",
+    "bytes": 3550
+  },
+  {
+    "component": "Filer",
+    "path": "s/WkspEtc",
+    "revision": "d2d9cf8ae3226a33e05b4be2f4e7dbb7a95ee10d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Filer.git",
+    "upstream_sha256": "3144c6c2199a78482ba303ffa14d71f0249e2de93a3e4cc68cdbbe4f380b9c02",
+    "sha256": "fe458fcc70076f88ae3117571f560064ddab2151031335b05a268e598af15269",
+    "bytes": 17243
+  },
+  {
+    "component": "Switcher",
+    "path": "LICENSE",
+    "revision": "36c0337f13d2446cc16f5d876f2944053f1eee91",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Switcher.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358
+  },
+  {
+    "component": "Switcher",
+    "path": "Makefile",
+    "revision": "36c0337f13d2446cc16f5d876f2944053f1eee91",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Switcher.git",
+    "upstream_sha256": "4d08f30f2fadede414b221b29b3021a09d780a028c096cb843df76bafddb85a7",
+    "sha256": "4d08f30f2fadede414b221b29b3021a09d780a028c096cb843df76bafddb85a7",
+    "bytes": 2010
+  },
+  {
+    "component": "Switcher",
+    "path": "Resources/UK/Messages",
+    "revision": "36c0337f13d2446cc16f5d876f2944053f1eee91",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Switcher.git",
+    "upstream_sha256": "5f575f2018a567ea362796897bd17012ec94d9ef39e259b3bf50ba2d93bf4417",
+    "sha256": "5f575f2018a567ea362796897bd17012ec94d9ef39e259b3bf50ba2d93bf4417",
+    "bytes": 4191
+  },
+  {
+    "component": "Switcher",
+    "path": "Resources/UK/Templates,fec",
+    "revision": "36c0337f13d2446cc16f5d876f2944053f1eee91",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Switcher.git",
+    "upstream_sha256": "fbd2328302aee3b8f89b17cd7b9814705475891ae02b0ebe698c60428c951bf8",
+    "sha256": "fbd2328302aee3b8f89b17cd7b9814705475891ae02b0ebe698c60428c951bf8",
+    "bytes": 2869
+  },
+  {
+    "component": "Switcher",
+    "path": "Version",
+    "revision": "36c0337f13d2446cc16f5d876f2944053f1eee91",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Switcher.git",
+    "upstream_sha256": "0d9b264529a99b1f052e5bf2bf8077383a8128966a7667890c2377d235da96e2",
+    "sha256": "0d9b264529a99b1f052e5bf2bf8077383a8128966a7667890c2377d235da96e2",
+    "bytes": 289
+  },
+  {
+    "component": "Switcher",
+    "path": "hdr/Switcher",
+    "revision": "36c0337f13d2446cc16f5d876f2944053f1eee91",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Switcher.git",
+    "upstream_sha256": "94660eb7c5849b68704ec9193bc704fc15f34ef4e5d608aa6d9323f58f80bbd4",
+    "sha256": "94660eb7c5849b68704ec9193bc704fc15f34ef4e5d608aa6d9323f58f80bbd4",
+    "bytes": 1677
+  },
+  {
+    "component": "Switcher",
+    "path": "s/Switcher",
+    "revision": "36c0337f13d2446cc16f5d876f2944053f1eee91",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Switcher.git",
+    "upstream_sha256": "3f0e21feda6dee347c1d6c0f3f28af786964874b11a1eecfbf4857c9c27c7d03",
+    "sha256": "6883bad9a99dd4f226b15ee1d816e841988d3f035dbd0f5ad8f58c5ab354fba4",
+    "bytes": 194472
+  },
+  {
+    "component": "Econet",
+    "path": "LICENSE",
+    "revision": "413ae41f105d8fa01f72ccb6c425cdc1ed0c4e0b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Networking/Econet.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358
+  },
+  {
+    "component": "Econet",
+    "path": "hdr/Econet",
+    "revision": "413ae41f105d8fa01f72ccb6c425cdc1ed0c4e0b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Networking/Econet.git",
+    "upstream_sha256": "f0acf214a555ef6201292c769dc9811abb35de3f7ba773be7d7f9fcfa9579d98",
+    "sha256": "f0acf214a555ef6201292c769dc9811abb35de3f7ba773be7d7f9fcfa9579d98",
+    "bytes": 21315
+  },
+  {
+    "component": "DragASprit",
+    "path": "LICENSE",
+    "revision": "31057aec4e4f93497ac66d5f8c83ede58d08322e",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Video/Render/DragASprit.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358
+  },
+  {
+    "component": "DragASprit",
+    "path": "hdr/DragASprit",
+    "revision": "31057aec4e4f93497ac66d5f8c83ede58d08322e",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Video/Render/DragASprit.git",
+    "upstream_sha256": "ed65b4739b48fa70c043660f9ec0aba028a54602b4ec75ff19fc954d4a9d05ab",
+    "sha256": "ed65b4739b48fa70c043660f9ec0aba028a54602b4ec75ff19fc954d4a9d05ab",
+    "bytes": 2091
+  },
+  {
+    "component": "FilerAct",
+    "path": "LICENSE",
+    "revision": "e2c9bb13ec47443521e1e13fef55abbfc213239d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/FilerAct.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358
+  },
+  {
+    "component": "FilerAct",
+    "path": "hdr/FilerAct",
+    "revision": "e2c9bb13ec47443521e1e13fef55abbfc213239d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/FilerAct.git",
+    "upstream_sha256": "69ef15ee9cf0f84efacf828c1c2105d559c5b13c32278713ab2984b1d5a80792",
+    "sha256": "69ef15ee9cf0f84efacf828c1c2105d559c5b13c32278713ab2984b1d5a80792",
+    "bytes": 2693
+  },
+  {
+    "component": "Pinboard",
+    "path": "Help",
+    "revision": "128b61d89cdaea881fc8e44a482cc00a180ecc9b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Pinboard.git",
+    "upstream_sha256": "d8729e5b8c4e78192c3b8711a3a55087409660ecb39ce2e5e6033fcf644889f1",
+    "sha256": "d8729e5b8c4e78192c3b8711a3a55087409660ecb39ce2e5e6033fcf644889f1",
+    "bytes": 833
+  },
+  {
+    "component": "Pinboard",
+    "path": "LICENSE",
+    "revision": "128b61d89cdaea881fc8e44a482cc00a180ecc9b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Pinboard.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358
+  },
+  {
+    "component": "Pinboard",
+    "path": "Makefile",
+    "revision": "128b61d89cdaea881fc8e44a482cc00a180ecc9b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Pinboard.git",
+    "upstream_sha256": "709c6328f538f79a6cef6b18cc531c3227df3bf168f9bb8eb5f35163e26e0d99",
+    "sha256": "709c6328f538f79a6cef6b18cc531c3227df3bf168f9bb8eb5f35163e26e0d99",
+    "bytes": 1755
+  },
+  {
+    "component": "Pinboard",
+    "path": "Resources/UK/Messages",
+    "revision": "128b61d89cdaea881fc8e44a482cc00a180ecc9b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Pinboard.git",
+    "upstream_sha256": "1371b8ed2a05fe37e42c34af21e1db72fa65cc0ccd882e965ad1a4bccf916558",
+    "sha256": "1371b8ed2a05fe37e42c34af21e1db72fa65cc0ccd882e965ad1a4bccf916558",
+    "bytes": 4514
+  },
+  {
+    "component": "Pinboard",
+    "path": "Resources/UK/Template2D,fec",
+    "revision": "128b61d89cdaea881fc8e44a482cc00a180ecc9b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Pinboard.git",
+    "upstream_sha256": "2add67c2430aecf67558af161d577cd81796c8d6f0c3825061132d7bd4bf2f69",
+    "sha256": "2add67c2430aecf67558af161d577cd81796c8d6f0c3825061132d7bd4bf2f69",
+    "bytes": 986
+  },
+  {
+    "component": "Pinboard",
+    "path": "Resources/UK/Templates,fec",
+    "revision": "128b61d89cdaea881fc8e44a482cc00a180ecc9b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Pinboard.git",
+    "upstream_sha256": "753e03c45d2fb6cbf7c543525b5538f4e484fa0ca751f28ea982c45bf268f36d",
+    "sha256": "753e03c45d2fb6cbf7c543525b5538f4e484fa0ca751f28ea982c45bf268f36d",
+    "bytes": 1026
+  },
+  {
+    "component": "Pinboard",
+    "path": "Syntax",
+    "revision": "128b61d89cdaea881fc8e44a482cc00a180ecc9b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Pinboard.git",
+    "upstream_sha256": "26497acb3065b7f71e665403f4d3e17aca304a127f4e5270ea995594b5fde767",
+    "sha256": "26497acb3065b7f71e665403f4d3e17aca304a127f4e5270ea995594b5fde767",
+    "bytes": 274
+  },
+  {
+    "component": "Pinboard",
+    "path": "Version",
+    "revision": "128b61d89cdaea881fc8e44a482cc00a180ecc9b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Pinboard.git",
+    "upstream_sha256": "454a5313c978548a3130854784e7866f1cbdc611f9a0136c95ef686694367d08",
+    "sha256": "454a5313c978548a3130854784e7866f1cbdc611f9a0136c95ef686694367d08",
+    "bytes": 292
+  },
+  {
+    "component": "Pinboard",
+    "path": "s/Backdrop",
+    "revision": "128b61d89cdaea881fc8e44a482cc00a180ecc9b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Pinboard.git",
+    "upstream_sha256": "8448a5e97dd699f592eb83806b728d6e24712e4f211f06c43b781e6ba7fff3c8",
+    "sha256": "af7a25d4dd369e349ea42e77d3406162413a9f9ce94ea402e01ecb5927aec46c",
+    "bytes": 24140
+  },
+  {
+    "component": "Pinboard",
+    "path": "s/Buffered",
+    "revision": "128b61d89cdaea881fc8e44a482cc00a180ecc9b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Pinboard.git",
+    "upstream_sha256": "8fd68490050d194b470f703745e774db5dd19c19130e7fd76d8e4742501446be",
+    "sha256": "8fd68490050d194b470f703745e774db5dd19c19130e7fd76d8e4742501446be",
+    "bytes": 15176
+  },
+  {
+    "component": "Pinboard",
+    "path": "s/Buffering",
+    "revision": "128b61d89cdaea881fc8e44a482cc00a180ecc9b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Pinboard.git",
+    "upstream_sha256": "16f620ef7b9d41dbf8c31d31fe66278016423fcc20529d1fcb7376fb5a0e9efb",
+    "sha256": "30375897c0db3adf0798856397c5d41c67891bb65a9abe226afeb1549cc39ab3",
+    "bytes": 21674
+  },
+  {
+    "component": "Pinboard",
+    "path": "s/Drag",
+    "revision": "128b61d89cdaea881fc8e44a482cc00a180ecc9b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Pinboard.git",
+    "upstream_sha256": "6355d0b41ffeeae090b2c81d6848b1a178deb21b800b42d97ff9f269d0f79f11",
+    "sha256": "6355d0b41ffeeae090b2c81d6848b1a178deb21b800b42d97ff9f269d0f79f11",
+    "bytes": 10238
+  },
+  {
+    "component": "Pinboard",
+    "path": "s/EmptyBuf",
+    "revision": "128b61d89cdaea881fc8e44a482cc00a180ecc9b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Pinboard.git",
+    "upstream_sha256": "783a52e8a4df8414c309ff8976c8b5ac93bd796f64348c8a0f41e893b1e05c18",
+    "sha256": "783a52e8a4df8414c309ff8976c8b5ac93bd796f64348c8a0f41e893b1e05c18",
+    "bytes": 9139
+  },
+  {
+    "component": "Pinboard",
+    "path": "s/Help",
+    "revision": "128b61d89cdaea881fc8e44a482cc00a180ecc9b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Pinboard.git",
+    "upstream_sha256": "9749e1af464b5d746c24d89251242da9339c72f88ad4284c3702c145f8b7f454",
+    "sha256": "9749e1af464b5d746c24d89251242da9339c72f88ad4284c3702c145f8b7f454",
+    "bytes": 3706
+  },
+  {
+    "component": "Pinboard",
+    "path": "s/Iconize",
+    "revision": "128b61d89cdaea881fc8e44a482cc00a180ecc9b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Pinboard.git",
+    "upstream_sha256": "a104aab9b033d94ea0ba141b330b3cee7174ac4381fed328e2a6ad9730b2fc7a",
+    "sha256": "a104aab9b033d94ea0ba141b330b3cee7174ac4381fed328e2a6ad9730b2fc7a",
+    "bytes": 8649
+  },
+  {
+    "component": "Pinboard",
+    "path": "s/Icons",
+    "revision": "128b61d89cdaea881fc8e44a482cc00a180ecc9b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Pinboard.git",
+    "upstream_sha256": "c421ad534c3f01293da77503c520cd4d0918944d421211ed0e5fb2244b19fb5a",
+    "sha256": "c421ad534c3f01293da77503c520cd4d0918944d421211ed0e5fb2244b19fb5a",
+    "bytes": 14352
+  },
+  {
+    "component": "Pinboard",
+    "path": "s/Lists",
+    "revision": "128b61d89cdaea881fc8e44a482cc00a180ecc9b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Pinboard.git",
+    "upstream_sha256": "ee4063293b9f4f5f3a1e17b2fc098fa9278cce5189642252070417a27152db0a",
+    "sha256": "ee4063293b9f4f5f3a1e17b2fc098fa9278cce5189642252070417a27152db0a",
+    "bytes": 4118
+  },
+  {
+    "component": "Pinboard",
+    "path": "s/Menu",
+    "revision": "128b61d89cdaea881fc8e44a482cc00a180ecc9b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Pinboard.git",
+    "upstream_sha256": "6bc0a394c22be6d7a36f47516f729a0ff79fe93b5e85b41d6d408f7dfcaf86e1",
+    "sha256": "fd26ba3722c0007c904c2362b6cd1e6881f495a088e33cefb95d5aee36a255cd",
+    "bytes": 12443
+  },
+  {
+    "component": "Pinboard",
+    "path": "s/MenuSelect",
+    "revision": "128b61d89cdaea881fc8e44a482cc00a180ecc9b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Pinboard.git",
+    "upstream_sha256": "07bfcb6ea8cdeb235f42e5cc1cd15b624fb34070c684997875e7b9e9c87af0b5",
+    "sha256": "07bfcb6ea8cdeb235f42e5cc1cd15b624fb34070c684997875e7b9e9c87af0b5",
+    "bytes": 8956
+  },
+  {
+    "component": "Pinboard",
+    "path": "s/Messages",
+    "revision": "128b61d89cdaea881fc8e44a482cc00a180ecc9b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Pinboard.git",
+    "upstream_sha256": "2d360d07be6d2bd0d38f8b594e7475a91933014e5131e07492825f0514973f50",
+    "sha256": "99f1d2c4686cd97535b273bcee70b0bf26175970f8bab0634a56937b70cb2310",
+    "bytes": 21961
+  },
+  {
+    "component": "Pinboard",
+    "path": "s/ModHead",
+    "revision": "128b61d89cdaea881fc8e44a482cc00a180ecc9b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Pinboard.git",
+    "upstream_sha256": "ea002fe7636a1c176c58beec41b80d1ead9e6739bd866fd9b8638202221671a5",
+    "sha256": "c77d22183125cfba3eea42aae1c41f49c17276bb1eaa548825528e423fb9284f",
+    "bytes": 22687
+  },
+  {
+    "component": "Pinboard",
+    "path": "s/Mouse",
+    "revision": "128b61d89cdaea881fc8e44a482cc00a180ecc9b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Pinboard.git",
+    "upstream_sha256": "3dd484f96e0ec0a58cb09cade1653b94ab0ab573385d7fcb978a08e8d33d8dbb",
+    "sha256": "3dd484f96e0ec0a58cb09cade1653b94ab0ab573385d7fcb978a08e8d33d8dbb",
+    "bytes": 10294
+  },
+  {
+    "component": "Pinboard",
+    "path": "s/Pinboard",
+    "revision": "128b61d89cdaea881fc8e44a482cc00a180ecc9b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Pinboard.git",
+    "upstream_sha256": "4acd02e362bfcc88aee1f28cea4327361eb1c3a0887c0fc516d730df4f73a800",
+    "sha256": "ea2daa4e5fea4107534c38927368ccb15307b7f8600812348f410c424e252809",
+    "bytes": 10830
+  },
+  {
+    "component": "Pinboard",
+    "path": "s/Save",
+    "revision": "128b61d89cdaea881fc8e44a482cc00a180ecc9b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Pinboard.git",
+    "upstream_sha256": "044a95ec66749c38d817270fe1f8b22c2dc1ea79b0d60415ea5d0a2c2344a81b",
+    "sha256": "044a95ec66749c38d817270fe1f8b22c2dc1ea79b0d60415ea5d0a2c2344a81b",
+    "bytes": 10942
+  },
+  {
+    "component": "Pinboard",
+    "path": "s/StartLoop",
+    "revision": "128b61d89cdaea881fc8e44a482cc00a180ecc9b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Pinboard.git",
+    "upstream_sha256": "892765fd1635e3722eb7e8e0e049b46aa45de29958d70a5d2d0b6fb2b841e2d4",
+    "sha256": "892765fd1635e3722eb7e8e0e049b46aa45de29958d70a5d2d0b6fb2b841e2d4",
+    "bytes": 14552
+  },
+  {
+    "component": "Pinboard",
+    "path": "s/Syntax",
+    "revision": "128b61d89cdaea881fc8e44a482cc00a180ecc9b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Pinboard.git",
+    "upstream_sha256": "f0d97f89c2b4314555de9ecceee0b17350e7c0a702069db0fa54ad240a01604f",
+    "sha256": "f0d97f89c2b4314555de9ecceee0b17350e7c0a702069db0fa54ad240a01604f",
+    "bytes": 819
+  },
+  {
+    "component": "Pinboard",
+    "path": "s/Tail",
+    "revision": "128b61d89cdaea881fc8e44a482cc00a180ecc9b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Pinboard.git",
+    "upstream_sha256": "f7bfce3e41df1db1e5a802478f337a67f0400aa46c32f75434a1b18f07092550",
+    "sha256": "f7bfce3e41df1db1e5a802478f337a67f0400aa46c32f75434a1b18f07092550",
+    "bytes": 7053
+  },
+  {
+    "component": "Pinboard",
+    "path": "s/log",
+    "revision": "128b61d89cdaea881fc8e44a482cc00a180ecc9b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Pinboard.git",
+    "upstream_sha256": "e7ec187b3ba332e2b37be6dd89eb3f002cfb3034ab03bb68c27d8d29b37722ec",
+    "sha256": "e7ec187b3ba332e2b37be6dd89eb3f002cfb3034ab03bb68c27d8d29b37722ec",
+    "bytes": 685
+  },
+  {
+    "component": "SprExtend",
+    "path": "LICENSE",
+    "revision": "0ca1c4b36a786fced03e53e63f1524cba73ed834",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Video/Render/SprExtend.git",
+    "upstream_sha256": "73d949f704169c256ea475ab0465e947d7fb1324db044774f41ef09b25a8ad35",
+    "sha256": "73d949f704169c256ea475ab0465e947d7fb1324db044774f41ef09b25a8ad35",
+    "bytes": 14890
+  },
+  {
+    "component": "SprExtend",
+    "path": "Makefile",
+    "revision": "0ca1c4b36a786fced03e53e63f1524cba73ed834",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Video/Render/SprExtend.git",
+    "upstream_sha256": "0cf0c85fc8cabcda0a99cdbd0b3e4bb396531dfa9667d6edabdcadedd0af2960",
+    "sha256": "0cf0c85fc8cabcda0a99cdbd0b3e4bb396531dfa9667d6edabdcadedd0af2960",
+    "bytes": 9072
+  },
+  {
+    "component": "SprExtend",
+    "path": "Version",
+    "revision": "0ca1c4b36a786fced03e53e63f1524cba73ed834",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Video/Render/SprExtend.git",
+    "upstream_sha256": "4523b70526be599e0075778d1c846f8a9251675b37352a88d482897ec27c68f5",
+    "sha256": "4523b70526be599e0075778d1c846f8a9251675b37352a88d482897ec27c68f5",
+    "bytes": 169
+  },
+  {
+    "component": "SprExtend",
+    "path": "Resources/UK/Messages",
+    "revision": "0ca1c4b36a786fced03e53e63f1524cba73ed834",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Video/Render/SprExtend.git",
+    "upstream_sha256": "5ae8ca4b9c8a62ec878893250ad11c7e4e2c7e021af536b393526729e8137e75",
+    "sha256": "5ae8ca4b9c8a62ec878893250ad11c7e4e2c7e021af536b393526729e8137e75",
+    "bytes": 1017
+  },
+  {
+    "component": "SprExtend",
+    "path": "c/SpriteOp",
+    "revision": "0ca1c4b36a786fced03e53e63f1524cba73ed834",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Video/Render/SprExtend.git",
+    "upstream_sha256": "9705d4dbed36673b777690b3cf7ecc8d5aeae2c8e1d8fe3e8cf8a32a9bb31254",
+    "sha256": "9705d4dbed36673b777690b3cf7ecc8d5aeae2c8e1d8fe3e8cf8a32a9bb31254",
+    "bytes": 4538
+  },
+  {
+    "component": "SprExtend",
+    "path": "Sources/SprExtend",
+    "revision": "0ca1c4b36a786fced03e53e63f1524cba73ed834",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Video/Render/SprExtend.git",
+    "upstream_sha256": "fc60d1d101f32e555ade7d2849fd11644735cc9aeef654be2bd6e2f159b1d142",
+    "sha256": "0c1626a01d1751f072a0397c559603b8018a80fc15930829c882ca2b5d15a58e",
+    "bytes": 227145
+  },
+  {
+    "component": "SprExtend",
+    "path": "Sources/SprAdjSize",
+    "revision": "0ca1c4b36a786fced03e53e63f1524cba73ed834",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Video/Render/SprExtend.git",
+    "upstream_sha256": "2ac6d3550cbab49f8e5e2517bd5a9a74f2f40b56257948aabb256c5c79f5293d",
+    "sha256": "2ac6d3550cbab49f8e5e2517bd5a9a74f2f40b56257948aabb256c5c79f5293d",
+    "bytes": 42573
+  },
+  {
+    "component": "SprExtend",
+    "path": "Sources/SprTrans",
+    "revision": "0ca1c4b36a786fced03e53e63f1524cba73ed834",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Video/Render/SprExtend.git",
+    "upstream_sha256": "06b414411786ff06081261c7fef7d90da0940c7484adedce3a7d88585741934b",
+    "sha256": "7efa79aa3b73eca56da67d1d69ced026f42c560f4f3e877cc57d3e3c94171c71",
+    "bytes": 88826
+  },
+  {
+    "component": "SprExtend",
+    "path": "Sources/MsgCode",
+    "revision": "0ca1c4b36a786fced03e53e63f1524cba73ed834",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Video/Render/SprExtend.git",
+    "upstream_sha256": "07ad9b66a7ce8c3146af7906694c7306f346b83974d0a6f9a9474790814ab4e8",
+    "sha256": "24b06973a16eb2be02a0c11817c60b3c80cac22747c67912d28cb4000fe819ae",
+    "bytes": 8376
+  },
+  {
+    "component": "SprExtend",
+    "path": "Sources/SWIs",
+    "revision": "0ca1c4b36a786fced03e53e63f1524cba73ed834",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Video/Render/SprExtend.git",
+    "upstream_sha256": "7c5033e30610d6c6e9b1450ba5dec12491c17141e1704fbaf4442f62a8a49855",
+    "sha256": "7c5033e30610d6c6e9b1450ba5dec12491c17141e1704fbaf4442f62a8a49855",
+    "bytes": 39567
+  },
+  {
+    "component": "SprExtend",
+    "path": "Sources/PutScaled",
+    "revision": "0ca1c4b36a786fced03e53e63f1524cba73ed834",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Video/Render/SprExtend.git",
+    "upstream_sha256": "8464687cc6c0567e6deba7088a6ff2f94938a6073e1787b238855395e4c345e6",
+    "sha256": "8464687cc6c0567e6deba7088a6ff2f94938a6073e1787b238855395e4c345e6",
+    "bytes": 38806
+  },
+  {
+    "component": "ADFSFiler",
+    "path": "Help",
+    "revision": "029abac31548974a095d876bd99427b1c5f664fc",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ADFS/ADFSFiler.git",
+    "upstream_sha256": "bcaa942f439fa55274f76eb89505621d9f8f1993b9d1cace9979fb6072006f30",
+    "sha256": "bcaa942f439fa55274f76eb89505621d9f8f1993b9d1cace9979fb6072006f30",
+    "bytes": 314
+  },
+  {
+    "component": "ADFSFiler",
+    "path": "LICENSE",
+    "revision": "029abac31548974a095d876bd99427b1c5f664fc",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ADFS/ADFSFiler.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358
+  },
+  {
+    "component": "ADFSFiler",
+    "path": "Makefile",
+    "revision": "029abac31548974a095d876bd99427b1c5f664fc",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ADFS/ADFSFiler.git",
+    "upstream_sha256": "f9068312aa4e29d5075c8c39292aa7355829b5d6b41bd07f367805b2f7db6329",
+    "sha256": "f9068312aa4e29d5075c8c39292aa7355829b5d6b41bd07f367805b2f7db6329",
+    "bytes": 1759
+  },
+  {
+    "component": "ADFSFiler",
+    "path": "Resources/UK/Messages",
+    "revision": "029abac31548974a095d876bd99427b1c5f664fc",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ADFS/ADFSFiler.git",
+    "upstream_sha256": "cb2eabbba32f6ae8dd92055843f6bf0b360e250ac6a31cfb00379416cba7c3b6",
+    "sha256": "cb2eabbba32f6ae8dd92055843f6bf0b360e250ac6a31cfb00379416cba7c3b6",
+    "bytes": 3506
+  },
+  {
+    "component": "ADFSFiler",
+    "path": "Resources/UK/Template2D,fec",
+    "revision": "029abac31548974a095d876bd99427b1c5f664fc",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ADFS/ADFSFiler.git",
+    "upstream_sha256": "dde83c20ed83c2b449552c5e9359f5807fce0c0e8e1d49385967d78d924dc2bf",
+    "sha256": "dde83c20ed83c2b449552c5e9359f5807fce0c0e8e1d49385967d78d924dc2bf",
+    "bytes": 609
+  },
+  {
+    "component": "ADFSFiler",
+    "path": "Resources/UK/Templates,fec",
+    "revision": "029abac31548974a095d876bd99427b1c5f664fc",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ADFS/ADFSFiler.git",
+    "upstream_sha256": "d41f4727590b9a3f4360fbcddd96ad1404c5004e0d29f8fb09999c52bf273f68",
+    "sha256": "d41f4727590b9a3f4360fbcddd96ad1404c5004e0d29f8fb09999c52bf273f68",
+    "bytes": 624
+  },
+  {
+    "component": "ADFSFiler",
+    "path": "Syntax",
+    "revision": "029abac31548974a095d876bd99427b1c5f664fc",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ADFS/ADFSFiler.git",
+    "upstream_sha256": "8e81bbd989dffad57ac9b39affc92150b9ceaae4a7c6b3ac64a1ced619ce99ea",
+    "sha256": "8e81bbd989dffad57ac9b39affc92150b9ceaae4a7c6b3ac64a1ced619ce99ea",
+    "bytes": 92
+  },
+  {
+    "component": "ADFSFiler",
+    "path": "Version",
+    "revision": "029abac31548974a095d876bd99427b1c5f664fc",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ADFS/ADFSFiler.git",
+    "upstream_sha256": "2ba7f515fe0aeeb9a1629882b11e72821d58c4fefd3f320b21990b73098f54f8",
+    "sha256": "2ba7f515fe0aeeb9a1629882b11e72821d58c4fefd3f320b21990b73098f54f8",
+    "bytes": 169
+  },
+  {
+    "component": "ADFSFiler",
+    "path": "s/ADFSFiler",
+    "revision": "029abac31548974a095d876bd99427b1c5f664fc",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ADFS/ADFSFiler.git",
+    "upstream_sha256": "7ed7da8e6f8b1825560b83955e9cbba8d15770f8aef3daeeb532e6107afb0a93",
+    "sha256": "137a19536bd4cae557c12de2c871ccc936781f9c846139879f709e08ef9d99b4",
+    "bytes": 131670
+  },
+  {
+    "component": "ADFSFiler",
+    "path": "s/Backup",
+    "revision": "029abac31548974a095d876bd99427b1c5f664fc",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ADFS/ADFSFiler.git",
+    "upstream_sha256": "f11c566f33949fcaa59e045b5c7058979b19e28d759fb49ed44a1a4c9caf1dea",
+    "sha256": "3c1db2f07acb482e617840f3b17e045f4267d20bfeb8e87c2ef975f381861aa3",
+    "bytes": 32874
+  },
+  {
+    "component": "ADFSFiler",
+    "path": "s/Format",
+    "revision": "029abac31548974a095d876bd99427b1c5f664fc",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ADFS/ADFSFiler.git",
+    "upstream_sha256": "90f97be016746a51c915299ff0c249fda5a9f0a9efa7de4c8ca044de6e958fae",
+    "sha256": "440b9168dd8318c690d875e5ef40cfe3c2abebed5752a06162522b3221f3f8d3",
+    "bytes": 61054
+  },
+  {
+    "component": "ShellCLI",
+    "path": "Help",
+    "revision": "d31790b36e538b6eeffcfb663fb43f62e7871a99",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/ShellCLI.git",
+    "upstream_sha256": "436b5f4a1ba99989b4f8b4e676ef2c9c93d4432694aa08667c4a9f5cc2502b90",
+    "sha256": "436b5f4a1ba99989b4f8b4e676ef2c9c93d4432694aa08667c4a9f5cc2502b90",
+    "bytes": 158
+  },
+  {
+    "component": "ShellCLI",
+    "path": "LICENSE",
+    "revision": "d31790b36e538b6eeffcfb663fb43f62e7871a99",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/ShellCLI.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358
+  },
+  {
+    "component": "ShellCLI",
+    "path": "Makefile",
+    "revision": "d31790b36e538b6eeffcfb663fb43f62e7871a99",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/ShellCLI.git",
+    "upstream_sha256": "4a2514539e79420d45a56eac20b5a501d405e64679d01af766fc746cdd8af422",
+    "sha256": "4a2514539e79420d45a56eac20b5a501d405e64679d01af766fc746cdd8af422",
+    "bytes": 1809
+  },
+  {
+    "component": "ShellCLI",
+    "path": "Resources/UK/Messages",
+    "revision": "d31790b36e538b6eeffcfb663fb43f62e7871a99",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/ShellCLI.git",
+    "upstream_sha256": "2a0d17c87985d2b3b43ff99356d679b581a4789977b259328034536ddb481983",
+    "sha256": "2a0d17c87985d2b3b43ff99356d679b581a4789977b259328034536ddb481983",
+    "bytes": 197
+  },
+  {
+    "component": "ShellCLI",
+    "path": "Syntax",
+    "revision": "d31790b36e538b6eeffcfb663fb43f62e7871a99",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/ShellCLI.git",
+    "upstream_sha256": "8462022c0409b9f7f1ac5f1f4507d6b71c15e6d059d68ae8121613c084b8ad85",
+    "sha256": "8462022c0409b9f7f1ac5f1f4507d6b71c15e6d059d68ae8121613c084b8ad85",
+    "bytes": 56
+  },
+  {
+    "component": "ShellCLI",
+    "path": "Version",
+    "revision": "d31790b36e538b6eeffcfb663fb43f62e7871a99",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/ShellCLI.git",
+    "upstream_sha256": "36c23bfeb20ef2db73e999095e3de9141628c447611f3afaa7cf4fa8454dab01",
+    "sha256": "36c23bfeb20ef2db73e999095e3de9141628c447611f3afaa7cf4fa8454dab01",
+    "bytes": 271
+  },
+  {
+    "component": "ShellCLI",
+    "path": "hdr/Shell",
+    "revision": "d31790b36e538b6eeffcfb663fb43f62e7871a99",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/ShellCLI.git",
+    "upstream_sha256": "b7202387aebf33bd04fe1397584cfcd002390271977588c2068e11c44466f09e",
+    "sha256": "b7202387aebf33bd04fe1397584cfcd002390271977588c2068e11c44466f09e",
+    "bytes": 1111
+  },
+  {
+    "component": "ShellCLI",
+    "path": "s/ShellCLI",
+    "revision": "d31790b36e538b6eeffcfb663fb43f62e7871a99",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/ShellCLI.git",
+    "upstream_sha256": "7cde7e9af52cae7c6a6c27e5cd54af728346be8afc95659db1e5a2a1263c0098",
+    "sha256": "6ae5e4eadf909539e6e16ca087ca2ba712a85715450a32eb7d1810da8ebe2d11",
+    "bytes": 23429
+  },
+  {
+    "component": "Obey",
+    "path": "LICENSE",
+    "revision": "9fd2629acfcd9125960b704c42f1b259a45840ac",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Programmer/Obey.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358
+  },
+  {
+    "component": "Obey",
+    "path": "Makefile",
+    "revision": "9fd2629acfcd9125960b704c42f1b259a45840ac",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Programmer/Obey.git",
+    "upstream_sha256": "9923baf0589813eface6ebd6f121106b1bdbbe4d5a1ba87c9d9d396d19ea46cb",
+    "sha256": "9923baf0589813eface6ebd6f121106b1bdbbe4d5a1ba87c9d9d396d19ea46cb",
+    "bytes": 1711
+  },
+  {
+    "component": "Obey",
+    "path": "Help",
+    "revision": "9fd2629acfcd9125960b704c42f1b259a45840ac",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Programmer/Obey.git",
+    "upstream_sha256": "059de2558800e4b6e24e6ee448ab16911de7f9f073c1984c19b7810b967b9998",
+    "sha256": "059de2558800e4b6e24e6ee448ab16911de7f9f073c1984c19b7810b967b9998",
+    "bytes": 276
+  },
+  {
+    "component": "Obey",
+    "path": "Syntax",
+    "revision": "9fd2629acfcd9125960b704c42f1b259a45840ac",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Programmer/Obey.git",
+    "upstream_sha256": "d60e5ba05023c3d1a93d2e091bb68f5e9d0f4323157184792e46c88c63891f93",
+    "sha256": "d60e5ba05023c3d1a93d2e091bb68f5e9d0f4323157184792e46c88c63891f93",
+    "bytes": 55
+  },
+  {
+    "component": "Obey",
+    "path": "Version",
+    "revision": "9fd2629acfcd9125960b704c42f1b259a45840ac",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Programmer/Obey.git",
+    "upstream_sha256": "88a7181318cb11fbb2d4a86c340ea55bc9131c0517d3bfb2393d969ba6409dda",
+    "sha256": "88a7181318cb11fbb2d4a86c340ea55bc9131c0517d3bfb2393d969ba6409dda",
+    "bytes": 223
+  },
+  {
+    "component": "Obey",
+    "path": "s/Obey",
+    "revision": "9fd2629acfcd9125960b704c42f1b259a45840ac",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Programmer/Obey.git",
+    "upstream_sha256": "336a5f56e057f952b37bc34f882af14626bb37695bacc2c63224794f175c1387",
+    "sha256": "46218da3874341076a4a60944a3d03013487f94fd3ced71f73bb9d5afab45738",
+    "bytes": 38427
+  },
+  {
+    "component": "Obey",
+    "path": "Resources/UK/Messages",
+    "revision": "9fd2629acfcd9125960b704c42f1b259a45840ac",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Programmer/Obey.git",
+    "upstream_sha256": "1a9a9262b27e2c25990745f97a1b771db4b96c1e14d239e8658417375222f97d",
+    "sha256": "1a9a9262b27e2c25990745f97a1b771db4b96c1e14d239e8658417375222f97d",
+    "bytes": 319
+  },
+  {
+    "component": "Buffers",
+    "path": "LICENSE",
+    "revision": "be2e051d01382492b65a1685d1f33e8ef4935444",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Buffers.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358
+  },
+  {
+    "component": "Buffers",
+    "path": "Makefile",
+    "revision": "be2e051d01382492b65a1685d1f33e8ef4935444",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Buffers.git",
+    "upstream_sha256": "dc9ee17dc70a71b47dffdcfaa601bd5494bbf924fb0a30967449ae3ed753a494",
+    "sha256": "dc9ee17dc70a71b47dffdcfaa601bd5494bbf924fb0a30967449ae3ed753a494",
+    "bytes": 2101
+  },
+  {
+    "component": "Buffers",
+    "path": "Version",
+    "revision": "be2e051d01382492b65a1685d1f33e8ef4935444",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Buffers.git",
+    "upstream_sha256": "c4d33a0394a80167c961d4a8af27fa343891ebed4a36fc463ed1682877f928b2",
+    "sha256": "c4d33a0394a80167c961d4a8af27fa343891ebed4a36fc463ed1682877f928b2",
+    "bytes": 169
+  },
+  {
+    "component": "Buffers",
+    "path": "hdr/Buffer",
+    "revision": "be2e051d01382492b65a1685d1f33e8ef4935444",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Buffers.git",
+    "upstream_sha256": "e2b79fc42869f6b7676ff6eed24f6a85a1907fe094c41db2a8725bb7bb57adaa",
+    "sha256": "e2b79fc42869f6b7676ff6eed24f6a85a1907fe094c41db2a8725bb7bb57adaa",
+    "bytes": 2136
+  },
+  {
+    "component": "Buffers",
+    "path": "Doc/BufferMan",
+    "revision": "be2e051d01382492b65a1685d1f33e8ef4935444",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Buffers.git",
+    "upstream_sha256": "a2a1ef32ac8b1f658f6b79f7d92a7a4bb085f3f5ce473bba582d17c959d93fbd",
+    "sha256": "a2a1ef32ac8b1f658f6b79f7d92a7a4bb085f3f5ce473bba582d17c959d93fbd",
+    "bytes": 13494
+  },
+  {
+    "component": "Buffers",
+    "path": "s/Buffers",
+    "revision": "be2e051d01382492b65a1685d1f33e8ef4935444",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Buffers.git",
+    "upstream_sha256": "c468e75bc8291087f3a8f6461e4a57c17130d3ef080b330e3e37162e86b62f77",
+    "sha256": "8a626879bfedaa837a8e490226bddda6bdb47d1add70c7c361fdac8bbd02c6ff",
+    "bytes": 88530
+  },
+  {
+    "component": "Buffers",
+    "path": "s/Errors",
+    "revision": "be2e051d01382492b65a1685d1f33e8ef4935444",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Buffers.git",
+    "upstream_sha256": "1b35609c03f04ab4a319adbb8f538dd8e94c131e3dbcc3fa782d117dc76f8f0d",
+    "sha256": "1b35609c03f04ab4a319adbb8f538dd8e94c131e3dbcc3fa782d117dc76f8f0d",
+    "bytes": 2147
+  },
+  {
+    "component": "Buffers",
+    "path": "s/MoveBlock",
+    "revision": "be2e051d01382492b65a1685d1f33e8ef4935444",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Buffers.git",
+    "upstream_sha256": "4e3a86dc5139d9035b63c22540c8ba418141c75f9eb1625d78229e81822888ae",
+    "sha256": "ad5dd64f0fd17c1e15f9afed5055755ec33ed2089095ffac5f3cf97403097057",
+    "bytes": 9009
+  },
+  {
+    "component": "Buffers",
+    "path": "s/ResFiles",
+    "revision": "be2e051d01382492b65a1685d1f33e8ef4935444",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Buffers.git",
+    "upstream_sha256": "f707d7658b0745f4c83410c28b00a990b06b603cb2a290d6eea2b85e1cb61b16",
+    "sha256": "f707d7658b0745f4c83410c28b00a990b06b603cb2a290d6eea2b85e1cb61b16",
+    "bytes": 1218
+  },
+  {
+    "component": "Buffers",
+    "path": "s/StandAlone",
+    "revision": "be2e051d01382492b65a1685d1f33e8ef4935444",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Buffers.git",
+    "upstream_sha256": "b8d8bb9b4757e8591b3e9b92dd8733d16f5cb595aa1ae9f6ec618f1005c35d5b",
+    "sha256": "b8d8bb9b4757e8591b3e9b92dd8733d16f5cb595aa1ae9f6ec618f1005c35d5b",
+    "bytes": 745
+  },
+  {
+    "component": "Buffers",
+    "path": "Resources/UK/Messages",
+    "revision": "be2e051d01382492b65a1685d1f33e8ef4935444",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/HWSupport/Buffers.git",
+    "upstream_sha256": "101301f05fa38267bae07b2ec7040cbf5c98b27deca32a19b5bdc61bac914a01",
+    "sha256": "101301f05fa38267bae07b2ec7040cbf5c98b27deca32a19b5bdc61bac914a01",
+    "bytes": 186
+  }
+]

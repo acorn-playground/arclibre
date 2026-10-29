@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <!-- ArcLibre, in MacBeeb's and MacArch's icons' way: a screen (the grey of
+       its splash, with the RISC OS acorn) over the hardware (its ROM). -->
+  <defs>
+    <clipPath id="shape"><rect x="100" y="100" width="824" height="824" rx="185"/></clipPath>
+    <linearGradient id="screen" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ececec"/><stop offset="1" stop-color="#cfcfcf"/></linearGradient>
+    <linearGradient id="strip" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8048bd"/><stop offset="1" stop-color="#5b2b8e"/></linearGradient>
+    <linearGradient id="acorn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4fb833"/><stop offset="1" stop-color="#3a9a23"/></linearGradient>
+  </defs>
+  <g clip-path="url(#shape)">
+    <rect x="100" y="100" width="824" height="568" fill="url(#screen)"/>
+    <rect x="100" y="668" width="824" height="256" fill="url(#strip)"/>
+    <rect x="100" y="664" width="824" height="8" fill="#000" opacity="0.35"/>
+  </g>
+  <rect x="102" y="102" width="820" height="820" rx="183" fill="none" stroke="#000" stroke-opacity="0.12" stroke-width="4"/>
+  <g transform="translate(512 386) scale(2.05) translate(-61 -98)">
+    <path fill="url(#acorn)" d="M8 95C8 40 30 2 60 2s52 38 52 93z"/>
+    <path fill="url(#acorn)" d="M7 104h106c0 27-18 47-53 55C25 151 7 131 7 104z"/>
+    <path d="M6 154l110 40" fill="none" stroke="#3a9a23" stroke-width="8" stroke-linecap="round"/>
+  </g>
+  <g fill="#e2e0e8"><rect x="403" y="718" width="22" height="22" rx="4"/><rect x="403" y="826" width="22" height="22" rx="4"/><rect x="453" y="718" width="22" height="22" rx="4"/><rect x="453" y="826" width="22" height="22" rx="4"/><rect x="503" y="718" width="22" height="22" rx="4"/><rect x="503" y="826" width="22" height="22" rx="4"/><rect x="553" y="718" width="22" height="22" rx="4"/><rect x="553" y="826" width="22" height="22" rx="4"/><rect x="603" y="718" width="22" height="22" rx="4"/><rect x="603" y="826" width="22" height="22" rx="4"/></g>
+  <rect x="380" y="736" width="268" height="94" rx="16" fill="#18171c"/>
+  <circle cx="410" cy="766" r="9" fill="#3a3842"/>
+</svg>

@@ -1,0 +1,78 @@
+; SPDX-License-Identifier: Apache-2.0
+; ArcLibre: default boot sector written by DOSFS_LayoutStructure (*Format).
+;
+; Independently written for ArcLibre to replace the upstream s/StaticDefs
+; template, whose x86 payload has no established provenance. It is an
+; honest non-system data-disc sector: on a PC it prints a message, waits for
+; a key and asks the BIOS to try booting again (INT 19h). It never tries to
+; load an operating system.
+;
+; Layout follows DOSFS's DOS_bootsector (h/DOSshape). LayoutStructure copies
+; this sector and then overwrites the format-dependent fields: sectors per
+; cluster, root entries (low byte), total sectors, media byte, sectors per
+; FAT (low byte), sectors per track and heads (low byte). The values below
+; for those fields are the DOS/M (720K) ones, so the template is itself a
+; consistent 720K BPB. The remaining fields are contract values that every
+; DOSFS format relies on and are not rewritten: 512-byte sectors, one
+; reserved sector, two FATs and zero high bytes / hidden sectors.
+; tools/check_dosfs_boot.py checks every field and executes the boot code in
+; a small independent real-mode model.
+
+        AREA    |DOSFS_BootSector|, CODE, READONLY
+
+        EXPORT  func_default_dbsector
+func_default_dbsector
+        DCB     &EB, &3C, &90                   ; 000 JMP SHORT &03E; NOP
+        DCB     "ARCLIBRE"                      ; 003 OEM identity
+        DCB     &00, &02                        ; 00B bytes per sector: 512
+        DCB     &02                             ; 00D sectors per cluster (*)
+        DCB     &01, &00                        ; 00E reserved sectors: 1
+        DCB     &02                             ; 010 FATs: 2
+        DCB     &70, &00                        ; 011 root entries: 112 (*low)
+        DCB     &A0, &05                        ; 013 total sectors: 1440 (*)
+        DCB     &F9                             ; 015 media byte (*)
+        DCB     &03, &00                        ; 016 sectors per FAT: 3 (*low)
+        DCB     &09, &00                        ; 018 sectors per track: 9 (*)
+        DCB     &02, &00                        ; 01A heads: 2 (*low)
+        DCB     &00, &00                        ; 01C hidden sectors: 0
+        ; 01E-03D: zero. The 32-bit hidden/total fields of later BPBs read
+        ; as 0 and byte &026 is not &29, so no extended BPB is claimed.
+        DCB     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+        DCB     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+        ; 03E: x86 real-mode code, loaded by the BIOS at 0000:7C00.
+        ; Data is addressed through DS=0, so CS:IP may be 0000:7C3E or
+        ; 07C0:003E; all jumps are relative.
+        DCB     &FA                             ; 7C3E CLI
+        DCB     &31, &C0                        ; 7C3F XOR  AX,AX
+        DCB     &8E, &D8                        ; 7C41 MOV  DS,AX
+        DCB     &8E, &D0                        ; 7C43 MOV  SS,AX
+        DCB     &BC, &00, &7C                   ; 7C45 MOV  SP,&7C00
+        DCB     &FB                             ; 7C48 STI
+        DCB     &FC                             ; 7C49 CLD
+        DCB     &BE, &64, &7C                   ; 7C4A MOV  SI,message
+                                                ; print:
+        DCB     &AC                             ; 7C4D LODSB
+        DCB     &08, &C0                        ; 7C4E OR   AL,AL
+        DCB     &74, &09                        ; 7C50 JZ   wait (&7C5B)
+        DCB     &B4, &0E                        ; 7C52 MOV  AH,&0E  teletype
+        DCB     &BB, &07, &00                   ; 7C54 MOV  BX,&0007 page 0
+        DCB     &CD, &10                        ; 7C57 INT  &10
+        DCB     &EB, &F2                        ; 7C59 JMP  print (&7C4D)
+                                                ; wait:
+        DCB     &30, &E4                        ; 7C5B XOR  AH,AH  read key
+        DCB     &CD, &16                        ; 7C5D INT  &16
+        DCB     &CD, &19                        ; 7C5F INT  &19  boot again
+                                                ; halt (if INT &19 returns):
+        DCB     &F4                             ; 7C61 HLT
+        DCB     &EB, &FD                        ; 7C62 JMP  halt (&7C61)
+                                                ; 7C64 message:
+        DCB     13, 10, "Non-system disc: ArcLibre DOSFS data disc."
+        DCB     13, 10, "There is no operating system on it."
+        DCB     13, 10, "Remove it and press a key to restart.", 13, 10, 0
+BootMessageEnd
+        ; Zero fill to the signature.
+        %       (func_default_dbsector + &1FE) - BootMessageEnd
+        DCB     &55, &AA                        ; 1FE boot signature
+        ASSERT  . - func_default_dbsector = 512
+
+        END

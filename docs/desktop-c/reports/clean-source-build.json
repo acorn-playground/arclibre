@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "source_archive_sha256": "ad2a15a042494daefbe187def240343580f763ae9d7bb4b2ace52fe19183359e",
+  "source_files_verified": 2208,
+  "rom_sha256": "1059cfb0b5b4b87ca1828a428a5cf8f0fa01c9b1f305ec6f1f395fbf813624ee",
+  "rom_bytes": 2097152,
+  "empty_destination": true,
+  "host_tools_built_from_bundled_sources": true,
+  "command": "ARCLIBRE_INSTALL_ROM=0 make arclibre-rom",
+  "checkout_paths_absent_from_rom": true
+}

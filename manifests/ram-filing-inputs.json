@@ -1,0 +1,452 @@
+[
+  {
+    "component": "RamFS",
+    "path": "Doc/CoreNotes2",
+    "revision": "ef43a7ada8c3681c33031c9ab4d4761dabf3d13d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/RAMFS/RAMFS.git",
+    "upstream_sha256": "002e3926043b979baaabb5874d887294d1988219ed6359c52047539305457d75",
+    "sha256": "002e3926043b979baaabb5874d887294d1988219ed6359c52047539305457d75",
+    "bytes": 9365
+  },
+  {
+    "component": "RamFS",
+    "path": "Doc/Log",
+    "revision": "ef43a7ada8c3681c33031c9ab4d4761dabf3d13d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/RAMFS/RAMFS.git",
+    "upstream_sha256": "08aeb1c171d95d1a8e911766f0fffb1d91f6529b0928ea71663eeb270a83c278",
+    "sha256": "08aeb1c171d95d1a8e911766f0fffb1d91f6529b0928ea71663eeb270a83c278",
+    "bytes": 488
+  },
+  {
+    "component": "RamFS",
+    "path": "Help",
+    "revision": "ef43a7ada8c3681c33031c9ab4d4761dabf3d13d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/RAMFS/RAMFS.git",
+    "upstream_sha256": "9ef77564c4a2e311cde8f457969dad944de7fa6f66f2207ec8657de439a8d310",
+    "sha256": "9ef77564c4a2e311cde8f457969dad944de7fa6f66f2207ec8657de439a8d310",
+    "bytes": 98
+  },
+  {
+    "component": "RamFS",
+    "path": "HelpText",
+    "revision": "ef43a7ada8c3681c33031c9ab4d4761dabf3d13d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/RAMFS/RAMFS.git",
+    "upstream_sha256": "11cbdf431813873b2868ba60be0f9a4ebb4e6a5382b1967c27fd82dbe74bdfb2",
+    "sha256": "11cbdf431813873b2868ba60be0f9a4ebb4e6a5382b1967c27fd82dbe74bdfb2",
+    "bytes": 319
+  },
+  {
+    "component": "RamFS",
+    "path": "LICENSE",
+    "revision": "ef43a7ada8c3681c33031c9ab4d4761dabf3d13d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/RAMFS/RAMFS.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358
+  },
+  {
+    "component": "RamFS",
+    "path": "Makefile",
+    "revision": "ef43a7ada8c3681c33031c9ab4d4761dabf3d13d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/RAMFS/RAMFS.git",
+    "upstream_sha256": "aa7fadee379e171ac2d40492dbae464fff83a1b5179022cc5ed65b479adceeb4",
+    "sha256": "aa7fadee379e171ac2d40492dbae464fff83a1b5179022cc5ed65b479adceeb4",
+    "bytes": 1967
+  },
+  {
+    "component": "RamFS",
+    "path": "Resources/UK/Messages",
+    "revision": "ef43a7ada8c3681c33031c9ab4d4761dabf3d13d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/RAMFS/RAMFS.git",
+    "upstream_sha256": "64b0b0e13c8e9bafee1e2282815bbbece808db4e456b60f944dc36017f982f05",
+    "sha256": "64b0b0e13c8e9bafee1e2282815bbbece808db4e456b60f944dc36017f982f05",
+    "bytes": 156
+  },
+  {
+    "component": "RamFS",
+    "path": "Syntax",
+    "revision": "ef43a7ada8c3681c33031c9ab4d4761dabf3d13d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/RAMFS/RAMFS.git",
+    "upstream_sha256": "66406700879bc883d6521c42e07e68b319eae10de62a077940673f25946bde7f",
+    "sha256": "66406700879bc883d6521c42e07e68b319eae10de62a077940673f25946bde7f",
+    "bytes": 47
+  },
+  {
+    "component": "RamFS",
+    "path": "Version",
+    "revision": "ef43a7ada8c3681c33031c9ab4d4761dabf3d13d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/RAMFS/RAMFS.git",
+    "upstream_sha256": "59510408ddf6d70220c048c86e3392ae88d3221ac3a1861ce83ac5bc82e3d399",
+    "sha256": "59510408ddf6d70220c048c86e3392ae88d3221ac3a1861ce83ac5bc82e3d399",
+    "bytes": 120
+  },
+  {
+    "component": "RamFS",
+    "path": "hdr/RAMFS",
+    "revision": "ef43a7ada8c3681c33031c9ab4d4761dabf3d13d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/RAMFS/RAMFS.git",
+    "upstream_sha256": "589354c651ceaf7e475ddb44989456d12f0d03ceb0f6102f3ca15da6d969bf50",
+    "sha256": "589354c651ceaf7e475ddb44989456d12f0d03ceb0f6102f3ca15da6d969bf50",
+    "bytes": 1304
+  },
+  {
+    "component": "RamFS",
+    "path": "s/DebugOpts",
+    "revision": "ef43a7ada8c3681c33031c9ab4d4761dabf3d13d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/RAMFS/RAMFS.git",
+    "upstream_sha256": "2c192d15d0474f565aa143eb8eccb7aba9d1e5d0371ca542e3b937b83562ff9b",
+    "sha256": "2c192d15d0474f565aa143eb8eccb7aba9d1e5d0371ca542e3b937b83562ff9b",
+    "bytes": 1241
+  },
+  {
+    "component": "RamFS",
+    "path": "s/Defns",
+    "revision": "ef43a7ada8c3681c33031c9ab4d4761dabf3d13d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/RAMFS/RAMFS.git",
+    "upstream_sha256": "d9b5aee5fca812abe7f1d4bd1a05634d6563020d1520ff6c8a998126ef3325c8",
+    "sha256": "479a4ef0897216cde2dc962560edf6dffe09e8a2af54ea8d4726927fca82646f",
+    "bytes": 2186
+  },
+  {
+    "component": "RamFS",
+    "path": "s/Errors",
+    "revision": "ef43a7ada8c3681c33031c9ab4d4761dabf3d13d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/RAMFS/RAMFS.git",
+    "upstream_sha256": "0c2af855438729403ec2328a9e66af864c49421cb85af51f08ab0c14c3d082c4",
+    "sha256": "0c2af855438729403ec2328a9e66af864c49421cb85af51f08ab0c14c3d082c4",
+    "bytes": 3355
+  },
+  {
+    "component": "RamFS",
+    "path": "s/Header",
+    "revision": "ef43a7ada8c3681c33031c9ab4d4761dabf3d13d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/RAMFS/RAMFS.git",
+    "upstream_sha256": "aaff1a13e8b1eb4f1d76acb190c6b50f5007d658e8c9bd083e683e76b60179af",
+    "sha256": "1c385f83882b5950ffbac82565e982dd569d0a1e97e4dbc602a2c3536849db8f",
+    "bytes": 1505
+  },
+  {
+    "component": "RamFS",
+    "path": "s/MsgCode",
+    "revision": "ef43a7ada8c3681c33031c9ab4d4761dabf3d13d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/RAMFS/RAMFS.git",
+    "upstream_sha256": "3c82155c3a73e1aa545627feaf9c2903219f866a7333658354f7c03a7eb76e3a",
+    "sha256": "02875d41ea25be644390601510487e42ece2a71d71c40303743adbe5212a6fc4",
+    "bytes": 2437
+  },
+  {
+    "component": "RamFS",
+    "path": "s/MyMacros",
+    "revision": "ef43a7ada8c3681c33031c9ab4d4761dabf3d13d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/RAMFS/RAMFS.git",
+    "upstream_sha256": "b6ce9b582e40426214011d597a11a859050513cb10d0f9b8359ce6182b6bee92",
+    "sha256": "b6ce9b582e40426214011d597a11a859050513cb10d0f9b8359ce6182b6bee92",
+    "bytes": 5303
+  },
+  {
+    "component": "RamFS",
+    "path": "s/RamFS",
+    "revision": "ef43a7ada8c3681c33031c9ab4d4761dabf3d13d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/RAMFS/RAMFS.git",
+    "upstream_sha256": "fd85afc797019e79626760427f3360ce0ec5320a7c67f25664732d50e390354a",
+    "sha256": "143d61f93502ba435418a00eb83a7a1fa5a0d0d914fe18599142b80af2b3b388",
+    "bytes": 1489
+  },
+  {
+    "component": "RamFS",
+    "path": "s/RamFS00",
+    "revision": "ef43a7ada8c3681c33031c9ab4d4761dabf3d13d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/RAMFS/RAMFS.git",
+    "upstream_sha256": "72e19553f295a4ea7da0f8331bdcd896a9980a48e72cf2f064d1a71ef7dfe813",
+    "sha256": "72e19553f295a4ea7da0f8331bdcd896a9980a48e72cf2f064d1a71ef7dfe813",
+    "bytes": 5164
+  },
+  {
+    "component": "RamFS",
+    "path": "s/RamFS05",
+    "revision": "ef43a7ada8c3681c33031c9ab4d4761dabf3d13d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/RAMFS/RAMFS.git",
+    "upstream_sha256": "5d87c5ec82a34e9d349c88bbc281adf743d1a48695f638e4c6ba42e0a2b62d35",
+    "sha256": "5d87c5ec82a34e9d349c88bbc281adf743d1a48695f638e4c6ba42e0a2b62d35",
+    "bytes": 5760
+  },
+  {
+    "component": "RamFS",
+    "path": "s/RamFS15",
+    "revision": "ef43a7ada8c3681c33031c9ab4d4761dabf3d13d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/RAMFS/RAMFS.git",
+    "upstream_sha256": "601602d16afd263b51c085cb765b101f93a06cc744f4a3b66c112494e779d72f",
+    "sha256": "601602d16afd263b51c085cb765b101f93a06cc744f4a3b66c112494e779d72f",
+    "bytes": 3817
+  },
+  {
+    "component": "RamFS",
+    "path": "s/RamFS50",
+    "revision": "ef43a7ada8c3681c33031c9ab4d4761dabf3d13d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/RAMFS/RAMFS.git",
+    "upstream_sha256": "ba493221e555846ccf98377ade3ebc73c6ab4aac23efd86abfed89cf7f84f77d",
+    "sha256": "ba493221e555846ccf98377ade3ebc73c6ab4aac23efd86abfed89cf7f84f77d",
+    "bytes": 8048
+  },
+  {
+    "component": "RamFS",
+    "path": "s/RamFS_Test",
+    "revision": "ef43a7ada8c3681c33031c9ab4d4761dabf3d13d",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/RAMFS/RAMFS.git",
+    "upstream_sha256": "20d32d47fe19549af253c95146d9e0a765f96761ab854edc95501d2d9a1ad931",
+    "sha256": "fd40dbc6046b993434beadfbbebf21e4b8affb7d8834f75fba6774fe417103ab",
+    "bytes": 1509
+  },
+  {
+    "component": "RAMFSFiler",
+    "path": "Help",
+    "revision": "be30ead145d8f7c289f629cf540cb4d18c7cb47b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/RAMFS/RAMFSFiler.git",
+    "upstream_sha256": "fb344e926e8b9c66ade0eaf722db311a0095e342b60cd5f1d813cdfc9eb60a11",
+    "sha256": "fb344e926e8b9c66ade0eaf722db311a0095e342b60cd5f1d813cdfc9eb60a11",
+    "bytes": 213
+  },
+  {
+    "component": "RAMFSFiler",
+    "path": "LICENSE",
+    "revision": "be30ead145d8f7c289f629cf540cb4d18c7cb47b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/RAMFS/RAMFSFiler.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358
+  },
+  {
+    "component": "RAMFSFiler",
+    "path": "Makefile",
+    "revision": "be30ead145d8f7c289f629cf540cb4d18c7cb47b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/RAMFS/RAMFSFiler.git",
+    "upstream_sha256": "77ce29b475b91900bf32584ce6a4f8986e1a41ae132c3ccecf4c8e7b24b32fb2",
+    "sha256": "77ce29b475b91900bf32584ce6a4f8986e1a41ae132c3ccecf4c8e7b24b32fb2",
+    "bytes": 1682
+  },
+  {
+    "component": "RAMFSFiler",
+    "path": "Resources/UK/Messages",
+    "revision": "be30ead145d8f7c289f629cf540cb4d18c7cb47b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/RAMFS/RAMFSFiler.git",
+    "upstream_sha256": "d347619f5b034a97779c39092b07928bcdf3bb65708828b219f9eaebbb57c1ec",
+    "sha256": "d347619f5b034a97779c39092b07928bcdf3bb65708828b219f9eaebbb57c1ec",
+    "bytes": 721
+  },
+  {
+    "component": "RAMFSFiler",
+    "path": "Syntax",
+    "revision": "be30ead145d8f7c289f629cf540cb4d18c7cb47b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/RAMFS/RAMFSFiler.git",
+    "upstream_sha256": "71d601f94b544ef94d8d42cbcd7497e3f8a6a4ab813441cdaeb89cd10719644b",
+    "sha256": "71d601f94b544ef94d8d42cbcd7497e3f8a6a4ab813441cdaeb89cd10719644b",
+    "bytes": 82
+  },
+  {
+    "component": "RAMFSFiler",
+    "path": "Version",
+    "revision": "be30ead145d8f7c289f629cf540cb4d18c7cb47b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/RAMFS/RAMFSFiler.git",
+    "upstream_sha256": "f3c1e8fec68ba12d414fb02413e4448e77c03ce6c4e9ea29270c2aa3c5509982",
+    "sha256": "f3c1e8fec68ba12d414fb02413e4448e77c03ce6c4e9ea29270c2aa3c5509982",
+    "bytes": 217
+  },
+  {
+    "component": "RAMFSFiler",
+    "path": "s/MsgCode",
+    "revision": "be30ead145d8f7c289f629cf540cb4d18c7cb47b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/RAMFS/RAMFSFiler.git",
+    "upstream_sha256": "07850eda89b6856fd45d64be161eca0ae2cdd53131936a28a7c512ea1dbb9041",
+    "sha256": "599f6ac8e290452b9c4bef8d24a11a051fd11a67060d881b7afbefabed3c41ae",
+    "bytes": 7854
+  },
+  {
+    "component": "RAMFSFiler",
+    "path": "s/RAMFSFiler",
+    "revision": "be30ead145d8f7c289f629cf540cb4d18c7cb47b",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/RAMFS/RAMFSFiler.git",
+    "upstream_sha256": "6cae4705d5cbf11bf44e5ad114dd2b3ac9436bc0960fd2b1dc1220c7b1c09bee",
+    "sha256": "d322a67005ca85f387d067f0acd5b982fd943f1b9ce509c9a11ae99dba7d4764",
+    "bytes": 35123
+  },
+  {
+    "component": "Free",
+    "path": "Doc/Doc",
+    "revision": "ad049d9991c69640cf46586e82a5ddb0669e0df0",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Free.git",
+    "upstream_sha256": "7b89a37d19a6e6e2433eccdcfa1d95c7305cc001bb5b4a330215858a4e74cc72",
+    "sha256": "7b89a37d19a6e6e2433eccdcfa1d95c7305cc001bb5b4a330215858a4e74cc72",
+    "bytes": 1397
+  },
+  {
+    "component": "Free",
+    "path": "Doc/FreeSpace",
+    "revision": "ad049d9991c69640cf46586e82a5ddb0669e0df0",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Free.git",
+    "upstream_sha256": "b03d577704428b2849f08a7df28d413c3b77dd42eb066a9f6c04259cab0ca9c6",
+    "sha256": "b03d577704428b2849f08a7df28d413c3b77dd42eb066a9f6c04259cab0ca9c6",
+    "bytes": 2102
+  },
+  {
+    "component": "Free",
+    "path": "LICENSE",
+    "revision": "ad049d9991c69640cf46586e82a5ddb0669e0df0",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Free.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358
+  },
+  {
+    "component": "Free",
+    "path": "Makefile",
+    "revision": "ad049d9991c69640cf46586e82a5ddb0669e0df0",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Free.git",
+    "upstream_sha256": "8f4885f1ee796d37aabc8f372ddf0dc6bb85d262a05374c4b92e3bc3c9044036",
+    "sha256": "8f4885f1ee796d37aabc8f372ddf0dc6bb85d262a05374c4b92e3bc3c9044036",
+    "bytes": 1875
+  },
+  {
+    "component": "Free",
+    "path": "Resources/UK/Messages",
+    "revision": "ad049d9991c69640cf46586e82a5ddb0669e0df0",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Free.git",
+    "upstream_sha256": "c22c86452651f757fe8caeb3143ef8cb5c9bac18f377d4756f44a2845bd56ca7",
+    "sha256": "c22c86452651f757fe8caeb3143ef8cb5c9bac18f377d4756f44a2845bd56ca7",
+    "bytes": 466
+  },
+  {
+    "component": "Free",
+    "path": "Resources/UK/Template2D,fec",
+    "revision": "ad049d9991c69640cf46586e82a5ddb0669e0df0",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Free.git",
+    "upstream_sha256": "4657091df03627581a9f939196e0a047148ec8cd794cf0de8931520c008563be",
+    "sha256": "4657091df03627581a9f939196e0a047148ec8cd794cf0de8931520c008563be",
+    "bytes": 586
+  },
+  {
+    "component": "Free",
+    "path": "Resources/UK/Templates,fec",
+    "revision": "ad049d9991c69640cf46586e82a5ddb0669e0df0",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Free.git",
+    "upstream_sha256": "99d7f799169f8da091d3d720be1d62999566cb2fcaaf76f6ec6e2f69c1065e39",
+    "sha256": "99d7f799169f8da091d3d720be1d62999566cb2fcaaf76f6ec6e2f69c1065e39",
+    "bytes": 694
+  },
+  {
+    "component": "Free",
+    "path": "Version",
+    "revision": "ad049d9991c69640cf46586e82a5ddb0669e0df0",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Free.git",
+    "upstream_sha256": "b1bb3b7be5c4249c0e4a2a09711ee2ca01e5c0095b13daff96ce53c65e3fb2cc",
+    "sha256": "b1bb3b7be5c4249c0e4a2a09711ee2ca01e5c0095b13daff96ce53c65e3fb2cc",
+    "bytes": 233
+  },
+  {
+    "component": "Free",
+    "path": "hdr/Free",
+    "revision": "ad049d9991c69640cf46586e82a5ddb0669e0df0",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Free.git",
+    "upstream_sha256": "dc75c6cb46b914081ee8f30db40205d1ed0d27b60a2c084fbde1d34030310766",
+    "sha256": "dc75c6cb46b914081ee8f30db40205d1ed0d27b60a2c084fbde1d34030310766",
+    "bytes": 1102
+  },
+  {
+    "component": "Free",
+    "path": "s/ADFS",
+    "revision": "ad049d9991c69640cf46586e82a5ddb0669e0df0",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Free.git",
+    "upstream_sha256": "1ae8d13f8ef400445e4458aa013eaa9e79db3d1a3f971f7dbd849fc703c1e192",
+    "sha256": "f72840571bc65620a029e48cc473d2a2f4167a3991e296d8e11fcc80e8a97a61",
+    "bytes": 4688
+  },
+  {
+    "component": "Free",
+    "path": "s/Free",
+    "revision": "ad049d9991c69640cf46586e82a5ddb0669e0df0",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Free.git",
+    "upstream_sha256": "b071a2d3c8e85b29e1548126cd4c7d56b0182a0c6054a4855bd63a3a84a4b5da",
+    "sha256": "338d0a5977086b5025d65368db0508239fb3fb7d73ea3c0318870632cba7862b",
+    "bytes": 8384
+  },
+  {
+    "component": "Free",
+    "path": "s/Messages",
+    "revision": "ad049d9991c69640cf46586e82a5ddb0669e0df0",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Free.git",
+    "upstream_sha256": "ba9e644ac3a01342574cc6093f2c57fc3cc894994cc913813bfc568d5064acdb",
+    "sha256": "74c954acf886e152214bfb8741b92d6833d6fd5b6bd82ea55fb2b611e1d91d2e",
+    "bytes": 1868
+  },
+  {
+    "component": "Free",
+    "path": "s/ModHead",
+    "revision": "ad049d9991c69640cf46586e82a5ddb0669e0df0",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Free.git",
+    "upstream_sha256": "63db87c37a22d5e7751576c1c3e74753fdaabc2a3e7e3b9ac4174e9b3159df9e",
+    "sha256": "9243dcf5df5a95efa099af9fe41773ec4c6d14db12ac7fc1bf6ea6ce16d3420d",
+    "bytes": 17320
+  },
+  {
+    "component": "Free",
+    "path": "s/NETFS",
+    "revision": "ad049d9991c69640cf46586e82a5ddb0669e0df0",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Free.git",
+    "upstream_sha256": "70be3220fa9f004157a81b5fee931486733f59e9619b4a7251f0b26ff8b523a0",
+    "sha256": "c222337f1036b9783b8b45f9f89545887886fd2be644d425ec6b0e35d97519d1",
+    "bytes": 5257
+  },
+  {
+    "component": "Free",
+    "path": "s/NFS",
+    "revision": "ad049d9991c69640cf46586e82a5ddb0669e0df0",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Free.git",
+    "upstream_sha256": "d382973eaf3faaee4f701423a9ad64440f0e1de806fb6a40e071932ae49af055",
+    "sha256": "b88bfb0ce1ab56d392c3b27901e75af5b0c6805f1c86cce12006919543c1c75c",
+    "bytes": 2607
+  },
+  {
+    "component": "Free",
+    "path": "s/RAMFS",
+    "revision": "ad049d9991c69640cf46586e82a5ddb0669e0df0",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Free.git",
+    "upstream_sha256": "ae9e080f16eb4b2836bdfd601a853287babd87a324de8e6b5cf09f14924b3a28",
+    "sha256": "c9b6358d3569d5fdd061d813e01516077055b26cd03499ec85f101c136d7133d",
+    "bytes": 2560
+  },
+  {
+    "component": "Free",
+    "path": "s/SCSI",
+    "revision": "ad049d9991c69640cf46586e82a5ddb0669e0df0",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Free.git",
+    "upstream_sha256": "45421adb3fcc4ac4ccf942b4c1a205ed27ba47d2aaa5567b91e351387560515d",
+    "sha256": "aa93f98eb4792b5dcc8709594f8a4b3536244330b83757d4ab0995909dbfe9b9",
+    "bytes": 5235
+  },
+  {
+    "component": "Free",
+    "path": "s/SWIS",
+    "revision": "ad049d9991c69640cf46586e82a5ddb0669e0df0",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Free.git",
+    "upstream_sha256": "8556faa9614d5e74762d7f8250ec86dba471356e1676bd975ae78c97c0eca6c2",
+    "sha256": "1da2bcba39dd5255ba9e9ccd755699da8f3bf14468acc458b95ae2a45c33bc4b",
+    "bytes": 1913
+  },
+  {
+    "component": "Free",
+    "path": "s/StartLoop",
+    "revision": "ad049d9991c69640cf46586e82a5ddb0669e0df0",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Free.git",
+    "upstream_sha256": "474125268ce09768e102939be8d5ff0aa6ba8388148cfea61e2c36c915acd8ff",
+    "sha256": "e25a0f106370f110d4400a181cbf8d7afab0af3a00cdf9249a48b79b668e04b2",
+    "bytes": 27434
+  },
+  {
+    "component": "Free",
+    "path": "s/Tail",
+    "revision": "ad049d9991c69640cf46586e82a5ddb0669e0df0",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Free.git",
+    "upstream_sha256": "1c28cb4262e8e46f154ff67eac89a0c8c1170e2047a5bd522a0a6e8cab67f4d0",
+    "sha256": "1c28cb4262e8e46f154ff67eac89a0c8c1170e2047a5bd522a0a6e8cab67f4d0",
+    "bytes": 5188
+  }
+]

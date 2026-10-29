@@ -1,0 +1,654 @@
+{
+  "status": "PASS",
+  "rom_sha256": "bf5ca56ebd6f7fd7dc4149360d97f76f009abed8879693470421998d59f11791",
+  "cold_runs": 3,
+  "flows": 18,
+  "identical_cold_runs": true,
+  "independent_disc_decoder": true,
+  "per_format_checkpoints": 9,
+  "write_fiq_arm2_verified": true,
+  "disc_full_unchanged": true,
+  "protected_media_unchanged": true,
+  "fresh_machine_reopen": true,
+  "runs": [
+    {
+      "cold_run": 1,
+      "flows": {
+        "DA": {
+          "calls": 55,
+          "fiq_exceptions": 246499,
+          "fdc_commands": 361,
+          "evidence_hashes": {
+            "06-deleted.adf": "a9be1578dddacba5b56ec7c69f8a0d5e8b7c62d1c9ad9a3d831ddcde8a5570f7",
+            "write-fiq.bin": "43634e4115966a1c4e3b46e49ce59089fa07e245b8706e9644dd2ef0e05f77c6",
+            "04-fragment.adf": "3e03b449ae5f8fe4d30f7fe85d2733e8c1c464368160c8a37bed92f9a4ed2ea3",
+            "result.json": "8201f8694878df897699cbc12786d7ee4bfac47dc1ff7639e0ecff2549b95810",
+            "02-overwrite.adf": "fe5c6cf995d6c905a965e9f33327e6a3d8fb4a653c55570b7d29d0049630f88c",
+            "08-final.adf": "3078549391c4519657e011c63944d58b454d60641f8f2f3b64f328d7a1fff965",
+            "03-stream.adf": "7d81fc793c0a141952bd5f486f6dadf9cd334031f1003e11b5f0666f822a8f5d",
+            "fdc.log": "0c6b27f1f3946375f1dc23128a4a008463e975d6841302014679c4e0158f29c8",
+            "05-namespace.adf": "b264fbc2e3f68ae743d225422021a5eee8c653f9b3250907a3a904b0c5aece60",
+            "07-full.adf": "a9be1578dddacba5b56ec7c69f8a0d5e8b7c62d1c9ad9a3d831ddcde8a5570f7",
+            "01-save.adf": "68338e044fb5a6f070db4d4efb70c6b520dea97274c2f3403f7c78aa884700e5",
+            "03-appended.adf": "42902ad6feadef5c7131f9d313a477ff77d4c573677ebfe816e37b5251a5f68d"
+          },
+          "stages": [
+            {
+              "stage": "01-save",
+              "sha256": "68338e044fb5a6f070db4d4efb70c6b520dea97274c2f3403f7c78aa884700e5",
+              "free_bytes": 733184,
+              "files": 8,
+              "directories": 3
+            },
+            {
+              "stage": "02-overwrite",
+              "sha256": "fe5c6cf995d6c905a965e9f33327e6a3d8fb4a653c55570b7d29d0049630f88c",
+              "free_bytes": 758784,
+              "files": 8,
+              "directories": 3
+            },
+            {
+              "stage": "03-appended",
+              "sha256": "42902ad6feadef5c7131f9d313a477ff77d4c573677ebfe816e37b5251a5f68d",
+              "free_bytes": 741376,
+              "files": 9,
+              "directories": 3
+            },
+            {
+              "stage": "03-stream",
+              "sha256": "7d81fc793c0a141952bd5f486f6dadf9cd334031f1003e11b5f0666f822a8f5d",
+              "free_bytes": 748544,
+              "files": 9,
+              "directories": 3
+            },
+            {
+              "stage": "04-fragment",
+              "sha256": "3e03b449ae5f8fe4d30f7fe85d2733e8c1c464368160c8a37bed92f9a4ed2ea3",
+              "free_bytes": 748544,
+              "files": 9,
+              "directories": 3
+            },
+            {
+              "stage": "05-namespace",
+              "sha256": "b264fbc2e3f68ae743d225422021a5eee8c653f9b3250907a3a904b0c5aece60",
+              "free_bytes": 745472,
+              "files": 10,
+              "directories": 4
+            },
+            {
+              "stage": "06-deleted",
+              "sha256": "a9be1578dddacba5b56ec7c69f8a0d5e8b7c62d1c9ad9a3d831ddcde8a5570f7",
+              "free_bytes": 758784,
+              "files": 8,
+              "directories": 3
+            },
+            {
+              "stage": "07-full",
+              "sha256": "a9be1578dddacba5b56ec7c69f8a0d5e8b7c62d1c9ad9a3d831ddcde8a5570f7",
+              "free_bytes": 758784,
+              "files": 8,
+              "directories": 3
+            },
+            {
+              "stage": "08-final",
+              "sha256": "3078549391c4519657e011c63944d58b454d60641f8f2f3b64f328d7a1fff965",
+              "free_bytes": 757760,
+              "files": 9,
+              "directories": 3
+            }
+          ],
+          "write_fiq_instructions": 6
+        },
+        "DA-reopen": {
+          "calls": 12,
+          "fiq_exceptions": 53357,
+          "fdc_commands": 67,
+          "evidence_hashes": {
+            "result.json": "2d25c973c301ba89641850ef848eabaabd02a0e6a91a225aeff632ef20f22431",
+            "fdc.log": "a1f71f0725350f2ff243c5e7fc416a17e8f32a063aa3ba44d750ca5549802d3d"
+          }
+        },
+        "DA-protected": {
+          "calls": 6,
+          "fiq_exceptions": 7229,
+          "fdc_commands": 19,
+          "evidence_hashes": {
+            "protected.adf": "6f770c2b9a63d77a02057e8263c128d30464ef3287bba1bbaf040fea98c73d52",
+            "result.json": "c1e3afadd5536fb87d781d49c33a6e5afe7f4b28828bd3cf2014a4bf36014286",
+            "fdc.log": "8e2075161e18208e522440a83874ef4e60f929d5514969294695322f2b0ba822"
+          }
+        },
+        "EA": {
+          "calls": 55,
+          "fiq_exceptions": 262893,
+          "fdc_commands": 371,
+          "evidence_hashes": {
+            "06-deleted.adf": "e4d3bade84d26ba8bb0e542cf001d2fb96b2deb3307a4b7dab4ba34cd5b5e1a2",
+            "write-fiq.bin": "fd27664070e6c57fbb248168844dd4d03bd8156df21e6769580f5d24e30dcb9e",
+            "04-fragment.adf": "1546c0fc8ce2b3b1150a5c81499e2ec0888bcc3a503b15e95dca3ec3fa756b3f",
+            "result.json": "c15720fd55d234446e5c89f5de90075333271bc57c43671441f611227def82c7",
+            "02-overwrite.adf": "3243985817f9ae43aefc6085f46617d07ae58d23a97dfd0f7e3756f5e472c530",
+            "08-final.adf": "3dff07b643278119558da94790227df0913c4c7a10ca9d522e496f036d1769e3",
+            "03-stream.adf": "88ba4c6fd2425c818862adfab07e2286c56706988db4e642573acec14ed59c28",
+            "fdc.log": "86cfb06da6630153ac2162ea2e01a3db4c086800341d9610d83d69e92e698151",
+            "05-namespace.adf": "154df4b1cda8f9af131cf5db693a675293e3d48d3eac08d8c9f7fb04c4ea3f7d",
+            "07-full.adf": "e4d3bade84d26ba8bb0e542cf001d2fb96b2deb3307a4b7dab4ba34cd5b5e1a2",
+            "01-save.adf": "387b5f798ad487201d03ba5f478a02c026d211e3d79133265a953d1e1e57a74b",
+            "03-appended.adf": "66ee8b4242538f863d41be902b3631f914ed2c0995b4fbc90b4bf13c3150bb20"
+          },
+          "stages": [
+            {
+              "stage": "01-save",
+              "sha256": "387b5f798ad487201d03ba5f478a02c026d211e3d79133265a953d1e1e57a74b",
+              "free_bytes": 728064,
+              "files": 8,
+              "directories": 3
+            },
+            {
+              "stage": "02-overwrite",
+              "sha256": "3243985817f9ae43aefc6085f46617d07ae58d23a97dfd0f7e3756f5e472c530",
+              "free_bytes": 753664,
+              "files": 8,
+              "directories": 3
+            },
+            {
+              "stage": "03-appended",
+              "sha256": "66ee8b4242538f863d41be902b3631f914ed2c0995b4fbc90b4bf13c3150bb20",
+              "free_bytes": 736256,
+              "files": 9,
+              "directories": 3
+            },
+            {
+              "stage": "03-stream",
+              "sha256": "88ba4c6fd2425c818862adfab07e2286c56706988db4e642573acec14ed59c28",
+              "free_bytes": 743424,
+              "files": 9,
+              "directories": 3
+            },
+            {
+              "stage": "04-fragment",
+              "sha256": "1546c0fc8ce2b3b1150a5c81499e2ec0888bcc3a503b15e95dca3ec3fa756b3f",
+              "free_bytes": 743424,
+              "files": 9,
+              "directories": 3
+            },
+            {
+              "stage": "05-namespace",
+              "sha256": "154df4b1cda8f9af131cf5db693a675293e3d48d3eac08d8c9f7fb04c4ea3f7d",
+              "free_bytes": 739328,
+              "files": 10,
+              "directories": 4
+            },
+            {
+              "stage": "06-deleted",
+              "sha256": "e4d3bade84d26ba8bb0e542cf001d2fb96b2deb3307a4b7dab4ba34cd5b5e1a2",
+              "free_bytes": 753664,
+              "files": 8,
+              "directories": 3
+            },
+            {
+              "stage": "07-full",
+              "sha256": "e4d3bade84d26ba8bb0e542cf001d2fb96b2deb3307a4b7dab4ba34cd5b5e1a2",
+              "free_bytes": 753664,
+              "files": 8,
+              "directories": 3
+            },
+            {
+              "stage": "08-final",
+              "sha256": "3dff07b643278119558da94790227df0913c4c7a10ca9d522e496f036d1769e3",
+              "free_bytes": 753664,
+              "files": 9,
+              "directories": 3
+            }
+          ],
+          "write_fiq_instructions": 6
+        },
+        "EA-reopen": {
+          "calls": 12,
+          "fiq_exceptions": 53359,
+          "fdc_commands": 69,
+          "evidence_hashes": {
+            "result.json": "66a45094397a83100952972546bdc051ed260580ce14c774df9d2f5c0a447c63",
+            "fdc.log": "461d1ae5c6632af417b41d795850f74fe3e2007132f46efa30ae3490bc626e2b"
+          }
+        },
+        "EA-protected": {
+          "calls": 6,
+          "fiq_exceptions": 7228,
+          "fdc_commands": 18,
+          "evidence_hashes": {
+            "protected.adf": "c5c1572c8775ffb25dd5e197fdb3c2ee2734a239eb0cccb4f0e6e98381eb4f0b",
+            "result.json": "c53caedca03155a7c3dce4c95727f840d08a3efd154450acf79edee97ca4f458",
+            "fdc.log": "c9e27b0d8ebed8eef88edd372cbf637527d1a38ddb6f665cca39aa580fee98ce"
+          }
+        }
+      }
+    },
+    {
+      "cold_run": 2,
+      "flows": {
+        "DA": {
+          "calls": 55,
+          "fiq_exceptions": 246499,
+          "fdc_commands": 361,
+          "evidence_hashes": {
+            "06-deleted.adf": "a9be1578dddacba5b56ec7c69f8a0d5e8b7c62d1c9ad9a3d831ddcde8a5570f7",
+            "write-fiq.bin": "43634e4115966a1c4e3b46e49ce59089fa07e245b8706e9644dd2ef0e05f77c6",
+            "04-fragment.adf": "3e03b449ae5f8fe4d30f7fe85d2733e8c1c464368160c8a37bed92f9a4ed2ea3",
+            "result.json": "8201f8694878df897699cbc12786d7ee4bfac47dc1ff7639e0ecff2549b95810",
+            "02-overwrite.adf": "fe5c6cf995d6c905a965e9f33327e6a3d8fb4a653c55570b7d29d0049630f88c",
+            "08-final.adf": "3078549391c4519657e011c63944d58b454d60641f8f2f3b64f328d7a1fff965",
+            "03-stream.adf": "7d81fc793c0a141952bd5f486f6dadf9cd334031f1003e11b5f0666f822a8f5d",
+            "fdc.log": "0c6b27f1f3946375f1dc23128a4a008463e975d6841302014679c4e0158f29c8",
+            "05-namespace.adf": "b264fbc2e3f68ae743d225422021a5eee8c653f9b3250907a3a904b0c5aece60",
+            "07-full.adf": "a9be1578dddacba5b56ec7c69f8a0d5e8b7c62d1c9ad9a3d831ddcde8a5570f7",
+            "01-save.adf": "68338e044fb5a6f070db4d4efb70c6b520dea97274c2f3403f7c78aa884700e5",
+            "03-appended.adf": "42902ad6feadef5c7131f9d313a477ff77d4c573677ebfe816e37b5251a5f68d"
+          },
+          "stages": [
+            {
+              "stage": "01-save",
+              "sha256": "68338e044fb5a6f070db4d4efb70c6b520dea97274c2f3403f7c78aa884700e5",
+              "free_bytes": 733184,
+              "files": 8,
+              "directories": 3
+            },
+            {
+              "stage": "02-overwrite",
+              "sha256": "fe5c6cf995d6c905a965e9f33327e6a3d8fb4a653c55570b7d29d0049630f88c",
+              "free_bytes": 758784,
+              "files": 8,
+              "directories": 3
+            },
+            {
+              "stage": "03-appended",
+              "sha256": "42902ad6feadef5c7131f9d313a477ff77d4c573677ebfe816e37b5251a5f68d",
+              "free_bytes": 741376,
+              "files": 9,
+              "directories": 3
+            },
+            {
+              "stage": "03-stream",
+              "sha256": "7d81fc793c0a141952bd5f486f6dadf9cd334031f1003e11b5f0666f822a8f5d",
+              "free_bytes": 748544,
+              "files": 9,
+              "directories": 3
+            },
+            {
+              "stage": "04-fragment",
+              "sha256": "3e03b449ae5f8fe4d30f7fe85d2733e8c1c464368160c8a37bed92f9a4ed2ea3",
+              "free_bytes": 748544,
+              "files": 9,
+              "directories": 3
+            },
+            {
+              "stage": "05-namespace",
+              "sha256": "b264fbc2e3f68ae743d225422021a5eee8c653f9b3250907a3a904b0c5aece60",
+              "free_bytes": 745472,
+              "files": 10,
+              "directories": 4
+            },
+            {
+              "stage": "06-deleted",
+              "sha256": "a9be1578dddacba5b56ec7c69f8a0d5e8b7c62d1c9ad9a3d831ddcde8a5570f7",
+              "free_bytes": 758784,
+              "files": 8,
+              "directories": 3
+            },
+            {
+              "stage": "07-full",
+              "sha256": "a9be1578dddacba5b56ec7c69f8a0d5e8b7c62d1c9ad9a3d831ddcde8a5570f7",
+              "free_bytes": 758784,
+              "files": 8,
+              "directories": 3
+            },
+            {
+              "stage": "08-final",
+              "sha256": "3078549391c4519657e011c63944d58b454d60641f8f2f3b64f328d7a1fff965",
+              "free_bytes": 757760,
+              "files": 9,
+              "directories": 3
+            }
+          ],
+          "write_fiq_instructions": 6
+        },
+        "DA-reopen": {
+          "calls": 12,
+          "fiq_exceptions": 53357,
+          "fdc_commands": 67,
+          "evidence_hashes": {
+            "result.json": "2d25c973c301ba89641850ef848eabaabd02a0e6a91a225aeff632ef20f22431",
+            "fdc.log": "a1f71f0725350f2ff243c5e7fc416a17e8f32a063aa3ba44d750ca5549802d3d"
+          }
+        },
+        "DA-protected": {
+          "calls": 6,
+          "fiq_exceptions": 7229,
+          "fdc_commands": 19,
+          "evidence_hashes": {
+            "protected.adf": "6f770c2b9a63d77a02057e8263c128d30464ef3287bba1bbaf040fea98c73d52",
+            "result.json": "c1e3afadd5536fb87d781d49c33a6e5afe7f4b28828bd3cf2014a4bf36014286",
+            "fdc.log": "8e2075161e18208e522440a83874ef4e60f929d5514969294695322f2b0ba822"
+          }
+        },
+        "EA": {
+          "calls": 55,
+          "fiq_exceptions": 262893,
+          "fdc_commands": 371,
+          "evidence_hashes": {
+            "06-deleted.adf": "e4d3bade84d26ba8bb0e542cf001d2fb96b2deb3307a4b7dab4ba34cd5b5e1a2",
+            "write-fiq.bin": "fd27664070e6c57fbb248168844dd4d03bd8156df21e6769580f5d24e30dcb9e",
+            "04-fragment.adf": "1546c0fc8ce2b3b1150a5c81499e2ec0888bcc3a503b15e95dca3ec3fa756b3f",
+            "result.json": "c15720fd55d234446e5c89f5de90075333271bc57c43671441f611227def82c7",
+            "02-overwrite.adf": "3243985817f9ae43aefc6085f46617d07ae58d23a97dfd0f7e3756f5e472c530",
+            "08-final.adf": "3dff07b643278119558da94790227df0913c4c7a10ca9d522e496f036d1769e3",
+            "03-stream.adf": "88ba4c6fd2425c818862adfab07e2286c56706988db4e642573acec14ed59c28",
+            "fdc.log": "86cfb06da6630153ac2162ea2e01a3db4c086800341d9610d83d69e92e698151",
+            "05-namespace.adf": "154df4b1cda8f9af131cf5db693a675293e3d48d3eac08d8c9f7fb04c4ea3f7d",
+            "07-full.adf": "e4d3bade84d26ba8bb0e542cf001d2fb96b2deb3307a4b7dab4ba34cd5b5e1a2",
+            "01-save.adf": "387b5f798ad487201d03ba5f478a02c026d211e3d79133265a953d1e1e57a74b",
+            "03-appended.adf": "66ee8b4242538f863d41be902b3631f914ed2c0995b4fbc90b4bf13c3150bb20"
+          },
+          "stages": [
+            {
+              "stage": "01-save",
+              "sha256": "387b5f798ad487201d03ba5f478a02c026d211e3d79133265a953d1e1e57a74b",
+              "free_bytes": 728064,
+              "files": 8,
+              "directories": 3
+            },
+            {
+              "stage": "02-overwrite",
+              "sha256": "3243985817f9ae43aefc6085f46617d07ae58d23a97dfd0f7e3756f5e472c530",
+              "free_bytes": 753664,
+              "files": 8,
+              "directories": 3
+            },
+            {
+              "stage": "03-appended",
+              "sha256": "66ee8b4242538f863d41be902b3631f914ed2c0995b4fbc90b4bf13c3150bb20",
+              "free_bytes": 736256,
+              "files": 9,
+              "directories": 3
+            },
+            {
+              "stage": "03-stream",
+              "sha256": "88ba4c6fd2425c818862adfab07e2286c56706988db4e642573acec14ed59c28",
+              "free_bytes": 743424,
+              "files": 9,
+              "directories": 3
+            },
+            {
+              "stage": "04-fragment",
+              "sha256": "1546c0fc8ce2b3b1150a5c81499e2ec0888bcc3a503b15e95dca3ec3fa756b3f",
+              "free_bytes": 743424,
+              "files": 9,
+              "directories": 3
+            },
+            {
+              "stage": "05-namespace",
+              "sha256": "154df4b1cda8f9af131cf5db693a675293e3d48d3eac08d8c9f7fb04c4ea3f7d",
+              "free_bytes": 739328,
+              "files": 10,
+              "directories": 4
+            },
+            {
+              "stage": "06-deleted",
+              "sha256": "e4d3bade84d26ba8bb0e542cf001d2fb96b2deb3307a4b7dab4ba34cd5b5e1a2",
+              "free_bytes": 753664,
+              "files": 8,
+              "directories": 3
+            },
+            {
+              "stage": "07-full",
+              "sha256": "e4d3bade84d26ba8bb0e542cf001d2fb96b2deb3307a4b7dab4ba34cd5b5e1a2",
+              "free_bytes": 753664,
+              "files": 8,
+              "directories": 3
+            },
+            {
+              "stage": "08-final",
+              "sha256": "3dff07b643278119558da94790227df0913c4c7a10ca9d522e496f036d1769e3",
+              "free_bytes": 753664,
+              "files": 9,
+              "directories": 3
+            }
+          ],
+          "write_fiq_instructions": 6
+        },
+        "EA-reopen": {
+          "calls": 12,
+          "fiq_exceptions": 53359,
+          "fdc_commands": 69,
+          "evidence_hashes": {
+            "result.json": "66a45094397a83100952972546bdc051ed260580ce14c774df9d2f5c0a447c63",
+            "fdc.log": "461d1ae5c6632af417b41d795850f74fe3e2007132f46efa30ae3490bc626e2b"
+          }
+        },
+        "EA-protected": {
+          "calls": 6,
+          "fiq_exceptions": 7228,
+          "fdc_commands": 18,
+          "evidence_hashes": {
+            "protected.adf": "c5c1572c8775ffb25dd5e197fdb3c2ee2734a239eb0cccb4f0e6e98381eb4f0b",
+            "result.json": "c53caedca03155a7c3dce4c95727f840d08a3efd154450acf79edee97ca4f458",
+            "fdc.log": "c9e27b0d8ebed8eef88edd372cbf637527d1a38ddb6f665cca39aa580fee98ce"
+          }
+        }
+      }
+    },
+    {
+      "cold_run": 3,
+      "flows": {
+        "DA": {
+          "calls": 55,
+          "fiq_exceptions": 246499,
+          "fdc_commands": 361,
+          "evidence_hashes": {
+            "06-deleted.adf": "a9be1578dddacba5b56ec7c69f8a0d5e8b7c62d1c9ad9a3d831ddcde8a5570f7",
+            "write-fiq.bin": "43634e4115966a1c4e3b46e49ce59089fa07e245b8706e9644dd2ef0e05f77c6",
+            "04-fragment.adf": "3e03b449ae5f8fe4d30f7fe85d2733e8c1c464368160c8a37bed92f9a4ed2ea3",
+            "result.json": "8201f8694878df897699cbc12786d7ee4bfac47dc1ff7639e0ecff2549b95810",
+            "02-overwrite.adf": "fe5c6cf995d6c905a965e9f33327e6a3d8fb4a653c55570b7d29d0049630f88c",
+            "08-final.adf": "3078549391c4519657e011c63944d58b454d60641f8f2f3b64f328d7a1fff965",
+            "03-stream.adf": "7d81fc793c0a141952bd5f486f6dadf9cd334031f1003e11b5f0666f822a8f5d",
+            "fdc.log": "0c6b27f1f3946375f1dc23128a4a008463e975d6841302014679c4e0158f29c8",
+            "05-namespace.adf": "b264fbc2e3f68ae743d225422021a5eee8c653f9b3250907a3a904b0c5aece60",
+            "07-full.adf": "a9be1578dddacba5b56ec7c69f8a0d5e8b7c62d1c9ad9a3d831ddcde8a5570f7",
+            "01-save.adf": "68338e044fb5a6f070db4d4efb70c6b520dea97274c2f3403f7c78aa884700e5",
+            "03-appended.adf": "42902ad6feadef5c7131f9d313a477ff77d4c573677ebfe816e37b5251a5f68d"
+          },
+          "stages": [
+            {
+              "stage": "01-save",
+              "sha256": "68338e044fb5a6f070db4d4efb70c6b520dea97274c2f3403f7c78aa884700e5",
+              "free_bytes": 733184,
+              "files": 8,
+              "directories": 3
+            },
+            {
+              "stage": "02-overwrite",
+              "sha256": "fe5c6cf995d6c905a965e9f33327e6a3d8fb4a653c55570b7d29d0049630f88c",
+              "free_bytes": 758784,
+              "files": 8,
+              "directories": 3
+            },
+            {
+              "stage": "03-appended",
+              "sha256": "42902ad6feadef5c7131f9d313a477ff77d4c573677ebfe816e37b5251a5f68d",
+              "free_bytes": 741376,
+              "files": 9,
+              "directories": 3
+            },
+            {
+              "stage": "03-stream",
+              "sha256": "7d81fc793c0a141952bd5f486f6dadf9cd334031f1003e11b5f0666f822a8f5d",
+              "free_bytes": 748544,
+              "files": 9,
+              "directories": 3
+            },
+            {
+              "stage": "04-fragment",
+              "sha256": "3e03b449ae5f8fe4d30f7fe85d2733e8c1c464368160c8a37bed92f9a4ed2ea3",
+              "free_bytes": 748544,
+              "files": 9,
+              "directories": 3
+            },
+            {
+              "stage": "05-namespace",
+              "sha256": "b264fbc2e3f68ae743d225422021a5eee8c653f9b3250907a3a904b0c5aece60",
+              "free_bytes": 745472,
+              "files": 10,
+              "directories": 4
+            },
+            {
+              "stage": "06-deleted",
+              "sha256": "a9be1578dddacba5b56ec7c69f8a0d5e8b7c62d1c9ad9a3d831ddcde8a5570f7",
+              "free_bytes": 758784,
+              "files": 8,
+              "directories": 3
+            },
+            {
+              "stage": "07-full",
+              "sha256": "a9be1578dddacba5b56ec7c69f8a0d5e8b7c62d1c9ad9a3d831ddcde8a5570f7",
+              "free_bytes": 758784,
+              "files": 8,
+              "directories": 3
+            },
+            {
+              "stage": "08-final",
+              "sha256": "3078549391c4519657e011c63944d58b454d60641f8f2f3b64f328d7a1fff965",
+              "free_bytes": 757760,
+              "files": 9,
+              "directories": 3
+            }
+          ],
+          "write_fiq_instructions": 6
+        },
+        "DA-reopen": {
+          "calls": 12,
+          "fiq_exceptions": 53357,
+          "fdc_commands": 67,
+          "evidence_hashes": {
+            "result.json": "2d25c973c301ba89641850ef848eabaabd02a0e6a91a225aeff632ef20f22431",
+            "fdc.log": "a1f71f0725350f2ff243c5e7fc416a17e8f32a063aa3ba44d750ca5549802d3d"
+          }
+        },
+        "DA-protected": {
+          "calls": 6,
+          "fiq_exceptions": 7229,
+          "fdc_commands": 19,
+          "evidence_hashes": {
+            "protected.adf": "6f770c2b9a63d77a02057e8263c128d30464ef3287bba1bbaf040fea98c73d52",
+            "result.json": "c1e3afadd5536fb87d781d49c33a6e5afe7f4b28828bd3cf2014a4bf36014286",
+            "fdc.log": "8e2075161e18208e522440a83874ef4e60f929d5514969294695322f2b0ba822"
+          }
+        },
+        "EA": {
+          "calls": 55,
+          "fiq_exceptions": 262893,
+          "fdc_commands": 371,
+          "evidence_hashes": {
+            "06-deleted.adf": "e4d3bade84d26ba8bb0e542cf001d2fb96b2deb3307a4b7dab4ba34cd5b5e1a2",
+            "write-fiq.bin": "fd27664070e6c57fbb248168844dd4d03bd8156df21e6769580f5d24e30dcb9e",
+            "04-fragment.adf": "1546c0fc8ce2b3b1150a5c81499e2ec0888bcc3a503b15e95dca3ec3fa756b3f",
+            "result.json": "c15720fd55d234446e5c89f5de90075333271bc57c43671441f611227def82c7",
+            "02-overwrite.adf": "3243985817f9ae43aefc6085f46617d07ae58d23a97dfd0f7e3756f5e472c530",
+            "08-final.adf": "3dff07b643278119558da94790227df0913c4c7a10ca9d522e496f036d1769e3",
+            "03-stream.adf": "88ba4c6fd2425c818862adfab07e2286c56706988db4e642573acec14ed59c28",
+            "fdc.log": "86cfb06da6630153ac2162ea2e01a3db4c086800341d9610d83d69e92e698151",
+            "05-namespace.adf": "154df4b1cda8f9af131cf5db693a675293e3d48d3eac08d8c9f7fb04c4ea3f7d",
+            "07-full.adf": "e4d3bade84d26ba8bb0e542cf001d2fb96b2deb3307a4b7dab4ba34cd5b5e1a2",
+            "01-save.adf": "387b5f798ad487201d03ba5f478a02c026d211e3d79133265a953d1e1e57a74b",
+            "03-appended.adf": "66ee8b4242538f863d41be902b3631f914ed2c0995b4fbc90b4bf13c3150bb20"
+          },
+          "stages": [
+            {
+              "stage": "01-save",
+              "sha256": "387b5f798ad487201d03ba5f478a02c026d211e3d79133265a953d1e1e57a74b",
+              "free_bytes": 728064,
+              "files": 8,
+              "directories": 3
+            },
+            {
+              "stage": "02-overwrite",
+              "sha256": "3243985817f9ae43aefc6085f46617d07ae58d23a97dfd0f7e3756f5e472c530",
+              "free_bytes": 753664,
+              "files": 8,
+              "directories": 3
+            },
+            {
+              "stage": "03-appended",
+              "sha256": "66ee8b4242538f863d41be902b3631f914ed2c0995b4fbc90b4bf13c3150bb20",
+              "free_bytes": 736256,
+              "files": 9,
+              "directories": 3
+            },
+            {
+              "stage": "03-stream",
+              "sha256": "88ba4c6fd2425c818862adfab07e2286c56706988db4e642573acec14ed59c28",
+              "free_bytes": 743424,
+              "files": 9,
+              "directories": 3
+            },
+            {
+              "stage": "04-fragment",
+              "sha256": "1546c0fc8ce2b3b1150a5c81499e2ec0888bcc3a503b15e95dca3ec3fa756b3f",
+              "free_bytes": 743424,
+              "files": 9,
+              "directories": 3
+            },
+            {
+              "stage": "05-namespace",
+              "sha256": "154df4b1cda8f9af131cf5db693a675293e3d48d3eac08d8c9f7fb04c4ea3f7d",
+              "free_bytes": 739328,
+              "files": 10,
+              "directories": 4
+            },
+            {
+              "stage": "06-deleted",
+              "sha256": "e4d3bade84d26ba8bb0e542cf001d2fb96b2deb3307a4b7dab4ba34cd5b5e1a2",
+              "free_bytes": 753664,
+              "files": 8,
+              "directories": 3
+            },
+            {
+              "stage": "07-full",
+              "sha256": "e4d3bade84d26ba8bb0e542cf001d2fb96b2deb3307a4b7dab4ba34cd5b5e1a2",
+              "free_bytes": 753664,
+              "files": 8,
+              "directories": 3
+            },
+            {
+              "stage": "08-final",
+              "sha256": "3dff07b643278119558da94790227df0913c4c7a10ca9d522e496f036d1769e3",
+              "free_bytes": 753664,
+              "files": 9,
+              "directories": 3
+            }
+          ],
+          "write_fiq_instructions": 6
+        },
+        "EA-reopen": {
+          "calls": 12,
+          "fiq_exceptions": 53359,
+          "fdc_commands": 69,
+          "evidence_hashes": {
+            "result.json": "66a45094397a83100952972546bdc051ed260580ce14c774df9d2f5c0a447c63",
+            "fdc.log": "461d1ae5c6632af417b41d795850f74fe3e2007132f46efa30ae3490bc626e2b"
+          }
+        },
+        "EA-protected": {
+          "calls": 6,
+          "fiq_exceptions": 7228,
+          "fdc_commands": 18,
+          "evidence_hashes": {
+            "protected.adf": "c5c1572c8775ffb25dd5e197fdb3c2ee2734a239eb0cccb4f0e6e98381eb4f0b",
+            "result.json": "c53caedca03155a7c3dce4c95727f840d08a3efd154450acf79edee97ca4f458",
+            "fdc.log": "c9e27b0d8ebed8eef88edd372cbf637527d1a38ddb6f665cca39aa580fee98ce"
+          }
+        }
+      }
+    }
+  ]
+}

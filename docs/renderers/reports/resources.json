@@ -1,0 +1,18 @@
+[
+  {
+    "component": "Colours",
+    "path": "Resources/UK/Messages",
+    "resource_name": "Resources.Colours.Messages",
+    "bytes": 472,
+    "sha256": "832207f4beae431228108cc58f542e165ba0d43ba682a3941d56f0e97ca9487f",
+    "license": "Pinned component Apache-2.0 LICENSE; no separate file-level message notice"
+  },
+  {
+    "component": "DrawMod",
+    "path": "Resources/UK/Messages",
+    "resource_name": "Resources.DrawMod.Messages",
+    "bytes": 440,
+    "sha256": "0d1d9f474be23c0c59357620e2a979303b1c8355ea88ce31245160e329bca590",
+    "license": "Pinned component Apache-2.0 LICENSE; no separate file-level message notice"
+  }
+]

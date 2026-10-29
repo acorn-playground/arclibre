@@ -1,0 +1,11 @@
+; SPDX-License-Identifier: Apache-2.0
+; The original module wrapper and SharedCLibrary perform C startup.
+; Compile the FilerAct body with main=ArcLibre_FilerActMain so GCC does not
+; inject its alternative __gccmain constructor runtime into this C program.
+; Preserve the original library's weak main entry with a real tail call.
+        AREA |C$$code|, CODE, READONLY
+        IMPORT |ArcLibre_FilerActMain|
+        EXPORT |main|
+|main|
+        B |ArcLibre_FilerActMain|
+        END

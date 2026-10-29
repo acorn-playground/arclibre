@@ -1,0 +1,49 @@
+diff --git a/src/Kernel/s/NewReset b/src/Kernel/s/NewReset
+index 15c3bf0..dce4a0e 100644
+--- a/src/Kernel/s/NewReset
++++ b/src/Kernel/s/NewReset
+@@ -899,7 +899,11 @@ skipskipforTC
+         MOV     r1, #1                  ; country UK
+         BL      Write
+         MOV     r0, #NewADFSCMOS
++ [ :DEF: ArcLibreDesktopDefaults
++        MOV     r1, #1                  ; fitted floppy; configure hard discs explicitly
++ |
+         MOV     r1, #&41                ; floppies=1, ST506=0, IDE=1 (changed 01-Sep-93)
++ ]
+         BL      Write
+ not_full_reset
+ 
+@@ -992,11 +996,19 @@ DefaultCMOSTable ; list of non-zero options wanted :
+                               ; Baud 3
+                               ;                print 1
+ 
++ [ :DEF: ArcLibreDesktopDefaults
++        =       DBTBCMOS,      (4:SHL:5) ; NoBoot: enter Desktop without disc autoboot
++ |
+         =       DBTBCMOS,      (1:SHL:4) :OR: (4:SHL:5)
++ ]
+                               ; Boot (changed from NoBoot 01-Sept-93)
+                               ;                Data 4
+ 
++ [ :DEF: ArcLibreDesktopDefaults
++        =       StartCMOS,     (2:SHL:3) :OR: (1:SHL:6) ; Drive 0, NoCaps, NoDir
++ |
+         =       StartCMOS,     (4:SHL:0) :OR: (2:SHL:3) :OR: (1:SHL:6)
++ ]
+                               ; Drive 4 (changed from Drive 0 01-Sept-93)
+                               ;                NOCAPS (changed from CAPS 02-May-91)
+                               ;                               NODIR
+@@ -1036,7 +1048,12 @@ DefaultCMOSTable ; list of non-zero options wanted :
+                               ;                     Homerton.Medium
+                               ;                                    tiled window background
+ 
++ [ :DEF: ArcLibreDesktopDefaults
++        =       WimpModeCMOS,12        ; original VIDC 640x256, 16 colours
++        =       SystemSpeedCMOS,(1:SHL:0):OR:(1:SHL:2):OR:(1:SHL:6) ; explicit mode
++ |
+         =       SystemSpeedCMOS,(1:SHL:0):OR:(0:SHL:1):OR:(1:SHL:2):OR:(0:SHL:3):OR:(1:SHL:4):OR:(0:SHL:5):OR:(1:SHL:6):OR:(0:SHL:7)
++ ]
+                               ;  AUN ROMBoot Enabled
+                               ;               AUN auto-station numbering off
+                               ;                            Delete-etc reset

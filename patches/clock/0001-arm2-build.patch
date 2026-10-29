@@ -1,0 +1,227 @@
+--- a/src/IIC/s/IICMod
++++ b/src/IIC/s/IICMod
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: relocatable ARM2 assembly contracts.
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -42,7 +43,7 @@
+         GET     Hdr:MsgTrans
+         GET     Hdr:IIC
+ 
+-        LEADR   Module_LoadAddr
++        AREA    |IIC$$Code|, CODE, READONLY
+ 
+ TAB     *       9
+ LF      *       10
+@@ -219,6 +220,7 @@
+ SetOrCheck
+         ORR     R14, R14, #I_bit                ; disable interrupts round access to IOCControlSoftCopy
+         TEQP    R14, #0
++        MOV     R0, R0                          ; ARM2 PSR settling
+ 
+         ADD     R0, R0, R1, LSL #1              ; R0 := C0 + C1*2
+ 
+@@ -241,6 +243,7 @@
+         LDR     r1, IRQDisableFlag
+         ORR     lr, lr, r1
+         TEQP    lr, #0                          ; restore IRQs if we're talking to BMU
++        MOV     R0, R0                          ; ARM2 PSR settling
+ 
+ 20
+         LDRB    R1, [R2, #IOCControl]           ; now wait for clock to go high
+@@ -306,6 +309,7 @@
+         LDR     r1, IRQDisableFlag
+         ORR     r1, r1, pc
+         TEQP    r1, #0
++        MOV     R0, R0                          ; ARM2 PSR settling
+ 
+         MOV     R1, #1                  ; clock HI
+         BL      SetC1C0CheckClock
+@@ -375,6 +379,7 @@
+         LDR     r0, IRQDisableFlag
+         ORR     r1, r1, r0
+         TEQP    r1, #0
++        MOV     R0, R0                          ; ARM2 PSR settling
+ 
+         MOV     R0, #1                  ; clock HI, data HI
+         MOV     R1, #1
+@@ -391,12 +396,14 @@
+ 
+         Pull    "R1"
+         TEQP    PC,R1
++        MOV     R0, R0                          ; ARM2 PSR settling
+ 
+         TST     R2, #1                  ; should be LO for correct acknowledge
+         MOV     R2, PC
+         BICEQ   R2, R2, #V_bit          ; clear V if correct acknowledge
+         ORRNE   R2, R2, #V_bit          ; set V if no acknowledge
+         TEQP    R2, #0
++        MOV     R0, R0                          ; ARM2 PSR settling
+ 
+         Pull    "R0-R2,PC"
+ 
+@@ -466,6 +473,7 @@
+         LDR     r0, IRQDisableFlag
+         ORR     LR, LR, r0
+         TEQP    LR, #0                  ; Disable ints if not talking to BMU
++        MOV     R0, R0                          ; ARM2 PSR settling
+ 
+         MOV     R0, #1                  ; pulse clock HI
+         MOV     R1, #1
+@@ -481,6 +489,7 @@
+ 
+         Pull    "LR"
+         TEQP    PC, LR                  ; restore interrupt state
++        MOV     R0, R0                          ; ARM2 PSR settling
+ 
+         SUBS    R4, R4, #1
+         BCS     %BT10
+@@ -488,7 +497,7 @@
+         MOV     R0, R3                  ; return the result in R0
+         Pull    "R1-R4, PC",,^
+ 
+-CopyError ENTRY r1-r7
++CopyError KernelEntry r1-r7
+         BL      open_messagefile
+         EXIT    VS
+         MOV     R4,R11                  ; (parameter) -> R4
+@@ -506,7 +515,7 @@
+ 
+         ALIGN
+ 
+-open_messagefile ENTRY r0-r2
++open_messagefile KernelEntry r0-r2
+         LDR     r0, MessageFile_Open
+         CMP     r0, #0
+         EXIT    NE
+--- a/src/RTCAdjust/s/RTC
++++ b/src/RTCAdjust/s/RTC
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: relocatable ARM2 assembly contracts.
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -41,7 +42,7 @@
+         GET     Hdr:ExtraLong
+         GET     Hdr:MsgTrans
+ 
+-        LEADR   Module_LoadAddr
++        AREA    |RTCAdjust$$Code|, CODE, READONLY
+ 
+ TAB     *       9
+ LF      *       10
+@@ -135,7 +136,7 @@
+ ;       RTC_Init - Initialisation entry
+ ;
+ 
+-RTC_Init ENTRY
++RTC_Init KernelEntry
+         LDR     R2, [R12]       ; have we got workspace yet ?
+         TEQ     R2, #0
+         BNE     %FT05
+@@ -174,11 +175,12 @@
+ ;       RTC_Die - Die entry
+ ;
+ 
+-RTC_Die ENTRY
++RTC_Die KernelEntry
+         LDR     R12, [R12]
+         MOV     R6, PC
+         ORR     R0, R6, #I_bit
+         TEQP    R0, #0                  ; disable IRQs round this bit
++        MOV     R0, R0                  ; ARM2 PSR settling
+ 
+         LDR     R0, CallBackPending
+         TEQ     R0, #0
+@@ -194,6 +196,7 @@
+         SWI     XOS_RemoveTickerEvent
+ 
+         TEQP    R6, #0                  ; restore IRQ status - it's safe!
++        MOV     R0, R0                  ; ARM2 PSR settling
+ 
+         BL      GetOffWordV
+ 
+@@ -218,7 +221,7 @@
+ ;       DoInit - Set up variables on init/reset
+ ;
+ 
+-DoInit  ENTRY
++DoInit  KernelEntry
+         MOV     R0, #0
+         STR     R0, CallBackPending
+         STR     R0, FailureMode
+@@ -247,7 +250,7 @@
+ ;       InitVars - Init called on init, reset or set time
+ ;
+ 
+-InitVars ENTRY
++InitVars KernelEntry
+         MOV     R0, #0
+         STR     R0, LastError
+ 
+@@ -262,7 +265,7 @@
+ ; out:  PSR preserved
+ ;
+ 
+-GetOffWordV ENTRY
++GetOffWordV KernelEntry
+         MOV     R0, #WordV
+         ADR     R1, MyWordV
+         MOV     R2, R12
+@@ -286,7 +289,7 @@
+ ;       MyCallEvery - CallEvery routine
+ ;
+ 
+-MyCallEvery ENTRY "R0,R1,R8,R9"
++MyCallEvery KernelEntry "R0,R1,R8,R9"
+         MOV     R9, PC                  ; save old processor mode
+         ORR     R8, R9, #SVC_mode       ; make SVC mode
+         TEQP    R8, #0
+@@ -325,7 +328,7 @@
+ ;       W  = the number of cs we were ahead of the RTC last call
+ ;
+ 
+-Recalibrate ENTRY "R0-R9"
++Recalibrate KernelEntry "R0-R9"
+         LDR     R0, CallBackPending
+         SUBS    R0, R0, #1              ; one fewer pending callbacks
+         STRCS   R0, CallBackPending     ; don't go negative
+@@ -475,7 +478,7 @@
+ ;       ProgramLatch - Program IOC Timer 0 latch with R3 value
+ ;
+ 
+-ProgramLatch ENTRY "R0,R3"
++ProgramLatch KernelEntry "R0,R3"
+         SUB     R3, R3, #1              ; TMD 21-May-93: Apply correction - IOC latch should be programmed with n-1
+         MOV     R0, #IOC
+         STRB    R3, [R0, #Timer0LL]
+@@ -502,7 +505,7 @@
+ ;       R0-R6, R9 corrupted
+ ;
+ 
+-ConvertTo5Byte ENTRY
++ConvertTo5Byte KernelEntry
+         MOV     R9, #24
+         SUB     R2, R2, #1              ; decrement day (day=1 => nowt to add)
+         MLA     R0, R9, R2, R0          ; R0 = hours + day*24
+@@ -596,7 +599,7 @@
+         &       &AC013400       ; Dec
+         &       &F0000000       ; terminator, must be less than this (+1)
+ 
+-CopyError ENTRY r1-r7
++CopyError KernelEntry r1-r7
+         BL      open_messagefile
+         EXIT    VS
+         ADR     R1, MessageFile_Block
+@@ -612,7 +615,7 @@
+         DCB     "Resources:$.Resources.RTCAdjust.Messages", 0
+         ALIGN
+ 
+-open_messagefile ENTRY r0-r2
++open_messagefile KernelEntry r0-r2
+         LDR     r0, MessageFile_Open
+         CMP     r0, #0
+         EXIT    NE

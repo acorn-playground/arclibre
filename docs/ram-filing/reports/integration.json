@@ -1,0 +1,90 @@
+{
+  "status": "PASS",
+  "rom_sha256": "41fd4e9504c03aab4b0a62909c5addb6b77d1a91a695ee39e2ea09654c769b9d",
+  "checks": [
+    {
+      "report": "build/arclibre/acceptance.json",
+      "status": "PASS",
+      "sha256": "3a04b1a3326ea1a2826d3ca1bbfffe7ce22e8c2481e1ffe3b60e049f410b548b"
+    },
+    {
+      "report": "build/sprite-commands/acceptance.json",
+      "status": "PASS",
+      "sha256": "e99fc1ff07a28cb0e88a8242bd7c0bb2c6f121eff4ad5c5210eeaa5526c647e9"
+    },
+    {
+      "report": "build/palette/acceptance.json",
+      "status": "PASS",
+      "sha256": "1c99e5d457afdb9c84cf839efee5490b78cc11a98a0620a0582799bfb98bb6cd"
+    },
+    {
+      "report": "build/sound/acceptance.json",
+      "status": "PASS",
+      "sha256": "4cee8ac4fe31ecb4ad46a1c2fdbd64bb1d51c386fc63fe7e40c9e67fb7779721"
+    },
+    {
+      "report": "build/desktop-actions/acceptance.json",
+      "status": "PASS",
+      "sha256": "b05e907ba4c520f74f13e2d1be961c28a8e894d144f8312fa60fe3cc1f83e12b"
+    },
+    {
+      "report": "build/desktop-c-runtime/acceptance.json",
+      "status": "PASS",
+      "sha256": "b09eef05ccc80dc01709a71dfdc1f3ee058568989be7b2f80830164911166466"
+    },
+    {
+      "report": "build/desktop-apps/acceptance/acceptance.json",
+      "status": "PASS",
+      "sha256": "0226e244ac33cc5db2d1083a151b022d6a663b531be44ce9c493ec8204f03bbd"
+    },
+    {
+      "report": "build/graphics-apps/acceptance/acceptance.json",
+      "status": "PASS",
+      "sha256": "2e27f8ed8db22a095773ef92f7ecbc3707c98cba4e5351ef35e55843ee85ced6"
+    },
+    {
+      "report": "build/app-workflows/acceptance.json",
+      "status": "PASS",
+      "sha256": "28f0ac9ba6f4dbbcb62f078c558c31e23df6bcdf98d3f1ff137c38e6cbe3db4f"
+    },
+    {
+      "report": "build/task-service-tests/acceptance.json",
+      "status": "PASS",
+      "sha256": "b0108a098f09771ce75eff71d18bd2c0a1d195ab85ddf69870e9efa7697b09e3"
+    },
+    {
+      "report": "build/menu-tests/acceptance.json",
+      "status": "PASS",
+      "sha256": "37f284867c9cd8ab1c7d4541bea6991b3e2c3d131d56c0929bb35d689174b2d1"
+    },
+    {
+      "report": "build/menu-tests/negative-control.json",
+      "status": "PASS",
+      "sha256": "df0a1c04443dc949fc6393c56908be97fb6b65b2da7822150d9b21cdc92d8b7e"
+    },
+    {
+      "report": "build/private-zarch/acceptance/acceptance.json",
+      "status": "PASS",
+      "sha256": "5b4b581389c110faafe2c5f7204cb8864b3f13240683a7205ad6b6feabc27bf1"
+    },
+    {
+      "report": "build/private-nevryon/acceptance/acceptance.json",
+      "status": "PASS",
+      "sha256": "47391b89462125da1cc5d7fcaa3b40495a71c787f580daed20a92667e4161052"
+    },
+    {
+      "report": "build/stream-tests/acceptance.json",
+      "status": "PASS",
+      "sha256": "06aa74cba6a047e0869109fd004b2ea1f8158d3000902e6a869cf2a9b21f7acc"
+    },
+    {
+      "report": "build/ram-filing-tests/acceptance.json",
+      "status": "PASS",
+      "sha256": "3a42253cece11871f26ed1fe5307e5256323961712b62b4e3ad4f33dbf779ddc"
+    }
+  ],
+  "used_bytes": 1910996,
+  "free_bytes": 186156,
+  "kernel_sha256": "71b0c301ed58f7f60d84899ca80acdef3d6cb9c9f6d82182f441e66676c35c80",
+  "scope": "All retained gates on the RAM/stream image before adding standard utilities. Nevryon retried after correcting an IRQ sampling boundary in the harness; ROM unchanged. Private game metadata only."
+}

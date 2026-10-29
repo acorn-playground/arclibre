@@ -1,0 +1,387 @@
+--- a/src/RISC_OSLib/rlib/c/dboxtcol
++++ b/src/RISC_OSLib/rlib/c/dboxtcol
+@@ -1,3 +1,4 @@
++/* Modified 2026 by ArcLibre: the application's dboxtcol dialogue, not ColourPicker. */
+ /* Copyright 1996 Acorn Computers Ltd
+  *
+  * Licensed under the Apache License, Version 2.0 (the "License");
+@@ -12,7 +13,7 @@
+  * See the License for the specific language governing permissions and
+  * limitations under the License.
+  */
+-/*dboxtcol.c - RISC_OSLib-compatible ColourPicker interface*/
++/*dboxtcol.c - edit a true colour in the application's "dboxtcol" dialogue*/
+ 
+ /* Purpose
+ 
+@@ -26,17 +27,20 @@
+ /* History
+ 
+    14 July 1993 JRC Use ColourPicker, replacing code by A P Thompson.
++   2026 ArcLibre: ColourPicker is not part of an Archimedes ROM, so drive the
++      "dboxtcol" template (red, green and blue percentages with arrows and
++      bars, the 16 desktop colours, None, a colour patch and OK) again.
+ */
+ 
+-/*From CLib*/
+-#include <swis.h>
++#include <stdlib.h>
++#include <string.h>
+ 
+ /*From RISC_OSLib*/
+-#include "colourpick.h"
+-#include "event.h"
++#include "bbc.h"
++#include "colourtran.h"
++#include "dbox.h"
+ #include "dboxtcol.h"
+-#include "help.h"
+-#include "os.h"
++#include "template.h"
+ #include "wimp.h"
+ #include "wimpt.h"
+ #include "win.h"
+@@ -44,122 +48,253 @@
+ #undef  NULL
+ #define NULL 0
+ 
+-#undef  message_MENUS_DELETED
+-#define message_MENUS_DELETED 0x400C9
++/*Icons in the template. Each component c (red, green, blue) has the five
++   icons Field (c) to Field (c) + 4.*/
++#define I_OK          0
++#define Field(c)      (1 + 5*(c))
++#define I_MORE        0
++#define I_LESS        1
++#define I_PERCENT     2
++#define I_BAR         3
++#define I_PATCH       16
++#define I_WIMPCOLOUR  17
++#define I_NONE        33
+ 
+-#undef  ColourPicker_OpenDialogue
+-#define ColourPicker_OpenDialogue 0x47702
++static dbox D;
++static int Value [3];  /*0..255 for red, green, blue*/
++static int Shown [3];  /*percentage in the writable field*/
++static BOOL Transparent;
++static int Dragging;   /*component whose bar is being dragged, or -1*/
+ 
+-static BOOL Open, Chosen;
+-static dboxtcol_colour Colour;
+-static dboxtcol_colourhandler Proc;
+-static void *Handle;
+-static wimp_w W;
+-static int Model = 0;
++static int Percent (int v) {return (v*100 + 127)/255;}
+ 
+-static BOOL Unknowns (wimp_eventstr *event_str, void *h)
++static int Byte (int p) {return p < 0? 0: p > 100? 255: (p*255 + 50)/100;}
+ 
+-{  h = h;
++static dboxtcol_colour Colour (void)
+ 
+-   switch (event_str->e)
+-   {  case wimp_ESEND:
+-      case wimp_ESENDWANTACK:
+-         switch (event_str->data.msg.hdr.action)
+-         {  case message_MENUS_DELETED:
+-               Open = FALSE;
+-               return TRUE;
+-            break;
++{  return Transparent? dboxtcol_Transparent:
++         Value [0] << 8 | Value [1] << 16 | Value [2] << 24;
++}
+ 
+-            case message_COLOUR_PICKER_COLOUR_CHOICE:
+-               Chosen = TRUE;
++/*Fill a box in a true colour, or in the window's background colour if
++   background is set.*/
++static void Fill (BOOL background, int c, int x0, int y0, int x1, int y1)
+ 
+-               Colour = (event_str->data.msg.data.words [1] &
+-                     colourpicker_COLOUR_TRANSPARENT) != 0?
+-                     dboxtcol_Transparent:
+-                     event_str->data.msg.data.words [2];
++{  if (x1 > x0 && y1 > y0)
++   {  if (background)
++         wimpt_noerr (wimp_setcolour (1));
++      else
++      {  wimp_paletteword p;
++         int gcol;
+ 
+-               if (Proc != NULL) (*Proc) (Colour, Handle);
+-               return TRUE;
+-            break;
++         p.word = c;
++         wimpt_noerr (colourtran_setGCOL (p, 0, 0, &gcol));
++      }
++      wimpt_noerr (bbc_rectanglefill (x0, y0, x1 - x0 - 1, y1 - y0 - 1));
++   }
++}
+ 
+-            case message_COLOUR_PICKER_COLOUR_CHANGED:
+-              Model = event_str->data.msg.data.words [4];
+-            break;
++/*Paint the bars and the patch into a redraw rectangle.*/
++static void Paint (wimp_redrawstr *r)
+ 
+-            case wimp_MHELPREQUEST:
+-               /*If we get a help-request on this colour picker, we must
+-                  "handle" it to prevent other parts of RISC_OSLib trying to
+-                  deal with it.*/
+-               if (event_str->data.msg.data.helprequest.m.w == W)
+-                  return TRUE;
+-            break;
+-         }
+-      break;
++{  int ox = r->box.x0 - r->scx, oy = r->box.y1 - r->scy, c, split;
++   wimp_icon i;
++
++   for (c = 0; c < 3; c++)
++   {  wimpt_noerr (wimp_get_icon_info (r->w, Field (c) + I_BAR, &i));
++      i.box.x0 += ox + 4, i.box.x1 += ox - 4;
++      i.box.y0 += oy + 4, i.box.y1 += oy - 4;
++      split = i.box.x0 + (i.box.x1 - i.box.x0)*Value [c]/255;
++      Fill (FALSE, (int) (0xFF00u << 8*c), i.box.x0, i.box.y0, split,
++            i.box.y1);
++      Fill (TRUE, 0, split, i.box.y0, i.box.x1, i.box.y1);
+    }
+ 
+-   return FALSE;
++   wimpt_noerr (wimp_get_icon_info (r->w, I_PATCH, &i));
++   Fill (Transparent, Colour (), i.box.x0 + ox + 4, i.box.y0 + oy + 4,
++         i.box.x1 + ox - 4, i.box.y1 + oy - 4);
+ }
+ 
+-BOOL dboxtcol (dboxtcol_colour *colour_out, BOOL allow_transparent,
+-      char *name, dboxtcol_colourhandler proc, void *handle)
++/*Bring the fields, bars and patch up to date.*/
++static void Show (void)
+ 
+-{  BOOL transparent;
+-   wimp_mousestr mouse_str;
+-   os_error *error = NULL;
+-   colourpicker_dialogue dialogue;
+-   colourpicker_d d;
++{  wimp_w w = dbox_syshandle (D);
++   wimp_redrawstr r;
++   wimp_icon i;
++   BOOL more;
++   int c;
+ 
+-   static BOOL Added_Messages = FALSE;
++   for (c = 0; c < 3; c++)
++      if (Shown [c] != Percent (Value [c]))
++         dbox_setnumeric (D, Field (c) + I_PERCENT,
++               Shown [c] = Percent (Value [c]));
++   dbox_setnumeric (D, I_NONE, Transparent);
+ 
+-   if (!Added_Messages)
+-   {  static int Messages [] = {message_COLOUR_PICKER_COLOUR_CHOICE,
+-            message_COLOUR_PICKER_COLOUR_CHANGED, message_MENUS_DELETED, 0};
++   /*The bars and the patch lie between the top bar and the patch.*/
++   wimpt_noerr (wimp_get_icon_info (w, Field (0) + I_BAR, &i));
++   r.w = w;
++   r.box = i.box;
++   wimpt_noerr (wimp_get_icon_info (w, I_PATCH, &i));
++   r.box.y0 = i.box.y0;
++   if (i.box.x0 < r.box.x0) r.box.x0 = i.box.x0;
++   if (i.box.x1 > r.box.x1) r.box.x1 = i.box.x1;
++   wimpt_noerr (wimp_update_wind (&r, &more));
++   while (more)
++   {  Paint (&r);
++      wimpt_noerr (wimp_get_rectangle (&r, &more));
++   }
++}
+ 
+-      if ((error = _swix (Wimp_AddMessages, _IN (0), Messages)) != NULL)
+-         goto finish;
++/*Set component c from the pointer's position over its bar.*/
++static void Drag (int c)
+ 
+-      Added_Messages = TRUE;
++{  wimp_mousestr m;
++   wimp_wstate s;
++   wimp_icon i;
++   int x0, x1;
++
++   wimpt_noerr (wimp_get_point_info (&m));
++   if ((m.bbits & (wimp_BLEFT | wimp_BRIGHT)) == 0)
++   {  Dragging = -1;
++      return;
+    }
++   wimpt_noerr (wimp_get_wind_state (dbox_syshandle (D), &s));
++   wimpt_noerr (wimp_get_icon_info (dbox_syshandle (D), Field (c) + I_BAR, &i));
++   x0 = s.o.box.x0 - s.o.x + i.box.x0 + 4;
++   x1 = s.o.box.x0 - s.o.x + i.box.x1 - 4;
++   m.x = m.x < x0? x0: m.x > x1? x1: m.x;
++   if (Value [c] != (m.x - x0)*255/(x1 - x0) || Transparent)
++   {  Value [c] = (m.x - x0)*255/(x1 - x0);
++      Transparent = FALSE;
++      Show ();
++   }
++}
+ 
+-   Open = TRUE;
+-   Chosen = FALSE;
+-   Colour = colour_out != NULL? *colour_out: dboxtcol_Transparent;
+-   Proc = proc;
+-   Handle = handle;
++/*Take a typed percentage as soon as it is a valid one.*/
++static void Typed (void)
+ 
+-   transparent = allow_transparent && Colour == dboxtcol_Transparent;
++{  char a [8];
++   int c, p;
+ 
+-   wimpt_noerr (wimp_get_point_info (&mouse_str));
++   for (c = 0; c < 3; c++)
++   {  dbox_getfield (D, Field (c) + I_PERCENT, a, sizeof a);
++      if (a [0] != '\0' && (p = atoi (a)) <= 100 && p != Shown [c])
++      {  Value [c] = Byte (p);
++         Shown [c] = p;
++         Transparent = FALSE;
++         Show ();
++      }
++   }
++}
+ 
+-   dialogue.flags =
+-      (allow_transparent? colourpicker_DIALOGUE_OFFERS_TRANSPARENT: 0) |
+-      colourpicker_DIALOGUE_TYPE_CLICK << colourpicker_DIALOGUE_TYPE_SHIFT |
+-      (transparent? colourpicker_DIALOGUE_TRANSPARENT: 0);
+-   dialogue.title      = name;
+-   dialogue.visible.x0 = mouse_str.x;
+-   dialogue.visible.y0 = 0;
+-   dialogue.visible.x1 = 0;
+-   dialogue.visible.y1 = mouse_str.y;
+-   dialogue.xscroll    = 0;
+-   dialogue.yscroll    = 0;
+-   dialogue.colour     = Colour;
+-   dialogue.size       = 4;
+-   dialogue.info [0]   = Model;
++static BOOL Events (dbox d, void *event, void *handle)
+ 
+-   if ((error = _swix (ColourPicker_OpenDialogue,
+-         _IN (0) | _IN (1) | _OUT (0) | _OUT (1),
+-         colourpicker_OPEN_TRANSIENT | colourpicker_OPEN_SUB_MENU,
+-         &dialogue, &d, &W)) != NULL)
+-      goto finish;
++{  wimp_eventstr *e = (wimp_eventstr *) event;
++   int c;
+ 
+-   /*Poll the WIMP until the window goes away.*/
+-   win_add_unknown_event_processor (&Unknowns, 0);
+-   do event_process (); while (Open);
+-   win_remove_unknown_event_processor (&Unknowns, 0);
++   d = d, handle = handle;
++   switch (e->e)
++   {  case wimp_EREDRAW:
++      {  wimp_redrawstr r;
++         BOOL more;
+ 
+-   if (colour_out != NULL) *colour_out = Colour;
++         r.w = e->data.o.w;
++         wimpt_noerr (wimp_redraw_wind (&r, &more));
++         while (more)
++         {  Paint (&r);
++            wimpt_noerr (wimp_get_rectangle (&r, &more));
++         }
++         return TRUE;
++      }
+ 
+-finish:
+-   wimpt_complain (error);
+-   return Chosen;
++      case wimp_ENULL:
++         if (Dragging >= 0) Drag (Dragging);
++         Typed ();
++         return TRUE;
++
++      case wimp_EBUT:
++         for (c = 0; c < 3; c++)
++            if (e->data.but.m.i == Field (c) + I_BAR &&
++                  (e->data.but.m.bbits & wimp_BMID) == 0)
++            {  Dragging = c;
++               Drag (c);
++               return TRUE;
++            }
++      break;
++   }
++   return FALSE;
+ }
++
++BOOL dboxtcol (dboxtcol_colour *colour, BOOL allow_transparent,
++      char *name, dboxtcol_colourhandler proc, void *handle)
++
++{  template *t = template_find ("dboxtcol");
++   wimp_w idler = win_idle_event_claimer ();
++   wimp_palettestr palette;
++   dbox_field f;
++   BOOL chosen = FALSE, first = TRUE;
++   int c, step;
++
++   if (t == NULL) return FALSE;
++   if ((t->window.titleflags & wimp_INDIRECT) != 0)
++   {  strncpy (t->window.title.indirecttext.buffer, name,
++            t->window.title.indirecttext.bufflen - 1);
++      t->window.title.indirecttext.buffer
++            [t->window.title.indirecttext.bufflen - 1] = '\0';
++   }
++   if ((D = dbox_new ("dboxtcol")) == NULL) return FALSE;
++
++   Transparent = allow_transparent && *colour == dboxtcol_Transparent;
++   for (c = 0; c < 3; c++)
++   {  Value [c] = Transparent? 255: (*colour >> 8*(c + 1)) & 0xFF;
++      dbox_setnumeric (D, Field (c) + I_PERCENT, Shown [c] = Percent (Value [c]));
++   }
++   if (!allow_transparent) dbox_fadefield (D, I_NONE);
++   dbox_setnumeric (D, I_NONE, Transparent);
++   Dragging = -1;
++
++   dbox_raw_eventhandler (D, &Events, NULL);
++   win_claim_idle_events (dbox_syshandle (D));
++   dbox_show (D);
++
++   for (;;)
++   {  f = first? dbox_fillin (D): dbox_fillin_fixedcaret (D);
++      first = FALSE;
++      if (f == dbox_CLOSE) break;
++
++      step = dbox_persist ()? -1: 1;
++      if (f == I_OK)
++      {  Typed ();
++         *colour = Colour ();
++         chosen = TRUE;
++         if (proc != NULL) (*proc) (*colour, handle);
++         if (step == 1) break;
++      }
++      else if (f == I_NONE)
++      {  if (allow_transparent) Transparent = !Transparent;
++         Show ();
++      }
++      else if (f >= I_WIMPCOLOUR && f < I_WIMPCOLOUR + 16)
++      {  wimpt_noerr (wimp_readpalette (&palette));
++         for (c = 0; c < 3; c++)
++            Value [c] = (palette.c [f - I_WIMPCOLOUR].word >> 8*(c + 1)) & 0xFF;
++         Transparent = FALSE;
++         Show ();
++      }
++      else
++         for (c = 0; c < 3; c++)
++            if (f == Field (c) + I_MORE || f == Field (c) + I_LESS)
++            {  /*Adjust reverses the arrows.*/
++               int p = Percent (Value [c]) +
++                     (f == Field (c) + I_MORE? step: -step);
++
++               if (p >= 0 && p <= 100) Value [c] = Byte (p);
++               Transparent = FALSE;
++               Show ();
++            }
++   }
++
++   win_claim_idle_events (idler);
++   dbox_dispose (&D);
++   return chosen;
++}

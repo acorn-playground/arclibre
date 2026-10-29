@@ -1,0 +1,370 @@
+{
+  "status": "PASS",
+  "rom_sha256": "361281151b3079b4046c72f3fb7cc4574ff01b04ce53e4fffa09a4c7e2d0d8b1",
+  "cold_boots": 3,
+  "identical_observations": true,
+  "original_floppy_program": true,
+  "stereo_set_query": true,
+  "unsupported_vidc20_swi_returns_error": true,
+  "wavesynth_percussion_and_scheduler": true,
+  "real_dma_non_silent": true,
+  "vidc_rate_and_dma_timing": true,
+  "sample_rate_cases": [
+    {
+      "channels": 1,
+      "sample_period_us": 48,
+      "sfr": 302,
+      "elapsed_ticks": 7919550,
+      "emitted_bytes": 6880,
+      "expected_bytes": 6874.609375,
+      "error_bytes": 5.390625
+    },
+    {
+      "channels": 2,
+      "sample_period_us": 48,
+      "sfr": 278,
+      "elapsed_ticks": 4799967,
+      "emitted_bytes": 8336,
+      "expected_bytes": 8333.276041666666,
+      "error_bytes": 2.7239583333339397
+    },
+    {
+      "channels": 4,
+      "sample_period_us": 48,
+      "sfr": 266,
+      "elapsed_ticks": 4800132,
+      "emitted_bytes": 16672,
+      "expected_bytes": 16667.125,
+      "error_bytes": 4.875
+    },
+    {
+      "channels": 8,
+      "sample_period_us": 48,
+      "sfr": 260,
+      "elapsed_ticks": 4799946,
+      "emitted_bytes": 33328,
+      "expected_bytes": 33332.958333333336,
+      "error_bytes": -4.958333333335759
+    },
+    {
+      "channels": 1,
+      "sample_period_us": 80,
+      "sfr": 334,
+      "elapsed_ticks": 4800018,
+      "emitted_bytes": 2496,
+      "expected_bytes": 2500.009375,
+      "error_bytes": -4.009375000000091
+    },
+    {
+      "channels": 2,
+      "sample_period_us": 80,
+      "sfr": 294,
+      "elapsed_ticks": 4800042,
+      "emitted_bytes": 5008,
+      "expected_bytes": 5000.04375,
+      "error_bytes": 7.956250000000182
+    },
+    {
+      "channels": 4,
+      "sample_period_us": 80,
+      "sfr": 274,
+      "elapsed_ticks": 4800006,
+      "emitted_bytes": 10000,
+      "expected_bytes": 10000.0125,
+      "error_bytes": -0.012500000000727596
+    },
+    {
+      "channels": 8,
+      "sample_period_us": 80,
+      "sfr": 264,
+      "elapsed_ticks": 4800162,
+      "emitted_bytes": 20000,
+      "expected_bytes": 20000.675,
+      "error_bytes": -0.6749999999992724
+    }
+  ],
+  "returned_to_desktop": true,
+  "emulator_unchanged": true,
+  "workspace_contract": {
+    "IOCControlSoftCopy": 262,
+    "TopOfDMAPhysRAM": 524288,
+    "TopOfDMAWorkSpace": 32538624,
+    "SoundDMABuffers": 32530432,
+    "SoundDMABufferSize": 4096,
+    "SoundLevel0Base": 32522240
+  },
+  "sound_stages": [
+    {
+      "line_length": 320,
+      "name": "welcome",
+      "opens": {},
+      "palette": [
+        4095,
+        3549,
+        3003,
+        2457,
+        1911,
+        1365,
+        819,
+        0,
+        2368,
+        238,
+        192,
+        13,
+        3054,
+        133,
+        191,
+        4016
+      ],
+      "pc": 59335240,
+      "polls": {},
+      "psr": 536870912,
+      "sound": {
+        "bytesOutput": "133408",
+        "hash": "38DB718D6355F7B4",
+        "nonSilent": "6085",
+        "registerLog": "t=16.1307 SendN=7F0C0 | t=16.1307 Sstart=7F000 | t=16.1407 SendN=7E0C0 | t=16.1407 Sstart=7E000 | t=16.1506 SendN=7F0C0 | t=16.1506 Sstart=7F000 | t=16.1606 SendN=7E0C0 | t=16.1606 Sstart=7E000 | t=16.1706 SendN=7F0C0 | t=16.1706 Sstart=7F000 | t=16.1806 SendN=7E0C0 | t=16.1806 Sstart=7E000 | t=16.1906 SendN=7F0C0 | t=16.1906 Sstart=7F000 | t=16.2006 SendN=7E0C0 | t=16.2006 Sstart=7E000 | t=16.2105 SendN=7F0C0 | t=16.2105 Sstart=7F000 | t=16.2205 SendN=7E0C0 | t=16.2205 Sstart=7E000 | t=16.2305 SendN=7F0C0 | t=16.2305 Sstart=7F000 | t=16.2405 SendN=7E0C0 | t=16.2405 Sstart=7E000",
+        "scheduled": "true",
+        "sendCurrent": "0x0007F0C0",
+        "sfr": "12E",
+        "sptr": "0x0007F050",
+        "sstart": "0x0007E000",
+        "stereo": "4,4,4,4,4,4,4,4"
+      },
+      "sound_dma_enabled": true,
+      "sound_mapping": [
+        516096,
+        520192
+      ],
+      "task_count": 1,
+      "ticks": 389870895
+    },
+    {
+      "line_length": 320,
+      "name": "desktop",
+      "opens": {
+        "Pinboard": 2,
+        "Switcher": 2
+      },
+      "palette": [
+        4095,
+        3549,
+        3003,
+        2457,
+        1911,
+        1365,
+        819,
+        0,
+        2368,
+        238,
+        192,
+        13,
+        3054,
+        133,
+        191,
+        4016
+      ],
+      "pc": 59859808,
+      "polls": {
+        "ADFSFiler": 1,
+        "ArcPalette": 1,
+        "Filer": 4,
+        "Pinboard": 17,
+        "ResFiler": 1,
+        "Switcher": 31,
+        "Wimp": 5
+      },
+      "psr": 2684354563,
+      "sound": {
+        "bytesOutput": "524144",
+        "hash": "D87B83FD4D0858B4",
+        "nonSilent": "6085",
+        "registerLog": "t=34.8806 SendN=7F0C0 | t=34.8806 Sstart=7F000 | t=34.8906 SendN=7E0C0 | t=34.8906 Sstart=7E000 | t=34.9006 SendN=7F0C0 | t=34.9006 Sstart=7F000 | t=34.9106 SendN=7E0C0 | t=34.9106 Sstart=7E000 | t=34.9206 SendN=7F0C0 | t=34.9206 Sstart=7F000 | t=34.9305 SendN=7E0C0 | t=34.9305 Sstart=7E000 | t=34.9405 SendN=7F0C0 | t=34.9405 Sstart=7F000 | t=34.9505 SendN=7E0C0 | t=34.9505 Sstart=7E000 | t=34.9605 SendN=7F0C0 | t=34.9605 Sstart=7F000 | t=34.9705 SendN=7E0C0 | t=34.9705 Sstart=7E000 | t=34.9805 SendN=7F0C0 | t=34.9805 Sstart=7F000 | t=34.9904 SendN=7E0C0 | t=34.9904 Sstart=7E000",
+        "scheduled": "true",
+        "sendCurrent": "0x0007F0C0",
+        "sfr": "12E",
+        "sptr": "0x0007F0C0",
+        "sstart": "0x0007E000",
+        "stereo": "4,4,4,4,4,4,4,4"
+      },
+      "sound_dma_enabled": true,
+      "sound_mapping": [
+        516096,
+        520192
+      ],
+      "task_count": 6,
+      "ticks": 840000312
+    },
+    {
+      "line_length": 320,
+      "name": "disc-open",
+      "opens": {
+        "Filer": 2,
+        "Pinboard": 2,
+        "Switcher": 2
+      },
+      "palette": [
+        4095,
+        3549,
+        3003,
+        2457,
+        1911,
+        1365,
+        819,
+        0,
+        2368,
+        238,
+        192,
+        13,
+        3054,
+        133,
+        191,
+        4016
+      ],
+      "pc": 59857560,
+      "polls": {
+        "ADFSFiler": 2,
+        "ArcPalette": 1,
+        "Filer": 8,
+        "Pinboard": 17,
+        "ResFiler": 1,
+        "Switcher": 31,
+        "Wimp": 5
+      },
+      "psr": 536870915,
+      "sound": {
+        "bytesOutput": "634144",
+        "hash": "31641A3C721337B4",
+        "nonSilent": "6085",
+        "registerLog": "t=40.1622 SendN=7E0C0 | t=40.1622 Sstart=7E000 | t=40.1721 SendN=7F0C0 | t=40.1721 Sstart=7F000 | t=40.1821 SendN=7E0C0 | t=40.1821 Sstart=7E000 | t=40.1921 SendN=7F0C0 | t=40.1921 Sstart=7F000 | t=40.2021 SendN=7E0C0 | t=40.2021 Sstart=7E000 | t=40.2121 SendN=7F0C0 | t=40.2121 Sstart=7F000 | t=40.2221 SendN=7E0C0 | t=40.2221 Sstart=7E000 | t=40.2320 SendN=7F0C0 | t=40.2320 Sstart=7F000 | t=40.2420 SendN=7E0C0 | t=40.2420 Sstart=7E000 | t=40.2520 SendN=7F0C0 | t=40.2520 Sstart=7F000 | t=40.2620 SendN=7E0C0 | t=40.2620 Sstart=7E000 | t=40.2720 SendN=7F0C0 | t=40.2720 Sstart=7F000",
+        "scheduled": "true",
+        "sendCurrent": "0x0007E0C0",
+        "sfr": "12E",
+        "sptr": "0x0007E0A0",
+        "sstart": "0x0007F000",
+        "stereo": "4,4,4,4,4,4,4,4"
+      },
+      "sound_dma_enabled": true,
+      "sound_mapping": [
+        516096,
+        520192
+      ],
+      "task_count": 6,
+      "ticks": 966720378
+    },
+    {
+      "line_length": 320,
+      "name": "application",
+      "opens": {
+        "Filer": 2,
+        "Pinboard": 2,
+        "Switcher": 2
+      },
+      "palette": [
+        4095,
+        3549,
+        3003,
+        2457,
+        1911,
+        1365,
+        819,
+        0,
+        2368,
+        238,
+        192,
+        13,
+        3054,
+        133,
+        191,
+        4016
+      ],
+      "pc": 58780760,
+      "polls": {
+        "ADFSFiler": 2,
+        "ArcPalette": 1,
+        "Filer": 11,
+        "Pinboard": 17,
+        "ResFiler": 1,
+        "Switcher": 31,
+        "Wimp": 6
+      },
+      "psr": 2147483651,
+      "sound": {
+        "bytesOutput": "1055168",
+        "hash": "77E92B037BE342D3",
+        "nonSilent": "75245",
+        "registerLog": "t=55.5209 SendN=7F0C0 | t=55.5209 Sstart=7F000 | t=55.5309 SendN=7E0C0 | t=55.5309 Sstart=7E000 | t=55.5409 SendN=7F0C0 | t=55.5409 Sstart=7F000 | t=55.5508 SendN=7E0C0 | t=55.5508 Sstart=7E000 | t=55.5608 SendN=7F0C0 | t=55.5608 Sstart=7F000 | t=55.5708 SendN=7E0C0 | t=55.5708 Sstart=7E000 | t=55.5808 SendN=7F0C0 | t=55.5808 Sstart=7F000 | t=55.5908 SendN=7E0C0 | t=55.5908 Sstart=7E000 | t=55.6008 SendN=7F0C0 | t=55.6008 Sstart=7F000 | t=55.6107 SendN=7E0C0 | t=55.6107 Sstart=7E000 | t=55.6208 SendN=7F0C0 | t=55.6208 Sstart=7F000 | t=55.6307 SendN=7E0C0 | t=55.6307 Sstart=7E000",
+        "scheduled": "true",
+        "sendCurrent": "0x0007F0C0",
+        "sfr": "12E",
+        "sptr": "0x0007F0C0",
+        "sstart": "0x0007E000",
+        "stereo": "4,4,4,4,4,4,4,4"
+      },
+      "sound_dma_enabled": true,
+      "sound_mapping": [
+        516096,
+        520192
+      ],
+      "task_count": 6,
+      "ticks": 1335360393
+    },
+    {
+      "line_length": 320,
+      "name": "returned",
+      "opens": {
+        "Filer": 3,
+        "Pinboard": 3,
+        "Switcher": 3
+      },
+      "palette": [
+        4095,
+        3549,
+        3003,
+        2457,
+        1911,
+        1365,
+        819,
+        0,
+        2368,
+        238,
+        192,
+        13,
+        3054,
+        133,
+        191,
+        4016
+      ],
+      "pc": 59857560,
+      "polls": {
+        "ADFSFiler": 2,
+        "ArcPalette": 1,
+        "Filer": 16,
+        "Pinboard": 22,
+        "ResFiler": 1,
+        "Switcher": 35,
+        "Wimp": 6
+      },
+      "psr": 536870915,
+      "sound": {
+        "bytesOutput": "1098496",
+        "hash": "9CDC10A5AB1C81D3",
+        "nonSilent": "75245",
+        "registerLog": "t=57.6075 SendN=7E0C0 | t=57.6075 Sstart=7E000 | t=57.6175 SendN=7F0C0 | t=57.6175 Sstart=7F000 | t=57.6275 SendN=7E0C0 | t=57.6275 Sstart=7E000 | t=57.6375 SendN=7F0C0 | t=57.6375 Sstart=7F000 | t=57.6475 SendN=7E0C0 | t=57.6475 Sstart=7E000 | t=57.6575 SendN=7F0C0 | t=57.6575 Sstart=7F000 | t=57.6674 SendN=7E0C0 | t=57.6674 Sstart=7E000 | t=57.6774 SendN=7F0C0 | t=57.6774 Sstart=7F000 | t=57.6874 SendN=7E0C0 | t=57.6874 Sstart=7E000 | t=57.6974 SendN=7F0C0 | t=57.6974 Sstart=7F000 | t=57.7074 SendN=7E0C0 | t=57.7074 Sstart=7E000 | t=57.7174 SendN=7F0C0 | t=57.7174 Sstart=7F000",
+        "scheduled": "true",
+        "sendCurrent": "0x0007E0C0",
+        "sfr": "12E",
+        "sptr": "0x0007E030",
+        "sstart": "0x0007F000",
+        "stereo": "4,4,4,4,4,4,4,4"
+      },
+      "sound_dma_enabled": true,
+      "sound_mapping": [
+        516096,
+        520192
+      ],
+      "task_count": 6,
+      "ticks": 1385280405
+    }
+  ]
+}

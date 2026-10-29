@@ -1,0 +1,246 @@
+--- a/src/DragASprit/s/Drag
++++ b/src/DragASprit/s/Drag
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: relocatable ARM2/AsAsm build and state settling.
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -16,7 +17,7 @@
+ 
+ ; unplot:
+ ;       Plot the b/g sprite at the relevant location
+-UnPlot  ENTRY   "r0-r11"
++UnPlot  KernelEntry   "r0-r11"
+         BL      DoBusinessToDest
+         EXITS   VS
+ 
+@@ -36,7 +37,7 @@
+ ; plot:
+ ;       Grab the b/g sprite at the required location
+ ;       Plot the f/g sprite at the required location
+-Plot    ENTRY   "r0-r11"
++Plot    KernelEntry   "r0-r11"
+ 
+         MOV     lr, #0
+         STRB    lr, FirstMoveIsPlot
+@@ -82,7 +83,7 @@
+ ;       Swap bg0 and bg1
+ ;
+ Move
+-        ENTRY   "r0-r7" , 8*4
++        KernelEntry   "r0-r7" , 8*4
+ 
+         ; If first action is move then it must be plot instead
+         LDRB    lr, FirstMoveIsPlot
+@@ -215,7 +216,7 @@
+ ;
+ ; Out   sprite bg gotten
+ ;
+-Getbg0  ENTRY   "r0-r7"
++Getbg0  KernelEntry   "r0-r7"
+ 
+  [ debugdrag
+         DLINE   "Getbg0"
+@@ -333,7 +334,7 @@
+ ;
+ ; Out   sprite bg gotten
+ ;
+-Getbg1  ENTRY   "r0-r7"
++Getbg1  KernelEntry   "r0-r7"
+ 
+  [ debugdrag
+         DLINE   "Getbg1 ",cc
+@@ -395,7 +396,7 @@
+ ;
+ ; Out   r0-r3 are the graphics window
+ ;
+-GetGWindow      ENTRY   "r4-r7", 6*4
++GetGWindow      KernelEntry   "r4-r7", 6*4
+         ADR     r0, GWindGetBlock
+         MOV     r1, sp
+         SWI     XOS_ReadVduVariables
+@@ -443,7 +444,7 @@
+ ;
+ ; Out   r0-r3 are the gwindow to set for the whole screen
+ ;
+-GetScreenGWindow ENTRY  "r4",2*4
++GetScreenGWindow KernelEntry  "r4",2*4
+         ; Get the graphics origin
+         ADR     r0, GOrgGetBlock
+         MOV     r1, sp
+@@ -499,7 +500,7 @@
+ ;
+ ; Out   The GWindow set
+ ;
+-SetGWindow      ENTRY   "r6-r7"
++SetGWindow      KernelEntry   "r6-r7"
+  [ debuggwindow
+         DREG    r0, "Setting GWindow ",cc
+         DREG    r1, ",",cc
+@@ -535,7 +536,7 @@
+ ;
+ ; Out   r0-r3 Restore output parameters
+ ;
+-SwitchOutputToSprite ENTRY
++SwitchOutputToSprite KernelEntry
+         LDR     r0, =SpriteReason_SwitchOutputToSprite + &100
+         ADRL    r2, bg_name
+         MOV     r3, #0          ; No save area
+@@ -550,7 +551,7 @@
+ ;
+ ; Out   r0-r3 sorted and rounded to pixels
+ ;
+-DoBusinessToDest ENTRY  "r0-r5"
++DoBusinessToDest KernelEntry  "r0-r5"
+ 
+         ; Get the EigFactors
+         MOV     r0, #-1
+@@ -606,7 +607,7 @@
+ ;
+ ; Out   r4-r7 sorted and rounded to pixels
+ ;
+-DoBusinessToSource ENTRY  "r0-r3"
++DoBusinessToSource KernelEntry  "r0-r3"
+         SortRegs r4,r6
+         SortRegs r5,r7
+ 
+--- a/src/DragASprit/s/Gets
++++ b/src/DragASprit/s/Gets
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: relocatable ARM2/AsAsm build and state settling.
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -12,6 +13,7 @@
+ ; See the License for the specific language governing permissions and
+ ; limitations under the License.
+ ;
++        AREA DragASprit,CODE,READONLY
+         GET     Hdr:ListOpts
+         GET     Hdr:Macros
+         GET     Hdr:System
+--- a/src/DragASprit/s/StartUp
++++ b/src/DragASprit/s/StartUp
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: relocatable ARM2/AsAsm build and state settling.
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -82,7 +83,7 @@
+ spr_dragbox     #       16      ; Box to use for sprite dragging calculations
+ StartUp_frame_size * :INDEX: @
+ 
+-StartUp ENTRY "r0-r8", StartUp_frame_size
++StartUp KernelEntry "r0-r8", StartUp_frame_size
+  [ debugstart
+         DLINE   "StartUp started"
+         DREG    r0, "Flags ",cc
+@@ -432,6 +433,7 @@
+         MOVNE   R2,R7
+         SWINE   XOS_Module
+         TEQP    PC,R1
++        NOP                     ; ARM2 processor-state settling
+ 
+ ;; We need the depth of the sprite so read it
+ 
+@@ -792,7 +794,7 @@
+ ;
+ ; Out   r5-r8 = parent box
+ ;
+-GetParentBox ENTRY "r0-r4"
++GetParentBox KernelEntry "r0-r4"
+         TestAFlag r0, BoundTo, Screen, r14
+         BEQ     %FT10
+         TestAFlag r0, BoundTo, Window, r14
+@@ -950,7 +952,7 @@
+ ;
+ ; Out   r3 = size of sprite (multiple of words)
+ ;
+-ByteSizeOfSprite ENTRY "r0,r1,r2,r5"
++ByteSizeOfSprite KernelEntry "r0,r1,r2,r5"
+ 
+         ; Convert x-OS units to pixels per row
+         MOV     r0, #-1
+@@ -1005,7 +1007,7 @@
+ ;
+ ; Out   (r0,r1) OS unit size of sprite
+ ;
+-CoordSizeOfSprite ENTRY "r2-r6"
++CoordSizeOfSprite KernelEntry "r2-r6"
+         MOV     r0, #SpriteReason_ReadSpriteSize
+         BL      DoSpriteOp
+         MOVVC   r0, r6
+@@ -1030,7 +1032,7 @@
+ ; Out   r2 = Y factor
+ ;       r5 = X factor
+ ;
+-PixToOSUnitFactors ENTRY "r1"
++PixToOSUnitFactors KernelEntry "r1"
+         MOVVC   r1, #VduExt_XEigFactor
+         SWIVC   XOS_ReadModeVariable
+         MOVVC   r5, r2
+@@ -1055,7 +1057,7 @@
+ ;
+ ; Out   Sprite area RMA claimed and initialised
+ ;
+-MakeSpriteArea ENTRY "r0,r1,r2"
++MakeSpriteArea KernelEntry "r0,r1,r2"
+         MOV     r0, #ModHandReason_Claim
+         SWI     XOS_Module
+         STRVS   r0, [sp]
+@@ -1090,7 +1092,7 @@
+ ;               other - user sprite area
+ ;       r2 = Sprite name
+ ;
+-DoSpriteOp ENTRY
++DoSpriteOp KernelEntry
+         TEQ     r1, #1
+         BEQ     %FT50
+         TEQ     r1, #0
+@@ -1105,7 +1107,7 @@
+ ;
+ ; Junk all allocated sprite areas (should call after drag finished)
+ ;
+-Done ENTRY "r0,r1,r2"
++Done KernelEntry "r0,r1,r2"
+ 
+  [ debugstart
+         DLINE "Done start"
+@@ -1146,7 +1148,7 @@
+ ;
+ ; Out   block freed
+ ;
+-CheckedRMAFree ENTRY "r0,r2"
++CheckedRMAFree KernelEntry "r0,r2"
+         LDR     r2, [r1]
+         TEQ     r2, #Nowt
+         EXIT    EQ
+--- a/src/DragASprit/s/Support
++++ b/src/DragASprit/s/Support
+@@ -1,4 +1,5 @@
+ ; Copyright 1996 Acorn Computers Ltd
++; Modified 2026 by ArcLibre: relocatable ARM2/AsAsm build and state settling.
+ ;
+ ; Licensed under the Apache License, Version 2.0 (the "License");
+ ; you may not use this file except in compliance with the License.
+@@ -39,7 +40,7 @@
+ ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+ Module_BaseAddr
+-MySWIBase       *       Module_SWISystemBase + DragASpriteSWI * Module_SWIChunkSize
++MySWIBase       *       DragASpriteSWI_Base
+ 
+         DCD     0       ; Start
+         DCD     Support_Init            -Module_BaseAddr
+@@ -81,7 +82,7 @@
+         MOV     r2, #0
+         Pull    "pc"
+ 
+-Support_Die ENTRY
++Support_Die KernelEntry
+         LDR     r12, [r12]
+         BL      Done
+         EXIT

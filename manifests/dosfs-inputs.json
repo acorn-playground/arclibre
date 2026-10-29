@@ -1,0 +1,351 @@
+[
+  {
+    "component": "DOSFS",
+    "path": "LICENSE",
+    "revision": "ec870faf21127aba600c58b3571115ac164e40f3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ImageFS/DOSFS.git",
+    "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358,
+    "modified": false
+  },
+  {
+    "component": "DOSFS",
+    "path": "Makefile",
+    "revision": "ec870faf21127aba600c58b3571115ac164e40f3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ImageFS/DOSFS.git",
+    "upstream_sha256": "e3e8dff3ad0ef48eb29d2570fdc23677b0b94f162b1fc254aab163509925cb63",
+    "sha256": "e3e8dff3ad0ef48eb29d2570fdc23677b0b94f162b1fc254aab163509925cb63",
+    "bytes": 3677,
+    "modified": false
+  },
+  {
+    "component": "DOSFS",
+    "path": "Doc/!ReadMe",
+    "revision": "ec870faf21127aba600c58b3571115ac164e40f3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ImageFS/DOSFS.git",
+    "upstream_sha256": "b7d93a171c53b87929e1d0b65785ace455fff65861324378a74c5378693c94db",
+    "sha256": "b7d93a171c53b87929e1d0b65785ace455fff65861324378a74c5378693c94db",
+    "bytes": 1480,
+    "modified": false
+  },
+  {
+    "component": "DOSFS",
+    "path": "cmhg/DOSFShdr",
+    "revision": "ec870faf21127aba600c58b3571115ac164e40f3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ImageFS/DOSFS.git",
+    "upstream_sha256": "5d441bc88d42c1afce6d0e17a45c9ec1119bd94470dcc92ec3c229dcd5b21cd0",
+    "sha256": "5d441bc88d42c1afce6d0e17a45c9ec1119bd94470dcc92ec3c229dcd5b21cd0",
+    "bytes": 1873,
+    "modified": false
+  },
+  {
+    "component": "DOSFS",
+    "path": "hdr/DOSFS",
+    "revision": "ec870faf21127aba600c58b3571115ac164e40f3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ImageFS/DOSFS.git",
+    "upstream_sha256": "73ab89a93a9363a2ba8a4999726ee7c77e3360d310d888fb674298c596b8096c",
+    "sha256": "73ab89a93a9363a2ba8a4999726ee7c77e3360d310d888fb674298c596b8096c",
+    "bytes": 1121,
+    "modified": false
+  },
+  {
+    "component": "DOSFS",
+    "path": "Resources/UK/Messages",
+    "revision": "ec870faf21127aba600c58b3571115ac164e40f3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ImageFS/DOSFS.git",
+    "upstream_sha256": "72e2d235db21965ba103ac8be4f1c6db5150ceddd68016f4f663fdd62bbbfb7b",
+    "sha256": "72e2d235db21965ba103ac8be4f1c6db5150ceddd68016f4f663fdd62bbbfb7b",
+    "bytes": 2405,
+    "modified": false
+  },
+  {
+    "component": "DOSFS",
+    "path": "c/DOSFS",
+    "revision": "ec870faf21127aba600c58b3571115ac164e40f3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ImageFS/DOSFS.git",
+    "upstream_sha256": "196a4be255bbe45938691356ed116d69f095f15aeffe068f8643b3b237338bfa",
+    "sha256": "196a4be255bbe45938691356ed116d69f095f15aeffe068f8643b3b237338bfa",
+    "bytes": 72330,
+    "modified": false
+  },
+  {
+    "component": "DOSFS",
+    "path": "c/DOSFSops",
+    "revision": "ec870faf21127aba600c58b3571115ac164e40f3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ImageFS/DOSFS.git",
+    "upstream_sha256": "6c694fdec8acb1e88803b12fde3f2a57519e296bf16244c8d497829c927efda1",
+    "sha256": "6c694fdec8acb1e88803b12fde3f2a57519e296bf16244c8d497829c927efda1",
+    "bytes": 144972,
+    "modified": false
+  },
+  {
+    "component": "DOSFS",
+    "path": "c/DOSnaming",
+    "revision": "ec870faf21127aba600c58b3571115ac164e40f3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ImageFS/DOSFS.git",
+    "upstream_sha256": "7a1026c595be0795b6377b57c038c1fd019901b3d624cd34c3e0668cb58d5d59",
+    "sha256": "7a1026c595be0795b6377b57c038c1fd019901b3d624cd34c3e0668cb58d5d59",
+    "bytes": 10059,
+    "modified": false
+  },
+  {
+    "component": "DOSFS",
+    "path": "c/FSerrors",
+    "revision": "ec870faf21127aba600c58b3571115ac164e40f3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ImageFS/DOSFS.git",
+    "upstream_sha256": "850aaa9a7301a5b52fa88d9b940c35bcefbbb577d9a9e827f4f2e5caa4226ac9",
+    "sha256": "850aaa9a7301a5b52fa88d9b940c35bcefbbb577d9a9e827f4f2e5caa4226ac9",
+    "bytes": 6976,
+    "modified": false
+  },
+  {
+    "component": "DOSFS",
+    "path": "c/MsgTrans",
+    "revision": "ec870faf21127aba600c58b3571115ac164e40f3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ImageFS/DOSFS.git",
+    "upstream_sha256": "647929788072ec80b7d8b46280451565222b7f5c73465d02c2cb3b8db8689ca5",
+    "sha256": "647929788072ec80b7d8b46280451565222b7f5c73465d02c2cb3b8db8689ca5",
+    "bytes": 2276,
+    "modified": false
+  },
+  {
+    "component": "DOSFS",
+    "path": "c/Statics",
+    "revision": "ec870faf21127aba600c58b3571115ac164e40f3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ImageFS/DOSFS.git",
+    "upstream_sha256": "d7887e23ea0b04f585c28ff4984f8442fe7c1474d765ec8ba98583d3c85840d3",
+    "sha256": "d7887e23ea0b04f585c28ff4984f8442fe7c1474d765ec8ba98583d3c85840d3",
+    "bytes": 1574,
+    "modified": false
+  },
+  {
+    "component": "DOSFS",
+    "path": "c/TIMEconv",
+    "revision": "ec870faf21127aba600c58b3571115ac164e40f3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ImageFS/DOSFS.git",
+    "upstream_sha256": "3bf4e34bf41acfa9fb0192ad453bdb315ace767c6765a299322fe0a5be402485",
+    "sha256": "3bf4e34bf41acfa9fb0192ad453bdb315ace767c6765a299322fe0a5be402485",
+    "bytes": 11539,
+    "modified": false
+  },
+  {
+    "component": "DOSFS",
+    "path": "c/debug",
+    "revision": "ec870faf21127aba600c58b3571115ac164e40f3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ImageFS/DOSFS.git",
+    "upstream_sha256": "23977979e13a4681c4f77ce788c3fe24da2d71a94cd59b7509947b59dbcc6ca4",
+    "sha256": "23977979e13a4681c4f77ce788c3fe24da2d71a94cd59b7509947b59dbcc6ca4",
+    "bytes": 4407,
+    "modified": false
+  },
+  {
+    "component": "DOSFS",
+    "path": "c/wcompare",
+    "revision": "ec870faf21127aba600c58b3571115ac164e40f3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ImageFS/DOSFS.git",
+    "upstream_sha256": "bffce7ef21b9ccb23a6dbc1fcc3a2e91786c4d56b3d7667ea23a0acafa20efe9",
+    "sha256": "bffce7ef21b9ccb23a6dbc1fcc3a2e91786c4d56b3d7667ea23a0acafa20efe9",
+    "bytes": 2720,
+    "modified": false
+  },
+  {
+    "component": "DOSFS",
+    "path": "h/ADFSshape",
+    "revision": "ec870faf21127aba600c58b3571115ac164e40f3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ImageFS/DOSFS.git",
+    "upstream_sha256": "c57a99e4e43b8cb1edfa0116a4f55906f3651f74e1f0a365a367fbe38474ab58",
+    "sha256": "c57a99e4e43b8cb1edfa0116a4f55906f3651f74e1f0a365a367fbe38474ab58",
+    "bytes": 13014,
+    "modified": false
+  },
+  {
+    "component": "DOSFS",
+    "path": "h/ASCII",
+    "revision": "ec870faf21127aba600c58b3571115ac164e40f3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ImageFS/DOSFS.git",
+    "upstream_sha256": "5026d250b37641cf32e569ab2561eb4be7e395ab660d857d8bf41a2d13d91102",
+    "sha256": "5026d250b37641cf32e569ab2561eb4be7e395ab660d857d8bf41a2d13d91102",
+    "bytes": 5266,
+    "modified": false
+  },
+  {
+    "component": "DOSFS",
+    "path": "h/BOOTblock",
+    "revision": "ec870faf21127aba600c58b3571115ac164e40f3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ImageFS/DOSFS.git",
+    "upstream_sha256": "a2376a5e1135ded1c4ef10ffd9d648c7595262abbc9de77104d56b6388598a36",
+    "sha256": "a2376a5e1135ded1c4ef10ffd9d648c7595262abbc9de77104d56b6388598a36",
+    "bytes": 1131,
+    "modified": false
+  },
+  {
+    "component": "DOSFS",
+    "path": "h/DOSFS",
+    "revision": "ec870faf21127aba600c58b3571115ac164e40f3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ImageFS/DOSFS.git",
+    "upstream_sha256": "b378f7156431bb7d7248a8d3331ab97a200571b29eaf64c7c1ecd9aa22a41f8f",
+    "sha256": "b378f7156431bb7d7248a8d3331ab97a200571b29eaf64c7c1ecd9aa22a41f8f",
+    "bytes": 2960,
+    "modified": false
+  },
+  {
+    "component": "DOSFS",
+    "path": "h/DOSFSctl",
+    "revision": "ec870faf21127aba600c58b3571115ac164e40f3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ImageFS/DOSFS.git",
+    "upstream_sha256": "53e53ac50978cc193add0685aa2fe8c3c7cc1fcedfca6aa4255a3b2ff2d1a6e6",
+    "sha256": "53e53ac50978cc193add0685aa2fe8c3c7cc1fcedfca6aa4255a3b2ff2d1a6e6",
+    "bytes": 2810,
+    "modified": false
+  },
+  {
+    "component": "DOSFS",
+    "path": "h/DOSFSops",
+    "revision": "ec870faf21127aba600c58b3571115ac164e40f3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ImageFS/DOSFS.git",
+    "upstream_sha256": "189283477505109d676d336646429823d4030d6d117f0d8c2de67f38cd66294e",
+    "sha256": "189283477505109d676d336646429823d4030d6d117f0d8c2de67f38cd66294e",
+    "bytes": 4236,
+    "modified": false
+  },
+  {
+    "component": "DOSFS",
+    "path": "h/DOSmapping",
+    "revision": "ec870faf21127aba600c58b3571115ac164e40f3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ImageFS/DOSFS.git",
+    "upstream_sha256": "fa2d5d8b0ed6f9d67452b497de9f4a0d4b8a390bbd46af57e5947b43741266b8",
+    "sha256": "fa2d5d8b0ed6f9d67452b497de9f4a0d4b8a390bbd46af57e5947b43741266b8",
+    "bytes": 1508,
+    "modified": false
+  },
+  {
+    "component": "DOSFS",
+    "path": "h/DOSnaming",
+    "revision": "ec870faf21127aba600c58b3571115ac164e40f3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ImageFS/DOSFS.git",
+    "upstream_sha256": "b18e619784c1f93486f2199a9533574efc68921970e11bd5a55f8a8f2bc47b06",
+    "sha256": "b18e619784c1f93486f2199a9533574efc68921970e11bd5a55f8a8f2bc47b06",
+    "bytes": 2495,
+    "modified": false
+  },
+  {
+    "component": "DOSFS",
+    "path": "h/DOSshape",
+    "revision": "ec870faf21127aba600c58b3571115ac164e40f3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ImageFS/DOSFS.git",
+    "upstream_sha256": "809a511426d86e06672a99e636d714a744ff12be336807b3a694392958d64afd",
+    "sha256": "809a511426d86e06672a99e636d714a744ff12be336807b3a694392958d64afd",
+    "bytes": 31024,
+    "modified": false
+  },
+  {
+    "component": "DOSFS",
+    "path": "h/FSerrors",
+    "revision": "ec870faf21127aba600c58b3571115ac164e40f3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ImageFS/DOSFS.git",
+    "upstream_sha256": "1d5274226f8bde48508de5e9bc96249ac9311e77de6e7be30d3c45049957dd22",
+    "sha256": "1d5274226f8bde48508de5e9bc96249ac9311e77de6e7be30d3c45049957dd22",
+    "bytes": 4807,
+    "modified": false
+  },
+  {
+    "component": "DOSFS",
+    "path": "h/MsgTrans",
+    "revision": "ec870faf21127aba600c58b3571115ac164e40f3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ImageFS/DOSFS.git",
+    "upstream_sha256": "b1d5d5b24611d69d9c082fba791aeebfe444e3baa42d7ddd356ca06acff9cb48",
+    "sha256": "b1d5d5b24611d69d9c082fba791aeebfe444e3baa42d7ddd356ca06acff9cb48",
+    "bytes": 2411,
+    "modified": false
+  },
+  {
+    "component": "DOSFS",
+    "path": "h/MultiFS",
+    "revision": "ec870faf21127aba600c58b3571115ac164e40f3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ImageFS/DOSFS.git",
+    "upstream_sha256": "c54a07ab577425ffee7b46cc963c5ea2bed2eb05401edc854603531b920bf583",
+    "sha256": "c54a07ab577425ffee7b46cc963c5ea2bed2eb05401edc854603531b920bf583",
+    "bytes": 5315,
+    "modified": false
+  },
+  {
+    "component": "DOSFS",
+    "path": "h/Statics",
+    "revision": "ec870faf21127aba600c58b3571115ac164e40f3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ImageFS/DOSFS.git",
+    "upstream_sha256": "a80609050a1683c322deb3508b719459bc67a50a00cc2d68f1a9e1a2f9b6f277",
+    "sha256": "a80609050a1683c322deb3508b719459bc67a50a00cc2d68f1a9e1a2f9b6f277",
+    "bytes": 1012,
+    "modified": false
+  },
+  {
+    "component": "DOSFS",
+    "path": "h/TIMEconv",
+    "revision": "ec870faf21127aba600c58b3571115ac164e40f3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ImageFS/DOSFS.git",
+    "upstream_sha256": "93a33e39ed0a044f6cc212a7faaf397b271c8afeba9d1ea14a57fbaf8ff25ae3",
+    "sha256": "93a33e39ed0a044f6cc212a7faaf397b271c8afeba9d1ea14a57fbaf8ff25ae3",
+    "bytes": 4095,
+    "modified": false
+  },
+  {
+    "component": "DOSFS",
+    "path": "h/debug",
+    "revision": "ec870faf21127aba600c58b3571115ac164e40f3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ImageFS/DOSFS.git",
+    "upstream_sha256": "6e9b29a46f5ad97025f7e2525817b1b3e2fb236104c1d5d58540621586bab7c6",
+    "sha256": "6e9b29a46f5ad97025f7e2525817b1b3e2fb236104c1d5d58540621586bab7c6",
+    "bytes": 4276,
+    "modified": false
+  },
+  {
+    "component": "DOSFS",
+    "path": "h/wcompare",
+    "revision": "ec870faf21127aba600c58b3571115ac164e40f3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ImageFS/DOSFS.git",
+    "upstream_sha256": "d62153380cb97bd7091e4a7c0a71e7a0ec613a1766e7ce3abaa55490d5ed3eba",
+    "sha256": "d62153380cb97bd7091e4a7c0a71e7a0ec613a1766e7ce3abaa55490d5ed3eba",
+    "bytes": 1734,
+    "modified": false
+  },
+  {
+    "component": "DOSFS",
+    "path": "s/DOSFSctl",
+    "revision": "ec870faf21127aba600c58b3571115ac164e40f3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ImageFS/DOSFS.git",
+    "upstream_sha256": "cb414ea2537fb0f34304d440f060fd1f60a065d56ab6dd583a1adffd93dd6a32",
+    "sha256": "ecc1dbe6500cade2c03dd6232880b6cda3ef161f7cd814398c727896818ee942",
+    "bytes": 45113,
+    "modified": true
+  },
+  {
+    "component": "DOSFS",
+    "path": "s/MFSmacros",
+    "revision": "ec870faf21127aba600c58b3571115ac164e40f3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ImageFS/DOSFS.git",
+    "upstream_sha256": "ea023db27ac1c246f58e07839265c663c962484476f827a8e38fc43c87b35bd8",
+    "sha256": "ea023db27ac1c246f58e07839265c663c962484476f827a8e38fc43c87b35bd8",
+    "bytes": 5837,
+    "modified": false
+  },
+  {
+    "component": "DOSFS",
+    "path": "s/StaticDefs",
+    "revision": "ec870faf21127aba600c58b3571115ac164e40f3",
+    "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/FileSys/ImageFS/DOSFS.git",
+    "upstream_sha256": "6b65d120e2caceba9b1b0d3dc8b3dff9b247a087a31f6738646d51b7d293791e",
+    "sha256": "f08db98766aa6b25de58bff758fff85c562ec5417edbffdf97c900c2d6e8e210",
+    "bytes": 7375,
+    "modified": true,
+    "baseline_sha256": "0933aa3cfebb3636f836a649f6db72e944d5679552a8ad469b6f13a0d60518b4",
+    "baseline_bytes": 7079,
+    "excised": {
+      "first_line": 197,
+      "last_line": 285,
+      "bytes": 4717,
+      "sha256": "a50aecc8c2a0eaf6c957967749b5191c562000197ea91195d954d383b17de9ae"
+    },
+    "note": "Import baseline excises the default boot-sector template; see tools/import_dosfs.py"
+  }
+]

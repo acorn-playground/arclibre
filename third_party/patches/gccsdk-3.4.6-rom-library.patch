@@ -1,0 +1,25 @@
+--- a/gcc/gcc/gcc/config/arm/arm.c
++++ b/gcc/gcc/gcc/config/arm/arm.c
+@@ -2625,7 +2625,10 @@
+ 	     it is not clear what should be done with symbols generated
+ 	     by the compiler itself and not coming from src code.  */
+ 	  ftree = SYMBOL_REF_DECL(orig);
+-	  if (ftree != NULL && TREE_CODE(ftree) != FUNCTION_DECL)
++	  if (ftree != NULL && TREE_CODE(ftree) != FUNCTION_DECL
++              && !(TARGET_LIBSTATICS
++                   && (TREE_CODE(ftree) == STRING_CST
++                       || (TREE_READONLY(ftree) && !TREE_THIS_VOLATILE(ftree)))))
+ 	    insn = emit_insn (gen_addsi3 (reg, reg, pic_offset_table_rtx));
+ 	}
+       else
+--- a/gcc/gcc/gcc/config/arm/riscos-aof.h
++++ b/gcc/gcc/gcc/config/arm/riscos-aof.h
+@@ -200,7 +200,7 @@
+    not possible to reliably determine whether a SYMBOL_REF points to a
+    read-only code section or a data section.  */
+ #define READONLY_DATA_SECTION_ASM_OP \
+-  ((TARGET_MODULE) ? aof_data_section () : aof_rodata_section ())
++  ((TARGET_MODULE && !TARGET_LIBSTATICS) ? aof_data_section () : aof_rodata_section ())
+ 
+ #define BSS_SECTION_ASM_OP "\tAREA\t|C$$data|, DATA"
+ 

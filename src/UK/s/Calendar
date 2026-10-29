@@ -1,0 +1,33 @@
+; Copyright 1996 Acorn Computers Ltd
+;
+; Licensed under the Apache License, Version 2.0 (the "License");
+; you may not use this file except in compliance with the License.
+; You may obtain a copy of the License at
+;
+;     http://www.apache.org/licenses/LICENSE-2.0
+;
+; Unless required by applicable law or agreed to in writing, software
+; distributed under the License is distributed on an "AS IS" BASIS,
+; WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+; See the License for the specific language governing permissions and
+; limitations under the License.
+;
+
+; Calendar
+
+        ALIGN
+FirstWorkDay    DCD     2       ; First working day in week 1=Sunday 7=Saturday
+LastWorkDay     DCD     6       ; Last  working day in week 1=Sunday 7=Saturday
+NumberOfMonths  DCD    12       ; Number of month in a year
+
+MaxAMPMLength   DCD     2       ; Max length of AM PM String
+MaxWELength     DCD     9       ; Max length of full day name
+MaxW3Length     DCD     3       ; Max length of short day name
+MaxDYLength     DCD     2       ; Max length of day in month
+MaxSTLength     DCD     2       ; Max length of st nd rd th ... string
+MaxMOLength     DCD     9       ; Max length of full month name.
+MaxM3Length     DCD     3       ; Max length of short month name.
+MaxTZLength     DCD     3       ; Max length of time zone name.
+
+
+        END

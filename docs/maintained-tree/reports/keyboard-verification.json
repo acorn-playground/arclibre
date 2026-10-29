@@ -1,0 +1,65 @@
+{
+  "status": "PASS",
+  "scope": "Original A1 input through real IntKey with full Help output; original input regressions retained.",
+  "runs": [
+    {
+      "run": 1,
+      "key_events": 56,
+      "readc_returns": 32,
+      "repeat_characters": 12,
+      "kart_accesses": 226,
+      "exceptions": [
+        2,
+        0,
+        6277,
+        0,
+        0,
+        0,
+        1663,
+        0
+      ]
+    },
+    {
+      "run": 2,
+      "key_events": 56,
+      "readc_returns": 32,
+      "repeat_characters": 12,
+      "kart_accesses": 226,
+      "exceptions": [
+        2,
+        0,
+        6277,
+        0,
+        0,
+        0,
+        1663,
+        0
+      ]
+    },
+    {
+      "run": 3,
+      "key_events": 56,
+      "readc_returns": 32,
+      "repeat_characters": 12,
+      "kart_accesses": 226,
+      "exceptions": [
+        2,
+        0,
+        6277,
+        0,
+        0,
+        0,
+        1663,
+        0
+      ]
+    }
+  ],
+  "identical_cold_repeats": true,
+  "no_stuck_keys": true,
+  "help_complete": true,
+  "missing_swis": {
+    "0x42fc0": "Portable_Speed (optional idle probe, tolerated)",
+    "0x401c0": "Sound_QInit (Escape path)"
+  },
+  "break_tested": false
+}

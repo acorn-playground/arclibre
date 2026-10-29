@@ -1,0 +1,13 @@
+{
+  "component": "Wimp",
+  "path": "src/Wimp/Resources/UK/Tools,ff9",
+  "repository": "https://gitlab.4corn.co.uk/RiscOS/Sources/Desktop/Wimp.git",
+  "revision": "530acd4a18ffa97ce7a6b5b20fdef0a4db3ef647",
+  "bytes": 11500,
+  "sha256": "4fbc3cef8a39a407187776b7d6b329c435a1d2e3bdb00335e7635522256f24d3",
+  "license_path": "src/Wimp/LICENSE",
+  "license_basis": "Apache-2.0 of the pinned public component; no separate native-asset licence notice",
+  "resource_name": "Resources.Wimp.Tools",
+  "replaces": "Resources/UK/Tools3d,ff9",
+  "reason": "Original plain window furniture from the same pinned cohort"
+}

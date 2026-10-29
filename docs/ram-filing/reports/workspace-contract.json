@@ -1,0 +1,48 @@
+{
+  "status": "PASS",
+  "scope": "Original RMA-private module offsets and matching public SWI numbers; runtime mappings are checked by tests/run_ram_filing.py",
+  "kernel_sha256": "71b0c301ed58f7f60d84899ca80acdef3d6cb9c9f6d82182f441e66676c35c80",
+  "modules": {
+    "RamFS": {
+      "private_workspace_bytes": 40,
+      "offsets": {
+        "BufferStart": 0,
+        "BufferSize": 4,
+        "ScatterPair": 8,
+        "FileCorePrivate": 16,
+        "message_file_block": 20,
+        "message_file_open": 36,
+        "WorkSize": 40
+      }
+    },
+    "RAMFSFiler": {
+      "private_workspace_bytes": 700,
+      "offsets": {
+        "mytaskhandle": 0,
+        "iconbaricon": 108,
+        "stackbot": 444,
+        "stacktop": 700,
+        "RAMFSFiler_WorkspaceSize": 700
+      }
+    },
+    "Free": {
+      "private_workspace_bytes": 2160,
+      "offsets": {
+        "mytaskhandle": 0,
+        "windows_ptr": 4,
+        "poll_word": 8,
+        "fs_list": 16,
+        "stackbot": 1648,
+        "stacktop": 2160,
+        "max_running_work": 2160
+      }
+    }
+  },
+  "public_swis": {
+    "OS_ChangeDynamicArea": 42,
+    "OS_ReadDynamicArea": 92,
+    "OS_ReadRAMFsLimits": 74
+  },
+  "ram_dynamic_area": 5,
+  "runtime_contract": "OS_ReadDynamicArea(5) base/size must equal OS_ReadRAMFsLimits start/end, across actual resize operations"
+}
