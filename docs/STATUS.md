@@ -58,6 +58,8 @@ mouse and sound; Nevryon to its title screen.
 
 ## What could come next
 
+- Rebasing the source provenance from the 4corn mirror onto RISC OS Open's
+  GitLab when it is back online ([LICENSING.md](../LICENSING.md)).
 - Testing on real hardware.
 - More 3.11 application and game testing.
 - About 12 KB of ROM space, measured but not taken: tokenising `*Help` text as

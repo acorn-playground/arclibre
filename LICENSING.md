@@ -6,6 +6,8 @@ The restored RISC OS kernel and most guest modules in this project come from **p
 
 The implementation baseline is the public **cleaned RISC OS 3.60 source import** preserved in the component Git repositories under [RiscOS/Sources on the 4corn GitLab mirror](https://gitlab.4corn.co.uk/RiscOS/Sources). The historical kernel/cohort commits are described upstream as “Import from cleaned 360 CD”. We exported selected revisions from those repositories and restored their original-machine paths for ARM2/MEMC1 hardware.
 
+> **A note on the 4corn mirror.** Every RISC OS source repository cited in this document and in `manifests/` is on the 4corn mirror of RISC OS Open's GitLab, because the canonical RISC OS Open GitLab is currently offline. When it is back online we will rebase the provenance on it: each pinned revision is a Git commit hash, which is the same in the mirror and the original, so the move changes the repository addresses and re-verifies every pinned file against them, not the sources.
+
 “Recovered” means recovered from those public version-control histories. It does **not** mean disassembled from a ROM or copied from a commercial ROM image. The maintained `src/` tree contains our patched copies. How they were restored is recorded in [docs/history](docs/history/README.md); the original snapshots and full restoration evidence are kept in the project's development archive, not in this repository.
 
 The core source references are:

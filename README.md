@@ -72,7 +72,10 @@ fail. [BUILD.md](BUILD.md) lists the tiers and the gates;
 
 ArcLibre is distributed under the Apache License 2.0. The sources come from
 the public RISC OS source repositories at pinned revisions, each recorded with
-its upstream hash in `manifests/`; every change is a patch in `patches/` and
+its upstream hash in `manifests/`. They are cited from the 4corn mirror of
+RISC OS Open's GitLab while the canonical GitLab is offline; we will rebase
+the provenance on the canonical repositories when it is back online (see
+[LICENSING.md](LICENSING.md)). Every change is a patch in `patches/` and
 every modified file carries a modification notice. [LICENSING.md](LICENSING.md)
 gives the full provenance, the licences of the host tools, and what is
 excluded and why. [docs/history](docs/history/README.md) records how the
