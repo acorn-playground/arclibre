@@ -27,7 +27,7 @@ from the [gcc-apcs26](https://github.com/acorn-playground/gcc-apcs26) project,
 a git submodule (`third_party/gcc-apcs26`). Clone with `--recursive`:
 
 ```sh
-git clone --recursive https://github.com/acorn-playground/ArcLibre.git
+git clone --recursive https://github.com/acorn-playground/arclibre.git
 ```
 
 (or run `git submodule update --init` in an existing clone). The build

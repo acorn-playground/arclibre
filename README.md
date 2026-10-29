@@ -34,8 +34,8 @@ works, what has been tested and what hasn't.
 On macOS or Linux, with the prerequisites in [BUILD.md](BUILD.md):
 
 ```sh
-git clone --recursive https://github.com/acorn-playground/ArcLibre.git
-cd ArcLibre
+git clone --recursive https://github.com/acorn-playground/arclibre.git
+cd arclibre
 make arclibre-rom        # build/arclibre/arclibre.rom, the 2 MB ROM
 make release-test        # both ROMs and the disc, and every test gate on them
 make release             # dist/arclibre-VERSION/ (after recording the release)

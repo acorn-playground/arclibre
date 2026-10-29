@@ -1,7 +1,7 @@
 {
   "submodule": "third_party/gcc-apcs26",
   "submodule_repository": "https://github.com/acorn-playground/gcc-apcs26",
-  "submodule_commit": "4c3296586be429f3a3a71ca4bf1951b0b181bcb2",
+  "submodule_commit": "17d30b1502d341817596df4c30747947b4dc0ac9",
   "repository": "https://github.com/riscos-dot-info/gccsdk",
   "revision": "f79cb59110e2d13566678d923dadba0f97a1321d",
   "archive": "sources/gccsdk-3.4.6-apcs26.tar.gz",
