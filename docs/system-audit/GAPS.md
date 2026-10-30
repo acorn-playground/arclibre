@@ -82,3 +82,9 @@ Presence and bounded gates do not certify complete 3.11 compatibility.
 | IRQUtils | `Utilities/Patches/IRQUtils2` @ `1984643f955e` | Cohort IRQUtils2 is the historical empty patch-marker module; no runtime implementation to restore. |
 | WindowUtils | `Desktop/WimpUtils` @ `717510785f21` | Use s/WimpUtils2 assessment: original empty 2.50 marker, not s/WimpUtils old Wimp-2.00 patch. |
 | ADFSUtils | `FileSys/ADFS/ADFS` @ `b32ebc4dd794` | Maintained ADFS s/Fixes fix 9 records incorporation; do not layer old patch onto current ADFS. |
+
+## Known behaviour differences
+
+| Area | RISC OS 3.11 | ArcLibre | Effect |
+|---|---|---|---|
+| The library (`%`) when none is set | Canonicalising `%` gives `#:%` | FileSwitch (from 3.60) falls back to a `$.Library` on the disc last used, which can be a floppy | Both make Acorn C/C++'s installer fail at its Library step: 3.11 with "#:% could not be installed", ArcLibre by asking for the installer's disc again. With a hard disc holding `$.Library` mounted (`*Configure Drive 4`, or `*Mount :4`), the library is set and both work. Found with Acorn C/C++ 5 on an emulated A5000, 30 October 2026. |

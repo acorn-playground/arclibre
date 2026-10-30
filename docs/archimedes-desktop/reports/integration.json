@@ -1,55 +1,55 @@
 {
   "status": "PASS",
-  "rom_sha256": "ee1c8f489ba8d3cc7e6964eee6acae9df41413b3607d4f6943a22fb1951a944c",
+  "rom_sha256": "9e7aa465948c06802c24b46de00635214d6b410df9d788963bbfbf9ef07a4eb9",
   "checks": [
     {
       "report": "build/arclibre/acceptance.json",
       "status": "PASS",
-      "sha256": "baccec6209d3bd0b66cd028528b393ec5bd8769c39712d62a7f0d0e2058f49e5",
-      "rom_sha256": "ee1c8f489ba8d3cc7e6964eee6acae9df41413b3607d4f6943a22fb1951a944c",
+      "sha256": "f4a1c4f653b179d6c4bd5bf731acece84a02562857b6e495b5255d7dbabd6087",
+      "rom_sha256": "9e7aa465948c06802c24b46de00635214d6b410df9d788963bbfbf9ef07a4eb9",
       "cold_boots": 3,
       "application_cold_boots": 3
     },
     {
       "report": "build/sprite-commands/acceptance.json",
       "status": "PASS",
-      "sha256": "5d1423420f7d535b2a78d9893448ad0f6d7b16eef5bc37b5e63d5e0150b2673c",
-      "rom_sha256": "ee1c8f489ba8d3cc7e6964eee6acae9df41413b3607d4f6943a22fb1951a944c",
+      "sha256": "80843d587866889899011321f4ed8685240a7ea781babaea132de1d57e75d0b8",
+      "rom_sha256": "9e7aa465948c06802c24b46de00635214d6b410df9d788963bbfbf9ef07a4eb9",
       "cold_boots": 3
     },
     {
       "report": "build/palette/acceptance.json",
       "status": "PASS",
-      "sha256": "4337f2896bc6ef3ba8e4ffcec6aa10746cdc6a2eade296611ea1f62c9aa578e8",
-      "rom_sha256": "ee1c8f489ba8d3cc7e6964eee6acae9df41413b3607d4f6943a22fb1951a944c",
+      "sha256": "cb9e27fdfc9968143389c8b6ed094ce0a5ebe3c9c5bc407181bc2980cb7040f4",
+      "rom_sha256": "9e7aa465948c06802c24b46de00635214d6b410df9d788963bbfbf9ef07a4eb9",
       "cold_boots": 3
     },
     {
       "report": "build/sound/acceptance.json",
       "status": "PASS",
-      "sha256": "17da278fdfb8815ee7c34ee95c827970ceb89b518db58209037bfd13df252816",
-      "rom_sha256": "ee1c8f489ba8d3cc7e6964eee6acae9df41413b3607d4f6943a22fb1951a944c",
+      "sha256": "86335a01c78e4a314159e454835294f74c1cb097877ffda5a4154f1f796b3718",
+      "rom_sha256": "9e7aa465948c06802c24b46de00635214d6b410df9d788963bbfbf9ef07a4eb9",
       "cold_boots": 3
     },
     {
       "report": "build/desktop-actions/acceptance.json",
       "status": "PASS",
-      "sha256": "064e1430ba883cf1132d59c55ffb65f15a7fba21c3fa1dbdecd16106dc023162",
-      "rom_sha256": "ee1c8f489ba8d3cc7e6964eee6acae9df41413b3607d4f6943a22fb1951a944c",
+      "sha256": "bc83f13729f86bf4baf756df81f41f795f2eca93dfb5782af5d8383eeefe3fad",
+      "rom_sha256": "9e7aa465948c06802c24b46de00635214d6b410df9d788963bbfbf9ef07a4eb9",
       "cold_boots": 3
     },
     {
       "report": "build/desktop-c-runtime/acceptance.json",
       "status": "PASS",
-      "sha256": "bbf45c47f61b71589034c39eb41b2c44ee098d40885f923703a3fc0406facdb7",
-      "rom_sha256": "ee1c8f489ba8d3cc7e6964eee6acae9df41413b3607d4f6943a22fb1951a944c",
+      "sha256": "bf90d17ff6dde6fd3b9caca5ea35e0e244f25d646f4969a6b17eaf406b476a11",
+      "rom_sha256": "9e7aa465948c06802c24b46de00635214d6b410df9d788963bbfbf9ef07a4eb9",
       "cold_boots": 3
     },
     {
       "report": "build/desktop-apps/acceptance/acceptance.json",
       "status": "PASS",
-      "sha256": "d8cef14822be834fcb71d15eb949155badc98907718de837c334fd699d7d8d5f",
-      "rom_sha256": "ee1c8f489ba8d3cc7e6964eee6acae9df41413b3607d4f6943a22fb1951a944c",
+      "sha256": "47644ea3b4ea0063acfdc8df621538f88853f4202118997382f5b21944a53477",
+      "rom_sha256": "9e7aa465948c06802c24b46de00635214d6b410df9d788963bbfbf9ef07a4eb9",
       "cold_boots": 3,
       "independent_cold_boots": 6,
       "trials": 3
@@ -57,8 +57,8 @@
     {
       "report": "build/graphics-apps/acceptance/acceptance.json",
       "status": "PASS",
-      "sha256": "987e820ca5e16cd16617dcc6144341a40a1b85d53528371f9545e86775309a68",
-      "rom_sha256": "ee1c8f489ba8d3cc7e6964eee6acae9df41413b3607d4f6943a22fb1951a944c",
+      "sha256": "76675304405a89421de94056002932e47987ddd3a337e4f61d86c6c1fe2b2e98",
+      "rom_sha256": "9e7aa465948c06802c24b46de00635214d6b410df9d788963bbfbf9ef07a4eb9",
       "cold_boots": 3,
       "independent_cold_boots": 12,
       "trials_per_app": 3
@@ -66,8 +66,8 @@
     {
       "report": "build/app-workflows/acceptance.json",
       "status": "PASS",
-      "sha256": "9e0ffc10b9b6b4b60d3a04cf1cd4dff5ef3cbe8e91777beeabefef7577932382",
-      "rom_sha256": "ee1c8f489ba8d3cc7e6964eee6acae9df41413b3607d4f6943a22fb1951a944c",
+      "sha256": "55ac84640496030d5d6d5fa7dc4f424c5cbc925c795c47bd2b2647515f7a2d4b",
+      "rom_sha256": "9e7aa465948c06802c24b46de00635214d6b410df9d788963bbfbf9ef07a4eb9",
       "cold_boots": 3,
       "independent_cold_boots": 18,
       "trials_per_app": 3
@@ -75,159 +75,159 @@
     {
       "report": "build/task-service-tests/acceptance.json",
       "status": "PASS",
-      "sha256": "113312eaa959a21e5860737fb0232931f88bb68a90d6a3d53235d5c0bfc6b6d0",
-      "rom_sha256": "ee1c8f489ba8d3cc7e6964eee6acae9df41413b3607d4f6943a22fb1951a944c",
+      "sha256": "05f873b1c69eb44d96a3c3415ecea38ce15cad0fcdc73cb0fb6b674ce9a406f9",
+      "rom_sha256": "9e7aa465948c06802c24b46de00635214d6b410df9d788963bbfbf9ef07a4eb9",
       "cold_boots": 3,
       "cold_machines": 6
     },
     {
       "report": "build/menu-tests/acceptance.json",
       "status": "PASS",
-      "sha256": "ca0822aed198fc88e7a1c9515316c5490402d556a363385cc5eea1a60a4ddd4e",
-      "rom_sha256": "ee1c8f489ba8d3cc7e6964eee6acae9df41413b3607d4f6943a22fb1951a944c",
+      "sha256": "b063573f6cc17baf1da5f86d02a538c2624109d597238203ebf2bf5eb89f2efd",
+      "rom_sha256": "9e7aa465948c06802c24b46de00635214d6b410df9d788963bbfbf9ef07a4eb9",
       "cold_boots": 3
     },
     {
       "report": "build/menu-tests/negative-control.json",
       "status": "PASS",
-      "sha256": "c76ffe03046e66b21cf2a9ee1382e7043ef266e124c17e4e3d5edfa1c39e101a",
-      "rom_sha256": "ee1c8f489ba8d3cc7e6964eee6acae9df41413b3607d4f6943a22fb1951a944c"
+      "sha256": "b5a13b4e6130abd22b82ff6f83d01fa16c33436b8af35747cc8acda9ed793bc4",
+      "rom_sha256": "9e7aa465948c06802c24b46de00635214d6b410df9d788963bbfbf9ef07a4eb9"
     },
     {
       "report": "build/stream-tests/acceptance.json",
       "status": "PASS",
-      "sha256": "7d2177bb4aab5b40a83401267e655d66293ca65bf748b70c9fc22006494b9309",
-      "rom_sha256": "ee1c8f489ba8d3cc7e6964eee6acae9df41413b3607d4f6943a22fb1951a944c",
+      "sha256": "a61610e9fd82d83861445256df571c4fd0d64f1282ff1bd6c53584ab01e2ae6a",
+      "rom_sha256": "9e7aa465948c06802c24b46de00635214d6b410df9d788963bbfbf9ef07a4eb9",
       "cold_boots": 3
     },
     {
       "report": "build/ram-filing-tests/acceptance.json",
       "status": "PASS",
-      "sha256": "c75a75e5ca9452baceda33372fd235374279f15f28f851477ff984f29f188b94",
-      "rom_sha256": "ee1c8f489ba8d3cc7e6964eee6acae9df41413b3607d4f6943a22fb1951a944c",
+      "sha256": "73080957a9e707e268af8fff5c1d9407eb4573d90beba8a2b4b322d439af688c",
+      "rom_sha256": "9e7aa465948c06802c24b46de00635214d6b410df9d788963bbfbf9ef07a4eb9",
       "cold_boots": 3
     },
     {
       "report": "build/utility-tests/acceptance.json",
       "status": "PASS",
-      "sha256": "d9ca7203752fb38acb8fd77f8404528314c8694a6d8e7007d40a8c556969a97c",
-      "rom_sha256": "ee1c8f489ba8d3cc7e6964eee6acae9df41413b3607d4f6943a22fb1951a944c",
+      "sha256": "885ee7739e0deb684404c988d64d4132beb2f93c545b9c7f48fa76dba99d9a0b",
+      "rom_sha256": "9e7aa465948c06802c24b46de00635214d6b410df9d788963bbfbf9ef07a4eb9",
       "cold_boots": 3
     },
     {
       "report": "build/dosfs-tests/acceptance.json",
       "status": "PASS",
-      "sha256": "a54580656582ea56fa7c8a0080fbe97371cf227b1b82d2ce143c4c37a947439b",
-      "rom_sha256": "ee1c8f489ba8d3cc7e6964eee6acae9df41413b3607d4f6943a22fb1951a944c",
+      "sha256": "d5b9835c3a436b55d5d9f3da7b846ed6d4bf051a34d65a42875e318eddfa0448",
+      "rom_sha256": "9e7aa465948c06802c24b46de00635214d6b410df9d788963bbfbf9ef07a4eb9",
       "cold_boots": 3
     },
     {
       "report": "build/format-tests/acceptance.json",
       "status": "PASS",
-      "sha256": "0039ac7e1afbee7f95eb1aec3a1448f460121107e483e6f7af46f153c4d9d5f3",
-      "rom_sha256": "ee1c8f489ba8d3cc7e6964eee6acae9df41413b3607d4f6943a22fb1951a944c",
+      "sha256": "2f70f90f72e1555796fd75a7024e282caf03523ae40b7332ed2f31b102ae7d1c",
+      "rom_sha256": "9e7aa465948c06802c24b46de00635214d6b410df9d788963bbfbf9ef07a4eb9",
       "cold_boots": 3
     },
     {
       "report": "build/dosfs-format-tests/acceptance.json",
       "status": "PASS",
-      "sha256": "fb2df3257c650f75345b3a638a4553705726114cd3b116c9625799bb8053f486",
-      "rom_sha256": "ee1c8f489ba8d3cc7e6964eee6acae9df41413b3607d4f6943a22fb1951a944c",
+      "sha256": "a2f6f0793f8691f3fa8b090bb90d9f6d43a66498beadf91c2b8f3b3232ce7894",
+      "rom_sha256": "9e7aa465948c06802c24b46de00635214d6b410df9d788963bbfbf9ef07a4eb9",
       "cold_boots": 3
     },
     {
       "report": "build/new-io-tests/acceptance.json",
       "status": "PASS",
-      "sha256": "2d54a0a5ec43ac017d16e301d5f52a30f270fb0fa0202fa6afa2ee1dac7c3052",
-      "rom_sha256": "ee1c8f489ba8d3cc7e6964eee6acae9df41413b3607d4f6943a22fb1951a944c",
+      "sha256": "768bddef18429ff6212f49111cb03f2cf234c1576bc164553b9e564009ee2f64",
+      "rom_sha256": "9e7aa465948c06802c24b46de00635214d6b410df9d788963bbfbf9ef07a4eb9",
       "cold_boots": 3
     },
     {
       "report": "build/arm3-tests/acceptance.json",
       "status": "PASS",
-      "sha256": "2679a30fc86f7434cb31a43f4a858eb455e400dea7ef47e1aedf1fc5931fedee",
-      "rom_sha256": "ee1c8f489ba8d3cc7e6964eee6acae9df41413b3607d4f6943a22fb1951a944c",
+      "sha256": "cedc90989676c5f6d0a317061174e955999ae1aa20d30672aa28f30d10a430a2",
+      "rom_sha256": "9e7aa465948c06802c24b46de00635214d6b410df9d788963bbfbf9ef07a4eb9",
       "cold_boots": 3
     },
     {
       "report": "build/network-tests/acceptance.json",
       "status": "PASS",
-      "sha256": "c6e3137295ec258d2c45356a2941dbee3c8aa4046272e3e8a20824dfe787753b",
-      "rom_sha256": "ee1c8f489ba8d3cc7e6964eee6acae9df41413b3607d4f6943a22fb1951a944c",
+      "sha256": "67b1c16063fd683c8a9f30a5c0cfdb6e796a18abe8a1e2fcc34c43ba81b221b5",
+      "rom_sha256": "9e7aa465948c06802c24b46de00635214d6b410df9d788963bbfbf9ef07a4eb9",
       "cold_boots": 3
     },
     {
       "report": "build/netfs-tests/acceptance.json",
       "status": "PASS",
-      "sha256": "939381ec0873cb065eb1fe02ff1a1fbb01448082ec43b7ee0e9ee0658ed88359",
-      "rom_sha256": "ee1c8f489ba8d3cc7e6964eee6acae9df41413b3607d4f6943a22fb1951a944c",
+      "sha256": "43a87ac7c89e29044c35b6add7b47ff2a2558c0fd46359e1d4f743ca3ef56373",
+      "rom_sha256": "9e7aa465948c06802c24b46de00635214d6b410df9d788963bbfbf9ef07a4eb9",
       "cold_boots": 3
     },
     {
       "report": "build/hardware-tests/acceptance.json",
       "status": "PASS",
-      "sha256": "bc2adeb5b4ac1a9f7f03a57bea1592503275df89f9161b27ebc4e3e9b32b8929",
-      "rom_sha256": "ee1c8f489ba8d3cc7e6964eee6acae9df41413b3607d4f6943a22fb1951a944c",
+      "sha256": "baedcb6eae36c68dbea9074c3395940084d65f7bcb1393eb5d76d0bb942d8cbf",
+      "rom_sha256": "9e7aa465948c06802c24b46de00635214d6b410df9d788963bbfbf9ef07a4eb9",
       "cold_boots": 3
     },
     {
       "report": "build/printing-tests/acceptance.json",
       "status": "PASS",
-      "sha256": "05ca4a45fbe4edcfe79ab8f2df30ff148e0764f5f0c9e2354422a564bf119ae0",
-      "rom_sha256": "ee1c8f489ba8d3cc7e6964eee6acae9df41413b3607d4f6943a22fb1951a944c",
+      "sha256": "495c11ed8867730d94599e1399d8b3a5f92231a3ca8c7b90f8fb5e5bb47837e8",
+      "rom_sha256": "9e7aa465948c06802c24b46de00635214d6b410df9d788963bbfbf9ef07a4eb9",
       "cold_boots": 3
     },
     {
       "report": "build/extras-tests/acceptance.json",
       "status": "PASS",
-      "sha256": "786e8517c6b77fae45d9edb91bc02366b2f3feedccd1d378c22dbaf0c98bf9f0",
-      "rom_sha256": "ee1c8f489ba8d3cc7e6964eee6acae9df41413b3607d4f6943a22fb1951a944c",
+      "sha256": "bc1be02f75abe342ac358369bc450abcf040c17cc583237aa39b7a1f2defcd17",
+      "rom_sha256": "9e7aa465948c06802c24b46de00635214d6b410df9d788963bbfbf9ef07a4eb9",
       "cold_boots": 3
     },
     {
       "report": "build/debugger-tests/acceptance.json",
       "status": "PASS",
-      "sha256": "478c0fc213717d3af986804113ae7178336bd4beb780c970bdeeef9d9f1326d5",
-      "rom_sha256": "ee1c8f489ba8d3cc7e6964eee6acae9df41413b3607d4f6943a22fb1951a944c",
+      "sha256": "14d22972f060844f631f17bc5e91fc44573b9a5959e2d3937aacad26b8085057",
+      "rom_sha256": "9e7aa465948c06802c24b46de00635214d6b410df9d788963bbfbf9ef07a4eb9",
       "cold_boots": 3
     },
     {
       "report": "build/clock-tests/acceptance.json",
       "status": "PASS",
-      "sha256": "f534f5d1dfd40da9dc7645389717aa2b8f7ed54f39195fd48012d686b237baab",
-      "rom_sha256": "ee1c8f489ba8d3cc7e6964eee6acae9df41413b3607d4f6943a22fb1951a944c",
+      "sha256": "332cc154b086100ab4793755185b50c3759962b37c87d242c72a085c352ce6e0",
+      "rom_sha256": "9e7aa465948c06802c24b46de00635214d6b410df9d788963bbfbf9ef07a4eb9",
       "cold_boots": 3
     },
     {
       "report": "build/squash-tests/acceptance.json",
       "status": "PASS",
-      "sha256": "944605326295cda541f777cfbcddc0d8c379bf90d9408376ff7c009790b6e248",
-      "rom_sha256": "ee1c8f489ba8d3cc7e6964eee6acae9df41413b3607d4f6943a22fb1951a944c",
+      "sha256": "4a6ca5d3b9ce1b49ab296024cfa46c0c25e84ea874219320e88e0da6bf940689",
+      "rom_sha256": "9e7aa465948c06802c24b46de00635214d6b410df9d788963bbfbf9ef07a4eb9",
       "cold_boots": 3
     },
     {
       "report": "build/basic-utility-tests/acceptance.json",
       "status": "PASS",
-      "sha256": "180733122f540d979fb2310d0e1e9e1339c56f3c8f01da90e01d6d72ace24d42",
-      "rom_sha256": "ee1c8f489ba8d3cc7e6964eee6acae9df41413b3607d4f6943a22fb1951a944c",
+      "sha256": "059fcc1f135529eee659d9c195d75d558ecff6abcd4f53eb7e28d1b5d52b9486",
+      "rom_sha256": "9e7aa465948c06802c24b46de00635214d6b410df9d788963bbfbf9ef07a4eb9",
       "cold_boots_per_application": 3
     },
     {
       "report": "build/stream-tests/sleep-negative.json",
       "status": "PASS",
-      "sha256": "9fe2083c46978518c67c2c3cd21e9c4e420fa9833a6ad51a245cfd37ba6ae94b",
-      "rom_sha256": "ee1c8f489ba8d3cc7e6964eee6acae9df41413b3607d4f6943a22fb1951a944c"
+      "sha256": "80e029a6f6765ce17a81b66130899b55fda3b5384089d6ed14236d3c176151a6",
+      "rom_sha256": "9e7aa465948c06802c24b46de00635214d6b410df9d788963bbfbf9ef07a4eb9"
     },
     {
       "report": "build/rom-4m-tests/acceptance.json",
       "status": "PASS",
-      "sha256": "8ff9ad8d28bf3d5cf2f8c4e7aedbfb3b8c5bd39f85cdfb8d399ff0434822bda3",
-      "rom_sha256": "d50d370b3254e1a159c26b19e893f2b1b6d440fee0a4b80669739e5449ca062e",
+      "sha256": "f1c2b43bafc5ed153abbb7a6b62474aa4d5897e2021beec76c7673676b54abae",
+      "rom_sha256": "2ae82b6d9342f20f4c400a97b5615332fb2d449ead9571566376c33169f016d6",
       "cold_boots": 3
     }
   ],
-  "build_reproducibility_sha256": "07e1de778db96a753dfff22993b42ce501736b24888c463ea15655070303841e",
-  "kernel_sha256": "04eeb64134408790c53425c63816b17f30b7bc6dbe52e0f79622634d946e9f5e",
+  "build_reproducibility_sha256": "b4073940db1749a8e0439e57a9dd219eb0e35b6069889b5c34521ad1aa195b87",
+  "kernel_sha256": "9e61ac311b9bc16fd74b63e301f120d94fedf51edf31410cb6579336f72d493a",
   "emulator_unchanged": true,
   "used_bytes": 2076916,
   "free_bytes": 20236,
