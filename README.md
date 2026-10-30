@@ -17,7 +17,7 @@ Each release has two variants:
 | File | For |
 |---|---|
 | `arclibre-VERSION-2mb.rom` | any Archimedes: the A300 and A400 series, A3000, A5000, A3010, A3020 and A4000 |
-| `arclibre-VERSION-2mb-extras.adf` | the 2 MB ROM's floppy: DOSFS (PC discs), !Alarm and !Printers, which the 2 MB ROM has no room for |
+| `arclibre-VERSION-2mb-extras.adf` | the 2 MB ROM's floppy: DOSFS (PC discs), !Alarm and !Printers, which the 2 MB ROM has no room for; and !System and !Scrap, for either ROM's hard disc |
 | `arclibre-VERSION-4mb.rom` | the A5000, A3010, A3020 and A4000, whose ROM sockets take 4 MB: everything in ROM, no disc needed |
 
 with the source archive, the record of rebuilding it from scratch into the

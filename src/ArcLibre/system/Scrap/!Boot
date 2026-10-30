@@ -1,0 +1,5 @@
+| !Scrap: where applications put files they pass to each other.
+| The first !Scrap the Filer sees is used; double-click another to use it.
+IconSprites <Obey$Dir>.!Sprites
+If "<Wimp$ScrapDir>" = "" Then Set Wimp$ScrapDir <Obey$Dir>.ScrapDir
+If "<Wimp$Scrap>" = "" Then Set Wimp$Scrap <Wimp$ScrapDir>.ScrapFile

@@ -1,0 +1,4 @@
+| !Scrap: use this one for files passed between applications.
+IconSprites <Obey$Dir>.!Sprites
+Set Wimp$ScrapDir <Obey$Dir>.ScrapDir
+Set Wimp$Scrap <Wimp$ScrapDir>.ScrapFile

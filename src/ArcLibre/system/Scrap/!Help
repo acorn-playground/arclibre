@@ -1,0 +1,16 @@
+!Scrap
+======
+
+!Scrap is where applications keep a document while passing it to
+another application, and where some keep other temporary files.
+Let the Filer see it once after you switch on, by opening the
+directory that holds it.
+
+If an application says it can't transfer a file and suggests setting
+Wimp$Scrap, open the directory holding !Scrap and try again.
+
+!Scrap must be somewhere applications can write: not on a
+write-protected floppy disc. If there is more than one !Scrap, the
+first one the Filer sees is used. Double-click a !Scrap to use that
+one instead.
+

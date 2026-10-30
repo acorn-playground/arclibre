@@ -1,0 +1,19 @@
+!System
+=======
+
+!System holds the relocatable modules that applications share, in
+its Modules directory. Applications load them from there when they
+need them: you don't need to do anything, except let the Filer see
+!System once after you switch on, by opening the directory that
+holds it.
+
+If an application says "Filing system or path System: not present",
+open the directory holding !System and try again.
+
+If an application says it needs a later version of a module, that
+module isn't in !System.Modules, or is older than it needs. Installers
+(Acorn C/C++'s, for example) copy their modules in for you.
+
+If there is more than one !System, the first one the Filer sees is
+used. Double-click a !System to use that one instead.
+

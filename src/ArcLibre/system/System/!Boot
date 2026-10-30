@@ -1,0 +1,5 @@
+| !System: modules shared by applications, in System:Modules.
+| The first !System the Filer sees is used; double-click another to use it.
+IconSprites <Obey$Dir>.!Sprites
+If "<System$Dir>" = "" Then Set System$Dir <Obey$Dir>
+If "<System$Path>" = "" Then Set System$Path <System$Dir>.

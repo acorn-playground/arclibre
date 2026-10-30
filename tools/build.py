@@ -27,9 +27,9 @@ run([tokenise,exports/'Tokens','HelpStrs','s/TMOSHelp'],ROOT/'work/Kernel','kern
 p=ROOT/'work/Kernel/s/TMOSHelp';p.write_bytes(b'; Generated 2026 from the pinned Kernel HelpStrs and HdrSrc Tokens.\n; Apache-2.0; upstream notices retained in those inputs and sources/Kernel/LICENSE.\n'+p.read_bytes())
 # The delivered ROM's version and date (*FX 0, the kernel's *Help title,
 # UtilityModule) come from manifests/release.json; the kernel's *Help version has
-# two decimal places, as RISC OS's do (0.9 is 0.90).
-version=json.loads((REPO/'manifests/release.json').read_text());major,minor=version['version'].split('.')
-release=[f'-PreDefine=ArcLibreVersion SETS "{version["version"]}"',f'-PreDefine=ArcLibreHelpVersion SETS "{major}.{minor.ljust(2,"0")}"',f'-PreDefine=ArcLibreDate SETS "{version["date"]}"']
+# two decimal places, as RISC OS's do (0.9 is 0.90, 0.9.1 is 0.91).
+version=json.loads((REPO/'manifests/release.json').read_text());major,*minor=version['version'].split('.')
+release=[f'-PreDefine=ArcLibreVersion SETS "{version["version"]}"',f'-PreDefine=ArcLibreHelpVersion SETS "{major}.{"".join(minor).ljust(2,"0")}"',f'-PreDefine=ArcLibreDate SETS "{version["date"]}"']
 def assemble(source,cwd,out,absolute=False):
  hashes=[]
  for attempt in ['normal-1','normal-2','trace']:

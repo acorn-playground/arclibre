@@ -12,13 +12,16 @@ arclibre-{version}-2mb.rom
     The ROM.
 arclibre-{version}-2mb-extras.adf
     An 800K floppy with the parts of RISC OS 3.11 that the 2 MB ROM has
-    no room for: DOSFS, !Alarm and !Printers. Its ReadMe explains each.
+    no room for: DOSFS, !Alarm and !Printers. It also has !System and
+    !Scrap, which every machine needs on its hard disc (RISC OS 3.11's
+    came on the Applications disc). Its ReadMe explains each.
 
 4 MB: for the A5000, A3010, A3020 and A4000
 -------------------------------------------
 
 arclibre-{version}-4mb.rom
-    The ROM, with DOSFS, Alarm and printing built in; it needs no disc.
+    The ROM, with DOSFS, Alarm and printing built in. Copy !System and
+    !Scrap from the extras disc to your hard disc.
     It needs a machine whose ROM sockets take 4 MB. The A3000, A300 and
     A400 series take at most 2 MB.
 

@@ -1,0 +1,4 @@
+| !System: use this one for System:Modules.
+IconSprites <Obey$Dir>.!Sprites
+Set System$Dir <Obey$Dir>
+Set System$Path <System$Dir>.

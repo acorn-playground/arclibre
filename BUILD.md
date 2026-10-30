@@ -46,7 +46,7 @@ ROM in `build/arclibre/arclibre.rom`, with its module layout in
 | Command | Output |
 |---|---|
 | `make arclibre-rom-4m` | the 4 MB ROM, `build/arclibre-4m/arclibre.rom` |
-| `make extras-disc` | the 2 MB ROM's floppy, `build/extras-disc/arclibre-extras.adf`, joined from the three below |
+| `make extras-disc` | the 2 MB ROM's floppy, `build/extras-disc/arclibre-extras.adf`, joined from the three below, with !System and !Scrap (`tools/system_apps.py`) |
 | `make dosfs-disc` | DOSFS as a disc-loaded module, `build/dosfs/arclibre-dosfs.adf` |
 | `make alarm-disc` | !Alarm, `build/alarm-disc/arclibre-alarm.adf` |
 | `make printing-disc` | !Printers and its modules, `build/printing-disc/arclibre-printing.adf` |
@@ -64,7 +64,7 @@ reports in `*FX 0` and `*Help`:
 | File | For |
 |---|---|
 | `arclibre-VERSION-2mb.rom` | any Archimedes |
-| `arclibre-VERSION-2mb-extras.adf` | the 2 MB ROM: DOSFS, !Alarm and !Printers on one 800K floppy |
+| `arclibre-VERSION-2mb-extras.adf` | the 2 MB ROM: DOSFS, !Alarm and !Printers on one 800K floppy; and !System and !Scrap for either ROM's hard disc |
 | `arclibre-VERSION-4mb.rom` | the A5000, A3010, A3020 and A4000: everything in ROM |
 
 with the source archive, the record of rebuilding it, the evidence archive,
@@ -137,7 +137,7 @@ off macOS, a host portability patch that changes no emulation.
 | `run_format.py`, `run_dosfs.py`, `run_dosfs_formats.py` | FileCore formatting, DOSFS on 720K, 1.44M, 360K and FAT16 | [FileCore](docs/filecore/RESULTS.md), [DOSFS](docs/dosfs/RESULTS.md) |
 | `run_network.py`, `run_netfs.py` | Econet, NetFS against a host file server, NetFiler | [network](docs/network/RESULTS.md) |
 | `run_hardware.py`, `run_new_io.py` | expansion cards, serial, parallel; the A5000 family's I/O | [hardware](docs/hardware/RESULTS.md), [new I/O](docs/new-io/RESULTS.md) |
-| `run_printing.py`, `run_extras.py` | printing to dot-matrix, LaserJet and PostScript; the shipped extras disc | [printing](docs/printing/RESULTS.md) |
+| `run_printing.py`, `run_extras.py` | printing to dot-matrix, LaserJet and PostScript; the shipped extras disc, with !System and !Scrap | [printing](docs/printing/RESULTS.md) |
 | `run_rom_4m.py` | the 4 MB ROM | [4 MB ROM](docs/rom-4m/RESULTS.md) |
 
 ## How the build works

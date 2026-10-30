@@ -34,7 +34,7 @@ GATES={
  'new-io':(['tests/run_new_io.py'],['src/HdrSrc/hdr/Machine/*','src/Kernel/s/PMF/osinit','src/Kernel/s/Middle','src/ADFS/*','src/Serial/*','src/Parallel/*','tools/verify.py','tests/run_new_io.py','tests/harness/Sources/NewIOProbe/*']),
  'dosfs-formats':(['tests/run_dosfs_formats.py'],['src/DOSFS/*','src/ADFS/*','src/FileCore/*','tools/build_dosfs.py','tests/run_dosfs_formats.py','tests/fat12_fixture.py','tests/hfe_fixture.py','tests/harness/Sources/NewIOProbe/*']),
  # The 2 MB ROM's shipped floppy, rebuilt from the DOSFS, Alarm and printing discs first.
- 'extras':(['tests/run_extras.py','--build'],['src/ArcLibre/extras/*','tools/build_extras_disc.py','tools/adfs_image.py','manifests/release.json','tests/run_extras.py','tests/harness/Sources/PrintProbe/*']),
+ 'extras':(['tests/run_extras.py','--build'],['src/ArcLibre/extras/*','src/ArcLibre/system/*','tools/system_apps.py','tools/build_extras_disc.py','tools/adfs_image.py','manifests/release.json','tests/run_extras.py','tests/harness/Sources/PrintProbe/*']),
  'hardware':(['tests/run_hardware.py'],['src/Podule/*','src/Serial/*','src/SerialSpt/*','src/Parallel/*','manifests/hardware-inputs.json','manifests/hardware-headers.json','patches/hardware/*','tests/run_hardware.py','tests/harness/Sources/HardwareProbe/*']),
  'arm3':(['tests/run_arm3.py'],['src/ARM3Support/*','manifests/arm3-inputs.json','tools/inspect_image.py','tests/run_arm3.py','tests/harness/Sources/ARM3Probe/*']),
  # The delivered FileCore (ArcLibreDelivered) and its *Format / DiscOp writes.

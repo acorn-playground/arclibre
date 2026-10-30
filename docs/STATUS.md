@@ -1,6 +1,6 @@
 # Status
 
-ArcLibre 0.9. The exact ROMs, disc and test reports of the current release
+ArcLibre 0.9.1. The exact ROMs, disc and test reports of the current release
 are recorded in [manifests/arclibre-desktop-release.json](../manifests/arclibre-desktop-release.json)
 and summarised in [the integration record](archimedes-desktop/reports/integration.json).
 
@@ -13,6 +13,12 @@ ROM, are on the extras disc, and the 4 MB ROM has them built in. !Calc,
 replacements written to match the 3.11 originals, because their sources
 aren't public. [The gap matrix](system-audit/GAPS.md) compares the set with
 3.11's, module by module. 20 KB of the 2 MB ROM is free.
+
+The extras disc also has !System and !Scrap, new ArcLibre applications set
+up as Acorn's: where applications find shared modules (and installers put
+theirs) and where they pass files to each other. RISC OS 3.11 users got
+Acorn's on the Applications disc; with either ROM, copy them to the hard
+disc.
 
 It runs on the A300 and A400 series and the A3000 (ARM2, IOC, 1772 floppy
 controller) and on the A5000, A3010, A3020 and A4000 (ARM3 or ARM250, IOEB,
